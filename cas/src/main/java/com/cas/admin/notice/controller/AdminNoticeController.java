@@ -32,8 +32,8 @@ public class AdminNoticeController {
 	 * 공지사항 아이디를 받아서 아이디가 있으면 수정화면
 	 * 아이디가 없으면 입력화면을 보여준다.
 	 */
-	@RequestMapping("/admin/noticeDetail/{articleId}")
-	public String adminNoticeDetail(@PathVariable String articleId,Model model){
+	@RequestMapping("/admin/noticeDetail")
+	public String adminNoticeDetail(HttpServletRequest request,Model model){
 		return null;
 	}
 	
@@ -56,8 +56,8 @@ public class AdminNoticeController {
 	}
 	
 	/*등록된 캐러셀을 삭제하는 메서드*/
-	@RequestMapping("/admin/noticeDelete/{articleId}")
-	public String adminNoticelDelete(@PathVariable String articleId){
+	@RequestMapping("/admin/noticeDelete")
+	public String adminNoticelDelete(HttpServletRequest request){
 		return null;
 	}
 }

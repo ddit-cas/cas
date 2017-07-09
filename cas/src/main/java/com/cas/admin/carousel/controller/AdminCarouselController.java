@@ -21,8 +21,8 @@ public class AdminCarouselController {
 	 * 캐러셀 아이디 파라미터로 해당 캐러셀아이디를 가져와서 모델에 셋어트리뷰트해서 양식을 보여준다.
 	 * 만약 캐러셀아이디가 없으면 빈 양식을 보여준다. 
 	 */
-	@RequestMapping("/admin/carouselDetail/{carouselId}")
-	public String carouselDetail(@PathVariable String carouselId,Model model){
+	@RequestMapping("/admin/carouselDetail")
+	public String carouselDetail(HttpServletRequest request,Model model){
 		return null;
 	}
 	
@@ -39,8 +39,8 @@ public class AdminCarouselController {
 	}
 	
 	/*등록된 캐러셀을 삭제하는 메서드*/
-	@RequestMapping("/admin/carouselDelete/{carouselId}")
-	public String carouselDelete(@PathVariable String carouselId){
+	@RequestMapping("/admin/carouselDelete")
+	public String carouselDelete(HttpServletRequest request){
 		return null;
 	}
 }

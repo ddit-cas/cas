@@ -4,16 +4,22 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
+	<context:property-placeholder
+		location="classpath:sqlConfigProperties.properties"
+	/>
+		
 	<bean id="dataSource" 
 		class="org.apache.commons.dbcp2.BasicDataSource" 
-		p:driverClassName="oracle.jdbc.driver.OracleDriver"
-		p:url="jdbc:oracle:thin:@192.168.204.46:1521:XE"
-		p:username="cas"
-		p:password="cas"
+		p:driverClassName="{driverClassName}"
+		p:url="{url}"
+		p:username="{username}"
+		p:password="{password}"
 	/>
 	
 	<bean id="sqlMapClient" 
