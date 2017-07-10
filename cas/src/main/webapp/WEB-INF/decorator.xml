@@ -6,6 +6,10 @@
 		<pattern>/*</pattern>
 	</decorator>
 	
+	<decorator name="adminLayout" page="admin_decorator.jsp">
+		<pattern>/admin/*</pattern>
+	</decorator>
+	
 	<!-- decorators를 적용시키지 않을 url 패턴 -->
 <!-- 	<excludes> -->
 <!-- 		<pattern>/excludes/*</pattern> -->
