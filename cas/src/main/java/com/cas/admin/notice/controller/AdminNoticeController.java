@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cas.admin.notice.service.AdminNoticeService;
 
-@Controller
 public class AdminNoticeController {
 
 	private AdminNoticeService adminNoticeService;
