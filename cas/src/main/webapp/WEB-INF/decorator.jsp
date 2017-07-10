@@ -109,7 +109,6 @@ a.animated-button.thar-four {
 	position: relative;
 	border: 2px solid #222222;
 	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-	0
 	s;
 }
 
