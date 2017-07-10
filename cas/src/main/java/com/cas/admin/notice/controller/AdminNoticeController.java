@@ -13,7 +13,6 @@ import com.cas.admin.notice.service.AdminNoticeService;
 @Controller
 public class AdminNoticeController {
 
-	@Autowired
 	private AdminNoticeService adminNoticeService;
 	
 	public void setAdminNoticeService(AdminNoticeService adminNoticeService){
