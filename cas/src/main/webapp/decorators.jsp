@@ -127,7 +127,7 @@ a.animated-button.thar-four:before {
          <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                <li class="dropdown"><a class="dropdown-toggle"
-                  data-toggle="dropdown" href="#">CAS-이야기<span class="caret"></span></a>
+                  data-toggle="dropdown" href="noticeBoard.jsp">CAS-이야기<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                      <li><a href="noticeBoard.jsp">공지사항</a></li>
                      <li><a href="#">CAS란</a></li>
