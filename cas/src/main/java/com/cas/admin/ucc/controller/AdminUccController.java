@@ -16,7 +16,7 @@ public class AdminUccController {
 	}
 	
 	/*영상게시물 세부내용을 보는 메서드*/
-	@RequestMapping("/admin/uccList")
+	@RequestMapping("/admin/uccDetail")
 	public String adminUccDetail(HttpServletRequest request,Model model){
 		return null;
 	}
