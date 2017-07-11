@@ -1,20 +1,11 @@
-<%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 게시판</title>
+<title>자유게시판</title>
 </head>
 <style>
 .container {
@@ -48,7 +39,6 @@ li a:hover{
 	background-color: #666;
 }
 </style>
-
 <body>
 	<nav class="navbar navbar-default" style="width: 830px; margin:0 auto 20px; text-align:center;">
 		<div class="container-fluid" style=" width: 830px; margin:0 auto;">
@@ -60,7 +50,7 @@ li a:hover{
 			</ul>
 		</div>
 	</nav>
-			<p><img src="resources/noticee.png" style="width:829px; height:188px; margin:0 160px auto; background-size:cover;"></p>
+	<p><img src="resources/free.png" style="width:829px; height:188px; margin:0 160px auto; background-size:cover;"></p>
 	<div class="container">
 		<div class="content">
 			<div class="selectcheck">
@@ -110,4 +100,3 @@ li a:hover{
 	</div>
 </body>
 </html>
-

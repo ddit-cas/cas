@@ -155,7 +155,7 @@ a.animated-button.thar-four:before {
 					<input type="text" name="id" placeholder="아이디를 입력하세요"> <input
 						type="text" name="pwd" placeholder="비밀번호를 입력하세요"> <a
 						href="#" class="btn btn-sm animated-button thar-four">로그인</a> <a
-						href="#" class="btn btn-sm animated-button thar-four">회원가입</a> <a
+						href="signup.jsp" class="btn btn-sm animated-button thar-four">회원가입</a> <a
 						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호
 						찾기</a>
 				</form>
@@ -221,9 +221,9 @@ a.animated-button.thar-four:before {
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">CAS-이야기<span class="caret"></span></a>
+						data-toggle="dropdown" href="noticeBoard.jsp">CAS-이야기<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">공지사항</a></li>
+							<li><a href="noticeBoard.jsp">공지사항</a></li>
 							<li><a href="#">CAS란</a></li>
 							<li><a href="#">펀딩 성공 사례</a></li>
 							<li><a href="#">공연 행사 일정</a></li>
@@ -244,7 +244,7 @@ a.animated-button.thar-four:before {
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">자유게시판</a></li>
+							<li><a href="freeBoard.jsp">자유게시판</a></li>
 							<li><a href="#">공연홍보 게시판</a></li>
 							<li><a href="#">PR 영상</a></li>
 						</ul></li>
