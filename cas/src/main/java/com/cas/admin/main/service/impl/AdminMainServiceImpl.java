@@ -2,10 +2,10 @@ package com.cas.admin.main.service.impl;
 
 import java.util.List;
 
-import com.cas.admin.db.dto.Article;
-import com.cas.admin.db.dto.Fund;
-import com.cas.admin.db.dto.Member;
 import com.cas.admin.main.service.AdminMainService;
+import com.cas.db.dto.Article;
+import com.cas.db.dto.Fund;
+import com.cas.db.dto.Member;
 
 public class AdminMainServiceImpl implements AdminMainService{
 

@@ -2,27 +2,15 @@ package com.cas.admin.notice.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.cas.admin.notice.service.AdminNoticeService;
 
 public class AdminNoticeController {
 
-	private AdminNoticeService adminNoticeService;
-	
-	public void setAdminNoticeService(AdminNoticeService adminNoticeService){
-		this.adminNoticeService=adminNoticeService;
-	}
-	
 	/*관리자가 공지사항을 관리하기위한 공지사항 리스트 화면을 호출하는 메서드*/
 	@RequestMapping("/admin/noticeList")
 	public String adminNoticeList(){
-		adminNoticeService.selectNoticeList();
-		return "redirect:noticeList";
+		return null;
 	}
 	
 	/*

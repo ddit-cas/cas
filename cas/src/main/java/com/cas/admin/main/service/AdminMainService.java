@@ -2,9 +2,9 @@ package com.cas.admin.main.service;
 
 import java.util.List;
 
-import com.cas.admin.db.dto.Article;
-import com.cas.admin.db.dto.Fund;
-import com.cas.admin.db.dto.Member;
+import com.cas.db.dto.Article;
+import com.cas.db.dto.Fund;
+import com.cas.db.dto.Member;
 
 public interface AdminMainService {
 
