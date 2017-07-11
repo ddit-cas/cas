@@ -24,14 +24,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-<script src="<c:url value="resources/js/sidr/jquery.sidr.min.js"/>"></script>
+<script src="<c:url value="/resources/js/sidr/jquery.sidr.min.js"/>"></script>
 
-<link rel="stylesheet" href="<c:url value="resources/css/BootSideMenu.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/css/BootSideMenu.css"/>">
 
 
-<script src="<c:url value="resources/js/BootSideMenu.js"/>"></script>
+<script src="<c:url value="/resources/js/BootSideMenu.js"/>"></script>
 
-<script src="<c:url value="resources/js/jquery.easing.1.3.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/jquery.easing.1.3.js"/>" type="text/javascript"></script>
 <style>
 body {
 	margin: 0;
@@ -162,7 +162,7 @@ a.animated-button.thar-four:before {
 			<div id="sidr" style="text-align: center;">
 				<!-- 				Your content -->
 				<div id="myInfoDiv">
-					<img src="<c:url value="resources/sinhea.jpg"/>" class="img-circle"
+					<img src="<c:url value="/resources/sinhea.jpg"/>" class="img-circle"
 						alt="Cinque Terre" style="width:65%; height:auto; margin-top: 15px;margin-bottom: 15px;"> <label
 						class="myInfoLabel">${sessionScope.loginUser}</label> <label
 						class="myInfoLabel">${sessionScope.point} point</label>
