@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%
+	session.setAttribute("persent", "1%");
+%>
 
 <style>
-#carousel-image {
+.carousel-image {
 	text-align: center;
 	height: 400px;
 }
 
-#carousel-image img {
+.carousel-image img {
 	height: auto;
 	width: 100%;
 }
@@ -19,8 +21,9 @@
 	text-align: center;
 }
 
-.carousel {
+#carouselBody {
 	padding: 0;
+	height: 400px;
 	width: 60%;
 	margin: 0 1% 8px 0;
 }
@@ -35,9 +38,9 @@
 }
 
 .perfomance {
-	width: 31%;
-	height: 300px;
-	background-color: #cccccc;
+	width: 31.62526607%;
+	height: 450px;
+	background-color: #eaeff7;
 	float: left;
 	margin: 10px;
 }
@@ -55,11 +58,53 @@
 	background: #eeeeee;
 }
 
+.famousFund{
+	width:auto;
+	height: 260px; 
+	padding:0;
+	margin:4px 4px 0 4px;
+	overflow:hidden;
+}
+
+.famousFundContent{
+	width:auto;
+	height: 182px; 
+	padding:12px 8px 8px 8px;
+	margin:0 4px 4px 4px;
+	background-color: #ffffff;
+}
+
+.fundTitle{
+	font-size: 1.6em;
+	margin:0 0 20px 0;
+}
+
+.fundHost{
+	margin:0 0 8px 0;
+}
+
+@MEDIA (max-width:1200px) {
+	.perfomance{
+		width:48%;
+		padding:0;
+		margin:8px 1% 8px 1%;
+	}
+}
+@MEDIA (max-width:770px) {
+	.perfomance{
+		width:94%;
+		padding:0;
+		margin:8px 3% 8px 3%;
+	}
+}
+
+
+
 @media ( max-width :992px) {
-	.carousel {
+	#carouselBody {
 		width: 100%;
 	}
-	.popular{
+	.popular {
 		width: 100%;
 	}
 }
@@ -67,7 +112,7 @@
 <title>CAS</title>
 <div class="row">
 	<!-- 캐러셀 -->
-	<div class="carousel col-md-8">
+	<div class="container col-md-8" id="carouselBody">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
@@ -76,26 +121,24 @@
 				<li data-target="#myCarousel" data-slide-to="2"></li>
 			</ol>
 
+
+
+
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
-				<div class="item active">
-					<div id="carousel-image">
-						<img src="resources/cal.jpg" alt="Los Angeles">
-					</div>
+				<div class="item active carousel-image">
+						<img src="<c:url value="resources/cal.jpg"/>">
 				</div>
 
-				<div class="item" style="text-align: center;">
-					<div id="carousel-image">
-						<img src="resources/cal.jpg" alt="Chicago">
-					</div>
+				<div class="item carousel-image">
+					<img src="<c:url value="resources/cal.jpg"/>">
 				</div>
 
-				<div class="item">
-					<div id="carousel-image">
-						<img src="resources/cal.jpg" alt="New York">
-					</div>
+				<div class="item carousel-image">
+				<img src="<c:url value="resources/cal.jpg"/>">
 				</div>
 			</div>
+
 
 			<!-- Left and right controls -->
 			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -119,7 +162,7 @@
 		<div class="tab-content simpleFamous">
 			<div id="home" class="tab-pane fade in active"
 				style="text-align: center;">
-				<img src="resources/famous.jpg"
+				<img src="<c:url value="resources/famous.jpg"/>"
 					style="wdith: 100%; height: 150px; margin-top: 10px; margin-bottom: 10px;">
 				<br>
 				<table class="table table-hover">
@@ -173,19 +216,42 @@
 	</div>
 
 	<div class="col-xs-12 nonePadding" style="margin: 0;">
-		<ul>
-			<c:forEach var="m" begin="1" end="31" step="1">
-				<li>${m}</li>
-			</c:forEach>
-		</ul>		
+		<jsp:include page="calender.jsp"></jsp:include>
 	</div>
 
-	<div class="col-xs-12 calender nonePadding">
+	<div class="col-xs-12 nonePadding">
+<!-- 		펀딩 폼 -->
+		<a href="#">
+			<label style="float:left; margin-top:10px;">크라우드펀딩</label><hr style="  border-top: 1px solid #f10505;">
+			<div class="perfomance">
+				<div class="famousFund">
+					<img src='<c:url value='resources/famous.jpg'/>' style="width:100%;height: auto;">
+				</div>
+				<div class="famousFundContent">
+					<div class="progress" style="margin-top:0; margin-bottom: 0;background: #b2ecff">
+						<div class="progress-bar" role="progressbar" aria-valuenow="10"
+							aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+							<span>130%</span>
+						</div>
+					</div>
+					<label style="float:right; font-size: 0.8em;"> 목표금액 : 1,000,000</label>
+					<label style="float:right; font-size: 0.8em;">달성금액 : 700,000 /</label><br>
+					<label class="fundTitle"">Docswave! 대담한 미래!</label>
+					<br><br>
+					<label class="fundHost">소프트웨어인라이프</label>
+					<br>
+					<label class="fundCategory">문화</label>
+				</div>
+			</div>
+		</a>
+<!-- 		펀딩 폼 끝 -->
+
 		<div class="perfomance"></div>
 		<div class="perfomance"></div>
-		<div class="perfomance"></div>
+		
 	</div>
-	<div class="col-xs-12 calender nonePadding">
+	<div class="col-xs-12 nonePadding">
+		<label style="float:left; margin-top:10px;">영상</label><hr style="  border-top: 1px solid #f10505;">
 		<div class="perfomance"></div>
 		<div class="perfomance"></div>
 		<div class="perfomance"></div>

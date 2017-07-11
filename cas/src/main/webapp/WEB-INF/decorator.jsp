@@ -7,7 +7,6 @@
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,29 +14,24 @@
 <meta charset="UTF-8">
 
 
-<script src="resources/js/jquery.js"></script>
-
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
+<script src="<c:url value="resources/js/sidr/jquery.sidr.min.js"/>"></script>
 
-<script src="resources/js/sidr/jquery.sidr.min.js"></script>
-
-<link rel="stylesheet" href="resources/css/BootSideMenu.css">
+<link rel="stylesheet" href="<c:url value="resources/css/BootSideMenu.css"/>">
 
 
-<script src="resources/js/BootSideMenu.js"></script>
+<script src="<c:url value="resources/js/BootSideMenu.js"/>"></script>
 
-<script
-	src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
-<script src="resources/js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="<c:url value="resources/js/jquery.easing.1.3.js"/>" type="text/javascript"></script>
 <style>
 body {
 	margin: 0;
@@ -134,7 +128,7 @@ a.animated-button.thar-four:before {
 	z-index: -1;
 	content: '';
 	color: #000 !important;
-	background: #3a82f4;
+	background: #0099CC;
 	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
@@ -168,7 +162,7 @@ a.animated-button.thar-four:before {
 			<div id="sidr" style="text-align: center;">
 				<!-- 				Your content -->
 				<div id="myInfoDiv">
-					<img src="resources/sinhea.jpg" class="img-circle"
+					<img src="<c:url value="resources/sinhea.jpg"/>" class="img-circle"
 						alt="Cinque Terre" style="width:65%; height:auto; margin-top: 15px;margin-bottom: 15px;"> <label
 						class="myInfoLabel">${sessionScope.loginUser}</label> <label
 						class="myInfoLabel">${sessionScope.point} point</label>
@@ -214,7 +208,7 @@ a.animated-button.thar-four:before {
 				</button>
 				<a class="navbar-brand" href="#"
 					style="padding: 0; margin: 0 15px 0 15px;"> <img
-					src="resources/logo.png" style="width: 80px; height: 50px;">
+					src="<c:url value="resources/logo.png"/>" style="width: 80px; height: 50px;">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
