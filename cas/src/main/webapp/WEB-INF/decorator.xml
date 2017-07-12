@@ -11,7 +11,7 @@
 	</decorator>
 	
 	<!-- decorators를 적용시키지 않을 url 패턴 -->
-<!-- 	<excludes> -->
-<!-- 		<pattern>/admin/*</pattern> -->
-<!-- 	</excludes> -->
+	<excludes>
+		<pattern>/signup/*</pattern>
+	</excludes>
 </decorators>
