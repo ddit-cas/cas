@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-</head>
 <title>회원가입</title>
 <style>
 
@@ -101,13 +95,15 @@ h3{
 
 
 </style>
+<body>
 <script>
+//아이디 중복 확인
 $(function(){
     $('#idCheck').click(function(){
     	var idValue = $('#mem_id').val();
     	$.ajax({
-    		url : 'idCheck.jsp',
-    		type : 'post',
+    		url : 'signup/idCheck.jsp',
+    		type : 'get',
     		data : "id="+idValue,  // {"id:idValue"} 이래도 같음.
     		success : function(res){
     			var code = "";
@@ -119,33 +115,43 @@ $(function(){
     				code += res.id+"는 사용 불가능합니다.";
     				attr += "no";
     			}
-    			$('span:first').html(code).attr("id",attr);
+    			$('.msgCheckId').html(code).attr("id",attr);
     		},
     		dataType : 'json' 
     	});
     });
 });    
 </script>
-
-<body>
+<style>
+	.msgCheckId {
+		margin-left : 10px;
+		font-size : 15px;
+	}
+	#yes {
+		color : blue;
+	}
+	#no {
+		color : red;
+	}
+</style>
 	<form class="form-horizontal" action="#">
 	<fieldset>
 		<legend>필수사항</legend>
 		<div class="container">
 			<div class="essen">
-<!-- 				<h3></h3> -->
-<!-- 				<hr class="colorgraph"> -->
 				<div class="imfom">
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="id">아이디</label>
 						<div class="col-sm-6">
 						  <div class="input-group">
-						    <input type="text" class="form-control" placeholder="아이디를 입력하세요.">
+						    <input type="text" class="form-control" id="mem_id" name="id" placeholder="아이디를 입력하세요.">
 						    <span class="input-group-btn">
-						      <button class="btn btn-default" type="button">중복확인</button>
+						      <button class="btn btn-default" id="idCheck" type="button">중복확인</button>
+							    <span class="msgCheckId"></span>
 						    </span>
 						  </div>
 						</div>
+						
 					</div>
 
 					<div class="form-group">
@@ -282,9 +288,14 @@ $(function(){
 	.image-preview-input-title {
 	    margin-left:2px;
 	}
+	.msgCheckNick {
+		margin-left : 10px;
+		font-size : 15px;
+	}
 </style>
 <script>
 $(function() {
+	//그림 클릭 시 업로드 창 띄워 업로드 후 미리보기
 	$('#profile-image1').on('click', function() {
 		$('#profile-image-input').click();
 		
@@ -302,7 +313,7 @@ $(function() {
 	    });
 	});
 	
-	// Create the preview image
+	// 업로드 버튼으로 그림피일 업로드 후 미리보기
 	$(".image-preview-input input:file").change(function (){     
         
         var file = this.files[0];
@@ -332,7 +343,29 @@ $(function() {
 			$(this).parent().parent().parent().parent().remove();
 		});
 	});
-});       
+	//아이디 중복 확인
+	$('#nickCheck').click(function(){
+    	var idValue = $('#nick').val();
+    	$.ajax({
+    		url : 'signup/idCheck.jsp',
+    		type : 'get',
+    		data : "id="+idValue,  // {"id:idValue"} 이래도 같음.
+    		success : function(res){
+    			var code = "";
+    			var attr = "";
+    			if(res.status == "OK"){
+    				code += res.id+"는 사용 가능합니다.";
+    				attr += "yes";
+    			}else{
+    				code += res.id+"는 사용 불가능합니다.";
+    				attr += "no";
+    			}
+    			$('.msgCheckNick').html(code).attr("id",attr);
+    		},
+    		dataType : 'json' 
+    	});
+    });
+});
 </script>
 
 	<!-- 선택사항 -->
@@ -375,9 +408,10 @@ $(function() {
 					<label class="control-label col-sm-1" for="nickname">닉네임</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					    <input type="text" class="form-control" placeholder="닉네임을 입력하세요.">
+					    <input type="text" class="form-control" id="nick" name="id" placeholder="닉네임을 입력하세요.">
 					    <span class="input-group-btn">
-					      <button class="btn btn-default" type="button">중복확인</button>
+					      <button class="btn btn-default" id="nickCheck" type="button">중복확인</button>
+				      	  <span class="msgCheckNick"></span>
 					    </span>
 					  </div>
 					</div>
@@ -405,6 +439,20 @@ $(function() {
 						<input type="text" class="form-control" id="activity"
 							placeholder="주 활동 지역을 입력하세요" name="activity">
 					</div>
+					
+					<p id="enter"></p>
+					<p id="enter"></p>
+					
+					<label class="control-label col-sm-1" for="career">팀원</label>
+					<div class="col-sm-4">
+					  <div class="input-group">
+					    <input type="text" class="form-control" id="team-mem" placeholder="팀원을 입력하세요.">
+					    <span class="input-group-btn">
+					      <button class="btn btn-default" id="plus-team-mem" type="button">+</button>
+					    </span>
+					  </div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -413,6 +461,7 @@ $(function() {
 <script>
 $(function() {
 	$('#profile-image2').on('click', function() {
+		//팀원 사진 클릭 시 업로드 및 미리 보기
 		$('#profile-image-input2').click();
 		
 		$("#profile-image-input2").change(function (){     
@@ -427,10 +476,27 @@ $(function() {
 	        }        
 	        reader.readAsDataURL(file);
 	    });
+			
+		//팀원 버튼 시 팀원 입력창 생성
+		$('#plus-team-mem').on('click',function(){
+			var textField = "<div class='add-field'>";
+				textField +="<label class='control-label col-sm-1' for='career'>+</label>"; 
+				textField +="<div class='col-sm-4'>";
+				textField +="<div class='input-group'>";
+				textField +="<input type='text' class='form-control'id='minus-textField' placeholder='경력을 추가 입력하세요.'>";
+				textField +="<span class='input-group-btn'>";
+				textField +="<button class='btn btn-default minus-textbutton' type='button'>-</button>";
+				textField +="</span></div></div><p id='enter' /><p id='enter' /></div>";
+			$('#add-textField').append(textField);
+			//팀원 삭제
+			$(".minus-textbutton").bind('click',function(){
+				$(this).parent().parent().parent().parent().remove();
+			});
+		});
 	});
 });	
 </script>		
-		<div class="team-mem">
+		<div class="team-mem"></div>
 		<div class="box-body">
 			<div class="col-sm-2">
 				<div class="filess">
@@ -473,11 +539,6 @@ $(function() {
 			<input type="reset" class="btn btn-danger" value="취소" />
 		</div> 
 				
-		</div>
+		
 	</form>
 </body>
-</html>
-
-
-
-
