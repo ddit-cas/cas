@@ -6,7 +6,7 @@
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page"%>
-
+1
 <!DOCTYPE html>
 <html>
 <head>
@@ -198,7 +198,7 @@ a.animated-button.thar-four:before {
 	</script>
 
 
-	<nav id="desktopNav" class="navbar navbar-inverse">
+	<nav id="desktopNav" class="navbar navbar-inverse" style="position: fixed; width: 100%">
 		<div class="container-fluid container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -208,7 +208,7 @@ a.animated-button.thar-four:before {
 				</button>
 				<a class="navbar-brand" href="#"
 					style="padding: 0; margin: 0 15px 0 15px;"> <img
-					src="<c:url value="resources/logo.png"/>" style="width: 80px; height: 50px;">
+					src='<c:url value='/resources/logo.png' />' style="width: 80px; height: 50px;">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
