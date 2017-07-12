@@ -2,99 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <title>회원가입</title>
-<style>
-
-.container {
-	width: 960px;
-	margin: 50px auto;
-}
-
-.colorgraph {
-	width: 630px;
-	height: 5px;
-	border-top: 0;
-	background: #A4A4A4;
-	border-radius: 5px;
-}
-
-.contfile {
-	display: inline-block;
-	text-align: left;
-}
-
-.crwgrop {
-	margin: 5px 555px 10px 185px;
-	padding-top: 5px;
-	padding-left: 10px;
-	border: 2px solid gray;
-}
-
-.essen {
-	width: 730px;
-	background: #FAFAFA;
-	padding: 20px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	-webkit-box-shadow: 0px 0px 3px 0px #A4A4A4;
-	-moz-box-shadow: 0px 0px 3px 0px #A4A4A4;
-	box-shadow: 0px 0px 3px 0px #A4A4A4;
-	background: #FAFAFA;
-}
-h3{
-	margin:5px 35px;
-}
-
-.form-group{
-	width:1025px;
-}
-
-/* 파일첨부 */
-#profile-image1 {
-	cursor: pointer;
-	width: 150px;
-	height: 150px;
-	border: 2px solid #03b1ce;
-}
-
-.bot-border {
-	border-bottom: 1px #f8f8f8 solid;
-	margin: 5px 0 5px 0
-}
-
-/*  선택사항 */
-.selectt {
-	width: 730px;
-	background: #FAFAFA;
-	height: 700px;
-	padding: 20px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	-webkit-box-shadow: 0px 0px 3px 0px #A4A4A4;
-	-moz-box-shadow: 0px 0px 3px 0px #A4A4A4;
-	box-shadow: 0px 0px 3px 0px #A4A4A4;
-	background: #FAFAFA;
-	padding: 20px;
-}
-
-
-.filegroup {
-	margin: 10px 130px 10px 100px;
-}
-
-.crwgroup {
-	width: 300px;
-	height: auto;
-	margin: 10px 150px 10px 0px;
-}
-
-.row {
-	margin: 10px 500px 10px 100px;
-}
-
-
-
-
-</style>
 <body>
 <script>
 //아이디 중복 확인
@@ -124,7 +31,6 @@ $(function(){
 </script>
 <style>
 	.msgCheckId {
-		margin-left : 10px;
 		font-size : 15px;
 	}
 	#yes {
@@ -190,6 +96,7 @@ $(function(){
 								placeholder="year" name="bir">
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="name">전화번호</label>
 						<div class="col-lg-6">
@@ -215,6 +122,16 @@ $(function(){
 						  </div>
 						</div>
 					</div>
+					
+<script>
+//우편번호 검색
+$(function(){
+	$('#zip-btn').on('click',function(){
+		var url = "signup/zipSearch.jsp";
+		window.open(url,"우편번호검색","width=500 height=400");		
+	});
+});
+</script>
 
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="zip">우편번호</label>
@@ -223,24 +140,24 @@ $(function(){
 						    <input type="text" class="form-control" id="zip" 
 						    	placeholder="우편번호 버튼을 눌러주세요" name="zip" disabled>
 						    <span class="input-group-btn">
-						      <button class="btn btn-default" type="button">우편번호</button>
+						      <button id="zip-btn"class="btn btn-default" type="button">우편번호</button>
 						    </span>
 						  </div>
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="addres">주소</label>
+						<label class="control-label col-sm-2" for="addr">주소</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="add1"
-								placeholder="주소는 자동으로 입력 됩니다." name="add1" disabled>
+								placeholder="주소는 자동으로 입력 됩니다." name="addr" disabled>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="addres">상세주소</label>
+						<label class="control-label col-sm-2" for="addr">상세주소</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="add2"
-								placeholder="상세주소 입력하세요" name="add2">
+								placeholder="상세주소 입력하세요" name="addr">
 						</div>
 					</div>
 				</div>
@@ -256,16 +173,7 @@ $(function(){
 		width : 960px;
 		height : 20px;
 	}
-	#btnses {
-		width : 760px;
-		background: pink;
-		clear : both;
-	}
-	#btnses>input {
-		float : right;
-		margin-left : 20px;
-		margin-bottom: 50px;
-	}
+	
 	.image-preview-input {
     position: relative;
     overflow: hidden;
@@ -292,11 +200,22 @@ $(function(){
 		margin-left : 10px;
 		font-size : 15px;
 	}
+	img {
+		cursor:pointer;
+	}
+	.crew {
+		width : 1170px;
+		height: 250px;
+	}
+	.files-crw {
+		width : 165px;
+		height: 220px;
+	}
 </style>
 <script>
 $(function() {
 	//그림 클릭 시 업로드 창 띄워 업로드 후 미리보기
-	$('#profile-image1').on('click', function() {
+	$('#profile-image').on('click', function() {
 		$('#profile-image-input').click();
 		
 		$("#profile-image-input").change(function (){     
@@ -307,7 +226,7 @@ $(function() {
 	        reader.onload = function (e) {
 	        	 $(".image-preview-input-title").text("변경");
 	             $(".image-preview-filename").val(file.name);            
-	            $("#profile-image1").attr('src', e.target.result);
+	            $("#profile-image").attr('src', e.target.result);
 	        }        
 	        reader.readAsDataURL(file);
 	    });
@@ -318,11 +237,11 @@ $(function() {
         
         var file = this.files[0];
         var reader = new FileReader();
-        // Set preview image into the popover data-content
+        //Set preview image into the popover data-content
         reader.onload = function (e) {
             $(".image-preview-input-title").text("변경");
             $(".image-preview-filename").val(file.name);            
-            $("#profile-image1").attr('src', e.target.result);
+            $("#profile-image").attr('src', e.target.result);
         }        
         reader.readAsDataURL(file);
     });
@@ -333,12 +252,12 @@ $(function() {
 			textField +="<label class='control-label col-sm-1' for='career'>+</label>"; 
 			textField +="<div class='col-sm-4'>";
 			textField +="<div class='input-group'>";
-			textField +="<input type='text' class='form-control'id='minus-textField' placeholder='경력을 추가 입력하세요.'>";
+			textField +="<input type='text' class='form-control'placeholder='경력을 추가 입력하세요.'>";
 			textField +="<span class='input-group-btn'>";
 			textField +="<button class='btn btn-default minus-textbutton' type='button'>-</button>";
 			textField +="</span></div></div><p id='enter' /><p id='enter' /></div>";
 		$('#add-textField').append(textField);
-		
+		//textField 삭제
 		$(".minus-textbutton").bind('click',function(){
 			$(this).parent().parent().parent().parent().remove();
 		});
@@ -365,27 +284,30 @@ $(function() {
     		dataType : 'json' 
     	});
     });
+	
+	//선택사항 숨기기
+	$("#choice").click(function(){
+		$('.contSelect').toggleClass("hide");
+	});
+	
 });
 </script>
 
 	<!-- 선택사항 -->
 	<form class="form-horizontal" action="#">
 	<fieldset>
-	<legend>선택사항</legend>
-		<div class="contSelect">
+		<legend id="choice">선택사항<span> : 클릭!</span></legend>
+		<div class="contSelect hide">
 			<div class="box-body">
 				<div class="col-sm-3">
-					<div class="filess" style="width:300px; height:400px;">
+					<div class="filess" style="width:290px; height:380px;">
 						<img alt="User Pic"
 							src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
-							id="profile-image1" class="img-circle img-responsive">
+							id="profile-image" class="img-circle img-responsive">
 						<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
 						<div style="color:#999;">그림을 클릭하여 이미지를 변경합니다.</div>	
 					</div>
 				</div>
-				 
-				<p id="enter"></p>
-				<p id="enter"></p>
 				 
 				<div class="form-group">
 					<label class="control-label col-sm-1" for="upload">이미지</label>
@@ -398,7 +320,7 @@ $(function() {
 	                        <span class="image-preview-input-title">업로드</span>
 	                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
 	                     </div>
-					    </span>
+<!-- 					    </span> -->
 					  </div>
 					</div>
 					 
@@ -460,85 +382,80 @@ $(function() {
 
 <script>
 $(function() {
-	$('#profile-image2').on('click', function() {
-		//팀원 사진 클릭 시 업로드 및 미리 보기
-		$('#profile-image-input2').click();
+	var seq = 2;
 		
-		$("#profile-image-input2").change(function (){     
-	        
-	        var file = this.files[0];
-	        var reader = new FileReader();
-	        // Set preview image into the popover data-content
-	        reader.onload = function (e) {
-	        	 $(".image-preview-input-title").text("변경");
-	             $(".image-preview-filename").val(file.name);            
-	            $("#profile-image2").attr('src', e.target.result);
-	        }        
-	        reader.readAsDataURL(file);
-	    });
+	//팀원 버튼 시 팀원 입력창 생성
+	$('#plus-team-mem').on('click',function(){
+		
+		var crewName = "#crw-name"+seq;
+		var crewRole = "#crw-role"+seq;
+		var image = '#profile-image'+seq;
+		var input = '#profile-image-input'+seq;
+
+		//이미지 미리보기 생성
+		var textField  ="<div class='add-field'><div class='box-body crew'><div class='col-sm-2'><div class='files-crw'>";
+			textField += "<img alt='User Pic' src='https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg' id='profile-image"+seq+"' class='img-circle img-responsive'>";
+			textField += "<input id='profile-image-input"+seq+"'  accept='image/png, image/jpeg, image/gif' class='hidden' type='file'></div></div>";
+			//이름 텍스트필드 생성	
+			textField += "<p id='enter'/><label class='control-label col-sm-1' for='crw-name'>이름</label>";
+			textField += "<div class='col-sm-2'><input type='text' id='crw-name"+seq+"' class='form-control crw-name'></div>";
+			textField += "<p id='enter'/><p id='enter'/>";
+			//역할 텍스트필드 생성	
+			textField += "<label class='control-label col-sm-1' for='crw-role'>역할</label>";
+			textField += "<div id='btns'><div class='col-sm-2'><input type='text' id='crw-role"+seq+"' class='form-control crw-role' placeholder='팀원의 역할을 입력하세요'></div></div>";
+			textField += "<p id='enter'/><p id='enter'/><input type='button' class='btn btn-default minus-crw' value='-' />";
+			textField += "</div></div>";
+			seq += 1;
+		$('.team-mem').append(textField);
+		//팀원 텍스트필드에서 이름 값 가져오기
+		var tname = $('#team-mem').val();
+		//생성된 이름 칸에 값 넣어주기 
+		$(crewName).attr('value',tname);
+		//역할 텍스트 필드에 포커스 주기
+		$(crewRole).focus();
+		//원래 있던 텍스트필드(팀원 텍스트필드)의 값은 지워준다.
+		$('#team-mem').val("");
+		//팀원 삭제
+		$(".minus-crw").bind('click',function(){
+			$(this).parent().parent().remove();
+		});
+		//팀원 사진 클릭 시 업로드 및 미리 보기
+		$(image).on('click', function() {
 			
-		//팀원 버튼 시 팀원 입력창 생성
-		$('#plus-team-mem').on('click',function(){
-			var textField = "<div class='add-field'>";
-				textField +="<label class='control-label col-sm-1' for='career'>+</label>"; 
-				textField +="<div class='col-sm-4'>";
-				textField +="<div class='input-group'>";
-				textField +="<input type='text' class='form-control'id='minus-textField' placeholder='경력을 추가 입력하세요.'>";
-				textField +="<span class='input-group-btn'>";
-				textField +="<button class='btn btn-default minus-textbutton' type='button'>-</button>";
-				textField +="</span></div></div><p id='enter' /><p id='enter' /></div>";
-			$('#add-textField').append(textField);
-			//팀원 삭제
-			$(".minus-textbutton").bind('click',function(){
-				$(this).parent().parent().parent().parent().remove();
-			});
+			$(input).click();
+			
+			$(input).change(function (){     
+				
+		        var file = this.files[0];
+		        var reader = new FileReader();
+		        // Set preview image into the popover data-content
+		        reader.onload = function (e) {
+		            $(image).attr('src', e.target.result);
+		        }        
+		        reader.readAsDataURL(file);
+		    });
 		});
 	});
 });	
 </script>		
-		<div class="team-mem"></div>
-		<div class="box-body">
-			<div class="col-sm-2">
-				<div class="filess">
-					<img alt="User Pic"
-						src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
-						id="profile-image2" class="img-circle img-responsive">
-					<input id="profile-image-input2"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
-				</div>
-			</div>
-			 
-			<label class="control-label col-sm-1" for="crw-name">이름</label>
-			<div class="col-sm-2">
-			    <input type="text" class="form-control" placeholder="팀원의 이름을 입력하세요.">
-			</div>
-			
-			<p id="enter"></p>
-			<p id="enter"></p>
-			
-			<label class="control-label col-sm-1" for="crw-role">역할</label>
-			<div id="btns">
-				<div class="col-sm-2">
-					<input type="text" class="form-control"	placeholder="팀원의 역할을 입력하세요" name="crw-role">
-				</div>
-			</div>
-				
-			<p id="enter"></p>
-			<p id="enter"></p>
-			
-			<label class="control-label col-sm-1" for="crw-role">소개글</label>
-			<div class="input-group">
-                <div class="field span3" >
-                    <textarea class="form-control" wrap='on' rows="3" cols="20" placeholder="소개글을 남겨주세요."></textarea>
-                </div>
-            </div>
-				
-		</div>
-				
+	<div class="team-mem"></div>
+<style>
+	#btnses {
+		width : 760px;
+		background: pink;
+		clear : both;
+	}
+	#btnses>input {
+		float : right;
+		margin-left : 20px;
+		margin-bottom: 50px;
+	}
+</style>				
 		<div id="btnses">
 			<input type="submit" class="btn btn-primary" value="가입" />
 			<input type="reset" class="btn btn-danger" value="취소" />
 		</div> 
-				
+		 		
 		
 	</form>
 </body>
