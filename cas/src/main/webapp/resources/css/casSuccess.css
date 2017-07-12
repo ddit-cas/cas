@@ -1,0 +1,220 @@
+@CHARSET "UTF-8";
+
+body, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    color: #676363;
+    font-family: Roboto, 'Noto Sans KR',sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-style: normal;
+}
+
+
+body, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    color: #676363;
+    font-family: Roboto, 'Noto Sans KR',sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.w2-ui-content-wrapper {
+    width: 1024px;
+    margin: 42px auto 124px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #c5c5c5;
+    text-align: center;
+}
+
+.w2-layout-sub-content * {
+    box-sizing: content-box;
+}
+
+.w2-ui-content-wrapper {
+    text-align: left;
+    width: 1075px;
+}
+
+.wd-ui-campaign3 {
+    position: relative;
+    display: inline-block;
+    width: 308px;
+    height: 559px;
+    padding: 0px;
+    border: 1px solid #c8c8c8;
+    background-color: #fff;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 14px;
+    margin-right: 13px;
+}
+
+.wd-icon-content {
+    display: inline-block;
+    position: absolute;
+    top: 216px;
+    width: 290px;
+    height: 55px;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
+    color: #fff;
+    line-height: 2.6;
+    margin: 0px 10px 0px 10px;
+    border: rgba(52, 142, 200, 0.6);
+}
+
+.ui-progressbar-value {
+    position: relative;
+    background-color: #000;
+    background: #00af84;
+    border: rgba(52, 142, 200, 0.6);
+}
+
+@import url(hover-min.css);
+*{box-sizing:border-box;}
+.clearfix:after{content:"";clear:both;display:block}
+.pull-right{float:right}
+.pull-left{float:left}
+.sr-only{display:none}
+.w2-layout-sub-content *{box-sizing:content-box;}
+.wd-layout-sub-content *{box-sizing:content-box}
+.wd-ui-campaign3 *{box-sizing:content-box;}
+
+
+element.style {
+    border-radius: 4px;
+    display: block;
+    width: 101%;
+    margin: -1px;
+    background: rgb(0, 175, 132);
+}
+
+.wd-ui-sub-campaign3-ul {
+    margin-left: 45px;
+}
+
+element.style {
+    background-color: #363636;
+    background-image: url(https://www.wadiz.kr/wwwwadiz/green002/2015/1005/20151005111736991_2621_thumb.jpg);
+    width: 290px;
+    height: 206px;
+    margin: 10px;
+    background-size: 290px 206px;
+}
+
+.imgcvr {
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.wd-ui-campaign3 em.wd-icon-campaign-complete {
+    position: absolute;
+    right: -8px;
+    top: -1px;
+    z-index: 5;
+}
+
+em.wd-icon-campaign-complete {
+    display: block;
+    width: 61px;
+    height: 82px;
+    background: url(/resources/Images/icon_complete.png) no-repeat left top;
+    overflow: hidden;
+}
+
+
+
+.w2-layout-sub-content * {
+    box-sizing: content-box;
+}
+
+
+.wd-ui-new-target-renew {
+    float: right;
+    margin-top: -36px;
+    font-size: 14px;
+    width: 230px;
+}
+
+.wd-data-dday {
+    float: right;
+    margin-right: 12px;
+}
+
+.w2-layout-sub-content * {
+    box-sizing: content-box;
+}
+
+
+.wd-ui-sub-campaign3-ul li {
+    width: 337px;
+    display: inline-block;
+}
+
+.wd-ui-sub-campaign3 ul li {
+    margin-bottom: 0px;
+}
+
+.wd-ui-numbers3 li {
+    width: 76px;
+    height: 37px;
+    color: #787878;
+    line-height: 32px;
+    float: left;
+    background: url(/resources/Images/bg-ui-numbers-new.png) left top
+ no-repeat;
+    cursor: default;
+    padding-top: 1px;
+}
+
+
+.wd-ui-campaign3 dl.wd-ui-cp-cont dt {
+    color: #353535;
+    height: 40px;
+    margin-bottom: 3px;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    overflow-y: hidden;
+}
+
+.wd-ui-sub-campaign ul li {
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.wd-ui-numbers3 {
+    position: absolute;
+    right: 0;
+    width: 142px;
+    height: 31px;
+    margin-top: -58px;
+    z-index: 2;
+    background-color: #fff;
+    border-top: none;
+}
+
+
+
+
+
+
+
