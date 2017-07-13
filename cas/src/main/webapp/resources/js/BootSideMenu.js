@@ -55,9 +55,9 @@
         newCode = "	<div class=\"menu-wrapper\">\n" + initialCode + " </div>";
         newCode += "<div id=\"sidebarName\" class=\"toggler\" data-whois=\"toggler\" style=\"padding:0; margin:0; heigth:100px\">";
         if(options.statue=="logout"){
-        	newCode += "<img src=\"/cas/resources/loginTap.jpg\"style=\" height: 100%;width:100%\">";
+        	newCode += "<img src=\"/cas/resources/images/loginTap.jpg\"style=\" height: 100%;width:100%\">";
         }else{
-        	newCode += "<img src=\"/cas/resources/mypage.jpg\"style=\"height: 100%;width:100%\">";
+        	newCode += "<img src=\"/cas/resources/images/mypage.jpg\"style=\"height: 100%;width:100%\">";
         }
         newCode += "</div>";
 

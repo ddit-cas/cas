@@ -50,7 +50,7 @@ li a:hover{
 			</ul>
 		</div>
 	</nav>
-	<p><img src="resources/free.png" style="width:829px; height:188px; margin:0 160px auto; background-size:cover;"></p>
+	<p><img src="resources/images/free.png" style="width:829px; height:188px; margin:0 160px auto; background-size:cover;"></p>
 	<div class="container">
 		<div class="content">
 			<div class="selectcheck">
