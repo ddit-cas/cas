@@ -83,6 +83,10 @@
 	margin:0 0 8px 0;
 }
 
+.row{
+	margin-top:58px;
+}
+
 @MEDIA (max-width:1200px) {
 	.perfomance{
 		width:48%;
