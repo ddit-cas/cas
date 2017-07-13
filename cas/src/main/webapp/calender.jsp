@@ -295,12 +295,12 @@ a:active{
 		</div>
 		<span id="dateBtns"> 
 			<a id="next">
-				<img class="calBtn" src="<c:url value="/resources/images/up.png"/>">
+				<img class="calBtn" src="/cas/resources/images/up.png">
 			</a>
 			<br />
 			<hr>
 			<a id="prev">
-				<img class="calBtn" src="<c:url value="/resources/images/down.png"/>">
+				<img class="calBtn" src="/cas/resources/images/down.png">
 			</a>
 		</span>
 		<div id="dateDiv">
@@ -318,7 +318,7 @@ a:active{
 					style="width: 100%; height: auto;">
 			</div>
 			<div class="famousFundContent">
-				<label class="fundTitle"">Docswave! 대담한 미래!</label> <br> <br>
+				<label class="fundTitle">Docswave! 대담한 미래!</label> <br> <br>
 				<label class="fundHost">소프트웨어인라이프</label> <br> <label
 					class="fundCategory">문화</label>
 			</div>
