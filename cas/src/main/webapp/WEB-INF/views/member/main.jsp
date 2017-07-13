@@ -221,7 +221,7 @@
 	</div>
 
 	<div class="col-xs-12 nonePadding" style="margin: 0;">
-		<jsp:include page="calender.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/member/calender.jsp"></jsp:include>
 	</div>
 
 	<div class="col-xs-12 nonePadding">

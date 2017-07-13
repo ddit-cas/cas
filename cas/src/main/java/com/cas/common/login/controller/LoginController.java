@@ -18,7 +18,9 @@ public class LoginController {
 	/*로그인 해주는 메서드*/
 	@RequestMapping("/login")
 	public String loginMember(HttpServletRequest request,HttpSession session){
-		return null;
+		session.setAttribute("loginUser", "asd");
+		session.setAttribute("point", "10000");
+		return "member/goMain";
 	}
 	
 	/*아이디 찾기 화면으로 간다*/
@@ -48,7 +50,8 @@ public class LoginController {
 	/*로그 아웃 하는 메서드*/
 	@RequestMapping("/logout")
 	public String logoutMember(HttpSession session){
-		return null;
+		session.invalidate();
+		return "member/goMain";
 	}
 	
 	/*회원가입 전 약관화면으로 가는메서드*/

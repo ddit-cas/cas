@@ -48,7 +48,9 @@ body {
 
 #myInfoDiv {
 	padding: 0;
-	margin: 10px;
+	margin: auto;
+	height: 220px;
+	width:238px;
 	border: solid 2px #222222;
 }
 
@@ -266,7 +268,7 @@ h3 {
 				<form id="loginForm">
 					<input type="text" name="id" placeholder="아이디를 입력하세요"> <input
 						type="text" name="pwd" placeholder="비밀번호를 입력하세요"> <a
-						href="#" class="btn btn-sm animated-button thar-four">로그인</a> <a
+						href="login" class="btn btn-sm animated-button thar-four">로그인</a> <a
 						href="signup.jsp" class="btn btn-sm animated-button thar-four">회원가입</a> <a
 						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호
 						찾기</a>
@@ -293,7 +295,7 @@ h3 {
 					href="#" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
-					href="decorators.jsp" class="btn btn-sm animated-button thar-four">로그아웃</a>
+					href="logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
 				<script>
 					function logout() {
 
