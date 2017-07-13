@@ -6,12 +6,16 @@
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <title></title>
 <meta charset="UTF-8">
 
+<!-- 다음에디터를 쓰기위한 링크 -->
+ <link rel="stylesheet" href="<c:url value="/daumeditor/css/editor.css"/>" type="text/css" charset="utf-8"/>
+    <script src="<c:url value="/daumeditor/js/editor_loader.js"/>" type="text/javascript" charset="utf-8"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -27,17 +31,12 @@
 
 <link rel="stylesheet" href="<c:url value="/resources/css/BootSideMenu.css"/>">
 
-<link rel="stylesheet" href="<c:url value="/resources/css/casSuccess.css"/>" type="text/css">
-
-<link rel="stylesheet" href="<c:url value="/resources/css/casSuccessDetail.css"/>" type="text/css">
-
-
-<!-- <link href="/resources/Content/css/campaign/rightInfo.css?ver" -->
-<!-- 					rel="stylesheet"> -->
 
 <script src="<c:url value="/resources/js/BootSideMenu.js"/>"></script>
 
 <script src="<c:url value="/resources/js/jquery.easing.1.3.js"/>" type="text/javascript"></script>
+
+
 <style>
 body {
 	margin: 0;
@@ -138,123 +137,6 @@ a.animated-button.thar-four:before {
 	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
-
-html, body, div, span, dl, dt, dd, ol, ul, li,h1, h2, h3, h4, h5, h6, p, blockquote, pre,address,cite,form,fieldset,input,textarea,select,table,th,td,button{margin: 0;padding: 0;}
-
-a {
-    color: #666666;
-    text-decoration: none;
-}
-
-div.company-wrap {
-    overflow: hidden;
-    width: 1000px;
-    margin: 50px auto;
-}
-
-div.company-snb {
-    float: left;
-    width: 182px;
-}
-
-div.company-snb h2 {
-    background: #ff6949;
-    padding: 100px 0;
-    text-align: center;
-    color: #fff;
-    font-size: 24px;
-}
-
-div.company-snb ul {
-    margin-top: 10px;
-}
-
-div.company-snb ul li {
-    margin-bottom: 5px;
-}
-
-div.company-snb ul li a {
-    display: block;
-    padding: 20px 0;
-    color: #fff;
-    text-align: center;
-    color: #333;
-    font-size: 16px;
-    font-weight: 400;
-}
-
-div.company-snb ul li a:hover {
-    background: #8d8d8d;
-    color: #fff;
-}
-
-/* div.company-snb ul li.active a { */
-/*     background: #8d8d8d; */
-/*     color: #fff; */
-/* } */
-
-div.company-cont {
-    width: 800px;
-    float: right;
-}
-
-div.company-cont h3.box {
-    background: #2b2f3a;
-    color: #fff;
-    font-size: 20px;
-    padding: 25px 0;
-    text-align: center;
-    font-weight: bold;
-}
-
-h2 {
-    display: block;
-    font-size: 1.5em;
-    -webkit-margin-before: 0.83em;
-    -webkit-margin-after: 0.83em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-}
-
-h3 {
-    display: block;
-    font-size: 1.17em;
-    -webkit-margin-before: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-}
-
-@media (max-width:1000px){
-
-	div.company-snb {
-	    width: 100%;
-		}
-		
-	div.company-cont {
-	    width: 100%;
-		}
-		
-	h3 {
-		width:100%;
-	    
-	}
-	div.company-snb ul li {
-	    	width:100%;
-		}
-		
-	div.company-wrap {
-	    width: 100%;
-		} 
-	
-	div.imgDiv img{
-		width:100%;
-		height:auto;
-	}
-
-}
-
 </style>
 
 </head>
@@ -321,7 +203,7 @@ h3 {
 	</script>
 
 
-	<nav id="desktopNav" class="navbar navbar-inverse" style="z-index:20; position: fixed; width: 100%">
+	<nav id="desktopNav" class="navbar navbar-inverse">
 		<div class="container-fluid container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -331,7 +213,7 @@ h3 {
 				</button>
 				<a class="navbar-brand" href="#"
 					style="padding: 0; margin: 0 15px 0 15px;"> <img
-					src='<c:url value='/resources/logo.png' />' style="width: 80px; height: 50px;">
+					src="<c:url value="resources/logo.png"/>" style="width: 80px; height: 50px;">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">

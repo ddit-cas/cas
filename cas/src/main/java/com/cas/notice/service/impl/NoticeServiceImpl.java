@@ -2,30 +2,30 @@ package com.cas.notice.service.impl;
 
 import java.util.List;
 
-import com.cas.db.dto.Article;
+import com.cas.db.dto.ArticleVO;
 import com.cas.notice.service.NoticeService;
 
 public class NoticeServiceImpl implements NoticeService{
 
 	@Override
-	public List<Article> selectNoticeList() {
+	public List<ArticleVO> selectNoticeList() {
 		return null;
 	}
 
 	@Override
-	public Article selectNotice() {
+	public ArticleVO selectNotice() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean insertNotice(Article article) {
+	public boolean insertNotice(ArticleVO article) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean updateNotice(Article article) {
+	public boolean updateNotice(ArticleVO article) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -4,6 +4,8 @@
  * http://www.lombardoandrea.com
  * https://github.com/AndreaLombardo/BootSideMenu
  * */
+
+
 (function ($) {
 
     $.fn.BootSideMenu = function (userOptions) {
@@ -49,15 +51,13 @@
         body.originalMarginLeft = $("body").css("margin-left");
         body.originalMarginRight = $("body").css("margin-right");
         body.width = $("body").width();
-
         initialCode = this.html();
-
         newCode = "	<div class=\"menu-wrapper\">\n" + initialCode + " </div>";
         newCode += "<div id=\"sidebarName\" class=\"toggler\" data-whois=\"toggler\" style=\"padding:0; margin:0; heigth:100px\">";
         if(options.statue=="logout"){
-        	newCode += "<img src=\"resources/loginTap.jpg\"style=\" height: 100%;width:100%\">";
+        	newCode += "<img src=\"/cas/resources/images/loginTap.jpg\"style=\" height: 100%;width:100%\">";
         }else{
-        	newCode += "<img src=\"resources/mypage.jpg\"style=\"height: 100%;width:100%\">";
+        	newCode += "<img src=\"/cas/resources/images/mypage.jpg\"style=\"height: 100%;width:100%\">";
         }
         newCode += "</div>";
 

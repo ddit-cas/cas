@@ -2,21 +2,21 @@ package com.cas.fundingexample.dao;
 
 import java.util.List;
 
-import com.cas.db.dto.FundingExample;
+import com.cas.db.dto.ArticleVO;
 
 public interface FundingExampleDao {
 
 	/*펀딩성공사례리스트를 가져오는 메서드*/
-	public List<FundingExample> selectFudningExampleList();
+	public List<ArticleVO> selectFudningExampleList();
 	
 	/*펀딩성공사례 하나를 가져오는 메서드*/
-	public FundingExample selectFundingExample(String articleId);
+	public ArticleVO selectFundingExample(String articleId);
 	
 	/*펀딩성공사례를 등록하는 메서드*/
-	public boolean insertFundingExample(FundingExample fundingExample);
+	public boolean insertFundingExample(ArticleVO fundingExample);
 	
 	/*펀딩성공사례를 수정한느 메서드*/
-	public boolean updateFundingExample(FundingExample fundingExample);
+	public boolean updateFundingExample(ArticleVO fundingExample);
 	
 	/*펀딩성공사례를 삭제하는 메서드*/
 	public boolean deleteFundingExample(String articleId);
