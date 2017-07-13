@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
+<html>
+
+
 <body>
 
 	<div class="detail-top-wrap">
@@ -161,7 +164,7 @@
 													value="여러분의 모습이 참 멋지네요! 응원할게요!  :)">
 												<div class="comment-bottom">
 													<div id="modifyOffBtm_1">
-														<button type="button"
+														<button type="button" id="testBtn"
 															onclick="$('#reply_1').show();$('#replyCnt_1').focus();">답글
 															달기</button>
 														<span class="date">2014.10.23 09:14:56</span>
@@ -172,19 +175,22 @@
 													</div>
 												</div>
 											</div>
-
-											<div id="reply_1" class="comment-wrap reply edit">
+<script>
+$('#testBtn').click(function(){
+	$('#reply_1').toggleClass("hide");
+});
+</script>
+											<div id="reply_1" class="comment-wrap reply edit hide">
 												<div class="comment-info">
 													<em
 														style="background-image: url(/resources/equity/img/_temp/profile-default.png)"></em><span
 														class="name"></span>
 												</div>
 												<form id="replyForm_1">
-													<textarea id="replyCnt_1" name="body"
-														style="overflow-y: hidden;"></textarea>
+													<textarea id="replyCnt_1" name="body" style="overflow-y: hidden;"></textarea>
 													<input name="parentThread" type="hidden" value="2274000">
-													<input name="groupId" type="hidden" value="2"> <input
-														name="depth" type="hidden" value="1">
+													<input name="groupId" type="hidden" value="2"> 
+													<input name="depth" type="hidden" value="1">
 												</form>
 												<div class="comment-bottom">
 													<button type="button" onclick="$('#reply_1').hide();">취소</button>
@@ -561,6 +567,30 @@
 								종료되었습니다.
 							</p>
 
+
+
+<script>
+	$(document).ready(function (){
+		var navCheckbox = $("#globalNavOpener, #globalSubNavOpener, #myMenuOpener");
+		var $popupScrollTop = 0;
+		navCheckbox.change(function(){
+			if(navCheckbox.is(":checked")) {
+				$popupScrollTop = $(window).scrollTop();
+				$('body').css('position','fixed').css('width','100%').css('top', 0);
+				$('html').css('overflow-y','scroll');
+				intercomButtonControl('hide', true);
+			}else{
+				$('body').css('position','static').css('width','100%');
+				$('html').css('overflow-y','auto');
+				// $(window).scrollTop($popupScrollTop);
+				intercomButtonControl('show', true);
+			}
+		});
+	
+	})
+	
+	
+</script>
 
 
 
@@ -960,6 +990,196 @@
 			</div>
 			<!-- //서브 컨텐트 영역 -->
 		</div>
+<script type="text/javascript" src="/resources/static/js/waccount/wfacebookAccount.js?ver20170210"></script>
+<script type="text/javascript" src="/resources/js/jquery/countdown/jquery.countdown.min.js"></script>
+<script src="/resources/static/js/lib/clipboard.min.js"></script>
+
+
+<script type="text/javascript">
+var urlClipboard = new Clipboard('#urlCopyBtn');
+urlClipboard.on('success', function(e) {
+	e.clearSelection();
+   alertify.alert('URL이 복사 되었습니다.');
+   $('#shareLink').blur();
+});
+urlClipboard.on('error', function(e) {
+	e.clearSelection();
+    $('#shareLink').blur();
+});
+
+/*공통레이어팝업닫기*/
+function showLyPop(popName){
+	$('.black-bg-wrap').show();
+	$('#'+popName+'Lypop').show();
+	$('body').css('position','fixed').css('width','100%');
+}
+
+/*공통레이어팝업닫기*/
+function closeLyPop(popName){
+	$('.black-bg-wrap').hide();
+	$('#'+popName+'Lypop').hide();
+	$('body').css('position','static').css('width','100%');
+}
+
+$(document).ready(function () {
+	alertify.custom = alertify.extend("custom");
+	
+	$('#btnShare').click(function(){
+		if($('#shareSection').hasClass('open')){
+			$('#shareSection').removeClass('open');
+		}else{
+			$('#shareSection').addClass('open');
+		}
+	})
+	
+	//화면 로딩시 유저의 찜하기 여부 판단 후 보여줄 버튼을 결정
+	if("" == 1) {
+		$("#btnLike").addClass('active');
+	} else {
+		$("#btnLike").removeClass('active');
+	}
+	
+	var likeCampaignId = '436';
+	$("#btnLike").click(function(){
+		if($(this).hasClass('active')){
+			removeInterested(likeCampaignId);
+		}else{
+			registerInterested(likeCampaignId);
+		}
+	});
+	var newDt = new Date();
+	newDt.setDate(newDt.getDate());
+	
+	function converDateString(dt){
+		return dt.getFullYear() + "-" + addZero(eval(dt.getMonth()+1)) + "-" + addZero(dt.getDate());
+	}
+	
+	function addZero(i){
+		var rtn = i + 100;
+		return rtn.toString().substring(1,3);
+	}
+	$("#timer-count").countdown(converDateString(newDt) + " 23:59:59", function(event) {
+		$(this).text(event.strftime('%H:%M:%S'));
+	});
+	
+	// 타이머 초기화
+	//date_time();
+	
+	var showfixedpane = false;
+	var normalpaneoffset = 0;
+
+	// 팝업 외의 영역 클릭시 해당 팝업 닫기
+	$(document).mouseup(function (e) {
+		var container = $("#wadiz-cont-intro");
+
+		if (!container.is(e.target)
+			&& container.has(e.target).length === 0){
+		
+            container.css("display","none");
+        }
+		
+		// 지지서명 팝업
+		var container2 = $("#popup-signature");
+
+		if (!container2.is(e.target)
+			&& container2.has(e.target).length === 0){
+		
+            container2.css("display","none");
+        }
+		
+	});
+	
+	// 인기 프로젝트 스크롤시 따라다니는 효과
+	
+	$.ready(document).one('scroll', function () {
+        normalpaneoffset = $('#normalpane').offset().top;
+    });
+
+	var rightTabHeight = $('.wd-ui-sub-opener-info').height();
+	var contentTabHeight = $('.wd-ui-tab-content').height();
+	var scrollMinOffset = (rightTabHeight > contentTabHeight) ? rightTabHeight : contentTabHeight;
+	scrollMinOffset += $('.wd-ui-tab-content').offset().top;
+
+	// 스크롤에 맞춰 인기프로젝트 fix와 가변값의 변화
+	$.ready(window).scroll(function () {
+		if(scrollMinOffset > normalpaneoffset){
+			var nowTop = parseInt($(document).scrollTop()) + parseInt($('#fixedpane').height() + 100);
+
+			if ($(document).scrollTop()+100 > normalpaneoffset && $("#newFooter").offset().top > nowTop) {
+				showfixedpane = true;
+			} else {
+				showfixedpane = false;
+			}
+			
+			if (showfixedpane) {
+				$('#fixedpane').css('display', 'inherit');
+				$('#normalpane').css('display', 'none');
+			} else {
+				$('#fixedpane').css('display', 'none');
+				$('#normalpane').css('display', 'inherit');
+			}
+		}
+		
+		if($(window).scrollTop() > 500){
+			$('#scrollTopBtn').fadeIn();	
+		}else{
+			$('#scrollTopBtn').fadeOut();
+		}
+	});
+	
+	if($.urlParam('callback') == 'postFeedMyFacebook') {
+		window.fbAsyncInit();
+		postFeedMyFacebook();
+	}
+});
+
+
+
+// 기여자 더 보기
+function seeMoreBestSupporter() {
+    $("#bestSupporterList").css("height","auto");
+    $("#bestSupporterMore").hide();
+    $("#bestSupporterClose").show();
+}
+// 기여자 닫기
+function closeBestSupporter() {
+    $("#bestSupporterList").css("height","95px");
+    $("#bestSupporterMore").show();
+    $("#bestSupporterClose").hide();
+}
+
+// 프로젝트 신고
+function reportpopup(){
+	var sessionUser = "";
+	
+	if(common.sessionIsNotEmpty(sessionUser)){
+		$("#reportppp").dialog("open");
+		
+		// 신고 form 초기화
+		$("#reportpppForm").each(function() {  
+			this.reset();  
+		});
+		
+	}else{
+		$("#returnForm #returnURL").val(location.href);
+		$("#returnForm").submit();
+	}
+}
+
+
+
+function wadizIcon(){
+
+	$('#wadiz-cont-intro').css('display','block');
+	
+}
+
+
+
+
+
+
+</script>
 		
 		
 </body>

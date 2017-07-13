@@ -4,12 +4,25 @@
 
 <body>
 
+<style>
+.wd-layout-sub-content-inner {
+    width: 1200px;
+    /* width: 1000px; */
+    margin: 0px 44px;
+    padding: 0 80px;
+    overflow: hidden;
+    /* min-height: 700px; */
+}
+
+
+</style>
+<div id="body">
 	<div class="w2-ui-content-wrapper" style="position: relative">
 		<!-- <div class="w2-ui-content-wrapper-left" style="">
                     
                 </div> -->
 		<div class="wd-ui-partners">
-			<div style="text-align: center; margin: 50px auto;">
+			<div id = "imgDiv" style="text-align: center; margin: 50px auto;">
 				<img src="//www.wadiz.kr/images/uploads/banner_HallOfFame.png">
 			</div>
 		</div>
@@ -22,7 +35,7 @@
 							<li>
 								<!-- 캠페인 -->
 								<div class="wd-ui-campaign3 " style="">
-									<a href="#"><em
+									<a href="fundingExampleDetail"><em
 										class="wd-icon-campaign-complete"></em> <!-- S : 프로젝트 사진 -->
 										<div class="wd-ui-cp-title">
 											<div
@@ -635,7 +648,7 @@
 		</div>
 		<!-- //서브 컨텐트 영역 -->
 	</div>
-
+</div>
 
 
 </body>

@@ -3,16 +3,16 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 <body>
-
+<div id="body">
 <div class="company-wrap">
 	<div class="company-snb">
 		<h2>회사소개</h2>
 		<div class="">
 			<ul>
-				<li class="active"><a href="cas-introduce.jsp">VISION</a></li>
+				<li class="active"><a href="promotion">VISION</a></li>
 				<!--li><a href="people.php">PEOPLE</a></li-->
-				<li><a href="cas-partner.jsp">PARTNERSHIP</a></li>
-				<li><a href="cas-contact.jsp">CONTACT US</a></li>
+				<li><a href="partner">PARTNERSHIP</a></li>
+				<li><a href="map">CONTACT US</a></li>
 			</ul>
 		</div><!--//tab-intro-->
 		</div><!--//company-snb-->
@@ -23,6 +23,6 @@
 		</div><!--//company-cont-->
 
 </div>
-
+</div>
 </body>
 </html>
