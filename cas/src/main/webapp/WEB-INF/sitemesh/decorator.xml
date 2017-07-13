@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- default directory 설정 -->
-<decorators defaultdir="/WEB-INF/">
+<decorators defaultdir="/WEB-INF/views/decorators/">
 	<!-- sample -->
 	<decorator name="sampleLayout" page="decorator.jsp">
 		<pattern>/*</pattern>

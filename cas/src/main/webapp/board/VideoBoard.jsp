@@ -23,7 +23,8 @@ div#wrap {
 	margin: 100px auto;
 }
 </style>
-
+<script>
+</script>
 <div id="wrap">
 	<h3>영상게시판</h3>
 	<hr>
