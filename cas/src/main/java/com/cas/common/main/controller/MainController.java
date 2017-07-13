@@ -11,7 +11,7 @@ public class MainController {
 	/*메인화면으로 가는 메서드*/
 	@RequestMapping("/main")
 	public String mainGo(){
-		return null;
+		return "main";
 	}
 	
 	/*검색해주는 메서드*/

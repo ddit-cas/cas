@@ -295,12 +295,12 @@ a:active{
 		</div>
 		<span id="dateBtns"> 
 			<a id="next">
-				<img class="calBtn" src="<c:url value="resources/images/up.png"/>">
+				<img class="calBtn" src="<c:url value="/resources/images/up.png"/>">
 			</a>
-			<br style="height: 10px;"/>
-			<hr> 
+			<br />
+			<hr>
 			<a id="prev">
-				<img class="calBtn" src="<c:url value="resources/images/down.png"/>">
+				<img class="calBtn" src="<c:url value="/resources/images/down.png"/>">
 			</a>
 		</span>
 		<div id="dateDiv">
