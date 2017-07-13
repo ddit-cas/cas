@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 .faq {
 	border-bottom: 1px solid #ddd;
@@ -59,18 +60,12 @@
 </style>
 <script>
 $(function(){
-	// Frequently Asked Question
 	var article = $('.faq>.faqBody>.article');
-// 	article.addClass('hide');
 	article.find('.a').hide();
-// 	article.eq(0).removeClass('hide');
-// 	article.eq(0).find('.a').show();
 	$('.faq>.faqBody>.article>.q>a').click(function(){
 		var myArticle = $(this).parents('.article:first');
 		if(myArticle.find('.a')){
-// 			article.find('.a').addClass('hide').removeClass('show');
 			article.find('.a').slideUp(100);
-// 			myArticle.removeClass('hide').addClass('show');
 			myArticle.find('.a').slideDown(100);
 		}
 		return false;
@@ -82,19 +77,15 @@ $(function(){
 .
 .
 </pre>
+<h3>FAQ</h3>
+<hr>
 <div class="faq">
 	<ul class="faqBody">
-		<li class="article" id="a1">
-			<p class="q"><a href="#a1">Q1 : 질문1?</a></p>
-			<p class="a">A: 답변1.</p>
+		<c:forEach var="i" begin="1" end="50">
+		<li class="article" id="a${i}">
+			<p class="q"><a href="#a${i}">Q${i} : 질문${i}</a></p>
+			<p class="a">A: 답변${i}</p>
 		</li>
-		<li class="article" id="a2">
-			<p class="q"><a href="#a2">Q2 : 질문2?</a></p>
-			<p class="a">A: 답변2.</p>
-		</li>
-		<li class="article" id="a3">
-			<p class="q"><a href="#a3">Q3 : 질문3?</a></p>
-			<p class="a">A: 답변3.</p>
-		</li>
+		</c:forEach>
 	</ul>
 </div>
