@@ -215,6 +215,7 @@ $(function(){
 		height: 220px;
 	}
 </style>
+
 <script>
 $(function() {
 	//그림 클릭 시 업로드 창 띄워 업로드 후 미리보기
