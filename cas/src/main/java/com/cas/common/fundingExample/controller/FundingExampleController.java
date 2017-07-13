@@ -12,7 +12,8 @@ public class FundingExampleController {
 	/*펀딩 성공사례 리스트를 보여주는 메서드*/
 	@RequestMapping("/fundingExampleList")
 	public String fundingExampleList(Model model){
-		return null;
+		String url = "member/story/successCase/cas-success";
+		return url;
 	}
 	
 	/*
@@ -20,6 +21,7 @@ public class FundingExampleController {
 	 */
 	@RequestMapping("/fundingExampleDetail")
 	public String fundingExampleDetail(HttpServletRequest request,Model model){
-		return null;
+		String url = "member/story/successCase/cas-success-detail";
+		return url;
 	}
 }
