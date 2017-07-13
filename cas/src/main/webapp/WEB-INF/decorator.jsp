@@ -13,6 +13,9 @@
 <title></title>
 <meta charset="UTF-8">
 
+<!-- 다음에디터를 쓰기위한 링크 -->
+ <link rel="stylesheet" href="<c:url value="/daumeditor/css/editor.css"/>" type="text/css" charset="utf-8"/>
+    <script src="<c:url value="/daumeditor/js/editor_loader.js"/>" type="text/javascript" charset="utf-8"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -32,6 +35,8 @@
 <script src="<c:url value="/resources/js/BootSideMenu.js"/>"></script>
 
 <script src="<c:url value="/resources/js/jquery.easing.1.3.js"/>" type="text/javascript"></script>
+
+
 <style>
 body {
 	margin: 0;

@@ -10,6 +10,18 @@
 		<pattern>/admin/*</pattern>
 	</decorator>
 	
+	<excludes>
+		<pattern>/resources/**</pattern>
+	</excludes>
+	
+	<excludes>
+		<pattern>/daumeditor/**</pattern>
+	</excludes>
+	
+	<excludes>
+		<pattern>/upload/**</pattern>
+	</excludes>
+	
 	<!-- decorators를 적용시키지 않을 url 패턴 -->
 <!-- 	<excludes> -->
 <!-- 		<pattern>/admin/*</pattern> -->

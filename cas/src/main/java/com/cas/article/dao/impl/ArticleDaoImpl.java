@@ -3,30 +3,30 @@ package com.cas.article.dao.impl;
 import java.util.List;
 
 import com.cas.article.dao.ArticleDao;
-import com.cas.db.dto.Article;
+import com.cas.db.dto.ArticleVO;
 
 public class ArticleDaoImpl implements ArticleDao{
 
 	@Override
-	public List<Article> selectArticleList() {
+	public List<ArticleVO> selectArticleList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Article selectArticle(String articleId) {
+	public ArticleVO selectArticle(String articleId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Article> selectArticleReplyList(String articleId) {
+	public List<ArticleVO> selectArticleReplyList(String articleId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean updateFreeboard(Article article) {
+	public boolean updateFreeboard(ArticleVO article) {
 		// TODO Auto-generated method stub
 		return false;
 	}
