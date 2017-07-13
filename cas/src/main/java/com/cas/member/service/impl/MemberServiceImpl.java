@@ -2,19 +2,19 @@ package com.cas.member.service.impl;
 
 import java.util.List;
 
-import com.cas.db.dto.Member;
+import com.cas.db.dto.MemberVO;
 import com.cas.member.service.MemberService;
 
 public class MemberServiceImpl implements MemberService{
 
 	@Override
-	public List<Member> memberList() {
+	public List<MemberVO> memberList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean updateMember(Member member) {
+	public boolean updateMember(MemberVO member) {
 		// TODO Auto-generated method stub
 		return false;
 	}
