@@ -1,31 +1,6 @@
 @CHARSET "UTF-8";
 
-body, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    color: #676363;
-    font-family: Roboto, 'Noto Sans KR',sans-serif;
-    -webkit-font-smoothing: antialiased;
-}
 
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-style: normal;
-}
-
-
-body, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    color: #676363;
-    font-family: Roboto, 'Noto Sans KR',sans-serif;
-    -webkit-font-smoothing: antialiased;
-}
 
 a:hover, a:focus, a:active {
     text-decoration: none;
@@ -108,7 +83,7 @@ element.style {
 }
 
 .wd-ui-sub-campaign3-ul {
-    margin-left: 45px;
+	margin-left: -74px;
 }
 
 element.style {
@@ -165,7 +140,7 @@ em.wd-icon-campaign-complete {
 
 
 .wd-ui-sub-campaign3-ul li {
-    width: 337px;
+    width: 320px;
     display: inline-block;
 }
 
@@ -211,7 +186,6 @@ em.wd-icon-campaign-complete {
     background-color: #fff;
     border-top: none;
 }
-
 
 
 

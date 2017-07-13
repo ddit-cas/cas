@@ -3,7 +3,7 @@ package com.cas.notice.dao.impl;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.cas.db.dto.Article;
+import com.cas.db.dto.ArticleVO;
 import com.cas.notice.dao.NoticeDao;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -16,7 +16,7 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 	
 	@Override
-	public List<Article> selectNoticeList() {
+	public List<ArticleVO> selectNoticeList() {
 		try {
 			client.queryForList("asdfasdf");
 		} catch (SQLException e) {
@@ -26,19 +26,19 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 
 	@Override
-	public Article selectNotice() {
+	public ArticleVO selectNotice() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean insertNotice(Article article) {
+	public boolean insertNotice(ArticleVO article) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean updateNotice(Article article) {
+	public boolean updateNotice(ArticleVO article) {
 		// TODO Auto-generated method stub
 		return false;
 	}

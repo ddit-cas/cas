@@ -13,7 +13,8 @@ public class AdminCarouselController {
 	/*어드민에서 관리할 캐러셀 리스트를 보여줄 화면으로 가는 유알엘을 반환하는 메서드*/
 	@RequestMapping("/admin/carousel")
 	public String carouselList(){
-		return null;
+		String url = "admin/carousel/admin_carousel";
+		return url;
 	}
 	
 	/*
