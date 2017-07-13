@@ -58,7 +58,9 @@ body {
 	width: 100%;
 	color:#ffffff;
 }
-
+#body{
+	margin-top:58px;
+}
 #sidr {
 	background-color: #2c2c2c;
 }
@@ -66,7 +68,7 @@ body {
 	margin-top:58px;
 }
 
-input[type="text"] {
+input[type="text"],input[type="password"]  {
 	width: 100%;
 	font-size: 13px;
 	padding: 5px;
@@ -326,7 +328,7 @@ h3 {
 				<!-- Your content -->
 				<form id="loginForm">
 					<input type="text" name="id" placeholder="아이디를 입력하세요"> <input
-						type="text" name="pwd" placeholder="비밀번호를 입력하세요"> <a
+						type="password" name="pwd" placeholder="비밀번호를 입력하세요"> <a
 						href="login" class="btn btn-sm animated-button thar-four">로그인</a> <a
 						href="signup.jsp" class="btn btn-sm animated-button thar-four">회원가입</a> <a
 						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호
