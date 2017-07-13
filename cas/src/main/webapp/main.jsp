@@ -125,9 +125,6 @@
 				<li data-target="#myCarousel" data-slide-to="2"></li>
 			</ol>
 
-
-
-
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
 				<div class="item active carousel-image">
