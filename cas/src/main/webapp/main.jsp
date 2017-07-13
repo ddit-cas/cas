@@ -42,7 +42,7 @@
 	height: 450px;
 	background-color: #eaeff7;
 	float: left;
-	margin: 10px;
+	margin: 9px;
 }
 
 .nonePadding {
@@ -83,9 +83,6 @@
 	margin:0 0 8px 0;
 }
 
-.row{
-	margin-top:58px;
-}
 
 @MEDIA (max-width:1200px) {
 	.perfomance{
@@ -99,6 +96,10 @@
 		width:94%;
 		padding:0;
 		margin:8px 3% 8px 3%;
+		height: auto;
+	}
+	.famousFund{
+		height: auto;
 	}
 }
 
@@ -114,7 +115,7 @@
 }
 </style>
 <title>CAS</title>
-<div class="row">
+<div id="body">
 	<!-- 캐러셀 -->
 	<div class="container col-md-8" id="carouselBody">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -131,15 +132,15 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
 				<div class="item active carousel-image">
-						<img src="<c:url value="resources/cal.jpg"/>">
+						<img src="/cas/resources/cal.jpg"/>">
 				</div>
 
 				<div class="item carousel-image">
-					<img src="<c:url value="resources/cal.jpg"/>">
+					<img src="/cas/resources/cal.jpg"/>">
 				</div>
 
 				<div class="item carousel-image">
-				<img src="<c:url value="resources/cal.jpg"/>">
+				<img src="/cas/resources/cal.jpg"/>">
 				</div>
 			</div>
 
@@ -166,7 +167,7 @@
 		<div class="tab-content simpleFamous">
 			<div id="home" class="tab-pane fade in active"
 				style="text-align: center;">
-				<img src="<c:url value="resources/famous.jpg"/>"
+				<img src="/cas/resources/famous.jpg"
 					style="wdith: 100%; height: 150px; margin-top: 10px; margin-bottom: 10px;">
 				<br>
 				<table class="table table-hover">
@@ -240,7 +241,7 @@
 					</div>
 					<label style="float:right; font-size: 0.8em;"> 목표금액 : 1,000,000</label>
 					<label style="float:right; font-size: 0.8em;">달성금액 : 700,000 /</label><br>
-					<label class="fundTitle"">Docswave! 대담한 미래!</label>
+					<label class="fundTitle">Docswave! 대담한 미래!</label>
 					<br><br>
 					<label class="fundHost">소프트웨어인라이프</label>
 					<br>
