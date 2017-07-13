@@ -30,6 +30,9 @@ $(function(){
 });    
 </script>
 <style>
+	.form-horizontal{
+		margin-top: 100px;
+	}
 	.msgCheckId {
 		font-size : 15px;
 	}
@@ -356,11 +359,20 @@ $(function() {
 					
 					<div id="add-textField"></div>
 					
-					<label class="control-label col-sm-1" for="activity">활동지역</label>
+<script>
+//우편번호 검색
+$(function(){
+	$('#activity').on('click',function(){
+		var url = "signup/map.jsp";
+		window.open(url,"활동지역검색","width=600 height=600");		
+	});
+});
+</script>			
+					
+					<label class="control-label col-sm-1" for="activity">활동지역</label>		
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="activity"
-							placeholder="주 활동 지역을 입력하세요" name="activity">
-					</div>
+						<input type="text" class="form-control" id="activity" placeholder="주 활동 지역을 입력하세요" name="activity" readonly>
+				    </div>
 					
 					<p id="enter"></p>
 					<p id="enter"></p>
