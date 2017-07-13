@@ -42,10 +42,15 @@ $(function(){
 	#no {
 		color : red;
 	}
+	.signup_cas_ld {
+		font-size: 24px;
+		border-bottom: 1px dotted #c8c8c8;
+		margin : 10px 0;
+	}
 </style>
 	<form class="form-horizontal" action="#">
-	<fieldset>
-		<legend>필수사항</legend>
+	<fieldset class="signup_cas_fs">
+		<legend class="signup_cas_ld">필수사항</legend>
 		<div class="container">
 			<div class="essen">
 				<div class="imfom">
@@ -174,7 +179,7 @@ $(function(){
 	}
 	#enter {
 		width : 960px;
-		height : 20px;
+		height : 30px;
 	}
 	
 	.image-preview-input {
@@ -200,7 +205,6 @@ $(function(){
 	    margin-left:2px;
 	}
 	.msgCheckNick {
-		margin-left : 10px;
 		font-size : 15px;
 	}
 	img {
@@ -249,29 +253,40 @@ $(function() {
         reader.readAsDataURL(file);
     });
 	
+	
+	
 	// textfield 생성
+	var count = 0;
 	$('#plus-textField').on('click',function(){
-		var textField = "<div class='add-field'>";
+		count++;
+		//textfield 3회로 횟수 제한
+		if(count<3){
+			var textField = "<div class='add-field'>";
 			textField +="<label class='control-label col-sm-1' for='career'>+</label>"; 
 			textField +="<div class='col-sm-4'>";
 			textField +="<div class='input-group'>";
-			textField +="<input type='text' class='form-control'placeholder='경력을 추가 입력하세요.'>";
+			textField +="<input type='text' class='form-control' name='career' placeholder='경력을 추가 입력하세요.'>";
 			textField +="<span class='input-group-btn'>";
 			textField +="<button class='btn btn-default minus-textbutton' type='button'>-</button>";
 			textField +="</span></div></div><p id='enter' /><p id='enter' /></div>";
-		$('#add-textField').append(textField);
-		//textField 삭제
-		$(".minus-textbutton").bind('click',function(){
-			$(this).parent().parent().parent().parent().remove();
-		});
+			$('#add-textField').append(textField);
+			//textField 삭제
+			$(".minus-textbutton").bind('click',function(){
+				count--;
+				$(this).parent().parent().parent().parent().remove();
+			});
+		}else{
+			alert("경력사항 쓰기는 3회로 제한 됩니다.");
+		}
 	});
+	
 	//아이디 중복 확인
 	$('#nickCheck').click(function(){
     	var idValue = $('#nick').val();
     	$.ajax({
     		url : 'signup/idCheck.jsp',
     		type : 'get',
-    		data : "id="+idValue,  // {"id:idValue"} 이래도 같음.
+    		data : "id="+idValue,
     		success : function(res){
     			var code = "";
     			var attr = "";
@@ -298,14 +313,13 @@ $(function() {
 
 	<!-- 선택사항 -->
 	<form class="form-horizontal" action="#">
-	<fieldset>
-		<legend id="choice">선택사항<span> : 클릭!</span></legend>
+	<fieldset class="signup_cas_fs">
+		<legend id="choice" class="signup_cas_ld">선택사항<span> : 클릭!</span></legend>
 		<div class="contSelect hide">
 			<div class="box-body">
 				<div class="col-sm-3">
-					<div class="filess" style="width:290px; height:380px;">
-						<img alt="User Pic"
-							src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+					<div class="filess" style="width:290px; height:400px;">
+						<img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
 							id="profile-image" class="img-circle img-responsive">
 						<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
 						<div style="color:#999;">그림을 클릭하여 이미지를 변경합니다.</div>	
@@ -323,7 +337,7 @@ $(function() {
 	                        <span class="image-preview-input-title">업로드</span>
 	                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
 	                     </div>
-<!-- 					    </span> -->
+					    </span>
 					  </div>
 					</div>
 					 
@@ -360,7 +374,7 @@ $(function() {
 					<div id="add-textField"></div>
 					
 <script>
-//우편번호 검색
+//활동지역 검색
 $(function(){
 	$('#activity').on('click',function(){
 		var url = "signup/map.jsp";
@@ -377,7 +391,7 @@ $(function(){
 					<p id="enter"></p>
 					<p id="enter"></p>
 					
-					<label class="control-label col-sm-1" for="career">팀원</label>
+			  	    <label class="control-label col-sm-1" for="career">팀원</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
 					    <input type="text" class="form-control" id="team-mem" placeholder="팀원을 입력하세요.">
@@ -389,8 +403,7 @@ $(function(){
 					
 				</div>
 			</div>
-		</div>
-		</fieldset>
+		 
 
 <script>
 $(function() {
@@ -405,7 +418,7 @@ $(function() {
 		var input = '#profile-image-input'+seq;
 
 		//이미지 미리보기 생성
-		var textField  ="<div class='add-field'><div class='box-body crew'><div class='col-sm-2'><div class='files-crw'>";
+		var textField  ="<div class='add-field'><hr><div class='box-body crew'><div class='col-sm-2'><div class='files-crw'>";
 			textField += "<img alt='User Pic' src='https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg' id='profile-image"+seq+"' class='img-circle img-responsive'>";
 			textField += "<input id='profile-image-input"+seq+"'  accept='image/png, image/jpeg, image/gif' class='hidden' type='file'></div></div>";
 			//이름 텍스트필드 생성	
@@ -449,12 +462,15 @@ $(function() {
 		});
 	});
 });	
-</script>		
-	<div class="team-mem"></div>
+</script>	
+	
+			<div class="team-mem"></div>
+		</div>
+	</fieldset>
+	
 <style>
 	#btnses {
 		width : 760px;
-		background: pink;
 		clear : both;
 	}
 	#btnses>input {
@@ -467,7 +483,6 @@ $(function() {
 			<input type="submit" class="btn btn-primary" value="가입" />
 			<input type="reset" class="btn btn-danger" value="취소" />
 		</div> 
-		 		
-		
+				
 	</form>
 </body>
