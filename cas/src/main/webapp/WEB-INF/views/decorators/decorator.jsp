@@ -48,7 +48,9 @@ body {
 
 #myInfoDiv {
 	padding: 0;
-	margin: 10px;
+	margin: auto;
+	height: 220px;
+	width:238px;
 	border: solid 2px #222222;
 }
 
@@ -59,6 +61,9 @@ body {
 
 #sidr {
 	background-color: #2c2c2c;
+}
+#body{
+	margin-top:58px;
 }
 
 input[type="text"] {
@@ -154,7 +159,7 @@ div.company-snb {
 }
 
 div.company-snb h2 {
-    background: #ff6949;
+    background: #26bbe2;
     padding: 100px 0;
     text-align: center;
     color: #fff;
@@ -180,7 +185,7 @@ div.company-snb ul li a {
 }
 
 div.company-snb ul li a:hover {
-    background: #8d8d8d;
+    background: #397a9a;
     color: #fff;
 }
 
@@ -195,7 +200,7 @@ div.company-cont {
 }
 
 div.company-cont h3.box {
-    background: #2b2f3a;
+    background: #26bbe2;
     color: #fff;
     font-size: 20px;
     padding: 25px 0;
@@ -251,6 +256,62 @@ h3 {
 
 }
 
+@media (max-width:1000px){
+	#map {
+        width: 300px;
+    	margin-left:0px;
+   
+      }
+    div.company-wrap {
+    	width: 100%;
+	} 
+	
+	div.company-snb ul li {
+    	width:100%;
+	}
+	
+	h3 {
+		width:100%;
+	    
+	}
+	
+	div.company-cont {
+   	 width:100%;
+	}
+	
+	div.company-snb {
+    width: 100%;
+	}
+	
+ @media (max-width:1000px){
+
+	div.company-snb {
+	    width: 100%;
+		}
+		
+	div.company-cont {
+	    width: 100%;
+		}
+		
+	h3 {
+		width:100%;
+	    
+	}
+	div.company-snb ul li {
+	    	width:100%;
+		}
+		
+	div.company-wrap {
+	    width: 100%;
+		} 
+	
+	div.imgDiv img{
+		width:100%;
+		height:auto;
+	}
+
+}
+
 </style>
 
 </head>
@@ -266,7 +327,7 @@ h3 {
 				<form id="loginForm">
 					<input type="text" name="id" placeholder="아이디를 입력하세요"> <input
 						type="text" name="pwd" placeholder="비밀번호를 입력하세요"> <a
-						href="#" class="btn btn-sm animated-button thar-four">로그인</a> <a
+						href="login" class="btn btn-sm animated-button thar-four">로그인</a> <a
 						href="signup.jsp" class="btn btn-sm animated-button thar-four">회원가입</a> <a
 						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호
 						찾기</a>
@@ -293,7 +354,7 @@ h3 {
 					href="#" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
-					href="decorators.jsp" class="btn btn-sm animated-button thar-four">로그아웃</a>
+					href="logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
 				<script>
 					function logout() {
 
