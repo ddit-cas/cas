@@ -1,32 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <style>
+
+h3 {
+	color: #fff;
+	font-size: 20px;
+	text-align: center;
+	margin-top: 30px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 30px;
+	font-weight: 250;
+}
+
 .faq {
-	border-bottom: 1px solid #ddd;
-	margin: 1em 0
-}
-
-.faq .faqHeader {
-	position: relative;
-	zoom: 1
-}
-
-.faq .faqHeader .showAll {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	border: 0;
-	padding: 0;
-	overflow: visible;
-	background: none;
-	cursor: pointer
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px
+		rgba(0, 0, 0, 0.2), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+	border-radius: 4px;
 }
 
 .faq .faqBody {
-	margin: 0;
-	padding: 0
+ 	margin: 0;
+	padding: 0;
 }
 
 .faq .faqBody .article {
@@ -34,8 +32,8 @@
 }
 
 .faq .q {
-	margin: 0;
-	border-top: 1px solid #ddd
+ 	margin: 0; 
+ 	border-top: 1px solid #ddd; 
 }
 
 .faq .q a {
@@ -57,6 +55,7 @@
 	padding: 1em;
 	line-height: 1.5
 }
+
 </style>
 <script>
 $(function(){
@@ -77,13 +76,13 @@ $(function(){
 .
 .
 </pre>
-<h3>FAQ</h3>
+<h4>FAQ</h4>
 <hr>
 <div class="faq">
 	<ul class="faqBody">
-		<c:forEach var="i" begin="1" end="50">
+		<c:forEach var="i" begin="1" end="10">
 		<li class="article" id="a${i}">
-			<p class="q"><a href="#a${i}">Q${i} : 질문${i}</a></p>
+			<h3 class="q"><a href="#a${i}">Q${i} : 질문${i}</a></h3>
 			<p class="a">A: 답변${i}</p>
 		</li>
 		</c:forEach>
