@@ -42,8 +42,8 @@ div#wrap {
 				<div>
 					<a href='<c:url value='/resources/logo.png' />'><img class="imgclass" alt="땡!!" src='<c:url value='/resources/logo.png' />'></a>
 					<br><a href='<c:url value='/resources/logo.png' />'>${i}</a>
-					<br><a>글쓴이</a>
-					<br><a>작성일</a>
+					<br>글쓴이
+					<br>작성일
 				</div>
 			</td>
 		</tr>
