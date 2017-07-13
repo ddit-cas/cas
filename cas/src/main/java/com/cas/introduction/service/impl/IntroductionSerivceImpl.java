@@ -1,12 +1,12 @@
 package com.cas.introduction.service.impl;
 
-import com.cas.db.dto.Article;
-import com.cas.introduction.service.PresentService;
+import com.cas.db.dto.ArticleVO;
+import com.cas.introduction.service.IntroductionService;
 
-public class PresentSerivceImpl implements PresentService{
+public class IntroductionSerivceImpl implements IntroductionService{
 
 	@Override
-	public Article selectPresent() {
+	public ArticleVO selectPresent() {
 		// TODO Auto-generated method stub
 		return null;
 	}
