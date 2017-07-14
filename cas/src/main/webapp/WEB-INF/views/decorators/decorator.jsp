@@ -58,12 +58,17 @@ body {
 	width: 100%;
 	color:#ffffff;
 }
-
+#body{
+	margin-top:58px;
+}
 #sidr {
 	background-color: #2c2c2c;
 }
+#body{
+	margin-top:58px;
+}
 
-input[type="text"] {
+input[type="text"],input[type="password"]  {
 	width: 100%;
 	font-size: 13px;
 	padding: 5px;
@@ -156,7 +161,7 @@ div.company-snb {
 }
 
 div.company-snb h2 {
-    background: #ff6949;
+    background: #26bbe2;
     padding: 100px 0;
     text-align: center;
     color: #fff;
@@ -182,7 +187,7 @@ div.company-snb ul li a {
 }
 
 div.company-snb ul li a:hover {
-    background: #8d8d8d;
+    background: #397a9a;
     color: #fff;
 }
 
@@ -197,7 +202,7 @@ div.company-cont {
 }
 
 div.company-cont h3.box {
-    background: #2b2f3a;
+    background: #26bbe2;
     color: #fff;
     font-size: 20px;
     padding: 25px 0;
@@ -253,6 +258,62 @@ h3 {
 
 }
 
+@media (max-width:1000px){
+	#map {
+        width: 300px;
+    	margin-left:0px;
+   
+      }
+    div.company-wrap {
+    	width: 100%;
+	} 
+	
+	div.company-snb ul li {
+    	width:100%;
+	}
+	
+	h3 {
+		width:100%;
+	    
+	}
+	
+	div.company-cont {
+   	 width:100%;
+	}
+	
+	div.company-snb {
+    width: 100%;
+	}
+	
+ @media (max-width:1000px){
+
+	div.company-snb {
+	    width: 100%;
+		}
+		
+	div.company-cont {
+	    width: 100%;
+		}
+		
+	h3 {
+		width:100%;
+	    
+	}
+	div.company-snb ul li {
+	    	width:100%;
+		}
+		
+	div.company-wrap {
+	    width: 100%;
+		} 
+	
+	div.imgDiv img{
+		width:100%;
+		height:auto;
+	}
+
+}
+
 </style>
 
 </head>
@@ -267,7 +328,7 @@ h3 {
 				<!-- Your content -->
 				<form id="loginForm">
 					<input type="text" name="id" placeholder="아이디를 입력하세요"> <input
-						type="text" name="pwd" placeholder="비밀번호를 입력하세요"> <a
+						type="password" name="pwd" placeholder="비밀번호를 입력하세요"> <a
 						href="login" class="btn btn-sm animated-button thar-four">로그인</a> <a
 						href="signup.jsp" class="btn btn-sm animated-button thar-four">회원가입</a> <a
 						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호

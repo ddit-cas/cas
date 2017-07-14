@@ -15,6 +15,6 @@ public class QnaController {
 	/*자주하는 질문 리스트로 가는 메서드*/
 	@RequestMapping("/faqList")
 	public String faqList(){
-		return null;
+		return "member/qna/FAQ";
 	}
 }

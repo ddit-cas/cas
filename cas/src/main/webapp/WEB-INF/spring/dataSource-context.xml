@@ -26,7 +26,7 @@
 		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
 		p:configLocation="com/cas/db/sqlConfig/SqlMapConfig.xml"
 		p:dataSource-ref="dataSource" />
-	
+		
 	<!-- spring transaction -->
 	<bean id="transactionManager"
 	class="org.springframework.jdbc.datasource.DataSourceTransactionManager"

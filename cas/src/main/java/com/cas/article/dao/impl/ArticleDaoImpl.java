@@ -7,6 +7,8 @@ import com.cas.db.dto.ArticleVO;
 
 public class ArticleDaoImpl implements ArticleDao{
 
+	
+	
 	@Override
 	public List<ArticleVO> selectArticleList() {
 		// TODO Auto-generated method stub

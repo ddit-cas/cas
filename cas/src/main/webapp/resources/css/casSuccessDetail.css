@@ -2,9 +2,10 @@
 
 
 .detail-top-wrap .top-title {
+	margin-top: 77px;
     width: 100%;
     padding: 60px 0 55px;
-    background: #001328;
+    background: #53a2f9;
 }
 
 .wd-layout-sub-content * {
@@ -98,10 +99,10 @@
 }
 
 .wd-layout-sub-content-inner {
-    width: 964px;
+    width: 1200px;
     /* width: 1000px; */
-    margin: 0 auto;
-    padding: 0 30px;
+    margin: 0 -4px;
+    padding: 0 80px;
     overflow: hidden;
     /* min-height: 700px; */
 }
@@ -156,12 +157,6 @@
     text-align: justify;
 }
 
-@media (min-width: 960px){
-froala_custom.c…er20170515:173
-.inner-contents p {
-    font-size: 17px;
-    line-height: 1.8em;
-}
 
 .wd-ui-risk div span {
     font-size: 14px;
@@ -225,7 +220,7 @@ froala_custom.c…er20170515:173
     font-size: 12px;
     vertical-align: middle;
     line-height: 12px;
-    color: #23DBAB;
+    color: #129ff5;
     background: none;
     border: none;
 }
@@ -375,7 +370,7 @@ froala_custom.c…er20170515:173
 }
 
 .project-state-info .share-list li button.facebook {
-    background-image: url(/resources/static/img/common/icon_gray_facebook.png);
+    background-image: url(../icon_gray_facebook.png);
 }
 
 .project-state-info .share-list li button {
@@ -532,7 +527,7 @@ froala_custom.c…er20170515:173
     height: 18px;
     line-height: 18px;
     display: inline-block;
-    width: 18px;
+    width: 14px;
     margin: 1px 8px 1px 0px;
     color: #fff;
     background-color: #BABDC0;
@@ -555,9 +550,9 @@ a, a:hover, a:visited {
 
 .recommend-box .item .text {
     height: 22px;
-    font-size: 13px;
+    font-size: 10px;
     line-height: 18px;
-    width: 209px;
+    width: 159px;
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
@@ -577,5 +572,132 @@ a, a:hover, a:visited {
     border: none;
     cursor: pointer;
     -webkit-appearance: none;
+}
+
+.wdetail-comment .main-comment .btn-wrap {
+    text-align: right;
+}
+
+.wdetail-comment .comment-num em {
+    color: #23DBAB;
+}
+
+
+.alertify-logs{bottom:80px;right:0;width:100%;}
+.alertify-log-custom{width:300px;margin:10px auto;background:#111;padding:10px 0;font-size:15px;line-height:20px;color:#fff;border-radius:20px;text-align:center;font-family:Roboto, 'Noto Sans KR', sans-serif;-webkit-font-smoothing:antialiased}
+.alertify-log {right: 0;bottom:0;}
+.alertify-log-show {bottom: 0;}
+.alertify-log-hide {-webkit-transform: translate(0, 0); -moz-transform: translate(0, 0);-ms-transform: translate(0, 0); -o-transform: translate(0, 0);transform: translate(0, 0);}
+
+.fixed-funding-btn{width:100%;}
+		.btn-funding{display:block;width:100%;height:50px;line-height:50px;text-align:center;font-size:18px;font-weight:bold;color:#fff;background:#23dbab;border:none}
+    
+}
+
+
+.wdetail-comment .comment-wrap.edit {
+    margin-top: 0;
+    display: none;
+    border-top: none;
+}
+
+.wdetail-comment .comment-wrap.reply {
+    margin-top: 0;
+    padding-left: 50px;
+    border-top: none;
+}
+
+.wdetail-comment .comment-wrap {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+}
+
+
+.wdetail-comment .comment-wrap .comment-info {
+    position: relative;
+    margin-bottom: 10px;
+    height: 35px;
+}
+
+.wdetail-comment .comment-wrap textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 13px;
+    line-height: 18px;
+    border: 1px solid #e4e4e4;
+    background: #F4F4F4;
+    box-sizing: border-box !important;
+}
+
+.wdetail-comment .comment-wrap .comment-bottom button {
+    padding: 0 10px 0 0;
+    font-size: 12px;
+    vertical-align: middle;
+    line-height: 12px;
+    color: #23DBAB;
+    background: none;
+    border: none;
+}
+
+.project-state-info .btn-like i.icon-like {
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    margin-right: 3px;
+    vertical-align: middle;
+    background: url(/resources/static/img/common/icon_like.png) no-repeat 0 0;
+    background-size: 100% auto;
+}
+
+.project-state-info .share-list {
+    padding: 15px 0;
+    text-align: center;
+    border: 1px solid #eaeaea;
+}
+
+.project-state-info .share-list li button.url {
+    font-size: 10px;
+    font-weight: 500;
+    color: #4a4a4a;
+    line-height: 30px;
+    text-align: center;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+
+.project-state-info .share-list li button.twitter {
+    background-image: url(../icon_gray_twitter.png);
+}
+
+
+
+.project-state-info .share-list {
+    padding: 15px 0;
+    text-align: center;
+    border: 1px solid #eaeaea;
+}
+
+.project-state-info .share-section.open {
+    height: 66px;
+}
+
+.project-state-info .share-section {
+    width: 100%;
+    height: 0;
+    margin-bottom: 10px;
+    overflow-y: hidden;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.detail-top-wrap .tab-list ul li {
+    display: inline-block;
 }
 
