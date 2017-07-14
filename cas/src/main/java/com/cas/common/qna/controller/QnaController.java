@@ -9,12 +9,12 @@ public class QnaController {
 	/*자주한는 질문과 1:1질문을 할수있는 질문 카테고리의 메인으로 가는 메서드*/
 	@RequestMapping("/qnaMain")
 	public String qnaMain(){
-		return null;
+		return "/member/qna/QNA";
 	}
 	
 	/*자주하는 질문 리스트로 가는 메서드*/
 	@RequestMapping("/faqList")
 	public String faqList(){
-		return null;
+		return "/member/qna/FAQ";
 	}
 }

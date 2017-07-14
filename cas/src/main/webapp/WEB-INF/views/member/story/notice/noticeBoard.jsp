@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -53,14 +54,15 @@ li a:hover{
 	<nav class="navbar navbar-default" style="width: 830px; margin:0 auto 20px; text-align:center;">
 		<div class="container-fluid" style=" width: 830px; margin:0 auto;">
 			<ul class="nav navbar-nav">
-				<li><a href="noticeBoard.jsp" style=" width: 198px;">공지사항</a></li>
-				<li><a href="freeBoard.jsp" style=" width: 198px;">자유게시판</a></li>
+				<li><a href="#" style=" width: 198px;">공지사항</a></li>
+				<li><a href="#" style=" width: 198px;">자유게시판</a></li>
 				<li><a href="#" style=" width: 198px;">공연홍보게시판</a></li>
 				<li><a href="#" style=" width: 198px;">PR영상</a></li>
 			</ul>
 		</div>
 	</nav>
-			<p><img src="resources/noticee.png" style="width:829px; height:188px; margin:0 160px auto; background-size:cover;"></p>
+			<p><img src="resources/images/noticee.png"
+			style="width:829px; height:188px; margin:0 160px auto; background-size:cover;"></p>
 	<div class="container">
 		<div class="content">
 			<div class="selectcheck">
