@@ -225,9 +225,9 @@
 	</div>
 
 	<div class="col-xs-12 nonePadding">
+		<label style="float:left; margin-top:10px;">크라우드펀딩</label><hr style="  border-top: 1px solid #f10505;">
 <!-- 		펀딩 폼 -->
 		<a href="#">
-			<label style="float:left; margin-top:10px;">크라우드펀딩</label><hr style="  border-top: 1px solid #f10505;">
 			<div class="perfomance">
 				<div class="famousFund">
 					<img src='<c:url value='resources/famous.jpg'/>' style="width:100%;height: auto;">

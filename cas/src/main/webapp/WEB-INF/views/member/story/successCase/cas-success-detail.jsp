@@ -6,6 +6,7 @@
 
 
 <body>
+<link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css" type="text/css">
 
 	<div class="detail-top-wrap">
 		<div class="top-title">

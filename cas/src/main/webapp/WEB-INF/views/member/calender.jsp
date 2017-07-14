@@ -3,14 +3,6 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	request.setAttribute("year", "2017");
-	request.setAttribute("month", "10");
-	request.setAttribute("lastDay", "30");
-	String[] days = {"S", "M", "T", "W", "T", "F", "S"};
-	request.setAttribute("days", days);
-%>
-
 
 <style>
 #date li {
@@ -78,6 +70,10 @@
 	color: #ffffff;
 }
 
+.checkDay:focus{
+	color: #ffee00;
+}
+
 .calBtn {
 	width: 12px;
 	height: 8px;
@@ -87,8 +83,14 @@
 	background-color: #0099CC;
 }
 
-a:active{
-	color:ffee00;
+.checkDay{
+	color:#ffee00;
+	font-weight:bold; 
+}
+
+.selectDay:hover {
+    color: #ffee00;
+    text-decoration: underline;
 }
 @MEDIA ( max-width :1200px) {
 	#calender {
@@ -169,11 +171,13 @@ a:active{
 		})
 		
 		$('#date').on('click','.selectDay',function(){
+			$('.checkDay').removeClass('checkDay');
         	if(openShowInfoDay==(year+month+$(this).text())){
 	        	openShowInfoDay="";
 				$("#showInfo").slideToggle(300);					
         	}else{
 	        	openShowInfoDay=year+month+$(this).text();
+	        	$(this).addClass('checkDay');
 		        $("#showInfo").slideToggle(300,function(){
 					if ($(this).is(':hidden')) {
 						$("#showInfo").slideToggle(300);					
@@ -311,8 +315,8 @@ a:active{
 </div>
 
 <div class="col-xs-12  nonePadding" id="showInfo">
-	<a href="#">
-		<div class="perfomance">
+	<div class="perfomance">
+		<a href="#">
 			<div class="famousFund">
 				<img src='<c:url value='resources/famous.jpg'/>'
 					style="width: 100%; height: auto;">
@@ -322,8 +326,8 @@ a:active{
 				<label class="fundHost">소프트웨어인라이프</label> <br> <label
 					class="fundCategory">문화</label>
 			</div>
-		</div>
-	</a>
+		</a>
+	</div>
 
 
 	<div class="perfomance">공연정보</div>
