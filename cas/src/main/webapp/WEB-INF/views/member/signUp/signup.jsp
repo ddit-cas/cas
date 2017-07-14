@@ -3,6 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <title>회원가입</title>
 <body>
+<div id="body">
 <script>
 //아이디 중복 확인
 $(function(){
@@ -30,8 +31,8 @@ $(function(){
 });    
 </script>
 <style>
-	.form-horizontal{
-		margin-top: 100px;
+	#body {
+		margin-top: 58px;
 	}
 	.msgCheckId {
 		font-size : 15px;
@@ -48,7 +49,7 @@ $(function(){
 		margin : 10px 0;
 	}
 </style>
-	<form class="form-horizontal" action="#">
+	<form class="form-horizontal" action="/joinMember">
 	<fieldset class="signup_cas_fs">
 		<legend class="signup_cas_ld">필수사항</legend>
 		<div class="container">
@@ -208,18 +209,19 @@ $(function(){
 		font-size : 15px;
 	}
 	img {
-		cursor:pointer;
+		cursor: pointer;
+		width: 100%;
+		height: 100%;
 	}
 	.crew {
 		width : 1170px;
-		height: 250px;
+		height: 200px;
 	}
 	.files-crw {
 		width : 165px;
-		height: 220px;
+		height: 180px;
 	}
 </style>
-
 <script>
 $(function() {
 	//그림 클릭 시 업로드 창 띄워 업로드 후 미리보기
@@ -273,10 +275,11 @@ $(function() {
 			$('#add-textField').append(textField);
 			//textField 삭제
 			$(".minus-textbutton").bind('click',function(){
-				count--;
 				$(this).parent().parent().parent().parent().remove();
+				count--;
 			});
 		}else{
+			count = 3;
 			alert("경력사항 쓰기는 3회로 제한 됩니다.");
 		}
 	});
@@ -482,8 +485,14 @@ $(function() {
 </style>				
 		<div id="btnses">
 			<input type="submit" class="btn btn-primary" value="가입" />
-			<input type="reset" class="btn btn-danger" value="취소" />
+			<input type="button" onclick="main_go();" class="btn btn-danger" value="취소" />
 		</div> 
 				
 	</form>
+</div>
+<script>
+	function main_go(){
+		location.href="main";
+	}
+</script>	
 </body>

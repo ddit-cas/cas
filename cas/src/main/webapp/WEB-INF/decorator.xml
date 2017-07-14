@@ -12,13 +12,7 @@
 	
 	<excludes>
 		<pattern>/resources/**</pattern>
-	</excludes>
-	
-	<excludes>
 		<pattern>/daumeditor/**</pattern>
-	</excludes>
-	
-	<excludes>
 		<pattern>/upload/**</pattern>
 	</excludes>
 	

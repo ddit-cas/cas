@@ -34,7 +34,7 @@
 				</button>
 				<a class="navbar-brand" href="#"
 					style="padding: 0; margin: 0 15px 0 15px;"> <img
-					src="/cas/resources/logo.png" style="width: 80px; height: 50px;">
+					src="/cas/resources/images/logo.png" style="width: 80px; height: 50px;">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -46,16 +46,16 @@
 						</ul>
 					</li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">결제관리<span class="caret"></span></a>
+						data-toggle="dropdown" href="#">크라우드펀드관리<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">클라우드 펀딩</a></li>
-							<li><a href="#">포이트 장부</a></li>
+							<li><a href="#">클라우드 펀딩 결제관리</a></li>
+							<li><a href="#">클라우드 펀딩 카운트관리</a></li>
 						</ul>
 					</li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">카운트 관리<span class="caret"></span></a>
+						data-toggle="dropdown" href="#">포인트 관리<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">회원 카운트</a></li>
+							
 							<li><a href="#">펀딩 카운트</a></li>
 							<li><a href="#">포인트 카운트</a></li>
 						</ul>
@@ -78,6 +78,7 @@
 						data-toggle="dropdown" href="#">회원관리<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">회원관리</a></li>
+							<li><a href="#">회원카운트</a></li>
 						</ul>
 					</li>
 				</ul>

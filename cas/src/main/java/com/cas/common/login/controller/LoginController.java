@@ -63,7 +63,9 @@ public class LoginController {
 	/*회원가입 양식으로 가는 메서드*/
 	@RequestMapping ("/joinMemberForm")
 	public String joinMemberForm(){
-		return null;
+		String url = "member/signUp/signup";
+		System.out.println(url);
+		return url;
 	}
 	
 	/*회원가입을 하는 메서드*/
