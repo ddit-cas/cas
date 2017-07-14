@@ -12,7 +12,7 @@ public class FreeboardController {
 	/*자유게시판 리스트를 보여주는 메서드*/
 	@RequestMapping("/freeboardList")
 	public String freeboardList(Model model){
-		return null;
+		return "freeBoard";
 	}
 	
 	/*자유게시판에서 검색하면 작동하는 메서드*/

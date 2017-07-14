@@ -40,6 +40,10 @@ body {
 	padding: 0;
 }
 
+#body{
+	margin-top: 58px;
+}
+
 #loginForm {
 	padding: 70px 5px 0 5px;
 	text-align: center;
@@ -349,7 +353,7 @@ h3 {
 						class="myInfoLabel">${sessionScope.loginUser}</label> <label
 						class="myInfoLabel">${sessionScope.point} point</label>
 				</div>
-				<a href="#" class="btn btn-sm animated-button thar-four">개인정보</a> <a
+				<a href="myPagemModify.jsp" class="btn btn-sm animated-button thar-four">개인정보</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">내 영상</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">내 펀딩</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">내 투자</a> <a

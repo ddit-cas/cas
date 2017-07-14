@@ -47,6 +47,10 @@ $(function(){
 		border-bottom: 1px dotted #c8c8c8;
 		margin : 10px 0;
 	}
+	
+	legend{
+		font-size : 15px;
+	}
 </style>
 	<form class="form-horizontal" action="#">
 	<fieldset class="signup_cas_fs">
