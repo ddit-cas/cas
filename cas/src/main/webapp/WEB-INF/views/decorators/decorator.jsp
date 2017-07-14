@@ -27,10 +27,6 @@
 
 <link rel="stylesheet" href="/cas/resources/css/BootSideMenu.css"/>
 
-<link rel="stylesheet" href="/cas/resources/css/casSuccess.css" type="text/css">
-
-<link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css" type="text/css">
-
 <script src="/cas/resources/js/BootSideMenu.js"></script>
 
 <script src="/cas/resources/js/jquery.easing.1.3.js" type="text/javascript"></script>
@@ -65,7 +61,7 @@ body {
 	background-color: #2c2c2c;
 }
 #body{
-	margin-top:58px;
+	margin-top:68px;
 }
 
 input[type="text"],input[type="password"]  {
@@ -141,8 +137,6 @@ a.animated-button.thar-four:before {
 	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
-
-html, body, div, span, dl, dt, dd, ol, ul, li,h1, h2, h3, h4, h5, h6, p, blockquote, pre,address,cite,form,fieldset,input,textarea,select,table,th,td,button{margin: 0;padding: 0;}
 
 a {
     color: #666666;

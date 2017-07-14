@@ -3,6 +3,8 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <body>
+<link rel="stylesheet" href="/cas/resources/css/casSuccess.css" type="text/css">
+
 
 <style>
 .wd-layout-sub-content-inner {
