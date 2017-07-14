@@ -398,7 +398,7 @@ h3 {
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="noticeBoard.jsp">CAS-이야기<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="noticeBoard.jsp">공지사항</a></li>
+							<li><a href="/cas/noticeList">공지사항</a></li>
 							<li><a href="#">CAS란</a></li>
 							<li><a href="#">펀딩 성공 사례</a></li>
 							<li><a href="#">공연 행사 일정</a></li>
@@ -419,15 +419,15 @@ h3 {
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="freeBoard.jsp">자유게시판</a></li>
+							<li><a href="/cas/freeboardList">자유게시판</a></li>
 							<li><a href="#">공연홍보 게시판</a></li>
-							<li><a href="#">PR 영상</a></li>
+							<li><a href="/cas/member/uccForm">PR 영상</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">QnA<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">1:1 문의사항</a></li>
+							<li><a href="/cas/faqList">FAQ</a></li>
+							<li><a href="/cas/qnaMain">1:1 문의사항</a></li>
 						</ul></li>
 				</ul>
 			</div>

@@ -29,7 +29,7 @@ div#wrap {
 	<h3>영상게시판</h3>
 	<hr>
 	<div>
-		<input class="col-sm-3" type="text" style="width: 200px;"/>
+		<input class="col-sm-3" type="text" style="width: 200px; color: black;"/>
 		<input class="col-sm-1" type="submit" value="검색"/>
 	</div>
 	<div style="text-align: right;">
@@ -40,8 +40,8 @@ div#wrap {
 		<tr class="trclass">
 			<td class="tdclass">
 				<div>
-					<a href='<c:url value='/resources/logo.png' />'><img class="imgclass" alt="땡!!" src='<c:url value='/resources/logo.png' />'></a>
-					<br><a href='<c:url value='/resources/logo.png' />'>${i}</a>
+					<a href='<c:url value="/resources/images/logo.png" />'><img class="imgclass" alt="땡!!" src='<c:url value='/resources/images/logo.png' />'></a>
+					<br><a href='<c:url value="/resources/images/logo.png" />'>${i}</a>
 					<br>글쓴이
 					<br>작성일
 				</div>
@@ -52,7 +52,7 @@ div#wrap {
 
 	<div id="pageNum">		
 		<c:forEach var="i" begin="1" end="5">
-			<a href="messageList?page=${i}">[${i}] </a>
+			<a href="uccForm?page=${i}">[${i}] </a>
 		</c:forEach>
 	</div>
 
