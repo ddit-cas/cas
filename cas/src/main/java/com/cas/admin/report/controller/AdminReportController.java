@@ -12,7 +12,8 @@ public class AdminReportController {
 	/*회원들이 신고한 리스트를 보여주는 화면으로 가는 메서드*/
 	@RequestMapping("/admin/reportList")
 	public String adminReportList(Model model){
-		return null;
+		String url = "admin/board/declartion/declartionPage";
+		return url;
 	}
 	
 	/*
@@ -21,7 +22,8 @@ public class AdminReportController {
 	 */
 	@RequestMapping("/admin/reportDetail")
 	public String adminReportDetail(HttpServletRequest request, Model model){
-		return null;
+		String url = "admin/board/declartion/declartionPage-detail";
+		return url;
 	}
 	
 	/*

@@ -21,13 +21,7 @@
     color: #fff;
 }
 
-.detail-top-wrap .top-title h3 {
-    font-size: 36px;
-    line-height: 42px;
-    font-weight: 500;
-    text-align: center;
-    color: #fff;
-}
+
 
 .detail-top-wrap .tab-list ul {
     text-align: center;
@@ -98,14 +92,7 @@
 	transform: translate(0, 0);
 }
 
-.wd-layout-sub-content-inner {
-    width: 1200px;
-    /* width: 1000px; */
-    margin: 0 -4px;
-    padding: 0 80px;
-    overflow: hidden;
-    /* min-height: 700px; */
-}
+
 
 .wd-ui-campaign-content .wd-ui-cont {
     color: #676363;
@@ -700,4 +687,5 @@ a, a:hover, a:visited {
 .detail-top-wrap .tab-list ul li {
     display: inline-block;
 }
+
 
