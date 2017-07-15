@@ -27,10 +27,6 @@
 
 <link rel="stylesheet" href="/cas/resources/css/BootSideMenu.css"/>
 
-<link rel="stylesheet" href="/cas/resources/css/casSuccess.css" type="text/css">
-
-<link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css" type="text/css">
-
 <script src="/cas/resources/js/BootSideMenu.js"></script>
 
 <script src="/cas/resources/js/jquery.easing.1.3.js" type="text/javascript"></script>
@@ -38,6 +34,10 @@
 body {
 	margin: 0;
 	padding: 0;
+}
+
+#body{
+	margin-top: 58px;
 }
 
 #loginForm {
@@ -58,12 +58,17 @@ body {
 	width: 100%;
 	color:#ffffff;
 }
-
+#body{
+	margin-top:58px;
+}
 #sidr {
 	background-color: #2c2c2c;
 }
+#body{
+	margin-top:68px;
+}
 
-input[type="text"] {
+input[type="text"],input[type="password"]  {
 	width: 100%;
 	font-size: 13px;
 	padding: 5px;
@@ -137,8 +142,6 @@ a.animated-button.thar-four:before {
 }
 
 
-html, body, div, span, dl, dt, dd, ol, ul, li,h1, h2, h3, h4, h5, h6, p, blockquote, pre,address,cite,form,fieldset,input,textarea,select,table,th,td,button{margin: 0;padding: 0;}
-
 a {
     color: #666666;
     text-decoration: none;
@@ -156,7 +159,7 @@ div.company-snb {
 }
 
 div.company-snb h2 {
-    background: #ff6949;
+    background: #26bbe2;
     padding: 100px 0;
     text-align: center;
     color: #fff;
@@ -182,7 +185,7 @@ div.company-snb ul li a {
 }
 
 div.company-snb ul li a:hover {
-    background: #8d8d8d;
+    background: #397a9a;
     color: #fff;
 }
 
@@ -197,7 +200,7 @@ div.company-cont {
 }
 
 div.company-cont h3.box {
-    background: #2b2f3a;
+    background: #26bbe2;
     color: #fff;
     font-size: 20px;
     padding: 25px 0;
@@ -253,6 +256,62 @@ h3 {
 
 }
 
+@media (max-width:1000px){
+	#map {
+        width: 300px;
+    	margin-left:0px;
+   
+      }
+    div.company-wrap {
+    	width: 100%;
+	} 
+	
+	div.company-snb ul li {
+    	width:100%;
+	}
+	
+	h3 {
+		width:100%;
+	    
+	}
+	
+	div.company-cont {
+   	 width:100%;
+	}
+	
+	div.company-snb {
+    width: 100%;
+	}
+	
+ @media (max-width:1000px){
+
+	div.company-snb {
+	    width: 100%;
+		}
+		
+	div.company-cont {
+	    width: 100%;
+		}
+		
+	h3 {
+		width:100%;
+	    
+	}
+	div.company-snb ul li {
+	    	width:100%;
+		}
+		
+	div.company-wrap {
+	    width: 100%;
+		} 
+	
+	div.imgDiv img{
+		width:100%;
+		height:auto;
+	}
+
+}
+
 </style>
 
 </head>
@@ -267,7 +326,7 @@ h3 {
 				<!-- Your content -->
 				<form id="loginForm">
 					<input type="text" name="id" placeholder="아이디를 입력하세요"> <input
-						type="text" name="pwd" placeholder="비밀번호를 입력하세요"> <a
+						type="password" name="pwd" placeholder="비밀번호를 입력하세요"> <a
 						href="login" class="btn btn-sm animated-button thar-four">로그인</a> <a
 						href="joinMemberForm" class="btn btn-sm animated-button thar-four">회원가입</a> <a
 						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호
@@ -288,7 +347,7 @@ h3 {
 						class="myInfoLabel">${sessionScope.loginUser}</label> <label
 						class="myInfoLabel">${sessionScope.point} point</label>
 				</div>
-				<a href="#" class="btn btn-sm animated-button thar-four">개인정보</a> <a
+				<a href="myPagemModify.jsp" class="btn btn-sm animated-button thar-four">개인정보</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">내 영상</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">내 펀딩</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">내 투자</a> <a
@@ -337,7 +396,7 @@ h3 {
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="noticeBoard.jsp">CAS-이야기<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="noticeBoard.jsp">공지사항</a></li>
+							<li><a href="/cas/noticeList">공지사항</a></li>
 							<li><a href="#">CAS란</a></li>
 							<li><a href="#">펀딩 성공 사례</a></li>
 							<li><a href="#">공연 행사 일정</a></li>
@@ -358,15 +417,15 @@ h3 {
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="freeBoard.jsp">자유게시판</a></li>
+							<li><a href="/cas/freeboardList">자유게시판</a></li>
 							<li><a href="#">공연홍보 게시판</a></li>
-							<li><a href="#">PR 영상</a></li>
+							<li><a href="/cas/member/uccForm">PR 영상</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">QnA<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">1:1 문의사항</a></li>
+							<li><a href="/cas/faqList">FAQ</a></li>
+							<li><a href="/cas/qnaMain">1:1 문의사항</a></li>
 						</ul></li>
 				</ul>
 			</div>

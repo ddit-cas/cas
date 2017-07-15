@@ -13,7 +13,7 @@ public class MemberFreeboardController {
 	 * 글 등록을 누를시 글 등록 양식으로 가게 해주는 메서드
 	 * 만약 수정에서 오면 양식에 다입력을 해줌
 	 */
-	@RequestMapping("/member/FreeboardForm")
+	@RequestMapping("/member/freeboardForm")
 	public String insertFreeboardForm(HttpServletRequest request,Model model){
 		return null;
 	}

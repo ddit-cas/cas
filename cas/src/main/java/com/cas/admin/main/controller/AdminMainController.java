@@ -12,7 +12,7 @@ public class AdminMainController {
 	 */
 	@RequestMapping("/admin/main")
 	public String adminMain(Model model){
-		String url = "admin/admin_main";
+		String url = "admin/main/admin_main";
 		return url;
 	}
 }

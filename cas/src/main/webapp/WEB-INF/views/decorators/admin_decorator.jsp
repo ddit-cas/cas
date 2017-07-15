@@ -33,8 +33,8 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#"
-					style="padding: 0; margin: 0 15px 0 15px;"> <img
-					src="/cas/resources/images/logo.png" style="width: 80px; height: 50px;">
+					style="padding: 0; margin: 0 15px 0 15px;"> 
+					<img src=<c:url value='/resources/images/logo.png' /> style="width: 80px; height: 50px;">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
