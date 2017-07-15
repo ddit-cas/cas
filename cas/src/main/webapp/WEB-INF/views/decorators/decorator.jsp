@@ -27,6 +27,8 @@
 
 <link rel="stylesheet" href="/cas/resources/css/BootSideMenu.css"/>
 
+<link rel="stylesheet" href="/cas/resources/css/memberSearch.css" type="text/css">
+
 <script src="/cas/resources/js/BootSideMenu.js"></script>
 
 <script src="/cas/resources/js/jquery.easing.1.3.js" type="text/javascript"></script>
@@ -150,12 +152,14 @@ a {
 div.company-wrap {
     overflow: hidden;
     width: 1000px;
-    margin: 50px auto;
+    margin: 50px 18px;
 }
 
 div.company-snb {
     float: left;
     width: 182px;
+    position: fixed;
+
 }
 
 div.company-snb h2 {
@@ -172,6 +176,7 @@ div.company-snb ul {
 
 div.company-snb ul li {
     margin-bottom: 5px;
+    list-style:none;
 }
 
 div.company-snb ul li a {
@@ -197,6 +202,9 @@ div.company-snb ul li a:hover {
 div.company-cont {
     width: 800px;
     float: right;
+    height: 1100px;
+    padding-left: 32px;
+    
 }
 
 div.company-cont h3.box {
