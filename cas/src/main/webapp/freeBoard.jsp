@@ -40,6 +40,7 @@ li a:hover{
 }
 </style>
 <body>
+<div id="body">
 	<nav class="navbar navbar-default" style="width: 830px; margin:0 auto 20px; text-align:center;">
 		<div class="container-fluid" style=" width: 830px; margin:0 auto;">
 			<ul class="nav navbar-nav">
@@ -97,6 +98,7 @@ li a:hover{
 				</tbody>
 			</table>
 		</div>
+	</div>
 	</div>
 </body>
 </html>
