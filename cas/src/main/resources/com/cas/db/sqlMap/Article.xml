@@ -7,9 +7,24 @@
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="article" type="com.cas.db.dto.ArticleVO"/>
+	<resultMap class="com.cas.db.dto.ArticleVO" id="selectArticle">
+		<result property="contentTitle" column="content_title"/>
+		<result property="contentContent" column="content_content"/>
+		<result property="contentNum" column="content_num"/>
+		<result property="boardCode" column="board_code"/>
+		<result property="contentRegisDate" column="content_regis_date"/>
+		<result property="contentParentsContent" column="content_parents_content"/>
+		<result property="contentWriter" column="content_writer"/>
+		<result property="contentState" column="content_state"/>
+		<result property="consertNum" column="consert_num"/>
+		<result property="contentImg" column="content_img"/>
+	</resultMap>
 	
 	<insert id="insertArticle" parameterClass="article">
-		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#,SYSDATE,null,'test','n','y',null,null)																		
+		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#,SYSDATE,null,'test','n',null,null)																		
 	</insert>
 	
+	<select id="selectArticleList" resultMap="selectArticle">
+		SELECT * FROM CONTENT WHERE BOARD_CODE='B002'
+	</select>
 </sqlMap>

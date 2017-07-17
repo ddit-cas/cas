@@ -73,18 +73,14 @@ body {
 	background-color: #2c2c2c;
 }
 #body{
-<<<<<<< HEAD
-	margin-top:68px;
-=======
 	margin-top:58px;
 }
 
 #body{
 	margin-top: 58px;
->>>>>>> branch 'master' of https://github.com/ddit-cas/cas.git
 }
 
-input[type="text"],input[type="password"]  {
+.loginText{
 	width: 100%;
 	font-size: 13px;
 	padding: 5px;
@@ -347,8 +343,8 @@ h3 {
 			<div id="sidr">
 				<!-- Your content -->
 				<form id="loginForm">
-					<input type="text" name="id" placeholder="아이디를 입력하세요"> <input
-						type="password" name="pwd" placeholder="비밀번호를 입력하세요"> <a
+					<input class="loginText" type="text"  name="id" placeholder="아이디를 입력하세요"> 
+					<input class="loginText" type="password" name="pwd" placeholder="비밀번호를 입력하세요"> <a
 						href="login" class="btn btn-sm animated-button thar-four">로그인</a> <a
 						href="/cas/joinMemberForm" class="btn btn-sm animated-button thar-four">회원가입</a> <a
 						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호

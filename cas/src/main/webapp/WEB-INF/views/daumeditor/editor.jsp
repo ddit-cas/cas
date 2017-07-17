@@ -10,6 +10,9 @@
 		<c:if test="${boardCode=='B005' }">
 		자유게시판 등록
 		</c:if>
+		<c:if test="${boardCode=='B007' }">
+		 공연홍보 등록
+		</c:if>
 	</div>
 	<!-- 에디터 시작 -->
 	<!--
@@ -17,7 +20,7 @@
 		등록하기 위한 Form으로 상황에 맞게 수정하여 사용한다. Form 이름은 에디터를 생성할 때 설정값으로 설정한다.
 	-->
 	<div>
-	<form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/insertFreeboard" method="post" accept-charset="utf-8">
+	<form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/${resultUrl}" method="post" accept-charset="utf-8">
 		<div class="col-sm-1">제목</div>
 		<div class="col-sm-9">
 			<input type="text" name="title">
