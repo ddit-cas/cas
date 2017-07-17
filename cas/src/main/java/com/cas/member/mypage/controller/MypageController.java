@@ -13,7 +13,8 @@ public class MypageController {
 	/*마이페이지 화면으로 가게 하는 메서드*/
 	@RequestMapping("/member/mypage")
 	public String memberMypage(HttpSession session,Model model){
-		return null;
+		String url = "/member/myPage/myPageModify";
+		return url;
 	}
 	
 	/*내정보를 수정하는 메서드*/
@@ -36,7 +37,8 @@ public class MypageController {
 	 */
 	@RequestMapping("/member/fundList")
 	public String memberFundList(HttpSession session,Model model){
-		return null;
+		String url = "/member/myPage/myfundingList";
+		return url;
 	}
 	
 	/*펀딩을 취소하는 메서드*/

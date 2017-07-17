@@ -260,7 +260,7 @@ body {
 						<h3 class="modal-title">내용</h3>
                         <textarea rows="5" cols="65">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</textarea>
                         <div class="btn-ground" style="margin:auto;">
-				<input type="submit" class="btn btn-primary" value="수정" />
+				<a href="myMoviceDetail.jsp"><input type="submit" class="btn btn-primary" value="수정" /></a>
 				<input type="reset" class="btn btn-primary" value="취소" />
 				<input type="submit" class="btn btn-danger" value="삭제" />
                         </div>

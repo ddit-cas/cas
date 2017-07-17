@@ -44,8 +44,8 @@ li a:hover {
 				<ul>
 					<li class="active"><a href="freeBoard.jsp">자유게시판</a></li>
 					<!--li><a href="people.php">PEOPLE</a></li-->
-					<li><a href="noticeBoard.jsp">공연홍보게시판</a></li>
-					<li><a href="cas-contact.jsp">UCC</a></li>
+					<li><a href="#">공연홍보게시판</a></li>
+					<li><a href="#">UCC</a></li>
 				</ul>
 			</div>
 			<!--//tab-intro-->
