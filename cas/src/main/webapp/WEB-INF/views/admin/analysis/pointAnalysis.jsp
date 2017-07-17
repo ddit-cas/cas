@@ -155,16 +155,54 @@ $(function( $ ) {
 			        </tr>
 			      </tbody>
 			    </table>
+			    <!-- 데이터 집어넣을 곳 -->
+			    <table class="hide">
+			    	<tr>
+						<td class="pData">2017-07-01.</td>    	
+						<td class="pRefund">0.</td>    	
+						<td class="pCharge">3000000.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pData">2017-07-01.</td>    	
+						<td class="pRefund">0.</td>    	
+						<td class="pCharge">3000000.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pData">2017-07-01.</td>    	
+						<td class="pRefund">0.</td>    	
+						<td class="pCharge">3000000.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pData">2017-07-01.</td>    	
+						<td class="pRefund">0.</td>    	
+						<td class="pCharge">3000000.</td>    	
+			    	</tr>
+			    </table>
+			    
 			 </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div><!-- /#page-wrapper -->
 
 <script>
 $(function() {
+	var pntData = $('.pData').text().split('.');
+	var pntRef = $('.pRefund').text().split('.');
+	var pntCha = $('.pCharge').text().split('.');
+    
+    var pntArray = new Array();
+	for(var i=0;i<memDate.length-1;i++){
+		var pntData = new Object();
+		pntData.period = pntData[i];
+		pntData.refund = pntRef[i];
+		pntData.charge = pntCha[i];
+		pntArray.push(pntData)
+	}
+	
     // Area Chart
     Morris.Area({
         element: 'morris-area-chart',
-        data: [{
+        data:/* pntArray, */ 
+        	[{
             period: '2014-01-01',
             refund: null,
             charge: 2666

@@ -125,44 +125,99 @@ $(function( $ ) {
 						<th>회원명</th>   
 						<th>전화번호</th>
 						<th>등록날짜</th>
-						<th>모집금액</th>
-						<th>목표금액</th>
+						<th>모집금액(<i class="fa fa fa-krw"></i>)</th>
+						<th>목표금액(<i class="fa fa fa-krw"></i>)</th>
 		        	</tr>
 			      </thead>
 			      <tbody>
 			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
 			        <tr>
 			          <th scope="row">1</th>
-			          <td><a href="#">사랑을 나눠요</a></td> <!-- 게시판 url 적용해야함. -->
+			          <td class="fundName"><a href="#">사랑을 나눠요.</a></td> <!-- 게시판 url 적용해야함. -->
 					  <td>pink212</td>
 					  <td>목대여신</td>
 					  <td>박미현</td>
 					  <td>010-4545-8989</td>
 					  <td>2017-07-14</td>
-					  <td><i class="fa fa fa-krw"></i><span class="counter">&nbsp;58,000</span></td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
+					  <td class="fundCurrentAmount">60000 </td>
+					  <td>150000</td>
 			        </tr>
 			        <tr>
 			          <th scope="row">2</th>
-			          <td><a href="#">열정의 불태우다</a></td> <!-- 게시판 url 적용해야함. -->
+			          <td class="fundName"><a href="#">열정의 불태우다.</a></td> <!-- 게시판 url 적용해야함. -->
 					  <td>pink212</td>
 					  <td>목대여신</td>
 					  <td>박미현</td>
 					  <td>010-4545-8989</td>
 					  <td>2017-07-14</td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;58,000</td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
+					  <td class="fundCurrentAmount">5800 </td>
+					  <td>150000</td>
 			        </tr>
 			        <tr>
 			          <th scope="row">3</th>
-			          <td><a href="#">청년 창업 도와주세요</a></td> <!-- 게시판 url 적용해야함. -->
+			          <td class="fundName"><a href="#">청년 창업 도와주세요.</a></td> <!-- 게시판 url 적용해야함. -->
 					  <td>pink212</td>
 					  <td>목대여신</td>
 					  <td>박미현</td>
 					  <td>010-4545-8989</td>
 					  <td>2017-07-14</td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;58,000</td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
+					  <td class="fundCurrentAmount">40000 </td>
+					  <td>150,000</td>
+			        </tr>
+			        <tr>
+			          <th scope="row">4</th>
+			          <td class="fundName"><a href="#">도망가야지.</a></td> <!-- 게시판 url 적용해야함. -->
+					  <td>pink212</td>
+					  <td>목대여신</td>
+					  <td>박미현</td>
+					  <td>010-4545-8989</td>
+					  <td>2017-07-14</td>
+					  <td class="fundCurrentAmount">27000 </td>
+					  <td>150,000</td>
+			        </tr>
+			        <tr>
+			          <th scope="row">5</th>
+			          <td class="fundName"><a href="#">외로워요.</a></td> <!-- 게시판 url 적용해야함. -->
+					  <td>pink212</td>
+					  <td>목대여신</td>
+					  <td>박미현</td>
+					  <td>010-4545-8989</td>
+					  <td>2017-07-14</td>
+					  <td class="fundCurrentAmount">30000 </td>
+					  <td>150,000</td>
+			        </tr>
+			        <tr>
+			          <th scope="row">6</th>
+			          <td class="fundName"><a href="#">나무를심자.</a></td> <!-- 게시판 url 적용해야함. -->
+					  <td>pink212</td>
+					  <td>목대여신</td>
+					  <td>박미현</td>
+					  <td>010-4545-8989</td>
+					  <td>2017-07-14</td>
+					  <td class="fundCurrentAmount">150000 </td>
+					  <td>150,000</td>
+			        </tr>
+			        <tr>
+			          <th scope="row">7</th>
+			          <td class="fundName"><a href="#">지구사랑.</a></td> <!-- 게시판 url 적용해야함. -->
+					  <td>pink212</td>
+					  <td>목대여신</td>
+					  <td>박미현</td>
+					  <td>010-4545-8989</td>
+					  <td>2017-07-14</td>
+					  <td class="fundCurrentAmount">20000 </td>
+					  <td>150,000</td>
+			        </tr>
+			        <tr>
+			          <th scope="row">8</th>
+			          <td class="fundName"><a href="#">양호짱.</a></td> <!-- 게시판 url 적용해야함. -->
+					  <td>pink212</td>
+					  <td>목대여신</td>
+					  <td>박미현</td>
+					  <td>010-4545-8989</td>
+					  <td>2017-07-14</td>
+					  <td class="fundCurrentAmount">15000 </td>
+					  <td>150,000</td>
 			        </tr>
 			      </tbody>
 			    </table>
@@ -221,9 +276,9 @@ $(function( $ ) {
 					<tbody>
 						<tr>
 							<td>321313213</td> <!-- 게시판 url 적용해야함. -->
-							<td>12121212</td>
-							<td>7979656</td>
-							<td>464646</td>
+							<td id="completeFund">1910000</td>
+							<td id="failFund">1001231</td>
+							<td id="cancelFund">801231</td>
 						</tr>
 					</tbody>
 				</table>		
@@ -249,12 +304,43 @@ $(function( $ ) {
 								<td>800000</td>
 							</tr>
 						</tbody>
+					</table>
+					<!-- Line chart 데이터 등록 후 데이터 집어넣어야 함.  -->
+					<table class="hide">
+						<tr>
+							<td class="fundDate">2017-07-01.</td>
+							<td class="fundEntroll">807.</td>
+						</tr>
+						<tr>
+							<td class="fundDate">2017-07-02.</td>
+							<td class="fundEntroll">607.</td>
+						</tr>
+						<tr>
+							<td class="fundDate">2017-07-03.</td>
+							<td class="fundEntroll">1107.</td>
+						</tr>
+						<tr>
+							<td class="fundDate">2017-07-04.</td>
+							<td class="fundEntroll">800.</td>
+						</tr>
+						<tr>
+							<td class="fundDate">2017-07-05.</td>
+							<td class="fundEntroll">500.</td>
+						</tr>
+						<tr>
+							<td class="fundDate">2017-07-06.</td>
+							<td class="fundEntroll">400.</td>
+						</tr>
+						<tr>
+							<td class="fundDate">2017-07-07.</td>
+							<td class="fundEntroll">2000.</td>
+						</tr>
+						
 					</table>		
                 </div>
                 
             </div>
             <!-- /.row -->
-			<!-- 테이블 들어갈 자리.: 전체 펀딩 수, 진행중인 펀딩수, 종료된 펀딩수(성공한 펀딩수, 실패한 펀딩수, 취소한 펀딩수), 각 평균  -->
 			
         </div>
         <!-- /.container-fluid -->
@@ -267,9 +353,9 @@ $(function() {
 	var ls = "목표달성펀딩";
 	var lf = "달성실패펀딩";
 	var lc = "중간취소펀딩";
-	var fs = 1800000;
-	var ff = 1001231;
-	var fc = 801231;
+	var fs = $('#completeFund').text();
+	var ff = $('#failFund').text();
+	var fc = $('#cancelFund').text();
 
     // Donut Chart
     Morris.Donut({
@@ -287,111 +373,31 @@ $(function() {
 	       	}],
         resize: true,
     });
-
+	
+    
+ 	// Chart data records -- each entry in this array corresponds to a point on
+    // the chart.
+    var fDate = $('.fundDate').text().split('.');
+    var fEntroll = $('.fundEntroll').text().split('.');
+    
+    var LineChartArray = new Array();
+	for(var i=0;i<fDate.length-1;i++){
+		var LineChartData = new Object();
+		LineChartData.d = fDate[i];
+		LineChartData.register = fEntroll[i];
+		LineChartArray.push(LineChartData)
+	}
+    
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
         element: 'morris-line-chart',
-        // Chart data records -- each entry in this array corresponds to a point on
-        // the chart.
-        data: [{
-            d: '2012-10-01',
-            visits: 802
-        }, {
-            d: '2012-10-02',
-            visits: 783
-        }, {
-            d: '2012-10-03',
-            visits: 820
-        }, {
-            d: '2012-10-04',
-            visits: 839
-        }, {
-            d: '2012-10-05',
-            visits: 792
-        }, {
-            d: '2012-10-06',
-            visits: 859
-        }, {
-            d: '2012-10-07',
-            visits: 790
-        }, {
-            d: '2012-10-08',
-            visits: 1680
-        }, {
-            d: '2012-10-09',
-            visits: 1592
-        }, {
-            d: '2012-10-10',
-            visits: 1420
-        }, {
-            d: '2012-10-11',
-            visits: 882
-        }, {
-            d: '2012-10-12',
-            visits: 889
-        }, {
-            d: '2012-10-13',
-            visits: 819
-        }, {
-            d: '2012-10-14',
-            visits: 849
-        }, {
-            d: '2012-10-15',
-            visits: 870
-        }, {
-            d: '2012-10-16',
-            visits: 1063
-        }, {
-            d: '2012-10-17',
-            visits: 1192
-        }, {
-            d: '2012-10-18',
-            visits: 1224
-        }, {
-            d: '2012-10-19',
-            visits: 1329
-        }, {
-            d: '2012-10-20',
-            visits: 1329
-        }, {
-            d: '2012-10-21',
-            visits: 1239
-        }, {
-            d: '2012-10-22',
-            visits: 1190
-        }, {
-            d: '2012-10-23',
-            visits: 1312
-        }, {
-            d: '2012-10-24',
-            visits: 1293
-        }, {
-            d: '2012-10-25',
-            visits: 1283
-        }, {
-            d: '2012-10-26',
-            visits: 1248
-        }, {
-            d: '2012-10-27',
-            visits: 1323
-        }, {
-            d: '2012-10-28',
-            visits: 1390
-        }, {
-            d: '2012-10-29',
-            visits: 1420
-        }, {
-            d: '2012-10-30',
-            visits: 1529
-        }, {
-            d: '2012-10-31',
-            visits: 1892
-        }, ],
+		// dataType is json.
+        data: LineChartArray,
         // The name of the data record attribute that contains x-visitss.
         xkey: 'd',
         // A list of names of data record attributes that contain y-visitss.
-        ykeys: ['visits'],
+        ykeys: ['register'],
         // Labels for the ykeys -- will be displayed when you hover over the
         // chart.
         labels: ['등록펀딩'],
@@ -400,30 +406,25 @@ $(function() {
         resize: true
     });
 
+    var fundName = $('.fundName').text().split(".");
+    var fundCurrentAmount=$('.fundCurrentAmount').text().split(" ");
+	
+	var jsonArray = new Array();
+	for(var i=0;i<fundName.length-1;i++){
+		var jsonData = new Object();
+		jsonData.name = fundName[i];
+		jsonData.amount = fundCurrentAmount[i];
+		jsonArray.push(jsonData)
+	}
+    
     // Bar Chart
     Morris.Bar({
         element: 'morris-bar-chart',
-        data: [{
-            device: '김진성',
-            geekbench: 136
-        }, {
-            device: '박미현',
-            geekbench: 137
-        }, {
-            device: '박성빈',
-            geekbench: 275
-        }, {
-            device: '김민환',
-            geekbench: 380
-        }, {
-            device: '이양호',
-            geekbench: 655
-        }, {
-            device: '설승민',
-            geekbench: 1571
-        }],
-        xkey: 'device',
-        ykeys: ['geekbench'],
+        
+        data: jsonArray,
+        
+        xkey: 'name',
+        ykeys: ['amount'],
         labels: ['펀딩이름'],
         barRatio: 0.4,
         xLabelAngle: 35,
@@ -433,7 +434,6 @@ $(function() {
 
 });
 </script>
-
 
     <!-- jQuery -->
     <script src="<c:url value="/resources/js/analysis/js/jquery.js"/>"></script>

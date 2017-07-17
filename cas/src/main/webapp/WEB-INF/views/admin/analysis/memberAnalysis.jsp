@@ -163,6 +163,14 @@ $(function( $ ) {
 			        </tr>
 			      </tbody>
 			    </table>
+			    
+			    <!-- 데이터 넣을 곳 -->
+			    <table class="hide">
+			    	<tr>
+			    		<td class="mDate">2017-07-01.</td>
+			    		<td class="mRegister">780.</td>
+			    	</tr>
+			    </table>
 			 </div>
 			 </div> 
             <!-- /.row -->
@@ -174,111 +182,123 @@ $(function( $ ) {
 
 <script>
 $(function() {
-
+	
+	var memDate = $('.mDate').text().split('.');
+	var memReg = $('.mRegister').text().split('.');
+    
+    var memArray = new Array();
+	for(var i=0;i<memDate.length-1;i++){
+		var memData = new Object();
+		memData.d = memDate[i];
+		memData.register = memReg[i];
+		memArray.push(memData)
+	}
+	
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
         element: 'morris-line-chart',
         // Chart data records -- each entry in this array corresponds to a point on
         // the chart.
-        data: [{
+        data: /* memArray, */
+        	[{
             d: '2012-10-01',
-            visits: 802
+            register: 802
         }, {
             d: '2012-10-02',
-            visits: 783
+            register: 783
         }, {
             d: '2012-10-03',
-            visits: 820
+            register: 820
         }, {
             d: '2012-10-04',
-            visits: 839
+            register: 839
         }, {
             d: '2012-10-05',
-            visits: 792
+            register: 792
         }, {
             d: '2012-10-06',
-            visits: 859
+            register: 859
         }, {
             d: '2012-10-07',
-            visits: 790
+            register: 790
         }, {
             d: '2012-10-08',
-            visits: 1680
+            register: 1680
         }, {
             d: '2012-10-09',
-            visits: 1592
+            register: 1592
         }, {
             d: '2012-10-10',
-            visits: 1420
+            register: 1420
         }, {
             d: '2012-10-11',
-            visits: 882
+            register: 882
         }, {
             d: '2012-10-12',
-            visits: 889
+            register: 889
         }, {
             d: '2012-10-13',
-            visits: 819
+            register: 819
         }, {
             d: '2012-10-14',
-            visits: 849
+            register: 849
         }, {
             d: '2012-10-15',
-            visits: 870
+            register: 870
         }, {
             d: '2012-10-16',
-            visits: 1063
+            register: 1063
         }, {
             d: '2012-10-17',
-            visits: 1192
+            register: 1192
         }, {
             d: '2012-10-18',
-            visits: 1224
+            register: 1224
         }, {
             d: '2012-10-19',
-            visits: 1329
+            register: 1329
         }, {
             d: '2012-10-20',
-            visits: 1329
+            register: 1329
         }, {
             d: '2012-10-21',
-            visits: 1239
+            register: 1239
         }, {
             d: '2012-10-22',
-            visits: 1190
+            register: 1190
         }, {
             d: '2012-10-23',
-            visits: 1312
+            register: 1312
         }, {
             d: '2012-10-24',
-            visits: 1293
+            register: 1293
         }, {
             d: '2012-10-25',
-            visits: 1283
+            register: 1283
         }, {
             d: '2012-10-26',
-            visits: 1248
+            register: 1248
         }, {
             d: '2012-10-27',
-            visits: 1323
+            register: 1323
         }, {
             d: '2012-10-28',
-            visits: 1390
+            register: 1390
         }, {
             d: '2012-10-29',
-            visits: 1420
+            register: 1420
         }, {
             d: '2012-10-30',
-            visits: 1529
+            register: 1529
         }, {
             d: '2012-10-31',
-            visits: 1892
+            register: 1892
         }, ],
         // The name of the data record attribute that contains x-visitss.
         xkey: 'd',
         // A list of names of data record attributes that contain y-visitss.
-        ykeys: ['visits'],
+        ykeys: ['register'],
         // Labels for the ykeys -- will be displayed when you hover over the
         // chart.
         labels: ['회원수'],
