@@ -11,20 +11,20 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<context:property-placeholder
-		location="classpath:sqlConfigProperties.properties"
+		location="classpath:com/cas/db/sqlConfig/sqlConfigProperties.properties"
 	/>
 		
 	<bean id="dataSource" 
 		class="org.apache.commons.dbcp2.BasicDataSource" 
-		p:driverClassName="{driverClassName}"
-		p:url="{url}"
-		p:username="{username}"
-		p:password="{password}"
+		p:driverClassName="${driverClassName}"
+		p:url="${url}"
+		p:username="cas"
+		p:password="cas"
 	/>
 	
 	<bean id="sqlMapClient" 
 		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
-		p:configLocation="com/cas/db/sqlConfig/SqlMapConfig.xml"
+		p:configLocation="classpath:com/cas/db/sqlConfig/SqlMapConfig.xml"
 		p:dataSource-ref="dataSource" />
 	
 	<!-- spring transaction -->
@@ -46,7 +46,7 @@
 
 	<aop:config>
 		<aop:pointcut id="servicePublicMethod"
-		expression="execution(public * com.cas.service..*Service.*(..))" />
+		expression="execution(public * com.cas.*.service..*Service.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePublicMethod" />
 	</aop:config>
 
