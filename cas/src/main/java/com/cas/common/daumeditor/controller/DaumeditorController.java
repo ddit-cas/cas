@@ -82,6 +82,7 @@ public class DaumeditorController {
 	        // mime
 	        String fileMime = multipartFile.getContentType();
 
+	        System.out.println(fileMime);
 	        // CallBack - Map에 담기
 	        String attachurl = request.getContextPath() + "/upload/board/files/" + modifyName; // separator와는 다름!
 	        fileInfo.put("attachurl", attachurl); // 상대파일경로(사이즈변환이나 변형된 파일)
