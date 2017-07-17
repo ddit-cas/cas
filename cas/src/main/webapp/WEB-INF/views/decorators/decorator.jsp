@@ -12,6 +12,13 @@
 <title></title>
 <meta charset="UTF-8">
 
+<!-- 다음에디터를 쓰기위한 링크 -->
+ <link rel="stylesheet" href="<c:url value="/resources/daumeditor/css/editor.css"/>" type="text/css" charset="utf-8"/>
+ <script src="<c:url value="/resources/daumeditor/js/editor_loader.js"/>" type="text/javascript" charset="utf-8"></script>
+ 
+<!--  비디오태그를 사용하기위한 링크 -->
+ <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet" />
+<script src="http://vjs.zencdn.net/c/video.js"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -27,9 +34,9 @@
 
 <link rel="stylesheet" href="/cas/resources/css/BootSideMenu.css"/>
 
-<link rel="stylesheet" href="/cas/resources/css/casSuccess.css" type="text/css">
 
-<link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css" type="text/css">
+
+<link rel="stylesheet" href="/cas/resources/css/memberSearch.css" type="text/css">
 
 <script src="/cas/resources/js/BootSideMenu.js"></script>
 
@@ -70,6 +77,10 @@ body {
 }
 #body{
 	margin-top:58px;
+}
+
+#body{
+	margin-top: 58px;
 }
 
 input[type="text"],input[type="password"]  {
@@ -156,12 +167,14 @@ a {
 div.company-wrap {
     overflow: hidden;
     width: 1000px;
-    margin: 50px auto;
+    margin: 50px 18px;
 }
 
 div.company-snb {
     float: left;
     width: 182px;
+    position: fixed;
+
 }
 
 div.company-snb h2 {
@@ -178,6 +191,7 @@ div.company-snb ul {
 
 div.company-snb ul li {
     margin-bottom: 5px;
+    list-style:none;
 }
 
 div.company-snb ul li a {
@@ -203,6 +217,9 @@ div.company-snb ul li a:hover {
 div.company-cont {
     width: 800px;
     float: right;
+    height: 1100px;
+    padding-left: 32px;
+    
 }
 
 div.company-cont h3.box {

@@ -5,13 +5,23 @@
 <meta charset="UTF-8">
 
 <body>
-<div class="body">
+<div class="body" id="body">
+	<div>
+		<c:if test="${boardCode=='B005' }">
+		자유게시판 등록
+		</c:if>
+	</div>
 	<!-- 에디터 시작 -->
 	<!--
 		@decsription
 		등록하기 위한 Form으로 상황에 맞게 수정하여 사용한다. Form 이름은 에디터를 생성할 때 설정값으로 설정한다.
 	-->
-	<form name="tx_editor_form" id="tx_editor_form" action="http://posttestserver.com/post.php" method="post" accept-charset="utf-8">
+	<div>
+	<form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/insertFreeboard" method="post" accept-charset="utf-8">
+		<div class="col-sm-1">제목</div>
+		<div class="col-sm-9">
+			<input type="text" name="title">
+		</div>
 		<!-- 에디터 컨테이너 시작 -->
 		<div id="tx_trex_container" class="tx-editor-container">
 			<!-- 사이드바 -->
@@ -244,9 +254,9 @@
 							</div>
 							<div class="tx-menu-footer">
 								<img class="tx-menu-confirm"
-									 src="<c:url value="/daumeditor/images/icon/editor/btn_confirm.gif?rv=1.0.1"/>" alt=""/>
+									 src="<c:url value="/resources/daumeditor/images/icon/editor/btn_confirm.gif?rv=1.0.1"/>" alt=""/>
 								<img class="tx-menu-cancel" hspace="3"
-									 src="<c:url value="/daumeditor/images/icon/editor/btn_cancel.gif?rv=1.0.1"/>" alt=""/>
+									 src="<c:url value="/resources/daumeditor/images/icon/editor/btn_cancel.gif?rv=1.0.1"/>" alt=""/>
 							</div>
 						</div>
 					</li>
@@ -383,7 +393,7 @@
 			<!-- 편집영역 시작 -->
 				<!-- 에디터 Start -->
 	<div id="tx_canvas" class="tx-canvas">
-		<div id="tx_loading" class="tx-loading"><div><img src="<c:url value="/daumeditor/images/icon/editor/loading2.png"/>" width="113" height="21" align="absmiddle"/></div></div>
+		<div id="tx_loading" class="tx-loading"><div><img src="<c:url value="/resources/daumeditor/images/icon/editor/loading2.png"/>" width="113" height="21" align="absmiddle"/></div></div>
 		<div id="tx_canvas_wysiwyg_holder" class="tx-holder" style="display:block;">
 			<iframe id="tx_canvas_wysiwyg" name="tx_canvas_wysiwyg" allowtransparency="true" frameborder="0"></iframe>
 		</div>
@@ -399,12 +409,9 @@
 					<!-- 높이조절 Start -->
 	<div id="tx_resizer" class="tx-resize-bar">
 		<div class="tx-resize-bar-bg"></div>
-		<img id="tx_resize_holder" src="<c:url value="/daumeditor/images/icon/editor/skin/01/btn_drag01.gif"/>" width="58" height="12" unselectable="on" alt="" />
+		<img id="tx_resize_holder" src="<c:url value="/resources/daumeditor/images/icon/editor/skin/01/btn_drag01.gif"/>" width="58" height="12" unselectable="on" alt="" />
 	</div>
 					<div class="tx-side-bi" id="tx_side_bi">
-		<div style="text-align: right;">
-			<img hspace="4" height="14" width="78" align="absmiddle" src="<c:url value="/daumeditor/images/icon/editor/editor_bi.png"/>" />
-		</div>
 	</div>
 				<!-- 편집영역 끝 -->
 			<!-- 첨부박스 시작 -->
@@ -413,7 +420,7 @@
 		<div id="tx_attach_txt" class="tx-attach-txt">파일 첨부</div>
 		<div id="tx_attach_box" class="tx-attach-box">
 			<div class="tx-attach-box-inner">
-				<div id="tx_attach_preview" class="tx-attach-preview"><p></p><img src="<c:url value="/daumeditor/images/icon/editor/pn_preview.gif"/>" width="147" height="108" unselectable="on"/></div>
+				<div id="tx_attach_preview" class="tx-attach-preview"><p></p><img src="<c:url value="/resources/daumeditor/images/icon/editor/pn_preview.gif"/>" width="147" height="108" unselectable="on"/></div>
 				<div class="tx-attach-main">
 					<div id="tx_upload_progress" class="tx-upload-progress"><div>0%</div><p>파일을 업로드하는 중입니다.</p></div>
 					<ul class="tx-attach-top">
@@ -433,6 +440,7 @@
 		</div>
 		<!-- 에디터 컨테이너 끝 -->
 	</form>
+	</div>
 </div>
 <!-- 에디터 끝 -->
 <script type="text/javascript">
@@ -470,14 +478,20 @@
 			    image:{
 			        features:{left:250,top:65,width:400,height:190,scrollbars:0}, //팝업창 사이즈
 			        popPageUrl:'${pageContext.request.contextPath}/daumeditor/imagePopup' //팝업창 주소
-			    }
+			    },
+				file:{ 
+					features:{left:250,top:65,width:400,height:190,scrollbars:0}, // 팝업창 사이즈 
+					popPageUrl:'${pageContext.request.contextPath}/daumeditor/filePopup' // 팝업창 주소 
+				} 
+			},
+			capacity: { 
+				maximum: 5*1024*1024 // 최대 첨부 용량 (5MB) 
 			}
 
 		},
 		size: {
 			contentWidth: 500 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
 		}
-		
 	};
 
 	EditorJSLoader.ready(function(Editor) {
@@ -533,6 +547,7 @@
         textarea.name = 'content';
         textarea.value = content;
         form.createField(textarea);
+        alert(content);
 
         /* 아래의 코드는 첨부된 데이터를 필드를 생성하여 값을 할당하는 부분으로 상황에 맞게 수정하여 사용한다.
          첨부된 데이터 중에 주어진 종류(image,file..)에 해당하는 것만 배열로 넘겨준다. */
@@ -541,10 +556,10 @@
             // existStage는 현재 본문에 존재하는지 여부
             if (images[i].existStage) {
                 // data는 팝업에서 execAttach 등을 통해 넘긴 데이터
-                alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(images[i].data));
+//                 alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(images[i].data));
                 input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'attach_image';
+                input.name = 'attach_image'+(i+1);
                 input.value = images[i].data.imageurl;  // 예에서는 이미지경로만 받아서 사용
                 form.createField(input);
             }
