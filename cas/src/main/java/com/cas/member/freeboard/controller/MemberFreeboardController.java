@@ -15,7 +15,8 @@ public class MemberFreeboardController {
 	 */
 	@RequestMapping("/member/freeboardForm")
 	public String insertFreeboardForm(HttpServletRequest request,Model model){
-		return null;
+		String url = "board/freeBoard";
+		return url;
 	}
 	
 	/*글입력양식을 다 입력후 등록을 누르면 인서트 해주는 메서드*/

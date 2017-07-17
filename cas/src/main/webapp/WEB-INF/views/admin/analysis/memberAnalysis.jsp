@@ -34,6 +34,7 @@ $(function( $ ) {
 });
 </script>
 
+
     <div id="page-wrapper">
 
         <div class="container-fluid">
@@ -42,20 +43,14 @@ $(function( $ ) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                       크라우드 펀드
+                      회원 관리
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-bar-chart-o"></i><a href="#">금액 차트</a>
+                            <i class="fa fa-bar-chart-o"></i><a href="#">회원 카운트 차트</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-table"></i> <a href="#">금액 리스트</a>
-                        </li>
-                        <li class="active">
-                            <i class="fa fa-pie-chart"></i> <a href="#">카운트 차트</a>
-                        </li>
-                        <li class="active">
-                            <i class="fa fa-list-alt"></i> <a href="#">카운트 리스트</a>
+                            <i class="fa fa-table"></i> <a href="#">회원 리스트</a>
                         </li>
                     </ol>
                 </div>
@@ -66,8 +61,9 @@ $(function( $ ) {
             <div class="row">
             	
                 <div class="col-lg-12">
-                    <h2 class="page-header"><i class="fa fa-credit-card">&nbsp;&nbsp;크라우드 펀드 결제 관리</i></h2>
-                    <p class="lead">크라우드 펀딩별 금액 정보를 확인할 수 있습니다.</p>
+                	
+                    <h2 class="page-header"><i class="fa fa-user-circle-o">&nbsp;&nbsp;회원 등록 현황</i></h2>
+                    <p class="lead">회원의 등록 정보를 확인할 수 있습니다.</p>
                 </div>
             </div>
             <!-- /.row -->
@@ -76,10 +72,10 @@ $(function( $ ) {
             	<div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> 펀딩별 모금액</h3>
+                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> 회원 등록 추이</h3>
                         </div>
                         <div class="panel-body">
-                            <div id="morris-bar-chart"></div>
+                            <div id="morris-line-chart"></div>
                             <div class="text-right">
                                 <a href="#">자세히 보기 <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
@@ -91,10 +87,11 @@ $(function( $ ) {
             
             <!-- 리스트 테이블 들어갈 자리. : 금일 펀딩금액, 금월 펀딩 누적액, 총 누적액 월별 펀딩액 평균 -->
 			
+			<div class="row">
             <div class="col-lg-12">
 			<div class="row">
 			<div class="form-group" style="clear:both;">
-			<label style="display:block; float:left; vertical-align:middle;">&nbsp;&nbsp;&nbsp;&nbsp;크라우드 펀딩 현황</label>
+			<label style="display:block; float:left; vertical-align:middle;">&nbsp;&nbsp;&nbsp;&nbsp;회원 현황</label>
 				<div class="col-sm-5" style="float:right; margin-bottom:10px;">
 					<span class="col-sm-4">
 				    <select id="selectbasic" name="selectbasic" class="form-control">
@@ -114,148 +111,61 @@ $(function( $ ) {
 				</div>
 			</div>
 			</div><!-- /.row -->
-			<div class="row">
 			    <table class="table table-hover">
 	      		  <thead>
 		        	<tr>
 			          	<th>#</th>
-				        <th>펀딩명</th>   
 						<th>아이디</th>   
 						<th>닉네임</th>   
 						<th>회원명</th>   
 						<th>전화번호</th>
 						<th>등록날짜</th>
-						<th>모집금액</th>
-						<th>목표금액</th>
+						<th>경고횟수</th>
 		        	</tr>
 			      </thead>
 			      <tbody>
 			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
 			        <tr>
 			          <th scope="row">1</th>
-			          <td><a href="#">사랑을 나눠요</a></td> <!-- 게시판 url 적용해야함. -->
 					  <td>pink212</td>
 					  <td>목대여신</td>
 					  <td>박미현</td>
 					  <td>010-4545-8989</td>
 					  <td>2017-07-14</td>
-					  <td><i class="fa fa fa-krw"></i><span class="counter">&nbsp;58,000</span></td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
+					  <td>0</td>
 			        </tr>
 			        <tr>
 			          <th scope="row">2</th>
-			          <td><a href="#">열정의 불태우다</a></td> <!-- 게시판 url 적용해야함. -->
 					  <td>pink212</td>
 					  <td>목대여신</td>
 					  <td>박미현</td>
 					  <td>010-4545-8989</td>
 					  <td>2017-07-14</td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;58,000</td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
+					  <td>1</td>
 			        </tr>
 			        <tr>
 			          <th scope="row">3</th>
-			          <td><a href="#">청년 창업 도와주세요</a></td> <!-- 게시판 url 적용해야함. -->
 					  <td>pink212</td>
 					  <td>목대여신</td>
 					  <td>박미현</td>
 					  <td>010-4545-8989</td>
 					  <td>2017-07-14</td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;58,000</td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
+					  <td>2</td>
+			        </tr>
+			        <tr>
+			          <th scope="row">4</th>
+					  <td>pink212</td>
+					  <td>목대여신</td>
+					  <td>박미현</td>
+					  <td>010-4545-8989</td>
+					  <td>2017-07-14</td>
+					  <td>정지계정</td>
 			        </tr>
 			      </tbody>
 			    </table>
 			 </div>
 			 </div> 
-
-			<div class="row">
-            	
-                <div class="col-lg-12">
-                    <h2 class="page-header">크라우드 펀드 카운트 관리</h2>
-                    <p class="lead">크라우드 펀딩별 카운트 정보를 확인할 수 있습니다.</p>
-                </div>
-            </div>
             <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> 종료된 펀딩수</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-donut-chart" class="counter"></div>
-                            <div class="text-right">
-                                <a href="#">자세히 보기 <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> 지난 3년간 펀딩 등록수</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-line-chart"></div>
-                            <div class="text-right">
-                                <a href="#">자세히 보기 <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-				<label>완료 펀딩 카운트 리스트</label>
-			    <table class="table table-condensed">
-					<thead>
-						<tr>
-							<th>총 펀딩</th>   
-							<th>목표 달성</th>
-							<th>달성 실패</th>
-							<th>펀딩 취소</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>321313213</td> <!-- 게시판 url 적용해야함. -->
-							<td>12121212</td>
-							<td>7979656</td>
-							<td>464646</td>
-						</tr>
-					</tbody>
-				</table>		
-                </div>
-                <div class="col-lg-6">
-					<label>등록 펀딩 카운트 리스트</label>
-				    <table class="table table-condensed">
-						<thead>
-							<tr>
-								<th>총 펀딩 누적수</th>   
-								<th>전월 등록 펀딩</th>
-								<th>금월 등록 펀딩</th>
-								<th>금일 등록 펀딩</th>
-								<th>월평균 등록 펀딩</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1800500</td> <!-- 게시판 url 적용해야함. -->
-								<td>600500</td>
-								<td>1200000</td>
-								<td>50</td>
-								<td>800000</td>
-							</tr>
-						</tbody>
-					</table>		
-                </div>
-                
-            </div>
-            <!-- /.row -->
-			<!-- 테이블 들어갈 자리.: 전체 펀딩 수, 진행중인 펀딩수, 종료된 펀딩수(성공한 펀딩수, 실패한 펀딩수, 취소한 펀딩수), 각 평균  -->
-			
         </div>
         <!-- /.container-fluid -->
 
@@ -264,29 +174,6 @@ $(function( $ ) {
 
 <script>
 $(function() {
-	var ls = "목표달성펀딩";
-	var lf = "달성실패펀딩";
-	var lc = "중간취소펀딩";
-	var fs = 1800000;
-	var ff = 1001231;
-	var fc = 801231;
-
-    // Donut Chart
-    Morris.Donut({
-        element: 'morris-donut-chart',
-        data: 
-        	[{
-       	     	label: ls,
-       	     	value: fs
-	       	}, {
-	       	    label: lf,
-	       	    value: ff
-	       	}, {
-	       	    label: lc,
-	       	    value: fc
-	       	}],
-        resize: true,
-    });
 
     // Line Chart
     Morris.Line({
@@ -394,40 +281,9 @@ $(function() {
         ykeys: ['visits'],
         // Labels for the ykeys -- will be displayed when you hover over the
         // chart.
-        labels: ['등록펀딩'],
+        labels: ['회원수'],
         // Disables line smoothing
         smooth: false,
-        resize: true
-    });
-
-    // Bar Chart
-    Morris.Bar({
-        element: 'morris-bar-chart',
-        data: [{
-            device: '김진성',
-            geekbench: 136
-        }, {
-            device: '박미현',
-            geekbench: 137
-        }, {
-            device: '박성빈',
-            geekbench: 275
-        }, {
-            device: '김민환',
-            geekbench: 380
-        }, {
-            device: '이양호',
-            geekbench: 655
-        }, {
-            device: '설승민',
-            geekbench: 1571
-        }],
-        xkey: 'device',
-        ykeys: ['geekbench'],
-        labels: ['펀딩이름'],
-        barRatio: 0.4,
-        xLabelAngle: 35,
-        hideHover: 'auto',
         resize: true
     });
 

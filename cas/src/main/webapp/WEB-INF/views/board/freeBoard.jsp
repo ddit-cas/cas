@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <title>자유게시판</title>
 <body>
-	<style>
+<style>
 .form-inline {
 	display: block;
 	text-align: right;
@@ -42,10 +42,10 @@ li a:hover {
 			<h2>커뮤니티</h2>
 			<div class="">
 				<ul>
-					<li class="active"><a href="freeBoard.jsp">자유게시판</a></li>
+					<li class="active"><a href="/member/freeboardForm">자유게시판</a></li>
 					<!--li><a href="people.php">PEOPLE</a></li-->
-					<li><a href="noticeBoard.jsp">공연홍보게시판</a></li>
-					<li><a href="cas-contact.jsp">UCC</a></li>
+					<li><a href="#">공연홍보게시판</a></li>
+					<li><a href="#">UCC</a></li>
 				</ul>
 			</div>
 			<!--//tab-intro-->
@@ -53,7 +53,7 @@ li a:hover {
 		<!--//company-snb-->
 
 		<div class="company-cont">
-			<h3 class="box">공지사항</h3>
+			<h3 class="box">자유게시판</h3>
 			<div class="tab-content">
 				<div id="home" class="tab-pane fade in active">
 					<div class="selectcheck">

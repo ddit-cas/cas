@@ -43,20 +43,14 @@ $(function( $ ) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                       크라우드 펀드
+                       구름 관리
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-bar-chart-o"></i><a href="#">금액 차트</a>
+                            <i class="fa fa-area-chart"></i><a href="#">구름 차트</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-dashboard"></i> <a href="#">금액 리스트</a>
-                        </li>
-                        <li class="active">
-                            <i class="fa fa-bar-chart-o"></i> <a href="#">카운트 차트</a>
-                        </li>
-                        <li class="active">
-                            <i class="fa fa-dashboard"></i> <a href="#">카운트 리스트</a>
+                            <i class="fa fa-table"></i> <a href="#">구름 리스트</a>
                         </li>
                     </ol>
                 </div>
@@ -67,30 +61,17 @@ $(function( $ ) {
             <div class="row">
             	
                 <div class="col-lg-12">
-                    <h2 class="page-header">크라우드 펀드 결제 관리</h2>
-                    <p class="lead">크라우드 펀딩별 금액 정보를 확인할 수 있습니다.</p>
+                    <h2 class="page-header"><i class="fa fa-jsfiddle">&nbsp;&nbsp;구름 결제 관리</i></h2>
+                    <p class="lead">구름의 순익과 각 회원별 구름 정보를 확인할 수 있습니다.</p>
                 </div>
             </div>
             <!-- /.row -->
 
             <div class="row">
-            	<div class="col-lg-12">
+                <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> 펀딩별 모금액</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-bar-chart"></div>
-                            <div class="text-right">
-                                <a href="#">자세히 보기 <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 hidden">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> 지역선 분포 그래프</h3>
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> 구름 순익 그래프 </h3>
                         </div>
                         <div class="panel-body">
                             <div id="morris-area-chart"></div>
@@ -100,394 +81,142 @@ $(function( $ ) {
             </div>
             <!-- /.row -->
             
-            <!-- 리스트 테이블 들어갈 자리. : 금일 펀딩금액, 금월 펀딩 누적액, 총 누적액 월별 펀딩액 평균 -->
+            <!-- 리스트 테이블 들어갈 자리. : 아이디(회원명),닉네임, 전화번호, 충전금액, 환급금액, 잔여 포인트 -->
 			<div class="row">
-            <div class="col-lg-12">
-			<label>펀딩금액</label>
-			    <table class="table table-condensed">
+			<div class="form-group" style="clear:both;">
+			<label style="display:block; float:left;">회원별 구름 현황</label>
+				<div class="col-sm-5" style="float:right; margin-bottom:10px;">
+					<span class="col-sm-4">
+				    <select id="selectbasic" name="selectbasic" class="form-control">
+				      <option value="1">아이디</option>
+				      <option value="2">이름</option>
+				      <option value="3">닉네임</option>
+				      <option value="4">연락처</option>
+				    </select>
+			   		</span>
+				  <span class="input-group">
+				    <input type="text" class="form-control" id="pointSearch" name="pointSearch" placeholder="검색할 값을 입력하세요.">
+				    <span class="input-group-btn">
+				      <button class="btn btn-default" id="pointSearchBtn" type="button">검색</button>
+					    <span class="msgCheckId"></span>
+					</span>    
+				  </span>
+				</div>
+			</div>
+			</div><!-- /.row -->
+<script>
+	$(function(){
+		$('tr').on('click',function(){
+			location.href="pointAnalysisDetail";
+		});
+	});
+</script>			
+			<div class="row">
+			    <table class="table table-hover">
 	      		  <thead>
 		        	<tr>
 			          	<th>#</th>
-				        <th>펀딩명</th>   
 						<th>아이디</th>   
-						<th>닉네임</th>   
-						<th>회원명</th>   
+						<th>회원명(닉네임)</th>   
 						<th>전화번호</th>
-						<th>등록날짜</th>
-						<th>모집금액</th>
-						<th>목표금액</th>
+						<th>충전금액</th>
+						<th>환급금액</th>
+						<th>잔여 구름</th>
 		        	</tr>
 			      </thead>
 			      <tbody>
 			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
 			        <tr>
 			          <th scope="row">1</th>
-			          <td><a href="#">사랑을 나눠요</a></td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
+			          <td><a href="#">pink212</a></td> <!-- 게시판 url 적용해야함. -->
+					  <td>박미현(목대여신)</td>
 					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td><i class="fa fa fa-krw"></i><span class="counter">58,000</span></td>
-					  <td><i class="fa fa fa-krw"></i>150,000</td>
+					  <td><i class="fa fa fa-krw"></i><span class="counter">&nbsp;58,000</span></td>
+					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
+					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;150,000</td>
 			        </tr>
 			        <tr>
 			          <th scope="row">2</th>
-			          <td><a href="#">열정의 불태우다</a></td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
+			          <td><a href="#">bbind</a></td> <!-- 게시판 url 적용해야함. -->
+					  <td>박성빈(대한민국3대빈)</td>
 					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td><i class="fa fa fa-krw"></i>58,000</td>
-					  <td><i class="fa fa fa-krw"></i>150,000</td>
+					  <td><i class="fa fa fa-krw"></i>&nbsp;<span class="counter">58,000</span></td>
+					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
+					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;150,000</td>
 			        </tr>
 			        <tr>
 			          <th scope="row">3</th>
-			          <td><a href="#">청년 창업 도와주세요</a></td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
+			          <td><a href="#">seol</a></td> <!-- 게시판 url 적용해야함. -->
+					  <td>설승민(야잘알)</td>
 					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td><i class="fa fa fa-krw"></i>58,000</td>
-					  <td><i class="fa fa fa-krw"></i>150,000</td>
+					  <td><i class="fa fa fa-krw"></i><span class="counter">&nbsp;58,000</span></td>
+					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
+					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;150,000</td>
 			        </tr>
 			      </tbody>
 			    </table>
-			 </div>
-			 </div> 
-
-			<div class="row">
-            	
-                <div class="col-lg-12">
-                    <h2 class="page-header">크라우드 펀드 카운트 관리</h2>
-                    <p class="lead">크라우드 펀딩별 카운트 정보를 확인할 수 있습니다.</p>
-                </div>
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> 종료된 펀딩수</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-donut-chart" class="counter"></div>
-                            <div class="text-right">
-                                <a href="#">자세히 보기 <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> 지난 3년간 펀딩 등록수</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-line-chart"></div>
-                            <div class="text-right">
-                                <a href="#">자세히 보기 <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-				<label>완료 펀딩 카운트 리스트</label>
-			    <table class="table table-condensed">
-					<thead>
-						<tr>
-							<th>총 펀딩</th>   
-							<th>목표 달성</th>
-							<th>달성 실패</th>
-							<th>펀딩 취소</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>321313213</td> <!-- 게시판 url 적용해야함. -->
-							<td>12121212</td>
-							<td>7979656</td>
-							<td>464646</td>
-						</tr>
-					</tbody>
-				</table>		
-                </div>
-                <div class="col-lg-6">
-					<label>등록 펀딩 카운트 리스트</label>
-				    <table class="table table-condensed">
-						<thead>
-							<tr>
-								<th>총 펀딩 누적수</th>   
-								<th>전월 등록 펀딩</th>
-								<th>금월 등록 펀딩</th>
-								<th>금일 등록 펀딩</th>
-								<th>월평균 등록 펀딩</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1800500</td> <!-- 게시판 url 적용해야함. -->
-								<td>600500</td>
-								<td>1200000</td>
-								<td>50</td>
-								<td>800000</td>
-							</tr>
-						</tbody>
-					</table>		
-	                </div>
-                </div>
-                
-            </div>
-            <!-- /.row -->
-			<!-- 테이블 들어갈 자리.: 전체 펀딩 수, 진행중인 펀딩수, 종료된 펀딩수(성공한 펀딩수, 실패한 펀딩수, 취소한 펀딩수), 각 평균  -->
-			
-        </div>
-        <!-- /.container-fluid -->
-
-    </div>
-    <!-- /#page-wrapper -->
+			 </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div><!-- /#page-wrapper -->
 
 <script>
 $(function() {
-	var ls = "목표달성펀딩";
-	var lf = "달성실패펀딩";
-	var lc = "중간취소펀딩";
-	var fs = 1800000;
-	var ff = 1001231;
-	var fc = 801231;
     // Area Chart
     Morris.Area({
         element: 'morris-area-chart',
         data: [{
-            period: '2014 Q1',
-            iphone: 2666,
-            ipad: null,
-            itouch: 2647
+            period: '2014-01-01',
+            refund: null,
+            charge: 2666
         }, {
             period: '2014 Q2',
-            iphone: 2778,
-            ipad: 2294,
-            itouch: 2441
+            refund: 2294,
+            charge: 2778
         }, {
             period: '2014 Q3',
-            iphone: 4912,
-            ipad: 1969,
-            itouch: 2501
+            refund: 1969,
+            charge: 4912
         }, {
             period: '2014 Q4',
-            iphone: 3767,
-            ipad: 3597,
-            itouch: 5689
+            refund: 3597,
+            charge: 3767
         }, {
-            period: '2015 Q1',
-            iphone: 6810,
-            ipad: 1914,
-            itouch: 2293
+            period: '2015-01-01',
+            refund: 1914,
+            charge: 6810,
         }, {
             period: '2015 Q2',
-            iphone: 5670,
-            ipad: 4293,
-            itouch: 1881
+            charge: 5670,
+            refund: 4293,
         }, {
             period: '2015 Q3',
-            iphone: 4820,
-            ipad: 3795,
-            itouch: 1588
+            charge: 4820,
+            refund: 3795,
         }, {
             period: '2015 Q4',
-            iphone: 15073,
-            ipad: 5967,
-            itouch: 5175
+            charge: 15073,
+            refund: 5967,
         }, {
             period: '2016 Q1',
-            iphone: 10687,
-            ipad: 4460,
-            itouch: 2028
+            charge: 10687,
+            refund: 4460,
         }, {
             period: '2016 Q2',
-            iphone: 6432,
-            ipad: 5713,
-            itouch: 1791
+            charge: 6432,
+            refund: 5713,
         }, {
             period: '2016 Q3',
-            iphone: 5432,
-            ipad: 5713,
-            itouch: 2791
+            charge: 5432,
+            refund: 5713,
         }, {
             period: '2016 Q4',
-            iphone: 4432,
-            ipad: 7713,
-            itouch: 3791
+            charge: 4432,
+            refund: 7713,
         }],
         xkey: 'period',
-        ykeys: ['iphone', 'ipad', 'itouch'],
-        labels: ['2014년', '2015년', '2016년'],
+        ykeys: ['refund','charge'],
+        labels: ['환급금액','충전금액'],
         pointSize: 2,
-        hideHover: 'auto',
-        resize: true
-    });
-
-    // Donut Chart
-    Morris.Donut({
-        element: 'morris-donut-chart',
-        data: 
-        	[{
-       	     	label: ls,
-       	     	value: fs
-	       	}, {
-	       	    label: lf,
-	       	    value: ff
-	       	}, {
-	       	    label: lc,
-	       	    value: fc
-	       	}],
-        resize: true,
-    });
-
-    // Line Chart
-    Morris.Line({
-        // ID of the element in which to draw the chart.
-        element: 'morris-line-chart',
-        // Chart data records -- each entry in this array corresponds to a point on
-        // the chart.
-        data: [{
-            d: '2012-10-01',
-            visits: 802
-        }, {
-            d: '2012-10-02',
-            visits: 783
-        }, {
-            d: '2012-10-03',
-            visits: 820
-        }, {
-            d: '2012-10-04',
-            visits: 839
-        }, {
-            d: '2012-10-05',
-            visits: 792
-        }, {
-            d: '2012-10-06',
-            visits: 859
-        }, {
-            d: '2012-10-07',
-            visits: 790
-        }, {
-            d: '2012-10-08',
-            visits: 1680
-        }, {
-            d: '2012-10-09',
-            visits: 1592
-        }, {
-            d: '2012-10-10',
-            visits: 1420
-        }, {
-            d: '2012-10-11',
-            visits: 882
-        }, {
-            d: '2012-10-12',
-            visits: 889
-        }, {
-            d: '2012-10-13',
-            visits: 819
-        }, {
-            d: '2012-10-14',
-            visits: 849
-        }, {
-            d: '2012-10-15',
-            visits: 870
-        }, {
-            d: '2012-10-16',
-            visits: 1063
-        }, {
-            d: '2012-10-17',
-            visits: 1192
-        }, {
-            d: '2012-10-18',
-            visits: 1224
-        }, {
-            d: '2012-10-19',
-            visits: 1329
-        }, {
-            d: '2012-10-20',
-            visits: 1329
-        }, {
-            d: '2012-10-21',
-            visits: 1239
-        }, {
-            d: '2012-10-22',
-            visits: 1190
-        }, {
-            d: '2012-10-23',
-            visits: 1312
-        }, {
-            d: '2012-10-24',
-            visits: 1293
-        }, {
-            d: '2012-10-25',
-            visits: 1283
-        }, {
-            d: '2012-10-26',
-            visits: 1248
-        }, {
-            d: '2012-10-27',
-            visits: 1323
-        }, {
-            d: '2012-10-28',
-            visits: 1390
-        }, {
-            d: '2012-10-29',
-            visits: 1420
-        }, {
-            d: '2012-10-30',
-            visits: 1529
-        }, {
-            d: '2012-10-31',
-            visits: 1892
-        }, ],
-        // The name of the data record attribute that contains x-visitss.
-        xkey: 'd',
-        // A list of names of data record attributes that contain y-visitss.
-        ykeys: ['visits'],
-        // Labels for the ykeys -- will be displayed when you hover over the
-        // chart.
-        labels: ['등록펀딩'],
-        // Disables line smoothing
-        smooth: false,
-        resize: true
-    });
-
-    // Bar Chart
-    Morris.Bar({
-        element: 'morris-bar-chart',
-        data: [{
-            device: '김진성',
-            geekbench: 136
-        }, {
-            device: '박미현',
-            geekbench: 137
-        }, {
-            device: '박성빈',
-            geekbench: 275
-        }, {
-            device: '김민환',
-            geekbench: 380
-        }, {
-            device: '이양호',
-            geekbench: 655
-        }, {
-            device: '설승민',
-            geekbench: 1571
-        }],
-        xkey: 'device',
-        ykeys: ['geekbench'],
-        labels: ['펀딩이름'],
-        barRatio: 0.4,
-        xLabelAngle: 35,
         hideHover: 'auto',
         resize: true
     });

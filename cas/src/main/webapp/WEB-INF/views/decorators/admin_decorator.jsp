@@ -48,16 +48,16 @@
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">크라우드펀드관리<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">클라우드 펀딩 결제관리</a></li>
-							<li><a href="#">클라우드 펀딩 카운트관리</a></li>
+							<li><a href="#">크라우드 펀딩 결제관리</a></li>
+							<li><a href="#">크라우드 펀딩 카운트관리</a></li>
 						</ul>
 					</li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">포인트 관리<span class="caret"></span></a>
+						data-toggle="dropdown" href="#">구름 관리<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							
-							<li><a href="#">펀딩 카운트</a></li>
-							<li><a href="#">포인트 카운트</a></li>
+							<li><a href="#">구름 결제</a></li>
+							<li><a href="#">구름 카운트</a></li>
 						</ul>
 					</li>
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -69,7 +69,7 @@
 							<li><a href="#">펀딩 성공 사례</a></li>
 							<li><a href="#">자유 게시판</a></li>
 							<li><a href="#">공연 홍보</a></li>
-							<li><a href="#">pr 영상</a></li>
+							<li><a href="#">UCC</a></li>
 							<li><a href="#">QnA</a></li>
 							<li><a href="#">클라우드 펀딩</a></li>
 						</ul>
