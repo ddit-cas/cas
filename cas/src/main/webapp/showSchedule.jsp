@@ -116,7 +116,7 @@
 				month = 1;
 				year++;
 			}
-			
+			$("#monthShow").html("asdasd");
 			if (month < 10) {
 				$("#yearMonth").text(year+'.0' + month);
 			} else {

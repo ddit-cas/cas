@@ -30,6 +30,7 @@ public class MemberFreeboardController {
 	@RequestMapping("/member/freeboardForm")
 	public String insertFreeboardForm(HttpServletRequest request,Model model){
 		model.addAttribute("boardCode", "B005");
+		model.addAttribute("resultUrl", "insertFreeboard");
 		return "/daumeditor/editor";
 	}
 	
