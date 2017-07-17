@@ -334,7 +334,7 @@ h3 {
 					<input type="text" name="id" placeholder="아이디를 입력하세요"> <input
 						type="password" name="pwd" placeholder="비밀번호를 입력하세요"> <a
 						href="login" class="btn btn-sm animated-button thar-four">로그인</a> <a
-						href="signup.jsp" class="btn btn-sm animated-button thar-four">회원가입</a> <a
+						href="/cas/joinMemberForm" class="btn btn-sm animated-button thar-four">회원가입</a> <a
 						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호
 						찾기</a>
 				</form>
@@ -392,7 +392,7 @@ h3 {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"
+				<a class="navbar-brand" href="/cas/main"
 					style="padding: 0; margin: 0 15px 0 15px;"> <img
 					src='<c:url value='/resources/images/logo.png' />' style="width: 80px; height: 50px;">
 				</a>
