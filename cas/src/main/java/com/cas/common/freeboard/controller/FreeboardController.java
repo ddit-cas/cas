@@ -12,7 +12,12 @@ public class FreeboardController {
 	/*자유게시판 리스트를 보여주는 메서드*/
 	@RequestMapping("/freeboardList")
 	public String freeboardList(Model model){
+<<<<<<< HEAD
 		return "member/community/freeBoard/freeBoard";
+=======
+		String url = "member/community/freeBoard/freeBoard";
+		return url;
+>>>>>>> refs/heads/develop-mihyun
 	}
 	
 	/*자유게시판에서 검색하면 작동하는 메서드*/
