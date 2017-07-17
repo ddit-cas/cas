@@ -96,14 +96,14 @@
 <div class="company-wrap">
 
 	<div class="company-snb">
-				<h2>회사소개</h2>
+				<h2>크라우드 펀딩</h2>
 				<div class="">
 					<ul>
-						<li class="active"><a href="#">공지사항</a></li>
-						<li><a href="promotion">CAS란</a></li>
-						<li><a href="fundingExampleList">펀딩 성공 사례</a></li>
-						<li><a href="#">공연 행사 일정</a></li>
-					</ul>
+					<li class="active"><a href="fundList">진행중인 펀딩</a></li>
+					<li><a href="#">종료된 펀딩</a></li>
+					<li><a href="fundingExampleList">성공한 펀딩 </a></li>
+					<li><a href="#">펀딩 등록하기 </a></li>
+				</ul>
 				</div>
 			</div>
 
@@ -126,7 +126,7 @@
 								<!-- 캠페인 -->
 								<div class="wd-ui-campaign3 " style="">
 									<a href="fundingExampleDetail"><em
-										class="wd-icon-campaign-complete"></em> <!-- S : 프로젝트 사진 -->
+										class="wd-icon-campaign-complete" ><img src="resources/images/icon_complete.png"></em> <!-- S : 프로젝트 사진 -->
 										<div class="wd-ui-cp-title">
 											<div
 												style="background-color: #363636; background-image: url(https://www.wadiz.kr/wwwwadiz/green001/2014/0906/ZUXJIFLVHIMK_thumb.jpg); width: 226px; height: 206px; margin: 10px; background-size: 290px 206px;"
@@ -139,7 +139,7 @@
 											class="progressbar progressbarcss ui-progressbar ui-widget ui-corner-all"
 											role="progressbar" aria-valuemin="0" aria-valuemax="100"
 											aria-valuenow="64"
-											style="margin: 10px -1px -1px 10px; height: 8px; width: 270px; overflow: visible; background: #ffffff">
+											style="margin: 10px -1px -1px 10px; height: 8px; width: 204px; overflow: visible; background: #ffffff">
 											<div class="ui-progressbar-value ui-corner-left"
 												style="border-radius: 4px; display: block; width: 101%; margin: -1px; background: rgb(0, 175, 132);"></div>
 										</div>

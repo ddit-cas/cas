@@ -1,0 +1,391 @@
+@CHARSET "UTF-8";
+
+
+.wpayment-wrap {
+    width: 100%;
+}
+
+#wpaymentHeader {
+    position: fixed;
+    top: 52px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.wpayment-header {
+    position: relative;
+    background: #26bbe2;
+}
+
+.wpayment-header h2 {
+    height: 11px;
+    text-align: center;
+    font-size: 17px;
+    color: #fff;
+    line-height: 8px;
+}
+
+.wpayment-inputstock .inner-wrap {
+    padding: 20px 15px;
+    background: #fafafa;
+}
+
+#wpaymentContent h3 {
+    font-size: 12px;
+    line-height: 27px;
+    color: #A29584;
+}
+
+.wpayment-inputstock .stock-info {
+    width: 100%;
+    /* padding-top: 30px; */
+    border-bottom: 1px solid #e4e4e4;
+}
+.wpayment-inputstock .stock-info dl {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.wpayment-inputstock .stock-info dt {
+    float: left;
+    width: 50%;
+    font-size: 15px;
+    color: #333;
+}
+
+.wpayment-inputstock .stock-info dd {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: right;
+    width: 50%;
+    text-align: right;
+    font-size: 15px;
+    color: #555;
+}
+
+.wpayment-inputstock .inputstock-wrap {
+    width: 100%;
+    padding: 2px 0 10px;
+}
+.wpayment-inputstock .inputstock-wrap dl {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.wpayment-inputstock .inputstock-wrap dl.input-wrap dd {
+    float: right;
+    text-align: right;
+    width: 44%;
+}
+
+/* .wpayment-inputstock .inputstock-wrap dd { */
+/*     overflow: hidden; */
+/*     text-overflow: ellipsis; */
+/*     white-space: nowrap; */
+/*     font-size: 15px; */
+/*     color: #555; */
+/* } */
+
+.wpayment-inputstock .inputstock-wrap dl.input-wrap dd .input-stock {
+    overflow: hidden;
+    display: block;
+    padding: 6px 12px;
+    background: #fff;
+    color: #A29584;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: right;
+    border: 1px solid #ddd;
+}
+
+.wpayment-inputstock .inputstock-wrap dl.input-wrap dd .input-stock .input-text {
+    height: 20px;
+    width: 70%;
+    min-width: 90px;
+    display: inline-block;
+    padding: 0 5px 0 0;
+    margin: 0 8px 0 0;
+    color: #A29584;
+    font-size: 13px;
+    line-height: 21px;
+    text-align: right;
+    border: none;
+    background: #fff;
+    border-radius: 0;
+}
+#wpaymentContent .sub-text {
+    padding: 6px 0 10px 0;
+    font-size: 13px;
+    color: #777;
+    line-height: 18px;
+}
+.wpayment-inputstock .setting-account {
+    width: 100%;
+}
+
+
+
+.wpayment-inputstock .setting-account .btn-basic span {
+    display: block;
+    padding-left: 38px;
+    background: url(/resources/static/img/common/icon_gray_account.png) no-repeat 0 center;
+    background-size: 26px 19px;
+}
+#wpaymentContainer button.btn-basic strong {
+    font-size: 17px;
+    color: #777;
+    line-height: 30px;
+    font-weight: normal;
+}
+
+.wpayment-userinfo .type-info dt {
+    float: left;
+    width: 62px;
+    height: 62px;
+    padding-right: 12px;
+}
+
+
+.wpayment-userinfo .type-info dt em {
+    display: block;
+    width: 62px;
+    height: 62px;
+    background: no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+}
+.wpayment-userinfo .type-info dd p {
+    font-size: 13px;
+    color: #777;
+}
+
+.wpayment-userinfo .type-info dd p.type {
+    padding-top: 8px;
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+.wpayment-userinfo .type-info dl {
+    padding: 20px 15px;
+}
+
+#wpaymentContent {
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 0px;
+    padding-bottom: 0;
+}
+
+.wpayment-agree-wrap {
+    padding: 40px 15px;
+    margin-bottom: 8px;
+    background: #fff;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+}
+
+#wpaymentContent h3 {
+    font-size: 15px;
+    line-height: 27px;
+    color: #A29584;
+}
+
+.wpayment-agree-wrap .sort_term {
+    width: 100%;
+    padding-top: 12px;
+}
+
+
+.wpayment-agree-wrap .sort_term li {
+    overflow: hidden;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-align: left;
+    background: #fff;
+}
+
+.wpayment-agree-wrap .sort_term li label {
+    display: inline-block;
+    width: 80%;
+    height: 30px;
+    font-size: 13px;
+    line-height: 30px;
+    color: #999;
+    cursor: pointer;
+}
+
+.wpayment-agree-wrap .sort_term li button {
+    float: right;
+    height: 30px;
+    font-size: 11px;
+    line-height: 30px;
+    color: #999;
+    text-align: right;
+    text-decoration: underline;
+}
+
+
+
+.wpayment-wrap button {
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+#wpaymentContent h3 {
+    font-size: 15px;
+    line-height: 27px;
+    color: #A29584;
+}
+
+.wpayment-popup .wpayment-popcontent {
+    padding: 0;
+    height: 483px;
+    overflow-y: auto;
+}
+
+#wpaymentContent .sub-text {
+    padding: 6px 0 10px 0;
+    font-size: 13px;
+    color: #777;
+    line-height: 18px;
+}
+
+.wpayment-email-confirm .email-info dt {
+    float: left;
+    width: 60%;
+    font-size: 15px;
+    color: #999;
+    line-height: 21px;
+}
+
+.wpayment-email-confirm .inner-btn-wrap {
+    width: 100%;
+    padding: 20px 0 0;
+}
+
+/* 팝업 설정 css */
+
+#wpaymentContainer button.btn-complete {
+    display: block;
+    width: 100%;
+    height: 52px;
+    line-height: 52px;
+    text-align: center;
+    color: #fff;
+    font-size: 17px;
+    background: #23DBAB;
+}
+
+.wpayment-popheader {
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    z-index: 10;
+}
+.wpayment-popheader h2 {
+    height: 44px;
+    text-align: center;
+    font-size: 17px;
+    color: #333;
+    line-height: 44px;
+}
+
+.pop-setting-account {
+    padding: 7px 24px 0 24px;
+}
+.pop-setting-account .radio-wrap {
+    width: 100%;
+    margin-bottom: 30px;
+}
+.pop-setting-account .radio-wrap li {
+    display: inline-block;
+}
+
+
+.pop-setting-account #accountTypeCon2 {
+    display: block;
+}
+.pop-setting-account .input-wrap dl {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.pop-setting-account .input-wrap dt {
+    width: 25%;
+    font-size: 15px;
+    line-height: 48px;
+    color: #333;
+}
+
+.pop-setting-account .input-wrap dd {
+    float: right;
+    width: 75%;
+    font-size: 15px;
+    color: #555;
+}
+
+.pop-setting-account .input-wrap dl:last-child {
+    margin-bottom: 0;
+}
+
+.wpayment-notice-comment {
+    padding: 20px 24px;
+    text-align: justify;
+}
+.wpayment-notice-comment p {
+    margin-bottom: 15px;
+    font-size: 10px;
+    line-height: 15px;
+    color: #777;
+}
+.wpayment-notice-comment p em {
+    color: #23DBAB;
+}
+.wpayment-popup .pop-btn-wrap {
+    position: static;
+}
+
+.wpayment-popup .pop-btn-wrap .terms {
+    padding: 10px;
+    background: #f4f4f4;
+    border-top: 1px solid #eaeaea;
+}
+
+.wpayment-popup .div2 {
+    text-align: center;
+}
+
+#wpaymentContainer button.btn-complete:disabled {
+    color: #aaa;
+    background: #999;
+    border: 1px solid #999;
+    cursor: default;
+}
+#wpaymentContainer button.btn-cancel {
+    height: 52px;
+    margin-right: 6px;
+    line-height: 52px;
+    text-align: center;
+    color: #777;
+    font-size: 17px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.wpayment-popup .pop-btn-wrap {
+    position: static;
+}
+
+.wpayment-popup .pop-btn-wrap .terms {
+    padding: 10px;
+    background: #f4f4f4;
+    border-top: 1px solid #eaeaea;
+}
