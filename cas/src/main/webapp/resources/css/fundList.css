@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+@media #wmainWrap {
+    width: 960px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+
+#mainContainer {
+    position: relative;
+    background: #f8f8f8;
+    font-family: Roboto, 'Noto Sans KR', sans-serif;
+    color: #4a4a4a;
+    -webkit-font-smoothing: antialiased;
+}

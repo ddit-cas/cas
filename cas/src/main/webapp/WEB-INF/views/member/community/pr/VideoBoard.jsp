@@ -4,9 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 .tdclass{
-	text-align: center;
+
 }
 .trclass{
+	text-align: left;
 	float: left;
 }
 .imgclass{
@@ -40,9 +41,11 @@ div#wrap {
 		<tr class="trclass">
 			<td class="tdclass">
 				<div>
-					<a href='<c:url value="/resources/images/logo.png" />'><img class="imgclass" alt="땡!!" src='<c:url value='/resources/images/logo.png' />'></a>
+					<a href='<c:url value="/resources/images/logo.png" />'>
+						<img class="imgclass" alt="땡!!" src='<c:url value='/resources/images/logo.png' />'>
+					</a>
 					<br><a href='<c:url value="/resources/images/logo.png" />'>${i}</a>
-					<br>글쓴이
+					<br><a href="#">글쓴이</a>
 					<br>작성일
 				</div>
 			</td>

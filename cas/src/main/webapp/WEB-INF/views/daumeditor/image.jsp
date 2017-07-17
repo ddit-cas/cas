@@ -6,30 +6,33 @@
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	
-	<title>Daum에디터 - 이미지 첨부</title>
+	<title>이미지 첨부</title>
 	
 	<!-- 다음오픈에디터 라이브러리 -->
 	<link rel="stylesheet" href="/cas/resources/daumeditor/css/popup.css" type="text/css"  charset="utf-8"/>
 	<script src="/cas/resources/daumeditor/js/popup.js" type="text/javascript" charset="utf-8"></script>
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type='text/javascript' src='http://malsup.github.com/jquery.form.js'></script>
+	
 	<script>
-		
-		//첨부한 이미지를 에디터에 적용시키는 함수
-		function done() {
+	
+		// 첨부한 이미지를 에디터에 적용시키는 함수 
+		function done(fileInfo) { // fileInfo는 Ajax 요청 후 리턴하는 JSON형태의 데이터를 담을 객체 
 			if (typeof(execAttach) == 'undefined') {
-				return;
-	    		}
+				return; 
+			} 
 			
 			var _mockdata = {
-				'imageurl': 'http://cfile284.uf.daum.net/image/116E89154AA4F4E2838948',
-				'filename': 'editor_bi.gif',
-				'filesize': 640,
-				'imagealign': 'C',
-				'originalurl': 'http://cfile284.uf.daum.net/original/116E89154AA4F4E2838948',
-				'thumburl': 'http://cfile284.uf.daum.net/P150x100/116E89154AA4F4E2838948'
-			};
-			execAttach(_mockdata);
-			closeWindow();
+					'imageurl': fileInfo.imageurl, 
+					'filename': fileInfo.filename, 
+					'filesize': fileInfo.filesize, 
+					'imagealign': fileInfo.imagealign, 
+					'originalurl': fileInfo.originalurl, 
+					'thumburl': fileInfo.thumburl 
+			}; 
+			execAttach(_mockdata); // 다음오픈에디터에 붙이기 
+			closeWindow(); // 이미지 팝업 종료
 		}
 		
 		//잘못된 경로로 접근할 때 호출되는 함수
@@ -44,7 +47,7 @@
 	    		registerAction(_attacher);
 		}
 		
-		$(document).ready(function (){ 
+		$(function (){ 
 			// <input type=file> 태그 기능 구현
 			$('.file input[type=file]').change(function (){ 
 				var inputObj = $(this).prev().prev();// 두번째 앞 형제(text) 객체 
@@ -52,8 +55,50 @@
 				inputObj.val(fileLocation.replace('C:\\fakepath\\','')); 
 				// 몇몇 브라우저는 보안을 이유로 경로가 변경되서 나오므로 대체 후 text에 경로 넣기 
 				}); 
+			
+			// 등록버튼 클릭 이벤트
+			$('.submit a').on('click', function () {
+
+			    var form = $('#daumOpenEditorForm');                // form id값
+			    var fileName = $('.file input[type=file]').val();    // 파일명(절대경로명 또는 단일명)
+
+			    form.ajaxSubmit({
+			        type: 'POST',
+			        url: 'singleUploadImageAjax',
+			        dataType: 'JSON',                                                    // 리턴되는 데이타 타입
+			        beforeSubmit: function() {
+			            if(validation(fileName)) {                                        // 확장자 체크 (jpg, gif, png, bmp)
+			                return false;
+			            }
+			        },
+			        success: function(fileInfo) {                                        // fileInfo는 이미지 정보를 리턴하는 객체
+			            if(fileInfo.result===-1) {                                        // 서버단에서 체크 후 수행됨
+			                alert('jpg, gif, png, bmp 확장자만 업로드 가능합니다.');
+			                return false;
+			            } else if(fileInfo.result===-2) {                                // 서버단에서 체크 후 수행됨
+			                alert('파일이 1MB를 초과하였습니다.');
+			                return false;
+			            } else {
+			                done(fileInfo);                                                // 첨부한 이미지를 에디터에 적용시키고 팝업창을 종료
+			            }
+			        }
+			    });
 			});
 
+			
+			});
+		
+		// 확장자 체크 (서버단에서도 검사함) 
+		function validation(fileName) { 
+			var fileNameExtensionIndex = fileName.lastIndexOf('.') + 1; // .뒤부터 확장자 
+			var fileNameExtension = fileName.toLowerCase().substring(fileNameExtensionIndex,fileName.length); // 확장자 자르기 
+			if(!((fileNameExtension === 'jpg') || (fileNameExtension === 'gif') || (fileNameExtension === 'png') || (fileNameExtension === 'bmp'))) { 
+				alert('jpg, gif, png, bmp 확장자만 업로드 가능합니다.'); 
+				return true; 
+				} else { 
+					return false; 
+				} 
+		}
 		
 	</script>
 
@@ -139,11 +184,8 @@
 
 		</div>
 		<div class="footer">
-			<p>
-				<a href="#" onclick="closeWindow();" title="닫기" class="close">닫기</a>
-			</p>
 			<ul>
-				<li class="submit"><a href="#" onclick="done();" title="등록" class="btnlink">등록</a> </li>
+				<li class="submit"><a href="#" title="등록" class="btnlink">등록</a> </li>
 				<li class="cancel"><a href="#" onclick="closeWindow();" title="취소" class="btnlink">취소</a></li>
 			</ul>
 		</div>

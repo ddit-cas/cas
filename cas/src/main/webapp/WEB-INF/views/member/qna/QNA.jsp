@@ -26,8 +26,10 @@ div#wrap {
 		<input type="button" value="글쓰기"/>
 	</div>
 	<table style="width: 100%; float: left; text-align: center;">
-		<tr style="border: 1px solid; margin: 5px;">
-			<td width="70%">제목</td><td>작성자</td><td>작성시간</td>
+		<tr>
+			<th width="70%"style="text-align: center; font-size: 15px;">제목</th>
+			<th style="text-align: center; font-size: 15px;">작성자</th>
+			<th style="text-align: center; font-size: 15px;">작성시간</th>
 		</tr>
 		<c:forEach var="i" begin="0" end="10">
 		<tr>
