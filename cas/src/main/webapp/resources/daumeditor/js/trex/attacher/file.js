@@ -200,21 +200,27 @@ Trex.Attachment.File = Trex.Class.create({
 		return _parastyle;
 	},
 	getSaveHtml: function(data) {
-		return "<a href=\"" + data.attachurl + "\"><img src=\"" + data.prevurl + "\"/> " + data.filename + "</a>";
+//		return "<a href=\"" + data.attachurl + "\"><img src=\"" + data.prevurl + "\"/> " + data.filename + "</a>";
+		return "<video src=\"" + data.attachurl + "\" controls />";
 	},
 	getDispHtml: function(data) {
-		return "<button id=\"" + data.dispElId + "\" class=\"txc-file\"><img class=\"tx-unresizable\" src=\"" + data.prevurl + "\" ld=\"" + data.attachurl + "\"/> " + data.filename + "</button>";
+//		return "<button id=\"" + data.dispElId + "\" class=\"txc-file\"><img class=\"tx-unresizable\" src=\"" + data.prevurl + "\" ld=\"" + data.attachurl + "\"/> " + data.filename + "</button>";
+		return "<video src=\"" + data.attachurl + "\" controls/>";
 	},
 	getDispText: function(data) {
-		return "[" + TXMSG("@file.title") + ":" + data.dataSeq + "]";
+//		return "[" + TXMSG("@file.title") + ":" + data.dataSeq + "]";
+		return "<video src=\"" + data.attachurl + "\" controls/>";
 	},
 	getRegLoad: function(data) {
-		return new RegExp("<(?:a|A)\\s*href=\"?" + data.attachurl.getRegExp() + "[^\"]*\"?[^>]*><(?:img|IMG)[^>]*\/?>[\\S\\s]*?<\/(?:a|A)>", "gm");
+		return "<video src=\"" + data.attachurl + "\" controls/>";
+//		return new RegExp("<(?:a|A)\\s*href=\"?" + data.attachurl.getRegExp() + "[^\"]*\"?[^>]*><(?:img|IMG)[^>]*\/?>[\\S\\s]*?<\/(?:a|A)>", "gm");
 	},
 	getRegHtml: function(data) {
-		return new RegExp("<(?:button|BUTTON)[^>]*id=\"?" + data.dispElId + "\"?[^>]*>[\\S\\s]*?" + data.attachurl.getRegExp() + "[\\S\\s]*?<\/(?:button|BUTTON)>", "gm");
+		return "<video src=\"" + data.attachurl + "\" controls/>";
+//		return new RegExp("<(?:button|BUTTON)[^>]*id=\"?" + data.dispElId + "\"?[^>]*>[\\S\\s]*?" + data.attachurl.getRegExp() + "[\\S\\s]*?<\/(?:button|BUTTON)>", "gm");
 	},
 	getRegText: function(data) {
-		return new RegExp("\\[" + TXMSG("@file.title") + ":" + data.dataSeq + "\\]", "gm");
+		return "<video src=\"" + data.attachurl + "\" controls/>";
+//		return new RegExp("\\[" + TXMSG("@file.title") + ":" + data.dataSeq + "\\]", "gm");
 	}
 });

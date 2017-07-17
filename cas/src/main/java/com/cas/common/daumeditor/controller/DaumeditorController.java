@@ -31,6 +31,11 @@ public class DaumeditorController {
 		return "/daumeditor/image";
 	}
 	
+	@RequestMapping("/videoPopup")
+	public String videoPopup(){
+		return "/daumeditor/video";
+	}
+	
 	// 단일 파일 업로드 Ajax
 	@RequestMapping(value = "/singleUploadFileAjax", method = RequestMethod.POST)
 	public @ResponseBody HashMap singleUploadFileAjax(@RequestParam("Filedata") MultipartFile multipartFile, HttpSession httpSession,HttpServletRequest request) {
@@ -39,13 +44,20 @@ public class DaumeditorController {
 
 	    // 업로드 파일이 존재하면
 	    if(multipartFile != null && !(multipartFile.getOriginalFilename().equals(""))) {
-
+			// 확장자 제한 
+			String originalName = multipartFile.getOriginalFilename(); // 실제 파일명 
+			String originalNameExtension = originalName.substring(originalName.lastIndexOf(".") + 1).toLowerCase(); // 실제파일 확장자 (소문자변경) 
+	    	if( !( (originalNameExtension.equals("mp4")) || (originalNameExtension.equals("avi")) || (originalNameExtension.equals("mpeg")) || (originalNameExtension.equals("wmv")) ) ){ 
+				fileInfo.put("result", -1); // 허용 확장자가 아닐 경우 
+				return fileInfo; 
+			} 
+	    	
 	        // 파일크기제한 (5MB)
 	        long filesize = multipartFile.getSize(); // 파일크기
-	        long limitFileSize = 5*1024*1024; // 5MB
+	        long limitFileSize = 300*1024*1024; // 300MB
 	        if(limitFileSize < filesize){ // 제한보다 파일크기가 클 경우
-	            fileInfo.put("result", -1);
-	            return fileInfo;
+	            fileInfo.put("result", -2);
+	            return fileInfo; 
 	        }
 
 	        // 저장경로
@@ -61,7 +73,6 @@ public class DaumeditorController {
 	        // 파일 저장명 처리 (20150702091941-파일명)
 	        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
 	        String today= formatter.format(new Date());
-	        String originalName = multipartFile.getOriginalFilename(); // 파일이름
 	        String modifyName = today + "-" + originalName; 
 
 	        // Multipart 처리
@@ -84,7 +95,7 @@ public class DaumeditorController {
 
 	        System.out.println(fileMime);
 	        // CallBack - Map에 담기
-	        String attachurl = request.getContextPath() + "/upload/board/files/" + modifyName; // separator와는 다름!
+	        String attachurl = request.getContextPath() + "/upload/files/" + modifyName; // separator와는 다름!
 	        fileInfo.put("attachurl", attachurl); // 상대파일경로(사이즈변환이나 변형된 파일)
 	        fileInfo.put("filemime", fileMime); // mime
 	        fileInfo.put("filename", modifyName); // 파일명

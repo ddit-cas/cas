@@ -477,15 +477,12 @@
 			attacher:{
 			    image:{
 			        features:{left:250,top:65,width:400,height:190,scrollbars:0}, //팝업창 사이즈
-			        popPageUrl:'${pageContext.request.contextPath}/daumeditor/imagePopup' //팝업창 주소
+			        popPageUrl:'${pageContext.request.contextPath}/daumeditor/imagePopup', //팝업창 주소
 			    },
 				file:{ 
 					features:{left:250,top:65,width:400,height:190,scrollbars:0}, // 팝업창 사이즈 
-					popPageUrl:'${pageContext.request.contextPath}/daumeditor/filePopup' // 팝업창 주소 
-				} 
-			},
-			capacity: { 
-				maximum: 5*1024*1024 // 최대 첨부 용량 (5MB) 
+					popPageUrl:'${pageContext.request.contextPath}/daumeditor/filePopup', // 팝업창 주소 
+				}
 			}
 
 		},
