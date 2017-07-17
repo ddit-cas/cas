@@ -5,8 +5,59 @@
 <html>
 
 
+
+
 <body>
+
+
 <link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css" type="text/css">
+
+<style>
+div.company-wrap {
+    overflow: hidden;
+    width: 1000px;
+    margin: -57px 212px;
+}
+
+.detail-top-wrap .top-title h3 {
+    font-size: 29px;
+    line-height: 42px;
+    font-weight: 500;
+    text-align: center;
+    color: #fff;
+}
+
+.wd-layout-sub-content-inner {
+    width: 1071px;
+    /* width: 1000px; */
+    margin: 0 -77px;
+    padding: 0 80px;
+    overflow: hidden;
+    /* min-height: 700px; */
+}
+
+
+
+</style>
+
+
+
+<div id="body">
+<div class="company-snb" style="float:left;">
+				<h2>회사소개</h2>
+				<div class="">
+					<ul>
+						<li class="active"><a href="#">공지사항</a></li>
+						<li><a href="promotion">CAS란</a></li>
+						<li><a href="fundingExampleList">펀딩 성공 사례</a></li>
+						<li><a href="#">공연 행사 일정</a></li>
+					</ul>
+				</div>
+			</div>
+
+<div class="company-wrap" style="width:920px; float:left;">
+
+	
 
 	<div class="detail-top-wrap">
 		<div class="top-title">
@@ -991,6 +1042,10 @@ $('#testBtn').click(function(){
 			</div>
 			<!-- //서브 컨텐트 영역 -->
 		</div>
+		</div>
+		
+</div>
+
 <script type="text/javascript" src="/resources/static/js/waccount/wfacebookAccount.js?ver20170210"></script>
 <script type="text/javascript" src="/resources/js/jquery/countdown/jquery.countdown.min.js"></script>
 <script src="/resources/static/js/lib/clipboard.min.js"></script>

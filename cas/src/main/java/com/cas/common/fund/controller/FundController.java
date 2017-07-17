@@ -12,7 +12,8 @@ public class FundController {
 	/*현재 진행중인 크라우드 펀딩목록으로 가는 메서드*/
 	@RequestMapping("/fundList")
 	public String fundList(Model model){
-		return null;
+		String url = "member/fund/progressList";
+		return url;
 	}
 	
 	/*종료된 크라우드펀딩목록으로 가는 메서드*/

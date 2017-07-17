@@ -12,6 +12,13 @@
 <title></title>
 <meta charset="UTF-8">
 
+<!-- 다음에디터를 쓰기위한 링크 -->
+ <link rel="stylesheet" href="<c:url value="/resources/daumeditor/css/editor.css"/>" type="text/css" charset="utf-8"/>
+ <script src="<c:url value="/resources/daumeditor/js/editor_loader.js"/>" type="text/javascript" charset="utf-8"></script>
+ 
+<!--  비디오태그를 사용하기위한 링크 -->
+ <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet" />
+<script src="http://vjs.zencdn.net/c/video.js"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -65,7 +72,15 @@ body {
 	background-color: #2c2c2c;
 }
 #body{
+<<<<<<< HEAD
 	margin-top:68px;
+=======
+	margin-top:58px;
+}
+
+#body{
+	margin-top: 58px;
+>>>>>>> branch 'master' of https://github.com/ddit-cas/cas.git
 }
 
 input[type="text"],input[type="password"]  {
@@ -150,12 +165,14 @@ a {
 div.company-wrap {
     overflow: hidden;
     width: 1000px;
-    margin: 50px auto;
+    margin: 50px 18px;
 }
 
 div.company-snb {
     float: left;
     width: 182px;
+    position: fixed;
+
 }
 
 div.company-snb h2 {
@@ -172,6 +189,7 @@ div.company-snb ul {
 
 div.company-snb ul li {
     margin-bottom: 5px;
+    list-style:none;
 }
 
 div.company-snb ul li a {
@@ -197,6 +215,9 @@ div.company-snb ul li a:hover {
 div.company-cont {
     width: 800px;
     float: right;
+    height: 1100px;
+    padding-left: 32px;
+    
 }
 
 div.company-cont h3.box {
@@ -328,7 +349,7 @@ h3 {
 					<input type="text" name="id" placeholder="아이디를 입력하세요"> <input
 						type="password" name="pwd" placeholder="비밀번호를 입력하세요"> <a
 						href="login" class="btn btn-sm animated-button thar-four">로그인</a> <a
-						href="signup.jsp" class="btn btn-sm animated-button thar-four">회원가입</a> <a
+						href="/cas/joinMemberForm" class="btn btn-sm animated-button thar-four">회원가입</a> <a
 						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호
 						찾기</a>
 				</form>
@@ -386,7 +407,7 @@ h3 {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"
+				<a class="navbar-brand" href="/cas/main"
 					style="padding: 0; margin: 0 15px 0 15px;"> <img
 					src='<c:url value='/resources/images/logo.png' />' style="width: 80px; height: 50px;">
 				</a>

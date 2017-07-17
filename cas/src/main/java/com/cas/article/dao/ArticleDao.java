@@ -12,6 +12,9 @@ public interface ArticleDao {
 	/*자유게시판 게시물 한개를 가져오는 메서드*/
 	public ArticleVO selectArticle(String articleId);
 	
+	/*게시물을 등록하는 메서드*/
+	public boolean insertArticle(ArticleVO article);
+	
 	/*자유게시글을 활성화 상태면 비활성화 시키고 비활성화 상태면 활성화 시켜주는 메서드*/
 	public boolean updateFreeboard(ArticleVO article);
 	

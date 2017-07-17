@@ -6,4 +6,17 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+<!-- 	게시글 다오 빈등록 -->
+	<bean
+		name="articleDao"
+		class="com.cas.article.dao.impl.ArticleDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
+	
+<!-- 	게시글 서비스 빈등록 -->
+	<bean
+		name="articleService"
+		class="com.cas.article.service.impl.ArticleServiceImpl"
+		p:articleDao-ref="articleDao"
+	></bean>
 </beans>
