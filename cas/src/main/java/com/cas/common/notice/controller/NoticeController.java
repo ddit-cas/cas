@@ -12,7 +12,8 @@ public class NoticeController {
 	/*공지사항 리스트로 가는 메서드*/
 	@RequestMapping("/noticeList")
 	public String noticeList(Model model){
-		return null;
+		String url = "/member/story/notice/noticeBoard";
+		return url;
 	}
 	
 	/*공지사항 세부내용을 보는 메서드*/
