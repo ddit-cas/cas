@@ -81,10 +81,10 @@ $(function(){
 	<hr>
 	<div class="faq">
 		<ul class="faqBody">
-			<c:forEach var="i" begin="1" end="10">
-			<li class="article" id="a${i}">
-				<h3 class="q"><a href="#a${i}">Q${i} : 질문${i}</a></h3>
-				<p class="a">A: 답변${i}</p>
+			<c:forEach var="content" items="${faqList}" >
+			<li class="article" id="a${content.contentNum}">
+				<h3 class="q"><a href="#a${content.contentNum}">Q : ${content.contentContent}</a></h3>
+				<p class="a">A: </p>
 			</li>
 			</c:forEach>
 		</ul>

@@ -17,8 +17,9 @@ public class ArticleServiceImpl implements ArticleService{
 	
 	@Override
 	public List<ArticleVO> selectArticleList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<ArticleVO> resultList = null;
+		resultList = articleDao.selectArticleList();
+		return resultList;
 	}
 
 	@Override

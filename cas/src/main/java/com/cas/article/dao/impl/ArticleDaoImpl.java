@@ -17,8 +17,15 @@ public class ArticleDaoImpl implements ArticleDao{
 	
 	@Override
 	public List<ArticleVO> selectArticleList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<ArticleVO> resultList = null;
+		
+		try {
+			resultList=sqlMapClient.queryForList("selectArticleList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultList;
 	}
 
 	@Override
