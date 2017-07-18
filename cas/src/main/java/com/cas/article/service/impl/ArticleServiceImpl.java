@@ -16,14 +16,14 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 	
 	@Override
-	public List<ArticleVO> selectArticleList() {
+	public List<ArticleVO> selectArticleList(String boardCode) {
 		List<ArticleVO> resultList = null;
-		resultList = articleDao.selectArticleList();
+		resultList = articleDao.selectArticleList(boardCode);
 		return resultList;
 	}
 
 	@Override
-	public ArticleVO selectArticle(String articleId) {
+	public ArticleVO selectArticle(String articleId,String boardCode) {
 		// TODO Auto-generated method stub
 		return null;
 	}

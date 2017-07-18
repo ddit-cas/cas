@@ -9,6 +9,14 @@ public class AdminPointAnalysisController {
 	/*포인트 통계를 보여줄 화면을 호출할 메서드*/
 	@RequestMapping("/admin/pointAnalysis")
 	public String pointAnalysis(){
-		return null;
+		String url="admin/analysis/pointAnalysis";
+		return url;
+	}
+
+	/*포인트 상세 화면을 호출할 메서드*/
+	@RequestMapping("/admin/pointAnalysisDetail")
+	public String pointAnalysisDetail(){
+		String url="admin/analysis/pointAnalysisDetail";
+		return url;
 	}
 }

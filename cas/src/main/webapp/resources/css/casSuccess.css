@@ -75,13 +75,7 @@ element.style {
     z-index: 5;
 }
 
-em.wd-icon-campaign-complete {
-    display: block;
-    width: 61px;
-    height: 82px;
-    background: url(/resources/Images/icon_complete.png) no-repeat left top;
-    overflow: hidden;
-}
+
 
 
 
