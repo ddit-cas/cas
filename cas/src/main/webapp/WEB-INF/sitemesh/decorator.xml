@@ -13,5 +13,11 @@
 	<!-- decorators를 적용시키지 않을 url 패턴 -->
 	<excludes>
 		<pattern>/signup/*</pattern>
+
+		<pattern>/login*</pattern>
+
+		<pattern>/resources/**</pattern>
+		<pattern>/daumeditor/**</pattern>
+		<pattern>/upload/**</pattern>
 	</excludes>
 </decorators>

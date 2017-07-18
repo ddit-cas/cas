@@ -11,9 +11,21 @@ public class ArticleVO {
 	private String contentWriter;
 	private String contentImportance;
 	private String contentState;
-	private String perfomanceStartDate;
-	private String perfomanceEndDate;
+	private String consertNum;
+	private String contentImg;
 	
+	public String getConsertNum() {
+		return consertNum;
+	}
+	public void setConsertNum(String consertNum) {
+		this.consertNum = consertNum;
+	}
+	public String getContentImg() {
+		return contentImg;
+	}
+	public void setContentImg(String contentImg) {
+		this.contentImg = contentImg;
+	}
 	public String getContentNum() {
 		return contentNum;
 	}
@@ -67,18 +79,6 @@ public class ArticleVO {
 	}
 	public void setContentState(String contentState) {
 		this.contentState = contentState;
-	}
-	public String getPerfomanceStartDate() {
-		return perfomanceStartDate;
-	}
-	public void setPerfomanceStartDate(String perfomanceStartDate) {
-		this.perfomanceStartDate = perfomanceStartDate;
-	}
-	public String getPerfomanceEndDate() {
-		return perfomanceEndDate;
-	}
-	public void setPerfomanceEndDate(String perfomanceEndDate) {
-		this.perfomanceEndDate = perfomanceEndDate;
 	}
 
 }
