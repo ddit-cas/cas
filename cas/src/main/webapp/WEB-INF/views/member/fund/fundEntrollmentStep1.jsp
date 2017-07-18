@@ -51,7 +51,16 @@ background-color: #6291c3;
 			</div>
 		</div>
 
-
+<style>
+	.appl-step1 {
+		clear : both;
+	}
+	.appl-tab {
+		float : left;
+		margin-left: 50px;
+	}
+	
+</style>
 <div class="innerOFA">
             <div class="appl_step1">
             
@@ -60,6 +69,19 @@ background-color: #6291c3;
                         <a href="#none" class="on" style="color:white; padding: 0px 29px;"><em>STEP1</em></a>
                                                       
                 </div>
+
+                <div class="appl-tab">
+        
+                        <a href="#none" class="on" style="color:white; padding: 0px 29px;"><em>STEP2</em></a>
+                                                      
+                </div>
+
+                <div class="appl-tab">
+        
+                        <a href="#none" class="on" style="color:white; padding: 0px 29px;"><em>STEP3</em></a>
+                                                      
+                </div>
+                
                 <!--//appl-tab-->
                 	<form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/${resultUrl}" method="post" accept-charset="utf-8">
                 
