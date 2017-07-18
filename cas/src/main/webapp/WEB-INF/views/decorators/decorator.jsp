@@ -73,10 +73,6 @@ body {
 	background-color: #2c2c2c;
 }
 #body{
-	margin-top:58px;
-}
-
-#body{
 	margin-top: 58px;
 }
 
@@ -414,23 +410,24 @@ h3 {
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="noticeBoard.jsp">CAS-이야기<span class="caret"></span></a>
 						<ul class="dropdown-menu">
+
 							<li><a href="/cas/noticeList">공지사항</a></li>
 							<li><a href="#">CAS란</a></li>
 							<li><a href="#">펀딩 성공 사례</a></li>
+
 							<li><a href="#">공연 행사 일정</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">크라우드펀딩<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">펀딩 등록</a></li>
-							<li><a href="#">펀딩 종료</a></li>
-							<li><a href="#">펀딩 리스트 보기</a></li>
+							<li><a href="fundList">진행중인 펀딩</a></li>
+							<li><a href="#">종료된 펀딩</a></li>
+							<li><a href="fundingExampleList">펀딩 성공 사례</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Caser<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">회원검색</a></li>
-							<li><a href="#">프로필</a></li>
+							<li><a href="profileView">프로필뷰</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
