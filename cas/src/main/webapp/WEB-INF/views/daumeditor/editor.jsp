@@ -2,9 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<meta charset="UTF-8">
 
-<body>
 <div class="body" id="body">
 	<div>
 		<c:if test="${boardCode=='B005' }">
@@ -629,5 +627,3 @@
 <div><button onclick='loadContent()'>SAMPLE - load contents to editor</button></div>
 <!-- End: Loading Contents -->
 
-</body>
-</html>
