@@ -9,6 +9,7 @@
 </head>
 <body>
 <div >
+asdf
 	<!--?xml:namespace prefix = "jsp" /--> 
 	<jsp:include page="/WEB-INF/views/daumeditor/editor.jsp"></jsp:include>
 </div>
