@@ -24,6 +24,8 @@
 .fundHost {
 	margin: 0 0 8px 0;
 }
+
+
 </style>
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script
@@ -56,8 +58,8 @@
 					<li class="col-md-4">
 						<div class="thumbnail" style="padding: 0">
 							<div style="padding: 4px; width: 100%;">
-								<img alt="funding1" style="width: 100%;"
-									src="/cas/resources/funding1.PNG">
+								<a href="cas/member/myPage/myfundingDeail.jsp"><img alt="funding1" style="width: 100%;"
+									src="/cas/resources/funding1.PNG"></a>
 							</div>
 							<div class="caption" style="text-align: center; width:347px; height:135px;">
 								<h2>
@@ -87,8 +89,8 @@
 					<li class="col-md-4">
 						<div class="thumbnail" style="padding: 0;">
 							<div style="padding: 4px; width: 100%; height:258px;">
-								<img alt="funding2" style="width: 100%; height:252px;"
-									src="/cas/resources/fungin04.jpg">
+								<a href="cas/member/myPage/myfundingDeail.jsp"><img alt="funding2" style="width: 100%; height:252px;"
+									src="/cas/resources/fungin04.jpg"></a>
 							</div>
 							<div class="caption" style="text-align: center;">
 								<h2>
@@ -119,8 +121,8 @@
 						<div class="thumbnail"
 							style="padding: 0;">
 							<div style="padding: 4px">
-								<img alt="funding3" style="width: 100%"
-									src="/cas/resources/funding6.jpg">
+								<a href=""><img alt="funding3" style="width: 100%"
+									src="/cas/resources/funding6.jpg"></a>
 							</div>
 							<div class="caption" style="text-align: center;">
 								<h2>
@@ -187,8 +189,8 @@
 				<li class="col-md-4">
 					<div class="thumbnail" style="padding: 0">
 						<div style="padding: 4px">
-							<img alt="funding01" style="width: 100%"
-								src="/cas/resources/fungin01.jpg">
+							<a href="cas/member/myPage/myfundingDeail.jsp"><img alt="funding01" style="width: 100%"
+								src="/cas/resources/fungin01.jpg"></a>
 						</div>
 						<div class="caption" style="text-align: center;">
 							<h2>드림씨어터프로젝트</h2>
@@ -219,8 +221,8 @@
 				<li class="col-md-4">
 					<div class="thumbnail" style="padding: 0">
 						<div style="padding: 4px">
-							<img alt="funding01" style="width: 100%"
-								src="/cas/resources/funding4.jpg">
+							<a href="cas/member/myPage/myfundingDeail.jsp"><img alt="funding01" style="width: 100%"
+								src="/cas/resources/funding4.jpg"></a>
 						</div>
 						<div class="caption" style="text-align: center;">
 							<h2>마이다스 쇼킹 페스티벌 in SEOUL</h2>

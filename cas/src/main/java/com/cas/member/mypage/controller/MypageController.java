@@ -37,27 +37,29 @@ public class MypageController {
 	 */
 	@RequestMapping("/member/fundList")
 	public String memberFundList(HttpSession session,Model model){
-		String url = "/member/myPage/myfundingList";
+		String url = "/member/myPage/myfundList";
 		return url;
 	}
 	
-	/*펀딩을 취소하는 메서드*/
+	/*펀딩을 취소하는 메서드
 	@RequestMapping("/member/fundCancel")
 	public String memberFundCancel(HttpSession session){
-		return null;
-	}
+		String url = "/member/myPage/myfundCancel";
+		return url;
+	}*/
 	
 	/*회원개인이 투자한 내역을 볼 수있다.*/
 	@RequestMapping("/member/investmentList")
 	public String memberInvestment(HttpSession session,Model model){
-		return null;
+		String url = "/member/myPage/myinvestmentList";
+		return url;
 	}
 	
-	/*회원이 투자한것을 취소하는 메서드*/
+	/*회원이 투자한것을 취소하는 메서드
 	@RequestMapping("/member/investmentCancel")
 	public String memberInvestmentCancel(HttpSession session){
 		return null;
-	}
+	}*/
 	
 	/*회원의포인트 상황을 보는 메서드*/
 	@RequestMapping("/member/point")
@@ -68,7 +70,8 @@ public class MypageController {
 	/*내가 좋아요한 카서들 리스트가 나옴 클릭시 그 카서의 상세 페이지로 이동함*/
 	@RequestMapping("/member/cimList")
 	public String memberCim(HttpSession session,Model model){
-		return null;
+		String url = "/member/myPage/myCim";
+		return url;
 	}
 	
 	/*탈퇴하는 메서드*/
