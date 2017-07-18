@@ -32,7 +32,7 @@ public class ArticleDaoImpl implements ArticleDao{
 	public ArticleVO selectArticle(String articleId,String boardCode) {
 		ArticleVO vo = new ArticleVO();
 		vo.setBoardCode(boardCode);
-		vo.setConsertNum(articleId);
+		vo.setContentNum(articleId);
 		
 		ArticleVO result = null;
 		try {
