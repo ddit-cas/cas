@@ -1,0 +1,148 @@
+@CHARSET "UTF-8";
+
+
+.inner_title.centerRange {
+    margin: 0 auto;
+    width: 1106px;
+}
+
+.inner_title {
+    position: relative;
+    display: table;
+    color: #555;
+}
+
+.inner_title .tit_h2 {
+    font-weight: 600;
+    display: table-cell;
+    padding: 93px 0 60px 0;
+    vertical-align: middle;
+    font-size: 28px;
+    /* font-weight: bold; */
+    color: #555;
+    text-align: center;
+    background-color: #6291c3;
+}
+
+.innerOFA {
+    width: 1106px;
+    margin: 0 auto;
+    padding: 30px 10px 82px 10px;
+}
+
+.appl_step1, .appl_step2, .appl_step3 {
+    box-sizing: border-box;
+    margin: 0 auto;
+    min-height: 1100px;
+    background-color: #fff;
+}
+
+div.appl-tab {
+    text-align: left;
+    overflow: hidden;
+    margin-bottom: 22px;
+    position: relative;
+}
+reset.css:20
+html
+div.appl-tab ul {
+    float: left;
+}
+
+div.appl-tab ul li {
+    width: 140px;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+}
+.appl_step1 div.appl-tab ul li a.on {
+    color: #fff;
+    cursor: pointer;
+}
+
+div.appl-tab ul li a.on {
+    background: #6291c3;
+    /* color: #fff; */
+}
+
+.appl_step1 .appl_page {
+    /* margin-bottom: 217px; */
+    margin-bottom: 50px;
+}
+.innerOFA .appl_page {
+    position: relative;
+    overflow: visible;
+}
+
+.innerOFA .required {
+    margin-bottom: 10px;
+    padding-right: 0;
+    text-align: right;
+    font-size: 14px;
+    color: #e83039;
+    overflow: hidden;
+}
+
+.innerOFA .tstep {
+    width: 100%;
+    border-top: 1px solid #999;
+}
+
+.innerOFA .tstep th {
+    box-sizing: border-box;
+    padding: 10px 0 10px 20px;
+    font-size: 13px;
+    color: #333;
+    vertical-align: middle;
+    border-bottom: 1px solid #ececec;
+    background-color: #fcfcfc;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+    width: 20%;
+}
+
+
+.innerOFA .star {
+    font-size: 14px;
+    color: #e83039;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.innerOFA .tstep td {
+    box-sizing: border-box;
+    padding: 10px 0 10px 20px;
+/*     font-size: 13px; */
+    color: #333;
+    vertical-align: middle;
+    border-bottom: 1px solid #ececec;
+    font-size: 12px;
+}
+
+.innerOFA .tstep input[type='text'] {
+    box-sizing: border-box;
+    padding: 0 5px;
+    min-width: 205px;
+    height: 26px;
+    line-height: 21px;
+    font-size: 13px;
+    color: #4f4f4e;
+    border: 1px solid #cfcfcf;
+    width:60px;
+    background-color: white;
+    display: inline-block;
+}
+.btn-green-sm, a.btn-green-sm {
+    background: #6291c3;
+    color: #fff;
+    padding: 3px 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+

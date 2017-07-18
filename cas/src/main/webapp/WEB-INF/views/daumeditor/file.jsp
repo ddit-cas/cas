@@ -6,7 +6,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	
-	<title>파일 첨부</title>
+	<title>동영상 첨부</title>
 	
 	<!-- 다음오픈에디터 라이브러리 --> 
 	<link rel="stylesheet" href="/cas/resources/daumeditor/css/popup.css" type="text/css"  charset="utf-8"/>
@@ -32,12 +32,15 @@
 			        data: {'page':page},
 			        beforeSubmit: function(){ },
 			        success: function(fileInfo) {
-			             if(fileInfo.result==-1) {
-			                  alert('파일이 5MB를 초과하였습니다.');
-			                  return false;
-			             } else {
-			                  done(fileInfo);
-			             }
+			        	if(fileInfo.result==-1) {                                        // 서버단에서 체크 후 수행됨
+			                alert('avi, mp4, mpeg, wmv 확장자만 업로드 가능합니다.');
+			                return false;
+			            } else if(fileInfo.result==-2) {                                // 서버단에서 체크 후 수행됨
+			                alert('파일이 1MB를 초과하였습니다.');
+			                return false;
+			            } else {
+			                done(fileInfo);                                                // 첨부한 이미지를 에디터에 적용시키고 팝업창을 종료
+			            }
 			        }
 			   });
 
@@ -142,11 +145,10 @@
 
 	<div class="wrapper">
 		<div class="header">
-			<h1>파일 첨부</h1>
+			<h1>동영상 첨부</h1>
 		</div>	
 		<div class="body">
 			<dl class=alert>
-				<dt>5MB이하만 가능합니다.</dt>
 				<dd>
 					<form id=daumOpenEditorForm encType=multipart/form-data method=post
 						action="">
@@ -154,7 +156,7 @@
 						<!-- 파일첨부 -->
 						<div class=file>
 							<input disabled class=file-text> <label class=file-btn
-								for=uploadInputBox>파일첨부</label> <input id=uploadInputBox
+								for=uploadInputBox>동영상첨부</label> <input id=uploadInputBox
 								style="display: none" type=file name=Filedata>
 							<!-- 버튼대체용(안보임) -->
 						</div>

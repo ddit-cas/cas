@@ -9,6 +9,7 @@ public class AdminFundAnalysisController {
 	/*펀딩 통계를 보여주ㄴ는 화면을 호출한느 메서드*/
 	@RequestMapping("/admin/fundAnalysis")
 	public String fundAnalysis(){
-		return null;
+		String url="admin/analysis/fundAnalysis";
+		return url;
 	}
 }
