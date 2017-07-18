@@ -31,7 +31,7 @@
 		</isNotEmpty>
 	</select>
 	
-	<select id="selectArticle" resultMap="selectAeticle" parameterClass="article">
+	<select id="selectArticle" resultMap="selectArticle" parameterClass="article">
 		select * from content where board_code=#boardCode# and content_num=#contentNum#
 	</select>
 </sqlMap>
