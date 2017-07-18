@@ -8,9 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MemberFundController {
 
-	/*펑딩을 등록하는 양식으로 가는 메서드*/
+	/*펀딩을 등록하는 양식으로 가기 전 인트로 메서드*/
+	@RequestMapping("/member/insertFundIntro")
+	public String insertFundIntro(){
+		String url = "member/fund/fundEntrollmentIntro";
+		return url;
+	}
+
+	/*펀딩을 등록하는 양식으로 가는 메서드*/
 	@RequestMapping("/member/insertFundForm")
 	public String insertFundForm(){
+		
 		return null;
 	}
 	

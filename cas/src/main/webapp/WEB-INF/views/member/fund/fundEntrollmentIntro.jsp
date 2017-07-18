@@ -9,7 +9,7 @@
 <style>
 
 	body {
-		background-image: url("./resources/images/entrollment.jpg");
+		background-image: url("/cas/resources/images/entrollment.jpg");
 	}
 	.body {
 		margin-top: 58px;
@@ -29,7 +29,7 @@
 	}
 	div.register-intro-box {
 		margin: 0 auto;
-		background-image:url("./resources/images/bg-black-register.png");
+		background-image:url("/cas/resources/images/bg-black-register.png");
  	    padding: 30px;
 	    color: #fff;
 	    font-size: 16px;
