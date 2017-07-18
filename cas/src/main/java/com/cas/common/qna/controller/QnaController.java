@@ -30,7 +30,7 @@ public class QnaController {
 	@RequestMapping("/faqList")
 	public String faqList(Model model){
 		
-		List<ArticleVO> list =  articleService.selectArticleList();
+		List<ArticleVO> list =  articleService.selectArticleList("B002");
 
 		model.addAttribute("faqList", list);
 		
