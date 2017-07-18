@@ -275,7 +275,7 @@ $(function( $ ) {
 					</thead>
 					<tbody>
 						<tr>
-							<td>321313213</td> <!-- 게시판 url 적용해야함. -->
+							<td id="totalFund"></td> <!-- 게시판 url 적용해야함. -->
 							<td id="completeFund">1910000</td>
 							<td id="failFund">1001231</td>
 							<td id="cancelFund">801231</td>
@@ -356,8 +356,11 @@ $(function() {
 	var fs = $('#completeFund').text();
 	var ff = $('#failFund').text();
 	var fc = $('#cancelFund').text();
-
-    // Donut Chart
+	
+	var ft = Number(fs)+Number(ff)+Number(fc);
+	alert(ft);
+    $('td#totalFund').text(ft);
+	// Donut Chart
     Morris.Donut({
         element: 'morris-donut-chart',
         data: 
