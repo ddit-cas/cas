@@ -1,7 +1,7 @@
 <%@page import="javax.mail.Session"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="body" id="body">
 	<div>
@@ -453,8 +453,8 @@
 		initializedId: "", /* 대부분의 경우에 빈문자열 */
 		wrapper: "tx_trex_container", /* 에디터를 둘러싸고 있는 레이어 이름(에디터 컨테이너) */
 		form: 'tx_editor_form'+"", /* 등록하기 위한 Form 이름 */
-		txIconPath: "<c:url value="/daumeditor/images/icon/editor/"/>", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
-		txDecoPath: "<c:url value="/daumeditor/images/deco/contents/"/>", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
+		txIconPath: "<c:url value="/resources/daumeditor/images/icon/editor/"/>", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
+		txDecoPath: "<c:url value="/resources/daumeditor/images/deco/contents/"/>", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
 		canvas: {
 			styles: {
 				color: "#123456", /* 기본 글자색 */

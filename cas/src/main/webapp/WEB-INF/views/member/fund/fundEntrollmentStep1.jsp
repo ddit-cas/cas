@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-<body>
 
 <link rel="stylesheet" href="/cas/resources/css/fundEnrollmentStep.css" type="text/css">
 
@@ -215,13 +214,7 @@ background-color: #6291c3;
                                          <span class="fact_number d_cmn"><span name="h_project_name_cbyte" id="h_project_name_cbyte">0</span>/40</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">프로젝트 제목<span class="star">*</span></th>
-                                    <td>
-                                        <input type="text" class="putag" id="ProjectName" name="ProjectName" value="" maxlength="40" onkeyup="checkByte(this,'h_project_name_cbyte',40)">
-                                        <span class="fact_number d_cmn"><span name="h_project_name_cbyte" id="h_project_name_cbyte">0</span>/40</span>
-                                    </td>
-                                </tr>
+                               
                                 
                                 <tr class="nth5">
                                     <th scope="row">프로젝트 대표이미지 등록<span class="star">*</span></th>
@@ -260,32 +253,9 @@ background-color: #6291c3;
                                     </th>
                                     <td style="position:relative;">
 										 <p class="mb5"><span class="d_cmn">※ 문단과 문단 사이 간격이 넓습니다. 간격을 줄이실려면 <span class="star">shift + enter</span> 를 사용해주세요.</span></p>
-										 
+										
 									 	<jsp:include page="/WEB-INF/views/daumeditor/editor.jsp" flush="false"></jsp:include>
 										 
-										 
-										 
-										 
-										 
-										 
-<script type="text/javascript">
-
-if ($('#ir1').val() === '') {
-	var html = "<blockquote><sub>크라우드펀딩 프로젝트 내용을 작성할 때 아래의 내용들을 꼭 포함해주세요 :) <br>";
-	html += "프로젝트를 전달력을 높이기 위해  <u>사진과 동영상자료</u>도 충분히 삽입해주세요!</sub></blockquote>";
-	html += "<h4>프로젝트 소개<span>(프로젝트를 기획하게 된 이유와 소개)</span></h4>";
-	html += "<h4>크라우드펀딩으로 모인 자금의 사용처</h4>";
-	html += "<h4>리워드 소개</h4>";
-	html += "<h4>리워드 제공일정</h4>";
-	html += "<h4>프로젝트 진행자 소개</h4>";
-	html += "<blockquote><sub>더 궁금한게 있다면 본 페이지 좌측 상단의 <u>'프로젝트 스토리 가이드 보러가기'</u>를 클릭해주세요.</sub></blockquote>";
-	
-	
-	$('#ir1').val(html);
-};
-
-</script> 
-
                                     </td>
                                 </tr>
                                
@@ -391,5 +361,3 @@ if ($('#ir1').val() === '') {
 			</div>
 		</div>
 
-</body>
-</html> 
