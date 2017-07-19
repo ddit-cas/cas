@@ -21,8 +21,7 @@
 #detailShowInfo tr td:nth-child(1) {
 	padding: 14px 0;
 	border-bottom: 1px solid #ddd;
-	width: 40%;
-	background-color: #eee;
+	width: 40%;                                                                                                      
 	text-align: center;
 }
 

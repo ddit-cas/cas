@@ -6,9 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cas.db.dto.ConsertPromotionVO;
+
 @Controller
 public class MemberPromotionController {
 
+	
+	
 	/*
 	 * 공연홍보를 입력하거나 수정하는 양식으로 이동하는 메서드
 	 * 만약 수정을눌렀을시 글 아이디를 받아서 수정화면을 보여주고
@@ -21,7 +25,8 @@ public class MemberPromotionController {
 	
 	/*공연 홍보 입력양식을 다 입력후 등록을 누르면 인서트 해주는 메서드*/
 	@RequestMapping("/member/insertPromotion")
-	public String insertFreeboard(HttpServletRequest request){
+	public String insertFreeboard(HttpServletRequest request,ConsertPromotionVO consertPromotionVO){
+		
 		return null;
 	}
 	
