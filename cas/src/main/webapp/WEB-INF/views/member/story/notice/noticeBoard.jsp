@@ -4,21 +4,9 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 <title>공지사항 게시판</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
 
-<body>
 	<style>
 .form-inline {
 	display: block;
@@ -96,13 +84,20 @@ li a:hover {
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>번호</th>
 								<th>제목</th>
 								<th>작성자</th>
 								<th>작성일</th>
 							</tr>
 						</thead>
-						
+						<tbody>
+							<c:forEach var="article" items="${articleList}">
+							<tr>
+								<td>${article.contentTitle }</td>
+								<td>${article.contentWriter }</td>
+								<td>${article.contentRegisDate }</td>
+							</tr>
+							</c:forEach>
+						</tbody>
 					</table>
 				</div>
 			</div>
@@ -134,6 +129,3 @@ li a:hover {
         </div>
 	</div>
 	</div>
-
-</body>
-</html>

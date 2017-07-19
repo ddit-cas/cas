@@ -131,15 +131,15 @@ $(function(){
 						</div>
 					</div>
 					
-<script>
-//우편번호 검색
-$(function(){
-	$('#zip-btn').on('click',function(){
-		var url = "signup/zipSearch.jsp";
-		window.open(url,"우편번호검색","width=500 height=400");		
-	});
-});
-</script>
+					<script>
+					//우편번호 검색
+					$(function(){
+						$('#zip-btn').on('click',function(){
+							var url = "signup/zipSearch.jsp";
+							window.open(url,"우편번호검색","width=500 height=400");		
+						});
+					});
+					</script>
 
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="zip">우편번호</label>
