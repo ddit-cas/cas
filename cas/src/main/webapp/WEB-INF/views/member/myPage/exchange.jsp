@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>환전하기</title>
 </head>
 <body>
 	<style>
@@ -172,63 +172,107 @@
 								</td>
 							</tr>
 						</table>
-						<hr>
-						<form class="form-horizontal" action="#">
-							<fieldset class="signup_cas_fs">
-								<legend id="choice" class="signup_cas_ld"> 개인정보 </legend>
-								<div class="form-group">
-									<label class="control-label col-xs-2" for="id">아이디</label>
-									<div class="col-xs-4">
-										<div class="input-group">
-											<input type="text" class="form-control" id="mem_id" name="id"
-												placeholder="아이디를 입력하세요."> <span
-												class="input-group-btn"> </span>
-										</div>
-									</div>
-									<label class="control-label col-xs-2" for="name">이름</label>
-									<div class="col-xs-4">
-										<div class="input-group">
-											<input type="text" class="form-control" id="name"
-												placeholder="이름을 입력하세요." name="name" aria-label="name">
-											<button class="btn btn-default" id="idCheck" type="button">이름변경</button>
-										</div>
-									</div>
-								</div>
-					</div>
-					<label class="control-label col-sm-2" for="email">이메일</label>
-					<div class="col-lg-6">
-						<div class="input-group">
-							<input type="email" class="form-control" id="email"
-								placeholder="이메일을 입력하세요." name="email" aria-label="email">
-							</span>
-						</div>
-					</div>
-					
-					<label class="control-label col-sm-2" for="name">전화번호</label>
-						<div class="col-lg-6">
-						  <div class="input-group">
-						    <input type="tel" class="form-control" id="tel"
-								placeholder="전화번호를 입력하세요." name="tel" aria-label="tel">
-						    <span class="input-group-addon">
-						    <label><input type="checkbox" aria-label="tel">&nbsp;&nbsp;공개</label>
-						    </span>
-						  </div>
-						</div>
-
-					</fieldset>
-
-					</form>
-					<div class="row">
-						<div id="btnses">
-							<a href="exchange.jsp"></a><input type="button"
-								class="btn btn-primary" value="환전 신청하기" /> <a
-								href="myPoint.jsp"></a><input type="button"
-								class="btn btn-primary" value="취소" />
-						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+			<div
+				class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+				<div class="row">
+					<form class="form-horizontal" action="#">
+						<fieldset class="signup_cas_fs">
+							<legend id="choice" class="signup_cas_ld"> 개인정보 </legend>
+							<label><input type="checkbox" name="terms">기존 정보
+								사용</label>
+							<div class="form-group">
+								<label class="control-label col-xs-2" for="id">아이디</label>
+								<div class="col-xs-4">
+									<div class="input-group">
+										<input type="text" class="form-control" id="mem_id" name="id"
+											placeholder="아이디를 입력하세요."> <span
+											class="input-group-btn"> </span>
+									</div>
+								</div>
+							</div>
+							<label class="control-label col-xs-2" for="name">이름</label>
+							<div class="col-sm-4">
+								<div class="input-group">
+									<input type="text" class="form-control" id="name"
+										placeholder="이름을 입력하세요." name="name" aria-label="name">
+								</div>
+							</div>
+							<div>
+								<button class="btn btn-default" id="idCheck" type="button">이름변경</button>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="tel">전화번호</label>
+								<div class="col-sm-5">
+									<div class="input-group">
+										<input type="tel" class="form-control" id="tel"
+											placeholder="전화번호를 입력하세요." name="tel" aria-label="tel">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="email">이메일</label>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<input type="email" class="form-control" id="email"
+											placeholder="이메일을 입력하세요." name="email" aria-label="email">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="addr">주소</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" id="add1"
+										placeholder="주소 입력 하세요." name="addr" disabled>
+								</div>
+							</div>
+							<hr>
+							<legend id="choice" class="signup_cas_ld">계좌정보</legend>
+							<input type="button" class="btn btn-primary" value="최근 입금계좌" />
+							<div class="form-group">
+								<label class="control-label col-xs-2" for="id">은행</label>
+								<div class="col-sm-4">
+									<div class="input-group">
+										<input type="text" class="form-control" id="mem_id"
+											name="moneyname" placeholder="은행이름을 입력하세요">
+									</div>
+								</div>
+							</div>
+							<label class="control-label col-xs-2" for="id">예금주</label>
+							<div class="col-sm-4">
+								<div class="input-group">
+									<input type="text" class="form-control" id="mem_id"
+										name="amound" placeholder="예금주를 입력하세요">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-xs-2" for="id">계좌번호</label>
+								<div class="col-sm-4">
+									<div class="input-group">
+										<input type="text" class="form-control" id="mem_id"
+											name="amound" placeholder="계좌번호를 입력하세요">
+									</div>
+								</div>
+							</div>
+							<p class="dropout_dsc" style="color:red;">
+								▶개인명의의 계좌로만 환전이 가능합니다
+							</p>
+							<p class="dropout_dsc" style="color:red;">
+								▶가입자와 동일한 명의의 계좌가 아니거나,입력하신 계좌번호가 올바르지 않을 경우 환전이 불가하오니 정확히 입력해 주시기 바랍니다.
+							</p>
+
+						</fieldset>
+					</form>
+				</div>
+				<div class="row">
+					<div id="btnses">
+						<a href="exchange.jsp"></a><input type="button"
+							class="btn btn-primary" value="환전 신청하기" /> <a href="myPoint.jsp"></a><input
+							type="button" class="btn btn-primary" value="취소" />
+					</div>
+				</div>
+			</div>
 </body>
 </html>

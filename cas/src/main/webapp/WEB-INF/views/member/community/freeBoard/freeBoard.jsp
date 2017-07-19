@@ -55,7 +55,7 @@ li a:hover {
 					<form class="form-inline">
 						<p>
 							<img src="resources/images/free.png"
-								style="width: 800px; height: 300px; background-size: cover; margin: 0 0 10px 0;">
+								style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
 						</p>
 						<div class="searchgroup" style="float: right">
 							<select class="form-control">
@@ -74,11 +74,11 @@ li a:hover {
 				</div>
 				<!--//tab-intro-->
 				<table class="table table-hover"
-					style="width: 800px; margin: 0 auto;">
+					style="width: 800px; height: 1100px; margin: 0 auto;">
 					<thead>
 						<tr>
-							<th style="width: 50%; text-align: center; font-size: 15px;">제목</th>
-							<th style="width: 15%; text-align: center; font-size: 15px;">작성자</th>
+							<th style="width: 30%; text-align: center; font-size: 15px;">제목</th>
+							<th style="width: 8%; text-align: center; font-size: 15px;">작성자</th>
 							<th style="width: 15%; text-align: center; font-size: 15px;">작성일</th>
 						</tr>
 					</thead>
@@ -95,24 +95,23 @@ li a:hover {
 			</div>
 			<!--//company-snb-->
 		</div>
-		<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
-			<div class="row">
-				<nav aria-label="...">
-					<ul class="pager" role="tablist">
-						<li class="previous" onclick="goTo(1);"><a href="#"><span
-								aria-hidden="true">←</span> Previous</a></li>
-						<li class="active" id="first"><a aria-controls="tab1"
-							data-toggle="tab" href="#tab1" role="tab">1</a></li>
-						<li><a aria-controls="tab2" data-toggle="tab" href="#tab2"
-							role="tab">2</a></li>
-						<li><a aria-controls="tab3" data-toggle="tab" href="#tab3"
-							role="tab">3</a></li>
-						<li class="next" onclick="goTo(2);"><a href="#">Next 
-						<span aria-hidden="true">→</span></a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
 	</div>
-
+</div>
+<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+	<div class="row">
+		<nav aria-label="...">
+			<ul class="pager" role="tablist">
+				<li class="previous" onclick="goTo(1);"><a href="#"><span
+						aria-hidden="true">←</span> Previous</a></li>
+				<li class="active" id="first"><a aria-controls="tab1"
+					data-toggle="tab" href="#tab1" role="tab">1</a></li>
+				<li><a aria-controls="tab2" data-toggle="tab" href="#tab2"
+					role="tab">2</a></li> 
+				<li><a aria-controls="tab3" data-toggle="tab" href="#tab3"
+					role="tab">3</a></li>
+				<li class="next" onclick="goTo(2);"><a href="#">Next <span
+						aria-hidden="true">→</span></a></li>
+			</ul>
+		</nav>
+	</div>
 </div>
