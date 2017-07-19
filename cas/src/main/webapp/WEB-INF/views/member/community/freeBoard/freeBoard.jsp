@@ -83,36 +83,41 @@ li a:hover {
 						</tr>
 					</thead>
 					<tbody style="text-align: center; font-size: 15px;">
-						<c:forEach var="content" items="${articleList}">
-							<tr>
-								<td>${content.contentTitle}</td>
-								<td>${content.contentWriter}</td>
-								<td>${content.contentRegisDate}</td>
-							</tr>
-						</c:forEach>
+					<c:forEach var="i" begin="${index*7}" end="${index*7+6}">
+						<tr>
+							<td>${articleList[i].contentTitle}</td>
+							<td>${articleList[i].contentWriter}</td>
+							<td>${articleList[i].contentRegisDate}</td>
+						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>
 			<!--//company-snb-->
 		</div>
-		<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
-			<div class="row">
-				<nav aria-label="...">
-					<ul class="pager" role="tablist">
-						<li class="previous" onclick="goTo(1);"><a href="#"><span
-								aria-hidden="true">←</span> Previous</a></li>
-						<li class="active" id="first"><a aria-controls="tab1"
-							data-toggle="tab" href="#tab1" role="tab">1</a></li>
-						<li><a aria-controls="tab2" data-toggle="tab" href="#tab2"
-							role="tab">2</a></li>
-						<li><a aria-controls="tab3" data-toggle="tab" href="#tab3"
-							role="tab">3</a></li>
-						<li class="next" onclick="goTo(2);"><a href="#">Next 
-						<span aria-hidden="true">→</span></a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
 	</div>
-
+</div>
+<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+	<div class="row">
+		<nav aria-label="...">
+			<ul class="pager" role="tablist">
+				<li class="previous" onclick="goTo(1);">
+					<a href="#"><span aria-hidden="true">←</span>
+						Previous
+					</a>
+				</li>
+				<c:forEach var="i" begin="${minNum}" end="${maxNum}">
+				<li class="active">
+					<a aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
+						${i }
+					</a>
+				</li>
+				</c:forEach>
+				<li class="next" onclick="goTo(2);">
+					<a href="#">Next<span aria-hidden="true">→</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
 </div>
