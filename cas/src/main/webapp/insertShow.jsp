@@ -28,93 +28,200 @@
    </div>
 </div>
 <div id="body" style="float:right; width: 80%">
- 	<h1>공연등록</h1>
-	<hr style="border-top: 2px solid #333;margin-top: 0;margin-bottom: 13px;">
-	<div style="float:left; width: 40%;">
-		<div id="imgDiv" style="overflow: hidden; width: 100%; height: 400px;">
-			<div id="imgDiv2" style="overflow: hidden; background-image: url('/cas/resources/famous.jpg'); background-size:contain; width: 100%; height: 400px;"></div>
-			<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
-		</div>
-	</div>
-
-
-
-
-	<div style="padding-left: 42%;">
-		<div class="form-group">
-			<label>제목</label> <input type="text" class="form-control showInsertText" id="email" placeholder="제목을 입력하세요.">
-		</div>
-		<div class="form-group">
-			<label for="pwd">장소</label> 
-			<div style="margin-bottom: 10px;">
-				<input type="text" class="form-control showInsertText" id="address" placeholder="주소" style="float:left;width: 81%;">
-				<input type="button" class="btn btn-default" onclick="execDaumPostcode()" value="주소 검색"><br>
+	<div style="    background-color: #26bbe2;height: 70px;padding: 16px 24px;margin: 10px 0;">
+ 		<label style="color:#ffffff; font-size:24px;"><strong>공연등록</strong></label>
+ 	</div>
+	<form name="tx_editor_form" style="width: 100%;height: auto;" id="tx_editor_form" action="/cas/member/insertPromotion" method="post" accept-charset="utf-8">
+		<input type="hidden" name="contentWriter" value="${loginUser }">
+		<div style="float:left; width: 40%;">
+			<label>포스터</label>(그림을 클릭하여 업로드해주세요.)
+			<div id="imgDiv" style="width: 100%; height: 400px; margin-bottom: 10px;">
+				<div class="imgDiv" style="width: 100%; height: 400px;">
+					<img id="profile-image" src="/cas/resources/famous.jpg">
+				</div>
+				<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
 			</div>
-			<input type="text" class="form-control showInsertText" id="detailAddress" placeholder="상세주소">
-			<div id="map" style="width:97%;height:300px;margin-top:10px;"></div>
-		</div>
-	</div>
-	
-	<div style="float: right; width: 100%">
-		<div style="width: 50%">
 			<div>
+				<label>간략설명</label>
+				<textarea style="width: 100%;height: 221px;" placeholder="(400자 이내로 기술하시오)"></textarea>
+			</div>
+		</div>
+	
+	
+	
+		<div style="padding-left: 42%;">
+			<div class="form-group">
+				<label>제목</label> <input type="text" name="contentTitle" class="form-control showInsertText" id="email" placeholder="제목을 입력하세요.">
+			</div>
+			<div class="form-group">
+				<label>장르</label>
+			    <select class="form-control" style="width: 97%;">
+					<option value="">장르선택</option>
+					<option value="연극">연극</option>
+					<option value="뮤지컬">뮤지컬</option>
+					<option value="버스킹">버스킹</option>
+				</select>
+			</div>
+			<div class="form-group">
 				<label style="width: 100%; margin-bottom: 0;">공연기간</label> 
 				<label class="showDay" style="font-size: 0.8em">시작날</label> 
 				<label class="showDay" style="font-size: 0.8em">종료날</label> 
 			</div>
-			<div>
-				<input type="date" class="form-control showDay bir1" id="bir" placeholder="year" name="bir" style="float:left; margin-right: 1%;">
-				<input type="date" class="form-control showDay bir2" id="bir" placeholder="year" name="bir">
+			<div style="margin-bottom: 15px;">
+				<input type="date" class="form-control showDay bir1" id="bir" placeholder="year" name="startDate" style="float:left; margin-right: 1%;">
+				<input type="date" class="form-control showDay bir2" id="bir" placeholder="year" name="endDate">
+			</div>
+			<div class="form-group">
+				<label>티켓 구입처</label>
+				<div style="margin-bottom: 10px;">
+					<input type="text" class="form-control showInsertText" placeholder="ex)http://ticket.interpark.com/Ticket/Goods/GoodsInfo.asp?GoodsCode=17008482" style="float:left;width: 81%;">
+					<input type="button" class="btn btn-default" onclick="openSearchTicketUrl()" value="링크 찾기"><br>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="pwd">장소</label> 
+				<div style="margin-bottom: 10px;">
+					<input type="text" class="form-control showInsertText" id="address" placeholder="주소" style="float:left;width: 81%;">
+					<input type="button" class="btn btn-default" onclick="execDaumPostcode()" value="주소 검색"><br>
+				</div>
+				<input type="text" class="form-control showInsertText" id="detailAddress" placeholder="상세주소">
+				<div id="map" style="width:97%;height:239px;margin-top:10px;"></div>
 			</div>
 		</div>
 		
-		<div style="border: 2px solid #eee;">
-			<div style="padding: 3px; border-right: 2px solid #eee; width: auto;">
-				<input type="button" value="요일별"><br>
-				<input type="button" value="날짜별">
-			</div>
-			<div style="border-right: 2px solid #eee;">
-			</div>
+		<div>
 			<div>
+				<label style="width: 100%; margin-bottom: 0;">내용</label> 
 			</div>
+			<jsp:include page="/WEB-INF/views/daumeditor/promotionAndFundingEditor.jsp"></jsp:include>
 		</div>
-	</div>
+	</form>
 </div>
+<!-- Sample: Saving Contents -->
+<script type="text/javascript">
+	/* 예제용 함수 */
+	function saveContent() {
+		Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
+	}
+
+	/**
+	 * Editor.save()를 호출한 경우 데이터가 유효한지 검사하기 위해 부르는 콜백함수로
+	 * 상황에 맞게 수정하여 사용한다.
+	 * 모든 데이터가 유효할 경우에 true를 리턴한다.
+	 * @function
+	 * @param {Object} editor - 에디터에서 넘겨주는 editor 객체
+	 * @returns {Boolean} 모든 데이터가 유효할 경우에 true
+	 */
+	function validForm(editor) {
+		// Place your validation logic here
+
+		// sample : validate that content exists
+		var validator = new Trex.Validator();
+		var content = editor.getContent();
+		if (!validator.exists(content)) {
+			alert('내용을 입력하세요');
+			return false;
+		}
+		
+		return true;
+	}
+
+	 
+	function openSearchTicketUrl(){
+		window.open('http://www.google.com', '_blank'); 
+	}
+	/**
+	 * Editor.save()를 호출한 경우 validForm callback 이 수행된 이후
+	 * 실제 form submit을 위해 form 필드를 생성, 변경하기 위해 부르는 콜백함수로
+	 * 각자 상황에 맞게 적절히 응용하여 사용한다.
+	 * @function
+	 * @param {Object} editor - 에디터에서 넘겨주는 editor 객체
+	 * @returns {Boolean} 정상적인 경우에 true
+	 */
+	function setForm(editor) {
+        var i, input;
+        var form = editor.getForm();
+        var content = editor.getContent();
+
+        // 본문 내용을 필드를 생성하여 값을 할당하는 부분
+        var textarea = document.createElement('textarea');
+        textarea.name = 'contentContent';
+        textarea.value = content;
+        form.createField(textarea);
+        alert(content);
+
+        /* 아래의 코드는 첨부된 데이터를 필드를 생성하여 값을 할당하는 부분으로 상황에 맞게 수정하여 사용한다.
+         첨부된 데이터 중에 주어진 종류(image,file..)에 해당하는 것만 배열로 넘겨준다. */
+        var images = editor.getAttachments('image');
+        for (i = 0; i < images.length; i++) {
+            // existStage는 현재 본문에 존재하는지 여부
+            if (images[i].existStage) {
+                // data는 팝업에서 execAttach 등을 통해 넘긴 데이터
+//                 alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(images[i].data));
+                input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'attach_image'+(i+1);
+                input.value = images[i].data.imageurl;  // 예에서는 이미지경로만 받아서 사용
+                form.createField(input);
+            }
+        }
+
+        var files = editor.getAttachments('file');
+        for (i = 0; i < files.length; i++) {
+            input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'attach_file';
+            input.value = files[i].data.attachurl;
+            form.createField(input);
+        }
+        return true;
+	}
+</script>
 <script>
-	$(function() {
-		//그림 클릭 시 업로드 창 띄워 업로드 후 미리보기
-		$('#imgDiv2').on('click', function() {
-			$('#profile-image-input').click();
+setImgMargin();
+	$('#profile-image').on('click', function() {
+		$('#profile-image-input').click();
+		
+		$("#profile-image-input").change(function (){     
+	        
+	        var file = this.files[0];
+	        var reader = new FileReader();
+	        // Set preview image into the popover data-content
+	        reader.onload = function (e) {
+	            $("#profile-image").attr('src', e.target.result);
+	            setImgMargin();
+	        }        
+	        reader.readAsDataURL(file);
+	        
+	    });
 
-			$("#profile-image-input").change(function() {
-
-				var file = this.files[0];
-				var reader = new FileReader();
-				// Set preview image into the popover data-content
-				reader.onload = function(e) {
-					$(".image-preview-input-title").text("변경");
-					$(".image-preview-filename").val(file.name);
-				alert(e.target.result);
-					$("#imgDiv").attr("background-image", e.target.result);
-				}
-				reader.readAsDataURL(file);
-			});
-		});
-
-		// 업로드 버튼으로 그림피일 업로드 후 미리보기
-		$(".image-preview-input input:file").change(function() {
-
-			var file = this.files[0];
-			var reader = new FileReader();
-			//Set preview image into the popover data-content
-			reader.onload = function(e) {
-				$(".image-preview-input-title").text("변경");
-				$(".image-preview-filename").val(file.name);
-				alert(e.target.result);
-				$("#imgDiv").attr('background-image', e.target.result);
-			}
-		});
 	});
+	
+	
+	
+	function setImgMargin(){
+		var divs = document.querySelectorAll('.imgDiv');
+		  for (var i = 0; i < divs.length; ++i) {
+		    var div = divs[i];
+		    var divAspect = div.offsetHeight / div.offsetWidth;
+		    div.style.overflow = 'hidden';
+		    
+		    var img = div.querySelector('img');
+		    var imgAspect = img.height / img.width;
+
+		    if (imgAspect <= divAspect) {
+		      // 이미지가 div보다 납작한 경우 세로를 div에 맞추고 가로는 잘라낸다
+		      var imgWidthActual = div.offsetHeight / imgAspect;
+		      var imgWidthToBe = div.offsetHeight / divAspect;
+		      var marginLeft = -Math.round((imgWidthActual - imgWidthToBe) / 2)
+		      img.style.cssText = 'width: auto; height: 100%; margin-left: '
+		                      + marginLeft + 'px;'
+		    } else {
+		      // 이미지가 div보다 길쭉한 경우 가로를 div에 맞추고 세로를 잘라낸다
+		      img.style.cssText = 'width: 100%; height: auto; margin-left: 0;';
+		    }
+		  }
+	}
 </script>
 
 
@@ -139,7 +246,7 @@ $(document).ready(function(){
 	    }else{
 		    $('.bir2').attr('min',input);
 	    }
-		    $('.bir2').val(input);
+	    $('.bir2').val(input);
 	})
 	
 	$('.bir2').change(function(){
@@ -149,7 +256,6 @@ $(document).ready(function(){
 		    $('.bir2').val('');
 	    }
 	})
-	
 })
 </script>
 
