@@ -24,7 +24,7 @@
 		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#,SYSDATE,null,'test','n',null,null)																		
 	</insert>
 	
-	<select id="selectArticleList" resultMap="selectArticle" parameterClass="str">
+	<select id="selectArticleList" resultMap="selectArticle" parameterClass="article">
 		SELECT * FROM CONTENT WHERE 1=1
 		<isNotEmpty property="boardCode">
 			 and BOARD_CODE=#boardCode#

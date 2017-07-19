@@ -27,7 +27,7 @@ public class FreeboardController {
 	public String freeboardList(Model model){
 		List<ArticleVO> freeboardList = articleService.selectArticleList("B005");
 		model.addAttribute("articleList", freeboardList);
-		return "member/community/freeBoard/freeBoard";
+		return "/member/community/freeBoard/freeBoard";
 	}
 	
 	/*자유게시판에서 검색하면 작동하는 메서드*/
