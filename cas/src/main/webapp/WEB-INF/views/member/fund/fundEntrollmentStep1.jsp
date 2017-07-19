@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-<body>
 
 <link rel="stylesheet" href="/cas/resources/css/fundEnrollmentStep.css" type="text/css">
 
@@ -62,7 +61,8 @@ background-color: #6291c3;
                                                       
                 </div>
                 <!--//appl-tab-->
-                <form id="regiForm" name="regiForm" method="post" action="prjRegister2017Action.php" enctype="multipart/form-data" novalidate="novalidate">
+                	<form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/${resultUrl}" method="post" accept-charset="utf-8">
+                
                     <input type="hidden" name="mode" value="step1">
                     <input type="hidden" name="seq" id="seq" value="">
                     <input type="hidden" name="PartnerShip" value="">
@@ -215,13 +215,7 @@ background-color: #6291c3;
                                          <span class="fact_number d_cmn"><span name="h_project_name_cbyte" id="h_project_name_cbyte">0</span>/40</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">프로젝트 제목<span class="star">*</span></th>
-                                    <td>
-                                        <input type="text" class="putag" id="ProjectName" name="ProjectName" value="" maxlength="40" onkeyup="checkByte(this,'h_project_name_cbyte',40)">
-                                        <span class="fact_number d_cmn"><span name="h_project_name_cbyte" id="h_project_name_cbyte">0</span>/40</span>
-                                    </td>
-                                </tr>
+                               
                                 
                                 <tr class="nth5">
                                     <th scope="row">프로젝트 대표이미지 등록<span class="star">*</span></th>
@@ -260,32 +254,9 @@ background-color: #6291c3;
                                     </th>
                                     <td style="position:relative;">
 										 <p class="mb5"><span class="d_cmn">※ 문단과 문단 사이 간격이 넓습니다. 간격을 줄이실려면 <span class="star">shift + enter</span> 를 사용해주세요.</span></p>
-										 
-									 	<jsp:include page="/WEB-INF/views/daumeditor/editor.jsp" flush="false"></jsp:include>
-										 
-										 
-										 
-										 
-										 
-										 
-<script type="text/javascript">
-
-if ($('#ir1').val() === '') {
-	var html = "<blockquote><sub>크라우드펀딩 프로젝트 내용을 작성할 때 아래의 내용들을 꼭 포함해주세요 :) <br>";
-	html += "프로젝트를 전달력을 높이기 위해  <u>사진과 동영상자료</u>도 충분히 삽입해주세요!</sub></blockquote>";
-	html += "<h4>프로젝트 소개<span>(프로젝트를 기획하게 된 이유와 소개)</span></h4>";
-	html += "<h4>크라우드펀딩으로 모인 자금의 사용처</h4>";
-	html += "<h4>리워드 소개</h4>";
-	html += "<h4>리워드 제공일정</h4>";
-	html += "<h4>프로젝트 진행자 소개</h4>";
-	html += "<blockquote><sub>더 궁금한게 있다면 본 페이지 좌측 상단의 <u>'프로젝트 스토리 가이드 보러가기'</u>를 클릭해주세요.</sub></blockquote>";
-	
-	
-	$('#ir1').val(html);
-};
-
-</script> 
-
+										<div>
+									 	<jsp:include page="/WEB-INF/views/daumeditor/includeEditor.jsp" flush="false"></jsp:include>
+										 </div>
                                     </td>
                                 </tr>
                                
@@ -382,7 +353,7 @@ if ($('#ir1').val() === '') {
                         </table>
 					<div class="appl_btn mt20"  style="text-align: center; margin-top:10px;" >
 							
-							<input type="submit" value="펀딩 등록" class="preview" 
+							<input type="button" value="펀딩 등록" class="preview" onclick='saveContent()'
 							style="display: inline-block; border-radius: 0;
     							width: 152px; color: #fff;background: #6291c3;padding: 0 0;font-size: 16px;margin-left: 5px;">
 						</div>
@@ -391,5 +362,79 @@ if ($('#ir1').val() === '') {
 			</div>
 		</div>
 
-</body>
-</html> 
+<!-- Sample: Saving Contents -->
+<script type="text/javascript">
+	/* 예제용 함수 */
+	function saveContent() {
+		Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
+	}
+
+	/**
+	 * Editor.save()를 호출한 경우 데이터가 유효한지 검사하기 위해 부르는 콜백함수로
+	 * 상황에 맞게 수정하여 사용한다.
+	 * 모든 데이터가 유효할 경우에 true를 리턴한다.
+	 * @function
+	 * @param {Object} editor - 에디터에서 넘겨주는 editor 객체
+	 * @returns {Boolean} 모든 데이터가 유효할 경우에 true
+	 */
+	function validForm(editor) {
+		// Place your validation logic here
+
+		// sample : validate that content exists
+		var validator = new Trex.Validator();
+		var content = editor.getContent();
+		if (!validator.exists(content)) {
+			alert('내용을 입력하세요');
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Editor.save()를 호출한 경우 validForm callback 이 수행된 이후
+	 * 실제 form submit을 위해 form 필드를 생성, 변경하기 위해 부르는 콜백함수로
+	 * 각자 상황에 맞게 적절히 응용하여 사용한다.
+	 * @function
+	 * @param {Object} editor - 에디터에서 넘겨주는 editor 객체
+	 * @returns {Boolean} 정상적인 경우에 true
+	 */
+	function setForm(editor) {
+        var i, input;
+        var form = editor.getForm();
+        var content = editor.getContent();
+
+        // 본문 내용을 필드를 생성하여 값을 할당하는 부분
+        var textarea = document.createElement('textarea');
+        textarea.name = 'content';
+        textarea.value = content;
+        form.createField(textarea);
+        alert(content);
+
+        /* 아래의 코드는 첨부된 데이터를 필드를 생성하여 값을 할당하는 부분으로 상황에 맞게 수정하여 사용한다.
+         첨부된 데이터 중에 주어진 종류(image,file..)에 해당하는 것만 배열로 넘겨준다. */
+        var images = editor.getAttachments('image');
+        for (i = 0; i < images.length; i++) {
+            // existStage는 현재 본문에 존재하는지 여부
+            if (images[i].existStage) {
+                // data는 팝업에서 execAttach 등을 통해 넘긴 데이터
+//                 alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(images[i].data));
+                input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'attach_image'+(i+1);
+                input.value = images[i].data.imageurl;  // 예에서는 이미지경로만 받아서 사용
+                form.createField(input);
+            }
+        }
+
+        var files = editor.getAttachments('file');
+        for (i = 0; i < files.length; i++) {
+            input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'attach_file';
+            input.value = files[i].data.attachurl;
+            form.createField(input);
+        }
+        return true;
+	}
+</script>
