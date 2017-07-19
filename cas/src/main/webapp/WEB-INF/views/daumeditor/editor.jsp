@@ -1,14 +1,15 @@
 <%@page import="javax.mail.Session"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<meta charset="UTF-8">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<body>
 <div class="body" id="body">
 	<div>
 		<c:if test="${boardCode=='B005' }">
 		자유게시판 등록
+		</c:if>
+		<c:if test="${boardCode=='B007' }">
+		 공연홍보 등록
 		</c:if>
 	</div>
 	<!-- 에디터 시작 -->
@@ -17,7 +18,7 @@
 		등록하기 위한 Form으로 상황에 맞게 수정하여 사용한다. Form 이름은 에디터를 생성할 때 설정값으로 설정한다.
 	-->
 	<div>
-	<form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/insertFreeboard" method="post" accept-charset="utf-8">
+	<form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/${resultUrl}" method="post" accept-charset="utf-8">
 		<div class="col-sm-1">제목</div>
 		<div class="col-sm-9">
 			<input type="text" name="title">
@@ -452,8 +453,8 @@
 		initializedId: "", /* 대부분의 경우에 빈문자열 */
 		wrapper: "tx_trex_container", /* 에디터를 둘러싸고 있는 레이어 이름(에디터 컨테이너) */
 		form: 'tx_editor_form'+"", /* 등록하기 위한 Form 이름 */
-		txIconPath: "<c:url value="/daumeditor/images/icon/editor/"/>", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
-		txDecoPath: "<c:url value="/daumeditor/images/deco/contents/"/>", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
+		txIconPath: "<c:url value="/resources/daumeditor/images/icon/editor/"/>", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
+		txDecoPath: "<c:url value="/resources/daumeditor/images/deco/contents/"/>", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
 		canvas: {
 			styles: {
 				color: "#123456", /* 기본 글자색 */
@@ -477,15 +478,12 @@
 			attacher:{
 			    image:{
 			        features:{left:250,top:65,width:400,height:190,scrollbars:0}, //팝업창 사이즈
-			        popPageUrl:'${pageContext.request.contextPath}/daumeditor/imagePopup' //팝업창 주소
+			        popPageUrl:'${pageContext.request.contextPath}/daumeditor/imagePopup', //팝업창 주소
 			    },
 				file:{ 
 					features:{left:250,top:65,width:400,height:190,scrollbars:0}, // 팝업창 사이즈 
-					popPageUrl:'${pageContext.request.contextPath}/daumeditor/filePopup' // 팝업창 주소 
-				} 
-			},
-			capacity: { 
-				maximum: 5*1024*1024 // 최대 첨부 용량 (5MB) 
+					popPageUrl:'${pageContext.request.contextPath}/daumeditor/filePopup', // 팝업창 주소 
+				}
 			}
 
 		},
@@ -629,5 +627,3 @@
 <div><button onclick='loadContent()'>SAMPLE - load contents to editor</button></div>
 <!-- End: Loading Contents -->
 
-</body>
-</html>

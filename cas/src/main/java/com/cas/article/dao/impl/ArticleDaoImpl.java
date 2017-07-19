@@ -16,15 +16,32 @@ public class ArticleDaoImpl implements ArticleDao{
 	}
 	
 	@Override
-	public List<ArticleVO> selectArticleList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ArticleVO> selectArticleList(String boardCode) {
+		List<ArticleVO> resultList = null;
+		ArticleVO article = new ArticleVO();
+		article.setBoardCode(boardCode);
+		try {
+			resultList=sqlMapClient.queryForList("selectArticleList",article);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultList;
 	}
 
 	@Override
-	public ArticleVO selectArticle(String articleId) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArticleVO selectArticle(String articleId,String boardCode) {
+		ArticleVO vo = new ArticleVO();
+		vo.setBoardCode(boardCode);
+		vo.setContentNum(articleId);
+		
+		ArticleVO result = null;
+		try {
+			result = (ArticleVO) sqlMapClient.queryForObject("selectArticle",vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override

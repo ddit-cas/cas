@@ -44,13 +44,13 @@ div.company-wrap {
 
 <div id="body">
 <div class="company-snb" style="float:left;">
-				<h2>회사소개</h2>
+				<h2>크라우드 펀딩</h2>
 				<div class="">
 					<ul>
-						<li class="active"><a href="#">공지사항</a></li>
-						<li><a href="promotion">CAS란</a></li>
-						<li><a href="fundingExampleList">펀딩 성공 사례</a></li>
-						<li><a href="#">공연 행사 일정</a></li>
+						<li class="active"><a href="fundList">진행중인 펀딩</a></li>
+					<li><a href="#">종료된 펀딩</a></li>
+					<li><a href="fundingExampleList">성공한 펀딩 </a></li>
+					<li><a href="#">펀딩 등록하기 </a></li>
 					</ul>
 				</div>
 			</div>

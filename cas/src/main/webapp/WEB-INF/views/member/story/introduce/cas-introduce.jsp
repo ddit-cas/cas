@@ -76,7 +76,6 @@ div.company-cont3 h3.box3 {
 						<li class="active"><a href="#">공지사항</a></li>
 						<!--li><a href="people.php">PEOPLE</a></li-->
 						<li><a href="promotion">CAS란</a></li>
-						<li><a href="fundingExampleList">펀딩 성공 사례</a></li>
 						<li><a href="#">공연 행사 일정</a></li>
 					</ul>
 				</div>

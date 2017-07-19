@@ -30,8 +30,8 @@ public class MemberFreeboardController {
 	@RequestMapping("/member/freeboardForm")
 	public String insertFreeboardForm(HttpServletRequest request,Model model){
 		model.addAttribute("boardCode", "B005");
-		String url = "member/community/freeBoard/freeBoard";
-		return url;
+		model.addAttribute("resultUrl", "insertFreeboard");
+		return "/daumeditor/editor";
 	}
 	
 	/*글입력양식을 다 입력후 등록을 누르면 인서트 해주는 메서드*/

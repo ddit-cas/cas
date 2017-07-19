@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 <title>자유게시판</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -56,6 +61,24 @@ li a:hover {
 				</ul>
 			</div>
 			<!--//tab-intro-->
+			<table class="table table-hover" style="width:830px; margin:0 auto;" >
+				<thead>
+					<tr>
+						<th style="width:70%; text-align: center; font-size: 15px;">제목</th>
+						<th style="width:15%; text-align: center; font-size: 15px;">작성자</th>
+						<th style="width:15%; text-align: center; font-size: 15px;">작성일</th>
+					</tr>
+				</thead>
+				<tbody style="text-align: center; font-size: 15px;">
+				<c:forEach var="content" items="${articleList}" >
+					<tr>
+						<td>${content.contentTitle}</td>
+						<td>${content.contentWriter}</td>
+						<td>${content.contentRegisDate}</td>
+					</tr>
+				</c:forEach>
+				</tbody>
+			</table>
 		</div>
 		<!--//company-snb-->
 
