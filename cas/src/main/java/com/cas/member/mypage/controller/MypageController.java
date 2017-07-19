@@ -64,7 +64,20 @@ public class MypageController {
 	/*회원의포인트 상황을 보는 메서드*/
 	@RequestMapping("/member/point")
 	public String memberPoint(HttpSession session,Model model){
-		return null;
+		String url = "/member/myPage/myPoint";
+		return url;
+	}
+	/*회원이 포인트 충전하는 메서드*/
+	@RequestMapping("/member/charge")
+	public String memberCharge(HttpSession session,Model model){
+		String url = "/member/myPage/charge";
+		return url;
+	}
+	/*회원이 환전하는 메서드*/
+	@RequestMapping("/member/exchange")
+	public String memberexchange(HttpSession session,Model model){
+		String url = "/member/myPage/exchange";
+		return url;
 	}
 	
 	/*내가 좋아요한 카서들 리스트가 나옴 클릭시 그 카서의 상세 페이지로 이동함*/
