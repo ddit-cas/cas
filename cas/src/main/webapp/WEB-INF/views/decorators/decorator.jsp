@@ -12,6 +12,14 @@
 <title></title>
 <meta charset="UTF-8">
 
+<!-- 다음에디터를 쓰기위한 링크 -->
+ <link rel="stylesheet" href="<c:url value="/resources/daumeditor/css/editor.css"/>" type="text/css" charset="utf-8"/>
+ <link rel="stylesheet" href="<c:url value="/resources/daumeditor/css/content_view.css"/>" type="text/css" charset="utf-8"/>
+ <script src="<c:url value="/resources/daumeditor/js/editor_loader.js"/>" type="text/javascript" charset="utf-8"></script>
+ 
+<!--  비디오태그를 사용하기위한 링크 -->
+ <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet" />
+<script src="http://vjs.zencdn.net/c/video.js"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -26,10 +34,6 @@
 <script src="/cas/resources/js/sidr/jquery.sidr.min.js"></script>
 
 <link rel="stylesheet" href="/cas/resources/css/BootSideMenu.css"/>
-
-<link rel="stylesheet" href="/cas/resources/css/casSuccess.css" type="text/css">
-
-<link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css" type="text/css">
 
 <script src="/cas/resources/js/BootSideMenu.js"></script>
 
@@ -69,10 +73,10 @@ body {
 	background-color: #2c2c2c;
 }
 #body{
-	margin-top:58px;
+	margin-top: 58px;
 }
 
-input[type="text"],input[type="password"]  {
+.loginText{
 	width: 100%;
 	font-size: 13px;
 	padding: 5px;
@@ -146,8 +150,6 @@ a.animated-button.thar-four:before {
 }
 
 
-html, body, div, span, dl, dt, dd, ol, ul, li,h1, h2, h3, h4, h5, h6, p, blockquote, pre,address,cite,form,fieldset,input,textarea,select,table,th,td,button{margin: 0;padding: 0;}
-
 a {
     color: #666666;
     text-decoration: none;
@@ -156,12 +158,14 @@ a {
 div.company-wrap {
     overflow: hidden;
     width: 1000px;
-    margin: 50px auto;
+    margin: 50px 18px;
 }
 
 div.company-snb {
     float: left;
     width: 182px;
+    position: fixed;
+
 }
 
 div.company-snb h2 {
@@ -178,6 +182,7 @@ div.company-snb ul {
 
 div.company-snb ul li {
     margin-bottom: 5px;
+    list-style:none;
 }
 
 div.company-snb ul li a {
@@ -203,6 +208,9 @@ div.company-snb ul li a:hover {
 div.company-cont {
     width: 800px;
     float: right;
+    height: 1100px;
+    padding-left: 32px;
+    
 }
 
 div.company-cont h3.box {
@@ -331,12 +339,11 @@ h3 {
 			<div id="sidr">
 				<!-- Your content -->
 				<form id="loginForm">
-					<input type="text" name="id" placeholder="아이디를 입력하세요"> <input
-						type="password" name="pwd" placeholder="비밀번호를 입력하세요"> <a
-						href="login" class="btn btn-sm animated-button thar-four">로그인</a> <a
-						href="signup.jsp" class="btn btn-sm animated-button thar-four">회원가입</a> <a
-						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호
-						찾기</a>
+					<input class="loginText" type="text"  name="id" placeholder="아이디를 입력하세요"> 
+					<input class="loginText" type="password" name="pwd" placeholder="비밀번호를 입력하세요"> 
+					<a href="/cas/loginForm" class="btn btn-sm animated-button thar-four">로그인</a> 
+					<a href="/cas/joinMemberForm" class="btn btn-sm animated-button thar-four">회원가입</a> 
+					<a href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호찾기</a>
 				</form>
 			</div>
 			<script type="text/javascript">
@@ -349,18 +356,18 @@ h3 {
 				<!-- 				Your content -->
 				<div id="myInfoDiv">
 					<img src="/cas/resources/sinhea.jpg" class="img-circle"
-						alt="Cinque Terre" style="width:65%; height:auto; margin-top: 15px;margin-bottom: 15px;"> <label
-						class="myInfoLabel">${sessionScope.loginUser}</label> <label
-						class="myInfoLabel">${sessionScope.point} point</label>
+						alt="Cinque Terre" style="width:65%; height:auto; margin-top: 15px;margin-bottom: 15px;"> 
+					<label class="myInfoLabel">${sessionScope.loginUser}</label> 
+					<label class="myInfoLabel">${sessionScope.point} point</label>
 				</div>
-				<a href="myPagemModify.jsp" class="btn btn-sm animated-button thar-four">개인정보</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">내 영상</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">내 펀딩</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">내 투자</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
-					href="logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
+				<a href="myPagemModify.jsp" class="btn btn-sm animated-button thar-four">개인정보</a> 
+				<a href="#" class="btn btn-sm animated-button thar-four">내 영상</a> 
+				<a href="#" class="btn btn-sm animated-button thar-four">내 펀딩</a> 
+				<a href="#" class="btn btn-sm animated-button thar-four">내 투자</a> 
+				<a href="#" class="btn btn-sm animated-button thar-four">나의 CIM</a> 
+				<a href="#" class="btn btn-sm animated-button thar-four">포인트관리</a> 
+				<a href="#" class="btn btn-sm animated-button thar-four">1:1문의</a> 
+				<a href="logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
 				<script>
 					function logout() {
 
@@ -389,50 +396,65 @@ h3 {
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"
-					style="padding: 0; margin: 0 15px 0 15px;"> <img
-					src='<c:url value='/resources/images/logo.png' />' style="width: 80px; height: 50px;">
+				<a class="navbar-brand" href="/cas/main"
+					style="padding: 0; margin: 0 15px 0 15px;"> 
+					<img src='<c:url value='/resources/images/logo.png' />' style="width: 80px; height: 50px;">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="noticeBoard.jsp">CAS-이야기<span class="caret"></span></a>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="noticeBoard.jsp">CAS-이야기
+							<span class="caret"></span>
+						</a>
 						<ul class="dropdown-menu">
-							<li><a href="noticeBoard.jsp">공지사항</a></li>
+							<li><a href="/cas/noticeList">공지사항</a></li>
 							<li><a href="#">CAS란</a></li>
 							<li><a href="#">펀딩 성공 사례</a></li>
 							<li><a href="#">공연 행사 일정</a></li>
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">크라우드펀딩<span class="caret"></span></a>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">크라우드펀딩
+							<span class="caret"></span>
+						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">펀딩 등록</a></li>
-							<li><a href="#">펀딩 종료</a></li>
-							<li><a href="#">펀딩 리스트 보기</a></li>
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Caser<span class="caret"></span></a>
+							<li><a href="fundList">진행중인 펀딩</a></li>
+							<li><a href="#">종료된 펀딩</a></li>
+							<li><a href="fundingExampleList">펀딩 성공 사례</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Caser
+							<span class="caret"></span>
+						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">회원검색</a></li>
-							<li><a href="#">프로필</a></li>
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
+							<li><a href="profileView">프로필뷰</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">커뮤니티
+							<span class="caret"></span>
+						</a>
 						<ul class="dropdown-menu">
-							<li><a href="freeBoard.jsp">자유게시판</a></li>
+							<li><a href="/cas/freeboardList">자유게시판</a></li>
 							<li><a href="#">공연홍보 게시판</a></li>
-							<li><a href="#">PR 영상</a></li>
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">QnA<span class="caret"></span></a>
+							<li><a href="/cas/member/uccForm">PR 영상</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">QnA
+							<span class="caret"></span>
+						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">1:1 문의사항</a></li>
-						</ul></li>
+							<li><a href="/cas/faqList">FAQ</a></li>
+							<li><a href="/cas/qnaMain">1:1 문의사항</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>

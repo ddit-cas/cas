@@ -5,10 +5,11 @@
 
 <meta charset="UTF-8">
 
-
 <title></title>
 </head>
 <body>
+<div >
 	<!--?xml:namespace prefix = "jsp" /--> 
 	<jsp:include page="/WEB-INF/views/daumeditor/editor.jsp"></jsp:include>
+</div>
 </body>

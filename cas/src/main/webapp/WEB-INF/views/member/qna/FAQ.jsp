@@ -55,7 +55,12 @@ h3 {
 	padding: 1em;
 	line-height: 1.5
 }
-
+div#wrap {
+	width: 80%;
+	min-width: 500px;
+	max-width: 850px;
+	margin: 100px auto;
+}
 </style>
 <script>
 $(function(){
@@ -71,20 +76,17 @@ $(function(){
 	});
 });
 </script>
-<pre>
-.
-.
-.
-</pre>
-<h4>FAQ</h4>
-<hr>
-<div class="faq">
-	<ul class="faqBody">
-		<c:forEach var="i" begin="1" end="10">
-		<li class="article" id="a${i}">
-			<h3 class="q"><a href="#a${i}">Q${i} : 질문${i}</a></h3>
-			<p class="a">A: 답변${i}</p>
-		</li>
-		</c:forEach>
-	</ul>
+<div id="wrap">
+	<h4>FAQ</h4>
+	<hr>
+	<div class="faq">
+		<ul class="faqBody">
+			<c:forEach var="content" items="${faqList}" >
+			<li class="article" id="a${content.contentNum}">
+				<h3 class="q"><a href="#a${content.contentNum}">Q : ${content.contentContent}</a></h3>
+				<p class="a">A: </p>
+			</li>
+			</c:forEach>
+		</ul>
+	</div>
 </div>

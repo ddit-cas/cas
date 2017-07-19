@@ -12,7 +12,7 @@ public class LoginController {
 	/*로그인 양식 페이지로 가는 메서드*/
 	@RequestMapping("/loginForm")
 	public String loginMemberForm(){
-		return null;
+		return "member/login/login";
 	}
 	
 	/*로그인 해주는 메서드*/
@@ -63,7 +63,7 @@ public class LoginController {
 	/*회원가입 양식으로 가는 메서드*/
 	@RequestMapping ("/joinMemberForm")
 	public String joinMemberForm(){
-		return null;
+		return "member/signUp/signup";
 	}
 	
 	/*회원가입을 하는 메서드*/

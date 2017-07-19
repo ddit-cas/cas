@@ -21,40 +21,10 @@ a:hover, a:focus, a:active {
     box-sizing: content-box;
 }
 
-.w2-ui-content-wrapper {
-    text-align: left;
-    width: 1075px;
-}
 
-.wd-ui-campaign3 {
-    position: relative;
-    display: inline-block;
-    width: 308px;
-    height: 559px;
-    padding: 0px;
-    border: 1px solid #c8c8c8;
-    background-color: #fff;
-    overflow: hidden;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 14px;
-    margin-right: 13px;
-}
 
-.wd-icon-content {
-    display: inline-block;
-    position: absolute;
-    top: 216px;
-    width: 290px;
-    height: 55px;
-    z-index: 3;
-    background-color: rgba(0, 0, 0, 0.7);
-    font-weight: 500;
-    color: #fff;
-    line-height: 2.6;
-    margin: 0px 10px 0px 10px;
-    border: rgba(52, 142, 200, 0.6);
-}
+
+
 
 .ui-progressbar-value {
     position: relative;
@@ -82,9 +52,7 @@ element.style {
     background: rgb(0, 175, 132);
 }
 
-.wd-ui-sub-campaign3-ul {
-	margin-left: -74px;
-}
+
 
 element.style {
     background-color: #363636;
@@ -107,13 +75,7 @@ element.style {
     z-index: 5;
 }
 
-em.wd-icon-campaign-complete {
-    display: block;
-    width: 61px;
-    height: 82px;
-    background: url(/resources/Images/icon_complete.png) no-repeat left top;
-    overflow: hidden;
-}
+
 
 
 
@@ -122,12 +84,7 @@ em.wd-icon-campaign-complete {
 }
 
 
-.wd-ui-new-target-renew {
-    float: right;
-    margin-top: -36px;
-    font-size: 14px;
-    width: 230px;
-}
+
 
 .wd-data-dday {
     float: right;
@@ -139,10 +96,7 @@ em.wd-icon-campaign-complete {
 }
 
 
-.wd-ui-sub-campaign3-ul li {
-    width: 320px;
-    display: inline-block;
-}
+
 
 .wd-ui-sub-campaign3 ul li {
     margin-bottom: 0px;
@@ -176,16 +130,6 @@ em.wd-icon-campaign-complete {
     overflow: hidden;
 }
 
-.wd-ui-numbers3 {
-    position: absolute;
-    right: 0;
-    width: 142px;
-    height: 31px;
-    margin-top: -58px;
-    z-index: 2;
-    background-color: #fff;
-    border-top: none;
-}
 
 
 
