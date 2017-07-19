@@ -485,7 +485,7 @@ $(function() {
 	}
 </style>				
 		<div id="btnses">
-			<input type="submit" class="btn btn-primary" value="가입" />
+			<a href="myPageModify.jsp"><input type="button" class="btn btn-primary" value="수정" /></a>
 			<input type="reset" class="btn btn-danger" value="취소" />
 		</div> 
 				
