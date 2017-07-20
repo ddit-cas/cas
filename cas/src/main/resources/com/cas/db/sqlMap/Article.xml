@@ -18,6 +18,7 @@
 		<result property="contentState" column="content_state"/>
 		<result property="consertNum" column="consert_num"/>
 		<result property="contentImg" column="content_img"/>
+		<result property="boardName" column="board_name"/>
 	</resultMap>
 	
 	<insert id="insertArticle" parameterClass="article">
@@ -25,7 +26,9 @@
 	</insert>
 	
 	<select id="selectArticleList" resultMap="selectArticle" parameterClass="str">
-		SELECT * FROM CONTENT WHERE 1=1
+		SELECT 
+		* 
+		FROM ARTICLE WHERE 1=1
 		<isNotEmpty property="boardCode">
 			 and BOARD_CODE=#boardCode#
 		</isNotEmpty>

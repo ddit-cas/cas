@@ -16,7 +16,7 @@
 	</resultMap>
 	
 	<insert id="insertCarousel" parameterClass="carousel">
-		INSERT INTO carousel VALUES (CAROUSEL_SEQ.NEXTVAL,#contentUrl#,#carouselTitle#,#carouselContent#,SYSDATE,#carouselImage#)																		
+		INSERT INTO carousel VALUES (CAROUSEL_SEQ.NEXTVAL,#carouselTitle#,#carouselContent#,#carouselImage#,#contentUrl#)																		
 	</insert>
 	
 	<select id="selectCarouselList" resultMap="selectCarousel">
@@ -37,6 +37,6 @@
 	</update>
 	
 	<delete id="deleteCarousel" parameterClass="str">
-		delete from carousel where carusel_num=#carouselNum#
+		delete from carousel where carousel_num=#carouselNum#
 	</delete>
 </sqlMap>
