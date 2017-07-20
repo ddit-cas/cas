@@ -5,27 +5,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>공지사항 게시판</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-=======
 <style>
 .container {
 	width: 960px;
 }
->>>>>>> branch 'master' of https://github.com/ddit-cas/cas.git
 
-<body>
 	<style>
 .form-inline {
 	display: block;
@@ -65,10 +56,10 @@ li a:hover {
 			<h2>cas-이야기</h2>
 			<div class="">
 				<ul>
-					<li class="active"><a href="freeBoard.jsp">공지사항</a></li>
+					<li class="active"><a href="noticeBoard.jsp">공지사항</a></li>
 					<!--li><a href="people.php">PEOPLE</a></li-->
-					<li><a href="noticeBoard.jsp">CAS란</a></li>
-					<li><a href="cas-contact.jsp">공연 행사 일정</a></li>
+					<li><a href="cas-contact.jsp">CAS란</a></li>
+					<li><a href="">공연 행사 일정</a></li>
 				</ul>
 			</div>
 			<!--//tab-intro-->
@@ -130,12 +121,6 @@ li a:hover {
                     <li>
                         <a aria-controls="tab3" data-toggle="tab" href="#tab3" role="tab">3</a>
                     </li>
-                    <li>
-                        <a aria-controls="tab4" data-toggle="tab" href="#tab4" role="tab">4</a>
-                    </li>
-                    <li id="last">
-                        <a aria-controls="tab5" data-toggle="tab" href="#tab5" role="tab">5</a>
-                    </li>                    
                     <li class="next" onclick="goTo(2);"><a href="#">Next <span aria-hidden="true">→</span></a></li>
                 </ul>
             </nav>
@@ -143,5 +128,3 @@ li a:hover {
 	</div>
 	</div>
 
-</body>
-</html>
