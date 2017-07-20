@@ -24,8 +24,32 @@ public class FreeboardController {
 
 	/*자유게시판 리스트를 보여주는 메서드*/
 	@RequestMapping("/freeboardList")
-	public String freeboardList(Model model){
+	public String freeboardList(Model model, HttpServletRequest request){
 		List<ArticleVO> freeboardList = articleService.selectArticleList("B005");
+		int maxNum = freeboardList.size()/10+1;
+		if(freeboardList.size()/10 > 0){
+			maxNum++;
+		}
+		int index = 0;
+		int minNum = 1;
+
+		if(request.getParameter("tab")!=null){
+			index =  Integer.parseInt((request.getParameter("tab")));
+			if((index*10)<=maxNum){
+				maxNum = index*10;
+			}
+			System.out.println("maxNum="+maxNum);
+			minNum = maxNum-9;
+			if(minNum<1){
+				minNum=1;
+			}
+			index--;
+			System.out.println("index="+index);
+		}
+		
+		model.addAttribute("index", index);
+		model.addAttribute("minNum", minNum);
+		model.addAttribute("maxNum", maxNum);
 		model.addAttribute("articleList", freeboardList);
 		return "member/community/freeBoard/freeBoard";
 	}
