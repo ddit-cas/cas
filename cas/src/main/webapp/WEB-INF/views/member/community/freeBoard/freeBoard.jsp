@@ -101,7 +101,7 @@ li a:hover {
 	<div class="row">
 		<nav aria-label="...">
 			<ul class="pager" role="tablist">
-				<li class="previous" onclick="goTo(1);">
+				<li class="previous">
 					<a href="#"><span aria-hidden="true">←</span>
 						Previous
 					</a>
@@ -113,7 +113,7 @@ li a:hover {
 					</a>
 				</li>
 				</c:forEach>
-				<li class="next" onclick="goTo(2);">
+				<li class="next">
 					<a href="#">Next<span aria-hidden="true">→</span>
 					</a>
 				</li>
