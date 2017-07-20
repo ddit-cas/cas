@@ -116,7 +116,6 @@
 /* #body {
 	
 } */
-
 #btnses {
 	margin: 10px;
 	text-align: center;
@@ -135,12 +134,12 @@
 }
 
 .image-preview-input {
-    position: relative;
+	position: relative;
 	overflow: hidden;
-	margin: 0px;    
-    color: #333;
-    background-color: #fff;
-    border-color: #ccc;    
+	margin: 0px;
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
 }
 </style>
 	<div id="body">
@@ -191,51 +190,12 @@
 									</p>
 								</td>
 							</tr>
-                    </tbody>
-                </table>
-                	<hr>
-                	<h3>환전 신청 내역</h3>
-							<table class="table table-bordered">
-							<tr>
-                            <td class="text-right">
-                            <p>
-                                <strong>Total Amount: </strong>
-                            </p>
-                            <p>
-                                <strong>Late Fees: </strong>
-                            </p>
-							<p>
-                                <strong>Payable Amount: </strong>
-                            </p>
-							<p>
-                                <strong>Balance Due: </strong>
-                            </p>
-							</td>
-                            <td>
-                            <p>
-                                <strong><i class="fa fa-inr"></i> 65,500/-</strong>
-                            </p>
-                            <p>
-                                <strong><i class="fa fa-inr"></i> 500/-</strong>
-                            </p>
-							<p>
-                                <strong><i class="fa fa-inr"></i> 1300/-</strong>
-                            </p>
-							<p>
-                                <strong><i class="fa fa-inr"></i> 9500/-</strong>
-                            </p>
-							</td>
-                        </tr>
-                        <tr>
-                           
-                            <td class="text-right"><h2><strong>Total: </strong></h2></td>
-                            <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i> 31.566/-</strong></h2></td>
-                        </tr>
-                        </table>
-            </div>
+							</tbody>
+						</table>
 					</div>
 				</div>
-			
+			</div>
+
 			<div
 				class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
 				<div class="row">
@@ -268,15 +228,14 @@
 							<p></p>
 							<p></p>
 							<p></p>
-								<label class="control-label col-sm-2" for="tel">전화번호</label>
-								<div class="col-sm-6">
-									<div class="input-group">
-										<input type="tel" class="form-control" id="tel"
-											placeholder="전화번호를 입력하세요." name="tel" >
-									</div>
+							<label class="control-label col-sm-2" for="tel">전화번호</label>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<input type="tel" class="form-control" id="tel"
+										placeholder="전화번호를 입력하세요." name="tel">
 								</div>
-							<div class="form-group">
 							</div>
+							<div class="form-group"></div>
 							<div class="form-group">
 								<label class="control-label col-sm-2" for="email">이메일</label>
 								<div class="col-sm-6">
@@ -290,14 +249,15 @@
 								<label class="control-label col-sm-2" for="addr">주소</label>
 								<div class="col-sm-6">
 									<input type="text" class="form-control" id="add"
-								placeholder="주소 입력하세요" name="addr">
+										placeholder="주소 입력하세요" name="addr">
 								</div>
 							</div>
 							<hr>
 							<h3>계좌정보</h3>
 							<hr>
-							<input type="button" class="btn btn-primary" value="최근 입금계좌" style="float:right;"/>
-							<br><br>
+							<input type="button" class="btn btn-primary" value="최근 입금계좌"
+								style="float: right;" /> <br>
+							<br>
 							<div class="form-group">
 								<label class="control-label col-xs-2" for="id">은행</label>
 								<div class="col-sm-4">
@@ -330,65 +290,112 @@
 							<hr>
 
 							<script>
-							$(document).on('click', '#close-preview', function(){ 
-							    $('.image-preview').popover('hide');
-							    // Hover befor close the preview
-							    $('.image-preview').hover(
-							        function () {
-							           $('.image-preview').popover('show');
-							        }, 
-							         function () {
-							           $('.image-preview').popover('hide');
-							        }
-							    );    
-							});
+								$(document)
+										.on(
+												'click',
+												'#close-preview',
+												function() {
+													$('.image-preview')
+															.popover('hide');
+													// Hover befor close the preview
+													$('.image-preview')
+															.hover(
+																	function() {
+																		$(
+																				'.image-preview')
+																				.popover(
+																						'show');
+																	},
+																	function() {
+																		$(
+																				'.image-preview')
+																				.popover(
+																						'hide');
+																	});
+												});
 
-							$(function() {
-							    // Create the close button
-							    var closebtn = $('<button/>', {
-							        type:"button",
-							        text: 'x',
-							        id: 'close-preview',
-							        style: 'font-size: initial;',
-							    });
-							    closebtn.attr("class","close pull-right");
-							    // Set the popover default content
-							    $('.image-preview').popover({
-							        trigger:'manual',
-							        html:true,
-							        title: "<strong>사진</strong>"+$(closebtn)[0].outerHTML,
-							        content: "There's no image",
-							        placement:'bottom'
-							    });
-							    // Clear event
-							    $('.image-preview-clear').click(function(){
-							        $('.image-preview').attr("data-content","").popover('hide');
-							        $('.image-preview-filename').val("");
-							        $('.image-preview-clear').hide();
-							        $('.image-preview-input input:file').val("");
-							        $(".image-preview-input-title").text("첨부파일"); 
-							    }); 
-							    // Create the preview image
-							    $(".image-preview-input input:file").change(function (){     
-							        var img = $('<img/>', {
-							            id: 'dynamic',
-							            width:250,
-							            height:200
-							        });      
-							        var file = this.files[0];
-							        var reader = new FileReader();
-							        // Set preview image into the popover data-content
-							        reader.onload = function (e) {
-							            $(".image-preview-input-title").text("바꾸기");
-							            $(".image-preview-clear").show();
-							            $(".image-preview-filename").val(file.name);            
-							            img.attr('src', e.target.result);
-							            $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
-							        }        
-							        reader.readAsDataURL(file);
-							    });  
-							});
-	</script>
+								$(function() {
+									// Create the close button
+									var closebtn = $('<button/>', {
+										type : "button",
+										text : 'x',
+										id : 'close-preview',
+										style : 'font-size: initial;',
+									});
+									closebtn.attr("class", "close pull-right");
+									// Set the popover default content
+									$('.image-preview')
+											.popover(
+													{
+														trigger : 'manual',
+														html : true,
+														title : "<strong>사진</strong>"
+																+ $(closebtn)[0].outerHTML,
+														content : "There's no image",
+														placement : 'bottom'
+													});
+									// Clear event
+									$('.image-preview-clear')
+											.click(
+													function() {
+														$('.image-preview')
+																.attr(
+																		"data-content",
+																		"")
+																.popover('hide');
+														$(
+																'.image-preview-filename')
+																.val("");
+														$(
+																'.image-preview-clear')
+																.hide();
+														$(
+																'.image-preview-input input:file')
+																.val("");
+														$(
+																".image-preview-input-title")
+																.text("첨부파일");
+													});
+									// Create the preview image
+									$(".image-preview-input input:file")
+											.change(
+													function() {
+														var img = $('<img/>', {
+															id : 'dynamic',
+															width : 250,
+															height : 200
+														});
+														var file = this.files[0];
+														var reader = new FileReader();
+														// Set preview image into the popover data-content
+														reader.onload = function(
+																e) {
+															$(
+																	".image-preview-input-title")
+																	.text("바꾸기");
+															$(
+																	".image-preview-clear")
+																	.show();
+															$(
+																	".image-preview-filename")
+																	.val(
+																			file.name);
+															img
+																	.attr(
+																			'src',
+																			e.target.result);
+															$(".image-preview")
+																	.attr(
+																			"data-content",
+																			$(img)[0].outerHTML)
+																	.popover(
+																			"show");
+														}
+														reader
+																.readAsDataURL(file);
+													});
+								});
+							</script>
 							<h3>신분증 사본 첨부</h3>
 							<hr>
 							<div
@@ -396,7 +403,7 @@
 								<!-- image-preview-filename input [CUT FROM HERE]-->
 								<div class="input-group image-preview">
 									<input type="text" class="form-control image-preview-filename"
-										placeholder="신분증 사본 첨부"  disabled="disabled">
+										placeholder="신분증 사본 첨부" disabled="disabled">
 									<!-- don't give a name === doesn't send on POST/GET -->
 									<span class="input-group-btn"> <!-- image-preview-clear button -->
 										<button type="button"
@@ -413,7 +420,8 @@
 										</div>
 									</span>
 								</div>
-											<p class="dropout_dsc" style="color: red;">▶사진 확인이 가능한 파일(여권,학생증 등)을 첨부해 주시기 바랍니다.</p>
+								<p class="dropout_dsc" style="color: red;">▶사진 확인이 가능한
+									파일(여권,학생증 등)을 첨부해 주시기 바랍니다.</p>
 								<!-- /input-group image-preview [TO HERE]-->
 							</div>
 						</fieldset>

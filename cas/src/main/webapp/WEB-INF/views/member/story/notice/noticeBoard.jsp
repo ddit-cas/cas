@@ -87,6 +87,13 @@ li a:hover {
 								<th>작성일</th>
 							</tr>
 						</thead>
+						<tbody>
+							<tr>
+							<a href="#"><td></td></a>
+							<a href="#"><td></td></a>
+							<a href="#"><td></td></a>
+							</tr>
+						</tbody>
 						
 					</table>
 				</div>
