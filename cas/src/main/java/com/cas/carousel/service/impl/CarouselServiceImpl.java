@@ -2,39 +2,41 @@ package com.cas.carousel.service.impl;
 
 import java.util.List;
 
+import com.cas.carousel.dao.CarouselDao;
 import com.cas.carousel.service.CarouselService;
 import com.cas.db.dto.CarouselVO;
 
 public class CarouselServiceImpl implements CarouselService{
 
-	@Override
-	public List<CarouselVO> selectCarouselList() {
-		// TODO Auto-generated method stub
-		return null;
+	private CarouselDao carouselDao;
+	
+	public void setCarouselDao(CarouselDao carouselDao) {
+		this.carouselDao = carouselDao;
 	}
 
 	@Override
-	public CarouselVO selectCarousel(String carouselId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CarouselVO> selectCarouselList() {
+		return carouselDao.selectCarouselList();
+	}
+
+	@Override
+	public CarouselVO selectCarousel(String carouselNum) {
+		return carouselDao.selectCarousel(carouselNum);
 	}
 
 	@Override
 	public boolean insertCarousel(CarouselVO carousel) {
-		// TODO Auto-generated method stub
-		return false;
+		return carouselDao.insertCarousel(carousel);
 	}
 
 	@Override
 	public boolean updateCarousel(CarouselVO carousel) {
-		// TODO Auto-generated method stub
-		return false;
+		return carouselDao.updateCarousel(carousel);
 	}
 
 	@Override
 	public boolean deleteCarousel(String carouselId) {
-		// TODO Auto-generated method stub
-		return false;
+		return carouselDao.deleteCarousel(carouselId);
 	}
 
 }

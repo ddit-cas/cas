@@ -55,7 +55,7 @@ li a:hover {
 					<form class="form-inline">
 						<p>
 							<img src="resources/images/free.png"
-								style="width: 800px; height: 300px; background-size: cover; margin: 0 0 10px 0;">
+								style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
 						</p>
 						<div class="searchgroup" style="float: right">
 							<select class="form-control">
@@ -74,11 +74,11 @@ li a:hover {
 				</div>
 				<!--//tab-intro-->
 				<table class="table table-hover"
-					style="width: 800px; margin: 0 auto;">
+					style="width: 800px; height: 1100px; margin: 0 auto;">
 					<thead>
 						<tr>
-							<th style="width: 50%; text-align: center; font-size: 15px;">제목</th>
-							<th style="width: 15%; text-align: center; font-size: 15px;">작성자</th>
+							<th style="width: 30%; text-align: center; font-size: 15px;">제목</th>
+							<th style="width: 8%; text-align: center; font-size: 15px;">작성자</th>
 							<th style="width: 15%; text-align: center; font-size: 15px;">작성일</th>
 						</tr>
 					</thead>

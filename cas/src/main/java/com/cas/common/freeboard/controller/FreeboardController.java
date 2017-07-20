@@ -54,6 +54,6 @@ public class FreeboardController {
 	public String freeboardDetail(HttpServletRequest request,Model model){
 		ArticleVO articleVO = articleService.selectArticle(request.getParameter("articleId"), "B005");
 		model.addAttribute("articleVO",articleVO);
-		return null;
+		return "member/community/freeBoard/freeBoardDetail";
 	}
 }
