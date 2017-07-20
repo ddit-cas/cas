@@ -13,7 +13,14 @@ public class ArticleVO {
 	private String contentState;
 	private String consertNum;
 	private String contentImg;
+	private String boardName;
 	
+	public String getBoardName() {
+		return boardName;
+	}
+	public void setBoardName(String boardName) {
+		this.boardName = boardName;
+	}
 	public String getConsertNum() {
 		return consertNum;
 	}
