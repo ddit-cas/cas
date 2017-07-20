@@ -26,7 +26,6 @@ public class MainController {
 	@RequestMapping("/main")
 	public String mainGo(Model model){
 		List<CarouselVO> carouselList = caruselService.selectCarouselList();
-		System.out.println(carouselList.size());
 		model.addAttribute("carouselList", carouselList);
 		return "member/main";
 	}

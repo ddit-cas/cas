@@ -20,7 +20,6 @@ public class CarouselDaoImpl implements CarouselDao{
 		List<CarouselVO> carouselList = null;
 		try {
 			carouselList = sqlMapClient.queryForList("selectCarouselList");
-			System.out.println("다오에서 ㅜㅊㄹ력하는 사이즈" +carouselList.size());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -28,27 +27,62 @@ public class CarouselDaoImpl implements CarouselDao{
 	}
 
 	@Override
-	public CarouselVO selectCarousel(String carouselId) {
-		// TODO Auto-generated method stub
-		return null;
+	public CarouselVO selectCarousel(String carouselNum) {
+		CarouselVO carouselVO = null;
+		try {
+			carouselVO = (CarouselVO) sqlMapClient.queryForObject("selectCarousel",carouselNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return carouselVO;
 	}
 
 	@Override
 	public boolean insertCarousel(CarouselVO carousel) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		int resultNum = 0;
+		try {
+			resultNum = sqlMapClient.update("insertCarousel",carousel);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (resultNum>0) {
+			result=true;
+		}
+		return result;
 	}
 
 	@Override
 	public boolean updateCarousel(CarouselVO carousel) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		int resultNum = 0;
+		try {
+			resultNum = sqlMapClient.update("updateCarousel",carousel);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (resultNum>0) {
+			result=true;
+		}
+		return result;
 	}
 
 	@Override
-	public boolean deleteCarousel(String carouselId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteCarousel(String carouselNum) {
+		boolean result = false;
+		int resultNum = 0;
+		try {
+			resultNum = sqlMapClient.update("deleteCarousel",carouselNum);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (resultNum>0) {
+			result=true;
+		}
+		return result;
 	}
 
 }

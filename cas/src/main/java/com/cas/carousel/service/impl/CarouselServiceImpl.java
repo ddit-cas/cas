@@ -20,27 +20,23 @@ public class CarouselServiceImpl implements CarouselService{
 	}
 
 	@Override
-	public CarouselVO selectCarousel(String carouselId) {
-		// TODO Auto-generated method stub
-		return null;
+	public CarouselVO selectCarousel(String carouselNum) {
+		return carouselDao.selectCarousel(carouselNum);
 	}
 
 	@Override
 	public boolean insertCarousel(CarouselVO carousel) {
-		// TODO Auto-generated method stub
-		return false;
+		return carouselDao.insertCarousel(carousel);
 	}
 
 	@Override
 	public boolean updateCarousel(CarouselVO carousel) {
-		// TODO Auto-generated method stub
-		return false;
+		return carouselDao.updateCarousel(carousel);
 	}
 
 	@Override
 	public boolean deleteCarousel(String carouselId) {
-		// TODO Auto-generated method stub
-		return false;
+		return carouselDao.deleteCarousel(carouselId);
 	}
 
 }
