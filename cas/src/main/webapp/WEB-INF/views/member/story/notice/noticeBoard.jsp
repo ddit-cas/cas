@@ -4,6 +4,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,12 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+=======
+<style>
+.container {
+	width: 960px;
+}
+>>>>>>> branch 'master' of https://github.com/ddit-cas/cas.git
 
 <body>
 	<style>
@@ -55,7 +62,7 @@ li a:hover {
 </style>
 	<div class="company-wrap">
 		<div class="company-snb">
-			<h2>커뮤니티</h2>
+			<h2>cas-이야기</h2>
 			<div class="">
 				<ul>
 					<li class="active"><a href="freeBoard.jsp">공지사항</a></li>
@@ -67,6 +74,8 @@ li a:hover {
 			<!--//tab-intro-->
 		</div>
 		<!--//company-snb-->
+	</div>
+</body>
 
 		<div class="company-cont">
 			<h3 class="box">공지사항</h3>
@@ -96,7 +105,6 @@ li a:hover {
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>번호</th>
 								<th>제목</th>
 								<th>작성자</th>
 								<th>작성일</th>
