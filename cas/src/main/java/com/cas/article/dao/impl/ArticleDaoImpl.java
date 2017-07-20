@@ -51,8 +51,16 @@ public class ArticleDaoImpl implements ArticleDao{
 
 	@Override
 	public boolean updateFreeboard(ArticleVO article) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		try {
+			int res = sqlMapClient.update("updateArticle",article);
+			if(res>0){
+				result=true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override

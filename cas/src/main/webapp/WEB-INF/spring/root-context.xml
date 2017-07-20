@@ -19,4 +19,18 @@
 		class="com.cas.article.service.impl.ArticleServiceImpl"
 		p:articleDao-ref="articleDao"
 	></bean>
+	
+<!-- 	캐러셀 다오 빈등록 -->
+	<bean
+		name="carouselDao"
+		class="com.cas.carousel.dao.impl.CarouselDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
+	
+<!-- 	캐러셀 서비스 빈등록 -->
+	<bean
+		name="carouselService"
+		class="com.cas.carousel.service.impl.CarouselServiceImpl"
+		p:carouselDao-ref="carouselDao"
+	></bean>
 </beans>

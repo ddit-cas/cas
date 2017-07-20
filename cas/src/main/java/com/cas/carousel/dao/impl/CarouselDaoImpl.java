@@ -1,16 +1,30 @@
 package com.cas.carousel.dao.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.cas.carousel.dao.CarouselDao;
 import com.cas.db.dto.CarouselVO;
+import com.ibatis.sqlmap.client.SqlMapClient;
 
 public class CarouselDaoImpl implements CarouselDao{
 
+	private SqlMapClient sqlMapClient;
+	
+	public void setSqlMapClient(SqlMapClient sqlMapClient) {
+		this.sqlMapClient = sqlMapClient;
+	}
+
 	@Override
 	public List<CarouselVO> selectCarouselList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<CarouselVO> carouselList = null;
+		try {
+			carouselList = sqlMapClient.queryForList("selectCarouselList");
+			System.out.println("다오에서 ㅜㅊㄹ력하는 사이즈" +carouselList.size());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return carouselList;
 	}
 
 	@Override

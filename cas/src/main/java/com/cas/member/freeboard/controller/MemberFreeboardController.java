@@ -1,7 +1,5 @@
 package com.cas.member.freeboard.controller;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -30,32 +28,40 @@ public class MemberFreeboardController {
 	@RequestMapping("/member/freeboardForm")
 	public String insertFreeboardForm(HttpServletRequest request,Model model){
 		model.addAttribute("boardCode", "B005");
-		model.addAttribute("resultUrl", "insertFreeboard");
+		String articleId = request.getParameter("articleId");
+		
+		ArticleVO articleVO = null;
+		if(articleId!=null){
+			articleVO = articleService.selectArticle(articleId, "B005");
+			model.addAttribute("articleVO",articleVO);
+			model.addAttribute("resultUrl","updateFreeboard");
+		}else{
+			model.addAttribute("resultUrl","insertFreeboard");
+		}
 		return "/daumeditor/editor";
+		//성빈님? 성빈형아? 성빈삼촌? 못해먹겠어요 ㅠㅠ
+		//도와주시는척하고 자꾸 도망가시면 저도 더이상 참치 않겠읍니다.
 	}
 	
 	/*글입력양식을 다 입력후 등록을 누르면 인서트 해주는 메서드*/
 	@RequestMapping("/member/insertFreeboard")
-	public String insertFreeboard(HttpServletRequest request, HttpSession session){
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		
-		ArticleVO article = new ArticleVO();
-		article.setBoardCode("B005");
-		article.setContentTitle(request.getParameter("title"));
-		article.setContentContent(request.getParameter("content"));
-		System.out.println(request.getParameter("content"));
-		articleService.insertArticle(article);
+	public String insertFreeboard(HttpServletRequest request, HttpSession session,ArticleVO articleVO){
+//		System.out.println("잘돌아와요?");
+//		System.out.println(articleVO.getContentContent());
+//		ArticleVO article = new ArticleVO();
+//		article.setBoardCode("B005");
+//		article.setContentTitle(request.getParameter("title"));
+//		article.setContentContent(request.getParameter("content"));
+//		System.out.println(request.getParameter("content"));
+		articleService.insertArticle(articleVO);
 		
 		return "/member/community/insertArticleComplete";
 	}
 	
 	/*글 수정양식을 다 입력한후 수정을 눌렀을떄 오는 메서드*/
 	@RequestMapping("/member/updateFreeboard")
-	public String updateFreeboard(HttpServletRequest request){
+	public String updateFreeboard(HttpServletRequest request,HttpSession session,ArticleVO articleVO){
+		articleService.updateFreeboard(articleVO);
 		return null;
 	}
 	
