@@ -1,22 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>자유게시판</title>
-</head>
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-.container {
-	width: 960px;
-}
-
-h2 {
-	width: 960px;
-	margin: 0 auto;
-}
-
 .form-inline {
 	display: block;
 	text-align: right;
@@ -33,70 +19,105 @@ h2 {
 
 td {
 	text-align: center;
+	font-size: 16px;
 }
 
-li a:hover{
+th {
+	text-align: center;
+	font-size: 16px;
+}
+
+li a:hover {
 	background-color: #666;
 }
+
+#body {
+	margin-top: 58px;
+}
 </style>
-<body>
-	<nav class="navbar navbar-default" style="width: 830px; margin:0 auto 20px; text-align:center;">
-		<div class="container-fluid" style=" width: 830px; margin:0 auto;">
-			<ul class="nav navbar-nav">
-				<li><a href="noticeBoard.jsp" style=" width: 198px;">공지사항</a></li>
-				<li><a href="freeBoard.jsp" style=" width: 198px;">자유게시판</a></li>
-				<li><a href="#" style=" width: 198px;">공연홍보게시판</a></li>
-				<li><a href="#" style=" width: 198px;">PR영상</a></li>
+<div class="company-wrap">
+	<div class="company-snb">
+		<h2>커뮤니티</h2>
+		<div class="">
+			<ul>
+				<li class="active"><a href="freeBoard.jsp">자유게시판</a></li>
+				<!--li><a href="people.php">PEOPLE</a></li-->
+				<li><a href="#">공연홍보게시판</a></li>
+				<li><a href="#">UCC</a></li>
 			</ul>
 		</div>
-	</nav>
-	<p><img src="resources/images/free.png" style="width:829px; height:188px; margin:0 160px auto; background-size:cover;"></p>
-	<div class="container">
-		<div class="content">
-			<div class="selectcheck">
-				<form class="form-inline">
-					<div class="searchgroup" style="width:405px; margin:0 582px auto;">
-						<select class="form-control">
-							<option value="title">제목</option>
-							<option value="writer" selected>작성자</option>
-							<option value="date">작성일</option>
-						</select>
-						<div class="form-group">
-							<input class="form-control" id="focusedInput" type="text"
-								placeholder="   검색    " style="margin:0 0 0;"> <input type="button"
-								id="search" class="form-control" value="검색"> <input
-								type="button" class="form-control" id="list" value="목록">
+	</div>
+	<div class="company-cont">
+		<h3 class="box">자유게시판</h3>
+		<div class="tab-content">
+			<div id="home" class="tab-pane fade in active">
+				<div class="selectcheck">
+					<form class="form-inline">
+						<p>
+							<img src="resources/images/free.png"
+								style="width: 800px; height: 300px; background-size: cover; margin: 0 0 10px 0;">
+						</p>
+						<div class="searchgroup" style="float: right">
+							<select class="form-control">
+								<option value="title">제목</option>
+								<option value="writer" selected>작성자</option>
+								<option value="date">작성일</option>
+							</select>
+							<div class="form-group">
+								<input class="form-control" id="focusedInput" type="text"
+									placeholder="   검색    " style="margin: 0 auto 5px;"> <input
+									type="button" id="search" class="form-control" value="검색">
+								<input type="button" class="form-control" id="list" value="목록">
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
+				<!--//tab-intro-->
+				<table class="table table-hover"
+					style="width: 800px; margin: 0 auto;">
+					<thead>
+						<tr>
+							<th style="width: 50%; text-align: center; font-size: 15px;">제목</th>
+							<th style="width: 15%; text-align: center; font-size: 15px;">작성자</th>
+							<th style="width: 15%; text-align: center; font-size: 15px;">작성일</th>
+						</tr>
+					</thead>
+					<tbody style="text-align: center; font-size: 15px;">
+					<c:forEach var="i" begin="${index*7}" end="${index*7+6}">
+						<tr>
+							<td>${articleList[i].contentTitle}</td>
+							<td>${articleList[i].contentWriter}</td>
+							<td>${articleList[i].contentRegisDate}</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
 			</div>
-			<table class="table table-hover" style="width:830px; margin:0 auto;" >
-				<thead>
-					<tr>
-						<th style="text-align: center; font-size: 15px;">제목</th>
-						<th style="text-align: center; font-size: 15px;">작성자</th>
-						<th style="text-align: center; font-size: 15px;">작성일</th>
-					</tr>
-				</thead>
-				<tbody style="text-align: center; font-size: 15px;">
-					<tr>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td>2017-07-10</td>
-					</tr>
-					<tr>
-						<td>Moe</td>
-						<td>mary@example.com</td>
-						<td>2017-07-10</td>
-					</tr>
-					<tr>
-						<td>Dooley</td>
-						<td>july@example.com</td>
-						<td>2017-07-10</td>
-					</tr>
-				</tbody>
-			</table>
+			<!--//company-snb-->
 		</div>
 	</div>
-</body>
-</html>
+</div>
+<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+	<div class="row">
+		<nav aria-label="...">
+			<ul class="pager" role="tablist">
+				<li class="previous" onclick="goTo(1);">
+					<a href="#"><span aria-hidden="true">←</span>
+						Previous
+					</a>
+				</li>
+				<c:forEach var="i" begin="${minNum}" end="${maxNum}">
+				<li class="active">
+					<a aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
+						${i }
+					</a>
+				</li>
+				</c:forEach>
+				<li class="next" onclick="goTo(2);">
+					<a href="#">Next<span aria-hidden="true">→</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>

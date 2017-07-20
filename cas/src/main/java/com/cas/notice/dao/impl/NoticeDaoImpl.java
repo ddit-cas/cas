@@ -17,12 +17,13 @@ public class NoticeDaoImpl implements NoticeDao{
 	
 	@Override
 	public List<ArticleVO> selectNoticeList() {
+		List<ArticleVO> resultList = null;
 		try {
-			client.queryForList("asdfasdf");
+			resultList = client.queryForList("B001");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return resultList;
 	}
 
 	@Override
