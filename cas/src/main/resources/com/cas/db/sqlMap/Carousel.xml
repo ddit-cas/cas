@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Carousel">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="carousel" type="com.cas.db.dto.CarouselVO"/>
+	<resultMap class="com.cas.db.dto.CarouselVO" id="selectCarousel">
+		<result property="carouselNum"    		column="carousel_num"/>
+		<result property="contentUrl"     		column="content_url"/>
+		<result property="carouselTitle" 		column="carousel_title"/>
+		<result property="carouselContent"		column="carousel_content"/>
+		<result property="carouselImage"  		column="carousel_image"/>
+	</resultMap>
+	
+	<insert id="insertCarousel" parameterClass="carousel">
+		INSERT INTO carousel VALUES (CAROUSEL_SEQ.NEXTVAL,#contentUrl#,#carouselTitle#,#carouselContent#,SYSDATE,#carouselImage#)																		
+	</insert>
+	
+	<select id="selectCarouselList" resultMap="selectCarousel">
+		SELECT * FROM carousel
+	</select>
+	
+	<select id="selectCarousel" resultMap="selectCarousel" parameterClass="str">
+		select * from carousel where carousel_num=#carouselNum#
+	</select>
+	
+	<update id="updateCarousel" parameterClass="carousel">
+		update carousel set
+		carousel_content=#carouselContent#,
+		carousel_title=#carouselTitle#,
+		content_url=#contentUrl#,
+		carousel_image=#carouselImage#
+		where carousel_num=#carouselNum#
+	</update>
+	
+	<delete id="deleteCarousel" parameterClass="str">
+		delete from carousel where carusel_num=#carouselNum#
+	</delete>
+</sqlMap>
