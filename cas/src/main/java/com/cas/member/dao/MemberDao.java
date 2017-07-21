@@ -30,4 +30,7 @@ public interface MemberDao {
 
 	/*회원하나를 가져오는 메서드*/
 	public MemberVO selectMember(String memId);
+
+	/*공연홍보글이나 크라우드 펀딩 클릭시 클릭정보를 입력하는 메서드*/
+	public void insertClickData(String contentNum, String classify);
 }

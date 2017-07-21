@@ -31,4 +31,7 @@ public interface MemberService {
 	
 //	회원객체를 가져오느ㅜㄴ 메서드
 	public MemberVO selectMember(String memId);
+
+	/*공연홍보글이나 크라우드 펀딩 클릭시 클릭정보를 입력하는 메서드*/
+	public void insertClickData(String contentNum, String classify);
 }
