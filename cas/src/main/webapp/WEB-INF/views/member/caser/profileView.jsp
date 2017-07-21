@@ -12,6 +12,11 @@
     height: 585px;
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: #26bbe2;
+    border-color: #2e6da4;
+}
 
 </style>
 
@@ -28,7 +33,7 @@
 
 		<div class="contents">
 
-			<h3 class="title">CASER PROFILE LIST</h3>
+			<h3 class="title" style="margin-left: 234px; margin-top: 22px; font-size: 30px;">CASER PROFILE LIST</h3>
 
 
 			<div class="bn_wrap">
@@ -67,16 +72,16 @@
 											class="img-rounded img-responsive" />
 									</div>
 									<div class="col-sm-6 col-md-8">
-										<h4>Bhaumik Patel</h4>
-										<small><cite title="San Francisco, USA">San
-												Francisco, USA <i class="glyphicon glyphicon-map-marker">
+										<h4 id="name">설승민</h4>
+										<p id="nick">홍홍이</p>
+										<small><cite title="San Francisco, USA">대전 대흥동 <i class="glyphicon glyphicon-map-marker">
 											</i>
 										</cite></small>
 										<p>
-											<i class="glyphicon glyphicon-envelope"></i>&nbsp;email@example.com
+											<i class="glyphicon glyphicon-envelope"></i>&nbsp;seokartn@naver.com
 											<br /> <i class="glyphicon glyphicon-globe"></i><a
-												href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-											<br /> <i class="glyphicon glyphicon-gift"></i>June 02, 1988
+												href="http://www.jquery2dotnet.com">seokartn.instagram</a>
+											<br /> <i class="glyphicon glyphicon-gift"></i>92.03.10
 										</p>
 										<!-- Split button -->
 										<div class="btn-group">
