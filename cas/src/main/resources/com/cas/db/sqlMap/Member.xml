@@ -30,7 +30,6 @@
 		<result property="memHp_yn" column="MEM_HP_YN" />                           
 		<result property="enabled" column="ENABLED" />                              
 		<result property="authority" column="AUTHORITY" />
-<<<<<<< HEAD
 		<result property="memNameYn"     column="mem_Name_Yn"    />
 		<result property="memEmailYn"    column="mem_Email_Yn"   />
 		<result property="memHpYn"       column="mem_Hp_Yn"      />
@@ -41,14 +40,6 @@
 		INSERT INTO MEMBER(mem_Id,mem_Pwd,mem_Name,mem_Name_Yn,mem_Email,mem_Email_Yn,mem_Mailnumber,mem_Addr, mem_Nick,mem_Frofileimage,mem_Birthdate,mem_Point,mem_Hp,mem_Hp_Yn,mem_Career,mem_Sginup_date,mem_Active,sanc_Code,rank_Code)
 				   VALUES (#memId#,#memPwd#,#memName#,#memNameYn#,#memEmail#,#memEmailYn#,#memMailnumber#,#memAddr#,#memNick#,#memFrofileimage#,#memBirthdate#,0,#memHp#,#memHpYn#,#memCareer#,SYSDATE,#memActive#,'S001','R002') 
 	</insert>
-=======
-	</resultMap>
-
-	<update id="insertMember" parameterClass="member">
-		INSERT INTO MEMBER(mem_Id,mem_Pwd,mem_Name,mem_Name_Yn,mem_Email,mem_Email_Yn,mem_Mailnumber,mem_Addr, mem_Nick,mem_Frofileimage,mem_Birthdate,mem_Point,mem_Sex,mem_Hp,mem_Hp_Yn,mem_Career,mem_Sginup_date,mem_Active,sanc_Code,rank_Code)
-				   VALUES (#memId#,#memPwd#,#memName#,#memNameYn#,#memEmail#,#memEmailYn#,#memMailnumber#,#memAddr#,#memNick#,#memFrofileimage#,#memBirthdate#,0,#memSex#,#memHp#,#memHpYn#,#memCareer#,SYSDATE,#memActive#,'S001','R002') 
-	</update>
->>>>>>> refs/heads/develop_yh
 
 	<select id="selectMemberList" resultMap="selectMember"
 		parameterClass="str">
@@ -77,14 +68,12 @@
 		member where mem_id=#id#
 	</select>
 	
-<<<<<<< HEAD
 	<insert id="insertClickInfo" parameterClass="readinfo">
 		insert into readinfo (CONTENT_NUM, READ_TIME, CLASSIFY)
 					values(#contentNum#,sysdata,#classify#)
 	</insert>
-=======
+	
 	<select id="selectMemberNick" parameterClass="str" resultClass="str">
 		select mem_nick from member where mem_nick=#mem_nick#
 	</select>
->>>>>>> refs/heads/develop_yh
 </sqlMap>
