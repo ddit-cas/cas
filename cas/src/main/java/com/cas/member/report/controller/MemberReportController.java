@@ -14,7 +14,7 @@ import com.cas.report.service.ReportService;
 public class MemberReportController {
 	
 	@Autowired
-	ReportService reportService;
+	private ReportService reportService;
 	
 	public void setReportService(ReportService reportService){
 		this.reportService = reportService;

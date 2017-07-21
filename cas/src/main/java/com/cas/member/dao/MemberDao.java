@@ -16,8 +16,11 @@ public interface MemberDao {
 	public String selectMemberId(String id);
 	
 	/*회원 비번을 가져오는 메서드*/
-	public String selectMemberPwd(String pwd);
+	public String selectMemberPwd(String id);
 	
 	/*회원 아이디를 찾아오는 ㅔㅁ서드*/
 	public String selectId(String name,String email);
+
+	/*회원하나를 가져오는 메서드*/
+	public MemberVO selectMember(String memId);
 }

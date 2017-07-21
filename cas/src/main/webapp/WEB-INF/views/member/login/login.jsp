@@ -187,17 +187,23 @@
 				</a>
 			</div>
 			<section class="loginform cf">
-			<form id="loginForm" action="j_spring_security_check" method="post">
+			<form id="loginForm" action="login" method="post">
 				<div>
-					<input type="text" name="username" maxlength="12" placeholder="ID" required><br>
-					<input type="password" name="password" maxlength="12" placeholder="PASSWORD" required><br>
+					<input type="text" name="memId" maxlength="12" placeholder="ID" required><br>
+					<input type="password" name="memPwd" maxlength="12" placeholder="PASSWORD" required><br>
 					<div class="securityLogin">
 						<div class="eff-8"></div>
-						<input type="submit" value="로그인" onclick="doLogin()"/>
+						<a href="#" onclick="login(); return false;">로그인</a>
 					</div>
 				</div>
-				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
 			</form>
+			<script>
+				function login(){
+					alert("여기자체엔 들어옵니까 씨발fhrmdlsvha?");
+					$("#loginForm").submit();
+				}
+				var statue = "logout";
+			</script>
 			</section>
 			<hr id="securityHr">
 			<div id="securityFooterBtns">

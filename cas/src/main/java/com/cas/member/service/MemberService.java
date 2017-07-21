@@ -16,8 +16,11 @@ public interface MemberService {
 	public boolean checkId(String id);
 	
 	/*회원 비밀빈호 검증 메서드*/
-	public boolean checkPwd(String pwd);
+	public boolean checkPwd(String id,String pwd);
 	
 	/*회원 아이디를 찾아온ㄴ 메서드*/
 	public String selectId(String name,String email);
+	
+//	회원객체를 가져오느ㅜㄴ 메서드
+	public MemberVO selectMember(String memId);
 }

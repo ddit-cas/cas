@@ -338,15 +338,19 @@ h3 {
 			<!-- 	로그인이 되있지 않을 때 -->
 			<div id="sidr">
 				<!-- Your content -->
-				<form id="loginForm">
-					<input class="loginText" type="text"  name="id" placeholder="아이디를 입력하세요"> 
-					<input class="loginText" type="password" name="pwd" placeholder="비밀번호를 입력하세요"> 
-					<a href="/cas/loginForm" class="btn btn-sm animated-button thar-four">로그인</a> 
+				<form id="loginForm" action="login" method="post"  accept-charset="utf-8">
+					<input class="loginText" type="text"  name="memId" placeholder="아이디를 입력하세요"> 
+					<input class="loginText" type="password" name="memPwd" placeholder="비밀번호를 입력하세요"> 
+					<a href="#" onclick="login(); return false;" class="btn btn-sm animated-button thar-four">로그인</a> 
 					<a href="/cas/joinMemberForm" class="btn btn-sm animated-button thar-four">회원가입</a> 
 					<a href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호찾기</a>
 				</form>
 			</div>
-			<script type="text/javascript">
+			<script>
+				function login(){
+					alert("여기자체엔 들어옵니까 씨발?");
+					$("#loginForm").submit();
+				}
 				var statue = "logout";
 			</script>
 		</c:when>
@@ -357,8 +361,8 @@ h3 {
 				<div id="myInfoDiv">
 					<img src="/cas/resources/sinhea.jpg" class="img-circle"
 						alt="Cinque Terre" style="width:65%; height:auto; margin-top: 15px;margin-bottom: 15px;"> 
-					<label class="myInfoLabel">${sessionScope.loginUser}</label> 
-					<label class="myInfoLabel">${sessionScope.point} point</label>
+					<label class="myInfoLabel">${loginUser.memName}</label> 
+					<label class="myInfoLabel">${loginUser.memPoint} point</label>
 				</div>
 				<a href="myPagemModify.jsp" class="btn btn-sm animated-button thar-four">개인정보</a> 
 				<a href="#" class="btn btn-sm animated-button thar-four">내 영상</a> 
