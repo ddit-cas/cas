@@ -55,7 +55,7 @@ div.company-wrap {
 					<li class="active"><a href="fundList">진행중인 펀딩</a></li>
 					<li><a href="#">종료된 펀딩</a></li>
 					<li><a href="fundingExampleList">성공한 펀딩 </a></li>
-					<li><a href="#">펀딩 등록하기 </a></li>
+					<li><a href="member/insertFundIntro">펀딩 등록하기 </a></li>
 				</ul>
 			</div>
 		</div>

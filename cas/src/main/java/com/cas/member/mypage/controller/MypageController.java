@@ -19,7 +19,8 @@ public class MypageController {
 	/*내정보를 수정하는 메서드*/
 	@RequestMapping("/member/updateMember")
 	public String memberUpdate(HttpSession session,HttpServletRequest request){
-		return null;
+		String url = "member/myPage/myPageModify";
+		return url;
 	}
 	
 	/*회원 개인이 올린 유씨씨들만 볼수있게 하는 메서드*/

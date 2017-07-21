@@ -21,6 +21,11 @@
  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet" />
 <script src="http://vjs.zencdn.net/c/video.js"></script>
 
+<!-- sweetalert하기 위한 링크 -->
+<link rel="stylesheet" href="/cas/resources/css/sweetalert.css">
+<script src="/cas/resources/js/sweetalert/sweetalert.min.js"></script>
+
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -341,7 +346,7 @@ h3 {
 				<form id="loginForm">
 					<input class="loginText" type="text"  name="id" placeholder="아이디를 입력하세요"> 
 					<input class="loginText" type="password" name="pwd" placeholder="비밀번호를 입력하세요"> <a
-						href="login" class="btn btn-sm animated-button thar-four">로그인</a> <a
+						href="/cas/login" class="btn btn-sm animated-button thar-four">로그인</a> <a
 						href="/cas/joinMemberForm" class="btn btn-sm animated-button thar-four">회원가입</a> <a
 						href="#" class="btn btn-sm animated-button thar-four">아이디/비밀번호
 						찾기</a>
@@ -352,23 +357,23 @@ h3 {
 			</script>
 		</c:when>
 		<c:otherwise>
-			<!-- 		로그인이 되어있을 때 -->
+			<!-- 로그인이 되어있을 때 -->
 			<div id="sidr" style="text-align: center;">
-				<!-- 				Your content -->
+				<!-- Your content -->
 				<div id="myInfoDiv">
 					<img src="/cas/resources/sinhea.jpg" class="img-circle"
 						alt="Cinque Terre" style="width:65%; height:auto; margin-top: 15px;margin-bottom: 15px;"> <label
 						class="myInfoLabel">${sessionScope.loginUser}</label> <label
 						class="myInfoLabel">${sessionScope.point} point</label>
 				</div>
-				<a href="myPagemModify.jsp" class="btn btn-sm animated-button thar-four">개인정보</a> <a
+				<a href="/cas/member/updateMember" class="btn btn-sm animated-button thar-four">개인정보</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">내 영상</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">내 펀딩</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">내 투자</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
 					href="#" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
-					href="logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
+					href="/cas/logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
 				<script>
 					function logout() {
 
@@ -401,8 +406,8 @@ h3 {
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="/cas/main"
-					style="padding: 0; margin: 0 15px 0 15px;"> <img
-					src='<c:url value='/resources/images/logo.png' />' style="width: 80px; height: 50px;">
+					style="padding: 0; margin: 0 15px 0 15px;"> 
+					<img src='<c:url value='/resources/images/logo.png' />' style="width: 80px; height: 50px;">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -412,9 +417,7 @@ h3 {
 						<ul class="dropdown-menu">
 
 							<li><a href="/cas/noticeList">공지사항</a></li>
-							<li><a href="#">CAS란</a></li>
-							<li><a href="#">펀딩 성공 사례</a></li>
-
+							<li><a href="promotion">CAS란</a></li>
 							<li><a href="#">공연 행사 일정</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"

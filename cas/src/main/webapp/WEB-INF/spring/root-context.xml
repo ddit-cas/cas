@@ -19,4 +19,16 @@
 		class="com.cas.article.service.impl.ArticleServiceImpl"
 		p:articleDao-ref="articleDao"
 	></bean>
+<!-- MemberDao 빈 등록 -->	
+	<bean
+		name="memberDao"
+		class="com.cas.member.dao.impl.MemberDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	/>
+<!-- MemberService 빈 등록 -->
+	<bean
+		name="memberService"
+		class="com.cas.member.service.impl.MemberServiceImpl"
+		p:memberDao-ref="memberDao"
+	/>	
 </beans>

@@ -5,7 +5,9 @@ public class MemberVO {
 	private String memId;
 	private String memPwd;
 	private String memName;
+	private String memNameYn;
 	private String memEmail;
+	private String memEmailYn;
 	private String memMailnumber;
 	private String memAddr;
 	private String memNick;
@@ -14,9 +16,45 @@ public class MemberVO {
 	private int memPoint;
 	private String memSex;
 	private String memHp;
+	private String memHpYn;
+	private String memCareer;
 	private String memSginup_date;
+	private String memActive;
 	private String sancCode;
-	private String rancCode;
+	private String rankCode;
+	
+	
+	
+	public String getMemNameYn() {
+		return memNameYn;
+	}
+	public void setMemNameYn(String memNameYn) {
+		this.memNameYn = memNameYn;
+	}
+	public String getMemEmailYn() {
+		return memEmailYn;
+	}
+	public void setMemEmailYn(String memEmailYn) {
+		this.memEmailYn = memEmailYn;
+	}
+	public String getMemHpYn() {
+		return memHpYn;
+	}
+	public void setMemHpYn(String memHpYn) {
+		this.memHpYn = memHpYn;
+	}
+	public String getMemActive(){
+		return memActive;
+	}
+	public void setMemActive(String memActive){
+		this.memActive=memActive;
+	}
+	public String getMemCareer(){
+		return memCareer;
+	}
+	public void setMemCareer(String memCareer){
+		this.memCareer = memCareer;
+	}
 	
 	public String getMemId() {
 		return memId;
@@ -102,11 +140,11 @@ public class MemberVO {
 	public void setSancCode(String sancCode) {
 		this.sancCode = sancCode;
 	}
-	public String getRancCode() {
-		return rancCode;
+	public String getRankCode() {
+		return rankCode;
 	}
-	public void setRancCode(String rancCode) {
-		this.rancCode = rancCode;
+	public void setRankCode(String rankCode) {
+		this.rankCode = rankCode;
 	}
 
 }

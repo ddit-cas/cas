@@ -1,67 +1,61 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<% 
+   request.setCharacterEncoding("UTF-8");  //한글깨지면 주석제거
+   //request.setCharacterEncoding("EUC-KR");  //해당시스템의 인코딩타입이 EUC-KR일경우에
+   String inputYn = request.getParameter("inputYn");
+   String roadFullAddr = request.getParameter("roadFullAddr"); //전체 주소
+   String roadAddrPart1 = request.getParameter("roadAddrPart1"); //도로명 앞주소 사직로 114
+   String roadAddrPart2 = request.getParameter("roadAddrPart2"); //(문화동, 호수마을)
+   String zipNo = request.getParameter("zipNo"); //우편번호
+   String addrDetail = request.getParameter("addrDetail"); //상세정보(입력값) 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$(function(){
-	$('#zip').click(function(){
-		var dongStr = $('#dong').val();
-		$.ajax({
-			url : 'dongSelect.jsp',
-			type : 'post',
-			data : "dong="+dongStr,
-			success : function(res){
-				var code = "<table><tr><th>우편번호</th><th>주소</th><th>번지</th></tr>";
-				$.each(res,function(i,v){
-					code += "<tr class='zipTR'><td>"+v.zipcode+"</td><td>"+v.addr+"</td><td>"+v.bunji+"</td></tr>";
-				});
-				code += "</table>";
-				$('#result').html(code);
-			},
-			dataType : 'json'
-		});
-	});
-	//////////////////////////////////////////////////////////////////////
-	$('#result').on("click", '.zipTR', function(){
-		var zipcode = $('td:eq(0)',this).text(); //380-956
-		var addr = $('td:eq(1)',this).text();
-		
-		//부모창(memberForm.jsp)에 결과를 돌려준다(출력)
-		//$('부모창의 선택자', opener.document).val('현재값');
-		$('#zip', opener.document).val(zipcode);
-		$('#add1', opener.document).val(addr);
-		$('#add2', opener.document).focus();
+%>
+</head>
+<script language="javascript">
+// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("주소입력화면 소스"도 동일하게 적용시켜야 합니다.)
+//document.domain = "abc.go.kr";
+
+function init(){
+	var url = location.href;
+	var confmKey ="U01TX0FVVEgyMDE3MDYyODEzMzkzNjIyMTY3";
+	var resultType = "4"; // 도로명주소 검색결과 화면 출력내용, 1 : 도로명, 2 : 도로명+지번, 3 : 도로명+상세건물명, 4 : 도로명+지번+상세건물명
+	var inputYn= "<%=inputYn%>";
+	if(inputYn != "Y"){
+		document.form.confmKey.value = confmKey;
+		document.form.returnUrl.value = url;
+		document.form.resultType.value = resultType;
+		document.form.action="http://www.juso.go.kr/addrlink/addrLinkUrl.do"; //인터넷망
+		//document.form.action="http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do"; //모바일 웹인 경우, 인터넷망
+		document.form.submit();
+	}else{
+		jusoCallBack("<%=roadFullAddr%>","<%=roadAddrPart1%>","<%=roadAddrPart2%>","<%=addrDetail%>","<%=zipNo%>");
 		window.close();
-	});
-});
-</script>
-<style>
-	.zipTR:hover {
-		background-color: lime;
+		   
 	}
-</style>
-<div class="title"><strong>우편번호검색</strong></div>
-<table>
-	<tr>
-		<td>
-			
-			<!-- ///////////////////////////////////////////////////////////////////////// -->
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="dong">동 검색</label>
-				<div class="col-sm-6">
-				  <div class="input-group">
-				    <input type="text" class="form-control" id="dong" name="dong" placeholder="동 이름을 검색하세요.">
-				    <span class="input-group-btn">
-				      <button class="btn btn-default" id="zip" type="button">검색</button>
-				    </span>
-				  </div>
-				</div>
-			</div>
-			<!-- ///////////////////////////////////////////////////////////////////////// -->
-			
-		</td>
-	</tr>
-</table>
+}
 
-<div id="result"></div>
+function jusoCallBack(roadFullAddr, roadAddrPart1, roadAddrPart2, addrDetail, zipNo){
+	opener.document.getElementById("fullAddr").value = roadFullAddr;
+	opener.document.getElementById("add1").value = roadAddrPart1+roadAddrPart2;
+	opener.document.getElementById("add2").value = addrDetail;
+	opener.document.getElementById("zip").value = zipNo;
+}
+</script>
+<body onload="init();">
+   <form id="form" name="form" method="post">
+      <input type="hidden" id="confmKey" name="confmKey" value=""/>
+      <input type="hidden" id="returnUrl" name="returnUrl" value=""/>
+      <input type="hidden" id="resultType" name="resultType" value=""/>
+      <!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 START-->
+      <!-- 
+      <input type="hidden" id="encodingType" name="encodingType" value="EUC-KR"/>
+       -->
+      <!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 END-->
+   </form>
+</body>
+</html>

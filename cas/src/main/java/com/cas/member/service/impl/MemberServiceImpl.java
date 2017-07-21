@@ -3,10 +3,24 @@ package com.cas.member.service.impl;
 import java.util.List;
 
 import com.cas.db.dto.MemberVO;
+import com.cas.member.dao.MemberDao;
+import com.cas.member.dao.impl.MemberDaoImpl;
 import com.cas.member.service.MemberService;
 
 public class MemberServiceImpl implements MemberService{
 
+	private MemberDao memDao;
+	
+	public void setMemberDao(MemberDao memDao){
+		this.memDao = memDao;
+	}
+	
+	@Override
+	public int insertMember(MemberVO member) {
+		int result = memDao.insertMember(member);
+		return result;
+	}
+	
 	@Override
 	public List<MemberVO> memberList() {
 		// TODO Auto-generated method stub
