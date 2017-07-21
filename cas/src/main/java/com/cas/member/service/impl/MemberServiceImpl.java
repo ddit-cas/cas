@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.cas.db.dto.MemberVO;
 import com.cas.member.dao.MemberDao;
-import com.cas.member.dao.impl.MemberDaoImpl;
 import com.cas.member.service.MemberService;
 
 public class MemberServiceImpl implements MemberService{
@@ -28,6 +27,11 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	public List<MemberVO> memberCheckIdList() {
+		return memberDao.memberCheckIdList();
+	}
+	
+	@Override
 	public boolean updateMember(MemberVO member) {
 		// TODO Auto-generated method stub
 		return false;
@@ -50,5 +54,7 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }

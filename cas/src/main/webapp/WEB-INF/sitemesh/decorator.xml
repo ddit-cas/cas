@@ -19,5 +19,6 @@
 		<pattern>/resources/**</pattern>
 		<pattern>/daumeditor/**</pattern>
 		<pattern>/upload/**</pattern>
+		<pattern>/checkId</pattern>
 	</excludes>
 </decorators>

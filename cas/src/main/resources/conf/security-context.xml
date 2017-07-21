@@ -19,7 +19,7 @@
 	
 	<http use-expressions="true">
 		<form-login
-			login-page="/*"
+			login-page="/"
 			login-processing-url="/login"
 			username-parameter="memId"
 			password-parameter="memPwd"
