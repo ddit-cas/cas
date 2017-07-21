@@ -35,10 +35,12 @@ public class FreeboardController {
 		int dataRow = freeboardList.size();
 		
 		Paging paging = new Paging(dataRow, page);
-		
-		model.addAttribute("index", paging.getIndex());//현재 페이지가 몇번인지보내주고 이를 이용하여 해당 페이지의 데이터를 넣을수있게한다
-		model.addAttribute("minNum", paging.getMinNum());//최소페이징넘버
-		model.addAttribute("maxNum", paging.getMaxNum());//최재페이징넘버
+		System.out.println(paging.toString());
+		model.addAttribute("index", paging.getIndex());//현재페이지
+		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
+		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
+		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
 		model.addAttribute("articleList", freeboardList);//데이터베이스에서 가져온 리스트를 보내준다
 		return "member/community/freeBoard/freeBoard";
 	}
