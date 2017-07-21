@@ -95,10 +95,9 @@ $(document).ready(function() {
 							<input type="button" name="submit" id="submit" value="보내기"
 								class="btn btn-info pull-right" />
 						</div>
-				</div>
 				</form>
+				</div>
 			</div>
 		</section>
-	</div>
 	</div>
     </body>

@@ -73,7 +73,7 @@ div.company-cont3 h3.box3 {
 				<h2>회사소개</h2>
 				<div class="">
 					<ul>
-						<li class="active"><a href="#">공지사항</a></li>
+						<li class="active"><a href="noticeList">공지사항</a></li>
 						<!--li><a href="people.php">PEOPLE</a></li-->
 						<li><a href="promotion">CAS란</a></li>
 						<li><a href="#">공연 행사 일정</a></li>
