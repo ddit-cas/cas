@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.ReadInfoVO;
 import com.cas.member.dao.MemberDao;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -76,6 +77,18 @@ public class MemberDaoImpl implements MemberDao {
 			e.printStackTrace();
 		}
 		return member;
+	}
+
+	@Override
+	public void insertClickData(String contentNum, String classify) {
+		ReadInfoVO readinfo = new ReadInfoVO();
+		readinfo.setClassify(classify);
+		readinfo.setContentNum(contentNum);
+		try {
+			sqlMapClient.update("insertClickInfo",readinfo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -63,4 +63,9 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.selectMember(memId);
 	}
 
+	@Override
+	public void insertClickData(String contentNum, String classify) {
+		memberDao.insertClickData(contentNum,classify);
+	}
+
 }
