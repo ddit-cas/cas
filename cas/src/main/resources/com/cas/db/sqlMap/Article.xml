@@ -16,6 +16,7 @@
 		<result property="contentParentsContent" column="content_parents_content"/>
 		<result property="contentWriter" column="content_writer"/>
 		<result property="contentState" column="content_state"/>
+		<result property="contentImportance" column="content_importance"/>
 		<result property="consertNum" column="consert_num"/>
 		<result property="contentImg" column="content_img"/>
 		<result property="boardName" column="board_name"/>

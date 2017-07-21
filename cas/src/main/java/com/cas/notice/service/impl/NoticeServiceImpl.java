@@ -3,10 +3,11 @@ package com.cas.notice.service.impl;
 import java.util.List;
 
 import com.cas.db.dto.ArticleVO;
+import com.cas.notice.dao.NoticeDao;
 import com.cas.notice.service.NoticeService;
 
 public class NoticeServiceImpl implements NoticeService{
-
+	
 	@Override
 	public List<ArticleVO> selectNoticeList() {
 		return null;

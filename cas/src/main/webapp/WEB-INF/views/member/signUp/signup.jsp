@@ -9,7 +9,7 @@ $(function(){
     $('#idCheck').click(function(){
     	var idValue = $('#mem_id').val();
     	$.ajax({
-    		url : '/cas/signup/idCheck.jsp',
+    		url : '/cas/checkId',
     		type : 'post',
     		data : "id="+idValue,  // {"id:idValue"} 이래도 같음.
     		success : function(res){
@@ -309,12 +309,15 @@ $(function() {
 	
 	//아이디 중복 확인
 	$('#nickCheck').click(function(){
+		
     	var idValue = $('#nick').val();
+    	
     	$.ajax({
-    		url : '/cas/signup/idCheck.jsp',
-    		type : 'get',
+    		url : '/cas/checkId',
+    		type : 'post',
     		data : "id="+idValue,
     		success : function(res){
+    			console.log(res);
     			var code = "";
     			var attr = "";
     			if(res.status == "OK"){
@@ -324,6 +327,7 @@ $(function() {
     				code += res.id+"는 사용 불가능합니다.";
     				attr += "no";
     			}
+    			alert(attr);
     			$('.msgCheckNick').html(code).attr("id",attr);
     		},
     		dataType : 'json' 
@@ -401,7 +405,7 @@ $(function() {
 $(function(){
 	$('#activity').on('click',function(){
 		var url = "/cas/signup/map.jsp";
-		window.open(url,"활동지역검색","width=600 height=600 top=300");		
+		window.open(url,"활동지역검색","width=600 height=600 top=300");
 	});
 });
 </script>			
@@ -414,6 +418,13 @@ $(function(){
 					
 					<p id="enter"></p>
 					
+					<label class="control-label col-sm-1" for="career">SNS</label>
+					<div class="col-sm-4">
+					    <input type="text" class="form-control" id="team-mem" placeholder="자신의 SNS 아이디를 입력하세요.">
+					</div>
+					
+					<p id="enter"></p>
+					
 			  	    <label class="control-label col-sm-1" for="career">팀원</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
@@ -423,6 +434,7 @@ $(function(){
 					    </span>
 					  </div>
 					</div>
+			  	    
 					
 				</div>
 			</div>

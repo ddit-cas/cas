@@ -40,14 +40,14 @@ li a:hover {
 		<h2>커뮤니티</h2>
 		<div class="">
 			<ul>
-				<li class="active"><a href="freeBoard.jsp">자유게시판</a></li>
+				<li class="active"><a href="freeboardList">자유게시판</a></li>
 				<!--li><a href="people.php">PEOPLE</a></li-->
 				<li><a href="#">공연홍보게시판</a></li>
 				<li><a href="#">UCC</a></li>
 			</ul>
 		</div>
 	</div>
-	<div class="company-cont">
+	<div class="company-cont" style="height: auto;">
 		<h3 class="box">자유게시판</h3>
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
@@ -74,7 +74,7 @@ li a:hover {
 				</div>
 				<!--//tab-intro-->
 				<table class="table table-hover"
-					style="width: 800px; height: 1100px; margin: 0 auto;">
+					style="width: 800px; height: auto; margin: 0 auto;">
 					<thead>
 						<tr>
 							<th style="width: 30%; text-align: center; font-size: 15px;">제목</th>
@@ -83,13 +83,13 @@ li a:hover {
 						</tr>
 					</thead>
 					<tbody style="text-align: center; font-size: 15px;">
-						<c:forEach var="content" items="${articleList}">
-							<tr>
-								<td>${content.contentTitle}</td>
-								<td>${content.contentWriter}</td>
-								<td>${content.contentRegisDate}</td>
-							</tr>
-						</c:forEach>
+					<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
+						<tr>
+							<td>${articleList[i].contentTitle}</td>
+							<td>${articleList[i].contentWriter}</td>
+							<td>${articleList[i].contentRegisDate}</td>
+						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -97,20 +97,38 @@ li a:hover {
 		</div>
 	</div>
 </div>
+<!-- 페이지수  -->
 <div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
 	<div class="row">
 		<nav aria-label="...">
 			<ul class="pager" role="tablist">
-				<li class="previous" onclick="goTo(1);"><a href="#"><span
-						aria-hidden="true">←</span> Previous</a></li>
-				<li class="active" id="first"><a aria-controls="tab1"
-					data-toggle="tab" href="#tab1" role="tab">1</a></li>
-				<li><a aria-controls="tab2" data-toggle="tab" href="#tab2"
-					role="tab">2</a></li> 
-				<li><a aria-controls="tab3" data-toggle="tab" href="#tab3"
-					role="tab">3</a></li>
-				<li class="next" onclick="goTo(2);"><a href="#">Next <span
-						aria-hidden="true">→</span></a></li>
+				<li class="previous">
+					<a href="/cas/freeboardList?tab=${minNum-1}"><span aria-hidden="true">←</span>
+						이전
+					</a>
+				</li>
+				<c:forEach var="i" begin="${minNum}" end="${maxNum}">
+				<c:choose>
+				<c:when test="${index==i}">
+				<li>
+					<a style="background: #aaa;" aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
+						${i }
+					</a>
+				</li>
+				</c:when>
+				<c:otherwise>
+				<li>
+					<a aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
+						${i }
+					</a>
+				</li>
+				</c:otherwise>
+				</c:choose>
+				</c:forEach>
+				<li class="next">
+					<a href="/cas/freeboardList?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
+					</a>
+				</li>
 			</ul>
 		</nav>
 	</div>
