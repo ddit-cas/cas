@@ -193,7 +193,7 @@
 					<input type="password" name="password" maxlength="12" placeholder="PASSWORD" required><br>
 					<div class="securityLogin">
 						<div class="eff-8"></div>
-						<input type="submit" value="로그인" onclick="doLogin()"/>
+						<a href="#"> 로그인 </a>
 					</div>
 				</div>
 				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
