@@ -12,6 +12,4 @@
 
 	<sqlMap resource="com/cas/db/sqlMap/Carousel.xml" />
 	
-	<sqlMap resource="com/cas/db/sqlMap/Member.xml" />
-
 </sqlMapConfig>
