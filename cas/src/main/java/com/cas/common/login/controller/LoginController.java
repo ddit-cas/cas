@@ -1,11 +1,6 @@
 package com.cas.common.login.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +13,10 @@ import com.cas.member.service.MemberService;
 @Controller
 public class LoginController {
 	
-	@Autowired
-	private MemberService memService;
+	private MemberService memberService;
 	
-	public void setMemberService(MemberService memService){
-		this.memService = memService;
+	public void setMemberService(MemberService memberService){
+		this.memberService = memberService;
 	}
 	
 	/*로그인 양식 페이지로 가는 메서드*/
@@ -81,7 +75,7 @@ public class LoginController {
 	@RequestMapping("/joinMember")
 	public String joinMember(HttpServletRequest request, MemberVO member){
 		
-		int result = memService.insertMember(member);
+		int result = memberService.insertMember(member);
 		request.setAttribute("result", result);
 		
 		return "member/signUp/isSignUp";

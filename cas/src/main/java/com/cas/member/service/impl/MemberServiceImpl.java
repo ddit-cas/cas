@@ -9,15 +9,15 @@ import com.cas.member.service.MemberService;
 
 public class MemberServiceImpl implements MemberService{
 
-	private MemberDao memDao;
+	private MemberDao memberDao;
 	
-	public void setMemberDao(MemberDao memDao){
-		this.memDao = memDao;
+	public void setMemberDao(MemberDao memberDao){
+		this.memberDao = memberDao;
 	}
 	
 	@Override
 	public int insertMember(MemberVO member) {
-		int result = memDao.insertMember(member);
+		int result = memberDao.insertMember(member);
 		return result;
 	}
 	
