@@ -47,7 +47,7 @@ li a:hover {
 			</ul>
 		</div>
 	</div>
-	<div class="company-cont">
+	<div class="company-cont" style="height: auto;">
 		<h3 class="box">자유게시판</h3>
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
@@ -74,7 +74,7 @@ li a:hover {
 				</div>
 				<!--//tab-intro-->
 				<table class="table table-hover"
-					style="width: 800px; height: 1100px; margin: 0 auto;">
+					style="width: 800px; height: auto; margin: 0 auto;">
 					<thead>
 						<tr>
 							<th style="width: 30%; text-align: center; font-size: 15px;">제목</th>
@@ -83,7 +83,7 @@ li a:hover {
 						</tr>
 					</thead>
 					<tbody style="text-align: center; font-size: 15px;">
-					<c:forEach var="i" begin="${index*7}" end="${index*7+6}">
+					<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
 						<tr>
 							<td>${articleList[i].contentTitle}</td>
 							<td>${articleList[i].contentWriter}</td>
@@ -102,19 +102,30 @@ li a:hover {
 		<nav aria-label="...">
 			<ul class="pager" role="tablist">
 				<li class="previous">
-					<a href="#"><span aria-hidden="true">←</span>
-						Previous
+					<a href="/cas/freeboardList?tab=${minNum-1}"><span aria-hidden="true">←</span>
+						이전
 					</a>
 				</li>
 				<c:forEach var="i" begin="${minNum}" end="${maxNum}">
-				<li class="active">
+				<c:choose>
+				<c:when test="${index==i}">
+				<li>
+					<a style="background: #aaa;" aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
+						${i }
+					</a>
+				</li>
+				</c:when>
+				<c:otherwise>
+				<li>
 					<a aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
 						${i }
 					</a>
 				</li>
+				</c:otherwise>
+				</c:choose>
 				</c:forEach>
 				<li class="next">
-					<a href="#">Next<span aria-hidden="true">→</span>
+					<a href="/cas/freeboardList?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
 					</a>
 				</li>
 			</ul>
