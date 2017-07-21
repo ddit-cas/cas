@@ -3,7 +3,7 @@ package com.cas.db.dto;
 public class CarouselVO {
 
 	private String carouselNum;
-	private String contentCode;
+	private String contentUrl;
 	private String carouselTitle;
 	private String carouselContent;
 	private String carouselImage;
@@ -14,11 +14,11 @@ public class CarouselVO {
 	public void setCarouselNum(String carouselNum) {
 		this.carouselNum = carouselNum;
 	}
-	public String getContentCode() {
-		return contentCode;
+	public String getContentUrl() {
+		return contentUrl;
 	}
-	public void setContentCode(String contentCode) {
-		this.contentCode = contentCode;
+	public void setContentUrl(String contentUrl) {
+		this.contentUrl = contentUrl;
 	}
 	public String getCarouselTitle() {
 		return carouselTitle;

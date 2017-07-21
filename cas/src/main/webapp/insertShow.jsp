@@ -31,8 +31,8 @@
  	<h1>공연등록</h1>
 	<hr style="border-top: 2px solid #333;margin-top: 0;margin-bottom: 13px;">
 	<div style="float:left; width: 40%;">
-		<div id="imgDiv">
-			<img src="">
+		<div id="imgDiv" style="overflow: hidden; width: 100%; height: 400px;">
+			<div id="imgDiv2" style="overflow: hidden; background-image: url('/cas/resources/famous.jpg'); background-size:contain; width: 100%; height: 400px;"></div>
 			<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
 		</div>
 	</div>
@@ -80,6 +80,43 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(function() {
+		//그림 클릭 시 업로드 창 띄워 업로드 후 미리보기
+		$('#imgDiv2').on('click', function() {
+			$('#profile-image-input').click();
+
+			$("#profile-image-input").change(function() {
+
+				var file = this.files[0];
+				var reader = new FileReader();
+				// Set preview image into the popover data-content
+				reader.onload = function(e) {
+					$(".image-preview-input-title").text("변경");
+					$(".image-preview-filename").val(file.name);
+				alert(e.target.result);
+					$("#imgDiv").attr("background-image", e.target.result);
+				}
+				reader.readAsDataURL(file);
+			});
+		});
+
+		// 업로드 버튼으로 그림피일 업로드 후 미리보기
+		$(".image-preview-input input:file").change(function() {
+
+			var file = this.files[0];
+			var reader = new FileReader();
+			//Set preview image into the popover data-content
+			reader.onload = function(e) {
+				$(".image-preview-input-title").text("변경");
+				$(".image-preview-filename").val(file.name);
+				alert(e.target.result);
+				$("#imgDiv").attr('background-image', e.target.result);
+			}
+		});
+	});
+</script>
+
 
 <script>
 var today=new Date();

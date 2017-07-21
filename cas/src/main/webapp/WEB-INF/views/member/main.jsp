@@ -121,28 +121,37 @@
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
+			<c:forEach items="${carouselList }" var="carousel" varStatus="index">
+				<li data-target="#myCarousel" data-slide-to="${index.index }" class="active"></li>
+			</c:forEach>
 			</ol>
-
-
-
 
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
-				<div class="item active carousel-image">
-						<img src="/cas/resources/cal.jpg"/>">
-				</div>
-
-				<div class="item carousel-image">
-					<img src="/cas/resources/cal.jpg"/>">
-				</div>
-
-				<div class="item carousel-image">
-				<img src="/cas/resources/cal.jpg"/>">
-				</div>
+			<c:forEach items="${carouselList }" var="carousel" varStatus="index">
+				<c:choose>
+					<c:when test="${index.index==0 }">
+						<div class="item active carousel-image">
+							<img src="${carousel.carouselImage }"/>">
+							<div class="carousel-caption">
+						        <h2>${carousel.carouselTitle }</h2>
+						        <p>${carousel.carouselContent }</p>
+						    </div>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="item carousel-image">
+							<img src="${carousel.carouselImage }"/>">
+							<div class="carousel-caption">
+						        <h2>${carousel.carouselTitle }</h2>
+						        <p>${carousel.carouselContent }</p>
+						    </div>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 			</div>
+
 
 
 			<!-- Left and right controls -->

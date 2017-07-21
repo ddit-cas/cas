@@ -6,10 +6,10 @@
 <div class="body" id="body">
 	<div>
 		<c:if test="${boardCode=='B005' }">
-		자유게시판 등록
+		자유게시판
 		</c:if>
-		<c:if test="${boardCode=='B007' }">
-		 공연홍보 등록
+		<c:if test="${boardCode=='B001' }">
+		 공지사항
 		</c:if>
 	</div>
 	<!-- 에디터 시작 -->
@@ -21,7 +21,12 @@
 	<form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/${resultUrl}" method="post" accept-charset="utf-8">
 		<div class="col-sm-1">제목</div>
 		<div class="col-sm-9">
-			<input type="text" name="title">
+			<input type="text" name="contentTitle" value="${articleVO.contentTitle }">
+			<c:if test="${not empty articleVO }">
+				<input type="hidden" name="contentWriter" value="${articleVO.contentWriter }">
+				<input type="hidden" name="contentNum" value="${articleVO.contentNum }">
+			</c:if>
+			<input type="hidden" name="boardCode" value="${boardCode }">
 		</div>
 		<!-- 에디터 컨테이너 시작 -->
 		<div id="tx_trex_container" class="tx-editor-container">
@@ -542,7 +547,7 @@
 
         // 본문 내용을 필드를 생성하여 값을 할당하는 부분
         var textarea = document.createElement('textarea');
-        textarea.name = 'content';
+        textarea.name = 'contentContent';
         textarea.value = content;
         form.createField(textarea);
         alert(content);
@@ -574,43 +579,44 @@
         return true;
 	}
 </script>
-<div><button onclick='saveContent()'>SAMPLE - submit contents</button></div>
+<c:choose>
+<c:when test='${not empty articleVO}'>
+<div><button onclick='saveContent()'>수정</button></div>
+</c:when>
+<c:otherwise>
+<div><button onclick='saveContent()'>등록</button></div>
+</c:otherwise>
+</c:choose>
 <!-- End: Saving Contents -->
 
 <!-- Sample: Loading Contents -->
 <textarea id="sample_contents_source" style="display:none;">
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	<p style="text-align: center;">
-		<img src="http://cfile273.uf.daum.net/image/2064CD374EE1ACCB0F15C8" class="tx-daum-image" style="clear: none; float: none;"/>
-	</p>﻿
-	<p>
-		<a href="http://cfile297.uf.daum.net/attach/207C8C1B4AA4F5DC01A644"><img src="snapshot/images/icon/p_gif_s.gif"/> editor_bi.gif</a>
-	</p>
+	${articleVO.contentContent }
 </textarea>
 <script type="text/javascript">
 	function loadContent() {
 		var attachments = {};
-		attachments['image'] = [];
-		attachments['image'].push({
-			'attacher': 'image',
-			'data': {
-				'imageurl': 'http://cfile273.uf.daum.net/image/2064CD374EE1ACCB0F15C8',
-				'filename': 'github.gif',
-				'filesize': 59501,
-				'originalurl': 'http://cfile273.uf.daum.net/original/2064CD374EE1ACCB0F15C8',
-				'thumburl': 'http://cfile273.uf.daum.net/P150x100/2064CD374EE1ACCB0F15C8'
-			}
-		});
-		attachments['file'] = [];
-		attachments['file'].push({
-			'attacher': 'file',
-			'data': {
-				'attachurl': 'http://cfile297.uf.daum.net/attach/207C8C1B4AA4F5DC01A644',
-				'filemime': 'image/gif',
-				'filename': 'editor_bi.gif',
-				'filesize': 640
-			}
-		});
+// 		attachments['image'] = [];
+// 		attachments['image'].push({
+// 			'attacher': 'image',
+// 			'data': {
+// 				'imageurl': 'http://cfile273.uf.daum.net/image/2064CD374EE1ACCB0F15C8',
+// 				'filename': 'github.gif',
+// 				'filesize': 59501,
+// 				'originalurl': 'http://cfile273.uf.daum.net/original/2064CD374EE1ACCB0F15C8',
+// 				'thumburl': 'http://cfile273.uf.daum.net/P150x100/2064CD374EE1ACCB0F15C8'
+// 			}
+// 		});
+// 		attachments['file'] = [];
+// 		attachments['file'].push({
+// 			'attacher': 'file',
+// 			'data': {
+// 				'attachurl': 'http://cfile297.uf.daum.net/attach/207C8C1B4AA4F5DC01A644',
+// 				'filemime': 'image/gif',
+// 				'filename': 'editor_bi.gif',
+// 				'filesize': 640
+// 			}
+// 		});
 		/* 저장된 컨텐츠를 불러오기 위한 함수 호출 */
 		Editor.modify({
 			"attachments": function () { /* 저장된 첨부가 있을 경우 배열로 넘김, 위의 부분을 수정하고 아래 부분은 수정없이 사용 */
@@ -624,6 +630,10 @@
 		});
 	}
 </script>
-<div><button onclick='loadContent()'>SAMPLE - load contents to editor</button></div>
-<!-- End: Loading Contents -->
+<c:if test='${not empty articleVO}'>
+	<script>
+		loadContent();
+	</script>
+</c:if>
+
 
