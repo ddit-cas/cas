@@ -34,6 +34,8 @@ public class MemberDataController extends HandlerInterceptorAdapter{
 			String contentNum = request.getParameter("articleId");
 			String classify = member.getClassifyCode(); 
 			memberService.insertClickData(contentNum,classify);
+			
+			result=true;
 		}
 		return result;
 	}

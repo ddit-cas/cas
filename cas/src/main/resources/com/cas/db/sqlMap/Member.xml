@@ -19,7 +19,6 @@
 		<result property="memFrofileimage" column="MEM_FROFILEIMAGE" />        
 		<result property="memBirthdate" column="MEM_BIRTHDATE" />              
 		<result property="memPoint" column="MEM_POINT" />                      
-		<result property="memSex" column="MEM_SEX" />                          
 		<result property="memHp" column="MEM_HP" />                                      
 		<result property="memSginup_date" column="MEM_SGINUP_DATE" />          
 		<result property="sancCode" column="SANC_CODE" />                              
@@ -36,15 +35,11 @@
 		<result property="memHpYn"       column="mem_Hp_Yn"      />
 		<result property="classifyCode"  column="classify_Code" />
 	</resultMap>                                                                  
-
-	<select id="checkId" resultMap="selectCheckId">
-		select mem_id, mem_nick from member
-	</select>
 	
-	<update id="insertMember" parameterClass="member">
-		INSERT INTO MEMBER(mem_Id,mem_Pwd,mem_Name,mem_Name_Yn,mem_Email,mem_Email_Yn,mem_Mailnumber,mem_Addr, mem_Nick,mem_Frofileimage,mem_Birthdate,mem_Point,mem_Sex,mem_Hp,mem_Hp_Yn,mem_Career,mem_Sginup_date,mem_Active,sanc_Code,rank_Code)
-				   VALUES (#memId#,#memPwd#,#memName#,#memNameYn#,#memEmail#,#memEmailYn#,#memMailnumber#,#memAddr#,#memNick#,#memFrofileimage#,#memBirthdate#,0,#memSex#,#memHp#,#memHpYn#,#memCareer#,SYSDATE,#memActive#,'S001','R002') 
-	</update>
+	<insert id="insertMember" parameterClass="member">
+		INSERT INTO MEMBER(mem_Id,mem_Pwd,mem_Name,mem_Name_Yn,mem_Email,mem_Email_Yn,mem_Mailnumber,mem_Addr, mem_Nick,mem_Frofileimage,mem_Birthdate,mem_Point,mem_Hp,mem_Hp_Yn,mem_Career,mem_Sginup_date,mem_Active,sanc_Code,rank_Code)
+				   VALUES (#memId#,#memPwd#,#memName#,#memNameYn#,#memEmail#,#memEmailYn#,#memMailnumber#,#memAddr#,#memNick#,#memFrofileimage#,#memBirthdate#,0,#memHp#,#memHpYn#,#memCareer#,SYSDATE,#memActive#,'S001','R002') 
+	</insert>
 
 	<select id="selectMemberList" resultMap="selectMember"
 		parameterClass="str">
