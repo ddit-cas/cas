@@ -11,5 +11,5 @@
 	<sqlMap resource="com/cas/db/sqlMap/Report.xml" />
 
 	<sqlMap resource="com/cas/db/sqlMap/Carousel.xml" />
-
+	
 </sqlMapConfig>

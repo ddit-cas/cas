@@ -19,10 +19,10 @@ th {
 				<br>
 				<div class="table-responsive" style="text-align: center;">
 					<div id="btn" style="text-align: right;">
-						<a href="charge.jsp"><button type="button"
+						<a href="charge"><button type="button"
 								class="charge btn btn-primary btn-sm">
 								<span>충전하기</span>
-							</button> </a> &nbsp;&nbsp; <a href="exchange.jsp"><button type="button"
+							</button> </a> &nbsp;&nbsp; <a href="exchange"><button type="button"
 								class="exchange btn btn-primary btn-sm">
 								<span>환전하기</span>
 							</button> </a>

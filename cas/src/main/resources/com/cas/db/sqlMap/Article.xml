@@ -33,6 +33,7 @@
 		FROM ARTICLE WHERE 1=1
 		<isNotEmpty property="boardCode">
 			 and BOARD_CODE=#boardCode#
+			 order by content_regis_date desc
 		</isNotEmpty>
 	</select>
 	
