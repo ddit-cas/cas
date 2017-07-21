@@ -9,7 +9,7 @@ $(function(){
     $('#idCheck').click(function(){
     	var idValue = $('#mem_id').val();
     	$.ajax({
-    		url : 'checkId',
+    		url : '/cas/checkId',
     		type : 'post',
     		data : "id="+idValue,  // {"id:idValue"} 이래도 같음.
     		success : function(res){
