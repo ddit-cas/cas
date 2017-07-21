@@ -40,7 +40,7 @@ li a:hover {
 		<h2>커뮤니티</h2>
 		<div class="">
 			<ul>
-				<li class="active"><a href="freeBoard.jsp">자유게시판</a></li>
+				<li class="active"><a href="freeboardList">자유게시판</a></li>
 				<!--li><a href="people.php">PEOPLE</a></li-->
 				<li><a href="#">공연홍보게시판</a></li>
 				<li><a href="#">UCC</a></li>
@@ -97,6 +97,7 @@ li a:hover {
 		</div>
 	</div>
 </div>
+<!-- 페이지수  -->
 <div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
 	<div class="row">
 		<nav aria-label="...">
