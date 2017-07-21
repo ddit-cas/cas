@@ -12,6 +12,10 @@ public interface MemberDao {
 	/*회원 리스트를 가져오는 메서드*/
 	public List<MemberVO> memberList();
 	
+	/*아이디와 닉네임 중복 확인하는 메서드*/
+	public List<MemberVO> memberCheckIdList();
+	
+	
 	/*회원을 수정하는 메서드*/
 	public boolean updateMember(MemberVO member);
 	
@@ -21,7 +25,7 @@ public interface MemberDao {
 	/*회원 비번을 가져오는 메서드*/
 	public String selectMemberPwd(String id);
 	
-	/*회원 아이디를 찾아오는 ㅔㅁ서드*/
+	/*회원 아이디를 찾아오는 메서드*/
 	public String selectId(String name,String email);
 
 	/*회원하나를 가져오는 메서드*/

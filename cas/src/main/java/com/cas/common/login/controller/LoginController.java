@@ -5,11 +5,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cas.db.dto.MemberVO;
 import com.cas.member.service.MemberService;
-
 @Controller
 public class LoginController {
 
@@ -74,17 +74,33 @@ public class LoginController {
 	
 	/*회원가입 양식으로 가는 메서드*/
 	@RequestMapping ("/joinMemberForm")
-	public String joinMemberForm(){
+	public String joinMemberForm(HttpServletRequest request){
 		return "/member/signUp/signup";
+	}
+	
+	/*회원 ID와 닉네임의 중복 확인하는 메서드*/
+	@RequestMapping ("/checkId")
+	public String checkId(HttpServletRequest request,Model model){
+		String memId = request.getParameter("id");
+		memberService.checkId(memId);
+		model.addAttribute("id",request.getParameter("id"));
+		return "member/signUp/checkId/idCheck";
 	}
 	
 	/*회원가입을 하는 메서드*/
 	@RequestMapping("/joinMember")
-	public String joinMember(HttpServletRequest request, MemberVO member){
+	public String joinMember(MemberVO member){
 		
-		int result = memberService.insertMember(member);
-		request.setAttribute("result", result);
+		int result=-1;
+		result = memberService.insertMember(member);
+		System.out.println(result);
+		String url = "";
+		if(result<0){
+			url="member/signUp/failSignUp";
+		}else{
+			url="member/signUp/successSignUp";
+		}
 		
-		return "member/signUp/isSignUp";
+		return url;
 	}
 }

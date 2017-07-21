@@ -4,6 +4,7 @@
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="Member">
+<<<<<<< HEAD
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="member" type="com.cas.db.dto.MemberVO" />
@@ -31,8 +32,25 @@
 		<result property="enabled" column="ENABLED" />
 		<result property="authority" column="AUTHORITY" />
 	</resultMap>
+=======
 
+<typeAlias alias="str" type="java.lang.String"/>
+<typeAlias alias="int" type="java.lang.Integer"/>
+<typeAlias alias="member" type="com.cas.db.dto.MemberVO"/>
+>>>>>>> refs/heads/develop_yh
+
+<<<<<<< HEAD
 	<insert id="insertMember" parameterClass="member">
+=======
+	<resultMap class="com.cas.db.dto.MemberVO" id="selectCheckId">
+		<result property="memId" column="MEM_ID"/>
+		<result property="memNick" column="MEM_NICK"/>
+	</resultMap>	
+	<select id="checkId" resultMap="selectCheckId">
+		select mem_id, mem_nick from member
+	</select>
+	<update id="insertMember" parameterClass="member">
+>>>>>>> refs/heads/develop_yh
 		INSERT INTO MEMBER(mem_Id,mem_Pwd,mem_Name,mem_Name_Yn,mem_Email,mem_Email_Yn,mem_Mailnumber,mem_Addr, mem_Nick,mem_Frofileimage,mem_Birthdate,mem_Point,mem_Sex,mem_Hp,mem_Hp_Yn,mem_Career,mem_Sginup_date,mem_Active,sanc_Code,rank_Code)
 				   VALUES (#memId#,#memPwd#,#memName#,#memNameYn#,#memEmail#,#memEmailYn#,#memMailnumber#,#memAddr#,#memNick#,#memFrofileimage#,#memBirthdate#,0,#memSex#,#memHp#,#memHpYn#,#memCareer#,SYSDATE,#memActive#,'S001','R002') 
 	</insert>

@@ -3,6 +3,9 @@ package com.cas.member.dao.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.cas.db.dto.MemberVO;
 import com.cas.member.dao.MemberDao;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -28,8 +31,18 @@ public class MemberDaoImpl implements MemberDao {
 	
 	@Override
 	public List<MemberVO> memberList() {
-		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public List<MemberVO> memberCheckIdList() {
+		List<MemberVO> resultList = null;
+		try {
+			resultList = sqlMapClient.queryForList("checkId");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultList;
 	}
 
 	@Override
