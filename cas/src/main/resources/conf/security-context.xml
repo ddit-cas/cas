@@ -28,9 +28,9 @@
 		/> 
 		<logout logout-url="/member/logout"/>
 		<access-denied-handler error-page="/security/accessDenied"/>
-		<intercept-url pattern="/admin/**" access="hasAuthority('ADMIN')" />
-		<intercept-url pattern="/member/**"	access="hasAuthority('MEMBER')" />
-		<intercept-url pattern="/member/logout" access="isAuthenticated()"/>
+		<intercept-url pattern="/admin/**" access="permitAll" />
+		<intercept-url pattern="/member/**"	access="permitAll" />
+		<intercept-url pattern="/member/logout" access="permitAll"/>
 		<intercept-url pattern="/**" access="permitAll" />
 	
 <!-- 		<session-management> -->

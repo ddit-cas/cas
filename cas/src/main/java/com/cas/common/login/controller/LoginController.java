@@ -18,7 +18,6 @@ import com.cas.member.service.MemberService;
 @Controller
 public class LoginController {
 	
-	@Autowired
 	private MemberService memService;
 	
 	public void setMemberService(MemberService memService){

@@ -19,13 +19,14 @@
 		<result property="consertNum" column="consert_num"/>
 		<result property="contentImg" column="content_img"/>
 		<result property="boardName" column="board_name"/>
+		<result property="fundingNum" column="funding_num"/>
 	</resultMap>
 	
 	<insert id="insertArticle" parameterClass="article">
 		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#,SYSDATE,#contentParentsContent#,'test','n','y',#consertNum#,#contentImg#,#fundingNum#)																		
 	</insert>
 	
-	<select id="selectArticleList" resultMap="selectArticle" parameterClass="str">
+	<select id="selectArticleList" resultMap="selectArticle" parameterClass="article">
 		SELECT 
 		* 
 		FROM ARTICLE WHERE 1=1
