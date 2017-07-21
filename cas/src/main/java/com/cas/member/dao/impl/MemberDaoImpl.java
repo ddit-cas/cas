@@ -35,14 +35,15 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public List<MemberVO> memberCheckIdList() {
-		List<MemberVO> resultList = null;
+	public String memberCheckNick(String nick) {
+		String result=null;
 		try {
-			resultList = sqlMapClient.queryForList("checkId");
+			result = (String)sqlMapClient.queryForObject("selectMemberNick");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return resultList;
+		
+		return result;
 	}
 
 	@Override
