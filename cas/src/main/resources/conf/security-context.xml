@@ -19,13 +19,8 @@
 	
 	<http use-expressions="true">
 		<form-login
-<<<<<<< HEAD
-			login-page="/loginForm"
-			login-processing-url="/cas/login"
-=======
 			login-page="/"
 			login-processing-url="/login"
->>>>>>> refs/heads/develop_yh
 			username-parameter="memId"
 			password-parameter="memPwd"
 			default-target-url="/main"
