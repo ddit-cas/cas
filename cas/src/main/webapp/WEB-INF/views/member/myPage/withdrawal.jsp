@@ -115,13 +115,7 @@
 <!-- 							<img class="img-responsive" alt="iamgurdeeposahan" src="/resources/images/noticee.png" style="width: 71px; border-radius: 43px;"> -->
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-						<div class="receipt-right">
-							<h5>비밀번호 확인</h5>
-							<input type="password" class="form-control" id="pwd1"
-					placeholder="비밀번호를 입력하세요." name="pwd1">
-						</div>
-					</div>
+					
 				</div>
             </div>
 			
@@ -187,16 +181,24 @@
 					<input type="checkbox" id="dropoutAgree" name="dropoutAgree" onclick="clickcr(this,'otn.guideagree','','',event);" >
 					<label for="dropoutAgree"><strong>안내 사항을 모두 확인하였으며, 이에 동의합니다.</strong></label>
 				</div>
-				</form>
+				
+				<div class="col-sm-12" style="margin-bottom:30px;">
+					<div class="form-group">
+						<label class="col-sm-4" for="memPwd">비밀번호 확인</label>
+						<div class="col-sm-6">
+							<input type="password" class="form-control" id="pwd1" placeholder="비밀번호를 입력하세요." name="memPwd">
+						</div>
+					</div>	
+				</div>
+				<div id="btnses">
+					<input type="button" class="btn btn-primary" value="탈퇴" />
+					<input type="reset" class="btn btn-danger" value="취소" />
+				</div> 
+			</form>
             
 			
 			
-			<div class="row">
-				<div id="btnses">
-			<input type="button" class="btn btn-primary" value="탈퇴" />
-			<input type="reset" class="btn btn-danger" value="취소" />
-		</div> 
-            </div>
+			
 			
         </div>    
 	</div>

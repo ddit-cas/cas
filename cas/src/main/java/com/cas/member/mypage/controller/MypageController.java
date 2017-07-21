@@ -75,7 +75,7 @@ public class MypageController {
 	}
 	/*회원이 환전하는 메서드*/
 	@RequestMapping("/member/exchange")
-	public String memberexchange(HttpSession session,Model model){
+	public String memberExchange(HttpSession session,Model model){
 		String url = "/member/myPage/exchange";
 		return url;
 	}
@@ -84,6 +84,12 @@ public class MypageController {
 	@RequestMapping("/member/cimList")
 	public String memberCim(HttpSession session,Model model){
 		String url = "/member/myPage/myCim";
+		return url;
+	}
+	/*회원이 문의한 리스트로 볼수 있는 메소드*/
+	@RequestMapping("/member/myContact")
+	public String memberMycontact(HttpSession session,Model model){
+		String url = "/member/myPage/myContact";
 		return url;
 	}
 	

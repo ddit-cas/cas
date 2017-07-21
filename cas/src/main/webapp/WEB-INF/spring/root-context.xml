@@ -20,6 +20,24 @@
 		p:articleDao-ref="articleDao"
 	></bean>
 	
+
+	<bean
+		name = "reportDao"
+		class="com.cas.report.dao.impl.ReportDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	>
+	
+	</bean>
+	
+	<bean
+		name = "reportService"
+		class="com.cas.report.service.impl.ReportServiceImpl"
+		p:reportDao-ref="reportDao"
+	>
+	
+	</bean>
+	
+
 <!-- 	캐러셀 다오 빈등록 -->
 	<bean
 		name="carouselDao"
@@ -33,4 +51,5 @@
 		class="com.cas.carousel.service.impl.CarouselServiceImpl"
 		p:carouselDao-ref="carouselDao"
 	></bean>
+
 </beans>

@@ -32,7 +32,8 @@ public class LoginController {
 	/*아이디를 찾아준다*/
 	@RequestMapping("/findId")
 	public String findId(HttpServletRequest request){
-		return null;
+		String url="member/idSearch";
+		return url;
 	}
 	
 	/*비번 찾기 화면으로 간다*/

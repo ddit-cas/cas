@@ -6,7 +6,7 @@ public class ReportVO {
 	private String reportContent;
 	private String reportDate;
 	private String reportMem;
-	private String contentCode;
+	private String contentNum;
 	
 	public String getReportNum() {
 		return reportNum;
@@ -32,10 +32,10 @@ public class ReportVO {
 	public void setReportMem(String reportMem) {
 		this.reportMem = reportMem;
 	}
-	public String getContentCode() {
-		return contentCode;
+	public String getContentNum() {
+		return contentNum;
 	}
-	public void setContentCode(String contentCode) {
-		this.contentCode = contentCode;
+	public void setContentNum(String contentNum) {
+		this.contentNum = contentNum;
 	}
 }
