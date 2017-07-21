@@ -24,8 +24,7 @@ public class ArticleServiceImpl implements ArticleService{
 
 	@Override
 	public ArticleVO selectArticle(String articleId,String boardCode) {
-		// TODO Auto-generated method stub
-		return null;
+		return articleDao.selectArticle(articleId, boardCode);
 	}
 
 	@Override
@@ -36,8 +35,7 @@ public class ArticleServiceImpl implements ArticleService{
 
 	@Override
 	public boolean updateFreeboard(ArticleVO article) {
-		// TODO Auto-generated method stub
-		return false;
+		return articleDao.updateFreeboard(article);
 	}
 
 	@Override

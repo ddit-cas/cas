@@ -162,29 +162,43 @@
 				});
 		}
 	);
+	function doLogin() {
+		if(frm.j_username.value == "") {
+			alert("아이디를 입력해주세요.");
+			return;
+		}
+		if(frm.j_password.value == "") {
+			alert("패스워드를 입력해주세요.");
+			return;
+		}
+		
+		frm.submit();
+	}
 </script>
 <body>
 	<video id="video" preload="auto" autoplay="autoplay" loop="loop" >
 		<source src="/cas/resources/video/DeepBlueSky.mp4">
 	</video>
-	<div id="securityForm"">
+	<div id="securityForm">
 		<div id="body" class="container">
 			<div id="loginLogoDiv">
 				<a href="main"> <img src="/cas/resources/images/logo.png"
 					id="loginLogoImg">
 				</a>
 			</div>
-			<form id="loginForm">
+			<section class="loginform cf">
+			<form id="loginForm" action="j_spring_security_check" method="post">
 				<div>
-					<input type="text" name="id" maxlength="12" placeholder="아이디를 입력하세요"><br>
-					<input type="password" name="pwd" maxlength="12"
-						placeholder="비밀번호를 입력하세요"><br>
+					<input type="text" name="username" maxlength="12" placeholder="ID" required><br>
+					<input type="password" name="password" maxlength="12" placeholder="PASSWORD" required><br>
 					<div class="securityLogin">
 						<div class="eff-8"></div>
-						<a href="#"> 로그인 </a>
+						<input type="submit" value="로그인" onclick="doLogin()"/>
 					</div>
 				</div>
+				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
 			</form>
+			</section>
 			<hr id="securityHr">
 			<div id="securityFooterBtns">
 				<div class="securitySignUp">

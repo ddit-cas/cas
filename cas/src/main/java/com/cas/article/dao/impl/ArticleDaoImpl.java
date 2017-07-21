@@ -18,9 +18,10 @@ public class ArticleDaoImpl implements ArticleDao{
 	@Override
 	public List<ArticleVO> selectArticleList(String boardCode) {
 		List<ArticleVO> resultList = null;
-		
+		ArticleVO article = new ArticleVO();
+		article.setBoardCode(boardCode);
 		try {
-			resultList=sqlMapClient.queryForList("selectArticleList",boardCode);
+			resultList=sqlMapClient.queryForList("selectArticleList",article);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -51,8 +52,16 @@ public class ArticleDaoImpl implements ArticleDao{
 
 	@Override
 	public boolean updateFreeboard(ArticleVO article) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		try {
+			int res = sqlMapClient.update("updateArticle",article);
+			if(res>0){
+				result=true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override

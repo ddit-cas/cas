@@ -27,7 +27,7 @@ button, input[type='button'], input[type='submit'], input[type='reset'], input[t
 
 .appl-tab{
 
-background-color: #6291c3;
+background-color: #337ab7;
     width: 100px;
     height: 100px;
     text-align: center;
@@ -44,10 +44,22 @@ background-color: #6291c3;
     border: 1px solid #cfcfcf;
 }
 
+.inner_title .tit_h2 {
+    font-weight: 600;
+    display: table-cell;
+    padding: 93px 0 60px 0;
+    vertical-align: middle;
+    font-size: 28px;
+    /* font-weight: bold; */
+    color: #fff;
+    text-align: center;
+    background-color: #337ab7;
+}
+
 </style>
 <div class="title_wrap">
 			<div class="inner_title centerRange">
-				<h2 class="tit_h2">프로젝트 신청하기</h2>
+				<h2 class="tit_h2">펀딩 등록하기</h2>
 			</div>
 		</div>
 

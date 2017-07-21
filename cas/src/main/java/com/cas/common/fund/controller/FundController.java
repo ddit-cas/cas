@@ -26,7 +26,8 @@ public class FundController {
 	/*종료된 크라우드펀딩목록으로 가는 메서드*/
 	@RequestMapping("/endFundList")
 	public String endFundList(Model model,HttpServletRequest request){
-		return null;
+		String url = "member/fund/endFundList";
+		return url;
 	}
 	
 	/*크라우드펀딩 상세 내용으로 가는 메서드*/
