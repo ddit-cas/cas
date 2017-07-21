@@ -27,6 +27,11 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	public List<MemberVO> memberCheckIdList() {
+		return memberDao.memberCheckIdList();
+	}
+	
+	@Override
 	public boolean updateMember(MemberVO member) {
 		// TODO Auto-generated method stub
 		return false;
@@ -61,6 +66,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public MemberVO selectMember(String memId) {
 		return memberDao.selectMember(memId);
+	}
+
+	@Override
+	public void insertClickData(String contentNum, String classify) {
+		memberDao.insertClickData(contentNum,classify);
 	}
 
 }

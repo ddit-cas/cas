@@ -19,7 +19,6 @@
 		class="com.cas.article.service.impl.ArticleServiceImpl"
 		p:articleDao-ref="articleDao"
 	></bean>
-	
 <!-- 	캐러셀 다오 빈등록 -->
 	<bean
 		name="carouselDao"

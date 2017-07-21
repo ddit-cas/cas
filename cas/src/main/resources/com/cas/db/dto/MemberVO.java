@@ -27,7 +27,16 @@ public class MemberVO {
 	private String memHp_yn;
 	private String enabled;
 	private String authority;
+	private String classifyCode;
 	
+	public String getClassifyCode() {
+		return classifyCode;
+	}
+
+	public void setClassifyCode(String classifyCode) {
+		this.classifyCode = classifyCode;
+	}
+
 	public String getMemNameYn() {
 		return memNameYn;
 	}

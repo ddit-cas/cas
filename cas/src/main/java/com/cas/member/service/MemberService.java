@@ -2,6 +2,8 @@ package com.cas.member.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.cas.db.dto.MemberVO;
 
 public interface MemberService {
@@ -11,6 +13,9 @@ public interface MemberService {
 	
 	/*회원 리스트를 가져오는 메서드*/
 	public List<MemberVO> memberList();
+	
+	/*아이디와 닉네임 중복 확인하는 메서드*/
+	public List<MemberVO> memberCheckIdList();
 	
 	/*회원을 수정하는 메서드*/
 	public boolean updateMember(MemberVO member);
@@ -26,4 +31,7 @@ public interface MemberService {
 	
 //	회원객체를 가져오느ㅜㄴ 메서드
 	public MemberVO selectMember(String memId);
+
+	/*공연홍보글이나 크라우드 펀딩 클릭시 클릭정보를 입력하는 메서드*/
+	public void insertClickData(String contentNum, String classify);
 }
