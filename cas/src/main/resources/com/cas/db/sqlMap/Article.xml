@@ -23,7 +23,7 @@
 	</resultMap>
 	
 	<insert id="insertArticle" parameterClass="article">
-		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#,SYSDATE,#contentParentsContent#,'test','n','y',#consertNum#,#contentImg#)																		
+		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#,SYSDATE,#contentParentsContent#,'test','n','y',#consertNum#,#contentImg#,#fundingNum#)																		
 	</insert>
 	
 	<select id="selectArticleList" resultMap="selectArticle" parameterClass="str">

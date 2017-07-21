@@ -9,8 +9,8 @@ $(function(){
     $('#idCheck').click(function(){
     	var idValue = $('#mem_id').val();
     	$.ajax({
-    		url : 'signup/idCheck.jsp',
-    		type : 'get',
+    		url : '/cas/signup/idCheck.jsp',
+    		type : 'post',
     		data : "id="+idValue,  // {"id:idValue"} 이래도 같음.
     		success : function(res){
     			var code = "";
@@ -31,7 +31,7 @@ $(function(){
 </script>
 <style>
 	.form-horizontal{
-		margin-top: 100px;
+		margin-top: 58px;
 	}
 	.msgCheckId {
 		font-size : 15px;
@@ -47,18 +47,35 @@ $(function(){
 		border-bottom: 1px dotted #c8c8c8;
 		margin : 10px 0;
 	}
+	.btn-circle {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.428571429;
+		border-radius: 15px;
+	}
+	.btn-circle.btn-lg {
+        width: 55px;
+        height: 34px;
+        padding: 13px 13px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 25px;
+	}
 </style>
-	<form class="form-horizontal" action="#">
+	<form class="form-horizontal" action="/cas/joinMember" method="post">
 	<fieldset class="signup_cas_fs">
 		<legend class="signup_cas_ld">필수사항</legend>
 		<div class="container">
 			<div class="essen">
 				<div class="imfom">
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="id">아이디</label>
+						<label class="control-label col-sm-2" for="memId">아이디</label>
 						<div class="col-sm-6">
 						  <div class="input-group">
-						    <input type="text" class="form-control" id="mem_id" name="id" placeholder="아이디를 입력하세요.">
+						    <input type="text" class="form-control" id="mem_id" name="memId" placeholder="아이디를 입력하세요.">
 						    <span class="input-group-btn">
 						      <button class="btn btn-default" id="idCheck" type="button">중복확인</button>
 							    <span class="msgCheckId"></span>
@@ -69,84 +86,91 @@ $(function(){
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="pwd1">비밀번호</label>
+						<label class="control-label col-sm-2" for="memPwd">비밀번호</label>
 						<div class="col-sm-6">
 							<input type="password" class="form-control" id="pwd1"
-								placeholder="비밀번호를 입력하세요." name="pwd1">
+								placeholder="비밀번호를 입력하세요." name="memPwd">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="pwd1">비밀번호확인</label>
+						<label class="control-label col-sm-2" for="memPwdpwd">비밀번호확인</label>
 						<div class="col-sm-6">
 							<input type="password" class="form-control" id="pwd2"
-								placeholder="위와 같은 비밀번호를 입력하세요." name="pwd2">
+								placeholder="위와 같은 비밀번호를 입력하세요." name="memPwd2">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="name">이름</label>
+						<label class="control-label col-sm-2" for="memName">이름</label>
 						<div class="col-lg-6">
 						  <div class="input-group">
 						    <input type="text" class="form-control" id="name"
-								placeholder="이름을 입력하세요." name="name" aria-label="name">
+								placeholder="이름을 입력하세요." name="memName" aria-label="name">
 						    <span class="input-group-addon">
-						    <label><input type="checkbox" aria-label="name">&nbsp;&nbsp;공개</label>
+						    <label><input type="checkbox" name="memNameYn" aria-label="name" checked>&nbsp;&nbsp;공개</label>
 						    </span>
 						  </div>
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="birth">생년월일</label>
-						<div class="col-sm-6">
-							<input type="date" class="form-control" id="bir"
-								placeholder="year" name="bir">
+						<label class="control-label col-sm-2" for="memBirthdate">생년월일</label>
+						<div class="col-sm-4">
+							<input type="date" class="form-control memBirthdate" id="bir" placeholder="year" name="memBirthdate">
+						</div>
+						<div class="col-sm-3">
+						<label class="control-label col-sm-5" for="memSex" style="margin-left:-58px;">/ 성별</label>
+							<div data-toggle="buttons">
+								<label class="btn btn-default btn-circle btn-lg active" style="background-image:url('/cas/resources/images/male.png'); background-position:center top;"><input type="radio" name="memSex" id="male" value="male" checked></label>
+								<label class="btn btn-default btn-circle btn-lg" style="background-image:url('/cas/resources/images/female.png'); background-position:center top;"><input type="radio" name="memSex" id="female" value="female"></label>
+							</div>
 						</div>
 					</div>
 					
+					
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="name">전화번호</label>
+						<label class="control-label col-sm-2" for="memHp">전화번호</label>
 						<div class="col-lg-6">
 						  <div class="input-group">
 						    <input type="tel" class="form-control" id="tel"
-								placeholder="전화번호를 입력하세요." name="tel" aria-label="tel">
+								placeholder="전화번호를 입력하세요." name="memHp" aria-label="tel">
 						    <span class="input-group-addon">
-						    <label><input type="checkbox" aria-label="tel">&nbsp;&nbsp;공개</label>
+						    <label><input type="checkbox" name="memHpYn" aria-label="tel" checked>&nbsp;&nbsp;공개</label>
 						    </span>
 						  </div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="email">이메일</label>
+						<label class="control-label col-sm-2" for="memEmail">이메일</label>
 						<div class="col-lg-6">
 						  <div class="input-group">
 						    <input type="email" class="form-control" id="email"
-								placeholder="이메일을 입력하세요." name="email" aria-label="email">
+								placeholder="이메일을 입력하세요." name="memEmail" aria-label="email">
 						    <span class="input-group-addon">
-						    <label><input type="checkbox" aria-label="email">&nbsp;&nbsp;공개</label>
+						    <label><input type="checkbox" name="memEmailYn" aria-label="email" checked>&nbsp;&nbsp;공개</label>
 						    </span>
 						  </div>
 						</div>
 					</div>
 					
-					<script>
-					//우편번호 검색
-					$(function(){
-						$('#zip-btn').on('click',function(){
-							var url = "signup/zipSearch.jsp";
-							window.open(url,"우편번호검색","width=500 height=400");		
-						});
-					});
-					</script>
+<script>
+//우편번호 검색
+$(function(){
+	$('#zip-btn').on('click',function(){
+		var url = "/cas/signup/zipSearch.jsp";
+		window.open(url,"우편번호검색","width=500 height=400 top=300");		
+	});
+});
+</script>
 
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="zip">우편번호</label>
+						<label class="control-label col-sm-2" for="memMailnumber">우편번호</label>
 						<div class="col-sm-6">
 						  <div class="input-group">
 						    <input type="text" class="form-control" id="zip" 
-						    	placeholder="우편번호 버튼을 눌러주세요" name="zip" disabled>
+						    	placeholder="우편번호 버튼을 눌러주세요" name="memMailnumber" disabled="disabled">
 						    <span class="input-group-btn">
 						      <button id="zip-btn"class="btn btn-default" type="button">우편번호</button>
 						    </span>
@@ -155,31 +179,31 @@ $(function(){
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="addr">주소</label>
+						<label class="control-label col-sm-2" for="memAddr">주소</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="add1"
-								placeholder="주소는 자동으로 입력 됩니다." name="addr" disabled>
+								placeholder="주소는 자동으로 입력 됩니다." disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="addr">상세주소</label>
+						<label class="control-label col-sm-2" for="memAddr">상세주소</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="add2"
-								placeholder="상세주소 입력하세요" name="addr">
+								placeholder="상세주소는 자동으로 입력 됩니다." disabled="disabled">
 						</div>
 					</div>
+					<input type="hidden" id="fullAddr" name="memAddr"/>
 				</div>
 			</div>
 			</div>
 		</fieldset>
-		</form>
 <style>
 	input[type="text"] {
 		color:black;
 	}
 	#enter {
 		width : 960px;
-		height : 30px;
+		height : 50px;
 	}
 	
 	.image-preview-input {
@@ -224,19 +248,20 @@ $(function(){
 $(function() {
 	//그림 클릭 시 업로드 창 띄워 업로드 후 미리보기
 	$('#profile-image').on('click', function() {
+	
 		$('#profile-image-input').click();
-		
+		var test="";
 		$("#profile-image-input").change(function (){     
 	        
 	        var file = this.files[0];
 	        var reader = new FileReader();
 	        // Set preview image into the popover data-content
 	        reader.onload = function (e) {
-	        	 $(".image-preview-input-title").text("변경");
-	             $(".image-preview-filename").val(file.name);            
+	        	$(".image-preview-input-title").text("변경");
+	            $(".image-preview-filename").val(file.name);            
 	            $("#profile-image").attr('src', e.target.result);
 	        }        
-	        reader.readAsDataURL(file);
+	       reader.readAsDataURL(file);
 	    });
 	});
 	
@@ -253,31 +278,32 @@ $(function() {
         }        
         reader.readAsDataURL(file);
     });
-	
-	
-	
+
 	// textfield 생성
 	var count = 0;
 	$('#plus-textField').on('click',function(){
 		count++;
 		//textfield 3회로 횟수 제한
-		if(count<3){
+		if(count<=2){
 			var textField = "<div class='add-field'>";
-			textField +="<label class='control-label col-sm-1' for='career'>+</label>"; 
+			textField +="<label class='control-label col-sm-1' for='add'>+</label>"; 
 			textField +="<div class='col-sm-4'>";
 			textField +="<div class='input-group'>";
-			textField +="<input type='text' class='form-control' name='career' placeholder='경력을 추가 입력하세요.'>";
+			textField +="<input type='text' class='form-control' name='memCareer' placeholder='경력을 추가 입력하세요.'>";
 			textField +="<span class='input-group-btn'>";
 			textField +="<button class='btn btn-default minus-textbutton' type='button'>-</button>";
-			textField +="</span></div></div><p id='enter' /><p id='enter' /></div>";
+			textField +="</span></div></div><p id='enter' /></div>";
 			$('#add-textField').append(textField);
 			//textField 삭제
 			$(".minus-textbutton").bind('click',function(){
 				count--;
 				$(this).parent().parent().parent().parent().remove();
+				if(e.stopImmediatePropagation) event.stopImmedatePropagation();
+				else event.isImmediatePropagationEnabled = false;
 			});
 		}else{
-			alert("경력사항 쓰기는 3회로 제한 됩니다.");
+			count=2;
+			sweetAlert("경력쓰기 제한","경력사항 쓰기는 3회로 제한 됩니다.","error");
 		}
 	});
 	
@@ -285,7 +311,7 @@ $(function() {
 	$('#nickCheck').click(function(){
     	var idValue = $('#nick').val();
     	$.ajax({
-    		url : 'signup/idCheck.jsp',
+    		url : '/cas/signup/idCheck.jsp',
     		type : 'get',
     		data : "id="+idValue,
     		success : function(res){
@@ -313,7 +339,6 @@ $(function() {
 </script>
 
 	<!-- 선택사항 -->
-	<form class="form-horizontal" action="#">
 	<fieldset class="signup_cas_fs">
 		<legend id="choice" class="signup_cas_ld">선택사항<span> : 클릭!</span></legend>
 		<div class="contSelect hide">
@@ -322,7 +347,7 @@ $(function() {
 					<div class="filess" style="width:290px; height:400px;">
 						<img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
 							id="profile-image" class="img-circle img-responsive">
-						<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
+						<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" name="memFrofileimage" class="hidden" type="file">
 						<div style="color:#999;">그림을 클릭하여 이미지를 변경합니다.</div>	
 					</div>
 				</div>
@@ -336,19 +361,18 @@ $(function() {
 					      <div class="btn btn-default image-preview-input">
 	                        <span class="glyphicon glyphicon-folder-open" />
 	                        <span class="image-preview-input-title">업로드</span>
-	                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+	                        <input type="file" name="memFrofileimage" accept="image/png, image/jpeg, image/gif"/>
 	                     </div>
 					    </span>
 					  </div>
 					</div>
 					 
 					<p id="enter"></p>
-					<p id="enter"></p>
 					
-					<label class="control-label col-sm-1" for="nickname">닉네임</label>
+					<label class="control-label col-sm-1" for="memNick">닉네임</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					    <input type="text" class="form-control" id="nick" name="id" placeholder="닉네임을 입력하세요.">
+					    <input type="text" class="form-control" id="nick" name="memNick" placeholder="닉네임을 입력하세요.">
 					    <span class="input-group-btn">
 					      <button class="btn btn-default" id="nickCheck" type="button">중복확인</button>
 				      	  <span class="msgCheckNick"></span>
@@ -357,12 +381,11 @@ $(function() {
 					</div>
 					
 					<p id="enter"></p>
-					<p id="enter"></p>
 					
-					<label class="control-label col-sm-1" for="career">경력</label>
+					<label class="control-label col-sm-1" for="memCertif">경력</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					    <input type="text" class="form-control" placeholder="경력을 입력하세요.">
+					    <input type="text" class="form-control" name='memCareer' placeholder="경력을 입력하세요.">
 					    <span class="input-group-btn">
 					      <button class="btn btn-default" id="plus-textField" type="button">+</button>
 					    </span>
@@ -370,26 +393,25 @@ $(function() {
 					</div>
 					
 					<p id="enter"></p>
-					<p id="enter"></p>
-					
 					<div id="add-textField"></div>
+					
 					
 <script>
 //활동지역 검색
 $(function(){
 	$('#activity').on('click',function(){
-		var url = "signup/map.jsp";
-		window.open(url,"활동지역검색","width=600 height=600");		
+		var url = "/cas/signup/map.jsp";
+		window.open(url,"활동지역검색","width=600 height=600 top=300");		
 	});
 });
 </script>			
 					
-					<label class="control-label col-sm-1" for="activity">활동지역</label>		
+					<label class="control-label col-sm-1" for="memActive">활동지역</label>		
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="activity" placeholder="주 활동 지역을 입력하세요" name="activity" readonly>
+						<input type="text" class="form-control" id="activity" placeholder="주 활동 지역을 입력하세요" name="memActive" readonly>
+						<div class="map"></div>
 				    </div>
 					
-					<p id="enter"></p>
 					<p id="enter"></p>
 					
 			  	    <label class="control-label col-sm-1" for="career">팀원</label>
@@ -421,15 +443,15 @@ $(function() {
 		//이미지 미리보기 생성
 		var textField  ="<div class='add-field'><hr><div class='box-body crew'><div class='col-sm-2'><div class='files-crw'>";
 			textField += "<img alt='User Pic' src='https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg' id='profile-image"+seq+"' class='img-circle img-responsive'>";
-			textField += "<input id='profile-image-input"+seq+"'  accept='image/png, image/jpeg, image/gif' class='hidden' type='file'></div></div>";
+			textField += "<input id='profile-image-input"+seq+"'  accept='image/png, image/jpeg, image/gif' class='hidden' name ='crw-img' type='file'></div></div>";
 			//이름 텍스트필드 생성	
 			textField += "<p id='enter'/><label class='control-label col-sm-1' for='crw-name'>이름</label>";
-			textField += "<div class='col-sm-2'><input type='text' id='crw-name"+seq+"' class='form-control crw-name'></div>";
-			textField += "<p id='enter'/><p id='enter'/>";
+			textField += "<div class='col-sm-2'><input type='text' id='crw-name"+seq+"' name='crw-name' class='form-control crw-name'></div>";
+			textField += "<p id='enter'/>";
 			//역할 텍스트필드 생성	
 			textField += "<label class='control-label col-sm-1' for='crw-role'>역할</label>";
-			textField += "<div id='btns'><div class='col-sm-2'><input type='text' id='crw-role"+seq+"' class='form-control crw-role' placeholder='팀원의 역할을 입력하세요'></div></div>";
-			textField += "<p id='enter'/><p id='enter'/><input type='button' class='btn btn-default minus-crw' value='-' />";
+			textField += "<div id='btns'><div class='col-sm-2'><input type='text' id='crw-role"+seq+"' name='crw-role' class='form-control crw-role' placeholder='팀원의 역할을 입력하세요'></div></div>";
+			textField += "<p id='enter'/><input type='button' class='btn btn-default minus-crw' value='-' />";
 			textField += "</div></div>";
 			seq += 1;
 		$('.team-mem').append(textField);

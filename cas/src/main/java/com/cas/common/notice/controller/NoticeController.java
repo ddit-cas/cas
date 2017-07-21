@@ -37,6 +37,7 @@ public class NoticeController {
 	/*공지사항 세부내용을 보는 메서드*/
 	@RequestMapping("/noticeDetail")
 	public String noticeDetail(HttpServletRequest request,Model model){
-		return null;
+		String url = "/member/story/notice/noticeDetail";
+		return url;
 	}
 }

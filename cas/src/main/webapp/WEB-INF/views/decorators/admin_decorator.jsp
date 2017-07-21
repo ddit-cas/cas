@@ -11,6 +11,9 @@
 <head>
 <meta charset="UTF-8">
 
+<!-- sweetalert하기 위한 링크 -->
+<link rel="stylesheet" href="/cas/resources/css/sweetalert.css">
+<script src="/cas/resources/js/sweetalert/sweetalert.min.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -32,39 +35,25 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"
+				<a class="navbar-brand" href="main"
 					style="padding: 0; margin: 0 15px 0 15px;"> <img
 					src=<c:url value='/resources/images/logo.png' /> style="width: 80px; height: 50px;">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">캐러셀 관리<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">캐러셀 리스트</a></li>
-						</ul>
+					<li><a href="carousel">캐러셀 관리</a>
 					</li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">결제관리<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">클라우드 펀딩</a></li>
-							<li><a href="#">포이트 장부</a></li>
-						</ul>
+					<li><a href="fundAnalysis">펀드관리</a>
 					</li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">카운트 관리<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">회원 카운트</a></li>
-							<li><a href="#">펀딩 카운트</a></li>
-							<li><a href="#">포인트 카운트</a></li>
-						</ul>
+					<li><a href="pointAnalysis">구름 관리</a>
+						
 					</li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">게시판 관리<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">공지사항</a></li>
-							<li><a href="#">신고</a></li>
+							<li><a href="reportList">신고</a></li>
 							<li><a href="#">cas 소개</a></li>
 							<li><a href="#">펀딩 성공 사례</a></li>
 							<li><a href="#">자유 게시판</a></li>
@@ -74,11 +63,7 @@
 							<li><a href="#">클라우드 펀딩</a></li>
 						</ul>
 					</li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">회원관리<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">회원관리</a></li>
-						</ul>
+					<li><a href="memberAnalysis">회원관리</a>
 					</li>
 				</ul>
 			</div>

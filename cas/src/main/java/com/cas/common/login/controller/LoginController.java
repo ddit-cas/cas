@@ -1,14 +1,30 @@
 package com.cas.common.login.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cas.db.dto.MemberVO;
+import com.cas.member.service.MemberService;
+
 @Controller
 public class LoginController {
-
+	
+	@Autowired
+	private MemberService memService;
+	
+	public void setMemberService(MemberService memService){
+		this.memService = memService;
+	}
+	
 	/*로그인 양식 페이지로 가는 메서드*/
 	@RequestMapping("/loginForm")
 	public String loginMemberForm(){
@@ -32,7 +48,8 @@ public class LoginController {
 	/*아이디를 찾아준다*/
 	@RequestMapping("/findId")
 	public String findId(HttpServletRequest request){
-		return null;
+		String url="member/idSearch";
+		return url;
 	}
 	
 	/*비번 찾기 화면으로 간다*/
@@ -54,21 +71,19 @@ public class LoginController {
 		return "member/goMain";
 	}
 	
-	/*회원가입 전 약관화면으로 가는메서드*/
-	@RequestMapping("/terms")
-	public String termsGo(){
-		return null;
-	}
-	
 	/*회원가입 양식으로 가는 메서드*/
 	@RequestMapping ("/joinMemberForm")
 	public String joinMemberForm(){
-		return "member/signUp/signup";
+		return "/member/signUp/signup";
 	}
 	
 	/*회원가입을 하는 메서드*/
 	@RequestMapping("/joinMember")
-	public String joinMember(HttpServletRequest request){
-		return null;
+	public String joinMember(HttpServletRequest request, MemberVO member){
+		
+		int result = memService.insertMember(member);
+		request.setAttribute("result", result);
+		
+		return "member/signUp/isSignUp";
 	}
 }

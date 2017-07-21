@@ -27,7 +27,7 @@ button, input[type='button'], input[type='submit'], input[type='reset'], input[t
 
 .appl-tab{
 
-background-color: #6291c3;
+background-color: #337ab7;
     width: 100px;
     height: 100px;
     text-align: center;
@@ -44,14 +44,35 @@ background-color: #6291c3;
     border: 1px solid #cfcfcf;
 }
 
+.inner_title .tit_h2 {
+    font-weight: 600;
+    display: table-cell;
+    padding: 93px 0 60px 0;
+    vertical-align: middle;
+    font-size: 28px;
+    /* font-weight: bold; */
+    color: #fff;
+    text-align: center;
+    background-color: #337ab7;
+}
+
 </style>
 <div class="title_wrap">
 			<div class="inner_title centerRange">
-				<h2 class="tit_h2">프로젝트 신청하기</h2>
+				<h2 class="tit_h2">펀딩 등록하기</h2>
 			</div>
 		</div>
 
-
+<style>
+	.appl-step1 {
+		clear : both;
+	}
+	.appl-tab {
+		float : left;
+		margin-left: 50px;
+	}
+	
+</style>
 <div class="innerOFA">
             <div class="appl_step1">
             
@@ -60,6 +81,19 @@ background-color: #6291c3;
                         <a href="#none" class="on" style="color:white; padding: 0px 29px;"><em>STEP1</em></a>
                                                       
                 </div>
+
+                <div class="appl-tab">
+        
+                        <a href="#none" class="on" style="color:white; padding: 0px 29px;"><em>STEP2</em></a>
+                                                      
+                </div>
+
+                <div class="appl-tab">
+        
+                        <a href="#none" class="on" style="color:white; padding: 0px 29px;"><em>STEP3</em></a>
+                                                      
+                </div>
+                
                 <!--//appl-tab-->
                 	<form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/${resultUrl}" method="post" accept-charset="utf-8">
                 

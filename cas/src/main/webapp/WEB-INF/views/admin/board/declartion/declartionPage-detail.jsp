@@ -25,7 +25,7 @@
 
 <!-- 닉네임이 들어가는 부분 -->
 	<tbody><tr>
-		<td style="min-width: 70px; width:152px;">닉네임</td>
+		<td style="min-width: 70px; width:152px;">피신고자 닉네임</td>
 		<td>어쩜좋니</td>
 	</tr>
 
