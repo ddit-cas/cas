@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<body>
+<!-- sweetalert하기 위한 링크 -->
+
+<script src="/cas/resources/js/sweetalert/sweetalert.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/cas/resources/css/sweetalert.css">
+
 <style>
 svg.map {
 	width : 550px;
@@ -113,9 +120,9 @@ path.region:hover {
 			window.close();
 		});
 		$('#39').on('click',function(){
-			alert("제주");
+			swal("제주", "주활동하는 지역", "success");
+			
 			$('#activity', opener.document).val("제주");
-			window.close();
 		});
 	});
 </script>
@@ -259,3 +266,4 @@ path.region:hover {
 	<text transform="matrix(1 0 0 1 13.4165 42.9165)">인천</text>
 </g>
 </svg>
+</body>

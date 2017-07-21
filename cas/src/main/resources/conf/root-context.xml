@@ -19,35 +19,7 @@
 		class="com.cas.article.service.impl.ArticleServiceImpl"
 		p:articleDao-ref="articleDao"
 	></bean>
-<!-- MemberDao 빈 등록 -->	
-	<bean
-		name="memberDao"
-		class="com.cas.member.dao.impl.MemberDaoImpl"
-		p:sqlMapClient-ref="sqlMapClient"
-	/>
-<!-- MemberService 빈 등록 -->
-	<bean
-		name="memberService"
-		class="com.cas.member.service.impl.MemberServiceImpl"
-		p:memberDao-ref="memberDao"
-	/>	
-
-	<bean
-		name = "reportDao"
-		class="com.cas.report.dao.impl.ReportDaoImpl"
-		p:sqlMapClient-ref="sqlMapClient"
-	>
 	
-	</bean>
-	
-	<bean
-		name = "reportService"
-		class="com.cas.report.service.impl.ReportServiceImpl"
-		p:reportDao-ref="reportDao"
-	>
-	
-	</bean>
-
 <!-- 	캐러셀 다오 빈등록 -->
 	<bean
 		name="carouselDao"
@@ -61,5 +33,4 @@
 		class="com.cas.carousel.service.impl.CarouselServiceImpl"
 		p:carouselDao-ref="carouselDao"
 	></bean>
-
 </beans>

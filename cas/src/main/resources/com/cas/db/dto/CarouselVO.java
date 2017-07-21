@@ -7,9 +7,16 @@ public class CarouselVO {
 	private String carouselTitle;
 	private String carouselContent;
 	private String carouselImage;
+	private String contentTitle;
 	
 	public String getCarouselNum() {
 		return carouselNum;
+	}
+	public String getContentTitle() {
+		return contentTitle;
+	}
+	public void setContentTitle(String contentTitle) {
+		this.contentTitle = contentTitle;
 	}
 	public void setCarouselNum(String carouselNum) {
 		this.carouselNum = carouselNum;

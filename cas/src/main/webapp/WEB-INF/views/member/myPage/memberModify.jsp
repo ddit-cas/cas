@@ -10,7 +10,7 @@ $(function(){
     	var idValue = $('#mem_id').val();
     	$.ajax({
     		url : '/cas/signup/idCheck.jsp',
-    		type : 'post',
+    		type : 'get',
     		data : "id="+idValue,  // {"id:idValue"} 이래도 같음.
     		success : function(res){
     			var code = "";
@@ -65,7 +65,7 @@ $(function(){
         border-radius: 25px;
 	}
 </style>
-	<form class="form-horizontal" action="/cas/joinMember" method="post">
+	<form class="form-horizontal" action="#">
 	<fieldset class="signup_cas_fs">
 		<legend class="signup_cas_ld">필수사항</legend>
 		<div class="container">
@@ -160,7 +160,7 @@ $(function(){
 $(function(){
 	$('#zip-btn').on('click',function(){
 		var url = "/cas/signup/zipSearch.jsp";
-		window.open(url,"우편번호검색","width=500 height=400 top=300");		
+		window.open(url,"우편번호검색","width=500 height=400");		
 	});
 });
 </script>
@@ -248,20 +248,19 @@ $(function(){
 $(function() {
 	//그림 클릭 시 업로드 창 띄워 업로드 후 미리보기
 	$('#profile-image').on('click', function() {
-	
 		$('#profile-image-input').click();
-		var test="";
+		
 		$("#profile-image-input").change(function (){     
 	        
 	        var file = this.files[0];
 	        var reader = new FileReader();
 	        // Set preview image into the popover data-content
 	        reader.onload = function (e) {
-	        	$(".image-preview-input-title").text("변경");
-	            $(".image-preview-filename").val(file.name);            
+	        	 $(".image-preview-input-title").text("변경");
+	             $(".image-preview-filename").val(file.name);            
 	            $("#profile-image").attr('src', e.target.result);
 	        }        
-	       reader.readAsDataURL(file);
+	        reader.readAsDataURL(file);
 	    });
 	});
 	
@@ -278,7 +277,9 @@ $(function() {
         }        
         reader.readAsDataURL(file);
     });
-
+	
+	
+	
 	// textfield 생성
 	var count = 0;
 	$('#plus-textField').on('click',function(){
@@ -289,7 +290,7 @@ $(function() {
 			textField +="<label class='control-label col-sm-1' for='add'>+</label>"; 
 			textField +="<div class='col-sm-4'>";
 			textField +="<div class='input-group'>";
-			textField +="<input type='text' class='form-control' name='memCareer' placeholder='경력을 추가 입력하세요.'>";
+			textField +="<input type='text' class='form-control' name='memCertif' placeholder='경력을 추가 입력하세요.'>";
 			textField +="<span class='input-group-btn'>";
 			textField +="<button class='btn btn-default minus-textbutton' type='button'>-</button>";
 			textField +="</span></div></div><p id='enter' /></div>";
@@ -303,7 +304,7 @@ $(function() {
 			});
 		}else{
 			count=2;
-			sweetAlert("경력쓰기 제한","경력사항 쓰기는 3회로 제한 됩니다.","error");
+			alert("경력사항 쓰기는 3회로 제한 됩니다.");
 		}
 	});
 	
@@ -385,7 +386,7 @@ $(function() {
 					<label class="control-label col-sm-1" for="memCertif">경력</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					    <input type="text" class="form-control" name='memCareer' placeholder="경력을 입력하세요.">
+					    <input type="text" class="form-control" name='memCertif' placeholder="경력을 입력하세요.">
 					    <span class="input-group-btn">
 					      <button class="btn btn-default" id="plus-textField" type="button">+</button>
 					    </span>

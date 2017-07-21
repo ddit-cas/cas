@@ -132,20 +132,24 @@
 				<c:choose>
 					<c:when test="${index.index==0 }">
 						<div class="item active carousel-image">
+						<a href="${carousel.contentUrl }">
 							<img src="${carousel.carouselImage }"/>">
 							<div class="carousel-caption">
 						        <h2>${carousel.carouselTitle }</h2>
 						        <p>${carousel.carouselContent }</p>
 						    </div>
+						</a>
 						</div>
 					</c:when>
 					<c:otherwise>
 						<div class="item carousel-image">
+						<a href="${carousel.contentUrl }">
 							<img src="${carousel.carouselImage }"/>">
 							<div class="carousel-caption">
 						        <h2>${carousel.carouselTitle }</h2>
 						        <p>${carousel.carouselContent }</p>
 						    </div>
+					    </a>
 						</div>
 					</c:otherwise>
 				</c:choose>

@@ -20,6 +20,7 @@ public class MypageController {
 	/*내정보를 수정하는 메서드*/
 	@RequestMapping("/member/updateMember")
 	public String memberUpdate(HttpSession session,HttpServletRequest request){
+
 		String url = "/member/myPage/myPageModify";
 		return url;
 	}
