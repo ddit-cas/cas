@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>
+    pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+
 
 <body>
-
 
 <style>
 .wd-icon-content {
@@ -109,7 +109,7 @@ function fundEntrollment_go(){
 									atque in molestias animi.</p>
 								<a href="fundDetail" class="more-btn">자세히보기</a>
 							</div>
-							<span class="blog-date">May 03, 2015</span>
+							<span class="blog-date">성공한 펀딩</span>
 						</div>
 					</div>
 
@@ -128,7 +128,7 @@ function fundEntrollment_go(){
 									atque in molestias animi.</p>
 								<a href="" class="more-btn">View More</a>
 							</div>
-							<span class="blog-date">June 03, 2015</span>
+							<span class="blog-date">실패한 펀딩</span>
 						</div>
 					</div>
 
@@ -149,7 +149,7 @@ function fundEntrollment_go(){
 									atque in molestias animi.</p>
 								<a href="" class="more-btn">View More</a>
 							</div>
-							<span class="blog-date">July 03, 2015</span>
+							<span class="blog-date">취소된 펀딩</span>
 						</div>
 					</div>
 				</div>

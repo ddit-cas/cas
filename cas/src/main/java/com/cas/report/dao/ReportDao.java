@@ -14,4 +14,7 @@ public interface ReportDao {
 	
 	/*신고당한 게시글을 삭제하는 메서드*/
 	public void deleteArticle();
+	
+	/* 멤버들의 신고를 등록하는 메서드 */
+	public int insertReport(ReportVO report);
 }
