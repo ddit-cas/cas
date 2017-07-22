@@ -5,4 +5,6 @@
      
 <sqlMapConfig>
 	<sqlMap resource="com/cas/db/sqlMap/Article.xml" />
+	<sqlMap resource="com/cas/db/sqlMap/promotion.xml" />
+	<sqlMap resource="com/cas/db/sqlMap/Comment.xml" />
 </sqlMapConfig>
