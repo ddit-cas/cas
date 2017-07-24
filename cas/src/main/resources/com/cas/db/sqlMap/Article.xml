@@ -24,11 +24,14 @@
 	</resultMap>
 	
 	<insert id="insertArticle" parameterClass="article">						
-		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#
-			,#contentContent#,SYSDATE,#contentParentsContent#,'test','n','y'
-			,#consertNum#,#contentImg#,#fundingNum#)																		
+		INSERT INTO CONTENT(CONTENT_NUM, BOARD_CODE,  CONTENT_TITLE, CONTENT_CONTENT,
+							CONTENT_REGIS_DATE, CONTENT_PARENTS_CONTENT, CONTENT_WRITER, 
+							CONTENT_IMPORTANCE, CONTENT_STATE, CONSERT_NUM,CONTENT_IMG, FUNDING_NUM) 
+			VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#
+			,SYSDATE,#contentParentsContent#,#contentWriter#,'n','y'
+			,#consertNum#,#contentImg#,FUNDING_SEQ.CURRVAL)																		
 	</insert>
-	
+
 	<select id="selectArticleList" resultMap="selectArticle" parameterClass="article">
 		SELECT 
 		* 
