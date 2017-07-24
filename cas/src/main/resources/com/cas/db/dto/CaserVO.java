@@ -8,8 +8,15 @@ public class CaserVO {
 	private String memEmail;
 	private String memBirthdate;
 	private String memFrofileimage;
+	private String memNick;
 	
 	
+	public String getMemNick() {
+		return memNick;
+	}
+	public void setMemNick(String memNick) {
+		this.memNick = memNick;
+	}
 	public String getMemId() {
 		return memId;
 	}

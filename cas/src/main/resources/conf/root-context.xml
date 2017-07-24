@@ -74,5 +74,46 @@
 		class="com.cas.member.service.impl.MemberServiceImpl"
 		p:memberDao-ref="memberDao"
 	></bean>
+	
+	<!-- 펀드 다오 빈 등록 -->
+	<bean
+		name="fundDao"
+		class="com.cas.fund.dao.impl.FundDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
+	
+	<!-- 펀드 서비스 빈 등록 -->
+	<bean
+		name="fundService"
+		class="com.cas.fund.service.impl.FundServiceImpl"
+		p:fundDao-ref="fundDao"
+	></bean>
+	
+<!-- 	공연홍보 다오 등록 -->
+	<bean
+		name="promotionDao"
+		class="com.cas.promotion.dao.impl.PromotionDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
 
+<!-- 	공연홍보 서비스 등록 -->
+	<bean 
+		name="promotionService"
+		class="com.cas.promotion.service.impl.PromotionServiceImpl"
+		p:promotionDao-ref="promotionDao"
+	></bean>
+<!-- 		댓글 다오 등록		 -->
+	<bean
+		name="commentDao"
+		class="com.cas.member.comment.dao.impl.CommentDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
+<!-- 		댓글 서비스 등록		 -->
+	<bean
+		name="commentService"
+		class="com.cas.member.comment.service.impl.CommentServiceImpl"
+		p:commentDao-ref="commentDao"
+	></bean>
+	
+	
 </beans>

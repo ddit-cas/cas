@@ -32,8 +32,8 @@
 	</resultMap>                                                                  
 	
 	<insert id="insertMember" parameterClass="member">
-		INSERT INTO MEMBER(mem_Id,mem_Pwd,mem_Name,mem_Email,mem_Mailnumber,mem_Addr1, mem_Addr2, mem_Nick,mem_Frofileimage,mem_Birthdate,mem_Point,mem_Hp,mem_Career,mem_Sginup_date,mem_Active,sanc_Code,rank_Code)
-				   VALUES (#memId#,#memPwd#,#memName#,#memEmail#,#memMailnumber#,#memAddr1#,#memAddr2#,#memNick#,#memFrofileimage#,#memBirthdate#,0,#memHp#,#memCareer#,SYSDATE,#memActive#,'S001','R002') 
+		INSERT INTO MEMBER(mem_Id,mem_Pwd,mem_Name,mem_Email,mem_Mailnumber,mem_Addr1,mem_addr2,mem_Nick,mem_Frofileimage,mem_Birthdate,mem_Point,mem_Hp,mem_Career,mem_Sginup_date,mem_Active,sanc_Code,rank_Code,classify_Code)
+				   VALUES (#memId#,#memPwd#,#memName#,#memEmail#,#memMailnumber#,#memAddr1#,#memAddr2#,#memNick#,#memFrofileimage#,#memBirthdate#,0,#memHp#,#memCareer#,SYSDATE,#memActive#,'S001','R002',(select classify_code from classify where age=#memAge# and sex=#memSex#)) 
 	</insert>
 
 	<select id="selectMemberList" resultMap="selectMember"
@@ -76,7 +76,7 @@
 	
 	<insert id="insertClickInfo" parameterClass="readinfo">
 		insert into readinfo (CONTENT_NUM, READ_TIME, CLASSIFY)
-					values(#contentNum#,sysdata,#classify#)
+					values(#contentNum#,sysdate,#classify#)
 	</insert>
 	
 	<select id="selectMemberNick" parameterClass="str" resultClass="str">

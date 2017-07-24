@@ -10,7 +10,7 @@ package com.cas.db.dto;
  */
 public class Paging {
 	//한 페이지의 로우 		7
-	final int BOARD_ROW = 7;
+	final int BOARD_ROW = 6;
 	//한번에 보이는 페이징번호   5 (바꿀경우 홀수로만 바꾼다)
 	final int SHOW_PAGE = 5;
 
