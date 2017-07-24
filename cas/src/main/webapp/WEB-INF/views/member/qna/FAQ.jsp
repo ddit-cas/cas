@@ -87,6 +87,7 @@ $(function(){
 				<p class="a">A: </p>
 			</li>
 			</c:forEach>
+			
 		</ul>
 	</div>
 </div>

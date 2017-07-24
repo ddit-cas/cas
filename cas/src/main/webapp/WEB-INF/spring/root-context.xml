@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+<!-- 	게시글 다오 빈등록 -->
+	<bean
+		name="articleDao"
+		class="com.cas.article.dao.impl.ArticleDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
+	
+<!-- 	게시글 서비스 빈등록 -->
+	<bean
+		name="articleService"
+		class="com.cas.article.service.impl.ArticleServiceImpl"
+		p:articleDao-ref="articleDao"
+	></bean>
+		
+<!-- 	공연홍보 다오 등록 -->
+	<bean
+		name="promotionDao"
+		class="com.cas.promotion.dao.impl.PromotionDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
+
+<!-- 	공연홍보 서비스 등록 -->
+	<bean 
+		name="promotionService"
+		class="com.cas.promotion.service.impl.PromotionServiceImpl"
+		p:promotionDao-ref="promotionDao"
+	></bean>
+<!-- 		댓글 다오 등록		 -->
+	<bean
+		name="commentDao"
+		class="com.cas.member.comment.dao.impl.CommentDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
+<!-- 		댓글 서비스 등록		 -->
+	<bean
+		name="commentService"
+		class="com.cas.member.comment.service.impl.CommentServiceImpl"
+		p:commentDao-ref="commentDao"
+	></bean>
+</beans>

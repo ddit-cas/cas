@@ -446,7 +446,7 @@ h3 {
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="/cas/freeboardList">자유게시판</a></li>
-							<li><a href="#">공연홍보 게시판</a></li>
+							<li><a href="/cas/promotionList">공연홍보 게시판</a></li>
 							<li><a href="/cas/member/uccForm">PR 영상</a></li>
 						</ul>
 					</li>

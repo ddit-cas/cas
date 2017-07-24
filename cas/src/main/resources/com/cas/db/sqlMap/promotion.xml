@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="consert">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="consert" type="com.cas.db.dto.ConsertVO"/>
+	<resultMap class="com.cas.db.dto.GenreVO" id="selectGenre">
+		<result property="genreCode" column="genre_code"/>
+		<result property="genreName" column="genre_name"/>
+	</resultMap>
+	
+	<resultMap class="com.cas.db.dto.PromotionVO" id="selectPromotion">
+		<result property="contentNum" column="CONTENT_NUM" />
+		<result property="contentTitle" column="CONTENT_TITLE" />
+		<result property="contentContent" column="CONTENT_CONTENT" />
+		<result property="contentRegisDate" column="CONTENT_REGIS_DATE" />
+		<result property="contentWriter" column="CONTENT_WRITER" />
+		<result property="contentImg" column="CONTENT_IMG" />
+		<result property="consertContent" column="CONSERT_CONTENT" />
+		<result property="consertPlace" column="CONSERT_PLACE" />
+		<result property="startDate" column="PERFOMANCE_START_DATE" />
+		<result property="endDate" column="PERFOMANCE_END_DATE" />
+		<result property="consertTime" column="CONSERT_TIME" />
+		<result property="consertTicket" column="CONSERT_TICKET" />
+		<result property="consertGenre" column="GENRE_NAME" />
+		<result property="consertGeograp" column="CONSERT_GEOGRAP" />
+	</resultMap>
+	
+	<insert id="insertConsert" parameterClass="consert">
+		INSERT INTO	CONSERT VALUES(CONSERT_SEQ.NEXTVAL,#consertContent#,#consertPlace#
+			,TO_DATE(#startDate#,'yyyy-mm-dd'),TO_DATE(#endDate#,'yyyy-mm-dd'),60,#consertTicket#,#consertGenre#,#consertGeograp#)
+	</insert>
+	
+	<select id="selectGenreList" resultMap="selectGenre">
+		select *
+		from genre
+	</select>
+	
+	<select id="selectPromotionDetail" resultMap="selectPromotion">
+		select *
+		from promotion
+	</select>
+</sqlMap>
