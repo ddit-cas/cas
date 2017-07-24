@@ -23,8 +23,10 @@
 		<result property="fundingNum" column="funding_num"/>
 	</resultMap>
 	
-	<insert id="insertArticle" parameterClass="article">
-		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#,SYSDATE,#contentParentsContent#,'test','n','y',#consertNum#,#contentImg#,#fundingNum#)																		
+	<insert id="insertArticle" parameterClass="article">						
+		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#
+			,#contentContent#,SYSDATE,#contentParentsContent#,'test','n','y'
+			,#consertNum#,#contentImg#,#fundingNum#)																		
 	</insert>
 	
 	<select id="selectArticleList" resultMap="selectArticle" parameterClass="article">
@@ -37,7 +39,7 @@
 	</select>
 	
 	<select id="selectArticle" resultMap="selectArticle" parameterClass="article">
-		select * from ARTICLE where board_code=#boardCode# and content_num=#contentNum#
+		select * from article where board_code=#boardCode# and content_num=#contentNum#
 	</select>
 
 	<!-- <select id="selectArticle" resultMap="selectArticle" parameterClass="article">

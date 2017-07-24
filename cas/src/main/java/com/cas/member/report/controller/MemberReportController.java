@@ -13,8 +13,10 @@ import com.cas.report.service.ReportService;
 @Controller
 public class MemberReportController {
 	
+
 	@Autowired
 	private ReportService reportService;
+
 	
 	public void setReportService(ReportService reportService){
 		this.reportService = reportService;
