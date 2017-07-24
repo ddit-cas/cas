@@ -13,6 +13,7 @@ import com.cas.member.service.MemberService;
 @Controller
 public class LoginController {
 
+
 	@Autowired
 	private MemberService memberService;
 

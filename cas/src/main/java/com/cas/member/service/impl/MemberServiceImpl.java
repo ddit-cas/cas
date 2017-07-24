@@ -28,7 +28,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public List<MemberVO> memberCheckIdList() {
-		return memberDao.memberCheckIdList();
+		return memberDao.memberList();
 	}
 	
 	@Override

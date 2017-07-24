@@ -78,4 +78,8 @@
 		insert into readinfo (CONTENT_NUM, READ_TIME, CLASSIFY)
 					values(#contentNum#,sysdata,#classify#)
 	</insert>
+	
+	<select id="selectMemberNick" parameterClass="str" resultClass="str">
+		select mem_nick from member where mem_nick=#mem_nick#
+	</select>
 </sqlMap>

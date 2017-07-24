@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <body>
 
 <style>
@@ -17,6 +17,18 @@
     background-color: #26bbe2;
     border-color: #2e6da4;
 }
+
+.dropdown-menu>li>a {
+    display: block;
+    padding: 3px 25px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+
 
 </style>
 
@@ -36,7 +48,7 @@
 			<h3 class="title" style="margin-left: 234px; margin-top: 22px; font-size: 30px;">CASER PROFILE LIST</h3>
 
 
-			<div class="bn_wrap">
+			<div class="bn_wrap" style="height:auto;">
 				<input type="hidden" name="pageNoChk" value="4"> <input
 					type="hidden" name="mbSearchKey" value="3">
 
@@ -61,9 +73,8 @@
 				</div>
 
 
-
+	<c:forEach var="caser" items="${caserList}">
 				<div class="container2" style="margin-top: 20px; width: 763px;">
-					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-6">
 							<div class="well well-sm">
 								<div class="row">
@@ -72,16 +83,16 @@
 											class="img-rounded img-responsive" />
 									</div>
 									<div class="col-sm-6 col-md-8">
-										<h4 id="name">설승민</h4>
-										<p id="nick">홍홍이</p>
-										<small><cite title="San Francisco, USA">대전 대흥동 <i class="glyphicon glyphicon-map-marker">
+										<h4>${caser.memId }</h4>
+										<p>${caser.memName }</p>
+										<small><cite title="San Francisco, USA">${caser.memActive } <i class="glyphicon glyphicon-map-marker">
 											</i>
 										</cite></small>
 										<p>
-											<i class="glyphicon glyphicon-envelope"></i>&nbsp;seokartn@naver.com
+											<i class="glyphicon glyphicon-envelope"></i>&nbsp;${caser.memEmail }
 											<br /> <i class="glyphicon glyphicon-globe"></i><a
 												href="http://www.jquery2dotnet.com">seokartn.instagram</a>
-											<br /> <i class="glyphicon glyphicon-gift"></i>92.03.10
+											<br /> <i class="glyphicon glyphicon-gift"></i>${caser.memBirthdate }
 										</p>
 										<!-- Split button -->
 										<div class="btn-group">
@@ -91,143 +102,43 @@
 												<span class="caret"></span><span class="sr-only">&nbsp;Social</span>
 											</button>
 											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Twitter</a></li>
-												<li><a
-													href="https://plus.google.com/+Jquery2dotnet/posts">&nbsp;Google
-														+</a></li>
-												<li><a href="https://www.facebook.com/jquery2dotnet">&nbsp;Facebook</a></li>
+												<li style="width:66px; float:left;" ><a href="javascript:toSNS('facebook','공유테스트중','https://youtu.be/nFaMnAq5bCo')" title="페이스북으로 가져가기"><img src="resources/images/facebook.jpg" style="width:40px;"></a></li>
+												<li style="float:right;"><a href="javascript:toSNS('twitter','테스트중입니다.','https://youtu.be/nFaMnAq5bCo')" title="트위터로 가져가기"><img src="resources/images/twitter.jpg" style="width:40px;"></a></li>
 											</ul>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6">
-							<div class="well well-sm">
-								<div class="row">
-									<div class="col-sm-6 col-md-4">
-										<img src="http://placehold.it/380x500" alt=""
-											class="img-rounded img-responsive" />
-									</div>
-									<div class="col-sm-6 col-md-8">
-										<h4>Bhaumik Patel</h4>
-										<small><cite title="San Francisco, USA">San
-												Francisco, USA <i class="glyphicon glyphicon-map-marker">
-											</i>
-										</cite></small>
-										<p>
-											<i class="glyphicon glyphicon-envelope"></i>email@example.com
-											<br /> <i class="glyphicon glyphicon-globe"></i><a
-												href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-											<br /> <i class="glyphicon glyphicon-gift"></i>June 02, 1988
-										</p>
-										<!-- Split button -->
-										<div class="btn-group">
-											<button type="button" class="btn btn-primary">Social</button>
-											<button type="button" class="btn btn-primary dropdown-toggle"
-												data-toggle="dropdown">
-												<span class="caret"></span><span class="sr-only">Social</span>
-											</button>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Twitter</a></li>
-												<li><a
-													href="https://plus.google.com/+Jquery2dotnet/posts">Google
-														+</a></li>
-												<li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
-												<li class="divider"></li>
-												<li><a href="#">Github</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6">
-							<div class="well well-sm">
-								<div class="row">
-									<div class="col-sm-6 col-md-4">
-										<img src="http://placehold.it/380x500" alt=""
-											class="img-rounded img-responsive" />
-									</div>
-									<div class="col-sm-6 col-md-8">
-										<h4>Bhaumik Patel</h4>
-										<small><cite title="San Francisco, USA">San
-												Francisco, USA <i class="glyphicon glyphicon-map-marker">
-											</i>
-										</cite></small>
-										<p>
-											<i class="glyphicon glyphicon-envelope"></i>email@example.com
-											<br /> <i class="glyphicon glyphicon-globe"></i><a
-												href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-											<br /> <i class="glyphicon glyphicon-gift"></i>June 02, 1988
-										</p>
-										<!-- Split button -->
-										<div class="btn-group">
-											<button type="button" class="btn btn-primary">Social</button>
-											<button type="button" class="btn btn-primary dropdown-toggle"
-												data-toggle="dropdown">
-												<span class="caret"></span><span class="sr-only">Social</span>
-											</button>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Twitter</a></li>
-												<li><a
-													href="https://plus.google.com/+Jquery2dotnet/posts">Google
-														+</a></li>
-												<li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
-												<li class="divider"></li>
-												<li><a href="#">Github</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6">
-							<div class="well well-sm">
-								<div class="row">
-									<div class="col-sm-6 col-md-4">
-										<img src="http://placehold.it/380x500" alt=""
-											class="img-rounded img-responsive" />
-									</div>
-									<div class="col-sm-6 col-md-8">
-										<h4>Bhaumik Patel</h4>
-										<small><cite title="San Francisco, USA">San
-												Francisco, USA <i class="glyphicon glyphicon-map-marker">
-											</i>
-										</cite></small>
-										<p>
-											<i class="glyphicon glyphicon-envelope"></i>email@example.com
-											<br /> <i class="glyphicon glyphicon-globe"></i><a
-												href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-											<br /> <i class="glyphicon glyphicon-gift"></i>June 02, 1988
-										</p>
-										<!-- Split button -->
-										<div class="btn-group">
-											<button type="button" class="btn btn-primary">Social</button>
-											<button type="button" class="btn btn-primary dropdown-toggle"
-												data-toggle="dropdown">
-												<span class="caret"></span><span class="sr-only">Social</span>
-											</button>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Twitter</a></li>
-												<li><a
-													href="https://plus.google.com/+Jquery2dotnet/posts">Google
-														+</a></li>
-												<li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
-												<li class="divider"></li>
-												<li><a href="#">Github</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			</c:forEach>
+			
+			
+				</div>	
 			</div>
 		</div>
-		</div>
+<script>		
+    // send to SNS
+    function toSNS(sns, strTitle, strURL) {
+        var snsArray = new Array();
+        var strMsg = strTitle + " " + strURL;
+		var image = "이미지경로";
+ 
+        snsArray['twitter'] = "http://twitter.com/home?status=" + encodeURIComponent(strTitle) + ' ' + encodeURIComponent(strURL);
+        snsArray['facebook'] = "http://www.facebook.com/share.php?u=" + encodeURIComponent(strURL);
+        window.open(snsArray[sns]);
+    }
+ 
+    function copy_clip(url) {
+        var IE = (document.all) ? true : false;
+        if (IE) {
+            window.clipboardData.setData("Text", url);
+            alert("이 글의 단축url이 클립보드에 복사되었습니다.");
+        } else {
+            temp = prompt("이 글의 단축url입니다. Ctrl+C를 눌러 클립보드로 복사하세요", url);
+        }
+    }
+</script>		
+		
 </body>
 </html>
