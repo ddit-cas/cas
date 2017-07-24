@@ -3,7 +3,7 @@
 
 .inner_title.centerRange {
     margin: 0 auto;
-    width: 1106px;
+    width: 960px;
 }
 
 .inner_title {
@@ -14,7 +14,7 @@
 
 
 .innerOFA {
-    width: 1106px;
+    width: 960px;
     margin: 0 auto;
     padding: 30px 10px 82px 10px;
 }
@@ -22,7 +22,6 @@
 .appl_step1, .appl_step2, .appl_step3 {
     box-sizing: border-box;
     margin: 0 auto;
-    min-height: 1100px;
     background-color: #fff;
 }
 
@@ -107,13 +106,14 @@ div.appl-tab ul li a.on {
     vertical-align: middle;
     border-bottom: 1px solid #ececec;
     font-size: 12px;
+    width : 100%;
 }
 
 .innerOFA .tstep input[type='text'] {
     box-sizing: border-box;
     padding: 0 5px;
-    min-width: 205px;
-    height: 26px;
+    min-width: 465px;
+    height: 34px;
     line-height: 21px;
     font-size: 13px;
     color: #4f4f4e;
