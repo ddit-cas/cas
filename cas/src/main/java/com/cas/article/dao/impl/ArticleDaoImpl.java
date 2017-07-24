@@ -28,6 +28,20 @@ public class ArticleDaoImpl implements ArticleDao{
 		
 		return resultList;
 	}
+	@Override
+	public List<ArticleVO> selectArticleList(String memId, String boardCode) {
+		List<ArticleVO> resultList = null;
+		ArticleVO article = new ArticleVO();
+		article.setBoardCode(boardCode);
+		article.setContentWriter(memId);
+		try {
+			resultList=sqlMapClient.queryForList("selectMemberArticle",article);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultList;
+	}
 
 	@Override
 	public ArticleVO selectArticle(String articleId,String boardCode) {

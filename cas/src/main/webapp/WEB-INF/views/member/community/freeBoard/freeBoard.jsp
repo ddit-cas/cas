@@ -111,7 +111,7 @@ li a:hover {
 				<c:choose>
 				<c:when test="${index==i}">
 				<li>
-					<a style="background: #aaa;" aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
+					<a style="background: #337ab7; color: #fff;" aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
 						${i }
 					</a>
 				</li>

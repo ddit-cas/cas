@@ -48,8 +48,16 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public boolean updateMember(MemberVO member) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			int result=sqlMapClient.update("updateMember",member);
+			System.out.println(result);
+			System.out.println(member.getMemName());
+			System.out.println(member.getMemId());
+			System.out.println("여기다오임플인데안오나요?");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override

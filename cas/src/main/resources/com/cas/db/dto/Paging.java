@@ -69,6 +69,9 @@ public class Paging {
 	
 		firstPageRow = 0;
 		lastPageRow = firstPageRow+BOARD_ROW-1;
+		if(lastPageRow>dataRow){
+			lastPageRow=dataRow;
+		}
 		//tab 값이 안넘어왔을경우 초기값
 		index = 1;
 		minNum = 1;

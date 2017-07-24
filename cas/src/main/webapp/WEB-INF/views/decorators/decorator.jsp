@@ -369,19 +369,14 @@ h3 {
 					<label class="myInfoLabel">${loginUser.memName}</label> 
 					<label class="myInfoLabel">${loginUser.memPoint} point</label>
 				</div>
-				<a href="/cas/member/updateMember" class="btn btn-sm animated-button thar-four">개인정보</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">내 영상</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">내 펀딩</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">내 투자</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
+				<a href="/cas/member/mypage" class="btn btn-sm animated-button thar-four">개인정보</a> <a
+					href="/cas/member/uccList" class="btn btn-sm animated-button thar-four">내 영상</a> <a
+					href="/cas/member/fundList" class="btn btn-sm animated-button thar-four">내 펀딩</a> <a
+					href="/cas/member/investmentList" class="btn btn-sm animated-button thar-four">내 투자</a> <a
+					href="/cas/member/cimList" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
+					href="/cas/member/point" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
+					href="/cas/member/myContact" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
 					href="/cas/logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
-				<script>
-					function logout() {
-
-					}
-				</script>
 			</div>
 			<script type="text/javascript">
 				var statue = "login";

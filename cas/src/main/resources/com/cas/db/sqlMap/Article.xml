@@ -41,6 +41,11 @@
 		select * from content where board_code=#boardCode# and content_num=#contentNum#
 	</select>
 	
+	
+	<select id="selectMemberArticle" resultMap="selectArticle" parameterClass="article">
+		select * from article where board_code=#boardCode# and content_writer=#contentWriter#
+	</select>
+	
 	<update id="updateArticle" parameterClass="article">
 		update content set
 		content_content=#contentContent#,

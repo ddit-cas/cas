@@ -9,7 +9,6 @@
 </head>
 <body>
 	<div class="modal fade product_view" id="product_view">
-		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<a
@@ -41,7 +40,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 </body>
 </html>
