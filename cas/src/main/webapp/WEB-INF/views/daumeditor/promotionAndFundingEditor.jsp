@@ -484,39 +484,16 @@
 
 
 
-<!-- Sample: Loading Contents -->
+<!-- Sample: Loading Contents -->	
 <textarea id="sample_contents_source" style="display:none;">
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	<p style="text-align: center;">
-		<img src="http://cfile273.uf.daum.net/image/2064CD374EE1ACCB0F15C8" class="tx-daum-image" style="clear: none; float: none;"/>
-	</p>﻿
-	<p>
-		<a href="http://cfile297.uf.daum.net/attach/207C8C1B4AA4F5DC01A644"><img src="snapshot/images/icon/p_gif_s.gif"/> editor_bi.gif</a>
-	</p>
+	${promotion.contentContent}
 </textarea>
 <script type="text/javascript">
+	loadContent();
 	function loadContent() {
 		var attachments = {};
 		attachments['image'] = [];
 		attachments['image'].push({
-			'attacher': 'image',
-			'data': {
-				'imageurl': 'http://cfile273.uf.daum.net/image/2064CD374EE1ACCB0F15C8',
-				'filename': 'github.gif',
-				'filesize': 59501,
-				'originalurl': 'http://cfile273.uf.daum.net/original/2064CD374EE1ACCB0F15C8',
-				'thumburl': 'http://cfile273.uf.daum.net/P150x100/2064CD374EE1ACCB0F15C8'
-			}
-		});
-		attachments['file'] = [];
-		attachments['file'].push({
-			'attacher': 'file',
-			'data': {
-				'attachurl': 'http://cfile297.uf.daum.net/attach/207C8C1B4AA4F5DC01A644',
-				'filemime': 'image/gif',
-				'filename': 'editor_bi.gif',
-				'filesize': 640
-			}
 		});
 		/* 저장된 컨텐츠를 불러오기 위한 함수 호출 */
 		Editor.modify({
@@ -531,6 +508,4 @@
 		});
 	}
 </script>
-<div><button onclick='loadContent()'>SAMPLE - load contents to editor</button></div>
-<!-- End: Loading Contents -->
 

@@ -13,7 +13,15 @@ public class ArticleVO {
 	private String contentState;
 	private String consertNum;
 	private String contentImg;
+	private String pundingNum;
 	
+	
+	public String getPundingNum() {
+		return pundingNum;
+	}
+	public void setPundingNum(String pundingNum) {
+		this.pundingNum = pundingNum;
+	}
 	public String getConsertNum() {
 		return consertNum;
 	}

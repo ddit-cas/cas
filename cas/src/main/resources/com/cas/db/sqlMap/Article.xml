@@ -19,10 +19,13 @@
 		<result property="contentImportance" column="content_importance"/>
 		<result property="consertNum" column="consert_num"/>
 		<result property="contentImg" column="content_img"/>
+		<result property="pundingNum" column="content_img"/>
 	</resultMap>
 	
 	<insert id="insertArticle" parameterClass="article">
-		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#,SYSDATE,null,'test','n',null,null)																		
+		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#
+			,#contentContent#,SYSDATE,#contentParentsContent#,'test','n','y'
+			,#consertNum#,#contentImg#,#pundingNum#)																		
 	</insert>
 	
 	<select id="selectArticleList" resultMap="selectArticle" parameterClass="article">

@@ -27,13 +27,27 @@
 		}
 		$('#pagerCount').html(code);
 	}
+
 </script>
-<div id="body">
+<div class="company-snb" style="float: left; margin-top: 100px;">
+	<h2>CAS-이야기</h2>
+	<div class="">
+		<ul style="margin-right: 40px;">
+			<li class="active"><a href="fundList">공지사항</a></li>
+			<li><a href="#">CAS란</a></li>
+			<li><a href="fundingExampleList">행사일정</a></li>
+		</ul>
+	</div>
+</div>
+<div id="body" style="float:right; width: 83%;">
 	<div style="width:100%;overflow: hidden; height: 100px;">
 		<img src="/cas/resources/images/free.png" style="width:100%;">
 	</div>
-	<h1 style="width:auto;">공연홍보게시판</h1>
-	<hr>
+	<h1 style="">공연홍보게시판</h1>
+	<div>
+		<button style="float:right; margin-bottom: 5px;" onclick="insertShowPage_go()">공연등록</button>
+	</div>
+	<hr style="clear:both;">
 	<div></div>
 	<table class="table table-bordered">
 	  <thead>
@@ -56,3 +70,9 @@
 		<li><a href="#">Next</a></li>
 	</ul>
 </div>
+
+<script>
+function insertShowPage_go(){
+	document.location.href = "/cas/member/PromotionForm";
+}
+</script>

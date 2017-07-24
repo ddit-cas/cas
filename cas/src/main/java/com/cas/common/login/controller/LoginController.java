@@ -18,7 +18,7 @@ public class LoginController {
 	/*로그인 해주는 메서드*/
 	@RequestMapping("/login")
 	public String loginMember(HttpServletRequest request,HttpSession session){
-		session.setAttribute("loginUser", "asd");
+		session.setAttribute("loginUser", "test");
 		session.setAttribute("point", "10000");
 		return "member/goMain";
 	}

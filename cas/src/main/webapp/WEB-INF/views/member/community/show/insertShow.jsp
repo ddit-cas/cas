@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 #imgDiv{
-	width: 100%;
-	height: 400px;
-	background: #eee;
+	width: 100%; 
+	height: 400px; 
+	margin-bottom: 10px;
 }
 .showInsertText{
 	width: 97%;
@@ -28,22 +28,24 @@
    </div>
 </div>
 <div id="body" style="float:right; width: 80%">
-	<div style="    background-color: #26bbe2;height: 70px;padding: 16px 24px;margin: 10px 0;">
+	<div style="background-color: #26bbe2;height: 70px;padding: 16px 24px;margin: 10px 0;">
  		<label style="color:#ffffff; font-size:24px;"><strong>공연등록</strong></label>
  	</div>
-	<form name="tx_editor_form" style="width: 100%;height: auto;" id="tx_editor_form" action="/cas/member/insertPromotion" method="post" accept-charset="utf-8">
+	<form name="tx_editor_form" style="width: 100%;height: auto;" id="tx_editor_form" action="/cas/member/insertPromotion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 		<input type="hidden" name="contentWriter" value="${loginUser }">
+		<input type="hidden" name="consertGeograp" >
+		
 		<div style="float:left; width: 40%;">
 			<label>포스터</label>(그림을 클릭하여 업로드해주세요.)
-			<div id="imgDiv" style="width: 100%; height: 400px; margin-bottom: 10px;">
-				<div class="imgDiv" style="width: 100%; height: 400px;">
-					<img id="profile-image" src="/cas/resources/famous.jpg">
+			<div id="imgDiv">
+				<div class="imgDiv" style="width: 100%; height: 400px; border:1px solid #ccc; border-radius:0.8em;  ">
+					<img id="posterImage" src="/cas/resources/images/NO_POSTER.png">
 				</div>
-				<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
+				<input id="posterImage-input" name="posterImage"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
 			</div>
 			<div>
 				<label>간략설명</label>
-				<textarea style="width: 100%;height: 221px;" placeholder="(400자 이내로 기술하시오)"></textarea>
+				<textarea name='consertContent' style="width: 100%;height: 221px;" placeholder="(400자 이내로 기술하시오)"></textarea>
 			</div>
 		</div>
 	
@@ -54,13 +56,18 @@
 				<label>제목</label> <input type="text" name="contentTitle" class="form-control showInsertText" id="email" placeholder="제목을 입력하세요.">
 			</div>
 			<div class="form-group">
-				<label>장르</label>
-			    <select class="form-control" style="width: 97%;">
-					<option value="">장르선택</option>
-					<option value="연극">연극</option>
-					<option value="뮤지컬">뮤지컬</option>
-					<option value="버스킹">버스킹</option>
-				</select>
+				<div>
+					<label>장르</label>
+					<label style="margin-left:43%;">런닝타임</label>
+				</div>
+				<div>
+				    <select class="form-control genreSelect" name="consertGenre" style="width: 48%; float:left; margin-right: 1%;">
+				    	<c:forEach  var="genre" items="${genreList}">
+				    		<option value="${genre.genreCode }">${genre.genreName }</option>
+				    	</c:forEach>
+					</select>
+					<input name="consertTime" type="number" min="0" class="form-control" style="width:48%;" step="5" placeholder="분(m)단위로 입력하세요.">
+				</div>
 			</div>
 			<div class="form-group">
 				<label style="width: 100%; margin-bottom: 0;">공연기간</label> 
@@ -74,17 +81,16 @@
 			<div class="form-group">
 				<label>티켓 구입처</label>
 				<div style="margin-bottom: 10px;">
-					<input type="text" class="form-control showInsertText" placeholder="ex)http://ticket.interpark.com/Ticket/Goods/GoodsInfo.asp?GoodsCode=17008482" style="float:left;width: 81%;">
-					<input type="button" class="btn btn-default" onclick="openSearchTicketUrl()" value="링크 찾기"><br>
+					<input name="consertTicket" type="text" class="form-control showInsertText" placeholder="ex)http://ticket.interpark.com/Ticket/Goods/GoodsInfo.asp?GoodsCode=17008482" style="float:left;width: 97%;margin-bottom: 15px;">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="pwd">장소</label> 
+				<label>장소</label> 
 				<div style="margin-bottom: 10px;">
-					<input type="text" class="form-control showInsertText" id="address" placeholder="주소" style="float:left;width: 81%;">
+					<input name="address" type="text" class="form-control showInsertText" id="address" placeholder="주소" style="float:left;width: 81%;">
 					<input type="button" class="btn btn-default" onclick="execDaumPostcode()" value="주소 검색"><br>
 				</div>
-				<input type="text" class="form-control showInsertText" id="detailAddress" placeholder="상세주소">
+				<input name="detailAddress" type="text" class="form-control showInsertText" id="detailAddress" placeholder="상세주소">
 				<div id="map" style="width:97%;height:239px;margin-top:10px;"></div>
 			</div>
 		</div>
@@ -95,10 +101,19 @@
 			</div>
 			<jsp:include page="/WEB-INF/views/daumeditor/promotionAndFundingEditor.jsp"></jsp:include>
 		</div>
+		<div style="float: right; margin-bottom: 50px;">
+			<button onclick='saveContent()' type="button" class="btn btn-primary" style="width:90px;background-color:#26bbe2; margin-right: 10px;">전송</button>		
+			<button onclick='insertCancel()' type="button" class="btn btn-primary" style="width:90px;background-color:#26bbe2 ">취소</button>		
+		</div>
 	</form>
 </div>
+
+
 <!-- Sample: Saving Contents -->
 <script type="text/javascript">
+	function insertCancel(){
+		window.location.href = "/cas/promotionList";
+	}
 	/* 예제용 함수 */
 	function saveContent() {
 		Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
@@ -125,11 +140,7 @@
 		
 		return true;
 	}
-
 	 
-	function openSearchTicketUrl(){
-		window.open('http://www.google.com', '_blank'); 
-	}
 	/**
 	 * Editor.save()를 호출한 경우 validForm callback 이 수행된 이후
 	 * 실제 form submit을 위해 form 필드를 생성, 변경하기 위해 부르는 콜백함수로
@@ -177,18 +188,20 @@
         return true;
 	}
 </script>
+
+
 <script>
 setImgMargin();
-	$('#profile-image').on('click', function() {
-		$('#profile-image-input').click();
+	$('#posterImage').on('click', function() {
+		$('#posterImage-input').click();
 		
-		$("#profile-image-input").change(function (){     
+		$("#posterImage-input").change(function (){     
 	        
 	        var file = this.files[0];
 	        var reader = new FileReader();
 	        // Set preview image into the popover data-content
 	        reader.onload = function (e) {
-	            $("#profile-image").attr('src', e.target.result);
+	            $("#posterImage").attr('src', e.target.result);
 	            setImgMargin();
 	        }        
 	        reader.readAsDataURL(file);
@@ -306,7 +319,7 @@ $(document).ready(function(){
                     if (status === daum.maps.services.Status.OK) {
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-                    	alert(result.addr[0].lat+","+ result.addr[0].lng);
+                    	document.getElementsByName('consertGeograp')[0].value=result.addr[0].lat+"/"+ result.addr[0].lng;
                         // 지도를 보여준다.
                         mapContainer.style.display = "block";
                         map.relayout();
@@ -342,7 +355,8 @@ daum.maps.event.addListener(map, 'click', function(mouseEvent) {
             // 마커를 클릭한 위치에 표시합니다 
             marker.setPosition(mouseEvent.latLng);
             marker.setMap(map);
-
+	
+           	document.getElementsByName('consertGeograp')[0].value=latlng.getLat()+"/"+latlng.getLng();
             // 지도 중심을 변경한다.
             map.setCenter(new daum.maps.LatLng(latlng.getLat(), latlng.getLng()));
             
