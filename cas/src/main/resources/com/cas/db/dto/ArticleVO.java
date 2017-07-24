@@ -2,19 +2,19 @@ package com.cas.db.dto;
 
 public class ArticleVO {
 
-	private String contentNum;
-	private String boardCode;
-	private String contentTitle;
-	private String contentContent;
-	private String contentRegisDate;
-	private String contentParentsContent;
-	private String contentWriter;
-	private String contentImportance;
-	private String contentState;
-	private String consertNum;
-	private String contentImg;
-	private String boardName;
-	private String fundingNum;
+	private String contentNum;				//시퀀스
+	private String boardCode;				//게시판 코드
+	private String contentTitle;			//글 제목
+	private String contentContent;			//글 내용
+	private String contentRegisDate;		//등록일
+	private String contentParentsContent;	//댓글인 경우, 부모글의 시퀀스
+	private String contentWriter;			//등록자 혹은 작성자
+	private String contentImportance;		//중요도체크
+	private String contentState;			//게시글 활성화 상태
+	private String consertNum;				// 공연홍보 게시판과 연결
+	private String contentImg;				//이미지 등록
+	private String boardName;				//게시판 종류(자유게시판, 공연홍보, 펀딩)
+	private String fundingNum;				//펀딩과 연결
 	
 	public String getFundingNum() {
 		return fundingNum;

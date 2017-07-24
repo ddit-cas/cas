@@ -22,6 +22,17 @@ public class CommentController {
 	@RequestMapping("/member/insertCommnet")
 	public void insertComment(Model model,CommentVO commentVO){
 		commentService.insertComment(commentVO);
-		model.addAttribute("value","값을 가져갈수 있다.");
+	}
+	
+	@ResponseBody
+	@RequestMapping("/member/deleteCommnet")
+	public void deleteComment(Model model,CommentVO commentVO){
+		commentService.deleteComment(commentVO.getContentNum());
+	}
+	
+	@ResponseBody
+	@RequestMapping("/member/updateCommnet")
+	public void updateComment(Model model,CommentVO commentVO){
+		commentService.updateComment(commentVO);
 	}
 }	
