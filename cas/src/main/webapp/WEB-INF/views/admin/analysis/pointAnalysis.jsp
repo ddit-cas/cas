@@ -2,8 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    
+<title>구름관리</title>    
 <body>
+<script>
+$(function(){
+	$('li.dropdown').on('click',function(){
+		$('li.dropdown').toggleClass('open');
+	});
+});
+</script>	
     <!-- Morris Charts CSS -->
     <link href="/cas/resources/css/morris.css" rel="stylesheet">
 
@@ -11,30 +18,6 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	
-	<meta name="description" content="Counter Up - jQuery Plugin Demo">
-    <meta name="author" content="Benjamin Intal">
-    <link rel="author" href="https://plus.google.com/113101541449927918834"/>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
-	
-	
-  <style>
-    * {
-        -webkit-transition: all 600ms ease;
-        -moz-transition: all 600ms ease;
-        -o-transition: all 600ms ease;
-        transition: all 600ms ease;
-    }
-  </style>
-<script>
-$(function( $ ) {
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1000
-    });
-});
-</script>
-
-
     <div id="page-wrapper">
 
         <div class="container-fluid">
@@ -128,7 +111,7 @@ $(function( $ ) {
 			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
 			        <tr>
 			          <th scope="row">1</th>
-			          <td><a href="#">pink212</a></td> <!-- 게시판 url 적용해야함. -->
+			          <td>pink212</td>
 					  <td>박미현(목대여신)</td>
 					  <td>010-4545-8989</td>
 					  <td><i class="fa fa fa-krw"></i><span class="counter">&nbsp;58,000</span></td>
@@ -137,7 +120,7 @@ $(function( $ ) {
 			        </tr>
 			        <tr>
 			          <th scope="row">2</th>
-			          <td><a href="#">bbind</a></td> <!-- 게시판 url 적용해야함. -->
+			          <td>bbind</td>
 					  <td>박성빈(대한민국3대빈)</td>
 					  <td>010-4545-8989</td>
 					  <td><i class="fa fa fa-krw"></i>&nbsp;<span class="counter">58,000</span></td>
@@ -146,7 +129,7 @@ $(function( $ ) {
 			        </tr>
 			        <tr>
 			          <th scope="row">3</th>
-			          <td><a href="#">seol</a></td> <!-- 게시판 url 적용해야함. -->
+			          <td>seol</td>
 					  <td>설승민(야잘알)</td>
 					  <td>010-4545-8989</td>
 					  <td><i class="fa fa fa-krw"></i><span class="counter">&nbsp;58,000</span></td>
@@ -188,7 +171,7 @@ $(function() {
 	var pntData = $('.pData').text().split('.');
 	var pntRef = $('.pRefund').text().split('.');
 	var pntCha = $('.pCharge').text().split('.');
-    
+    /*
     var pntArray = new Array();
 	for(var i=0;i<memDate.length-1;i++){
 		var pntData = new Object();
@@ -197,7 +180,7 @@ $(function() {
 		pntData.charge = pntCha[i];
 		pntArray.push(pntData)
 	}
-	
+	*/
     // Area Chart
     Morris.Area({
         element: 'morris-area-chart',

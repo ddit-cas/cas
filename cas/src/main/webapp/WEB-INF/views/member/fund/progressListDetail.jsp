@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+
+
+
 <body>
 
 
 <link rel="stylesheet" href="/cas/resources/css/fundListDetail.css" type="text/css">
-
+<script type="text/javascript" src="/cas/resources/js/jquery.scrollfollow.js"></script>
 <style>
 div.company-wrap {
     width: 1000px;
@@ -42,23 +45,49 @@ div.company-wrap {
 
 .btn-zzim i.ico-star {
     display: block;
-    width: 25px;
+    width: 39px;
     height: 24px;
     margin: 9px auto 5px;
-    background: url(resources/images/icon_like.png) no-repeat 0 0;
+/*     background: url(resources/images/icon_like.png) no-repeat 0 0; */
     background-size: 100% auto;
 }
 
 
+.recommend-box {
+	position:absolute;
+    margin-top: 18px;
+    float: right;
+    width: 242px;
+    border: 1px solid #e4e4e4;
+    padding: 20px 20px;
+    background-color: #fff;
+}
 
+.recommend-box p {
+    margin: 5px 0px 10px 5px;
+    font-weight: 500;
+    font-size: 16px;
+    border-bottom: 1px solid #dddddd;
+    width: 200px;
+    padding-bottom: 3px;
+}
 
-
-
-
-
+.detail-top-wrap .top-title {
+	margin-top: 77px;
+    width: 100%;
+    padding: 60px 0 55px;
+    background: #26bbe2;
+}
+.bg_primary {
+    background: #26bbe2 !important;
+}
 
 </style>
-
+<script>
+function fundEntrollment_go(){
+	location.href="/cas/member/insertFundIntro";
+}
+</script>
 
 
 <div id="body">
@@ -67,9 +96,13 @@ div.company-wrap {
 		<div class="">
 			<ul>
 				<li class="active"><a href="fundList">진행중인 펀딩</a></li>
-			<li><a href="#">종료된 펀딩</a></li>
+			<li><a href="endFundList">종료된 펀딩</a></li>
 			<li><a href="fundingExampleList">성공한 펀딩 </a></li>
-			<li><a href="#">펀딩 등록하기 </a></li>
+			<li>
+			<span class="btn">
+			<button class="btn btn-primary" onclick='fundEntrollment_go();' style = "background-color:#26bbe2;">펀딩 등록하기</button>
+			</span>
+			</li>
 			</ul>
 		</div>
 	</div>
@@ -414,19 +447,19 @@ div.company-wrap {
 							</div>
 									
 							<div class="btn-equity-state pb25 clearfix">
-								<!-- 클래스명 추가 btn-equity-state 161101 -->
 			
 								<span class="pull-left">
 									<button type="button" id="investBtn2" class="btn-block bg_primary btn-xl" style="color: #fff; width: 211px; margin-right: 10px; height: 58px; border: 1px solid #cbcbcb;" onclick="investProc('592');">투자하기</button>
 								</span>
-							
-								<span class="pull-left zzim-after" style="display: none;">
+								<span class="pull-left zzim-after hide">
 									<button type="button" class="btn-zzim on" style="height: 60px;" onclick="removeInterested('592');">
-										<i class="ico-star"></i> <span id="zzim-cnt-on">83</span>
+										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like_on.png"></i> <span id="zzim-cnt-on"></span>
 									</button>
-								</span> <span class="pull-left zzim-before" style="">
-									<button type="button" class="btn-zzim" style="height: 60px;" onclick="registerInterested('592');">
-										<i class="ico-star"></i> <span id="zzim-cnt">83</span>
+								</span> 
+								<span class="pull-left zzim-before">
+									<button type="button" class="btn-zzim" style="height: 60px;" onclick="registerInterested();">
+										
+										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like.png"> </i><span id="zzim-cnt">83</span>
 									</button>
 								</span>
 								
@@ -437,6 +470,37 @@ div.company-wrap {
 						
 						
 <script>
+
+// 하트표시바꾸기-------------------------------------------------------------
+
+	var cnt = $('span#zzim-cnt').text();
+	$('.btn-zzim').click(function(){
+		
+		$('.zzim-before').toggleClass('hide');
+		cnt++
+		$('span#zzim-cnt-on').text(cnt);
+		
+		$('.zzim-after').toggleClass('hide');
+		cnt--
+		$('span#zzim-cnt').text(cnt);
+		
+		
+		
+		/*
+		if($('.zzim-before').isClass('hide')){
+			cnt++;
+			$('#zzim-cnt on').val(ctn);
+		}else{
+			cnt--;
+			$('#zzim-cnt').val(ctn);
+		}
+		*/
+	})
+
+
+
+
+
 
 
 $('#testBtn').click(function(){
@@ -471,10 +535,7 @@ $('#testBtn').click(function(){
 							<div class="bestsupporter-list">
 								<ul id="bestSupporterList">
 
-
-
-
-									<li>
+								<li>
 										<button class="profile" onclick="goUserProfile('71189234')"
 											style="background-image: url(/resources/Images/img_blank.png)"></button>
 										<p class="name">배지예</p>
@@ -482,13 +543,7 @@ $('#testBtn').click(function(){
 											<span>3.7%</span> 기여
 										</p>
 									</li>
-
-
-
-
-
-
-									<li>
+								<li>
 										<button class="profile" onclick="goUserProfile('55318034')"
 											style="background-image: url(https://wadizwww.imgix.net/wwwwadiz/green001/fb_profile_pics/1032341289.jpg?dpr=2&amp;amp;auto=format,compress&amp;amp;cs=tinysrgb&amp;amp;gifq=70&amp;amp;w=46&amp;amp;h=46)"></button>
 										<p class="name">최유진</p>
@@ -496,11 +551,6 @@ $('#testBtn').click(function(){
 											<span>3.7%</span> 기여
 										</p>
 									</li>
-
-
-
-
-
 
 									<li>
 										<button class="profile" onclick="goUserProfile('44995634')"
@@ -511,11 +561,6 @@ $('#testBtn').click(function(){
 										</p>
 									</li>
 
-
-
-
-
-
 									<li>
 										<button class="profile" onclick="goUserProfile('44958234')"
 											style="background-image: url(https://wadizwww.imgix.net/wwwwadiz/green001/fb_profile_pics/626321725.jpg?dpr=2&amp;amp;auto=format,compress&amp;amp;cs=tinysrgb&amp;amp;gifq=70&amp;amp;w=46&amp;amp;h=46)"></button>
@@ -524,11 +569,6 @@ $('#testBtn').click(function(){
 											<span>2.7%</span> 기여
 										</p>
 									</li>
-
-
-
-
-
 
 									<li>
 										<button class="profile" onclick="goUserProfile('45097634')"
@@ -540,10 +580,6 @@ $('#testBtn').click(function(){
 									</li>
 
 
-
-
-
-
 									<li>
 										<button class="profile" onclick="goUserProfile('45539634')"
 											style="background-image: url(/resources/Images/img_blank.png)"></button>
@@ -552,11 +588,6 @@ $('#testBtn').click(function(){
 											<span>2.7%</span> 기여
 										</p>
 									</li>
-
-
-
-
-
 
 									<li>
 										<button class="profile" onclick="goUserProfile('67384634')"
@@ -568,20 +599,12 @@ $('#testBtn').click(function(){
 									</li>
 
 
-
-
-
 									<li><em class="profile"
 										style="background-image: url(/resources/Images/img_blank.png)"></em>
 										<p>
 											익명의 서포터<br>
 											<span>2.7%</span> 기여
 										</p></li>
-
-
-
-
-
 
 
 									<li>
@@ -592,8 +615,6 @@ $('#testBtn').click(function(){
 											<span>2.7%</span> 기여
 										</p>
 									</li>
-
-
 
 								</ul>
 
@@ -609,11 +630,8 @@ $('#testBtn').click(function(){
 						<!--// [N] 베스트 기여 서포터 정보  -->
 
 
-
-
-
 						<!-- S : 인기 프로젝트 리스트 -->
-						<div id="normalpane" style="display: inherit;">
+						<div id="normalpane" >
 							<div class="recommend-box">
 								<p>인기 프로젝트</p>
 
@@ -701,94 +719,7 @@ $('#testBtn').click(function(){
 						</div>
 					</div>
 
-					<!-- E : 인기 프로젝트 리스트 -->
-					<div id="fixedpane" class="fixedpane-box" style="display: none;">
-
-						<div class="recommend-box" style="width:284px;">
-							<p style="">인기 프로젝트</p>
-
-							<div class="item">
-								<div class="number">1</div>
-								<div class="text">
-									<a href="/web/campaign/detail/13175">가격마저 놀랍다! 디자이너 캐리어
-										&amp; 백팩, 샤플 Dr.Nah</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="number">2</div>
-								<div class="text">
-									<a href="/web/campaign/detail/12333">이제는 로봇청소기도 슬림이 '대세'
-										초슬림 로봇청소기 욜로봇슬림</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="number">3</div>
-								<div class="text">
-									<a href="/web/campaign/detail/13535">가격, 디자인, 기능을 모두 잡은 국민
-										전동킥보드, 아이로드 i6</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="number">4</div>
-								<div class="text">
-									<a href="/web/campaign/detail/13222">시계, 무드등, 무선충전기가 하나로!
-										'오블리크 제로'!</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="number">5</div>
-								<div class="text">
-									<a href="/web/campaign/detail/13208">'수퍼스노우' 당신을 위한 아침대용식
-										내가 먹은 한 끼가 내 몸을 만든다</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="number">6</div>
-								<div class="text">
-									<a href="/web/campaign/detail/12623">킥보드? NO! 킥바이크!!도시를
-										말달리다!! 쿨런전동킥바이크&amp;킥바이크</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="number">7</div>
-								<div class="text">
-									<a href="/web/campaign/detail/11917">[터치백] 어떤 움직임에도 흘러내리지
-										않는 데일리백</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="number">8</div>
-								<div class="text">
-									<a href="/web/campaign/detail/12947">체중관리 효과가 그냥 착용만 해도! -
-										스마트벨트 '웰트'</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="number">9</div>
-								<div class="text">
-									<a href="/web/campaign/detail/12368">쏟을 걱정 노! 손은 핸들 위로!
-										1+1컵홀더 - 컵플러스</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="number">10</div>
-								<div class="text">
-									<a href="/web/campaign/detail/13074">5,500원으로 해외여행 100배 즐기기</a>
-								</div>
-							</div>
-
-						</div>
-					</div>
-
+					
 
 					<!-- S : 프로젝트 신고 팝업 -->
 
@@ -874,117 +805,6 @@ function closeLyPop(popName){
 	$('body').css('position','static').css('width','100%');
 }
 
-$(document).ready(function () {
-	alertify.custom = alertify.extend("custom");
-	
-	$('#btnShare').click(function(){
-		if($('#shareSection').hasClass('open')){
-			$('#shareSection').removeClass('open');
-		}else{
-			$('#shareSection').addClass('open');
-		}
-	})
-	
-	//화면 로딩시 유저의 찜하기 여부 판단 후 보여줄 버튼을 결정
-	if("" == 1) {
-		$("#btnLike").addClass('active');
-	} else {
-		$("#btnLike").removeClass('active');
-	}
-	
-	var likeCampaignId = '436';
-	$("#btnLike").click(function(){
-		if($(this).hasClass('active')){
-			removeInterested(likeCampaignId);
-		}else{
-			registerInterested(likeCampaignId);
-		}
-	});
-	var newDt = new Date();
-	newDt.setDate(newDt.getDate());
-	
-	function converDateString(dt){
-		return dt.getFullYear() + "-" + addZero(eval(dt.getMonth()+1)) + "-" + addZero(dt.getDate());
-	}
-	
-	function addZero(i){
-		var rtn = i + 100;
-		return rtn.toString().substring(1,3);
-	}
-	$("#timer-count").countdown(converDateString(newDt) + " 23:59:59", function(event) {
-		$(this).text(event.strftime('%H:%M:%S'));
-	});
-	
-	// 타이머 초기화
-	//date_time();
-	
-	var showfixedpane = false;
-	var normalpaneoffset = 0;
-
-	// 팝업 외의 영역 클릭시 해당 팝업 닫기
-	$(document).mouseup(function (e) {
-		var container = $("#wadiz-cont-intro");
-
-		if (!container.is(e.target)
-			&& container.has(e.target).length === 0){
-		
-            container.css("display","none");
-        }
-		
-		// 지지서명 팝업
-		var container2 = $("#popup-signature");
-
-		if (!container2.is(e.target)
-			&& container2.has(e.target).length === 0){
-		
-            container2.css("display","none");
-        }
-		
-	});
-	
-	// 인기 프로젝트 스크롤시 따라다니는 효과
-	
-	$.ready(document).one('scroll', function () {
-        normalpaneoffset = $('#normalpane').offset().top;
-    });
-
-	var rightTabHeight = $('.wd-ui-sub-opener-info').height();
-	var contentTabHeight = $('.wd-ui-tab-content').height();
-	var scrollMinOffset = (rightTabHeight > contentTabHeight) ? rightTabHeight : contentTabHeight;
-	scrollMinOffset += $('.wd-ui-tab-content').offset().top;
-
-	// 스크롤에 맞춰 인기프로젝트 fix와 가변값의 변화
-	$.ready(window).scroll(function () {
-		if(scrollMinOffset > normalpaneoffset){
-			var nowTop = parseInt($(document).scrollTop()) + parseInt($('#fixedpane').height() + 100);
-
-			if ($(document).scrollTop()+100 > normalpaneoffset && $("#newFooter").offset().top > nowTop) {
-				showfixedpane = true;
-			} else {
-				showfixedpane = false;
-			}
-			
-			if (showfixedpane) {
-				$('#fixedpane').css('display', 'inherit');
-				$('#normalpane').css('display', 'none');
-			} else {
-				$('#fixedpane').css('display', 'none');
-				$('#normalpane').css('display', 'inherit');
-			}
-		}
-		
-		if($(window).scrollTop() > 500){
-			$('#scrollTopBtn').fadeIn();	
-		}else{
-			$('#scrollTopBtn').fadeOut();
-		}
-	});
-	
-	if($.urlParam('callback') == 'postFeedMyFacebook') {
-		window.fbAsyncInit();
-		postFeedMyFacebook();
-	}
-});
 
 
 
@@ -1028,12 +848,18 @@ function wadizIcon(){
 }
 
 
-
-
-
-
-
 </script>
 
+
+<script>
+$(document).ready(function(){
+    $(".recommend-box").scrollFollow({
+        speed : 800,    // 꿈지럭 거리는 속도
+        offset : 200     // 웹페이지 상단에서 부터의 거리(바꿔보면 뭔지 안다)
+    });
+});
+</script>
+
+
+
 </body>
-</html>

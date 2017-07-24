@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<body>
+<!-- sweetalert하기 위한 링크 -->
+
+<script src="/cas/resources/js/sweetalert/sweetalert.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/cas/resources/css/sweetalert.css">
+
 <style>
 svg.map {
 	width : 550px;
@@ -30,92 +37,127 @@ path.region:hover {
 </style>
 <script>
 	$(function(){
+		
 		$('#11').on('click',function(){
-			alert("서울");
+			swal("서울", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("서울");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 
 		$('#12').on('click',function(){
-			alert("세종");
+			swal("세종", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("세종");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 
 		$('#33').on('click',function(){
-			alert("충북");
+			swal("충북", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("충북");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#34').on('click',function(){
-			alert("충남");
+			swal("충남", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("충남");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#25').on('click',function(){
-			alert("대전");
+			swal("대전", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("대전");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#23').on('click',function(){
-			alert("인천");
+			swal("인천", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("인천");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#31').on('click',function(){
-			alert("경기");
+			swal("경기", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("경기");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#32').on('click',function(){
-			alert("강원");
+			swal("강원", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("강원");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#37').on('click',function(){
-			alert("경북");
+			swal("경북", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("경북");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#22').on('click',function(){
-			alert("대구");
+			swal("대구", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("대구");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#38').on('click',function(){
-			alert("경남");
+			swal("경남", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("경남");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#21').on('click',function(){
-			alert("부산");
+			swal("부산", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("부산");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#26').on('click',function(){
-			alert("울산");
+			swal("울산", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("울산");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#35').on('click',function(){
-			alert("전북");
+			swal("전북", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("전북");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#36').on('click',function(){
-			alert("전남");
+			swal("전남", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("전남");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#24').on('click',function(){
-			alert("광주");
+			swal("광주", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("광주");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 		$('#39').on('click',function(){
-			alert("제주");
+			swal("제주", "주활동하는 지역", "success");	
 			$('#activity', opener.document).val("제주");
-			window.close();
+			$('.confirm').bind('click',function(){
+				window.close();
+			});
 		});
 	});
 </script>
@@ -259,3 +301,4 @@ path.region:hover {
 	<text transform="matrix(1 0 0 1 13.4165 42.9165)">인천</text>
 </g>
 </svg>
+</body>
