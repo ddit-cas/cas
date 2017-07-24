@@ -75,5 +75,19 @@
 		class="com.cas.member.service.impl.MemberServiceImpl"
 		p:memberDao-ref="memberDao"
 	></bean>
-
+	
+	<!-- 펀드 다오 빈 등록 -->
+	<bean
+		name="fundDao"
+		class="com.cas.fund.dao.impl.FundDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
+	
+	<!-- 펀드 서비스 빈 등록 -->
+	<bean
+		name="fundService"
+		class="com.cas.fund.service.impl.FundServiceImpl"
+		p:fundDao-ref="fundDao"
+	></bean>
+	
 </beans>
