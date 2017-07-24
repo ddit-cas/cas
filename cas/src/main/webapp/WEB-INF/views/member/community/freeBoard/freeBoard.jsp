@@ -85,7 +85,7 @@ li a:hover {
 					<tbody style="text-align: center; font-size: 15px;">
 					<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
 						<tr>
-							<td>${articleList[i].contentTitle}</td>
+							<td><a href="freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
 							<td>${articleList[i].contentWriter}</td>
 							<td>${articleList[i].contentRegisDate}</td>
 						</tr>

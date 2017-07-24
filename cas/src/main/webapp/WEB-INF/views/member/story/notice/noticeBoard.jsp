@@ -59,6 +59,7 @@ li a:hover {
 							<img src="resources/images/free.png"
 								style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
 						</p>
+						<!-- 검색 -->
 						<div class="searchgroup" style="float: right">
 							<select class="form-control">
 								<option value="title">제목</option>
@@ -73,28 +74,10 @@ li a:hover {
 							</div>
 						</form>
 					</div>
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>제목</th>
-								<th>작성자</th>
-								<th>작성일</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="article" items="${articleList}">
-							<tr>
-								<td>${article.contentTitle }</td>
-								<td>${article.contentWriter }</td>
-								<td>${article.contentRegisDate }</td>
-							</tr>
-							</c:forEach>
-						</tbody>
-					</table>
 				</div>
-				<!--//tab-intro-->
+				<!--테이블 리스트-->
 				<table class="table table-hover"
-					style="width: 800px; height: 1100px; margin: 0 auto;">
+					style="width: 800px; margin: 0 auto;">
 					<thead>
 						<tr>
 							<th style="width: 30%; text-align: center; font-size: 15px;">제목</th>
@@ -105,7 +88,7 @@ li a:hover {
 					<tbody style="text-align: center; font-size: 15px;">
 						<c:forEach var="content" items="${articleList}">
 							<tr>
-								<td>${content.contentTitle}</td>
+								<td><a href="noticeDetail">${content.contentTitle}</a></td>
 								<td>${content.contentWriter}</td>
 								<td>${content.contentRegisDate}</td>
 							</tr>
@@ -135,3 +118,4 @@ li a:hover {
 		</nav>
 	</div>
 </div>
+

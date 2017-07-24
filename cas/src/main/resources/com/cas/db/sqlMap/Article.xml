@@ -37,8 +37,12 @@
 	</select>
 	
 	<select id="selectArticle" resultMap="selectArticle" parameterClass="article">
-		select * from content where board_code=#boardCode# and content_num=#contentNum#
+		select * from ARTICLE where board_code=#boardCode# and content_num=#contentNum#
 	</select>
+
+	<!-- <select id="selectArticle" resultMap="selectArticle" parameterClass="article">
+		select * from content where board_code=#boardCode# and content_num=#contentNum#
+	</select> -->
 	
 	<update id="updateArticle" parameterClass="article">
 		update content set

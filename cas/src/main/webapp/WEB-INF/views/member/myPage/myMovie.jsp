@@ -161,31 +161,45 @@ body {
 	margin-right: -10px;
 }
 
- .product_view .modal-dialog{max-width: 800px; width: 100%;}
-        .pre-cost{text-decoration: line-through; color: #a5a5a5;}
-        .space-ten{padding: 10px 0;}
+.product_view .modal-dialog {
+	max-width: 800px;
+	width: 100%;
+}
+
+.pre-cost {
+	text-decoration: line-through;
+	color: #a5a5a5;
+}
+
+.space-ten {
+	padding: 10px 0;
+}
 </style>
 	<div id="body">
 		<div class="container">
-			<h2>MyUCC</h2>
+		<div class="company-cont" style="height: auto; width:960px;">
+		<h3 class="box" style="background-color:#0B2161;">My Movie</h3>
 			<div class="row">
 				<div class="col-md-4">
 					<div class="thumbnail">
-						<img src="/cas/resources/images/psy.jpg"
-							alt="싸이" style="width: 100%"  data-toggle="modal" data-target="#product_view">
-							<div class="blog-bar color-pink"></div>
-							<div class="blog-post-text"  data-toggle="modal" data-target="#product_view">
-								<div>춤영상</div>
-								<div class="blog-description pink-text">2017-07-14</div>
-							</div>
+						<img src="/cas/resources/images/psy.jpg" alt="싸이"
+							style="width: 100%" data-toggle="modal"
+							data-target="#product_view">
+						<div class="blog-bar color-pink"></div>
+						<div class="blog-post-text" data-toggle="modal"
+							data-target="#product_view">
+							<div>춤영상</div>
+							<div class="blog-description pink-text">2017-07-14</div>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="thumbnail">
-					 <img src="/cas/resources/images/psy.jpg"  data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
-							<div class="blog-bar color-blue"></div>
+						<img src="/cas/resources/images/psy.jpg" data-toggle="modal"
+							data-target="#product_view" alt="Nature" style="width: 100%">
+						<div class="blog-bar color-blue"></div>
 						<div class="blog-post-text">
-							<div  data-toggle="modal" data-target="#product_view">
+							<div data-toggle="modal" data-target="#product_view">
 								<div>노래노래래랠</div>
 								<div class="blog-description blue-text">2017-07-14</div>
 							</div>
@@ -194,10 +208,11 @@ body {
 				</div>
 				<div class="col-md-4">
 					<div class="thumbnail">
-					 <img src="/cas/resources/images/psy.jpg"  data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
-							<div class="blog-bar color-purple"></div>
+						<img src="/cas/resources/images/psy.jpg" data-toggle="modal"
+							data-target="#product_view" alt="Nature" style="width: 100%">
+						<div class="blog-bar color-purple"></div>
 						<div class="blog-post-text">
-							<div  data-toggle="modal" data-target="#product_view">
+							<div data-toggle="modal" data-target="#product_view">
 								<div>싱얼</div>
 								<div class="blog-description purple-text">2017-07-13</div>
 							</div>
@@ -206,10 +221,11 @@ body {
 				</div>
 				<div class="col-md-4">
 					<div class="thumbnail">
-					 <img src="/cas/resources/images/psy.jpg"  data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
-							<div class="blog-bar color-blue"></div>
+						<img src="/cas/resources/images/psy.jpg" data-toggle="modal"
+							data-target="#product_view" alt="Nature" style="width: 100%">
+						<div class="blog-bar color-blue"></div>
 						<div class="blog-post-text">
-							<div  data-toggle="modal" data-target="#product_view">
+							<div data-toggle="modal" data-target="#product_view">
 								<div>노래</div>
 								<div class="blog-description blue-text">2017-07-13</div>
 							</div>
@@ -218,10 +234,11 @@ body {
 				</div>
 				<div class="col-md-4">
 					<div class="thumbnail">
-					 <img src="/cas/resources/images/psy.jpg"  data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
-							<div class="blog-bar color-purple"></div>
+						<img src="/cas/resources/images/psy.jpg" data-toggle="modal"
+							data-target="#product_view" alt="Nature" style="width: 100%">
+						<div class="blog-bar color-purple"></div>
 						<div class="blog-post-text">
-							<div  data-toggle="modal" data-target="#product_view">
+							<div data-toggle="modal" data-target="#product_view">
 								<div>싱얼~~~</div>
 								<div class="blog-description purple-text">2017-07-12</div>
 							</div>
@@ -230,10 +247,11 @@ body {
 				</div>
 				<div class="col-md-4">
 					<div class="thumbnail">
-					 <img src="/cas/resources/images/psy.jpg"  data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
-							<div class="blog-bar color-purple"></div>
+						<img src="/cas/resources/images/psy.jpg" data-toggle="modal"
+							data-target="#product_view" alt="Nature" style="width: 100%">
+						<div class="blog-bar color-purple"></div>
 						<div class="blog-post-text">
-							<div  data-toggle="modal" data-target="#product_view">
+							<div data-toggle="modal" data-target="#product_view">
 								<div>싱얼싱얼</div>
 								<div class="blog-description purple-text">2017-07-11</div>
 							</div>
@@ -241,31 +259,43 @@ body {
 					</div>
 				</div>
 			</div>
-		
-		
-		<div class="modal fade product_view" id="product_view">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <a href="https://www.youtube.com/embed/OwJPPaEyqhI?rel=0&showinfo=0"
-							target="_blank" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-                <h3 class="modal-title">New Face-psy(moive)</h3>
-                <h3 class="modal-title">싸이</h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div id="prmovie" class="video">
-        <iframe id="frame1" class="embed-responsive-item" style="width:500px; height:400px; margin:0 125px auto;" src="https://www.youtube.com/embed/OwJPPaEyqhI?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe></div>
-                    <div class="col-md-6 product_content" style="margin:0 125px auto;">
-						<h3 class="modal-title">내용</h3>
-                        <textarea rows="5" cols="65">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</textarea>
-                        <div class="btn-ground" style="margin:auto;">
-				<a href="myMoviceDetail.jsp"><input type="submit" class="btn btn-primary" value="수정" /></a>
-				<input type="reset" class="btn btn-primary" value="취소" />
-				<input type="submit" class="btn btn-danger" value="삭제" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-</body>
+
+
+			<div class="modal fade product_view" id="product_view">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<a href="#" target="_blank" data-dismiss="modal"
+								class="class pull-right"><span
+								class="glyphicon glyphicon-remove"></span></a>
+							<h3 class="modal-title">New Face-psy(moive)</h3>
+							<h3 class="modal-title">싸이</h3>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div id="prmovie" class="video">
+									<iframe id="frame1" class="embed-responsive-item"
+										style="width: 500px; height: 300px; margin: 0 125px auto;"
+										src="http://placehold.it/500x300" frameborder="0"
+										allowfullscreen></iframe>
+								</div>
+								<div class="col-md-6 product_content"
+									style="margin: 0 125px auto;">
+									<h3 class="modal-title">내용</h3>
+									<textarea rows="5" cols="65">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</textarea>
+									<div class="btn-ground" style="margin: auto;">
+										<a href="uccDetail"><input type="submit"
+											class="btn btn-primary" value="수정" /></a> <input type="reset"
+											class="btn btn-primary" value="취소" /> <input type="submit"
+											class="btn btn-danger" value="삭제" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 </body>
