@@ -158,8 +158,6 @@
 	<button onclick="focusPlace()" style="margin-top:13px;">공연장소</button>
 	<div id="map" style="width:100%;height:310px;margin-top:10px;"></div>
 	
-	<% session.setAttribute("loginUser", "test"); %>
-	
 <!-- 	댓글부분 -->
 	<div id="commentDiv">
 		<form class="commentForm">
