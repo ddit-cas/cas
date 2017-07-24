@@ -7,7 +7,15 @@ public class CommentVO {
 	private String contentContent;
 	private String contentParentsContent;
 	private String contentWriter;
+	private String contentCount;
 	
+	
+	public String getContentCount() {
+		return contentCount;
+	}
+	public void setContentCount(String contentCount) {
+		this.contentCount = contentCount;
+	}
 	public String getContentNum() {
 		return contentNum;
 	}

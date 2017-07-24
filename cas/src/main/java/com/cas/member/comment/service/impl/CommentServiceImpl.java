@@ -24,4 +24,14 @@ public class CommentServiceImpl implements CommentService{
 		return commentList;
 	}
 
+	@Override
+	public void deleteComment(String boardNum) {
+		commentDao.deleteComment(boardNum);
+	}
+
+	@Override
+	public void updateComment(CommentVO commentVO) {
+		commentDao.updateComment(commentVO);
+	}
+
 }

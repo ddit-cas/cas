@@ -33,4 +33,22 @@ public class CommentDaoImpl implements CommentDao{
 		}
 		return commentList;
 	}
+
+	@Override
+	public void deleteComment(String boardNum) {
+		try {
+			sqlMapClient.update("contentOffState",boardNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void updateComment(CommentVO commentVO) {
+		try {
+			sqlMapClient.update("updateCommentContent",commentVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
