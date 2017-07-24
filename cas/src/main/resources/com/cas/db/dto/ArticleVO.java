@@ -16,6 +16,10 @@ public class ArticleVO {
 	private String boardName;
 	private String fundingNum;
 	
+	
+
+
+
 	public String getFundingNum() {
 		return fundingNum;
 	}
