@@ -171,7 +171,7 @@ public class DaumeditorController {
 			
 			// 파일크기제한 (100MB) 
 			long filesize = multipartFile.getSize(); // 파일크기 
-			long limitFileSize = 100*1024*1024; // 1MB 
+			long limitFileSize = 100*1024*1024; // 100MB 
 			if(limitFileSize < filesize){ // 제한보다 파일크기가 클 경우 
 				fileInfo.put("result", -2); 
 				return fileInfo; 

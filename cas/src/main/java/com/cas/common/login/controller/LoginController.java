@@ -1,5 +1,9 @@
 package com.cas.common.login.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,11 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cas.db.dto.MemberVO;
 import com.cas.member.service.MemberService;
 @Controller
 public class LoginController {
+
 
 	@Autowired
 	private MemberService memberService;
@@ -33,6 +40,7 @@ public class LoginController {
 		if(memberService.checkId(member.getMemId())){
 			System.out.println("아이디 체크는 성공하니?");
 			if(memberService.checkPwd(member.getMemId(),member.getMemPwd())){
+				System.out.println("비번체크성공하니?");
 				url="member/goMain";
 				session.setAttribute("loginUser", memberService.selectMember(member.getMemId()));
 			}
@@ -89,7 +97,30 @@ public class LoginController {
 	
 	/*회원가입을 하는 메서드*/
 	@RequestMapping("/joinMember")
-	public String joinMember(MemberVO member){
+	public String joinMember(HttpServletRequest request,MemberVO member,@RequestParam("memProfileimage") MultipartFile multipartFile){
+		String upload = request.getSession().getServletContext()
+				.getRealPath("upload/member");
+
+		if (!multipartFile.isEmpty()) {
+			File file = new File(upload, multipartFile.getOriginalFilename()
+					+ "$$" + System.currentTimeMillis());
+
+			try {
+				multipartFile.transferTo(file);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			String proFileimage = request.getContextPath()+ "/upload/member/" + file.getName();
+			member.setMemFrofileimage(proFileimage);
+		}
+		Date today = new Date();
+		
+		int nowYear = today.getYear()+1900;
+		String memAge = (((nowYear-Integer.parseInt(member.getMemBirthdate().substring(0,4)))/10)*10)+"";
+		member.setMemAge(memAge);
 		
 		int result=-1;
 		result = memberService.insertMember(member);
