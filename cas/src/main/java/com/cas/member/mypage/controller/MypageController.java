@@ -53,8 +53,15 @@ public class MypageController {
 	/*회원 개인이 올린 유씨씨들만 볼수있게 하는 메서드*/
 	@RequestMapping("/member/uccList")
 	public String memberUccList(HttpSession session,Model model){
-		String url = "/member/myPage/myMovie";
-		return url;
+		
+		String memId = ((MemberVO)session.getAttribute("loginUser")).getMemId();
+		List<ArticleVO> resultList =  articleService.selectArticleList(memId, "B006");
+		
+		model.addAttribute("firstRow", 0);//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", resultList.size()-1);//한 페이지에서 마지막 게시글번호
+		model.addAttribute("myUccList", resultList);//데이터베이스에서 가져온 리스트를 보내준다
+		
+		return "/member/myPage/myMovie";
 	}
 	
 	/*

@@ -2,6 +2,10 @@
    pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script>
+	
+</script>
+
 <body>
 
    <link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css"
@@ -99,7 +103,8 @@ div.company-wrap {
                               <label for="InputMessage">내용</label></td>
                            </tr>
                            <tr>
-                              <td colspan="5" style="height: 200px;">${articleVO.contentContent }
+                              <td colspan="5">
+                                   ${articleVO.contentContent }
                               </td>
                            </tr>
                         </tbody>

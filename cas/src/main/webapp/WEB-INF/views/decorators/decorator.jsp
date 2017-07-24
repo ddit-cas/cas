@@ -374,7 +374,7 @@ h3 {
 					href="/cas/member/investmentList" class="btn btn-sm animated-button thar-four">내 투자</a> <a
 					href="/cas/member/cimList" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
 					href="/cas/member/point" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
-					href="/cas/member/myContact" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
+					href="/cas/member/qnaList" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
 					href="/cas/logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
 			</div>
 			<script type="text/javascript">
@@ -446,7 +446,7 @@ h3 {
 						<ul class="dropdown-menu">
 							<li><a href="/cas/freeboardList">자유게시판</a></li>
 							<li><a href="/cas/promotionList">공연홍보 게시판</a></li>
-							<li><a href="/cas/member/uccForm">PR 영상</a></li>
+							<li><a href="/cas/uccList">PR 영상</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -455,7 +455,7 @@ h3 {
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="/cas/faqList">FAQ</a></li>
-							<li><a href="/cas/qnaMain">1:1 문의사항</a></li>
+							<li><a href="/cas/member/insertQnaForm">1:1 문의사항</a></li>
 						</ul>
 					</li>
 				</ul>

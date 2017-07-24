@@ -48,7 +48,6 @@ public class ArticleDaoImpl implements ArticleDao{
 		ArticleVO vo = new ArticleVO();
 		vo.setBoardCode(boardCode);
 		vo.setContentNum(articleId);
-		
 		ArticleVO result = null;
 		try {
 			result = (ArticleVO) sqlMapClient.queryForObject("selectArticle",vo);

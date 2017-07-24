@@ -16,7 +16,7 @@ public class MemberUccController {
 	 */
 	@RequestMapping("/member/uccForm")
 	public String uccForm(HttpServletRequest request,Model model){
-		return "member/community/pr/VideoBoard";
+		return null;
 	}
 	
 	/*유씨씨영상 입력양식을 다 입력후 등록을 누르면 인서트 해주는 메서드*/

@@ -84,10 +84,9 @@ $(function(){
 			<c:forEach var="content" items="${faqList}" >
 			<li class="article" id="a${content.contentNum}">
 				<h3 class="q"><a href="#a${content.contentNum}">Q : ${content.contentContent}</a></h3>
-				<p class="a">A: </p>
+				<p class="a" id="a${content.contentNum}">A: </p>
 			</li>
 			</c:forEach>
-			
 		</ul>
 	</div>
 </div>
