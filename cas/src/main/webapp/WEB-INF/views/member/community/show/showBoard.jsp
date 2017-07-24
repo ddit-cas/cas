@@ -1,18 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script>
 	$(function(){
-		setContent();
 		setPager(1);
 	})
-	function setContent(){
-		var code="";
-		for(var i=0; i<15;i++){
-			code+="<tr><td>50내림</td><td>제목이에요~~~!!!!</td><td>장르</td><td>시작일~종료일</td><td>작성자명</td><td>좋아요수</td></tr>"
-		}
-		$('#showBoardTbody').html(code);
-	}
 	
 	function setPager(nowPage){
 		var code="";
@@ -52,7 +45,6 @@
 	<table class="table table-bordered">
 	  <thead>
 	    <tr>
-	      <th>글번호</th>
 	      <th>제목</th>
 	      <th>장르</th>
 	      <th>기간</th>
@@ -61,6 +53,27 @@
 	    </tr>
 	  </thead>
 	  <tbody id="showBoardTbody">
+	  	
+	  	<c:choose>
+	  		<c:when test="${empty promotionList}">
+	  			<tr>
+	  				<td colspan="5" style="text-align: center;">
+	  					등록된 공연이 없습니다.
+	  				</td>
+	  			</tr>
+	  		</c:when>
+	  		<c:otherwise>
+	  			<c:forEach var="promotion" items="${promotionList }">
+					<tr>
+						<td><a href="promotionDetail?contentNum=${promotion.contentNum }">${promotion.contentTitle }</a></td>
+						<td>${promotion.genreName }</td>
+						<td>${promotion.startDate } ~ ${promotion.endDate }</td>
+						<td>${promotion.contentWriter }</td>
+						<td>${promotion.recomCount }</td>
+					</tr>	  			
+	  			</c:forEach>
+	  		</c:otherwise>
+	  	</c:choose>
 	  </tbody>
 	</table>
 	<ul class="pager">
