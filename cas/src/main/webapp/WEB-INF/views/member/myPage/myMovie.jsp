@@ -268,8 +268,8 @@ body {
 							<a href="#" target="_blank" data-dismiss="modal"
 								class="class pull-right"><span
 								class="glyphicon glyphicon-remove"></span></a>
-							<h3 class="modal-title">New Face-psy(moive)</h3>
-							<h3 class="modal-title">싸이</h3>
+							<h3 class="modal-title"><label></label></h3>
+							<h3 class="modal-title"><label></label></h3>
 						</div>
 						<div class="modal-body">
 							<div class="row">
@@ -282,12 +282,12 @@ body {
 								<div class="col-md-6 product_content"
 									style="margin: 0 125px auto;">
 									<h3 class="modal-title">내용</h3>
-									<textarea rows="5" cols="65">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</textarea>
+									<textarea rows="5" cols="65"></textarea>
 									<div class="btn-ground" style="margin: auto;">
 										<a href="uccDetail"><input type="submit"
 											class="btn btn-primary" value="수정" /></a> <input type="reset"
-											class="btn btn-primary" value="취소" /> <input type="submit"
-											class="btn btn-danger" value="삭제" />
+											class="btn btn-primary" value="취소" /><a href="uccList"><input type="submit"
+											class="btn btn-danger" value="삭제" /></a>
 									</div>
 								</div>
 							</div>
