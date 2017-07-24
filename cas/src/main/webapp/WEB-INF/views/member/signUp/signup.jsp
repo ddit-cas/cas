@@ -245,6 +245,7 @@ $(function(){
 </style>
 
 <script>
+var count=0;
 $(function() {
 	//그림 클릭 시 업로드 창 띄워 업로드 후 미리보기
 	$('#profile-image').on('click', function() {
@@ -260,9 +261,11 @@ $(function() {
 	        	$(".image-preview-input-title").text("변경");
 	            $(".image-preview-filename").val(file.name);            
 	            $("#profile-image").attr('src', e.target.result);
+	            count++;
 	        }        
 	       reader.readAsDataURL(file);
 	    });
+		alert(count);
 	});
 	
 	// 업로드 버튼으로 그림피일 업로드 후 미리보기

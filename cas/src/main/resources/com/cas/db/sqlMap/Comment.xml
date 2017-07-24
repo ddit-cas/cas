@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="comment">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="comment" type="com.cas.db.dto.CommentVO"/>
+	<resultMap class="com.cas.db.dto.CommentVO" id="selectComment">
+		<result property="contentNum" column="content_num"/>
+		<result property="contentRegisDate" column="content_regis_date"/>
+		<result property="contentTitle" column="content_title"/>
+		<result property="contentContent" column="content_content"/>
+		<result property="contentParentsContent" column="content_parents_content"/>
+		<result property="contentWriter" column="content_writer"/>
+	</resultMap>
+	
+	<insert id="insertComment" parameterClass="comment">
+		insert into Content values(CONTENT_SEQ.NEXTVAL,'B008',#contentTitle#,#contentContent#,SYSDATE
+			,#contentParentsContent#,#contentWriter#,'n','y',null,null,null)
+	</insert>
+	
+	<select id="selectCommentList" resultMap="selectComment" parameterClass="str">
+		select A.content_num,
+		       A.content_regis_date,
+		       A.content_title,
+		       A.content_content,
+		       A.content_parents_content,
+		       A.content_writer
+		from  content A
+		start with A.content_parents_content is null and content_num=#str#
+		connect by prior A.content_num=A.content_parents_content
+    	order siblings by A.content_regis_date asc
+	</select>
+</sqlMap>
