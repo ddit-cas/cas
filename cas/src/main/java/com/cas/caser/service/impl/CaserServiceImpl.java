@@ -21,4 +21,11 @@ public class CaserServiceImpl implements CaserService{
 		return resultList;
 	}
 
+	@Override
+	public List<CaserVO> selectCaserSearchList(String index, String key) {
+		List<CaserVO> resultList;
+		resultList = caserDao.selectCaserSearchList(index, key);
+		return resultList;
+	}
+
 }

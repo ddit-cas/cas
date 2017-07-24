@@ -65,7 +65,7 @@ $(function(){
         border-radius: 25px;
 	}
 </style>
-	<form class="form-horizontal" action="/cas/joinMember" method="post">
+	<form class="form-horizontal" encType=multipart/form-data action="/cas/joinMember" method="post" >
 	<fieldset class="signup_cas_fs">
 		<legend class="signup_cas_ld">필수사항</legend>
 		<div class="container">
@@ -103,14 +103,9 @@ $(function(){
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="memName">이름</label>
-						<div class="col-lg-6">
-						  <div class="input-group">
+						<div class="col-sm-6">
 						    <input type="text" class="form-control" id="name"
 								placeholder="이름을 입력하세요." name="memName" aria-label="name">
-						    <span class="input-group-addon">
-						    <label><input type="checkbox" name="memNameYn" aria-label="name" checked>&nbsp;&nbsp;공개</label>
-						    </span>
-						  </div>
 						</div>
 					</div>
 					
@@ -122,8 +117,8 @@ $(function(){
 						<div class="col-sm-3">
 						<label class="control-label col-sm-5" for="memSex" style="margin-left:-58px;">/ 성별</label>
 							<div data-toggle="buttons">
-								<label class="btn btn-default btn-circle btn-lg active" style="background-image:url('/cas/resources/images/male.png'); background-position:center top;"><input type="radio" name="memSex" id="male" value="male" checked></label>
-								<label class="btn btn-default btn-circle btn-lg" style="background-image:url('/cas/resources/images/female.png'); background-position:center top;"><input type="radio" name="memSex" id="female" value="female"></label>
+								<label class="btn btn-default btn-circle btn-lg active" style="background-image:url('/cas/resources/images/male.png'); background-position:center top;"><input type="radio" name="memSex" id="male" value="남" checked></label>
+								<label class="btn btn-default btn-circle btn-lg" style="background-image:url('/cas/resources/images/female.png'); background-position:center top;"><input type="radio" name="memSex" id="female" value="여"></label>
 							</div>
 						</div>
 					</div>
@@ -131,27 +126,17 @@ $(function(){
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="memHp">전화번호</label>
-						<div class="col-lg-6">
-						  <div class="input-group">
+						<div class="col-sm-6">
 						    <input type="tel" class="form-control" id="tel"
 								placeholder="전화번호를 입력하세요." name="memHp" aria-label="tel">
-						    <span class="input-group-addon">
-						    <label><input type="checkbox" name="memHpYn" aria-label="tel" checked>&nbsp;&nbsp;공개</label>
-						    </span>
-						  </div>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="memEmail">이메일</label>
-						<div class="col-lg-6">
-						  <div class="input-group">
+						<div class="col-sm-6">
 						    <input type="email" class="form-control" id="email"
 								placeholder="이메일을 입력하세요." name="memEmail" aria-label="email">
-						    <span class="input-group-addon">
-						    <label><input type="checkbox" name="memEmailYn" aria-label="email" checked>&nbsp;&nbsp;공개</label>
-						    </span>
-						  </div>
 						</div>
 					</div>
 					
@@ -181,14 +166,14 @@ $(function(){
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="memAddr">주소</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="add1"
+							<input type="text" class="form-control" id="add1" name="addr1"
 								placeholder="주소는 자동으로 입력 됩니다." disabled="disabled">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="memAddr">상세주소</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="add2"
+							<input type="text" class="form-control" id="add2" name="addr2"
 								placeholder="상세주소는 자동으로 입력 됩니다." disabled="disabled">
 						</div>
 					</div>
@@ -354,8 +339,6 @@ $(function() {
 					<div class="filess" style="width:290px; height:400px;">
 						<img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
 							id="profile-image" class="img-circle img-responsive">
-						<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" name="memFrofileimage" class="hidden" type="file">
-						<div style="color:#999;">그림을 클릭하여 이미지를 변경합니다.</div>	
 					</div>
 				</div>
 				 
@@ -368,7 +351,7 @@ $(function() {
 					      <div class="btn btn-default image-preview-input">
 	                        <span class="glyphicon glyphicon-folder-open" />
 	                        <span class="image-preview-input-title">업로드</span>
-	                        <input type="file" name="memFrofileimage" accept="image/png, image/jpeg, image/gif"/>
+	                        <input type="file" name="memProfileimage" accept="image/png, image/jpeg, image/gif"/>
 	                     </div>
 					    </span>
 					  </div>
@@ -418,13 +401,6 @@ $(function(){
 						<input type="text" class="form-control" id="activity" placeholder="주 활동 지역을 입력하세요" name="memActive" readonly>
 						<div class="map"></div>
 				    </div>
-					
-					<p id="enter"></p>
-					
-					<label class="control-label col-sm-1" for="career">SNS</label>
-					<div class="col-sm-4">
-					    <input type="text" class="form-control" id="team-mem" placeholder="자신의 SNS 아이디를 입력하세요.">
-					</div>
 					
 					<p id="enter"></p>
 					

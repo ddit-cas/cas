@@ -14,7 +14,8 @@
 		<result property="memName" column="MEM_NAME" />                             
 		<result property="memEmail" column="MEM_EMAIL" />                      
 		<result property="memMailnumber" column="MEM_MAILNUMBER" />                        
-		<result property="memAddr" column="MEM_ADDR" />                                  
+		<result property="memAddr1" column="MEM_ADDR1" />                                  
+		<result property="memAddr2" column="MEM_ADDR2" />                                  
 		<result property="memNick" column="MEM_NICK" />                        
 		<result property="memFrofileimage" column="MEM_FROFILEIMAGE" />        
 		<result property="memBirthdate" column="MEM_BIRTHDATE" />              
@@ -25,20 +26,14 @@
 		<result property="rankCode" column="RANK_CODE" />                              
 		<result property="memCareer" column="MEM_CAREER" />                         
 		<result property="memActive" column="MEM_ACTIVE" />                         
-		<result property="memName_yn" column="MEM_NAME_YN" />                        
-		<result property="memEmail_yn" column="MEM_EMAIL_YN" />                      
-		<result property="memHp_yn" column="MEM_HP_YN" />                           
 		<result property="enabled" column="ENABLED" />                              
 		<result property="authority" column="AUTHORITY" />
-		<result property="memNameYn"     column="mem_Name_Yn"    />
-		<result property="memEmailYn"    column="mem_Email_Yn"   />
-		<result property="memHpYn"       column="mem_Hp_Yn"      />
 		<result property="classifyCode"  column="classify_Code" />
 	</resultMap>                                                                  
 	
 	<insert id="insertMember" parameterClass="member">
-		INSERT INTO MEMBER(mem_Id,mem_Pwd,mem_Name,mem_Name_Yn,mem_Email,mem_Email_Yn,mem_Mailnumber,mem_Addr, mem_Nick,mem_Frofileimage,mem_Birthdate,mem_Point,mem_Hp,mem_Hp_Yn,mem_Career,mem_Sginup_date,mem_Active,sanc_Code,rank_Code)
-				   VALUES (#memId#,#memPwd#,#memName#,#memNameYn#,#memEmail#,#memEmailYn#,#memMailnumber#,#memAddr#,#memNick#,#memFrofileimage#,#memBirthdate#,0,#memHp#,#memHpYn#,#memCareer#,SYSDATE,#memActive#,'S001','R002') 
+		INSERT INTO MEMBER(mem_Id,mem_Pwd,mem_Name,mem_Email,mem_Mailnumber,mem_Addr1,mem_addr2,mem_Nick,mem_Frofileimage,mem_Birthdate,mem_Point,mem_Hp,mem_Career,mem_Sginup_date,mem_Active,sanc_Code,rank_Code,classify_Code)
+				   VALUES (#memId#,#memPwd#,#memName#,#memEmail#,#memMailnumber#,#memAddr1#,#memAddr2#,#memNick#,#memFrofileimage#,#memBirthdate#,0,#memHp#,#memCareer#,SYSDATE,#memActive#,'S001','R002',(select classify_code from classify where age=#memAge# and sex=#memSex#)) 
 	</insert>
 
 	<select id="selectMemberList" resultMap="selectMember"
@@ -70,7 +65,7 @@
 	
 	<insert id="insertClickInfo" parameterClass="readinfo">
 		insert into readinfo (CONTENT_NUM, READ_TIME, CLASSIFY)
-					values(#contentNum#,sysdata,#classify#)
+					values(#contentNum#,sysdate,#classify#)
 	</insert>
 	
 	<select id="selectMemberNick" parameterClass="str" resultClass="str">

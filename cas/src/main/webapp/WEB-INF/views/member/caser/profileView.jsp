@@ -53,27 +53,27 @@
 					type="hidden" name="mbSearchKey" value="3">
 
 
-
+<form method="get" action="caserSearch">
 				<div class="search_list">
 					<div class="sel_r">
 						<fieldset>
 							<legend>검색</legend>
 							<select name="select_chk_1" class="selDomain" title="검색내용 선택">
-								<option value="chk_All" selected="">전체</option>
 								<option value="chk_name">이름</option>
 								<option value="chk_nick">닉네임</option>
 							</select> <span class="selSch"><input type="text"
-								name="select_chk_2" onfocus="only_number(this)" value=""
-								onkeydown="javascript:chksel('shk');" class="ipt_search"
-								title="검색입력란"></span>
-							<button type="submit" onclick="javascript:chksel('exe');"
+								name="select_chk_2" title="검색입력란"></span>
+							<button type="submit" onclick="chksel();"
 								title="검색" class="btn_search">검색</button>
 						</fieldset>
 					</div>
 				</div>
 
-
-	<c:forEach var="caser" items="${caserList}">
+</form>		
+<c:choose>
+	<c:when test="${caserList.size() > 0 }">
+	<c:forEach var="i" begin="${firstRow}" end="${lastRow}"> 
+	
 				<div class="container2" style="margin-top: 20px; width: 763px;">
 						<div class="col-xs-12 col-sm-6 col-md-6">
 							<div class="well well-sm">
@@ -83,16 +83,15 @@
 											class="img-rounded img-responsive" />
 									</div>
 									<div class="col-sm-6 col-md-8">
-										<h4>${caser.memId }</h4>
-										<p>${caser.memName }</p>
-										<small><cite title="San Francisco, USA">${caser.memActive } <i class="glyphicon glyphicon-map-marker">
+										<a href="caserDetail"><h4>${caserList[i].memId }</h4></a>
+										<p>${caserList[i].memName }</p>
+										<p>${caserList[i].memNick }</p>
+										<small><cite title="San Francisco, USA">${caserList[i].memActive } <i class="glyphicon glyphicon-map-marker">
 											</i>
 										</cite></small>
 										<p>
-											<i class="glyphicon glyphicon-envelope"></i>&nbsp;${caser.memEmail }
-											<br /> <i class="glyphicon glyphicon-globe"></i><a
-												href="http://www.jquery2dotnet.com">seokartn.instagram</a>
-											<br /> <i class="glyphicon glyphicon-gift"></i>${caser.memBirthdate }
+											<i class="glyphicon glyphicon-envelope"></i>&nbsp;${caserList[i].memEmail }
+											<br /> <i class="glyphicon glyphicon-gift"></i>${caserList[i].memBirthdate }
 										</p>
 										<!-- Split button -->
 										<div class="btn-group">
@@ -112,12 +111,63 @@
 						</div>
 						</div>
 			</c:forEach>
+			</c:when>	
 			
+			<c:otherwise>
+				<tr>
+					<td colspan="5" style="text-align:center;">
+						해당 내용이 없습니다.
+					</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+			
+		
+
 			
 				</div>	
-			</div>
+			</div>	
 		</div>
-<script>		
+		
+		<!-- 페이지수  -->
+<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+	<div class="row">
+		<nav aria-label="...">
+			<ul class="pager" role="tablist">
+				<li class="previous">
+					<a href="/cas/caserList?tab=${minNum-1}"><span aria-hidden="true">←</span>
+						이전
+					</a>
+				</li>
+				<c:forEach var="i" begin="${minNum}" end="${maxNum}">
+				<c:choose>
+				<c:when test="${index==i}">
+				<li>
+					<a style="background: #aaa;" aria-controls="tab1" href="/cas/profileView?tab=${i}">
+						${i }
+					</a>
+				</li>
+				</c:when>
+				<c:otherwise>
+				<li>
+					<a aria-controls="tab1" href="/cas/profileView?tab=${i}">
+						${i }
+					</a>
+				</li>
+				</c:otherwise>
+				</c:choose>
+				</c:forEach>
+				<li class="next">
+					<a href="/cas/profileView?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+<script>	
+
+	
     // send to SNS
     function toSNS(sns, strTitle, strURL) {
         var snsArray = new Array();

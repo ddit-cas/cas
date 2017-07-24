@@ -1,8 +1,8 @@
-package com.cas.fund.dao.impl;
+package com.cas.fund.service.impl;
 
-import com.cas.fund.dao.AdminFundAnalysisDao;
+import com.cas.fund.service.AdminFundAnalysisService;
 
-public class AdminFundAnalysisDaoImpl implements AdminFundAnalysisDao{
+public class AdminFundAnalysisServiceImpl implements AdminFundAnalysisService{
 
 	@Override
 	public int selectLastMonthAllFundMount() {
