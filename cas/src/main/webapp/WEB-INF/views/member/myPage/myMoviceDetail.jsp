@@ -194,7 +194,6 @@ img {
 	padding: 1.3em;
 }
 
-/*# sourceMappingURL=style.css.map */
 </style>
 	<div id="body">
 		<div class="company-cont" style="height: auto; width: 960px;">
