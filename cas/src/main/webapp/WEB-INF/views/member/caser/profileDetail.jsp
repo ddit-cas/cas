@@ -9,7 +9,7 @@ $(function(){
     $('#idCheck').click(function(){
     	var idValue = $('#mem_id').val();
     	$.ajax({
-    		url : '/cas/checkId',
+    		url : '/cas/signup/idCheck.jsp',
     		type : 'post',
     		data : "id="+idValue,  // {"id:idValue"} 이래도 같음.
     		success : function(res){
@@ -31,7 +31,7 @@ $(function(){
 </script>
 <style>
 	.form-horizontal{
-		margin-top: 58px;
+		margin-top: 116px;
 	}
 	.msgCheckId {
 		font-size : 15px;
@@ -64,96 +64,13 @@ $(function(){
         line-height: 1.33;
         border-radius: 25px;
 	}
+	
+	p {
+    margin: 7px 0px 12px;
+}
 </style>
 	<form class="form-horizontal" action="/cas/joinMember" method="post">
-	<fieldset class="signup_cas_fs">
-		<legend class="signup_cas_ld">필수사항</legend>
-		<div class="container">
-			<div class="essen">
-				<div class="imfom">
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="memId">아이디</label>
-						<div class="col-sm-6">
-						  <div class="input-group">
-						    <input type="text" class="form-control" id="mem_id" name="memId" placeholder="아이디를 입력하세요.">
-						    <span class="input-group-btn">
-						      <button class="btn btn-default" id="idCheck" type="button">중복확인</button>
-							    <span class="msgCheckId"></span>
-						    </span>
-						  </div>
-						</div>
-						
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="memPwd">비밀번호</label>
-						<div class="col-sm-6">
-							<input type="password" class="form-control" id="pwd1"
-								placeholder="비밀번호를 입력하세요." name="memPwd">
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="memPwdpwd">비밀번호확인</label>
-						<div class="col-sm-6">
-							<input type="password" class="form-control" id="pwd2"
-								placeholder="위와 같은 비밀번호를 입력하세요." name="memPwd2">
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="memName">이름</label>
-						<div class="col-lg-6">
-						  <div class="input-group">
-						    <input type="text" class="form-control" id="name"
-								placeholder="이름을 입력하세요." name="memName" aria-label="name">
-						    <span class="input-group-addon">
-						    <label><input type="checkbox" name="memNameYn" aria-label="name" checked>&nbsp;&nbsp;공개</label>
-						    </span>
-						  </div>
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="memBirthdate">생년월일</label>
-						<div class="col-sm-4">
-							<input type="date" class="form-control memBirthdate" id="bir" placeholder="year" name="memBirthdate">
-						</div>
-						<div class="col-sm-3">
-						<label class="control-label col-sm-5" for="memSex" style="margin-left:-58px;">/ 성별</label>
-							<div data-toggle="buttons">
-								<label class="btn btn-default btn-circle btn-lg active" style="background-image:url('/cas/resources/images/male.png'); background-position:center top;"><input type="radio" name="memSex" id="male" value="male" checked></label>
-								<label class="btn btn-default btn-circle btn-lg" style="background-image:url('/cas/resources/images/female.png'); background-position:center top;"><input type="radio" name="memSex" id="female" value="female"></label>
-							</div>
-						</div>
-					</div>
-					
-					
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="memHp">전화번호</label>
-						<div class="col-lg-6">
-						  <div class="input-group">
-						    <input type="tel" class="form-control" id="tel"
-								placeholder="전화번호를 입력하세요." name="memHp" aria-label="tel">
-						    <span class="input-group-addon">
-						    <label><input type="checkbox" name="memHpYn" aria-label="tel" checked>&nbsp;&nbsp;공개</label>
-						    </span>
-						  </div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="memEmail">이메일</label>
-						<div class="col-lg-6">
-						  <div class="input-group">
-						    <input type="email" class="form-control" id="email"
-								placeholder="이메일을 입력하세요." name="memEmail" aria-label="email">
-						    <span class="input-group-addon">
-						    <label><input type="checkbox" name="memEmailYn" aria-label="email" checked>&nbsp;&nbsp;공개</label>
-						    </span>
-						  </div>
-						</div>
-					</div>
+	
 					
 <script>
 //우편번호 검색
@@ -165,38 +82,6 @@ $(function(){
 });
 </script>
 
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="memMailnumber">우편번호</label>
-						<div class="col-sm-6">
-						  <div class="input-group">
-						    <input type="text" class="form-control" id="zip" 
-						    	placeholder="우편번호 버튼을 눌러주세요" name="memMailnumber" disabled="disabled">
-						    <span class="input-group-btn">
-						      <button id="zip-btn"class="btn btn-default" type="button">우편번호</button>
-						    </span>
-						  </div>
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="memAddr">주소</label>
-						<div class="col-sm-6">
-							<input type="text" class="form-control" id="add1"
-								placeholder="주소는 자동으로 입력 됩니다." disabled="disabled">
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="memAddr">상세주소</label>
-						<div class="col-sm-6">
-							<input type="text" class="form-control" id="add2"
-								placeholder="상세주소는 자동으로 입력 됩니다." disabled="disabled">
-						</div>
-					</div>
-					<input type="hidden" id="fullAddr" name="memAddr"/>
-				</div>
-			</div>
-			</div>
-		</fieldset>
 <style>
 	input[type="text"] {
 		color:black;
@@ -309,15 +194,12 @@ $(function() {
 	
 	//아이디 중복 확인
 	$('#nickCheck').click(function(){
-		
     	var idValue = $('#nick').val();
-    	
     	$.ajax({
-    		url : '/cas/checkId',
-    		type : 'post',
+    		url : '/cas/signup/idCheck.jsp',
+    		type : 'get',
     		data : "id="+idValue,
     		success : function(res){
-    			console.log(res);
     			var code = "";
     			var attr = "";
     			if(res.status == "OK"){
@@ -327,7 +209,6 @@ $(function() {
     				code += res.id+"는 사용 불가능합니다.";
     				attr += "no";
     			}
-    			alert(attr);
     			$('.msgCheckNick').html(code).attr("id",attr);
     		},
     		dataType : 'json' 
@@ -344,43 +225,27 @@ $(function() {
 
 	<!-- 선택사항 -->
 	<fieldset class="signup_cas_fs">
-		<legend id="choice" class="signup_cas_ld">선택사항<span> : 클릭!</span></legend>
-		<div class="contSelect hide">
+		<legend id="choice" class="signup_cas_ld">프로필 뷰 상세</legend>
+		<div class="contSelect">
 			<div class="box-body">
 				<div class="col-sm-3">
 					<div class="filess" style="width:290px; height:400px;">
 						<img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
 							id="profile-image" class="img-circle img-responsive">
 						<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" name="memFrofileimage" class="hidden" type="file">
-						<div style="color:#999;">그림을 클릭하여 이미지를 변경합니다.</div>	
 					</div>
 				</div>
 				 
 				<div class="form-group">
-					<label class="control-label col-sm-1" for="upload">이미지</label>
-					<div class="col-sm-4">
-					  <div class="input-group">
-					    <input type="text" class="form-control image-preview-filename" placeholder="사진 파일을 업로드 하세요." disabled="disabled">
-					    <span class="input-group-btn">
-					      <div class="btn btn-default image-preview-input">
-	                        <span class="glyphicon glyphicon-folder-open" />
-	                        <span class="image-preview-input-title">업로드</span>
-	                        <input type="file" name="memFrofileimage" accept="image/png, image/jpeg, image/gif"/>
-	                     </div>
-					    </span>
-					  </div>
-					</div>
+					
 					 
 					<p id="enter"></p>
 					
 					<label class="control-label col-sm-1" for="memNick">닉네임</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					    <input type="text" class="form-control" id="nick" name="memNick" placeholder="닉네임을 입력하세요.">
-					    <span class="input-group-btn">
-					      <button class="btn btn-default" id="nickCheck" type="button">중복확인</button>
-				      	  <span class="msgCheckNick"></span>
-					    </span>
+					   <p>닉네임</p> 
+					    
 					  </div>
 					</div>
 					
@@ -389,56 +254,333 @@ $(function() {
 					<label class="control-label col-sm-1" for="memCertif">경력</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					    <input type="text" class="form-control" name='memCareer' placeholder="경력을 입력하세요.">
-					    <span class="input-group-btn">
-					      <button class="btn btn-default" id="plus-textField" type="button">+</button>
-					    </span>
+					  	<p>경력</p>
 					  </div>
 					</div>
 					
 					<p id="enter"></p>
 					<div id="add-textField"></div>
-					
-					
-<script>
-//활동지역 검색
-$(function(){
-	$('#activity').on('click',function(){
-		var url = "/cas/signup/map.jsp";
-		window.open(url,"활동지역검색","width=600 height=600 top=300");
-	});
-});
-</script>			
+							
 					
 					<label class="control-label col-sm-1" for="memActive">활동지역</label>		
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="activity" placeholder="주 활동 지역을 입력하세요" name="memActive" readonly>
+						<p>활동지역</p>
 						<div class="map"></div>
 				    </div>
 					
 					<p id="enter"></p>
 					
-					<label class="control-label col-sm-1" for="career">SNS</label>
-					<div class="col-sm-4">
-					    <input type="text" class="form-control" id="team-mem" placeholder="자신의 SNS 아이디를 입력하세요.">
-					</div>
+					
+				
 					
 					<p id="enter"></p>
+					<p id="enter"></p>
+					<p id="enter"></p>
+					<h3>팀원</h3>
+					<hr>
+					<div class='box-body crew'>
+						<div class='col-sm-2'>
+							<div class='files-crw'>
+								<img alt='User Pic'
+									src='https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'
+									id='profile-image1' class='img-circle img-responsive'> <input
+									id='profile-image-input'
+									accept='image/png, image/jpeg, image/gif' class='hidden'
+									name='crw-img' type='file'>
+							</div>
+						</div>
+						<p id='enter' />
+						<label class='control-label col-sm-1' for='crw-name' style="margin: 55px 0px;">이름</label>
+						
+							<p> 이름 </p>
 					
-			  	    <label class="control-label col-sm-1" for="career">팀원</label>
-					<div class="col-sm-4">
-					  <div class="input-group">
-					    <input type="text" class="form-control" id="team-mem" placeholder="팀원을 입력하세요.">
-					    <span class="input-group-btn">
-					      <button class="btn btn-default" id="plus-team-mem" type="button">+</button>
-					    </span>
-					  </div>
+						<p id='enter' />
+						<label class='control-label col-sm-1' for='crw-role' style="margin: 0px -81px;">역할</label>
+						<div id='btns'>
+							
+								<p style="margin: -55px 64px;"> 역할 </p>	
+								
+							
+						</div>
+						<p id='enter' />
+
 					</div>
-			  	    
-					
+				</div>
+				
+				
+<!-------------------------------낯선낯선 여자에!--------------------------------------------------- -->
+			<div class="container">
+		
+	<style>
+#body {
+	margin-top: 58px;
+}
+
+body {
+	font-family: proxima-nova, helvetica, arial, sans-serif;
+	color: #333;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.promo-card {
+	overflow: hidden;
+	width: 260px;
+	height: 350px;
+	margin-bottom: 50px;
+	border-radius: 10px;
+	background-color: #fff;
+	box-shadow: 0 4px 21px -12px rgba(0, 0, 0, .66);
+	-webkit-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	transform: rotate(0deg);
+	-webkit-transition: all 200ms ease;
+	transition: all 200ms ease;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.promo-card:hover {
+	box-shadow: 0 34px 32px -33px rgba(0, 0, 0, .18);
+	-webkit-transform: translate(0px, -3px);
+	-ms-transform: translate(0px, -3px);
+	transform: translate(0px, -3px);
+}
+
+.blog-bar {
+	width: 4px;
+	height: 45px;
+	margin-top: 16px;
+	float: left;
+}
+
+.blog-bar.color-pink {
+	background-color: #f75e90;
+}
+
+.blog-bar.color-purple {
+	background-color: #a15dc0;
+}
+
+.blog-bar.color-blue {
+	background-color: #23b9b6;
+}
+
+.blog-post-text {
+	margin-top: 19px;
+	margin-right: 20px;
+	margin-left: 20px;
+	font-size: 17px;
+	text-transform: uppercase;
+}
+
+.blog-description {
+	font-size: 15px;
+	text-transform: none;
+}
+
+.blog-description.pink-text {
+	color: #f75e90;
+}
+
+.blog-description.purple-text {
+	color: #a15dc0;
+}
+
+.blog-description.blue-text {
+	color: #23b9b6;
+}
+
+/* Titles & containers */
+.section-title {
+	color: #f75e90;
+	font-size: 26px;
+	font-weight: 400;
+	text-align: center;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.title-underline {
+	display: block;
+	width: 100px;
+	height: 2px;
+	margin-top: -10px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #23b9b6;
+}
+
+.promotion-section {
+	padding-bottom: 80px;
+	background-color: #f7f7f7;
+}
+
+.promo-flex {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-top: 48px;
+	-webkit-justify-content: space-around;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-align: end;
+	-webkit-align-items: flex-end;
+	-ms-flex-align: end;
+	align-items: flex-end;
+}
+
+@media ( max-width : 991px) {
+	.promo-card {
+		-webkit-box-flex: 0;
+		-webkit-flex: 0 auto;
+		-ms-flex: 0 auto;
+		flex: 0 auto;
+	}
+}
+
+/* Webflow Basics */
+.w-container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 940px;
+}
+
+.w-container:before, .w-container:after {
+	content: " ";
+	display: table;
+}
+
+.w-container:after {
+	clear: both;
+}
+
+.w-container .w-row {
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+ .product_view .modal-dialog{max-width: 800px; width: 100%;}
+        .pre-cost{text-decoration: line-through; color: #a5a5a5;}
+        .space-ten{padding: 10px 0;}
+</style>
+	<div id="body">
+		<div class="container">
+			<h2>MyUCC</h2>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="thumbnail">
+						<img src="/cas/resources/images/psy.jpg" alt="싸이" style="width: 100%" data-toggle="modal" data-target="#product_view">
+							<div class="blog-bar color-pink"></div>
+							<div class="blog-post-text" data-toggle="modal" data-target="#product_view">
+								<div>춤영상</div>
+								<div class="blog-description pink-text">2017-07-14</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="thumbnail">
+					 <img src="/cas/resources/images/psy.jpg" data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
+							<div class="blog-bar color-blue"></div>
+						<div class="blog-post-text">
+							<div data-toggle="modal" data-target="#product_view">
+								<div>노래노래래랠</div>
+								<div class="blog-description blue-text">2017-07-14</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="thumbnail">
+					 <img src="/cas/resources/images/psy.jpg" data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
+							<div class="blog-bar color-purple"></div>
+						<div class="blog-post-text">
+							<div data-toggle="modal" data-target="#product_view">
+								<div>싱얼</div>
+								<div class="blog-description purple-text">2017-07-13</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="thumbnail">
+					 <img src="/cas/resources/images/psy.jpg" data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
+							<div class="blog-bar color-blue"></div>
+						<div class="blog-post-text">
+							<div data-toggle="modal" data-target="#product_view">
+								<div>노래</div>
+								<div class="blog-description blue-text">2017-07-13</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="thumbnail">
+					 <img src="/cas/resources/images/psy.jpg" data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
+							<div class="blog-bar color-purple"></div>
+						<div class="blog-post-text">
+							<div data-toggle="modal" data-target="#product_view">
+								<div>싱얼~~~</div>
+								<div class="blog-description purple-text">2017-07-12</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="thumbnail">
+					 <img src="/cas/resources/images/psy.jpg" data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
+							<div class="blog-bar color-purple"></div>
+						<div class="blog-post-text">
+							<div data-toggle="modal" data-target="#product_view">
+								<div>싱얼싱얼</div>
+								<div class="blog-description purple-text">2017-07-11</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		 
+		
+		
+		<div class="modal fade product_view" id="product_view" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="https://www.youtube.com/embed/OwJPPaEyqhI?rel=0&amp;showinfo=0" target="_blank" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                <h3 class="modal-title">New Face-psy(moive)</h3>
+                <h3 class="modal-title">싸이</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div id="prmovie" class="video">
+        <iframe id="frame1" class="embed-responsive-item" style="width:500px; height:400px; margin:0 125px auto;" src="https://www.youtube.com/embed/OwJPPaEyqhI?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe></div>
+                    <div class="col-md-6 product_content" style="margin:0 125px auto;">
+						<h3 class="modal-title">내용</h3>
+                        <textarea rows="5" cols="65">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</textarea>
+                        <div class="btn-ground" style="margin:auto;">
+				<a href="myMoviceDetail.jsp"><input type="submit" class="btn btn-primary" value="수정"></a>
+				<input type="reset" class="btn btn-primary" value="취소">
+				<input type="submit" class="btn btn-danger" value="삭제">
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+	<!-- 푸터 시작 -->
+	<div class="clear"></div>
+
+	<div id="footerWrap" class="container-fluid">
+		<footer class="container"> </footer>
+	</div>
+
+
+</div></div></div></div></div>
+
+				
+		 </div>
 
 <script>
 $(function() {
@@ -510,14 +652,11 @@ $(function() {
 	}
 	#btnses>input {
 		float : right;
-		margin-left : 20px;
+		margin-left : 20px;	
 		margin-bottom: 50px;
 	}
 </style>				
-		<div id="btnses">
-			<input type="submit" class="btn btn-primary" value="가입" />
-			<input type="reset" class="btn btn-danger" value="취소" />
-		</div> 
+		
 				
 	</form>
 </body>

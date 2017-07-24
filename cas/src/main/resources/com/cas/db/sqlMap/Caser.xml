@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Caser">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="caser" type="com.cas.db.dto.CaserVO"/>
+	<resultMap class="com.cas.db.dto.CaserVO" id="selectCaser">
+		<result property="memName" column="mem_name"/>
+		<result property="memId" column="mem_id"/>
+		<result property="memActive" column="mem_active"/>
+		<result property="memEmail" column="mem_email"/>
+		<result property="memBirthdate" column="mem_birthdate"/>
+		<result property="memFrofileimage" column="mem_frofileimage"/>
+	</resultMap>
+
+
+	
+	
+<!-- 	<select id="selectCaserList" resultMap="selectCaser" parameterClass="caser"> -->
+<!-- 		SELECT  -->
+<!-- 		*  -->
+<!-- 		FROM ARTICLE WHERE 1=1 -->
+<!-- 		<isNotEmpty property="boardCode"> -->
+<!-- 			 and BOARD_CODE=#boardCode# -->
+<!-- 		</isNotEmpty> -->
+<!-- 	</select> -->
+	
+	<select id="selectCaserList" resultMap="selectCaser">
+		select * from caser
+	</select>
+	
+	
+</sqlMap>

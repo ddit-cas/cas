@@ -34,6 +34,19 @@
 		p:carouselDao-ref="carouselDao"
 	></bean>
 	
+	
+	<bean
+		name="caserDao"
+		class="com.cas.caser.dao.impl.CaserDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	/>
+	
+	<bean
+		name="caserService"
+		class="com.cas.caser.service.impl.CaserServiceImpl"
+		p:caserDao-ref="caserDao"
+	/>
+
 <!-- 	리포트 다오빈등록 -->
 	<bean
 		name="reportDao"
@@ -61,4 +74,5 @@
 		class="com.cas.member.service.impl.MemberServiceImpl"
 		p:memberDao-ref="memberDao"
 	></bean>
+
 </beans>
