@@ -37,8 +37,9 @@ public class NoticeController {
 	/*공지사항 세부내용을 보는 메서드*/
 	@RequestMapping("/noticeDetail")
 	public String noticeDetail(HttpServletRequest request,Model model){
-		String url = "/member/story/notice/noticeDetail";
-		return url;
+		ArticleVO articleVO = articleService.selectArticle(request.getParameter("contentNum"), "B001");
+		model.addAttribute("articleVO",articleVO);
+		return "member/story/notice/noticeDetali";
 	}
 	/*게시물을 신고하는 메서드*/
 	@RequestMapping("/declaration")

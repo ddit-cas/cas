@@ -6,11 +6,11 @@ import com.cas.db.dto.ArticleVO;
 
 public interface NoticeDao {
 
-	/*공지사항 리스트를 가져오는 메서ㅗ다*/
-	public List<ArticleVO> selectNoticeList();
+	/*공지사항 리스트를 가져오는 메서다*/
+	public List<ArticleVO> selectNoticeList(String boardCode);
 	
 	/*공지사항 하나를 가져오는 메서드*/
-	public ArticleVO selectNotice();
+	public ArticleVO selectNotice(String articleId,String boardCode);
 	
 	/*공지사항을 등록하는 메셔드*/
 	public boolean insertNotice(ArticleVO article);

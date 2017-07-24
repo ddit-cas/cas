@@ -8,15 +8,22 @@ import com.cas.notice.service.NoticeService;
 
 public class NoticeServiceImpl implements NoticeService{
 	
+	private NoticeDao noticeDao;
+	
+	public void setNoticeDao(NoticeDao noticeDao) {
+		this.noticeDao = noticeDao;
+	}
+	
 	@Override
-	public List<ArticleVO> selectNoticeList() {
-		return null;
+	public List<ArticleVO> selectNoticeList(String boardCode) {
+		List<ArticleVO> noticeList=null;
+		noticeList= noticeDao.selectNoticeList(boardCode);
+		return noticeList;
 	}
 
 	@Override
-	public ArticleVO selectNotice() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArticleVO selectNotice(String articleId,String boardCode) {
+		return /*NoticeDao.selectAticle(articleId, boardCode)*/null;
 	}
 
 	@Override

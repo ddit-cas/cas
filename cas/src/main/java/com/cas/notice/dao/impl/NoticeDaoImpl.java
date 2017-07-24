@@ -16,7 +16,7 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 	
 	@Override
-	public List<ArticleVO> selectNoticeList() {
+	public List<ArticleVO> selectNoticeList(String boardCode) {
 		List<ArticleVO> resultList = null;
 		try {
 			resultList = client.queryForList("B001");
@@ -27,9 +27,18 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 
 	@Override
-	public ArticleVO selectNotice() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArticleVO selectNotice(String articleId,String boardCode) {
+		ArticleVO noticevo=new ArticleVO();
+		noticevo.setBoardCode(boardCode);
+		noticevo.setContentNum(articleId);
+		
+		ArticleVO result = null;
+		try {
+			result=(ArticleVO) client.queryForObject("selectNotice",noticevo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
