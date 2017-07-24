@@ -3,12 +3,9 @@ package com.cas.db.dto;
 public class FundVO {
 
 	private String fundingNum;
-	private String fundingContent;
 	private int fundingTargetAmount;
 	private int fundingPresentAmount;
 	private String fundingEndDate;
-	private String fundingRegisMem;
-	private String fundingRegisDate;
 	private String fundingStartDate;
 	private String stateCode;
 	
@@ -17,12 +14,6 @@ public class FundVO {
 	}
 	public void setFundingNum(String fundingNum) {
 		this.fundingNum = fundingNum;
-	}
-	public String getFundingContent() {
-		return fundingContent;
-	}
-	public void setFundingContent(String fundingContent) {
-		this.fundingContent = fundingContent;
 	}
 	public int getFundingTargetAmount() {
 		return fundingTargetAmount;
@@ -41,18 +32,6 @@ public class FundVO {
 	}
 	public void setFundingEndDate(String fundingEndDate) {
 		this.fundingEndDate = fundingEndDate;
-	}
-	public String getFundingRegisMem() {
-		return fundingRegisMem;
-	}
-	public void setFundingRegisMem(String fundingRegisMem) {
-		this.fundingRegisMem = fundingRegisMem;
-	}
-	public String getFundingRegisDate() {
-		return fundingRegisDate;
-	}
-	public void setFundingRegisDate(String fundingRegisDate) {
-		this.fundingRegisDate = fundingRegisDate;
 	}
 	public String getFundingStartDate() {
 		return fundingStartDate;

@@ -1,18 +1,18 @@
-package com.cas.fund.service.impl;
+package com.cas.fund.dao.impl;
 
 import java.util.List;
 
 import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.fund.dao.FundDao;
-import com.cas.fund.service.FundService;
+import com.ibatis.sqlmap.client.SqlMapClient;
 
-public class FundServiceImpl implements FundService{
+public class FundDaoImpl implements FundDao{
 
-	private FundDao fundDao;
-	
-	public void setFundDao(FundDao fundDao) {
-		this.fundDao = fundDao;
+	private SqlMapClient SqlMapClient;
+
+	public void setSqlMapClient(SqlMapClient sqlMapClient) {
+		SqlMapClient = sqlMapClient;
 	}
 
 	@Override
@@ -44,5 +44,4 @@ public class FundServiceImpl implements FundService{
 		// TODO Auto-generated method stub
 		
 	}
-
 }
