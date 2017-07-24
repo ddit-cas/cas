@@ -12,17 +12,6 @@
     color: #555;
 }
 
-.inner_title .tit_h2 {
-    font-weight: 600;
-    display: table-cell;
-    padding: 93px 0 60px 0;
-    vertical-align: middle;
-    font-size: 28px;
-    /* font-weight: bold; */
-    color: #555;
-    text-align: center;
-    background-color: #6291c3;
-}
 
 .innerOFA {
     width: 1106px;

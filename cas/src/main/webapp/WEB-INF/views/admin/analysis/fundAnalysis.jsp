@@ -1,39 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-    
+<title>크라우드 펀드 관리</title>    
 <body>
+
     <!-- Morris Charts CSS -->
     <link href="/cas/resources/css/morris.css" rel="stylesheet">
 
 	<!-- glyphicon CDN -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-	
-	<meta name="description" content="Counter Up - jQuery Plugin Demo">
-    <meta name="author" content="Benjamin Intal">
-    <link rel="author" href="https://plus.google.com/113101541449927918834"/>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
-	
-	
-  <style>
-    * {
-        -webkit-transition: all 600ms ease;
-        -moz-transition: all 600ms ease;
-        -o-transition: all 600ms ease;
-        transition: all 600ms ease;
-    }
-  </style>
 <script>
-$(function( $ ) {
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1000
-    });
+$(function(){
+	$('li.dropdown').on('click',function(){
+		$('li.dropdown').toggleClass('open');
+	});
 });
-</script>
-
+</script>	
     <div id="page-wrapper">
 
         <div class="container-fluid">
@@ -358,7 +340,6 @@ $(function() {
 	var fc = $('#cancelFund').text();
 	
 	var ft = Number(fs)+Number(ff)+Number(fc);
-	alert(ft);
     $('td#totalFund').text(ft);
 	// Donut Chart
     Morris.Donut({

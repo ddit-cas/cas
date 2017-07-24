@@ -19,17 +19,20 @@
 		<result property="contentImportance" column="content_importance"/>
 		<result property="consertNum" column="consert_num"/>
 		<result property="contentImg" column="content_img"/>
-		<result property="pundingNum" column="content_img"/>
+		<result property="boardName" column="board_name"/>
+		<result property="fundingNum" column="funding_num"/>
 	</resultMap>
 	
-	<insert id="insertArticle" parameterClass="article">
+	<insert id="insertArticle" parameterClass="article">						
 		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#
 			,#contentContent#,SYSDATE,#contentParentsContent#,'test','n','y'
-			,#consertNum#,#contentImg#,#pundingNum#)																		
+			,#consertNum#,#contentImg#,#fundingNum#)																		
 	</insert>
 	
 	<select id="selectArticleList" resultMap="selectArticle" parameterClass="article">
-		SELECT * FROM CONTENT WHERE 1=1
+		SELECT 
+		* 
+		FROM ARTICLE WHERE 1=1
 		<isNotEmpty property="boardCode">
 			 and BOARD_CODE=#boardCode#
 		</isNotEmpty>
@@ -38,4 +41,14 @@
 	<select id="selectArticle" resultMap="selectArticle" parameterClass="article">
 		select * from content where board_code=#boardCode# and content_num=#contentNum#
 	</select>
+	
+	<update id="updateArticle" parameterClass="article">
+		update content set
+		content_content=#contentContent#,
+		content_title=#contentTitle#
+		<isNotEmpty property="contentState">
+			,content_state=#contentState#
+		</isNotEmpty>
+		where content_num=#contentNum#
+	</update>
 </sqlMap>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cas.article.service.ArticleService;
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.Paging;
 
 @Controller
 public class FreeboardController {
@@ -25,32 +26,22 @@ public class FreeboardController {
 	/*자유게시판 리스트를 보여주는 메서드*/
 	@RequestMapping("/freeboardList")
 	public String freeboardList(Model model, HttpServletRequest request){
-		List<ArticleVO> freeboardList = articleService.selectArticleList("B005");
-		int maxNum = freeboardList.size()/10+1;
-		if(freeboardList.size()/10 > 0){
-			maxNum++;
-		}
-		int index = 0;
-		int minNum = 1;
-
-		if(request.getParameter("tab")!=null){
-			index =  Integer.parseInt((request.getParameter("tab")));
-			if((index*10)<=maxNum){
-				maxNum = index*10;
-			}
-			System.out.println("maxNum="+maxNum);
-			minNum = maxNum-9;
-			if(minNum<1){
-				minNum=1;
-			}
-			index--;
-			System.out.println("index="+index);
-		}
 		
-		model.addAttribute("index", index);
-		model.addAttribute("minNum", minNum);
-		model.addAttribute("maxNum", maxNum);
-		model.addAttribute("articleList", freeboardList);
+		//자유게시판의 데이터를 전부 가져온다 (자유게시판의 board_code 는 B005) 
+		List<ArticleVO> freeboardList = articleService.selectArticleList("B005");
+		//현재페이지
+		String page = request.getParameter("tab");
+		//받은 데이터리스트의 데이터갯수
+		int dataRow = freeboardList.size();
+		
+		Paging paging = new Paging(dataRow, page);
+		System.out.println(paging.toString());
+		model.addAttribute("index", paging.getIndex());//현재페이지
+		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
+		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
+		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
+		model.addAttribute("articleList", freeboardList);//데이터베이스에서 가져온 리스트를 보내준다
 		return "member/community/freeBoard/freeBoard";
 	}
 	
@@ -65,6 +56,6 @@ public class FreeboardController {
 	public String freeboardDetail(HttpServletRequest request,Model model){
 		ArticleVO articleVO = articleService.selectArticle(request.getParameter("articleId"), "B005");
 		model.addAttribute("articleVO",articleVO);
-		return null;
+		return "member/community/freeBoard/freeDetail";
 	}
 }

@@ -1,13 +1,28 @@
 package com.cas.common.caser.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cas.article.service.ArticleService;
+import com.cas.caser.service.CaserService;
+import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.CaserVO;
+
 @Controller
 public class CaserController {
+	
+	@Autowired
+	private CaserService caserService;
+	
+	public void setCaserService(CaserService caserService) {
+		this.caserService = caserService;
+	}
 
 	/*카서 메인 페이지로 가는 메서드*/
 	@RequestMapping("/caser")
@@ -24,14 +39,20 @@ public class CaserController {
 	}
 	
 	/*카서의 상세 페이지로 가는 메서드*/
-	@RequestMapping("/csaerDetail")
+	@RequestMapping("/caserDetail")
 	public String caserDetail(HttpServletRequest request, Model model){
-		return null;
+		
+		String url="member/caser/profileDetail";
+		
+		return url;
 	}
 	
 	/*카서들의 프로필을 볼 수 있는 페이지*/
 	@RequestMapping("/profileView")
-	public String profileView(HttpServletRequest request, Model model){
+	public String profileView(Model model){
+		List<CaserVO> caserList = caserService.selectCaserList();
+		model.addAttribute("caserList", caserList);
+		
 		String url = "member/caser/profileView";
 		return url;
 	}

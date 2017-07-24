@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.cas.db.dto.ReportVO;
 
-
 public interface ReportService {
 
 	/*신고리스트를 가져오는메서드*/
@@ -15,5 +14,8 @@ public interface ReportService {
 	
 	/*신고당한 게시글을 삭제하는 메서드*/
 	public void deleteArticle();
+	
+	/*신고 등록*/
+	public int insertReport(ReportVO report);
 	
 }

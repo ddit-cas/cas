@@ -289,10 +289,18 @@ var TxtType = function(el, toRotate, period) {
 			</dl>
 			<dl class="foot">
 				<dd style="margin-left:385px;">
-					<input class="btn btn-primary" type="button" id="registerBtn" value="펀딩 등록하기">
+					<input class="btn btn-primary" onclick="enrollmentFund_go();" type="button" id="registerBtn" value="펀딩 등록하기">
 				</dd>
 			</dl>
 		</div>
+		
+		<script>
+			function enrollmentFund_go(){
+				location.href="insertFundForm";
+			}
+		
+		
+		</script>
 		</div>
 	</div>
 </div>		

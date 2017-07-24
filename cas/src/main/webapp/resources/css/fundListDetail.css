@@ -1,12 +1,7 @@
 @CHARSET "UTF-8";
 
 
-.detail-top-wrap .top-title {
-	margin-top: 77px;
-    width: 100%;
-    padding: 60px 0 55px;
-    background: #53a2f9;
-}
+
 
 .wd-layout-sub-content * {
     box-sizing: content-box;
@@ -491,23 +486,9 @@
     box-sizing: content-box;
 }
 
-.recommend-box {
-    margin-top: 18px;
-    float: right;
-    width: 242px;
-    border: 1px solid #e4e4e4;
-    padding: 20px 20px;
-    background-color: #fff;
-}
 
-.recommend-box p {
-    margin: 5px 0px 10px 5px;
-    font-weight: 500;
-    font-size: 16px;
-    border-bottom: 1px solid #dddddd;
-    width: 249px;
-    padding-bottom: 3px;
-}
+
+
 
 .recommend-box .item .number {
     font-size: 12px;
@@ -794,9 +775,7 @@ a, a:hover, a:visited {
 
 
 
-.bg_primary {
-    background: #009db3 !important;
-}
+
 .btn-xl {
     padding: 14px;
     font-weight: 700;

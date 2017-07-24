@@ -13,14 +13,24 @@ public class ArticleVO {
 	private String contentState;
 	private String consertNum;
 	private String contentImg;
-	private String pundingNum;
+	private String boardName;
+	private String fundingNum;
 	
 	
-	public String getPundingNum() {
-		return pundingNum;
+
+
+
+	public String getFundingNum() {
+		return fundingNum;
 	}
-	public void setPundingNum(String pundingNum) {
-		this.pundingNum = pundingNum;
+	public void setFundingNum(String fundingNum) {
+		this.fundingNum = fundingNum;
+	}
+	public String getBoardName() {
+		return boardName;
+	}
+	public void setBoardName(String boardName) {
+		this.boardName = boardName;
 	}
 	public String getConsertNum() {
 		return consertNum;
