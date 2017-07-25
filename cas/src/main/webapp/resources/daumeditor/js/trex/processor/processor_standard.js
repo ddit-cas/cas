@@ -486,7 +486,7 @@ Trex.I.Processor.Standard = /** @lends Trex.Canvas.Processor.prototype */{
 			});
 			if(_curNode) {
 				if(!$tom.hasData(_curNode)) {
-					this.stuffNode(_curNode);
+					$tom.remove(_curNode);
 				}
 			}
 			this.stuffNode(_dvNode);

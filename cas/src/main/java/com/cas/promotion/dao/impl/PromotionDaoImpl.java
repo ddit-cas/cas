@@ -39,6 +39,7 @@ public class PromotionDaoImpl implements PromotionDao {
 			sqlMapClient.update("insertConsert", consertVO);
 			String consertNum=(String)sqlMapClient.queryForObject("selectLastConsertNum");
 			articleVO.setConsertNum(consertNum);
+			System.out.println("여기다 ㄴ율마ㅗㅠ"+articleVO.getConsertNum());
 			sqlMapClient.update("insertArticle", articleVO);
 		} catch (SQLException e) {
 			e.printStackTrace();

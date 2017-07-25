@@ -363,8 +363,7 @@ h3 {
 			<div id="sidr" style="text-align: center;">
 				<!-- Your content -->
 				<div id="myInfoDiv">
-					<img src="${loginUser.memFrofileimage }" class="img-circle"
-						alt="Cinque Terre" style="width:65%; height:auto; margin-top: 15px;margin-bottom: 15px;"> 
+					<img src="${loginUser.memFrofileimage }" class="img-circle" alt="Cinque Terre" style="width:65%; height:140px; margin-top: 15px;margin-bottom: 15px; background: #222;"> 
 					<label class="myInfoLabel">${loginUser.memName}</label> 
 					<label class="myInfoLabel">${loginUser.memPoint} point</label>
 				</div>
