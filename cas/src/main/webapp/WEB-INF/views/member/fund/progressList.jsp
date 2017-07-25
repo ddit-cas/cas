@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <body>
 
@@ -73,17 +74,16 @@ function fundEntrollment_go(){
 
 		<div class="contents" style="margin-top: 5px; width: 1213px; margin-left: 213px;">
 			<div class="container2">
-				<div class="row">
-					<div class="col-md-4">
+				<c:forEach items="${fundList}" var="fund">
+					<div class="col-md-4" style="height: 600px;">
 						<div class="single-blog-item">
 							<div class="blog-thumnail">
-								<a href=""><img style="width:370px; height:275;" src="resources/images/images.jpg"
-									alt="blog-img"></a>
+								<a href="/cas/fundDetail?contentNum=${fund.contentNum }"><img style="width:370px; height:275;" src="${fund.contentImg }" alt="blog-img"></a>
 							</div>
 							<div class="blog-content">
 								<div class="wd-icon-content" style="">
 										<!-- S : 프로그래스 바 -->
-										<div class="progressbar progressbarcss ui-progressbar ui-widget ui-corner-all" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="64" style="margin: 10px -1px -1px 10px; height: 8px; width: 232px; overflow: visible; background: #ffffff">
+										<div class="progressbar progressbarcss ui-progressbar ui-widget ui-corner-all" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="2" style="margin: 10px -1px -1px 10px; height: 8px; width: 232px; overflow: visible; background: #ffffff">
 											<div class="ui-progressbar-value ui-corner-left" style="border-radius: 4px; display: block; width: 101%; margin: -1px; background: rgb(0, 175, 132);"></div>
 										</div>
 										<!-- E : 프로그래스 바 -->
@@ -92,68 +92,27 @@ function fundEntrollment_go(){
 											<!-- wd-p0 ~ wd-p100 -->
 											<span class="wd-data-percent" style="color: #00af84; margin-left: 5px; margin-left: 10px; font-size: 14px;">
 
-												82% </span>
+												 ${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}% </span>
 										</div>
 										<!-- E : 달성율 -->
 										<!-- S : 금액, D-day -->
 										<div class="wd-ui-new-target-renew">
-											<span class="wd-data-collection"> <em>500,000원</em>
+											<span class="wd-data-collection"> <em>${fund.fundingPresentAmount}원</em>
 											</span> <span class="wd-data-dday" style=""> 진행중 </span>
 										</div>
 										<!-- E : 금액, D-day -->
 									</div>
 								<h4>
-									<a href="#">Lorem ipsum dolor sit amet</a>
+									<a href="#">${fund.contentTitle }</a>
 								</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									Sint expedita exercitationem nostrum, eligendi quis, esse quos
-									atque in molestias animi.</p>
-								<a href="fundDetail" class="more-btn">자세히보기</a>
+								<p>${fund.contentContent }</p>
+								<a href="fundDetail?contentNum=${fund.contentNum }" class="more-btn">자세히보기</a>
 							</div>
-							<span class="blog-date">May 03, 2015</span>
+							<span class="blog-date">${fund.fundingEndDate }</span>
 						</div>
 					</div>
+				</c:forEach>
 
-					<div class="col-md-4">
-						<div class="single-blog-item">
-							<div class="blog-thumnail">
-								<a href=""><img src="http://via.placeholder.com/370x275"
-									alt="blog-img"></a>
-							</div>
-							<div class="blog-content">
-								<h4>
-									<a href="#">Lorem ipsum dolor sit amet</a>
-								</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									Sint expedita exercitationem nostrum, eligendi quis, esse quos
-									atque in molestias animi.</p>
-								<a href="" class="more-btn">View More</a>
-							</div>
-							<span class="blog-date">June 03, 2015</span>
-						</div>
-					</div>
-
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<div class="single-blog-item">
-							<div class="blog-thumnail">
-								<a href=""><img src="http://via.placeholder.com/370x275"
-									alt="blog-img"></a>
-							</div>
-							<div class="blog-content">
-								<h4>
-									<a href="#">Lorem ipsum dolor sit amet</a>
-								</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									Sint expedita exercitationem nostrum, eligendi quis, esse quos
-									atque in molestias animi.</p>
-								<a href="" class="more-btn">View More</a>
-							</div>
-							<span class="blog-date">July 03, 2015</span>
-						</div>
-					</div>
-				</div>
 			</div>
 			
 		</div>

@@ -17,14 +17,12 @@ public class FundServiceImpl implements FundService{
 
 	@Override
 	public List<IngFundVO> selectIngFundList() {
-		// TODO Auto-generated method stub
-		return null;
+		return fundDao.selectIngFundList();
 	}
 
 	@Override
 	public IngFundVO selectIngFund(String contentNum) {
-		// TODO Auto-generated method stub
-		return null;
+		return fundDao.selectIngFund(contentNum);
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.cas.member.dao;
 import java.util.List;
 
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.TeamVO;
 
 public interface MemberDao {
 
@@ -32,4 +33,7 @@ public interface MemberDao {
 
 	/*공연홍보글이나 크라우드 펀딩 클릭시 클릭정보를 입력하는 메서드*/
 	public void insertClickData(String contentNum, String classify);
+
+	/*팀원 정보를 인서트하는 메서드*/
+	public void insertTeamList(List<TeamVO> teamList);
 }

@@ -14,7 +14,14 @@ public class IngFundVO {
 	private String fundingPresentAmount;
 	private String fundingEndDate;
 	private String fundingStartDate;
+	private String dDay;
 	
+	public String getdDay() {
+		return dDay;
+	}
+	public void setdDay(String dDay) {
+		this.dDay = dDay;
+	}
 	public String getContentNum() {
 		return contentNum;
 	}
