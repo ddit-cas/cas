@@ -20,4 +20,6 @@
 	
 	<sqlMap resource="com/cas/db/sqlMap/IngFund.xml" />
 
+	<sqlMap resource="com/cas/db/sqlMap/Fund.xml" />
+
 </sqlMapConfig>

@@ -5,6 +5,7 @@ import java.util.List;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.ConsertVO;
 import com.cas.db.dto.GenreVO;
+import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
 import com.cas.promotion.dao.PromotionDao;
 import com.cas.promotion.service.PromotionService;
@@ -29,8 +30,14 @@ public class PromotionServiceImpl implements PromotionService {
 	}
 
 	@Override
-	public PromotionVO selectPromotionDetail() {
-		PromotionVO promotionVO=promotionDao.selectPromotionDetail();
+	public PromotionVO selectPromotionDetail(String contentNum) {
+		PromotionVO promotionVO=promotionDao.selectPromotionDetail(contentNum);
 		return promotionVO;
+	}
+
+	@Override
+	public List<PromotionListVO> selectPromotionList() {
+		List<PromotionListVO> promotionList=promotionDao.selectPromotionList();
+		return promotionList;
 	}
 }

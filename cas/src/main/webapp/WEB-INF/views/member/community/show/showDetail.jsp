@@ -148,7 +148,7 @@
 	</div>
 	<div id="showDetailInfoBtn">
 		<button style="float:right; margin-left: 6px;">좋아요</button>
-		<a href="#" style="float:right; "><img src="/cas/resources/listBtnImg.gif"></a>
+		<a href="promotionList" style="float:right; "><img src="/cas/resources/listBtnImg.gif"></a>
 	</div>
 	<hr style="clear:both;">
 	<div id="showDetailContent">
@@ -161,8 +161,8 @@
 <!-- 	댓글부분 -->
 	<div id="commentDiv">
 		<form class="commentForm">
-			<c:if test="${not empty loginUser}">		
-				<input type="hidden" name="contentWriter" value="${loginUser }">
+			<c:if test="${not empty loginUser.memId}">		
+				<input type="hidden" name="contentWriter" value="${loginUser.memId }">
 				<input type="hidden" name="contentTitle" value="${promotionVO.contentTitle}">
 				<input type="hidden" name="contentParentsContent" value="${promotionVO.contentNum}">
 			</c:if>
@@ -177,7 +177,7 @@
 		<ul id="commentView" style="padding:0">
 		
 			
-			<c:forEach var="comment" items="${commnetList }" begin="1" varStatus="status">
+			<c:forEach var="comment" items="${commentList }" begin="1" varStatus="status">
 			<c:if test="${status.count ne 1 }">
 				<c:if test="${comment.contentParentsContent eq promotionVO.contentNum }">
 						</div>
@@ -193,26 +193,50 @@
 						</div>
 						<div style="width: 100%">
 							<a href="#"><strong>${comment.contentWriter }</strong></a> <label>${comment.contentRegisDate }</label><br>
-							${comment.contentContent}
+							<label style="margin-right: 2%;">${comment.contentContent}</label>
+							<c:if test="${not empty loginUser.memId}">
 							<button type="button" class="commentBtn recommentBtn " target="#Write${comment.contentNum }">댓글달기</button>
-							<button type="button" class="commentBtn recommentView" data-toggle="collapse" data-target="#recomment${comment.contentNum}">댓글보기</button>
-							
+							</c:if>
+							<c:if test="${comment.contentCount ne 0 }">
+								<button type="button" class="commentBtn recommentView" data-toggle="collapse" data-target="#recomment${comment.contentNum}">댓글보기(${comment.contentCount})</button>
+							</c:if>
 							<div style="float: right;">
-								<input type="button" value="수정">
-								<c:if test="${comment.contentWriter eq loginUser}">
-									<input type="button" value="삭제">
+								<c:if test="${comment.contentWriter eq loginUser.memId}">
+									<input type="button" data-toggle="modal" data-target="#myModal${comment.contentNum }" value="수정">
+									
+									<div class="modal fade" id="myModal${comment.contentNum }" role="dialog">
+									    <div class="modal-dialog modal-sm">
+								      		<div class="modal-content">
+									       		<div class="modal-header">
+								        	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+								         	 		<h4 class="modal-title">댓글수정</h4>
+										        </div>
+								        		<div class="modal-body">
+									          		<input type="text" id="updateContent${comment.contentNum }" style="width:100%;" placeholder="${comment.contentContent}">
+										        </div>
+									        	<div class="modal-footer">
+									          		<button type="button" class="btn btn-default" data-dismiss="modal" onclick="updateComment('${comment.contentNum}')">수정</button>
+									          		<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+								        		</div>
+									      	</div>
+									    </div>
+								  	</div>
+									
+									<input type="button" value="삭제" onclick="deleteComment('${comment.contentNum}')">
 								</c:if>
-								<input type="button" value="신고">
+								<c:if test="${not empty loginUser.memId}">
+									<input type="button" value="신고" onclick="reportComment('${comment.contentNum}')">
+								</c:if>
 							</div>
 							
 							<div id="Write${comment.contentNum }" class="hideDiv " style="padding-top: 10px; display:none;">
 								<form class="commentForm${comment.contentNum }">
-									<c:if test="${not empty loginUser}">		
-										<input type="hidden" name="contentWriter" value="${loginUser }">
+									<c:if test="${not empty loginUser.memId}">
+										<input type="hidden" name="contentWriter" value="${loginUser.memId }">
 										<input type="hidden" name="contentTitle" value="${promotionVO.contentTitle}">
 										<input type="hidden" name="contentParentsContent" value="${comment.contentNum}">
 									</c:if>
-									<input type="text" class="recommentTextStyle commentText" name="contentContent"> 
+									<input type="text" class="recommentTextStyle commentText" name="contentContent" style="margin-left:9%;"> 
 									<input type="button" class=" commentWrite" onclick="comment('.commentForm${comment.contentNum }')" value="댓글달기">
 								</form>
 							</div>
@@ -228,20 +252,24 @@
 							<div style="width: 100%">
 								<a href="#"><strong>${comment.contentWriter}</strong></a> <label>${comment.contentRegisDate }</label><br>
 								${comment.contentContent}
+								<c:if test="${not empty loginUser.memId}">
 								<button type="button" class="commentBtn recommentBtn" target="#Write${comment.contentNum }">댓글달기</button>
+								</c:if>
 								<div style="float: right;">
-									<input type="button" value="수정">
-									<c:if test="${comment.contentWriter eq loginUser}">
-										<input type="button" value="삭제">
+									<c:if test="${comment.contentWriter eq loginUser.memId}">
+										<input type="button" value="수정" onclick="updateComment('${comment.contentNum}')">
+										<input type="button" value="삭제" onclick="deleteComment('${comment.contentNum}')">
 									</c:if>
-									<input type="button" value="신고">
+									<c:if test="${not empty loginUser.memId}">
+										<input type="button" value="신고" onclick="reportComment('${comment.contentNum}')">
+									</c:if>
 								</div>
 								<div id="Write${comment.contentNum }" class="hideDiv " style="padding-top: 10px; display:none;">
 									<form class="commentForm${comment.contentNum }">
-										<c:if test="${not empty loginUser}">		
-											<input type="hidden" name="contentWriter" value="${loginUser }">
+										<c:if test="${not empty loginUser.memId}">		
+											<input type="hidden" name="contentWriter" value="${loginUser.memId }">
 											<input type="hidden" name="contentTitle" value="${promotionVO.contentTitle}">
-											<input type="hidden" name="contentParentsContent" value="${comment.contentNum}">
+											<input type="hidden" name="contentParentsContent" value="${comment.contentParentsContent}">
 										</c:if>
 										<input type="text" class="reRecommentTextStyle commentText" name="contentContent"> 
 										<input type="button" class="commentWrite" onclick="comment('.commentForm${comment.contentNum }')" value="댓글달기">
@@ -253,61 +281,83 @@
 					</c:choose>
 			</c:forEach>
 					</div>
-				<hr class="commentHr">
+					<c:if test="${not empty commentList}">
+					<hr class="commentHr">
+					</c:if>
 			</li>
 		</ul>
 	</div>
-</div>
-
-
 <script>
 	function go_link(){
 		window.open('${promotionVO.consertTicket}'); 
 	}
 	
+	function deleteComment(id){
+		$.ajax({
+			url : "member/deleteCommnet",
+			type : 'post',
+			data : "contentNum="+id,
+			dataType : 'html',
+			success : function() {
+				resetPage();
+				alert('댓글이 삭제되었습니다.');
+			}
+		})
+	}
+	function updateComment(id){
+		var updateContent=$('#updateContent'+id).val();
+		if(updateContent==''){
+			alert('댓글을 입력하지 않아 실패하였습니다.')
+		}else{
+			$.ajax({
+				url : "member/updateCommnet",
+				type : 'post',
+				data : "contentNum="+id+"&contentContent="+updateContent,
+				dataType : 'html',
+				success : function() {
+					resetPage();
+				}
+			})
+		}
+	}
+	function reportComment(id){
+		
+	}
 	
 // 	댓글을 저장하는 부분
-	function comment(formName){
-		var comment=$(formName).serialize();
-		  $.ajax({
-			url:"member/insertCommnet",
-			type:'post',
-			data:comment,
-	        dataType: 'html',
-	        success: function(){
-	        	resetCommentText();
-	        	$('.hideDiv').slideUp('500');
-	        	alert('댓글이 성공적으로 입력되었습니다.');
+	
+	function comment(formName) {
+		var comment = $(formName).serialize();
+		$.ajax({
+			url : "member/insertCommnet",
+			type : 'post',
+			data : comment,
+			dataType : 'html',
+			success : function() {
+				resetPage();
+				alert('댓글이 성공적으로 입력되었습니다.');
 			}
 		})
 	}
-	
-	function resetCommentText(){
-       	$('.commentText').val('');
+
+	function resetPage() {
+		location.href="promotionDetail?contentNum=${promotionVO.contentNum}"
 	}
-	$(document).ready(function(){
-		$('.collapse').each(function(i){
-			if($(this).children('div').length==0){
-				$(this).remove();
-			}
-		});
-	})
-	
-// 	댓글달기를 숨겼다 보였다하는 부분
-		$('.recommentBtn').on('click',function(){
-			var target=$(this).attr('target');
-			if($(target).css('display')=='none'){
-				$('.hideDiv').slideUp('500');
-				$(target).slideDown('500');
-			}else{
-				$('.hideDiv').slideUp('500');
-			}
-		})
-		
-		$('.recommentView').on('click',function(){
+
+	// 	댓글달기를 숨겼다 보였다하는 부분
+	$('.recommentBtn').on('click', function() {
+		var target = $(this).attr('target');
+		if ($(target).css('display') == 'none') {
 			$('.hideDiv').slideUp('500');
-		})
-		
+			$(target).slideDown('500');
+		} else {
+			$('.hideDiv').slideUp('500');
+		}
+	})
+
+	$('.recommentView').on('click', function() {
+		$('.hideDiv').slideUp('500');
+	})
 </script>
 
 

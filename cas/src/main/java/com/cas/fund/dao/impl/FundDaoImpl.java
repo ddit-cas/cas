@@ -11,7 +11,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 public class FundDaoImpl implements FundDao{
 
 	private SqlMapClient sqlMapClient;
-
+	
 	public void setSqlMapClient(SqlMapClient sqlMapClient) {
 		this.sqlMapClient = sqlMapClient;
 	}
@@ -40,9 +40,19 @@ public class FundDaoImpl implements FundDao{
 	}
 
 	@Override
-	public void insertFund(FundVO fund) {
-		// TODO Auto-generated method stub
-		
+	public boolean insertFund(FundVO fund) {
+		boolean result = false;
+		try {
+			int answer = sqlMapClient.update("insertFund",fund);
+			if(answer > 0){
+				result = true;
+			}else{
+				result = false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
