@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.TeamVO;
 
 public interface MemberService {
 	
@@ -34,4 +35,7 @@ public interface MemberService {
 
 	/*공연홍보글이나 크라우드 펀딩 클릭시 클릭정보를 입력하는 메서드*/
 	public void insertClickData(String contentNum, String classify);
+
+	/*팀원들을 인서트하는 메서드*/
+	public void insertTeamList(List<TeamVO> teamList);
 }
