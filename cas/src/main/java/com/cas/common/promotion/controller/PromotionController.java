@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cas.db.dto.CommentVO;
+import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
 import com.cas.member.comment.service.CommentService;
 import com.cas.promotion.service.PromotionService;
@@ -32,6 +33,8 @@ public class PromotionController {
 	/*공연홍보게시판 리스트로 가는 메서드*/
 	@RequestMapping("/promotionList")
 	public String promotionList(Model model){
+		List<PromotionListVO> promotionList=promotionService.selectPromotionList();
+		model.addAttribute("promotionList", promotionList);
 		return "member/community/show/showBoard";
 	}
 	
@@ -44,11 +47,11 @@ public class PromotionController {
 	/*공연홍보 게시물 세부내용으로 가는 메서드*/
 	@RequestMapping("/promotionDetail")
 	public String promotionDetail(HttpServletRequest request,Model model){
-		PromotionVO promotionVO=promotionService.selectPromotionDetail();
-		List<CommentVO> commentList=commentService.selectComment(promotionVO.getContentNum());
-		System.out.println(commentList.size());
+		String contentNum=(String)request.getParameter("contentNum");
+		PromotionVO promotionVO=promotionService.selectPromotionDetail(contentNum);
+		List<CommentVO> commentList=commentService.selectComment(contentNum);
 		model.addAttribute("promotionVO",promotionVO);
-		model.addAttribute("commnetList",commentList);
+		model.addAttribute("commentList",commentList);
 		return "member/community/show/showDetail";
 	}
 }
