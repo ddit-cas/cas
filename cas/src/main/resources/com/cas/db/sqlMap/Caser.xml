@@ -7,6 +7,7 @@
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="caser" type="com.cas.db.dto.CaserVO"/>
+	<typeAlias alias="caserDetail" type="com.cas.db.dto.CaserDetailVO" />  
 	
 	<resultMap class="com.cas.db.dto.CaserVO" id="selectCaser">
 		<result property="memName" column="mem_name"/>
@@ -16,6 +17,19 @@
 		<result property="memEmail" column="mem_email"/>
 		<result property="memBirthdate" column="mem_birthdate"/>
 		<result property="memFrofileimage" column="mem_frofileimage"/>
+	</resultMap>
+	
+	<resultMap class="com.cas.db.dto.CaserDetailVO" id="selectCaserDetail">
+		<result property="memId" column="mem_id"/>
+		<result property="memName" column="mem_name"/>
+		<result property="memNick" column="mem_nick"/>
+		<result property="memFrofileimage" column="mem_frofileimage"/>
+		<result property="memCareer" column="mem_career"/>
+		<result property="memActive" column="mem_active"/>
+		<result property="teamName" column="team_name"/>
+		<result property="teamPosi" column="team_posi"/>
+		<result property="teamInfo" column="team_info"/>
+		
 	</resultMap>
 
 
@@ -45,5 +59,9 @@
 		</isEqual>
 		
 </select>
+
+<select id="selectCaserDetail" parameterClass="str" resultMap="selectCaserDetail">
+		select * from teamview where mem_id = #memId#
+	</select>
 	
 </sqlMap>

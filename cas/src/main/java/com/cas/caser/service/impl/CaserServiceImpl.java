@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cas.caser.dao.CaserDao;
 import com.cas.caser.service.CaserService;
+import com.cas.db.dto.CaserDetailVO;
 import com.cas.db.dto.CaserVO;
 
 public class CaserServiceImpl implements CaserService{
@@ -26,6 +27,13 @@ public class CaserServiceImpl implements CaserService{
 		List<CaserVO> resultList;
 		resultList = caserDao.selectCaserSearchList(index, key);
 		return resultList;
+	}
+
+	@Override
+	public List<CaserDetailVO> selectCaserDetail(String memId) {
+		List<CaserDetailVO> caserList;
+		caserList = caserDao.selectCaserDetail(memId);
+		return caserList;
 	}
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.cas.caser.dao.CaserDao;
+import com.cas.db.dto.CaserDetailVO;
 import com.cas.db.dto.CaserVO;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -47,6 +48,19 @@ public class CaserDaoImpl implements CaserDao{
 		}
 				
 		return resultList;
+	}
+
+	@Override
+	public List<CaserDetailVO> selectCaserDetail(String memId) {
+		List<CaserDetailVO> caserList = null;
+		
+		try {
+			caserList = sqlMapClient.queryForList("selectCaserDetail",memId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return caserList;
 	}
 
 }

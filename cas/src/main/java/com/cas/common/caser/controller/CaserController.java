@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cas.article.service.ArticleService;
 import com.cas.caser.service.CaserService;
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.CaserDetailVO;
 import com.cas.db.dto.CaserVO;
 import com.cas.db.dto.Paging;
 
@@ -61,6 +62,9 @@ public class CaserController {
 	@RequestMapping("/caserDetail")
 	public String caserDetail(HttpServletRequest request, Model model){
 		String memId = request.getParameter("memId");
+		List<CaserDetailVO> caserList = caserService.selectCaserDetail(memId);
+		model.addAttribute("caserList",caserList);
+		System.out.println(caserList.get(0).getMemId());
 		String url="member/caser/profileDetail";
 		
 		return url;
