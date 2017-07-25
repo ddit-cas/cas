@@ -48,7 +48,25 @@ public class FreeboardController {
 	/*자유게시판에서 검색하면 작동하는 메서드*/
 	@RequestMapping("/freeboardSearch")
 	public String freeboardSearch(HttpServletRequest request,Model model){
-		return null;
+		String url="/cas/freeboardList";
+		String index=request.getParameter("search");
+		String key=request.getParameter("writerSearch");
+		List<ArticleVO> freeList= articleService.selectFreeSearch(index, key);
+		
+//		System.out.println("검색조건 : "+key);
+//		//현재페이지
+		String page = request.getParameter("tab");
+//		//받은 데이터리스트의 데이터갯수
+		int dataRow = freeList.size();
+		Paging paging = new Paging(dataRow, page);
+		System.out.println(paging.toString());
+		model.addAttribute("index", paging.getIndex());//현재페이지
+		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
+		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
+		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
+		model.addAttribute("selectSearchFree", freeList);
+		return url;
 	}
 	
 	/*자유게시판 글 세부내용으로 가는 메서드*/

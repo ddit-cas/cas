@@ -20,7 +20,7 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 
 	/**
-	 * 공지사리스트 가져오기 
+	 * 공지사항리스트 가져오기 
 	 * @author 김민환
 	 * @param boardCode
 	 * 
