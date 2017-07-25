@@ -14,7 +14,7 @@ public interface FundService {
 	public IngFundVO selectIngFund(String contentNum);
 	
 	/*펀드를 인서트 하는 메서드*/
-	public void insertFund(FundVO fund);
+	public boolean insertFund(FundVO fund);
 	
 	/*펀드를 업데이트 하는 메서드*/
 	public void updateFund(FundVO fund);

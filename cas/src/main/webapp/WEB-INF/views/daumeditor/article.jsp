@@ -13,6 +13,9 @@
 		<c:if test="${boardCode=='B001' }">
 		 공지사항
 		</c:if>
+		<c:if test="${boardCode=='B006' }">
+		Caser-UCC
+		</c:if>
 	</div>
 <form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/${resultUrl}" method="post" accept-charset="utf-8">
 		<div class="col-sm-1">제목</div>

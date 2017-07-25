@@ -1,5 +1,6 @@
 package com.cas.fund.dao.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.cas.db.dto.FundVO;
@@ -9,28 +10,49 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 public class FundDaoImpl implements FundDao{
 
-	private SqlMapClient SqlMapClient;
-
+	private SqlMapClient sqlMapClient;
+	
 	public void setSqlMapClient(SqlMapClient sqlMapClient) {
-		SqlMapClient = sqlMapClient;
+		this.sqlMapClient = sqlMapClient;
 	}
 
 	@Override
 	public List<IngFundVO> selectIngFundList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<IngFundVO> ingFundList = null;
+		try {
+			ingFundList=sqlMapClient.queryForList("ingFundList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(ingFundList.get(0).getContentNum());
+		return ingFundList;
 	}
 
 	@Override
 	public IngFundVO selectIngFund(String contentNum) {
-		// TODO Auto-generated method stub
-		return null;
+		IngFundVO ingFund = null;
+		try {
+			ingFund=(IngFundVO) sqlMapClient.queryForObject("ingFund",contentNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ingFund;
 	}
 
 	@Override
-	public void insertFund(FundVO fund) {
-		// TODO Auto-generated method stub
-		
+	public boolean insertFund(FundVO fund) {
+		boolean result = false;
+		try {
+			int answer = sqlMapClient.update("insertFund",fund);
+			if(answer > 0){
+				result = true;
+			}else{
+				result = false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override

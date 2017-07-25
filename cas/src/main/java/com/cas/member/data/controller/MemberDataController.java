@@ -29,15 +29,12 @@ public class MemberDataController extends HandlerInterceptorAdapter{
 		System.out.println(request.getRequestURI().toString().trim());
 		MemberVO member = (MemberVO) session.getAttribute("loginUser");
 		
-		boolean result = false;
-		
 		if (containsUrl(request)&&member!=null) {
 			String contentNum = request.getParameter("articleId");
 			String classify = member.getClassifyCode(); 
 			System.out.println("게시글 넘버"+contentNum+"코드"+classify);
 			memberService.insertClickData(contentNum,classify);
 			
-			result=true;
 		}
 		return true;
 	}	

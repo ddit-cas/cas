@@ -213,7 +213,6 @@ div.company-snb ul li a:hover {
 div.company-cont {
     width: 800px;
     float: right;
-    height: 1100px;
     padding-left: 32px;
     
 }

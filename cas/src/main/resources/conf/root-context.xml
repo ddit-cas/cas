@@ -19,7 +19,32 @@
 		class="com.cas.article.service.impl.ArticleServiceImpl"
 		p:articleDao-ref="articleDao"
 	></bean>
+		
+<!-- 	공연홍보 다오 등록 -->
+	<bean
+		name="promotionDao"
+		class="com.cas.promotion.dao.impl.PromotionDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
 
+<!-- 	공연홍보 서비스 등록 -->
+	<bean 
+		name="promotionService"
+		class="com.cas.promotion.service.impl.PromotionServiceImpl"
+		p:promotionDao-ref="promotionDao"
+	></bean>
+<!-- 		댓글 다오 등록		 -->
+	<bean
+		name="commentDao"
+		class="com.cas.member.comment.dao.impl.CommentDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
+<!-- 		댓글 서비스 등록		 -->
+	<bean
+		name="commentService"
+		class="com.cas.member.comment.service.impl.CommentServiceImpl"
+		p:commentDao-ref="commentDao"
+	></bean>
 
 <!-- 	캐러셀 다오 빈등록 -->
 	<bean
@@ -90,31 +115,18 @@
 		p:fundDao-ref="fundDao"
 	></bean>
 	
-<!-- 	공연홍보 다오 등록 -->
-	<bean
-		name="promotionDao"
-		class="com.cas.promotion.dao.impl.PromotionDaoImpl"
-		p:sqlMapClient-ref="sqlMapClient"
-	></bean>
 
-<!-- 	공연홍보 서비스 등록 -->
-	<bean 
-		name="promotionService"
-		class="com.cas.promotion.service.impl.PromotionServiceImpl"
-		p:promotionDao-ref="promotionDao"
-	></bean>
-<!-- 		댓글 다오 등록		 -->
+<!-- 		공지사항 서비스등록		 -->
 	<bean
-		name="commentDao"
-		class="com.cas.member.comment.dao.impl.CommentDaoImpl"
+		name="noticeService"
+		class="com.cas.notice.service.impl.NoticeServiceImpl"
+		p:noticeDao-ref="noticeDao"
+	></bean>
+	<!-- 		 공지사항 다오 등록		 -->
+	<bean
+		name="noticeDao"
+		class="com.cas.notice.dao.impl.NoticeDaoImpl"
 		p:sqlMapClient-ref="sqlMapClient"
-	></bean>
-<!-- 		댓글 서비스 등록		 -->
-	<bean
-		name="commentService"
-		class="com.cas.member.comment.service.impl.CommentServiceImpl"
-		p:commentDao-ref="commentDao"
-	></bean>
-	
+		></bean>
 	
 </beans>

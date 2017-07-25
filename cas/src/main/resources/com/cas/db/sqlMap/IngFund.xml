@@ -6,7 +6,7 @@
 <sqlMap namespace="IngFund">
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
-	<typeAlias alias="report" type="com.cas.db.dto.IngFundVO" />
+	<typeAlias alias="ingFund" type="com.cas.db.dto.IngFundVO" />
 	<resultMap class="com.cas.db.dto.IngFundVO" id="selectIngFund">
 		<result property="contentNum" column="content_Num" />
 		<result property="boardCode" column="board_Code" />
@@ -20,10 +20,15 @@
 		<result property="fundingPresentAmount" column="funding_Present_Amount" />
 		<result property="fundingEndDate" column="funding_End_Date" />
 		<result property="fundingStartDate" column="funding_Start_Date" />
+		<result property="dDay" column="d_day" />
 	</resultMap>
 	
-	<select id="ingFundList">
+	<select id="ingFundList" resultMap="selectIngFund">
 		select * from ingfundview
+	</select>
+	
+	<select id="ingFund" resultMap="selectIngFund" parameterClass="str">
+		select * from ingfundview where content_Num=#contentNum#
 	</select>
 
 </sqlMap>
