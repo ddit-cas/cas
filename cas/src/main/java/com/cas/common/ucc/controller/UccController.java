@@ -35,10 +35,6 @@ public class UccController {
 		
 		Paging paging = new Paging(dataRow, page);
 		
-		System.out.println(uccList.get(0).getContentImg());
-
-		
-		System.out.println(paging.toString());
 		model.addAttribute("index", paging.getIndex());//현재페이지
 		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
 		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
