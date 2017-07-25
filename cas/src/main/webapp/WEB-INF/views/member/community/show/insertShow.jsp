@@ -44,8 +44,8 @@
 				<input id="posterImage-input" name="posterImage"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
 			</div>
 			<div>
-				<label>간략설명</label>
-				<textarea name='consertContent' style="width: 10%;height: 221px;" placeholder="(400자 이내로 기술하시오)"></textarea>
+				<label style="width:100%;">간략설명</label>
+				<textarea name='consertContent' style="width: 100%;height: 221px;" placeholder="(400자 이내로 기술하시오)"></textarea>
 			</div>
 		</div>
 	

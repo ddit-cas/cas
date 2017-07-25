@@ -147,7 +147,17 @@
 		</div>
 	</div>
 	<div id="showDetailInfoBtn">
-		<button style="float:right; margin-left: 6px;">좋아요</button>
+		<span class="pull-left zzim-after hide" style="float: right;">
+		   <button type="button" class="btn-zzim on" style="height: 26px;">
+		      <i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like_on.png" style="width:15px; height:15px;"></i> <span id="zzim-cnt-on"></span>
+		   </button>
+		</span> 
+		<span class="pull-left zzim-before" style="float:right;">
+		   <button type="button" class="btn-zzim" style="height: 26px;">
+		         
+		         <i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like.png" style="width:15px; height:15px;"> </i><span id="zzim-cnt">83</span>
+		      </button>
+	    </span>
 		<a href="promotionList" style="float:right; "><img src="/cas/resources/listBtnImg.gif"></a>
 	</div>
 	<hr style="clear:both;">
@@ -287,6 +297,35 @@
 			</li>
 		</ul>
 	</div>
+	
+<script>
+
+// 하트표시바꾸기-------------------------------------------------------------
+
+   var cnt = $('span#zzim-cnt').text();
+   $('.btn-zzim').click(function(){
+      
+      $('.zzim-before').toggleClass('hide');
+      cnt++;
+      $('span#zzim-cnt-on').text(cnt);
+      
+      $('.zzim-after').toggleClass('hide');
+      cnt--;
+      $('span#zzim-cnt').text(cnt);
+      
+      
+      
+      /*
+      if($('.zzim-before').isClass('hide')){
+         cnt++;
+         $('#zzim-cnt on').val(ctn);
+      }else{
+         cnt--;
+         $('#zzim-cnt').val(ctn);
+      }
+      */
+   })
+</script>
 <script>
 	function go_link(){
 		window.open('${promotionVO.consertTicket}'); 
