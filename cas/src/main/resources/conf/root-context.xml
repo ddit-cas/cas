@@ -115,6 +115,18 @@
 		class="com.cas.member.comment.service.impl.CommentServiceImpl"
 		p:commentDao-ref="commentDao"
 	></bean>
-	
+
+<!-- 		공지사항 서비스등록		 -->
+	<bean
+		name="noticeService"
+		class="com.cas.notice.service.impl.NoticeServiceImpl"
+		p:noticeDao-ref="noticeDao"
+	></bean>
+	<!-- 		 공지사항 다오 등록		 -->
+	<bean
+		name="noticeDao"
+		class="com.cas.notice.dao.impl.NoticeDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+		></bean>
 	
 </beans>

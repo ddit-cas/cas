@@ -12,6 +12,8 @@ public interface NoticeDao {
 	/*공지사항 하나를 가져오는 메서드*/
 	public ArticleVO selectNotice(String articleId,String boardCode);
 	
+	public List<ArticleVO> noticeSearch(String index, String key);
+	
 	/*공지사항을 등록하는 메셔드*/
 	public boolean insertNotice(ArticleVO article);
 	
@@ -20,4 +22,5 @@ public interface NoticeDao {
 	
 	/*공지사항을 삭제하는 메서드*/
 	public boolean updateNotice(String articleId);
+
 }
