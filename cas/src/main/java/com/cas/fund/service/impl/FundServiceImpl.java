@@ -1,73 +1,45 @@
 package com.cas.fund.service.impl;
 
+import java.util.List;
+
+import com.cas.db.dto.FundVO;
+import com.cas.db.dto.IngFundVO;
+import com.cas.fund.dao.FundDao;
 import com.cas.fund.service.FundService;
 
 public class FundServiceImpl implements FundService{
 
-	@Override
-	public int selectLastMonthAllFundMount() {
-		// TODO Auto-generated method stub
-		return 0;
+	private FundDao fundDao;
+	
+	public void setFundDao(FundDao fundDao) {
+		this.fundDao = fundDao;
 	}
 
 	@Override
-	public int selectThisMonthAllFundMount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<IngFundVO> selectIngFundList() {
+		return fundDao.selectIngFundList();
 	}
 
 	@Override
-	public int selectTodayMonthAllFundMount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public IngFundVO selectIngFund(String contentNum) {
+		return fundDao.selectIngFund(contentNum);
 	}
 
 	@Override
-	public int selectAllFundCount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean insertFund(FundVO fund) {
+		return fundDao.insertFund(fund);
 	}
 
 	@Override
-	public int selectClearedFundCount() {
+	public void updateFund(FundVO fund) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	@Override
-	public int selectFailedFundCount() {
+	public void deleteFund(FundVO fund) {
 		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int selectIngFundCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int selectLastMonthClearedFundCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int selectLastMonthFailedFundCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int selectThisMonthClearCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int selectThisMonthFailedFundCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 }

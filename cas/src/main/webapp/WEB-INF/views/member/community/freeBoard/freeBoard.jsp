@@ -57,7 +57,7 @@ li a:hover {
 							<img src="resources/images/free.png"
 								style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
 						</p>
-						<div class="searchgroup" style="float: right">
+						<div class="searchgroup" style="float: left">
 							<select class="form-control">
 								<option value="title">제목</option>
 								<option value="writer" selected>작성자</option>
@@ -70,6 +70,7 @@ li a:hover {
 								<input type="button" class="form-control" id="list" value="목록">
 							</div>
 						</div>
+								<a href="/cas/member/communify/freeBoard/freeboardForm"><input type="button" class="form-control" id="insert" value="등록"></a>
 					</form>
 				</div>
 				<!--//tab-intro-->
@@ -85,13 +86,14 @@ li a:hover {
 					<tbody style="text-align: center; font-size: 15px;">
 					<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
 						<tr>
-							<td>${articleList[i].contentTitle}</td>
+							<td><a href="freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
 							<td>${articleList[i].contentWriter}</td>
 							<td>${articleList[i].contentRegisDate}</td>
 						</tr>
 					</c:forEach>
 					</tbody>
 				</table>
+				
 			</div>
 			<!--//company-snb-->
 		</div>

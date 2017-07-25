@@ -54,7 +54,7 @@ public class FreeboardController {
 	/*자유게시판 글 세부내용으로 가는 메서드*/
 	@RequestMapping("/freeboardDetail")
 	public String freeboardDetail(HttpServletRequest request,Model model){
-		ArticleVO articleVO = articleService.selectArticle(request.getParameter("articleId"), "B005");
+		ArticleVO articleVO = articleService.selectArticle(request.getParameter("contentNum"), "B005");
 		model.addAttribute("articleVO",articleVO);
 		return "member/community/freeBoard/freeDetail";
 	}

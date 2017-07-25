@@ -54,7 +54,8 @@ $(function(){
 </style>
 	<form class="form-horizontal" action="#">
 	<fieldset class="signup_cas_fs">
-		<legend class="signup_cas_ld">필수사항</legend>
+	<div class="company-cont" style="height: auto; width: 960px;">
+			<h3 class="box" style="background-color: #0B2161;">개인정보</h3>
 		<div class="container">
 			<div class="essen">
 				<div class="imfom">

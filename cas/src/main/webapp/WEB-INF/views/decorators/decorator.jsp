@@ -213,7 +213,6 @@ div.company-snb ul li a:hover {
 div.company-cont {
     width: 800px;
     float: right;
-    height: 1100px;
     padding-left: 32px;
     
 }
@@ -353,7 +352,6 @@ h3 {
 			</div>
 			<script>
 				function login(){
-					alert("여기자체엔 들어옵니까 씨발?");
 					$("#loginForm").submit();
 				}
 				var statue = "logout";
@@ -364,7 +362,7 @@ h3 {
 			<div id="sidr" style="text-align: center;">
 				<!-- Your content -->
 				<div id="myInfoDiv">
-					<img src="/cas/resources/sinhea.jpg" class="img-circle"
+					<img src="${loginUser.memFrofileimage }" class="img-circle"
 						alt="Cinque Terre" style="width:65%; height:auto; margin-top: 15px;margin-bottom: 15px;"> 
 					<label class="myInfoLabel">${loginUser.memName}</label> 
 					<label class="myInfoLabel">${loginUser.memPoint} point</label>

@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
+<!-- sweetalert하기 위한 링크 -->
+<link rel="stylesheet" href="/cas/resources/css/sweetalert.css">
+<script src="/cas/resources/js/sweetalert/sweetalert.min.js"></script>
 
 	<link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css"
 		type="text/css">
@@ -80,39 +83,33 @@ div.company-wrap {
 					<div class="col-lg-12">
 						<div class="table-responsive">
 							<table class="table table-bordered"
-								style="text-align: center; width: auto;">
+								style="text-align: left; width: 925px;">
 								<tbody>
 									<tr>
 										<th
 											style="width: 10%; text-align: center; background-color: #eeeeee">제목</th>
-										<td></td>
+										<td>${articleVO.contentTitle}</td>
 									</tr>
 									<tr>
 										<th style="text-align: center; background-color: #eeeeee">작성자</th>
-										<td></td>
+										<td>${articleVO.contentWriter}</td>
 									</tr>
 									<tr>
 										<th style="text-align: center; background-color: #eeeeee">작성일</th>
-										<td></td>
+										<td>${articleVO.contentRegisDate}</td>
 									</tr>
 									<tr>
-										<td colspan="3" style="background-color: #eeeeee"><label
+										<td colspan="3" style="background-color: #eeeeee;text-align:center;"><label
 											for="InputMessage">내용</label></td>
 									</tr>
 									<tr>
-										<td colspan="5"><textarea name="InputMessage"
-												id="InputMessage" class="form-control" rows="7" required></textarea>
+										<td style="height: 200px;" colspan="5">${articleVO.contentContent }
 										</td>
-									</tr>
-									<tr>
-										<td style="background-color: #eeeeee"><label>첨부파일</label>
-										</td>
-										<td></td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="form-group">
-								<a href="noticeList"><input type="button" name="submit"
+								<a href="freeboardList"><input type="button" name="submit"
 									id="submit" value="목록" class="btn btn-info pull-right" /></a>
 								<div class="form-group" style="float: left;">
 									<button data-toggle="modal" data-target="#squarespaceModal"
@@ -447,14 +444,6 @@ div.company-wrap {
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="exampleInputtext">닉네임</label> <input type="text"
-								class="form-control" id="text">
-						</div>
-						<div class="form-group">
-							<label for="exampleInputtext">내용</label> <input type="text"
-								class="form-control" id="text">
-						</div>
-						<div class="form-group">
 							<label for="exampleInputtext">신고분류</label>
 							<div class="checkbox">
 								<label> <input type="checkbox"> 광고(성인광고 포함)
@@ -480,24 +469,39 @@ div.company-wrap {
 								<label> <input type="checkbox"> 기타
 								</label>
 							</div>
-							<div class="form-group">
-								<label for="exampleInputtext">신고내용</label>
-								<textarea style="width: 100%; height: 50px" name="note">무분별한 노잼따</textarea>
-							</div>
+						<div class="form-group">
+							<label for="exampleInputtext">신고자</label> <input type="text"
+								class="form-control" id="text">
 						</div>
+						<div class="form-group">
+							<label for="exampleInputtext">신고 내용</label> <input type="text"
+								class="form-control" id="text">
+						</div>
+						</div>
+						<input type="hidden" name="" value="${session.loginUser.memId}">
 					</form>
 				</div>
 				<div class="modal-footer">
 					<div class="btn-group btn-group-justified" role="group"
 						aria-label="group button">
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-default"
+							<button type="button" class="btn btn-danger"
 								data-dismiss="modal" role="button">닫기</button>
 						</div>
 						<div class="btn-group" role="group">
-							<button type="button" id="submit"
-								class="btn btn-default btn-hover-green" data-action="submit"
-								role="button">신고하기</button>
+							<button type="submit" id="test"
+								class="btn btn-primary" data-action="submit" role="button">신고하기</button>
+								
+							<script>
+								$(function(){
+									$('#test').on('click',function(){
+										swal('신고완료','신고가 완료되었습니다.','success');
+										$('.confirm').bind('click',function(){
+											$('#squarespaceModal').modal('hide');
+										});
+									});
+								});
+							</script>
 						</div>
 					</div>
 				</div>

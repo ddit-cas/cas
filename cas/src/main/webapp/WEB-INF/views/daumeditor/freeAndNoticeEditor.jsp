@@ -4,32 +4,12 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta charset="UTF-8">
 
-<body>
-<div class="body" id="body">
-	<div>
-		<c:if test="${boardCode=='B005' }">
-		자유게시판
-		</c:if>
-		<c:if test="${boardCode=='B001' }">
-		 공지사항
-		</c:if>
-	</div>
 	<!-- 에디터 시작 -->
 	<!--
 		@decsription
 		등록하기 위한 Form으로 상황에 맞게 수정하여 사용한다. Form 이름은 에디터를 생성할 때 설정값으로 설정한다.
 	-->
 	<div>
-	<form name="tx_editor_form" style="width: 750px;" id="tx_editor_form" action="/cas/member/${resultUrl}" method="post" accept-charset="utf-8">
-		<div class="col-sm-1">제목</div>
-		<div class="col-sm-9">
-			<input type="text" name="contentTitle" value="${articleVO.contentTitle }">
-			<c:if test="${not empty articleVO }">
-				<input type="hidden" name="contentWriter" value="${articleVO.contentWriter }">
-				<input type="hidden" name="contentNum" value="${articleVO.contentNum }">
-			</c:if>
-			<input type="hidden" name="boardCode" value="${boardCode }">
-		</div>
 		<!-- 에디터 컨테이너 시작 -->
 		<div id="tx_trex_container" class="tx-editor-container">
 			<!-- 사이드바 -->
@@ -447,9 +427,7 @@
 				<!-- 첨부박스 끝 -->
 		</div>
 		<!-- 에디터 컨테이너 끝 -->
-	</form>
 	</div>
-</div>
 <!-- 에디터 끝 -->
 <script type="text/javascript">
 	var config = {
@@ -495,7 +473,7 @@
 
 		},
 		size: {
-			contentWidth: 500 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
+			contentWidth: 726 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
 		}
 	};
 
@@ -581,14 +559,7 @@
         return true;
 	}
 </script>
-<c:choose>
-<c:when test='${not empty articleVO}'>
-<div><button onclick='saveContent()'>수정</button></div>
-</c:when>
-<c:otherwise>
-<div><button onclick='saveContent()'>등록</button></div>
-</c:otherwise>
-</c:choose>
+
 <!-- End: Saving Contents -->
 
 <!-- Sample: Loading Contents -->
@@ -638,6 +609,3 @@
 	</script>
 </c:if>
 
-
-</body>
-</html>

@@ -5,60 +5,83 @@ public class MemberVO {
 	private String memId;
 	private String memPwd;
 	private String memName;
-	private String memNameYn;
 	private String memEmail;
-	private String memEmailYn;
 	private String memMailnumber;
-	private String memAddr;
+	private String memAddr1;
+	private String memAddr2;
 	private String memNick;
 	private String memFrofileimage;
 	private String memBirthdate;
 	private String memPoint;
 	private String memSex;
 	private String memHp;
-	private String memHpYn;
 	private String memSginup_date;
 	private String sancCode;
 	private String rankCode;
 	private String memCareer;
 	private String memActive;
-	private String memName_yn;
-	private String memEmail_yn;
-	private String memHp_yn;
 	private String enabled;
 	private String authority;
 	private String classifyCode;
+	private String memAge;
+	private String teamName;
+	private String teamPosi;
+	private String teamInfo;
 	
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+
+	public String getTeamPosi() {
+		return teamPosi;
+	}
+
+	public void setTeamPosi(String teamPosi) {
+		this.teamPosi = teamPosi;
+	}
+
+	public String getTeamInfo() {
+		return teamInfo;
+	}
+
+	public void setTeamInfo(String teamInfo) {
+		this.teamInfo = teamInfo;
+	}
+
+	public String getMemAddr1() {
+		return memAddr1;
+	}
+
+	public void setMemAddr1(String memAddr1) {
+		this.memAddr1 = memAddr1;
+	}
+
+	public String getMemAddr2() {
+		return memAddr2;
+	}
+
+	public void setMemAddr2(String memAddr2) {
+		this.memAddr2 = memAddr2;
+	}
+
+	public String getMemAge() {
+		return memAge;
+	}
+
+	public void setMemAge(String memAge) {
+		this.memAge = memAge;
+	}
+
 	public String getClassifyCode() {
 		return classifyCode;
 	}
 
 	public void setClassifyCode(String classifyCode) {
 		this.classifyCode = classifyCode;
-	}
-
-	public String getMemNameYn() {
-		return memNameYn;
-	}
-
-	public void setMemNameYn(String memNameYn) {
-		this.memNameYn = memNameYn;
-	}
-
-	public String getMemEmailYn() {
-		return memEmailYn;
-	}
-
-	public void setMemEmailYn(String memEmailYn) {
-		this.memEmailYn = memEmailYn;
-	}
-
-	public String getMemHpYn() {
-		return memHpYn;
-	}
-
-	public void setMemHpYn(String memHpYn) {
-		this.memHpYn = memHpYn;
 	}
 
 	public String getMemCareer() {
@@ -75,30 +98,6 @@ public class MemberVO {
 
 	public void setMemActive(String memActive) {
 		this.memActive = memActive;
-	}
-
-	public String getMemName_yn() {
-		return memName_yn;
-	}
-
-	public void setMemName_yn(String memName_yn) {
-		this.memName_yn = memName_yn;
-	}
-
-	public String getMemEmail_yn() {
-		return memEmail_yn;
-	}
-
-	public void setMemEmail_yn(String memEmail_yn) {
-		this.memEmail_yn = memEmail_yn;
-	}
-
-	public String getMemHp_yn() {
-		return memHp_yn;
-	}
-
-	public void setMemHp_yn(String memHp_yn) {
-		this.memHp_yn = memHp_yn;
 	}
 
 	public String getEnabled() {
@@ -155,14 +154,6 @@ public class MemberVO {
 
 	public void setMemMailnumber(String memMailnumber) {
 		this.memMailnumber = memMailnumber;
-	}
-
-	public String getMemAddr() {
-		return memAddr;
-	}
-
-	public void setMemAddr(String memAddr) {
-		this.memAddr = memAddr;
 	}
 
 	public String getMemNick() {

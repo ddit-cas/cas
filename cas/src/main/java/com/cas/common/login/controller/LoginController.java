@@ -1,5 +1,13 @@
 package com.cas.common.login.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,8 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.TeamVO;
 import com.cas.member.service.MemberService;
 @Controller
 public class LoginController {
@@ -30,15 +42,21 @@ public class LoginController {
 	/*로그인 해주는 메서드*/
 	@RequestMapping("/login")
 	public String loginMember(MemberVO member ,HttpServletRequest request,HttpSession session){
-		String url = "loginFailed";
+		String uri = request.getHeader("referer");
+		System.out.println("요청페이지"+uri);
+		String url = "member/goMain";
+		if(uri!=null){
+			url = uri.substring(20);
+			System.out.println("주소가 뭔가요?"+url);
+		}
 		if(memberService.checkId(member.getMemId())){
 			System.out.println("아이디 체크는 성공하니?");
 			if(memberService.checkPwd(member.getMemId(),member.getMemPwd())){
-				url="member/goMain";
+				System.out.println("비번체크성공하니?");
 				session.setAttribute("loginUser", memberService.selectMember(member.getMemId()));
 			}
 		}
-		return url;
+		return "redirect:"+url;
 	}
 	
 	/*아이디 찾기 화면으로 간다*/
@@ -90,7 +108,86 @@ public class LoginController {
 	
 	/*회원가입을 하는 메서드*/
 	@RequestMapping("/joinMember")
-	public String joinMember(MemberVO member){
+	public String joinMember(HttpServletRequest request,MemberVO member,@RequestParam("memProfileimage") MultipartFile multipartFile){
+		String upload = request.getSession().getServletContext()
+				.getRealPath("upload/member");
+		
+		/*가입한 회원의 사진저장*/
+		if (!multipartFile.isEmpty()) {
+			File file = new File(upload, multipartFile.getOriginalFilename()
+					+ request.getParameter("memName") + System.currentTimeMillis());
+
+			try {
+				multipartFile.transferTo(file);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			String proFileimage = request.getContextPath()+ "/upload/member/" + file.getName();
+			member.setMemFrofileimage(proFileimage);
+		}
+		
+		/*팀원의 사진저장*/
+		
+		/*팀원들 객체*/
+		List<TeamVO> teamList = new ArrayList<TeamVO>();
+		
+		MultipartHttpServletRequest mpRequest = (MultipartHttpServletRequest) request;
+		Iterator parameterNames = mpRequest.getFileNames();
+		List<String> parameterNamesList = new ArrayList<String>();
+		
+		while (parameterNames.hasNext()) {
+			String fileName = (String) parameterNames.next();
+			TeamVO team = new TeamVO();
+			String index = fileName.substring(9);
+			
+			String teamMemName = "";
+			
+			/*팀원 이름과 역할을 넣어주자*/
+			Enumeration enumeration = request.getParameterNames();
+			while (enumeration.hasMoreElements()) {
+				String name = (String) enumeration.nextElement();
+				if (name.contains("teamName")&&name.substring(8).equals(index)) {
+					System.out.println("퍼일 이름"+fileName);
+					System.out.println("파라미터 이름"+name);
+					teamMemName = request.getParameter(name);
+					System.out.println(teamMemName);
+					team.setTeamName(teamMemName);
+				}
+				if (name.contains("teamPosi")&&name.substring(8).equals(index)) {
+					System.out.println("퍼일 이름"+fileName);
+					System.out.println("파라미터 이름"+name);
+					team.setTeamPosi(request.getParameter(name));
+				}
+			}
+			
+			MultipartFile multiFile = mpRequest.getFile(fileName);
+			if (!multiFile.isEmpty()&&!fileName.contains("memProfileimage")) {
+				File file = new File(upload, multiFile.getOriginalFilename()
+						+ teamMemName+index + System.currentTimeMillis());
+				try {
+					multiFile.transferTo(file);
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				String teamInfo = request.getContextPath()+ "/upload/member/" + file.getName();
+				team.setTeamInfo(teamInfo);
+				team.setMemId(member.getMemId());
+				
+				teamList.add(team);
+			}
+		}
+		
+		Date today = new Date();
+		
+		int nowYear = today.getYear()+1900;
+		String memAge = (((nowYear-Integer.parseInt(member.getMemBirthdate().substring(0,4)))/10)*10)+"";
+		member.setMemAge(memAge);
 		
 		int result=-1;
 		result = memberService.insertMember(member);
@@ -101,6 +198,8 @@ public class LoginController {
 		}else{
 			url="member/signUp/successSignUp";
 		}
+		
+		memberService.insertTeamList(teamList);
 		
 		return url;
 	}

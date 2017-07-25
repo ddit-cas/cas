@@ -24,11 +24,14 @@
 	</resultMap>
 	
 	<insert id="insertArticle" parameterClass="article">						
-		INSERT INTO CONTENT VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#
-			,#contentContent#,SYSDATE,#contentParentsContent#,'test','n','y'
-			,#consertNum#,#contentImg#,#fundingNum#)																		
+		INSERT INTO CONTENT(CONTENT_NUM, BOARD_CODE,  CONTENT_TITLE, CONTENT_CONTENT,
+							CONTENT_REGIS_DATE, CONTENT_PARENTS_CONTENT, CONTENT_WRITER, 
+							CONTENT_IMPORTANCE, CONTENT_STATE, CONSERT_NUM,CONTENT_IMG, FUNDING_NUM) 
+			VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#
+			,SYSDATE,#contentParentsContent#,#contentWriter#,'n','y'
+			,#consertNum#,#contentImg#,FUNDING_SEQ.CURRVAL)																		
 	</insert>
-	
+
 	<select id="selectArticleList" resultMap="selectArticle" parameterClass="article">
 		SELECT 
 		* 
@@ -38,7 +41,25 @@
 		</isNotEmpty>
 	</select>
 	
+	<select id="selectSearchNotice" parameterClass = "map" resultMap="selectArticle">
+		select * from article where 1=1
+		<isEqual prepend="and" property="index" compareValue="title">
+			content_title like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="writer">
+			content_writer like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="date">
+			content_regis_date like '%'||#key#||'%'
+		</isEqual>
+		
+</select>
+	
 	<select id="selectArticle" resultMap="selectArticle" parameterClass="article">
+		select * from article where board_code=#boardCode# and content_num=#contentNum#
+	</select>
+
+	<select id="selectnotice" resultMap="selectArticle" parameterClass="article">
 		select * from content where board_code=#boardCode# and content_num=#contentNum#
 	</select>
 	

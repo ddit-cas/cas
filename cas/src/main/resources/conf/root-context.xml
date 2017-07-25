@@ -100,5 +100,33 @@
 		class="com.cas.member.service.impl.MemberServiceImpl"
 		p:memberDao-ref="memberDao"
 	></bean>
+	
+	<!-- 펀드 다오 빈 등록 -->
+	<bean
+		name="fundDao"
+		class="com.cas.fund.dao.impl.FundDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
+	
+	<!-- 펀드 서비스 빈 등록 -->
+	<bean
+		name="fundService"
+		class="com.cas.fund.service.impl.FundServiceImpl"
+		p:fundDao-ref="fundDao"
+	></bean>
+	
 
+<!-- 		공지사항 서비스등록		 -->
+	<bean
+		name="noticeService"
+		class="com.cas.notice.service.impl.NoticeServiceImpl"
+		p:noticeDao-ref="noticeDao"
+	></bean>
+	<!-- 		 공지사항 다오 등록		 -->
+	<bean
+		name="noticeDao"
+		class="com.cas.notice.dao.impl.NoticeDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+		></bean>
+	
 </beans>

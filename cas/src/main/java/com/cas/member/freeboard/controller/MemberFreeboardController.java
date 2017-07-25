@@ -38,7 +38,7 @@ public class MemberFreeboardController {
 		}else{
 			model.addAttribute("resultUrl","insertFreeboard");
 		}
-		return "/daumeditor/editor";
+		return "/member/community/freeBoard/freeboardForm";
 		//성빈님? 성빈형아? 성빈삼촌? 못해먹겠어요 ㅠㅠ
 		//도와주시는척하고 자꾸 도망가시면 저도 더이상 참치 않겠읍니다.
 	}

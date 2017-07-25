@@ -14,6 +14,7 @@
 		<result property="contentContent" column="content_content"/>
 		<result property="contentParentsContent" column="content_parents_content"/>
 		<result property="contentWriter" column="content_writer"/>
+		<result property="contentCount" column="comment_count"/>
 	</resultMap>
 	
 	<insert id="insertComment" parameterClass="comment">
@@ -27,10 +28,19 @@
 		       A.content_title,
 		       A.content_content,
 		       A.content_parents_content,
-		       A.content_writer
+		       A.content_writer,
+		       (select count(B.content_parents_content)
+		        from content B
+		        where A.content_num=B.content_parents_content
+		          and (B.content_state='y' or B.content_state='Y')) comment_count
 		from  content A
-		start with A.content_parents_content is null and content_num=#str#
+	    where lower(A.content_state)='y'
+		start with A.content_parents_content is null and A.content_num=#str# and (A.content_state='y' or A.content_state='Y') 
 		connect by prior A.content_num=A.content_parents_content
     	order siblings by A.content_regis_date asc
 	</select>
+	
+	<update id="updateCommentContent" parameterClass="comment">
+		update content set content_content=#contentContent# where content_num=#contentNum#
+	</update>
 </sqlMap>
