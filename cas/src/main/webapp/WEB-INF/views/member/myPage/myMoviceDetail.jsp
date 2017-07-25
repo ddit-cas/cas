@@ -197,7 +197,7 @@ img {
 </style>
 	<div id="body">
 		<div class="company-cont" style="height: auto; width: 960px;">
-			<h3 class="box" style="background-color: #0B2161;">My Movie</h3>
+			<h3 class="box" style="">My UCC</h3>
 			<div class="container">
 				<div class="row">
 					<div class="content col-md-10" style="font-size: 16px">

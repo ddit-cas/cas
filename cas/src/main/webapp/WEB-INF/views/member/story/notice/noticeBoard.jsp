@@ -41,7 +41,7 @@ li a:hover {
 			<h2>cas-이야기</h2>
 			<div class="">
 				<ul>
-					<li class="active"><a href="noticeList">공지사항</a></li>
+					<li class="active"><a href="/cas/member/story/notice/noticeList">공지사항</a></li>
 					<!--li><a href="people.php">PEOPLE</a></li-->
 					<li><a href="#">CAS란</a></li>
 					<li><a href="#">공연 행사 일정</a></li>
@@ -54,27 +54,34 @@ li a:hover {
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 				<div class="selectcheck">
-					<form class="form-inline">
+					<form class="form-inline" id="search">
 						<p>
-							<img src="resources/images/free.png"
+							<img src="resources/images/noticee.png"
 								style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
 						</p>
 						<!-- 검색 -->
 						<div class="searchgroup" style="float: right">
 							<select class="form-control">
-								<option value="title">제목</option>
-								<option value="writer" selected>작성자</option>
-								<option value="date">작성일</option>
+								<option name="title" value="title">제목</option>
+								<option name="writer" value="writer" selected>작성자</option>
+								<option name="date" value="date">작성일</option>
 							</select>
 							<div class="form-group">
 								<input class="form-control" id="focusedInput" type="text"
-									placeholder="   검색    " style="margin: 0 auto 5px;"> <input
-									type="button" id="search" class="form-control" value="검색">
+									placeholder="   검색    " style="margin: 0 auto 5px;"> 
+								<input type="button" id="search" class="form-control" onclick="search_go();" name="search" value="검색">
 								<input type="button" class="form-control" id="list" value="목록">
 							</div>
+						</div>
 						</form>
 					</div>
 				</div>
+<script>
+	function search_go(){
+		form.href="";
+		form.method="get";
+	}
+</script>				
 				<!--테이블 리스트-->
 				<table class="table table-hover"
 					style="width: 800px; margin: 0 auto;">
@@ -88,7 +95,7 @@ li a:hover {
 					<tbody style="text-align: center; font-size: 15px;">
 						<c:forEach var="content" items="${articleList}">
 							<tr>
-								<td><a href="noticeDetail">${content.contentTitle}</a></td>
+								<td><a href="noticeDetail?contentNum=${content.contentNum}">${content.contentTitle}</a></td>
 								<td>${content.contentWriter}</td>
 								<td>${content.contentRegisDate}</td>
 							</tr>

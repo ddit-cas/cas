@@ -34,12 +34,23 @@ public class NoticeController {
 		return url;
 	}
 	
+	@RequestMapping("/noticeSearch")
+	public String noticeSearch(HttpServletRequest request){
+		String title = request.getParameter("title");
+		String wirter = request.getParameter("wirter");
+		String date = request.getParameter("date");
+		
+		String search = request.getParameter("search");
+		
+		return null;
+	}
+	
 	/*공지사항 세부내용을 보는 메서드*/
 	@RequestMapping("/noticeDetail")
 	public String noticeDetail(HttpServletRequest request,Model model){
 		ArticleVO articleVO = articleService.selectArticle(request.getParameter("contentNum"), "B001");
 		model.addAttribute("articleVO",articleVO);
-		return "member/story/notice/noticeDetali";
+		return "/member/story/notice/noticeDetail";
 	}
 	/*게시물을 신고하는 메서드*/
 	@RequestMapping("/declaration")

@@ -23,7 +23,7 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public ArticleVO selectNotice(String articleId,String boardCode) {
-		return /*NoticeDao.selectAticle(articleId, boardCode)*/null;
+		return noticeDao.selectNotice(articleId, boardCode);
 	}
 
 	@Override

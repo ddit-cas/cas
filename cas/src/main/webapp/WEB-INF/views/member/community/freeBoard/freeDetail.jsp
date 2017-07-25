@@ -3,6 +3,9 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
+<!-- sweetalert하기 위한 링크 -->
+<link rel="stylesheet" href="/cas/resources/css/sweetalert.css">
+<script src="/cas/resources/js/sweetalert/sweetalert.min.js"></script>
 
 	<link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css"
 		type="text/css">
@@ -100,8 +103,7 @@ div.company-wrap {
 											for="InputMessage">내용</label></td>
 									</tr>
 									<tr>
-										<td colspan="5"><textarea name="InputMessage"
-												id="InputMessage" class="form-control" rows="7" required>${articleVO.contentContent }</textarea>
+										<td style="height: 200px;" colspan="5">${articleVO.contentContent }
 										</td>
 									</tr>
 								</tbody>
@@ -442,14 +444,6 @@ div.company-wrap {
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="exampleInputtext">닉네임</label> <input type="text"
-								class="form-control" id="text">
-						</div>
-						<div class="form-group">
-							<label for="exampleInputtext">내용</label> <input type="text"
-								class="form-control" id="text">
-						</div>
-						<div class="form-group">
 							<label for="exampleInputtext">신고분류</label>
 							<div class="checkbox">
 								<label> <input type="checkbox"> 광고(성인광고 포함)
@@ -475,24 +469,39 @@ div.company-wrap {
 								<label> <input type="checkbox"> 기타
 								</label>
 							</div>
-							<div class="form-group">
-								<label for="exampleInputtext">신고내용</label>
-								<textarea style="width: 100%; height: 50px" name="note">무분별한 노잼따</textarea>
-							</div>
+						<div class="form-group">
+							<label for="exampleInputtext">신고자</label> <input type="text"
+								class="form-control" id="text">
 						</div>
+						<div class="form-group">
+							<label for="exampleInputtext">신고 내용</label> <input type="text"
+								class="form-control" id="text">
+						</div>
+						</div>
+						<input type="hidden" name="" value="${session.loginUser.memId}">
 					</form>
 				</div>
 				<div class="modal-footer">
 					<div class="btn-group btn-group-justified" role="group"
 						aria-label="group button">
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-default"
+							<button type="button" class="btn btn-danger"
 								data-dismiss="modal" role="button">닫기</button>
 						</div>
 						<div class="btn-group" role="group">
-							<button type="button" id="submit"
-								class="btn btn-default btn-hover-green" data-action="submit"
-								role="button">신고하기</button>
+							<button type="submit" id="test"
+								class="btn btn-primary" data-action="submit" role="button">신고하기</button>
+								
+							<script>
+								$(function(){
+									$('#test').on('click',function(){
+										swal('신고완료','신고가 완료되었습니다.','success');
+										$('.confirm').bind('click',function(){
+											$('#squarespaceModal').modal('hide');
+										});
+									});
+								});
+							</script>
 						</div>
 					</div>
 				</div>
