@@ -405,7 +405,6 @@ function fundEntrollment_go(){
 								<span class="pull-left">
 									<button type="button" id="investBtn2" class="btn-block bg_primary btn-xl" style="color: #fff; width: 211px; margin-right: 10px; height: 58px; border: 1px solid #cbcbcb;" onclick="investProc('592');">투자하기</button>
 								</span>
-								<c:if test="${not empty loginUser }">
 								<span class="pull-left zzim-after hide">
 									<button type="button" class="btn-zzim on" style="height: 60px;">
 										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like_on.png"></i> <span id="zzim-cnt-on"></span>
@@ -417,8 +416,6 @@ function fundEntrollment_go(){
 										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like.png"> </i><span id="zzim-cnt">83</span>
 									</button>
 								</span>
-								</c:if>
-								
 							</div>
 																
 						</div>
@@ -440,23 +437,24 @@ function fundEntrollment_go(){
 // 		cnt--
 // 		$('span#zzim-cnt').text(cnt);
 		
+		var $param = $.param({contentNum:"${fund.contentNum}"});
 		if($('.zzim-before').hasClass('hide')){
-			$.post('/cas/member/unlikeContent', contentNum="${fund.contentNum}" , 
+			$.post('/cas/member/unlikeContent', $param , 
 					function(res){
-				cnt--;
-				$('.zzim-before').removeClass('hide');
-				$('.zzim-after').addClass('hide');
-				$('#zzim-cnt').text(cnt);
 			})
+			cnt--;
+			$('.zzim-before').removeClass('hide');
+			$('.zzim-after').addClass('hide');
+			$('#zzim-cnt').text(cnt);
 		}else{
 			//url, data , success function     
-			$.post('/cas/member/likeContent', contentNum="${fund.contentNum}" , 
+			$.post('/cas/member/likeContent', $param , 
 					function(res){  
-				cnt++;
-				$('.zzim-before').addClass('hide');
-				$('.zzim-after').removeClass('hide');
-				$('#zzim-cnt-on').text(cnt);
 			})
+			cnt++;
+			$('.zzim-before').addClass('hide');
+			$('.zzim-after').removeClass('hide');
+			$('#zzim-cnt-on').text(cnt);
 		}
 	})
 
