@@ -21,4 +21,7 @@ public interface FundDao {
 	
 	/*펀드를 딜리트 하는 메서드*/
 	public void deleteFund(FundVO fund);
+
+	/*순위권 펀딩을 가져오는 메서드*/
+	public List<IngFundVO> selectTopFundList();
 }
