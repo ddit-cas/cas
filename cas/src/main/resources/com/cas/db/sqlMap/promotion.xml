@@ -46,7 +46,7 @@
 	</insert>
 	
 	<select id="selectLastConsertNum" resultClass="str">
-		SELECT to_char(LAST_NUMBER)
+		SELECT to_char(LAST_NUMBER-1)
 		FROM USER_SEQUENCES
 		WHERE SEQUENCE_NAME = 'CONSERT_SEQ'
 	</select>

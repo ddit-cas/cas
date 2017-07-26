@@ -29,7 +29,7 @@
 							CONTENT_IMPORTANCE, CONTENT_STATE, CONSERT_NUM,CONTENT_IMG, FUNDING_NUM) 
 			VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#
 			,SYSDATE,#contentParentsContent#,#contentWriter#,'n','y'
-			,#consertNum#,#contentImg#,FUNDING_SEQ.CURRVAL)																		
+			,#consertNum#,#contentImg#,#fundingNum#)																		
 	</insert>
 
 	<select id="selectArticleList" resultMap="selectArticle" parameterClass="article">

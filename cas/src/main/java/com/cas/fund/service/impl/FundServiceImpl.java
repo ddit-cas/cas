@@ -2,6 +2,7 @@ package com.cas.fund.service.impl;
 
 import java.util.List;
 
+import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.fund.dao.FundDao;
@@ -28,8 +29,8 @@ public class FundServiceImpl implements FundService{
 	}
 
 	@Override
-	public boolean insertFund(FundVO fund) {
-		return fundDao.insertFund(fund);
+	public boolean insertFund(FundVO fund, ArticleVO article) {
+		return fundDao.insertFund(fund, article);
 	}
 
 	@Override
@@ -43,5 +44,4 @@ public class FundServiceImpl implements FundService{
 		// TODO Auto-generated method stub
 		
 	}
-
 }

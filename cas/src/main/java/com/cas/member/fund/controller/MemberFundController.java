@@ -32,7 +32,6 @@ public class MemberFundController {
 	@Autowired
 	private ArticleService articleService;
 	
-	
 	/*펀딩을 등록하기 전 Intro 호출하는 메서드*/
 	@RequestMapping("/member/insertFundIntro")
 	public String insertFundIntro(){
@@ -59,9 +58,7 @@ public class MemberFundController {
 	/*양식에 맞게 입력한 펀딩을 인서트하는 메서드*/
 	@RequestMapping("/member/insertFund")
 	public String insertFund(HttpServletRequest request, FundVO fund, ArticleVO article){
-		fundService.insertFund(fund);
-		articleService.insertArticle(article);
-		
+		fundService.insertFund(fund, article);
 		return "member/main";
 	}
 }
