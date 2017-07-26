@@ -6,6 +6,7 @@ import java.util.List;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.ConsertVO;
 import com.cas.db.dto.GenreVO;
+import com.cas.db.dto.LikeVO;
 import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
 import com.cas.promotion.dao.PromotionDao;
@@ -39,8 +40,14 @@ public class PromotionDaoImpl implements PromotionDao {
 			sqlMapClient.update("insertConsert", consertVO);
 			String consertNum=(String)sqlMapClient.queryForObject("selectLastConsertNum");
 			articleVO.setConsertNum(consertNum);
+			System.out.println("공연번호 ------------>"+articleVO.getConsertNum() );
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
 			sqlMapClient.update("insertArticle", articleVO);
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -70,5 +77,19 @@ public class PromotionDaoImpl implements PromotionDao {
 		}
 		System.out.println(promotionList.size());
 		return promotionList;
+	}
+
+	@Override
+	public int isLike(LikeVO like) {
+		int isLike=0;
+			System.out.println(like.getContentNum());
+			System.out.println(like.getLoginUser());
+		try {
+			isLike=(Integer) sqlMapClient.queryForObject("isLike", like);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return isLike;
 	}
 }

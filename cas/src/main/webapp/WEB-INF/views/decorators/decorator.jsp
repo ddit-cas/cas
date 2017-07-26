@@ -362,8 +362,7 @@ h3 {
 			<div id="sidr" style="text-align: center;">
 				<!-- Your content -->
 				<div id="myInfoDiv">
-					<img src="${loginUser.memFrofileimage }" class="img-circle"
-						alt="Cinque Terre" style="width:65%; height:auto; margin-top: 15px;margin-bottom: 15px;"> 
+					<img src="${loginUser.memFrofileimage }" class="img-circle" alt="Cinque Terre" style="width:65%; height:140px; margin-top: 15px;margin-bottom: 15px; background: #222;"> 
 					<label class="myInfoLabel">${loginUser.memName}</label> 
 					<label class="myInfoLabel">${loginUser.memPoint} point</label>
 				</div>
@@ -422,7 +421,7 @@ h3 {
 							<li><a href="/cas/noticeList">공지사항</a></li>
 							<li><a href="promotion">CAS란</a></li>
 							<li><a href="#">펀딩 성공 사례</a></li>
-							<li><a href="#">공연 행사 일정</a></li>
+							<li><a href="/cas/showSchedule">공연 행사 일정</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">

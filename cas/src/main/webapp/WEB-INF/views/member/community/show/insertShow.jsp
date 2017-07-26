@@ -32,7 +32,7 @@
  		<label style="color:#ffffff; font-size:24px;"><strong>공연등록</strong></label>
  	</div>
 	<form name="tx_editor_form" style="width: 100%;height: auto;" id="tx_editor_form" action="/cas/member/insertPromotion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-		<input type="hidden" name="contentWriter" value="${loginUser }">
+		<input type="hidden" name="contentWriter" value="${loginUser.memId }">
 		<input type="hidden" name="consertGeograp" >
 		
 		<div style="float:left; width: 40%;">
@@ -44,8 +44,8 @@
 				<input id="posterImage-input" name="posterImage"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
 			</div>
 			<div>
-				<label>간략설명</label>
-				<textarea name='consertContent' style="width: 10%;height: 221px;" placeholder="(400자 이내로 기술하시오)"></textarea>
+				<label style="width:100%;">간략설명</label>
+				<textarea name='consertContent' style="width: 100%;height: 221px;" placeholder="(400자 이내로 기술하시오)"></textarea>
 			</div>
 		</div>
 	
