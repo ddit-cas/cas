@@ -2,11 +2,8 @@ package com.cas.member.qna.controller;
 
 import java.util.List;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import oracle.net.aso.s;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,10 +26,12 @@ public class MemberQnaController {
 	/*1대1질문을 할수있는 양식 페이지로 가는 메서드*/
 	@RequestMapping("/member/insertQnaForm")
 	public String insertQnaForm(HttpSession session, Model model){
-		
-		MemberVO member = (MemberVO) session.getAttribute("loginUser");
-		model.addAttribute("member", member);
-		
+		if(session.getAttribute("loginUser")==null){
+			
+		}else{
+			MemberVO member = (MemberVO) session.getAttribute("loginUser");
+			model.addAttribute("member", member);
+		}
 		return "/member/qna/QNA";
 	}
 	

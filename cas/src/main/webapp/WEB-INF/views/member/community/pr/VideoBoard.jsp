@@ -45,9 +45,9 @@ li a:hover {
 		<h2>커뮤니티</h2>
 		<div class="">
 			<ul>
-				<li class="active"><a href="freeboardList">자유게시판</a></li>
-				<li><a href="promotionList">공연홍보</a></li>
-				<li><a href="uccList">PR영상</a></li>
+				<li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
+				<li><a href="/cas/promotionList">공연홍보</a></li>
+				<li><a href="/cas/uccList">PR영상</a></li>
 			</ul>
 		 </div>
 	</div>

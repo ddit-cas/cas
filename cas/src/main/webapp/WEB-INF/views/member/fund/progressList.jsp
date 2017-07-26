@@ -59,9 +59,9 @@ function fundEntrollment_go(){
 			<h2>크라우드 펀딩</h2>
 			<div class="">
 				<ul>
-					<li class="active"><a href="fundList">진행중인 펀딩</a></li>
-					<li><a href="endFundList">종료된 펀딩</a></li>
-					<li><a href="fundingExampleList">성공한 펀딩 </a></li>
+					<li class="active"><a href="/cas/fundList">진행중인 펀딩</a></li>
+					<li><a href="/cas/endFundList">종료된 펀딩</a></li>
+					<li><a href="/cas/fundingExampleList">성공한 펀딩 </a></li>
 					<li>
 						<span class="btn">
 							<button class="btn btn-primary" onclick='fundEntrollment_go();' style = "background-color:#26bbe2;">펀딩 등록하기</button>

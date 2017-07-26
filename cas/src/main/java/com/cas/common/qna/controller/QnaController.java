@@ -2,17 +2,15 @@ package com.cas.common.qna.controller;
 
 import java.util.List;
 
-import oracle.net.aso.s;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cas.article.service.ArticleService;
 import com.cas.db.dto.ArticleVO;
-import com.cas.db.dto.Paging;
 
 @Controller
 public class QnaController {
@@ -32,7 +30,7 @@ public class QnaController {
 	
 	/*자주하는 질문 리스트로 가는 메서드*/
 	@RequestMapping("/faqList")
-	public String faqList(Model model, HttpRequest request){
+	public String faqList(Model model, HttpServletRequest request){
 		
 		List<ArticleVO> list =  articleService.selectArticleList("B002");
 
