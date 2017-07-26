@@ -70,7 +70,7 @@ div.company-wrap {
 				<ul>
 					<li class="active"><a href="noticeList">공지사항</a></li>
 					<!--li><a href="people.php">PEOPLE</a></li-->
-					<li><a href="#">CAS란</a></li>
+					<li><a href="promotion">CAS란</a></li>
 					<li><a href="#">공연 행사 일정</a></li>
 				</ul>
 			</div>

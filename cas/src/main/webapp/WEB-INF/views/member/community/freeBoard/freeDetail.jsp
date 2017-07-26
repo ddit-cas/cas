@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
@@ -7,58 +7,58 @@
 <link rel="stylesheet" href="/cas/resources/css/sweetalert.css">
 <script src="/cas/resources/js/sweetalert/sweetalert.min.js"></script>
 
-	<link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css"
-		type="text/css">
-	<style>
+   <link rel="stylesheet" href="/cas/resources/css/casSuccessDetail.css"
+      type="text/css">
+   <style>
 #body {
-	margin-top:
+   margin-top:
 }
 
 .center {
-	margin-top: 50px;
+   margin-top: 50px;
 }
 
 .modal-header {
-	padding-bottom: 5px;
+   padding-bottom: 5px;
 }
 
 .modal-footer {
-	padding: 0;
+   padding: 0;
 }
 
 .modal-footer .btn-group button {
-	height: 40px;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border: none;
-	border-right: 1px solid #ddd;
+   height: 40px;
+   border-top-left-radius: 0;
+   border-top-right-radius: 0;
+   border: none;
+   border-right: 1px solid #ddd;
 }
 
 .modal-footer .btn-group:last-child>button {
-	border-right: 0;
+   border-right: 0;
 }
 
 div.company-wrap {
-	overflow: hidden;
-	width: 1000px;
-	margin: -57px 212px;
+   overflow: hidden;
+   width: 1000px;
+   margin: -57px 212px;
 }
 
 .detail-top-wrap .top-title h3 {
-	font-size: 29px;
-	line-height: 42px;
-	font-weight: 500;
-	text-align: center;
-	color: #fff;
+   font-size: 29px;
+   line-height: 42px;
+   font-weight: 500;
+   text-align: center;
+   color: #fff;
 }
 
 .wd-layout-sub-content-inner {
-	width: 1071px;
-	/* width: 1000px; */
-	margin: 0 -77px;
-	padding: 0 80px;
-	overflow: hidden;
-	/* min-height: 700px; */
+   width: 1071px;
+   /* width: 1000px; */
+   margin: 0 -77px;
+   padding: 0 80px;
+   overflow: hidden;
+   /* min-height: 700px; */
 }
 </style>
 	<script type="text/javascript">
@@ -67,15 +67,14 @@ div.company-wrap {
 	<div id="body">
 		<div class="container">
 			<div class="company-snb" style="float: left;">
-				<h2>커뮤니티</h2>
-				<div class="">
-					<ul>
-						<li class="active"><a href="freeboardList">자유게시판</a></li>
-						<!--li><a href="people.php">PEOPLE</a></li-->
-						<li><a href="#">공연홍보게시판</a></li>
-						<li><a href="#">UCC</a></li>
-					</ul>
-				</div>
+			<h2>커뮤니티</h2>
+			<div class="">
+			<ul>
+				<li class="active"><a href="freeboardList">자유게시판</a></li>
+				<li><a href="promotionList">공연홍보</a></li>
+				<li><a href="uccList">PR영상</a></li>
+			</ul>
+		</div>
 			</div>
 			<div class="company-cont" style="width: 960px;">
 				<h3 class="box">자유게시판</h3>

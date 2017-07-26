@@ -38,6 +38,7 @@
 		FROM ARTICLE WHERE 1=1
 		<isNotEmpty property="boardCode">
 			 and BOARD_CODE=#boardCode#
+			 order by content_regis_date desc
 		</isNotEmpty>
 	</select>
 	
@@ -56,7 +57,16 @@
 	</select>
 	
 	<select id="selectArticle" resultMap="selectArticle" parameterClass="article">
-		select * from article where board_code=#boardCode# and content_num=#contentNum#
+		select * from article 
+		where board_code=#boardCode# 
+		and content_num=#contentNum#
+	</select>
+	
+	<select id="selectMemberArticle" resultMap="selectArticle" parameterClass="article">
+		select * from article 
+		where board_code=#boardCode# 
+		and content_writer=#contentWriter#
+		order by content_regis_date desc
 	</select>
 
 	<select id="selectnotice" resultMap="selectArticle" parameterClass="article">

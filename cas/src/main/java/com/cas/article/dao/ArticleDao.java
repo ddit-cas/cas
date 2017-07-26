@@ -8,6 +8,9 @@ public interface ArticleDao {
 
 	/*자유게시판 글 목록을 가져오는 메서드*/
 	public List<ArticleVO> selectArticleList(String boardCode);
+
+	/*자유게시판 글 목록을 가져오는 메서드*/
+	public List<ArticleVO> selectArticleList(String memId, String boardCode);
 	
 	/*자유게시판 게시물 한개를 가져오는 메서드*/
 	public ArticleVO selectArticle(String articleId,String boardCode);
