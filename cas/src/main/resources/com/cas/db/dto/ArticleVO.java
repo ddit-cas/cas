@@ -16,10 +16,6 @@ public class ArticleVO {
 	private String boardName;				//게시판 종류(자유게시판, 공연홍보, 펀딩)
 	private String fundingNum;				//펀딩과 연결
 	
-	
-
-
-
 	public String getFundingNum() {
 		return fundingNum;
 	}

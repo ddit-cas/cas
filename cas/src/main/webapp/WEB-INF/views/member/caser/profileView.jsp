@@ -83,7 +83,7 @@
 											class="img-rounded img-responsive" />
 									</div>
 									<div class="col-sm-6 col-md-8">
-										<a href="caserDetail"><h4>${caserList[i].memId }</h4></a>
+										<a href="caserDetail?memId=${caserList[i].memId}"><h4>${caserList[i].memId }</h4></a>
 										<p>${caserList[i].memName }</p>
 										<p>${caserList[i].memNick }</p>
 										<small><cite title="San Francisco, USA">${caserList[i].memActive } <i class="glyphicon glyphicon-map-marker">

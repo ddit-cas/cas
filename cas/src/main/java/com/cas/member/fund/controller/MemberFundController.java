@@ -28,9 +28,17 @@ public class MemberFundController {
 	
 	@Autowired
 	private FundService fundService;
-	
+
+	public void setFundService(FundService fundService) {
+		this.fundService = fundService;
+	}
+
 	@Autowired
 	private ArticleService articleService;
+	
+	public void setArticleService(ArticleService articleService) {
+		this.articleService = articleService;
+	}
 	
 	/*펀딩을 등록하기 전 Intro 호출하는 메서드*/
 	@RequestMapping("/member/insertFundIntro")
@@ -61,4 +69,5 @@ public class MemberFundController {
 		fundService.insertFund(fund, article);
 		return "member/main";
 	}
+
 }

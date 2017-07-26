@@ -18,21 +18,21 @@
 </style>
 
 <div class="company-snb" style="float:left; margin-top: 100px;">
-<h2>CAS-이야기</h2>
-<div class="">
-   <ul style="margin-right: 40px;">
-      <li class="active"><a href="fundList">공지사항</a></li>
-      <li><a href="#">CAS란</a></li>
-      <li><a href="fundingExampleList">행사일정</a></li>
-      </ul>
-   </div>
+	<h2>커뮤니티</h2>
+	<div class="">
+		<ul>
+			<li class="active"><a href="freeboardList">자유게시판</a></li>
+			<li><a href="promotionList">공연홍보</a></li>
+			<li><a href="uccList">PR영상</a></li>
+		</ul>
+	</div>
 </div>
 <div id="body" style="float:right; width: 80%">
 	<div style="background-color: #26bbe2;height: 70px;padding: 16px 24px;margin: 10px 0;">
  		<label style="color:#ffffff; font-size:24px;"><strong>공연등록</strong></label>
  	</div>
 	<form name="tx_editor_form" style="width: 100%;height: auto;" id="tx_editor_form" action="/cas/member/insertPromotion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-		<input type="hidden" name="contentWriter" value="${loginUser }">
+		<input type="hidden" name="contentWriter" value="${loginUser.memId }">
 		<input type="hidden" name="consertGeograp" >
 		
 		<div style="float:left; width: 40%;">
@@ -44,8 +44,8 @@
 				<input id="posterImage-input" name="posterImage"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
 			</div>
 			<div>
-				<label>간략설명</label>
-				<textarea name='consertContent' style="width: 10%;height: 221px;" placeholder="(400자 이내로 기술하시오)"></textarea>
+				<label style="width:100%;">간략설명</label>
+				<textarea name='consertContent' style="width: 100%;height: 221px;" placeholder="(400자 이내로 기술하시오)"></textarea>
 			</div>
 		</div>
 	

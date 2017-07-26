@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.ReadInfoVO;
+import com.cas.db.dto.TeamVO;
 import com.cas.member.dao.MemberDao;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -49,8 +50,16 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public boolean updateMember(MemberVO member) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			int result=sqlMapClient.update("updateMember",member);
+			System.out.println(result);
+			System.out.println(member.getMemName());
+			System.out.println(member.getMemId());
+			System.out.println("여기다오임플인데안오나요?");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override
@@ -100,6 +109,17 @@ public class MemberDaoImpl implements MemberDao {
 		readinfo.setContentNum(contentNum);
 		try {
 			sqlMapClient.update("insertClickInfo",readinfo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void insertTeamList(List<TeamVO> teamList) {
+		try {
+			for (int i = 0; i < teamList.size(); i++) {
+				sqlMapClient.update("insertTeam",teamList.get(i));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

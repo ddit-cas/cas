@@ -12,20 +12,32 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 public class FundDaoImpl implements FundDao{
 
 	private SqlMapClient sqlMapClient;
+	
 	public void setSqlMapClient(SqlMapClient sqlMapClient) {
 		this.sqlMapClient = sqlMapClient;
 	}
 
 	@Override
 	public List<IngFundVO> selectIngFundList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<IngFundVO> ingFundList = null;
+		try {
+			ingFundList=sqlMapClient.queryForList("ingFundList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(ingFundList.get(0).getContentNum());
+		return ingFundList;
 	}
 
 	@Override
 	public IngFundVO selectIngFund(String contentNum) {
-		// TODO Auto-generated method stub
-		return null;
+		IngFundVO ingFund = null;
+		try {
+			ingFund=(IngFundVO) sqlMapClient.queryForObject("ingFund",contentNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ingFund;
 	}
 
 	@Override
@@ -61,4 +73,14 @@ public class FundDaoImpl implements FundDao{
 		
 	}
 
+	@Override
+	public List<IngFundVO> selectTopFundList() {
+		List<IngFundVO> topFundList = null;
+		try {
+			topFundList = sqlMapClient.queryForList("selectTopFundList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return topFundList;
+	}
 }

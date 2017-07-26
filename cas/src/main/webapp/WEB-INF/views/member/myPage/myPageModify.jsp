@@ -51,10 +51,27 @@ $(function(){
 	legend{
 		font-size : 15px;
 	}
+	.btn-circle {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.428571429;
+		border-radius: 15px;
+	}
+	.btn-circle.btn-lg {
+        width: 55px;
+        height: 34px;
+        padding: 13px 13px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 25px;
 </style>
-	<form class="form-horizontal" action="#">
+	<form class="form-horizontal" action="/cas/member/updateMember">
 	<fieldset class="signup_cas_fs">
-		<legend class="signup_cas_ld">필수사항</legend>
+	<div class="company-cont" style="height: auto; width: 960px;">
+			<h3 class="box" style="background-color: #0B2161;">개인정보</h3>
 		<div class="container">
 			<div class="essen">
 				<div class="imfom">
@@ -62,7 +79,7 @@ $(function(){
 						<label class="control-label col-sm-2" for="id">아이디</label>
 						<div class="col-sm-6">
 						  <div class="input-group">
-						    <input type="text" class="form-control" id="mem_id" name="id" placeholder="아이디를 입력하세요.">
+						    <input type="text" class="form-control" id="mem_id" name="memId" value="${loginUser.memId }" readonly="readonly">
 						    <span class="input-group-btn">
 						      <button class="btn btn-default" id="idCheck" type="button">중복확인</button>
 							    <span class="msgCheckId"></span>
@@ -75,8 +92,8 @@ $(function(){
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="pwd1">비밀번호</label>
 						<div class="col-sm-6">
-							<input type="password" class="form-control" id="pwd1"
-								placeholder="비밀번호를 입력하세요." name="pwd1">
+							<input type="password" class="form-control" id="memPwd"
+								value="${loginUser.memPwd}" name="memPwd">
 						</div>
 					</div>
 					
@@ -84,54 +101,45 @@ $(function(){
 						<label class="control-label col-sm-2" for="pwd1">비밀번호확인</label>
 						<div class="col-sm-6">
 							<input type="password" class="form-control" id="pwd2"
-								placeholder="위와 같은 비밀번호를 입력하세요." name="pwd2">
+								value="${loginUser.memPwd}" name="memPwd2">
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="name">이름</label>
 						<div class="col-lg-6">
-						  <div class="input-group">
 						    <input type="text" class="form-control" id="name"
-								placeholder="이름을 입력하세요." name="name" aria-label="name">
-						    <span class="input-group-addon">
-						    <label><input type="checkbox" aria-label="name">&nbsp;&nbsp;공개</label>
-						    </span>
-						  </div>
+								value="${loginUser.memName }" name="memName" aria-label="name">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="birth">생년월일</label>
-						<div class="col-sm-6">
-							<input type="date" class="form-control" id="bir"
-								placeholder="year" name="bir">
+						<label class="control-label col-sm-2" for="memBirthdate">생년월일</label>
+						<div class="col-sm-4">
+							<input type="date" class="form-control memBirthdate" value="${loginUser.memBirthdate }" id="bir" placeholder="year" name="memBirthdate">
+						</div>
+						<div class="col-sm-3">
+						<label class="control-label col-sm-5" for="memSex" style="margin-left:-58px;">/ 성별</label>
+							<div data-toggle="buttons">
+								<label class="btn btn-default btn-circle btn-lg active" style="background-image:url('/cas/resources/images/male.png'); background-position:center top;"><input type="radio" name="memSex" id="male" value="male" checked></label>
+								<label class="btn btn-default btn-circle btn-lg" style="background-image:url('/cas/resources/images/female.png'); background-position:center top;"><input type="radio" name="memSex" id="female" value="female"></label>
+							</div>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="name">전화번호</label>
 						<div class="col-lg-6">
-						  <div class="input-group">
 						    <input type="tel" class="form-control" id="tel"
-								placeholder="전화번호를 입력하세요." name="tel" aria-label="tel">
-						    <span class="input-group-addon">
-						    <label><input type="checkbox" aria-label="tel">&nbsp;&nbsp;공개</label>
-						    </span>
-						  </div>
+								value="${loginUser.memHp }" name="memHp" aria-label="tel">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이메일</label>
 						<div class="col-lg-6">
-						  <div class="input-group">
 						    <input type="email" class="form-control" id="email"
-								placeholder="이메일을 입력하세요." name="email" aria-label="email">
-						    <span class="input-group-addon">
-						    <label><input type="checkbox" aria-label="email">&nbsp;&nbsp;공개</label>
-						    </span>
-						  </div>
+								value="${loginUser.memEmail }" name="memEmail" aria-label="email">
 						</div>
 					</div>
 					
@@ -150,7 +158,7 @@ $(function(){
 						<div class="col-sm-6">
 						  <div class="input-group">
 						    <input type="text" class="form-control" id="zip" 
-						    	placeholder="우편번호 버튼을 눌러주세요" name="zip" disabled>
+						    	value="${loginUser.memMailnumber }" name="memMailnumber" disabled>
 						    <span class="input-group-btn">
 						      <button id="zip-btn"class="btn btn-default" type="button">우편번호</button>
 						    </span>
@@ -162,21 +170,20 @@ $(function(){
 						<label class="control-label col-sm-2" for="addr">주소</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="add1"
-								placeholder="주소는 자동으로 입력 됩니다." name="addr" disabled>
+								value="${loginUser.memAddr1 }" name="memAddr1" disabled>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="addr">상세주소</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="add2"
-								placeholder="상세주소 입력하세요" name="addr">
+								value="${loginUser.memAddr2 }" name="memAddr2">
 						</div>
 					</div>
 				</div>
 			</div>
 			</div>
 		</fieldset>
-		</form>
 <style>
 	input[type="text"] {
 		color:black;
@@ -317,14 +324,13 @@ $(function() {
 </script>
 
 	<!-- 선택사항 -->
-	<form class="form-horizontal" action="#">
 	<fieldset class="signup_cas_fs">
 		<legend id="choice" class="signup_cas_ld">선택사항<span> : 클릭!</span></legend>
 		<div class="contSelect hide">
 			<div class="box-body">
 				<div class="col-sm-3">
 					<div class="filess" style="width:290px; height:400px;">
-						<img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+						<img alt="User Pic" src="${loginUser.memFrofileimage }"
 							id="profile-image" class="img-circle img-responsive">
 						<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" class="hidden" type="file">
 						<div style="color:#999;">그림을 클릭하여 이미지를 변경합니다.</div>	
@@ -352,7 +358,7 @@ $(function() {
 					<label class="control-label col-sm-1" for="nickname">닉네임</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					    <input type="text" class="form-control" id="nick" name="id" placeholder="닉네임을 입력하세요.">
+					    <input type="text" class="form-control" id="nick" name="memNick" value="${loginUser.memNick }">
 					    <span class="input-group-btn">
 					      <button class="btn btn-default" id="nickCheck" type="button">중복확인</button>
 				      	  <span class="msgCheckNick"></span>
@@ -366,7 +372,7 @@ $(function() {
 					<label class="control-label col-sm-1" for="career">경력</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					    <input type="text" class="form-control" placeholder="경력을 입력하세요.">
+					    <input type="text" class="form-control" value="${loginUser.memCareer }">
 					    <span class="input-group-btn">
 					      <button class="btn btn-default" id="plus-textField" type="button">+</button>
 					    </span>
@@ -390,7 +396,7 @@ $(function(){
 					
 					<label class="control-label col-sm-1" for="activity">활동지역</label>		
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="activity" placeholder="주 활동 지역을 입력하세요" name="activity" readonly>
+						<input type="text" class="form-control" id="activity" value="${loginUser.memActive }" name="memActive" readonly>
 				    </div>
 					
 					<p id="enter"></p>
@@ -485,7 +491,7 @@ $(function() {
 	}
 </style>				
 		<div id="btnses">
-			<a href="myPageModify.jsp"><input type="button" class="btn btn-primary" value="수정" /></a>
+			<input type="submit" class="btn btn-primary" value="수정" />
 			<input type="reset" class="btn btn-danger" value="취소" />
 		</div> 
 				

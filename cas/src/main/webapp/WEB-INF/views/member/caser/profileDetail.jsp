@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>회원가입</title>
 <body>
 <script>
@@ -129,108 +130,17 @@ $(function(){
 	}
 </style>
 
-<script>
-$(function() {
-	//그림 클릭 시 업로드 창 띄워 업로드 후 미리보기
-	$('#profile-image').on('click', function() {
-	
-		$('#profile-image-input').click();
-		var test="";
-		$("#profile-image-input").change(function (){     
-	        
-	        var file = this.files[0];
-	        var reader = new FileReader();
-	        // Set preview image into the popover data-content
-	        reader.onload = function (e) {
-	        	$(".image-preview-input-title").text("변경");
-	            $(".image-preview-filename").val(file.name);            
-	            $("#profile-image").attr('src', e.target.result);
-	        }        
-	       reader.readAsDataURL(file);
-	    });
-	});
-	
-	// 업로드 버튼으로 그림피일 업로드 후 미리보기
-	$(".image-preview-input input:file").change(function (){     
-        
-        var file = this.files[0];
-        var reader = new FileReader();
-        //Set preview image into the popover data-content
-        reader.onload = function (e) {
-            $(".image-preview-input-title").text("변경");
-            $(".image-preview-filename").val(file.name);            
-            $("#profile-image").attr('src', e.target.result);
-        }        
-        reader.readAsDataURL(file);
-    });
 
-	// textfield 생성
-	var count = 0;
-	$('#plus-textField').on('click',function(){
-		count++;
-		//textfield 3회로 횟수 제한
-		if(count<=2){
-			var textField = "<div class='add-field'>";
-			textField +="<label class='control-label col-sm-1' for='add'>+</label>"; 
-			textField +="<div class='col-sm-4'>";
-			textField +="<div class='input-group'>";
-			textField +="<input type='text' class='form-control' name='memCareer' placeholder='경력을 추가 입력하세요.'>";
-			textField +="<span class='input-group-btn'>";
-			textField +="<button class='btn btn-default minus-textbutton' type='button'>-</button>";
-			textField +="</span></div></div><p id='enter' /></div>";
-			$('#add-textField').append(textField);
-			//textField 삭제
-			$(".minus-textbutton").bind('click',function(){
-				count--;
-				$(this).parent().parent().parent().parent().remove();
-				if(e.stopImmediatePropagation) event.stopImmedatePropagation();
-				else event.isImmediatePropagationEnabled = false;
-			});
-		}else{
-			count=2;
-			sweetAlert("경력쓰기 제한","경력사항 쓰기는 3회로 제한 됩니다.","error");
-		}
-	});
-	
-	//아이디 중복 확인
-	$('#nickCheck').click(function(){
-    	var idValue = $('#nick').val();
-    	$.ajax({
-    		url : '/cas/signup/idCheck.jsp',
-    		type : 'get',
-    		data : "id="+idValue,
-    		success : function(res){
-    			var code = "";
-    			var attr = "";
-    			if(res.status == "OK"){
-    				code += res.id+"는 사용 가능합니다.";
-    				attr += "yes";
-    			}else{
-    				code += res.id+"는 사용 불가능합니다.";
-    				attr += "no";
-    			}
-    			$('.msgCheckNick').html(code).attr("id",attr);
-    		},
-    		dataType : 'json' 
-    	});
-    });
-	
-	//선택사항 숨기기
-	$("#choice").click(function(){
-		$('.contSelect').toggleClass("hide");
-	});
-	
-});
-</script>
 
 	<!-- 선택사항 -->
+	
 	<fieldset class="signup_cas_fs">
 		<legend id="choice" class="signup_cas_ld">프로필 뷰 상세</legend>
 		<div class="contSelect">
 			<div class="box-body">
 				<div class="col-sm-3">
 					<div class="filess" style="width:290px; height:400px;">
-						<img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+						<img alt="User Pic" src="${caserList[0].memFrofileimage }"
 							id="profile-image" class="img-circle img-responsive">
 						<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" name="memFrofileimage" class="hidden" type="file">
 					</div>
@@ -244,7 +154,7 @@ $(function() {
 					<label class="control-label col-sm-1" for="memNick">닉네임</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					   <p>닉네임</p> 
+					   <p>${caserList[0].memNick }</p> 
 					    
 					  </div>
 					</div>
@@ -254,7 +164,7 @@ $(function() {
 					<label class="control-label col-sm-1" for="memCertif">경력</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					  	<p>경력</p>
+					  	<p>${caserList[0].memCareer }</p>
 					  </div>
 					</div>
 					
@@ -264,7 +174,7 @@ $(function() {
 					
 					<label class="control-label col-sm-1" for="memActive">활동지역</label>		
 					<div class="col-sm-4">
-						<p>활동지역</p>
+						<p>${caserList[0].memActive }</p>
 						<div class="map"></div>
 				    </div>
 					
@@ -278,33 +188,32 @@ $(function() {
 					<p id="enter"></p>
 					<h3>팀원</h3>
 					<hr>
+				<c:forEach var="caser" items="${caserList}">
 					<div class='box-body crew'>
 						<div class='col-sm-2'>
 							<div class='files-crw'>
 								<img alt='User Pic'
-									src='https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'
-									id='profile-image1' class='img-circle img-responsive'> <input
-									id='profile-image-input'
-									accept='image/png, image/jpeg, image/gif' class='hidden'
-									name='crw-img' type='file'>
+									src='${caser.teamInfo }'
+									id='profile-image1' class='img-circle img-responsive'>
 							</div>
 						</div>
 						<p id='enter' />
 						<label class='control-label col-sm-1' for='crw-name' style="margin: 55px 0px;">이름</label>
 						
-							<p> 이름 </p>
+							<p> ${caser.teamName } </p>
 					
 						<p id='enter' />
 						<label class='control-label col-sm-1' for='crw-role' style="margin: 0px -81px;">역할</label>
 						<div id='btns'>
 							
-								<p style="margin: -55px 64px;"> 역할 </p>	
+								<p style="margin: -55px 64px;"> ${caser.teamPosi } </p>	
 								
 							
 						</div>
 						<p id='enter' />
 
 					</div>
+				</c:forEach>
 				</div>
 				
 				

@@ -1,38 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 .form-inline {
-	display: block;
-	text-align: right;
+   display: block;
+   text-align: right;
 }
 
 .board-menu li {
-	position: relative;
-	float: left;
-	width: 20%;
-	font-size: 16px;
-	border: 1px solid #d7dce7;
-	border-left: 0 none;
+   position: relative;
+   float: left;
+   width: 20%;
+   font-size: 16px;
+   border: 1px solid #d7dce7;
+   border-left: 0 none;
 }
 
 td {
-	text-align: center;
-	font-size: 16px;
+   text-align: center;
+   font-size: 16px;
 }
 
 th {
-	text-align: center;
-	font-size: 16px;
+   text-align: center;
+   font-size: 16px;
 }
 
 li a:hover {
-	background-color: #666;
+   background-color: #666;
 }
 
 #body {
-	margin-top: 58px;
+   margin-top: 58px;
 }
 </style>
 <div class="company-wrap">
@@ -41,9 +41,8 @@ li a:hover {
 		<div class="">
 			<ul>
 				<li class="active"><a href="freeboardList">자유게시판</a></li>
-				<!--li><a href="people.php">PEOPLE</a></li-->
-				<li><a href="#">공연홍보게시판</a></li>
-				<li><a href="#">UCC</a></li>
+				<li><a href="promotionList">공연홍보</a></li>
+				<li><a href="uccList">PR영상</a></li>
 			</ul>
 		</div>
 	</div>
@@ -57,7 +56,7 @@ li a:hover {
 							<img src="resources/images/free.png"
 								style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
 						</p>
-						<div class="searchgroup" style="float: right">
+						<div class="searchgroup" style="float: left">
 							<select class="form-control">
 								<option value="title">제목</option>
 								<option value="writer" selected>작성자</option>
@@ -70,6 +69,7 @@ li a:hover {
 								<input type="button" class="form-control" id="list" value="목록">
 							</div>
 						</div>
+								<a href="/cas/member/communify/freeBoard/freeboardForm"><input type="button" class="form-control" id="insert" value="등록"></a>
 					</form>
 				</div>
 				<!--//tab-intro-->
@@ -85,13 +85,14 @@ li a:hover {
 					<tbody style="text-align: center; font-size: 15px;">
 					<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
 						<tr>
-							<td>${articleList[i].contentTitle}</td>
+							<td><a href="freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
 							<td>${articleList[i].contentWriter}</td>
 							<td>${articleList[i].contentRegisDate}</td>
 						</tr>
 					</c:forEach>
 					</tbody>
 				</table>
+				
 			</div>
 			<!--//company-snb-->
 		</div>
@@ -99,37 +100,37 @@ li a:hover {
 </div>
 <!-- 페이지수  -->
 <div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
-	<div class="row">
-		<nav aria-label="...">
-			<ul class="pager" role="tablist">
-				<li class="previous">
-					<a href="/cas/freeboardList?tab=${minNum-1}"><span aria-hidden="true">←</span>
-						이전
-					</a>
-				</li>
-				<c:forEach var="i" begin="${minNum}" end="${maxNum}">
-				<c:choose>
-				<c:when test="${index==i}">
-				<li>
-					<a style="background: #aaa;" aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
-						${i }
-					</a>
-				</li>
-				</c:when>
-				<c:otherwise>
-				<li>
-					<a aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
-						${i }
-					</a>
-				</li>
-				</c:otherwise>
-				</c:choose>
-				</c:forEach>
-				<li class="next">
-					<a href="/cas/freeboardList?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
+   <div class="row">
+      <nav aria-label="...">
+         <ul class="pager" role="tablist">
+            <li class="previous">
+               <a href="/cas/freeboardList?tab=${minNum-1}"><span aria-hidden="true">←</span>
+                  이전
+               </a>
+            </li>
+            <c:forEach var="i" begin="${minNum}" end="${maxNum}">
+            <c:choose>
+            <c:when test="${index==i}">
+            <li>
+               <a style="background: #aaa;" aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
+                  ${i }
+               </a>
+            </li>
+            </c:when>
+            <c:otherwise>
+            <li>
+               <a aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
+                  ${i }
+               </a>
+            </li>
+            </c:otherwise>
+            </c:choose>
+            </c:forEach>
+            <li class="next">
+               <a href="/cas/freeboardList?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
+               </a>
+            </li>
+         </ul>
+      </nav>
+   </div>
 </div>

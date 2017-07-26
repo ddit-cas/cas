@@ -28,7 +28,7 @@
 							CONTENT_REGIS_DATE, CONTENT_PARENTS_CONTENT, CONTENT_WRITER, 
 							CONTENT_IMPORTANCE, CONTENT_STATE, CONSERT_NUM,CONTENT_IMG, FUNDING_NUM) 
 			VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#
-			,SYSDATE,#contentParentsContent#,#contentWriter#,'n','y'
+			,SYSDATE,#contentParentsContent#,#contentWriter#,'N','Y'
 			,#consertNum#,#contentImg#,#fundingNum#)																		
 	</insert>
 
@@ -38,11 +38,39 @@
 		FROM ARTICLE WHERE 1=1
 		<isNotEmpty property="boardCode">
 			 and BOARD_CODE=#boardCode#
+			 order by content_regis_date desc
 		</isNotEmpty>
 	</select>
 	
+	<select id="selectSearchNotice" parameterClass = "map" resultMap="selectArticle">
+		select * from article where 1=1
+		<isEqual prepend="and" property="index" compareValue="title">
+			content_title like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="writer">
+			content_writer like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="date">
+			content_regis_date like '%'||#key#||'%'
+		</isEqual>
+		
+	</select>
+	
 	<select id="selectArticle" resultMap="selectArticle" parameterClass="article">
-		select * from article where board_code=#boardCode# and content_num=#contentNum#
+		select * from article 
+		where board_code=#boardCode# 
+		and content_num=#contentNum#
+	</select>
+	
+	<select id="selectMemberArticle" resultMap="selectArticle" parameterClass="article">
+		select * from article 
+		where board_code=#boardCode# 
+		and content_writer=#contentWriter#
+		order by content_regis_date desc
+	</select>
+
+	<select id="selectnotice" resultMap="selectArticle" parameterClass="article">
+		select * from content where board_code=#boardCode# and content_num=#contentNum#
 	</select>
 	
 	<update id="updateArticle" parameterClass="article">
@@ -54,4 +82,8 @@
 		</isNotEmpty>
 		where content_num=#contentNum#
 	</update>
+	
+	<insert id="contentLike">
+		insert into recom values()
+	</insert>
 </sqlMap>

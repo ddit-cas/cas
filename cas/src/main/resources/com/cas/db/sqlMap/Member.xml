@@ -7,6 +7,8 @@
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="member" type="com.cas.db.dto.MemberVO" />                         
+	<typeAlias alias="team" type="com.cas.db.dto.TeamVO" />                         
+
 	<typeAlias alias="readinfo" type="com.cas.db.dto.ReadInfoVO"/>                      
 	<resultMap class="com.cas.db.dto.MemberVO" id="selectMember">                       
 		<result property="memId" column="MEM_ID" />                                    
@@ -49,7 +51,18 @@
 
 	<update id="updateMember" parameterClass="member">
 		update member set
-
+		mem_Name=#memName#,
+		mem_Email=#memEmail#,
+		mem_Mailnumber=#memMailnumber#,
+		mem_Addr1=#memAddr1#, 
+		mem_Addr2=#memAddr2#,
+		mem_Nick=#memNick#,
+		mem_Frofileimage=#memFrofileimage#,
+		mem_Birthdate=#memBirthdate#,
+		mem_Hp=#memHp#,
+		mem_Career=#memCareer#,
+		mem_Active=#memActive#,
+		mem_Pwd=#memPwd#
 		where mem_id=#memId#
 	</update>
 
@@ -71,4 +84,12 @@
 	<select id="selectMemberNick" parameterClass="str" resultClass="str">
 		select mem_nick from member where mem_nick=#mem_nick#
 	</select>
+	
+	
+
+<!-- 	팀정보를 인서트하는 거 -->
+	<insert id="insertTeam" parameterClass="team">
+		insert into team (mem_id,team_num,team_name,team_posi,team_info)
+		values(#memId#,team_seq.nextval,#teamName#,#teamPosi#,#teamInfo#)
+	</insert>
 </sqlMap>

@@ -3,6 +3,7 @@ package com.cas.member.service.impl;
 import java.util.List;
 
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.TeamVO;
 import com.cas.member.dao.MemberDao;
 import com.cas.member.service.MemberService;
 
@@ -33,15 +34,14 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public boolean updateMember(MemberVO member) {
-		// TODO Auto-generated method stub
-		return false;
+		memberDao.updateMember(member);
+		return true;
 	}
 
 	@Override
 	public boolean checkId(String id) {
 		boolean result =false;
 		if(id.equals(memberDao.selectMemberId(id))){
-			System.out.println("서비스임플 아이디 체크 들어오니?");
 			result = true;
 		}
 		return result;
@@ -51,7 +51,6 @@ public class MemberServiceImpl implements MemberService{
 	public boolean checkPwd(String id,String pwd) {
 		boolean result =false;
 		if(pwd.equals(memberDao.selectMemberPwd(id))){
-			System.out.println("왜페일임?");
 			result = true;
 		}
 		return result;
@@ -71,6 +70,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void insertClickData(String contentNum, String classify) {
 		memberDao.insertClickData(contentNum,classify);
+	}
+
+	@Override
+	public void insertTeamList(List<TeamVO> teamList) {
+		memberDao.insertTeamList(teamList);
 	}
 
 }

@@ -19,24 +19,20 @@
 	padding-top: 5px;
 	width: 51%;
 }
-
 #detailShowInfo tr td:nth-child(1) {
 	padding: 14px 0;
 	border-bottom: 1px solid #ddd;
 	width: 40%;                                                                                                      
 	text-align: center;
 }
-
 #detailShowInfo tr td:nth-child(2) {
 	padding: 14px 0;
 	border-bottom: 1px solid #ddd;
 	width: 60%;
 }
-
 #showDetailInfoBtn {
 	padding-right: 32px;
 }
-
 #showDetailContent {
 	width: 100%;
 	height: auto;
@@ -44,11 +40,9 @@
 	border-radius: 0 2em 0 2em;
 	overflow: hidden;
 }
-
 #showDetailContent img {
 	width: 100%;
 }
-
 #commentDiv {
 	border: 3px solid #ddd;
 	border-radius: 0 2em 0 2em;
@@ -56,7 +50,6 @@
 	margin-top: 50px;
 	padding: 9px 9px 24px 9px;
 }
-
 .commentTextStyle {
 	width: 83%;
 	height: 57px;
@@ -94,16 +87,15 @@
 }
 </style>
 <div class="company-snb" style="float:left; margin-top: 100px;">
-      <h2>CAS-이야기</h2>
-      <div class="">
-         <ul style="margin-right: 40px;">
-            <li class="active"><a href="fundList">공지사항</a></li>
-         <li><a href="#">CAS란</a></li>
-         <li><a href="fundingExampleList">행사일정</a></li>
-         </ul>
-      </div>
+      	<h2>커뮤니티</h2>
+		<div class="">
+			<ul>
+				<li class="active"><a href="freeboardList">자유게시판</a></li>
+				<li><a href="promotionList">공연홍보</a></li>
+				<li><a href="uccList">PR영상</a></li>
+			</ul>
+		</div>
    </div>
-
 <div id="body" style="float:right; width: 80%">
 	<h1>공연정보</h1>
 	<hr style="border-top: 2px solid #333;margin-top: 0;margin-bottom: 13px;">
@@ -146,9 +138,18 @@
 			</table>
 		</div>
 	</div>
-	<div id="showDetailInfoBtn">
-		<button style="float:right; margin-left: 6px;">좋아요</button>
-		<a href="promotionList" style="float:right; "><img src="/cas/resources/listBtnImg.gif"></a>
+	<div id="showDetailInfoBtn" style="float: right;">
+		<span class="pull-left zzim-after hide" style="margin-right: 6px;">
+		   <button type="button" class="btn-zzim on" id="unlike" style="height: 24px;">
+		      <i class="ico-star"><img  class="zzimImg" src="/cas/resources/images/icon_like_on.png" style="width:15px; height:15px;"></i> <span id="zzim-cnt-on"></span>
+		   </button>
+		</span> 
+		<span class="pull-left zzim-before"  style="margin-right: 6px;">
+		   <button type="button" class="btn-zzim" id="like" style="height: 24px;">
+	          <i class="ico-star"><img  class="zzimImg" src="/cas/resources/images/icon_like.png" style="width:15px; height:15px;"> </i><span id="zzim-cnt"></span>
+	       </button>
+	    </span>
+		<a href="promotionList" ><img src="/cas/resources/listBtnImg.gif"></a>
 	</div>
 	<hr style="clear:both;">
 	<div id="showDetailContent">
@@ -157,7 +158,7 @@
 	<h3 style="width:78px; float:left;">오시는길</h3>
 	<button onclick="focusPlace()" style="margin-top:13px;">공연장소</button>
 	<div id="map" style="width:100%;height:310px;margin-top:10px;"></div>
-	
+
 <!-- 	댓글부분 -->
 	<div id="commentDiv">
 		<form class="commentForm">
@@ -178,129 +179,195 @@
 		
 			
 			<c:forEach var="comment" items="${commentList }" begin="1" varStatus="status">
-			<c:if test="${status.count ne 1 }">
-				<c:if test="${comment.contentParentsContent eq promotionVO.contentNum }">
-						</div>
-						<hr class="commentHr">
-					</li>
+				<c:if test="${status.count ne 1 }">
+					<c:if test="${comment.contentParentsContent eq promotionVO.contentNum }">
+							</div>
+							<hr class="commentHr">
+						</li>
+					</c:if>
 				</c:if>
-			</c:if>
-			<c:choose>
-				<c:when test="${comment.contentParentsContent eq promotionVO.contentNum }">
-					<li style="margin-bottom:20px;">
-						<div id="profileImg">
-							<img src="/cas/resources/jim.png" style="width: 60px;height: 60px;"> 
-						</div>
-						<div style="width: 100%">
-							<a href="#"><strong>${comment.contentWriter }</strong></a> <label>${comment.contentRegisDate }</label><br>
-							<label style="margin-right: 2%;">${comment.contentContent}</label>
-							<c:if test="${not empty loginUser.memId}">
-							<button type="button" class="commentBtn recommentBtn " target="#Write${comment.contentNum }">댓글달기</button>
-							</c:if>
-							<c:if test="${comment.contentCount ne 0 }">
-								<button type="button" class="commentBtn recommentView" data-toggle="collapse" data-target="#recomment${comment.contentNum}">댓글보기(${comment.contentCount})</button>
-							</c:if>
-							<div style="float: right;">
-								<c:if test="${comment.contentWriter eq loginUser.memId}">
-									<input type="button" data-toggle="modal" data-target="#myModal${comment.contentNum }" value="수정">
-									
-									<div class="modal fade" id="myModal${comment.contentNum }" role="dialog">
-									    <div class="modal-dialog modal-sm">
-								      		<div class="modal-content">
-									       		<div class="modal-header">
-								        	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-								         	 		<h4 class="modal-title">댓글수정</h4>
-										        </div>
-								        		<div class="modal-body">
-									          		<input type="text" id="updateContent${comment.contentNum }" style="width:100%;" placeholder="${comment.contentContent}">
-										        </div>
-									        	<div class="modal-footer">
-									          		<button type="button" class="btn btn-default" data-dismiss="modal" onclick="updateComment('${comment.contentNum}')">수정</button>
-									          		<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-								        		</div>
-									      	</div>
-									    </div>
-								  	</div>
-									
-									<input type="button" value="삭제" onclick="deleteComment('${comment.contentNum}')">
-								</c:if>
-								<c:if test="${not empty loginUser.memId}">
-									<input type="button" value="신고" onclick="reportComment('${comment.contentNum}')">
-								</c:if>
-							</div>
-							
-							<div id="Write${comment.contentNum }" class="hideDiv " style="padding-top: 10px; display:none;">
-								<form class="commentForm${comment.contentNum }">
-									<c:if test="${not empty loginUser.memId}">
-										<input type="hidden" name="contentWriter" value="${loginUser.memId }">
-										<input type="hidden" name="contentTitle" value="${promotionVO.contentTitle}">
-										<input type="hidden" name="contentParentsContent" value="${comment.contentNum}">
-									</c:if>
-									<input type="text" class="recommentTextStyle commentText" name="contentContent" style="margin-left:9%;"> 
-									<input type="button" class=" commentWrite" onclick="comment('.commentForm${comment.contentNum }')" value="댓글달기">
-								</form>
-							</div>
-						<div id="recomment${comment.contentNum }" class="collapse" style="padding: 10px 0 0 80px; margin-bottom: 20px;">
-					</c:when>
-					<c:otherwise>
-			<!--  				리댓글부분 -->
-			<!-- 						댓글을 넣는 Div -->
-						<div style="margin-bottom:10px ">
-							<div style="width: 9%; float: left; text-align: center;">
-								<img src="/cas/resources/jim.png" style="width: 40px; height: 40px;">
+				<c:choose>
+					<c:when test="${comment.contentParentsContent eq promotionVO.contentNum }">
+						<li style="margin-bottom:20px;">
+							<div id="profileImg">
+								<img src="/cas/resources/jim.png" style="width: 60px;height: 60px;"> 
 							</div>
 							<div style="width: 100%">
-								<a href="#"><strong>${comment.contentWriter}</strong></a> <label>${comment.contentRegisDate }</label><br>
-								${comment.contentContent}
+								<a href="#"><strong>${comment.contentWriter }</strong></a> <label>${comment.contentRegisDate }</label><br>
+								<label style="margin-right: 2%;">${comment.contentContent}</label>
 								<c:if test="${not empty loginUser.memId}">
-								<button type="button" class="commentBtn recommentBtn" target="#Write${comment.contentNum }">댓글달기</button>
+								<button type="button" class="commentBtn recommentBtn " target="#Write${comment.contentNum }">댓글달기</button>
+								</c:if>
+								<c:if test="${comment.contentCount ne 0 }">
+									<button type="button" class="commentBtn recommentView" data-toggle="collapse" data-target="#recomment${comment.contentNum}">댓글보기(${comment.contentCount})</button>
 								</c:if>
 								<div style="float: right;">
 									<c:if test="${comment.contentWriter eq loginUser.memId}">
-										<input type="button" value="수정" onclick="updateComment('${comment.contentNum}')">
+										<input type="button" data-toggle="modal" data-target="#myModal${comment.contentNum }" value="수정">
+										
+										<div class="modal fade" id="myModal${comment.contentNum }" role="dialog">
+										    <div class="modal-dialog modal-sm">
+									      		<div class="modal-content">
+										       		<div class="modal-header">
+									        	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+									         	 		<h4 class="modal-title">댓글수정</h4>
+											        </div>
+									        		<div class="modal-body">
+										          		<input type="text" id="updateContent${comment.contentNum }" style="width:100%;" placeholder="${comment.contentContent}">
+											        </div>
+										        	<div class="modal-footer">
+										          		<button type="button" class="btn btn-default" data-dismiss="modal" onclick="updateComment('${comment.contentNum}')">수정</button>
+										          		<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+									        		</div>
+										      	</div>
+										    </div>
+									  	</div>
+										
 										<input type="button" value="삭제" onclick="deleteComment('${comment.contentNum}')">
 									</c:if>
 									<c:if test="${not empty loginUser.memId}">
 										<input type="button" value="신고" onclick="reportComment('${comment.contentNum}')">
 									</c:if>
 								</div>
+								
 								<div id="Write${comment.contentNum }" class="hideDiv " style="padding-top: 10px; display:none;">
 									<form class="commentForm${comment.contentNum }">
-										<c:if test="${not empty loginUser.memId}">		
+										<c:if test="${not empty loginUser.memId}">
 											<input type="hidden" name="contentWriter" value="${loginUser.memId }">
 											<input type="hidden" name="contentTitle" value="${promotionVO.contentTitle}">
-											<input type="hidden" name="contentParentsContent" value="${comment.contentParentsContent}">
+											<input type="hidden" name="contentParentsContent" value="${comment.contentNum}">
 										</c:if>
-										<input type="text" class="reRecommentTextStyle commentText" name="contentContent"> 
-										<input type="button" class="commentWrite" onclick="comment('.commentForm${comment.contentNum }')" value="댓글달기">
+										<input type="text" class="recommentTextStyle commentText" name="contentContent" style="margin-left:9%;"> 
+										<input type="button" class=" commentWrite" onclick="comment('.commentForm${comment.contentNum }')" value="댓글달기">
 									</form>
 								</div>
+							<div id="recomment${comment.contentNum }" class="collapse" style="padding: 10px 0 0 80px; margin-bottom: 20px;">
+						</c:when>
+						<c:otherwise>
+				<!--  				리댓글부분 -->
+				<!-- 						댓글을 넣는 Div -->
+							<div style="margin-bottom:10px ">
+								<div style="width: 9%; float: left; text-align: center;">
+									<img src="/cas/resources/jim.png" style="width: 40px; height: 40px;">
+								</div>
+								<div style="width: 100%">
+									<a href="#"><strong>${comment.contentWriter}</strong></a> <label>${comment.contentRegisDate }</label><br>
+									${comment.contentContent}
+									<c:if test="${not empty loginUser.memId}">
+									<button type="button" class="commentBtn recommentBtn" target="#Write${comment.contentNum }">댓글달기</button>
+									</c:if>
+									<div style="float: right;">
+										<c:if test="${comment.contentWriter eq loginUser.memId}">
+											<input type="button" data-toggle="modal" data-target="#myModal${comment.contentNum }" value="수정">
+											
+											<div class="modal fade" id="myModal${comment.contentNum }" role="dialog">
+											    <div class="modal-dialog modal-sm">
+										      		<div class="modal-content">
+											       		<div class="modal-header">
+										        	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+										         	 		<h4 class="modal-title">댓글수정</h4>
+												        </div>
+										        		<div class="modal-body">
+											          		<input type="text" id="updateContent${comment.contentNum }" style="width:100%;" placeholder="${comment.contentContent}">
+												        </div>
+											        	<div class="modal-footer">
+											          		<button type="button" class="btn btn-default" data-dismiss="modal" onclick="updateComment('${comment.contentNum}')">수정</button>
+											          		<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										        		</div>
+											      	</div>
+											    </div>
+										  	</div>
+											
+											
+											<input type="button" value="삭제" onclick="deleteComment('${comment.contentNum}')">
+										</c:if>
+										<c:if test="${not empty loginUser.memId}">
+											<input type="button" value="신고" onclick="reportComment('${comment.contentNum}')">
+										</c:if>
+									</div>
+									<div id="Write${comment.contentNum }" class="hideDiv " style="padding-top: 10px; display:none;">
+										<form class="commentForm${comment.contentNum }">
+											<c:if test="${not empty loginUser.memId}">		
+												<input type="hidden" name="contentWriter" value="${loginUser.memId }">
+												<input type="hidden" name="contentTitle" value="${promotionVO.contentTitle}">
+												<input type="hidden" name="contentParentsContent" value="${comment.contentParentsContent}">
+											</c:if>
+											<input type="text" class="reRecommentTextStyle commentText" name="contentContent"> 
+											<input type="button" class="commentWrite" onclick="comment('.commentForm${comment.contentNum }')" value="댓글달기">
+										</form>
+									</div>
+								</div>
 							</div>
-						</div>
-					</c:otherwise>
-					</c:choose>
-			</c:forEach>
+						</c:otherwise>
+						</c:choose>
+				</c:forEach>
 					</div>
 					<c:if test="${not empty commentList}">
-					<hr class="commentHr">
+						<hr class="commentHr">
 					</c:if>
 			</li>
 		</ul>
 	</div>
+</div>
 <script>
-	function go_link(){
-		window.open('${promotionVO.consertTicket}'); 
+// 하트표시바꾸기-------------------------------------------------------------
+
+
+	var cnt = ${recomCount};
+	var isLike = ${isLike};
+	alert(isLike);
+	if (isLike == 1) {
+		chageListBtn();
+		$('span#zzim-cnt-on').text(cnt);
+		$('span#zzim-cnt').text(cnt - 1);
+	} else {
+		$('span#zzim-cnt-on').text(cnt + 1);
+		$('span#zzim-cnt').text(cnt);
 	}
 	
+	$('#like').click(function() {
+		var contentNum=${promotionVO.contentNum};
+		$.ajax({
+			url : "member/likeContent",
+			type : 'post',
+			data : "contentNum="+contentNum,
+			dataType : 'html',
+			success : function() {
+				chageListBtn();
+			}
+		})
+	})
+	$('#unlike').click(function() {
+		var contentNum=${promotionVO.contentNum};
+		$.ajax({
+			url : "member/unlikeContent",
+			type : 'post',
+			data : "contentNum="+contentNum,
+			dataType : 'html',
+			success : function() {
+				chageListBtn();
+			}
+		})
+	})
+	function chageListBtn() {
+		$('.zzim-after').toggleClass('hide');
+		$('.zzim-before').toggleClass('hide');
+	}
+</script>
+<script>
+	function go_link(){
+		alert('${promotionVO.consertTicket}')
+		window.open('${promotionVO.consertTicket}');
+	}
 	function deleteComment(id){
 		$.ajax({
 			url : "member/deleteCommnet",
 			type : 'post',
 			data : "contentNum="+id,
 			dataType : 'html',
-			success : function() {
+			success : function(res) {
+				alert(res.message);
 				resetPage();
-				alert('댓글이 삭제되었습니다.');
 			}
 		})
 	}
@@ -325,7 +392,6 @@
 	}
 	
 // 	댓글을 저장하는 부분
-	
 	function comment(formName) {
 		var comment = $(formName).serialize();
 		$.ajax({
@@ -339,11 +405,9 @@
 			}
 		})
 	}
-
 	function resetPage() {
-		location.href="promotionDetail?contentNum=${promotionVO.contentNum}"
+		location.href="promotionDetail?contentNum=${promotionVO.contentNum}&recomCount=${recomCount}"
 	}
-
 	// 	댓글달기를 숨겼다 보였다하는 부분
 	$('.recommentBtn').on('click', function() {
 		var target = $(this).attr('target');
@@ -358,6 +422,7 @@
 	$('.recommentView').on('click', function() {
 		$('.hideDiv').slideUp('500');
 	})
+	
 </script>
 
 
