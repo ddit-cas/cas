@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cas.article.service.ArticleService;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.Paging;
+import com.cas.db.dto.ReportVO;
 
 @Controller
 public class FreeboardController {
@@ -67,6 +69,16 @@ public class FreeboardController {
 		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
 		model.addAttribute("selectSearchFree", freeList);
 		return url;
+	}
+	
+	/*모달창 신고페이지 */
+	@RequestMapping(value="/cas/freeboardDetail", method=RequestMethod.POST)
+	public String report(HttpServletRequest request,Model model){
+//		request.getParameterValues("report_mem");
+//		request.getParameterValues("report_content");
+//		request.getParameterValues("report_date");
+		
+		return null;
 	}
 	
 	/*자유게시판 글 세부내용으로 가는 메서드*/

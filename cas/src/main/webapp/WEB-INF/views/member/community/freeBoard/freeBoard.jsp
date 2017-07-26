@@ -67,7 +67,7 @@ li a:hover {
 								<input class="form-control" name="writerSearch"
 									id="focusedInput" type="text" placeholder="   검색    "
 									style="margin: 0 auto 5px;"> <input type="button"
-									id="search"  class="form-control" value="검색"> <input
+									id="search" class="form-control" value="검색"> <input
 									type="button" class="form-control" id="list" value="목록">
 							</div>
 						</div>
@@ -83,29 +83,36 @@ li a:hover {
 						form.method = "get";
 					}
 				</script>
-				
-				<!--//tab-intro-->
-				<table class="table table-hover"
-					style="width: 800px; height: auto; margin: 0 auto;">
-					<thead>
+						<!--//tab-intro-->
+						<table class="table table-hover"
+							style="width: 800px; height: auto; margin: 0 auto;">
+				<c:choose>
+						<c:when test="${articleList.size() > 0 }">
+							<thead>
+								<tr>
+									<th style="width: 30%; text-align: center; font-size: 15px;">제목</th>
+									<th style="width: 8%; text-align: center; font-size: 15px;">작성자</th>
+									<th style="width: 15%; text-align: center; font-size: 15px;">작성일</th>
+								</tr>
+							</thead>
+							<tbody style="text-align: center; font-size: 15px;">
+								<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
+									<tr>
+										<td><a
+											href="freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
+										<td>${articleList[i].contentWriter}</td>
+										<td>${articleList[i].contentRegisDate}</td>
+									</tr>
+								</c:forEach>
+						</c:when>
+						<c:otherwise>
 						<tr>
-							<th style="width: 30%; text-align: center; font-size: 15px;">제목</th>
-							<th style="width: 8%; text-align: center; font-size: 15px;">작성자</th>
-							<th style="width: 15%; text-align: center; font-size: 15px;">작성일</th>
+							<td colspan="5" style="text-align: center;">해당 내용이 없습니다.</td>
 						</tr>
-					</thead>
-					<tbody style="text-align: center; font-size: 15px;">
-						<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
-							<tr>
-								<td><a
-									href="freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
-								<td>${articleList[i].contentWriter}</td>
-								<td>${articleList[i].contentRegisDate}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-
+					</c:otherwise>
+				</c:choose>
+							</tbody>
+						</table>
 			</div>
 			<!--//company-snb-->
 		</div>
