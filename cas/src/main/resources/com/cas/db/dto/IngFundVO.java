@@ -15,7 +15,14 @@ public class IngFundVO {
 	private String fundingEndDate;
 	private String fundingStartDate;
 	private String dDay;
+	private String likenum;
 	
+	public String getLikenum() {
+		return likenum;
+	}
+	public void setLikenum(String likenum) {
+		this.likenum = likenum;
+	}
 	public String getdDay() {
 		return dDay;
 	}
