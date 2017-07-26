@@ -104,8 +104,9 @@
 
 <div id="body">
 <div class="container">
+<div class="company-cont" style="height: auto; width: 960px;">
+			<h3 class="box" style="background-color: #0B2161;">탈퇴신청하기</h3>
 	<div class="row">
-		
         <div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
             <div class="row">
     			<div class="receipt-header">

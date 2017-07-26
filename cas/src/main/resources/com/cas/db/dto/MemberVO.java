@@ -24,7 +24,9 @@ public class MemberVO {
 	private String authority;
 	private String classifyCode;
 	private String memAge;
-	
+	private String teamName;
+	private String teamPosi;
+	private String teamInfo;
 	public String getMemId() {
 		return memId;
 	}
@@ -157,6 +159,23 @@ public class MemberVO {
 	public void setMemAge(String memAge) {
 		this.memAge = memAge;
 	}
+	public String getTeamName() {
+		return teamName;
+	}
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	public String getTeamPosi() {
+		return teamPosi;
+	}
+	public void setTeamPosi(String teamPosi) {
+		this.teamPosi = teamPosi;
+	}
+	public String getTeamInfo() {
+		return teamInfo;
+	}
+	public void setTeamInfo(String teamInfo) {
+		this.teamInfo = teamInfo;
+	}
 	
-
 }

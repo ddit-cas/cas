@@ -16,13 +16,14 @@ public class MemberUccController {
 	 */
 	@RequestMapping("/member/uccForm")
 	public String uccForm(HttpServletRequest request,Model model){
-		return null;
+		model.addAttribute("boardCode","B006");
+		return "/daumeditor/article";
 	}
 	
 	/*유씨씨영상 입력양식을 다 입력후 등록을 누르면 인서트 해주는 메서드*/
 	@RequestMapping("/member/insertUcc")
 	public String insertFreeboard(HttpServletRequest request){
-		return null;
+		return "/daumeditor/article";
 	}
 	
 	/*글 수정양식을 다 입력한후 수정을 눌렀을떄 오는 메서드*/

@@ -3,6 +3,7 @@ package com.cas.member.service.impl;
 import java.util.List;
 
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.TeamVO;
 import com.cas.member.dao.MemberDao;
 import com.cas.member.service.MemberService;
 
@@ -71,6 +72,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void insertClickData(String contentNum, String classify) {
 		memberDao.insertClickData(contentNum,classify);
+	}
+
+	@Override
+	public void insertTeamList(List<TeamVO> teamList) {
+		memberDao.insertTeamList(teamList);
 	}
 
 }
