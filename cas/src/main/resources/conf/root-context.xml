@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -20,6 +19,7 @@
 		class="com.cas.article.service.impl.ArticleServiceImpl"
 		p:articleDao-ref="articleDao"
 	></bean>
+
 
 <!-- 	캐러셀 다오 빈등록 -->
 	<bean
@@ -116,6 +116,31 @@
 		p:commentDao-ref="commentDao"
 	></bean>
 	
+	<!-- 조하요 다오등록 -->
+	<bean
+		name="likeDao"
+		class="com.cas.like.dao.impl.LikeDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
 	
+	<!-- 조하요 서비시등록 -->
+	<bean
+		name="likeService"
+		class="com.cas.like.service.impl.LikeServiceImpl"
+		p:likeDao-ref="likeDao"
+	></bean>
+	
+	<!-- 		 공지사항 다오 등록		 -->
+	<bean
+		name="noticeDao"
+		class="com.cas.notice.dao.impl.NoticeDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+		></bean>
+		
+	<!-- 		공지사항 서비스등록		 -->
+	<bean
+		name="noticeService"
+		class="com.cas.notice.service.impl.NoticeServiceImpl"
+		p:noticeDao-ref="noticeDao"
+	></bean>
 </beans>
-

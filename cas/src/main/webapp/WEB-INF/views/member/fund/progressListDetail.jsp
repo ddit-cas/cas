@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <body>
@@ -405,6 +405,7 @@ function fundEntrollment_go(){
 								<span class="pull-left">
 									<button type="button" id="investBtn2" class="btn-block bg_primary btn-xl" style="color: #fff; width: 211px; margin-right: 10px; height: 58px; border: 1px solid #cbcbcb;" onclick="investProc('592');">투자하기</button>
 								</span>
+								<c:if test="${not empty loginUser }">
 								<span class="pull-left zzim-after hide">
 									<button type="button" class="btn-zzim on" style="height: 60px;">
 										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like_on.png"></i> <span id="zzim-cnt-on"></span>
@@ -416,6 +417,7 @@ function fundEntrollment_go(){
 										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like.png"> </i><span id="zzim-cnt">83</span>
 									</button>
 								</span>
+								</c:if>
 								
 							</div>
 																
@@ -430,25 +432,32 @@ function fundEntrollment_go(){
 	var cnt = $('span#zzim-cnt').text();
 	$('.btn-zzim').click(function(){
 		
-		$('.zzim-before').toggleClass('hide');
-		cnt++
-		$('span#zzim-cnt-on').text(cnt);
+// 		$('.zzim-before').toggleClass('hide');
+// 		cnt++
+// 		$('span#zzim-cnt-on').text(cnt);
 		
-		$('.zzim-after').toggleClass('hide');
-		cnt--
-		$('span#zzim-cnt').text(cnt);
+// 		$('.zzim-after').toggleClass('hide');
+// 		cnt--
+// 		$('span#zzim-cnt').text(cnt);
 		
-		
-		
-		/*
-		if($('.zzim-before').isClass('hide')){
-			cnt++;
-			$('#zzim-cnt on').val(ctn);
+		if($('.zzim-before').hasClass('hide')){
+			$.post('/cas/member/unlikeContent', contentNum="${fund.contentNum}" , 
+					function(res){
+				cnt--;
+				$('.zzim-before').removeClass('hide');
+				$('.zzim-after').addClass('hide');
+				$('#zzim-cnt').text(cnt);
+			})
 		}else{
-			cnt--;
-			$('#zzim-cnt').val(ctn);
+			//url, data , success function     
+			$.post('/cas/member/likeContent', contentNum="${fund.contentNum}" , 
+					function(res){  
+				cnt++;
+				$('.zzim-before').addClass('hide');
+				$('.zzim-after').removeClass('hide');
+				$('#zzim-cnt-on').text(cnt);
+			})
 		}
-		*/
 	})
 
 
