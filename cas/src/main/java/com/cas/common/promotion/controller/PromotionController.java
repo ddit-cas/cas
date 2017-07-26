@@ -3,6 +3,7 @@ package com.cas.common.promotion.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cas.db.dto.CommentVO;
+import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
+import com.cas.db.dto.LikeVO;
 import com.cas.member.comment.service.CommentService;
 import com.cas.promotion.service.PromotionService;
 
@@ -51,13 +54,18 @@ public class PromotionController {
 	
 	/*공연홍보 게시물 세부내용으로 가는 메서드*/
 	@RequestMapping("/promotionDetail")
-	public String promotionDetail(HttpServletRequest request,Model model){
+	public String promotionDetail(HttpSession session,HttpServletRequest request,Model model){
 		String contentNum=(String)request.getParameter("contentNum");
 		PromotionVO promotionVO=promotionService.selectPromotionDetail(contentNum);
 		List<CommentVO> commentList=commentService.selectComment(contentNum);
-		int isLike= promotionService.isLike(promotionVO);
 		
-		if(promotionVO.getContentWriter()==null){
+		
+		if(session.getAttribute("loginUser")!=null){
+			LikeVO like=new LikeVO();
+			like.setContentNum(contentNum);
+			like.setLoginUser(((MemberVO)session.getAttribute("loginUser")).getMemId());
+			
+			int isLike= promotionService.isLike(like);
 			model.addAttribute("isLike",isLike);
 		}else{
 			model.addAttribute("isLike",0);

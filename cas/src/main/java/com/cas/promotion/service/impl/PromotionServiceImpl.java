@@ -5,6 +5,7 @@ import java.util.List;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.ConsertVO;
 import com.cas.db.dto.GenreVO;
+import com.cas.db.dto.LikeVO;
 import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
 import com.cas.promotion.dao.PromotionDao;
@@ -42,8 +43,8 @@ public class PromotionServiceImpl implements PromotionService {
 	}
 
 	@Override
-	public int isLike(PromotionVO promotionVO) {
-		int isLike=promotionDao.isLike(promotionVO);
+	public int isLike(LikeVO like) {
+		int isLike=promotionDao.isLike(like);
 		return isLike;
 	}
 }

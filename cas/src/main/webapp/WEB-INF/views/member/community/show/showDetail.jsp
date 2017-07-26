@@ -315,7 +315,7 @@
 
 	var cnt = ${recomCount};
 	var isLike = ${isLike};
-
+	alert(isLike);
 	if (isLike == 1) {
 		chageListBtn();
 		$('span#zzim-cnt-on').text(cnt);
