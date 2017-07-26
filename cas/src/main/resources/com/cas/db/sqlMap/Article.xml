@@ -28,8 +28,8 @@
 							CONTENT_REGIS_DATE, CONTENT_PARENTS_CONTENT, CONTENT_WRITER, 
 							CONTENT_IMPORTANCE, CONTENT_STATE, CONSERT_NUM,CONTENT_IMG, FUNDING_NUM) 
 			VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#
-			,SYSDATE,#contentParentsContent#,#contentWriter#,'n','y'
-			,#consertNum#,#contentImg#,FUNDING_SEQ.CURRVAL)																		
+			,SYSDATE,#contentParentsContent#,#contentWriter#,'N','Y'
+			,#consertNum#,#contentImg#,#fundingNum#)																		
 	</insert>
 
 	<select id="selectArticleList" resultMap="selectArticle" parameterClass="article">
@@ -54,7 +54,7 @@
 			content_regis_date like '%'||#key#||'%'
 		</isEqual>
 		
-</select>
+	</select>
 	
 	<select id="selectArticle" resultMap="selectArticle" parameterClass="article">
 		select * from article 
@@ -82,4 +82,8 @@
 		</isNotEmpty>
 		where content_num=#contentNum#
 	</update>
+	
+	<insert id="contentLike">
+		insert into recom values()
+	</insert>
 </sqlMap>
