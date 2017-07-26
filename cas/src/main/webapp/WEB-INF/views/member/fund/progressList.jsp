@@ -62,7 +62,6 @@ function fundEntrollment_go(){
 					<li class="active"><a href="fundList">진행중인 펀딩</a></li>
 					<li><a href="endFundList">종료된 펀딩</a></li>
 					<li><a href="fundingExampleList">성공한 펀딩 </a></li>
-					<li><a href="member/insertFundIntro">펀딩 등록하기 </a></li>
 					<li>
 						<span class="btn">
 							<button class="btn btn-primary" onclick='fundEntrollment_go();' style = "background-color:#26bbe2;">펀딩 등록하기</button>

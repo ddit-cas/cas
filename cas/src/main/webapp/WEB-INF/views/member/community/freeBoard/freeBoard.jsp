@@ -41,9 +41,8 @@ li a:hover {
 		<div class="">
 			<ul>
 				<li class="active"><a href="freeboardList">자유게시판</a></li>
-				<!--li><a href="people.php">PEOPLE</a></li-->
-				<li><a href="#">공연홍보게시판</a></li>
-				<li><a href="#">UCC</a></li>
+				<li><a href="promotionList">공연홍보</a></li>
+				<li><a href="uccList">PR영상</a></li>
 			</ul>
 		</div>
 	</div>

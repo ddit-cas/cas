@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<link rel="stylesheet" href="/cas/resources/css/fundList.css"
+		type="text/css">
 <style>
 .form-inline {
 	display: block;
@@ -41,12 +42,12 @@ li a:hover {
 </script>
 <div class="company-wrap">
 	<div class="company-snb" style="float: left;">
-		<h2>영상게시판</h2>
+		<h2>커뮤니티</h2>
 		<div class="">
 			<ul>
-				<li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
-				<li><a href="/cas/promotionList">공연홍보게시판</a></li>
-				<li><a href="/cas/uccList">UCC</a></li>
+				<li class="active"><a href="freeboardList">자유게시판</a></li>
+				<li><a href="promotionList">공연홍보</a></li>
+				<li><a href="uccList">PR영상</a></li>
 			</ul>
 		 </div>
 	</div>
@@ -61,31 +62,29 @@ li a:hover {
 							type="button" id="search" class="form-control" value="검색">
 						<input type="button" class="form-control" id="list" value="목록">
 					</div>
-				<table class="table table-hover" style="width: 800px; height: auto; margin: 0 auto;">
-					<tbody style="text-align: center; font-size: 15px;">
 					<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
-					<tr class="trclass">
-						<td class="tdclass">
+					<div class="col-md-4" style="height: 600px;">
+						<div class="single-blog-item">
 							<div>
 								<a href='<c:url value='/uccDetail?contentNum=${articleList[i].contentNum }' />'>
 									<img class="imgclass" alt="땡!!" src='<c:url value='${articleList[i].contentImg }' />'>
 								</a>
-								<br><a href='<c:url value="/uccDetail?contentNum=${articleList[i].contentNum }" />'>${articleList[i].contentTitle}</a>
-								<br><a href="${articleList[i].contentWriter }">${articleList[i].contentWriter }</a>
-								<br>${articleList[i].contentRegisDate }
+								<div class="blog-content">
+									<br><a href='<c:url value="/uccDetail?contentNum=${articleList[i].contentNum }" />'>${articleList[i].contentTitle}</a>
+									<br><a href="${articleList[i].contentWriter }">${articleList[i].contentWriter }</a>
+									<br>${articleList[i].contentRegisDate }
+								</div>
 							</div>
-						</td>
-					</tr>
+						</div>
+					</div>
 					</c:forEach>
-					</tbody>
-				</table>
 			</div>
 		</div>
 	</div>
 </div>
 
 
-<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3" style="text-align: center;">
 	<div class="row">
 		<nav aria-label="...">
 			<ul class="pager" role="tablist">

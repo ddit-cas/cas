@@ -23,12 +23,12 @@
 
 </script>
 <div class="company-snb" style="float: left; margin-top: 100px;">
-	<h2>CAS-이야기</h2>
+	<h2>커뮤니티</h2>
 	<div class="">
 		<ul style="margin-right: 40px;">
-			<li class="active"><a href="fundList">공지사항</a></li>
-			<li><a href="#">CAS란</a></li>
-			<li><a href="fundingExampleList">행사일정</a></li>
+			<li class="active"><a href="freeboardList">자유게시판</a></li>
+			<li><a href="promotionList">공연홍보</a></li>
+			<li><a href="uccList">PR영상</a></li>
 		</ul>
 	</div>
 </div>

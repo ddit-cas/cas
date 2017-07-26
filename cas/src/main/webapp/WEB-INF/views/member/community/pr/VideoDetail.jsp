@@ -68,14 +68,14 @@ div.company-wrap {
    <div id="body">
       <div class="container">
          <div class="company-snb" style="float: left;">
-            <h2>커뮤니티</h2>
+           	<h2>커뮤니티</h2>
 			<div class="">
-				<ul>
-					<li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
-					<li><a href="/cas/promotionList">공연홍보게시판</a></li>
-					<li><a href="/cas/uccList">UCC</a></li>
-				</ul>
-		    </div>
+			<ul>
+				<li class="active"><a href="freeboardList">자유게시판</a></li>
+				<li><a href="promotionList">공연홍보</a></li>
+				<li><a href="uccList">PR영상</a></li>
+			</ul>
+		</div>
 		 </div>
          <div class="company-cont" style="width: 960px;">
             <h3 class="box">자유게시판</h3>
