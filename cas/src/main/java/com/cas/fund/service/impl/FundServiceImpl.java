@@ -42,4 +42,9 @@ public class FundServiceImpl implements FundService{
 		
 	}
 
+	@Override
+	public List<IngFundVO> selectTopFundList() {
+		return fundDao.selectTopFundList();
+	}
+
 }

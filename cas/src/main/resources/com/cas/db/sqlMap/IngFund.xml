@@ -30,5 +30,9 @@
 	<select id="ingFund" resultMap="selectIngFund" parameterClass="str">
 		select * from ingfundview where content_Num=#contentNum#
 	</select>
+	
+	<select id="selectTopFundList">
+		select * from ingfundview
+	</select>
 
 </sqlMap>

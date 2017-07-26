@@ -31,7 +31,6 @@
 		<result property="enabled" column="ENABLED" />                              
 		<result property="authority" column="AUTHORITY" />
 		<result property="classifyCode"  column="classify_Code" />
-		
 	</resultMap>                                                                  
 	
 	<insert id="insertMember" parameterClass="member">
