@@ -39,9 +39,14 @@ public class PromotionDaoImpl implements PromotionDao {
 			sqlMapClient.update("insertConsert", consertVO);
 			String consertNum=(String)sqlMapClient.queryForObject("selectLastConsertNum");
 			articleVO.setConsertNum(consertNum);
-			System.out.println("여기다 ㄴ율마ㅗㅠ"+articleVO.getConsertNum());
+			System.out.println("공연번호 ------------>"+articleVO.getConsertNum() );
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
 			sqlMapClient.update("insertArticle", articleVO);
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -71,5 +76,18 @@ public class PromotionDaoImpl implements PromotionDao {
 		}
 		System.out.println(promotionList.size());
 		return promotionList;
+	}
+
+	@Override
+	public int isLike(PromotionVO promotionVO) {
+		int isLike=0;
+		
+		try {
+			isLike=(Integer) sqlMapClient.queryForObject("isLike", promotionVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return isLike;
 	}
 }

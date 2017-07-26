@@ -44,14 +44,29 @@ public class PromotionController {
 		return null;
 	}
 	
+	@RequestMapping("/showSchedule")
+	public String showSchedule(Model model){
+		return "member/story/showSchedule/showSchedule";
+	}
+	
 	/*공연홍보 게시물 세부내용으로 가는 메서드*/
 	@RequestMapping("/promotionDetail")
 	public String promotionDetail(HttpServletRequest request,Model model){
 		String contentNum=(String)request.getParameter("contentNum");
 		PromotionVO promotionVO=promotionService.selectPromotionDetail(contentNum);
 		List<CommentVO> commentList=commentService.selectComment(contentNum);
+		int isLike= promotionService.isLike(promotionVO);
+		
+		if(promotionVO.getContentWriter()==null){
+			model.addAttribute("isLike",isLike);
+		}else{
+			model.addAttribute("isLike",0);
+		}
+		model.addAttribute("recomCount",request.getParameter("recomCount"));
 		model.addAttribute("promotionVO",promotionVO);
-		model.addAttribute("commentList",commentList);
+		if(commentList.size()!=0){
+			model.addAttribute("commentList",commentList);
+		}
 		return "member/community/show/showDetail";
 	}
 }

@@ -32,7 +32,7 @@
  		<label style="color:#ffffff; font-size:24px;"><strong>공연등록</strong></label>
  	</div>
 	<form name="tx_editor_form" style="width: 100%;height: auto;" id="tx_editor_form" action="/cas/member/insertPromotion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-		<input type="hidden" name="contentWriter" value="${loginUser }">
+		<input type="hidden" name="contentWriter" value="${loginUser.memId }">
 		<input type="hidden" name="consertGeograp" >
 		
 		<div style="float:left; width: 40%;">

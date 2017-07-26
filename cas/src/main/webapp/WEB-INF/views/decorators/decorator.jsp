@@ -421,7 +421,7 @@ h3 {
 							<li><a href="/cas/noticeList">공지사항</a></li>
 							<li><a href="promotion">CAS란</a></li>
 							<li><a href="#">펀딩 성공 사례</a></li>
-							<li><a href="#">공연 행사 일정</a></li>
+							<li><a href="/cas/showSchedule">공연 행사 일정</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">

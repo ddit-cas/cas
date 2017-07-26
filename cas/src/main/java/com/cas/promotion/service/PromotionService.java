@@ -13,4 +13,5 @@ public interface PromotionService {
 	public int insertPromotion(ArticleVO articleVO,ConsertVO consertVO);
 	public PromotionVO selectPromotionDetail(String contentNum);
 	public List<PromotionListVO> selectPromotionList();
+	public int isLike(PromotionVO promotionVO);
 }

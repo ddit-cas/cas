@@ -40,4 +40,10 @@ public class PromotionServiceImpl implements PromotionService {
 		List<PromotionListVO> promotionList=promotionDao.selectPromotionList();
 		return promotionList;
 	}
+
+	@Override
+	public int isLike(PromotionVO promotionVO) {
+		int isLike=promotionDao.isLike(promotionVO);
+		return isLike;
+	}
 }
