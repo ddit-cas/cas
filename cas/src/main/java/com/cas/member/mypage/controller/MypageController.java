@@ -64,6 +64,13 @@ public class MypageController {
 		return "/member/myPage/myMovie";
 	}
 	
+	/*회원 개인이 올린 유씨씨들만 볼수있게 하는 메서드*/
+	@RequestMapping("/member/uccDetail")
+	public String memberUccDetail(HttpSession session,Model model){
+		String url = "/member/myPage/myMoviceDetail";
+		return url;
+	}
+	
 	/*
 	 * 회원 개인이 등록한 크라우드 펀딩 리스트를 보여주는 메서드
 	 * 진행중인 펀딩과 종료중인 펀딩 등 을 확인 가능하게한다.

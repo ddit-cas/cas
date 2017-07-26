@@ -113,18 +113,9 @@ function fundEntrollment_go(){
 
 	<div class="detail-top-wrap">
 		<div class="top-title">
-			<h4>
-				<em>공공프로젝트</em> <strong>#아픔을</strong> 프로젝트
-			</h4>
 			<h3>
-				<a href="/web/campaign/detail/436">성폭력 피해자들의 치료를 돕기 위한 음원 발매
-					프로젝트, 승화</a>
+				${fund.contentTitle }
 			</h3>
-		</div>
-		<div class="tab-list">
-			<ul>
-				<li class="active"><a href="#">스토리</a></li>
-			</ul>
 		</div>
 	</div>
 
@@ -140,25 +131,12 @@ function fundEntrollment_go(){
 					<!-- S : Tab Content -->
 					<div class="wd-ui-tab-content" style="padding-top: 0;float:left;">
 
-						<!-- 이미지가 아닌 동영상 URL이 넘어오는 경우 iframe에 동영상을 보여줘야 함 -->
-						<div class="wd-ui-campaign-mov">
-
-							<iframe id="campaignVideoFrame" width="632" height="355"
-								src="//www.youtube.com/embed/l_dTnQ2N_CA" frameborder="0"
-								allowfullscreen="" wmode="Opaque"></iframe>
-							<!-- <video width="300" height="170" src="http://youtu.be/l_dTnQ2N_CA" class="video-js vjs-default-skin" controls="controls" ></video> -->
-						</div>
-
-
 						<!-- S : campaign 컨텐츠 -->
 						<div class="wd-ui-campaign-content">
 							<div class="wd-ui-cont" style="width:600px;">
 
 								<div class="summary" style="background-color: #ffffff;">
-									<h2>성폭력 범죄는 끊임없이 일어납니다. 하지만 성폭력 피해자들에 대한 관심은 일시적일 뿐입니다.
-										한번이라도 성폭력 피해자들의 아픔과 상처를 생각해 본 적이 있나요? 저희 [집에가는길]은 피해자들의 마음을
-										이해하고 보듬으며 ‘승화’라는 프로젝트 명처럼 성폭력 피해자들의 아픔과 상처를 음악, 미술 등 예술로 승화하고자
-										합니다.</h2>
+									<h2>${fund.contentContent }</h2>
 
 								</div>
 
@@ -169,34 +147,17 @@ function fundEntrollment_go(){
 									<div style="padding: 20px; background: #eafbf7">
 										<p
 											style="color: #23dbab; font-size: 13px; line-height: 20px; margin-bottom: 10px;">
-											<strong>목표 금액</strong> 500,000원 &nbsp; &nbsp; <strong>펀딩기간</strong>
-											2014.09.26-2014.11.21
-										</p>
-
-
-
-										<p style="color: #4a4a4a; font-size: 12px; line-height: 19px;">
-											<strong>100% 모이지 않아도 리워드가 제공되는 프로젝트</strong><br> 이 프로젝트는
-											펀딩 마감일까지 목표 금액이 100% 모이지 않아도 리워드가 제공되며, 결제가 진행됩니다.<br>메이커가
-											약속한 가장 빠른 리워드 발송 시작일은 <strong>2014.11.21</strong> 입니다. (리워드마다
-											발송 시작일이 다를 수 있으니 펀딩 전, 꼭 확인해 주세요)
+											<strong>목표 금액</strong> ${fund.fundingTargetAmount }원 &nbsp; &nbsp; <strong>펀딩기간</strong>
+											${fund.fundingStartDate }-${fund.fundingEndDate }
 										</p>
 
 
 									</div>
 									<div style="padding: 20px; background: #f0f0f0;">
 
-										<p
-											style="color: #4a4a4a; font-size: 12px; line-height: 19px; margin-bottom: 10px;">
-											<strong>펀딩 결제 안내</strong><br> 펀딩 결제는 바로 진행되지 않고, 펀딩 마감일
-											다음 영업일인 <strong>2016.11.01</strong>에 모두 함께 진행됩니다.
-										</p>
-
 										<p style="color: #4a4a4a; font-size: 12px; line-height: 19px;">
-											<strong>펀딩 취소 안내</strong><br> 펀딩 마감일까지는 MY 페이지 [나의
-											펀딩현황]에서 언제든 펀딩 취소가 가능하지만, 마감일 이후에는 리워드 제작 및 배송이 시작되어 펀딩 취소가
-											불가합니다.<br> 리워드 관련 환불 및 교환은 메이커가 정한 규정에 따르며, 스토리 하단의 프로젝트
-											위험 요인과 해결 방안을 참고해주세요.
+											<strong>투자 취소 안내</strong><br> 투자 후 24시간 내에는 투자취소가 가능하지만 24시간내에 
+											펀딩이 마감하면 취소를 할수 없읍니다. 
 										</p>
 									</div>
 								</div>
@@ -205,13 +166,6 @@ function fundEntrollment_go(){
 								<!-- S : 프로젝트 내용 -->
 								<div id="introdetails" style="height: auto;" class="story">
 									<div class="inner-contents">
-										<p>
-
-											<img style="max-width: 630px;"
-												src="https://www.wadiz.kr/wwwwadiz/green001/2014/0926/JEVKMFKBPXOE.png"><br
-												style="clear: both;">&nbsp;
-
-										</p>
 										<div class="wd-ui-risk">
 											<div style="margin-top: 10px;">
 												<span style="">프로젝트 위험 요인</span>
@@ -415,8 +369,8 @@ function fundEntrollment_go(){
 							<div class="goal_progress">
 								<!-- 목표달성시 클래스 done 추가 -->
 								<div class="progress1">
-									<span class="progress1-bar" style="width: 66%;">
-										<i class="ribbon-view"></i> <em class="progress-num left-tag">66%</em>
+									<span class="progress1-bar" style="width: ${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%;">
+										<i class="ribbon-view"></i> <em class="progress-num left-tag">${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%</em>
 										<!-- 50% 이상일때 클래스 left-tag 추가 -->
 									</span>
 								</div>
@@ -426,12 +380,12 @@ function fundEntrollment_go(){
 							<div class="sect view_goal pt0 pb0">
 								<p class="goal-sum">
 									모집 목표
-									100,000,000
+									${fund.fundingTargetAmount }
 									원
 								</p>
 								<h2>
 									
-									<strong> 66,400,000</strong> 원 모집완료<br>
+									<strong>${fund.fundingPresentAmount }</strong> 원 모집완료<br>
 									
 			                      	
 									
@@ -442,7 +396,7 @@ function fundEntrollment_go(){
 								<strong>85</strong> 명의 투자자
 							</div>
 							<div class="sect">
-							<strong>4</strong> 일 남음
+							<strong>${fund.dDay }</strong> 일 남음
  				
 							</div>
 									
@@ -529,204 +483,7 @@ $('#testBtn').click(function(){
 	
 </script>
 
-						<!--[N] 베스트 기여 서포터 정보  -->
-						<div class="project-bestsupporter">
-							<p class="project-right-title">베스트 기여 서포터</p>
-							<div class="bestsupporter-list">
-								<ul id="bestSupporterList">
-
-								<li>
-										<button class="profile" onclick="goUserProfile('71189234')"
-											style="background-image: url(/resources/Images/img_blank.png)"></button>
-										<p class="name">배지예</p>
-										<p>
-											<span>3.7%</span> 기여
-										</p>
-									</li>
-								<li>
-										<button class="profile" onclick="goUserProfile('55318034')"
-											style="background-image: url(https://wadizwww.imgix.net/wwwwadiz/green001/fb_profile_pics/1032341289.jpg?dpr=2&amp;amp;auto=format,compress&amp;amp;cs=tinysrgb&amp;amp;gifq=70&amp;amp;w=46&amp;amp;h=46)"></button>
-										<p class="name">최유진</p>
-										<p>
-											<span>3.7%</span> 기여
-										</p>
-									</li>
-
-									<li>
-										<button class="profile" onclick="goUserProfile('44995634')"
-											style="background-image: url(https://wadizwww.imgix.net/wwwwadiz/green001/fb_profile_pics/100001405582803.jpg?dpr=2&amp;amp;auto=format,compress&amp;amp;cs=tinysrgb&amp;amp;gifq=70&amp;amp;w=46&amp;amp;h=46)"></button>
-										<p class="name">이정준</p>
-										<p>
-											<span>3.4%</span> 기여
-										</p>
-									</li>
-
-									<li>
-										<button class="profile" onclick="goUserProfile('44958234')"
-											style="background-image: url(https://wadizwww.imgix.net/wwwwadiz/green001/fb_profile_pics/626321725.jpg?dpr=2&amp;amp;auto=format,compress&amp;amp;cs=tinysrgb&amp;amp;gifq=70&amp;amp;w=46&amp;amp;h=46)"></button>
-										<p class="name">Hoon Lee</p>
-										<p>
-											<span>2.7%</span> 기여
-										</p>
-									</li>
-
-									<li>
-										<button class="profile" onclick="goUserProfile('45097634')"
-											style="background-image: url(/resources/Images/img_blank.png)"></button>
-										<p class="name">신은정</p>
-										<p>
-											<span>2.7%</span> 기여
-										</p>
-									</li>
-
-
-									<li>
-										<button class="profile" onclick="goUserProfile('45539634')"
-											style="background-image: url(/resources/Images/img_blank.png)"></button>
-										<p class="name">한상혁</p>
-										<p>
-											<span>2.7%</span> 기여
-										</p>
-									</li>
-
-									<li>
-										<button class="profile" onclick="goUserProfile('67384634')"
-											style="background-image: url(/resources/Images/img_blank.png)"></button>
-										<p class="name">민준기</p>
-										<p>
-											<span>2.7%</span> 기여
-										</p>
-									</li>
-
-
-									<li><em class="profile"
-										style="background-image: url(/resources/Images/img_blank.png)"></em>
-										<p>
-											익명의 서포터<br>
-											<span>2.7%</span> 기여
-										</p></li>
-
-
-									<li>
-										<button class="profile" onclick="goUserProfile('70101234')"
-											style="background-image: url(/resources/Images/img_blank.png)"></button>
-										<p class="name">이윤주</p>
-										<p>
-											<span>2.7%</span> 기여
-										</p>
-									</li>
-
-								</ul>
-
-								<p id="bestSupporterMore" class="btn-more">
-									<button onclick="seeMoreBestSupporter()">더 보기</button>
-								</p>
-								<p id="bestSupporterClose" class="btn-more close">
-									<button onclick="closeBestSupporter()">닫기</button>
-								</p>
-
-							</div>
-						</div>
-						<!--// [N] 베스트 기여 서포터 정보  -->
-
-
-						<!-- S : 인기 프로젝트 리스트 -->
-						<div id="normalpane" >
-							<div class="recommend-box">
-								<p>인기 프로젝트</p>
-
-								<div class="item">
-									<div class="number">1</div>
-									<div class="text">
-										<a href="/web/campaign/detail/13175">가격마저 놀랍다! 디자이너 캐리어
-											&amp; 백팩, 샤플 Dr.Nah</a>
-									</div>
-								</div>
-
-								<div class="item">
-									<div class="number">2</div>
-									<div class="text">
-										<a href="/web/campaign/detail/12333">이제는 로봇청소기도 슬림이 '대세'
-											초슬림 로봇청소기 욜로봇슬림</a>
-									</div>
-								</div>
-
-								<div class="item">
-									<div class="number">3</div>
-									<div class="text">
-										<a href="/web/campaign/detail/13535">가격, 디자인, 기능을 모두 잡은 국민
-											전동킥보드, 아이로드 i6</a>
-									</div>
-								</div>
-
-								<div class="item">
-									<div class="number">4</div>
-									<div class="text">
-										<a href="/web/campaign/detail/13222">시계, 무드등, 무선충전기가 하나로!
-											'오블리크 제로'!</a>
-									</div>
-								</div>
-
-								<div class="item">
-									<div class="number">5</div>
-									<div class="text">
-										<a href="/web/campaign/detail/13208">'수퍼스노우' 당신을 위한 아침대용식
-											내가 먹은 한 끼가 내 몸을 만든다</a>
-									</div>
-								</div>
-
-								<div class="item">
-									<div class="number">6</div>
-									<div class="text">
-										<a href="/web/campaign/detail/12623">킥보드? NO! 킥바이크!!도시를
-											말달리다!! 쿨런전동킥바이크&amp;킥바이크</a>
-									</div>
-								</div>
-
-								<div class="item">
-									<div class="number">7</div>
-									<div class="text">
-										<a href="/web/campaign/detail/11917">[터치백] 어떤 움직임에도 흘러내리지
-											않는 데일리백</a>
-									</div>
-								</div>
-
-								<div class="item">
-									<div class="number">8</div>
-									<div class="text">
-										<a href="/web/campaign/detail/12947">체중관리 효과가 그냥 착용만 해도! -
-											스마트벨트 '웰트'</a>
-									</div>
-								</div>
-
-								<div class="item">
-									<div class="number">9</div>
-									<div class="text">
-										<a href="/web/campaign/detail/12368">쏟을 걱정 노! 손은 핸들 위로!
-											1+1컵홀더 - 컵플러스</a>
-									</div>
-								</div>
-
-								<div class="item">
-									<div class="number">10</div>
-									<div class="text">
-										<a href="/web/campaign/detail/13074">5,500원으로 해외여행 100배
-											즐기기</a>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-					
-
 					<!-- S : 프로젝트 신고 팝업 -->
-
-
-
-
-
 
 					<div class="" tabindex="-1" role="dialog"
 						aria-labelledby="ui-dialog-title-reportppp"

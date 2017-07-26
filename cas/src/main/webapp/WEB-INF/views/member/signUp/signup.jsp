@@ -155,7 +155,7 @@ $(function(){
 						<div class="col-sm-6">
 						  <div class="input-group">
 						    <input type="text" class="form-control" id="zip" 
-						    	placeholder="우편번호 버튼을 눌러주세요" name="memMailnumber" disabled="disabled">
+						    	placeholder="우편번호 버튼을 눌러주세요" name="memMailnumber" readonly>
 						    <span class="input-group-btn">
 						      <button id="zip-btn"class="btn btn-default" type="button">우편번호</button>
 						    </span>
@@ -166,18 +166,17 @@ $(function(){
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="memAddr">주소</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="add1" name="addr1"
-								placeholder="주소는 자동으로 입력 됩니다." disabled="disabled">
+							<input type="text" class="form-control" id="add1" name="memAddr1"
+								placeholder="주소는 자동으로 입력 됩니다." readonly>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="memAddr">상세주소</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="add2" name="addr2"
-								placeholder="상세주소는 자동으로 입력 됩니다." disabled="disabled">
+							<input type="text" class="form-control" id="add2" name="memAddr2"
+								placeholder="상세주소는 자동으로 입력 됩니다." readonly>
 						</div>
 					</div>
-					<input type="hidden" id="fullAddr" name="memAddr"/>
 				</div>
 			</div>
 			</div>
@@ -434,14 +433,14 @@ $(function() {
 		//이미지 미리보기 생성
 		var textField  ="<div class='add-field'><hr><div class='box-body crew'><div class='col-sm-2'><div class='files-crw'>";
 			textField += "<img alt='User Pic' src='https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg' id='profile-image"+seq+"' class='img-circle img-responsive'>";
-			textField += "<input id='profile-image-input"+seq+"'  accept='image/png, image/jpeg, image/gif' class='hidden' name ='crw-img' type='file'></div></div>";
+			textField += "<input id='profile-image-input"+seq+"'  accept='image/png, image/jpeg, image/gif' class='hidden' name ='teamImage"+seq+"' type='file'></div></div>";
 			//이름 텍스트필드 생성	
 			textField += "<p id='enter'/><label class='control-label col-sm-1' for='crw-name'>이름</label>";
-			textField += "<div class='col-sm-2'><input type='text' id='crw-name"+seq+"' name='crw-name' class='form-control crw-name'></div>";
+			textField += "<div class='col-sm-2'><input type='text' id='crw-name"+seq+"' name='teamName"+seq+"' class='form-control crw-name'></div>";
 			textField += "<p id='enter'/>";
 			//역할 텍스트필드 생성	
 			textField += "<label class='control-label col-sm-1' for='crw-role'>역할</label>";
-			textField += "<div id='btns'><div class='col-sm-2'><input type='text' id='crw-role"+seq+"' name='crw-role' class='form-control crw-role' placeholder='팀원의 역할을 입력하세요'></div></div>";
+			textField += "<div id='btns'><div class='col-sm-2'><input type='text' id='crw-role"+seq+"' name='teamPosi"+seq+"' class='form-control crw-role' placeholder='팀원의 역할을 입력하세요'></div></div>";
 			textField += "<p id='enter'/><input type='button' class='btn btn-default minus-crw' value='-' />";
 			textField += "</div></div>";
 			seq += 1;

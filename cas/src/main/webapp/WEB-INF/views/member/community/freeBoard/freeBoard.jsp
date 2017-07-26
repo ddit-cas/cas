@@ -36,66 +36,68 @@ li a:hover {
 }
 </style>
 <div class="company-wrap">
-   <div class="company-snb">
-      <h2>커뮤니티</h2>
-      <div class="">
-         <ul>
-            <li class="active"><a href="freeboardList">자유게시판</a></li>
-            <!--li><a href="people.php">PEOPLE</a></li-->
-            <li><a href="#">공연홍보게시판</a></li>
-            <li><a href="#">UCC</a></li>
-         </ul>
-      </div>
-   </div>
-   <div class="company-cont" style="height: auto;">
-      <h3 class="box">자유게시판</h3>
-      <div class="tab-content">
-         <div id="home" class="tab-pane fade in active">
-            <div class="selectcheck">
-               <form class="form-inline">
-                  <p>
-                     <img src="resources/images/free.png"
-                        style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
-                  </p>
-                  <div class="searchgroup" style="float: right">
-                     <select class="form-control">
-                        <option value="title">제목</option>
-                        <option value="writer" selected>작성자</option>
-                        <option value="date">작성일</option>
-                     </select>
-                     <div class="form-group">
-                        <input class="form-control" id="focusedInput" type="text"
-                           placeholder="   검색    " style="margin: 0 auto 5px;"> <input
-                           type="button" id="search" class="form-control" value="검색">
-                        <input type="button" class="form-control" id="list" value="목록">
-                     </div>
-                  </div>
-               </form>
-            </div>
-            <!--//tab-intro-->
-            <table class="table table-hover"
-               style="width: 800px; height: auto; margin: 0 auto;">
-               <thead>
-                  <tr>
-                     <th style="width: 30%; text-align: center; font-size: 15px;">제목</th>
-                     <th style="width: 8%; text-align: center; font-size: 15px;">작성자</th>
-                     <th style="width: 15%; text-align: center; font-size: 15px;">작성일</th>
-                  </tr>
-               </thead>
-               <tbody style="text-align: center; font-size: 15px;">
-               <c:forEach var="i" begin="${firstRow}" end="${lastRow}">
-                  <tr>
-                     <td><a href="freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
-                     <td>${articleList[i].contentWriter}</td>
-                     <td>${articleList[i].contentRegisDate}</td>
-                  </tr>
-               </c:forEach>
-               </tbody>
-            </table>
-         </div>
-         <!--//company-snb-->
-      </div>
-   </div>
+	<div class="company-snb">
+		<h2>커뮤니티</h2>
+		<div class="">
+			<ul>
+				<li class="active"><a href="freeboardList">자유게시판</a></li>
+				<!--li><a href="people.php">PEOPLE</a></li-->
+				<li><a href="#">공연홍보게시판</a></li>
+				<li><a href="#">UCC</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="company-cont" style="height: auto;">
+		<h3 class="box">자유게시판</h3>
+		<div class="tab-content">
+			<div id="home" class="tab-pane fade in active">
+				<div class="selectcheck">
+					<form class="form-inline">
+						<p>
+							<img src="resources/images/free.png"
+								style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
+						</p>
+						<div class="searchgroup" style="float: left">
+							<select class="form-control">
+								<option value="title">제목</option>
+								<option value="writer" selected>작성자</option>
+								<option value="date">작성일</option>
+							</select>
+							<div class="form-group">
+								<input class="form-control" id="focusedInput" type="text"
+									placeholder="   검색    " style="margin: 0 auto 5px;"> <input
+									type="button" id="search" class="form-control" value="검색">
+								<input type="button" class="form-control" id="list" value="목록">
+							</div>
+						</div>
+								<a href="/cas/member/communify/freeBoard/freeboardForm"><input type="button" class="form-control" id="insert" value="등록"></a>
+					</form>
+				</div>
+				<!--//tab-intro-->
+				<table class="table table-hover"
+					style="width: 800px; height: auto; margin: 0 auto;">
+					<thead>
+						<tr>
+							<th style="width: 30%; text-align: center; font-size: 15px;">제목</th>
+							<th style="width: 8%; text-align: center; font-size: 15px;">작성자</th>
+							<th style="width: 15%; text-align: center; font-size: 15px;">작성일</th>
+						</tr>
+					</thead>
+					<tbody style="text-align: center; font-size: 15px;">
+					<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
+						<tr>
+							<td><a href="freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
+							<td>${articleList[i].contentWriter}</td>
+							<td>${articleList[i].contentRegisDate}</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+				
+			</div>
+			<!--//company-snb-->
+		</div>
+	</div>
 </div>
 <!-- 페이지수  -->
 <div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">

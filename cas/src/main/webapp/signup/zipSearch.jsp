@@ -33,14 +33,13 @@ function init(){
 		//document.form.action="http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do"; //모바일 웹인 경우, 인터넷망
 		document.form.submit();
 	}else{
-		jusoCallBack("<%=roadFullAddr%>","<%=roadAddrPart1%>","<%=roadAddrPart2%>","<%=addrDetail%>","<%=zipNo%>");
+		jusoCallBack("<%=roadAddrPart1%>","<%=roadAddrPart2%>","<%=addrDetail%>","<%=zipNo%>");
 		window.close();
 		   
 	}
 }
 
-function jusoCallBack(roadFullAddr, roadAddrPart1, roadAddrPart2, addrDetail, zipNo){
-	opener.document.getElementById("fullAddr").value = roadFullAddr;
+function jusoCallBack(roadAddrPart1, roadAddrPart2, addrDetail, zipNo){
 	opener.document.getElementById("add1").value = roadAddrPart1+roadAddrPart2;
 	opener.document.getElementById("add2").value = addrDetail;
 	opener.document.getElementById("zip").value = zipNo;

@@ -17,8 +17,9 @@
 	<sqlMap resource="com/cas/db/sqlMap/Carousel.xml" />
 
 	<sqlMap resource="com/cas/db/sqlMap/Caser.xml" />
+	
+	<sqlMap resource="com/cas/db/sqlMap/IngFund.xml" />
 
 	<sqlMap resource="com/cas/db/sqlMap/Fund.xml" />
-
 
 </sqlMapConfig>
