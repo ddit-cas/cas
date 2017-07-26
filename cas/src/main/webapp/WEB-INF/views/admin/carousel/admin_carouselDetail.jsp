@@ -16,9 +16,23 @@
 	        </tr>
          </thead>
         	<tbody>
-        		<c:forEach items="${articleList }" var="article">
-			        <tr class="articleRow" contentUrl="${article.contentNum }">
+        		<c:forEach items="${noticeList }" var="article">
+			        <tr class="articleRow" target="${article.contentTitle }" contentUrl="/cas/noticeDetail?articleId=${article.contentNum }">
 			          <td>${article.boardName }</td>
+			          <td>${article.contentTitle }</td>
+			          <td>${article.contentWriter }</td>		          
+			        </tr>
+        		</c:forEach>
+        		<c:forEach items="${fundList }" var="article">
+			        <tr class="articleRow" target="${article.contentTitle }" contentUrl="/cas/fundDetail?contentNum=${article.contentNum }">
+			          <td>크라우드펀딩</td>
+			          <td>${article.contentTitle }</td>
+			          <td>${article.contentWriter }</td>		          
+			        </tr>
+        		</c:forEach>
+        		<c:forEach items="${promotionList }" var="article">
+			        <tr class="articleRow" target="${article.contentTitle }" contentUrl="/cas/promotionDetail?contentNum=${article.contentNum }">
+			          <td>공연홍보</td>
 			          <td>${article.contentTitle }</td>
 			          <td>${article.contentWriter }</td>		          
 			        </tr>
@@ -30,6 +44,7 @@
 	$('tr.articleRow').on('click',function(){
 		var contentUrl=$(this).attr('contentUrl');
 		$("#contentUrl").val(contentUrl);
+		$("#target").html($(this).attr('target'));
 	});
 	
 	$(function(){
@@ -60,6 +75,10 @@
 </script>  	
   	<form id="subject" action="/cas/admin/${carouselUrl }" method="post" enctype="multipart/form-data">
   	<input type="hidden" value="${carousel.contentUrl }" id="contentUrl" name="contentUrl">
+			        <div>
+			        	<p>대상 글 </p>
+			        	<p id="target"></p>
+			        </div>
   	캐러셀 제목 등록  <br>
   		<input type="text" value="${carousel.carouselTitle }" name="carouselTitle" width="150"><br>
   	캐러셀 내용 등록 	
@@ -67,6 +86,7 @@
   		
 	  	<div id="image_preview">
 		        <img class="img" id="image" src="${carousel.carouselImage }" width="450" height="300"/>
+		        <input type="hidden" name="carouselImage" value="${carousel.carouselImage }">
 		        <br />
 			        <label for="image">Image:</label>
 			        <br />
