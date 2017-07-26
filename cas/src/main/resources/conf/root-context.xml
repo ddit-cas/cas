@@ -116,5 +116,17 @@
 		p:commentDao-ref="commentDao"
 	></bean>
 	
+	<!-- 조하요 다오등록 -->
+	<bean
+		name="likeDao"
+		class="com.cas.like.dao.impl.LikeDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	></bean>
 	
+	<!-- 조하요 서비시등록 -->
+	<bean
+		name="likeService"
+		class="com.cas.like.service.impl.LikeServiceImpl"
+		p:likeDao-ref="likeDao"
+	></bean>
 </beans>
