@@ -413,14 +413,13 @@ function fundEntrollment_go(){
 								<span class="pull-left zzim-before">
 									<button type="button" class="btn-zzim" style="height: 60px;">
 										
-										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like.png"> </i><span id="zzim-cnt">83</span>
+										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like.png"> </i><span id="zzim-cnt">${fund.likenum }</span>
 									</button>
 								</span>
 							</div>
 																
 						</div>
 						<!--// [N] 프로젝트 정보  -->
-						
 						
 <script>
 
@@ -459,11 +458,6 @@ function fundEntrollment_go(){
 	})
 
 
-
-
-
-
-
 $('#testBtn').click(function(){
 	$('#reply_1').toggleClass("hide");
 });
@@ -489,6 +483,13 @@ $('#testBtn').click(function(){
 	
 	
 </script>
+<c:if test="${isLike==1 }">
+			<script>
+				$('.zzim-before').addClass('hide');
+				$('.zzim-after').removeClass('hide');
+				$('#zzim-cnt-on').text(cnt);
+			</script>
+			</c:if>		
 
 					<!-- S : 프로젝트 신고 팝업 -->
 
