@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Recom">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="recom" type="com.cas.db.dto.RecomVO" />
+	
+	<insert id="insertRecom" parameterClass="recom">						
+		insert into recom (RECOM_CONTENT,RECOM_DATE,RECOM_MEM)
+		values(#contentNum#,sysdate,#recomMem#)
+	</insert>
+	
+	<delete id="deleteRecom" parameterClass="str">
+		delete from recom where recom_content=#contentNum#
+	</delete>
+</sqlMap>

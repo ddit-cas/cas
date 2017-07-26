@@ -75,6 +75,7 @@ public class NoticeController {
 		model.addAttribute("articleVO",articleVO);
 		return "/member/story/notice/noticeDetail";
 	}
+	
 	/*게시물을 신고하는 메서드*/
 	@RequestMapping("/declaration")
 	public String declaration(HttpServletRequest request,Model model){
