@@ -13,4 +13,5 @@ public interface CaserService {
 	
 	public List<CaserDetailVO> selectCaserDetail(String memId);
 
+	public List<CaserDetailVO> selectBasicCaserDetail(String memId);
 }

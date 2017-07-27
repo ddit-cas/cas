@@ -9,8 +9,16 @@ public class CaserVO {
 	private String memBirthdate;
 	private String memFrofileimage;
 	private String memNick;
+	private String memCareer;
 	
 	
+	
+	public String getMemCareer() {
+		return memCareer;
+	}
+	public void setMemCareer(String memCareer) {
+		this.memCareer = memCareer;
+	}
 	public String getMemNick() {
 		return memNick;
 	}

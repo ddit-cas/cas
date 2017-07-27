@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cas.db.dto.CaserDetailVO;
 import com.cas.db.dto.CaserVO;
+import com.cas.db.dto.MemberVO;
 
 public interface CaserDao {
 	
@@ -13,4 +14,5 @@ public interface CaserDao {
 	
 	public List<CaserDetailVO> selectCaserDetail(String memId);
 
+	public List<CaserDetailVO> selectBasicCaserDetail(String memId);
 }

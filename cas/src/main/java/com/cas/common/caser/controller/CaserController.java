@@ -14,6 +14,7 @@ import com.cas.caser.service.CaserService;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.CaserDetailVO;
 import com.cas.db.dto.CaserVO;
+import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.Paging;
 
 @Controller
@@ -62,9 +63,11 @@ public class CaserController {
 	@RequestMapping("/caserDetail")
 	public String caserDetail(HttpServletRequest request, Model model){
 		String memId = request.getParameter("memId");
-		List<CaserDetailVO> caserList = caserService.selectCaserDetail(memId);
+		System.out.println(memId);
+		List<CaserDetailVO> caserList = caserService.selectCaserDetail(memId);			
 		model.addAttribute("caserList",caserList);
-		System.out.println(caserList.get(0).getMemId());
+		System.out.println("사이즈"+caserList.size());
+		
 		String url="member/caser/profileDetail";
 		
 		return url;

@@ -22,5 +22,5 @@ public interface NoticeService {
 	public boolean updateNotice(ArticleVO article);
 	
 	/*공지사항을 삭제하는 메서드*/
-	public boolean updateNotice(String articleId);
+	public boolean deleteNotice(ArticleVO article);
 }

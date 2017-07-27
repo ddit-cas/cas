@@ -64,4 +64,8 @@
 		select * from teamview where mem_id = #memId#
 	</select>
 	
+	<select id="selectBasicCaserDetail" parameterClass="str" resultMap="selectCaser">
+		select * from teamview where mem_id = #memId#
+	</select>
+	
 </sqlMap>

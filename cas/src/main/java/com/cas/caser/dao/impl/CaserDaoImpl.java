@@ -63,4 +63,15 @@ public class CaserDaoImpl implements CaserDao{
 		return caserList;
 	}
 
+	@Override
+	public List<CaserDetailVO> selectBasicCaserDetail(String memId) {
+		List<CaserDetailVO> resultList = null;
+		try {
+			resultList = sqlMapClient.queryForList("selectBasicCaserDetail",memId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultList;
+	}
+
 }

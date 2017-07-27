@@ -36,27 +36,15 @@ li a:hover {
 }
 </style>
 <div class="company-wrap">
-	<div class="container">
-		<div class="company-snb">
-			<h2>cas-이야기</h2>
-			<div class="">
-				<ul>
-					<li class="active"><a href="/cas/member/story/notice/noticeList">공지사항</a></li>
-					<!--li><a href="people.php">PEOPLE</a></li-->
-					<li><a href="#">CAS란</a></li>
-					<li><a href="#">공연 행사 일정</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	
 	<div class="company-cont">
 		<h3 class="box">공지사항</h3>
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 				<div class="selectcheck">
-					<form class="form-inline" id="search">
+					<form class="form-inline" id="search" action="noticeSearch">
 						<p>
-							<img src="resources/images/noticee.png"
+							<img src="../resources/images/noticee.png"
 								style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
 						</p>
 						<!-- 검색 -->
@@ -69,17 +57,19 @@ li a:hover {
 							<div class="form-group">
 								<input name="writeSearch" class="form-control" id="focusedInput" type="text"
 									placeholder="검색" style="margin: 0 auto 5px;"> 
-								<input type="button" id="search" class="form-control" onclick="search_go();" name="search" value="검색">
+								<input type="submit"  class="form-control" value="검색">
 								<input type="button" class="form-control" id="list" value="목록">
+								<input type="button" class="insertNotice" value="등록" onclick="location.href='noticeInsertForm'">
 							</div>
 						</div>
 						</form>
 					</div>
 				</div>
 <script>
-	function search_go(){
-		form.href="/cas/noticeList";
+	function insert_go(){
+		form.href="/cas/admin/noticeInsertForm";
 		form.method="get";
+		
 	}
 </script>				
 				<!--테이블 리스트-->
@@ -95,7 +85,7 @@ li a:hover {
 					<tbody style="text-align: center; font-size: 15px;">
 						<c:forEach var="content" items="${articleList}">
 							<tr>
-								<td><a href="noticeDetail?contentNum=${content.contentNum}">${content.contentTitle}</a></td>
+								<td><a href="../noticeDetail?contentNum=${content.contentNum}">${content.contentTitle}</a></td>
 								<td>${content.contentWriter}</td>
 								<td>${content.contentRegisDate}</td>
 							</tr>
@@ -112,7 +102,7 @@ li a:hover {
 		<nav aria-label="...">
 			<ul class="pager" role="tablist">
 				<li class="previous">
-					<a href="/cas/noticeList?tab=${minNum-1}"><span aria-hidden="true">←</span>
+					<a href="/cas/admin/noticeList?tab=${minNum-1}"><span aria-hidden="true">←</span>
 						이전
 					</a>
 				</li>
@@ -127,15 +117,16 @@ li a:hover {
 				</c:when>
 				<c:otherwise>
 				<li>
-					<a aria-controls="tab1" href="/cas/noticeList?tab=${i}">
+					<a aria-controls="tab1" href="/cas/admin/noticeList?tab=${i}">
 						${i }
 					</a>
 				</li>
+				
 				</c:otherwise>
 				</c:choose>
 				</c:forEach>
 				<li class="next">
-					<a href="/cas/noticeList?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
+					<a href="/cas/admin/noticeList?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
 					</a>
 				</li>
 			</ul>

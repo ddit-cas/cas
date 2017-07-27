@@ -11,6 +11,15 @@
 <head>
 <meta charset="UTF-8">
 
+<!-- 다음에디터를 쓰기위한 링크 -->
+ <link rel="stylesheet" href="<c:url value="/resources/daumeditor/css/editor.css"/>" type="text/css" charset="utf-8"/>
+ <link rel="stylesheet" href="<c:url value="/resources/daumeditor/css/content_view.css"/>" type="text/css" charset="utf-8"/>
+ <script src="<c:url value="/resources/daumeditor/js/editor_loader.js"/>" type="text/javascript" charset="utf-8"></script>
+ 
+<!--  비디오태그를 사용하기위한 링크 -->
+ <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet" />
+<script src="http://vjs.zencdn.net/c/video.js"></script>
+
 <!-- sweetalert하기 위한 링크 -->
 <link rel="stylesheet" href="/cas/resources/css/sweetalert.css">
 <script src="/cas/resources/js/sweetalert/sweetalert.min.js"></script>

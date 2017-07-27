@@ -29,27 +29,28 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public boolean insertNotice(ArticleVO article) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return noticeDao.insertNotice(article);
 	}
 
 	@Override
 	public boolean updateNotice(ArticleVO article) {
-		// TODO Auto-generated method stub
-		return false;
+		return noticeDao.updateNotice(article);
 	}
 
-	@Override
-	public boolean updateNotice(String articleId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public List<ArticleVO> noticeSearch(String index, String key) {
 		List<ArticleVO> resultList;
 		resultList = noticeDao.noticeSearch(index, key);
 		return resultList;
+	}
+
+	@Override
+	public boolean deleteNotice(ArticleVO article) {
+		
+		return noticeDao.deleteNotice(article);
 	}
 
 }

@@ -77,20 +77,42 @@ public class NoticeDaoImpl implements NoticeDao{
 	
 	@Override
 	public boolean insertNotice(ArticleVO article) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		try {
+			sqlMapClient.update("insertNotice",article);
+			result=true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
 	public boolean updateNotice(ArticleVO article) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		try {
+			int res = sqlMapClient.update("updateNotice",article);
+			if(res>0){
+				result=true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
-	public boolean updateNotice(String articleId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteNotice(ArticleVO article) {
+		boolean result = false;
+		try {
+			int res = sqlMapClient.update("deleteNotice",article);
+			if(res>0){
+				result=true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 

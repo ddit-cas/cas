@@ -36,4 +36,11 @@ public class CaserServiceImpl implements CaserService{
 		return caserList;
 	}
 
+	@Override
+	public List<CaserDetailVO> selectBasicCaserDetail(String memId) {
+		List<CaserDetailVO> resultList;
+		resultList = caserDao.selectBasicCaserDetail(memId);
+		return resultList;
+	}
+
 }

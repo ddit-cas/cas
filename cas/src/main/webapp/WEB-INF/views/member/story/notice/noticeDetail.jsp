@@ -60,6 +60,14 @@ div.company-wrap {
 }
 </style>
 	<script type="text/javascript">
+	
+	function noticeModifyAdmin(){
+		location.href="/cas/admin/noticeInsertForm?contentNum=${articleVO.contentNum}";
+	}
+	
+	function noticeDeleteAdmin(){
+		location.href="/cas/admin/noticeDelete?contentNum=${articleVO.contentNum}";
+	}
 		
 	</script>
 	<div id="body">
@@ -112,6 +120,10 @@ div.company-wrap {
 								<div class="form-group" style="float: left;">
 									<button data-toggle="modal" data-target="#squarespaceModal"
 										class="btn btn-primary center-block">신고</button>
+<%-- 									<c:if test="${sessionScope.userId == 'admin'}">	 --%>
+										<button onclick="noticeModifyAdmin();">수정</button>
+										<button onclick="noticeDeleteAdmin();">삭제</button>
+<%-- 									</c:if> --%>
 								</div>
 							</div>
 						</div>
