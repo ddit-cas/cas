@@ -39,7 +39,6 @@ public class NoticeController {
 		List<ArticleVO> resultList;
 		resultList = articleService.selectArticleList("B001");
 		model.addAttribute("articleList",resultList);
-		System.out.println(resultList.get(0).getContentTitle());
 		String url = "/member/story/notice/noticeBoard";
 		return url;
 	}

@@ -9,10 +9,11 @@ package com.cas.db.dto;
  * @version 1.0.0
  */
 public class Paging {
-	//한 페이지의 로우 		7
-	final int BOARD_ROW = 6;
 	//한번에 보이는 페이징번호   5 (바꿀경우 홀수로만 바꾼다)
 	final int SHOW_PAGE = 5;
+	
+	//한 페이지의 로우 		7
+	private int boardRow;
 
 	private int maxNum;
 
@@ -23,6 +24,10 @@ public class Paging {
 	private int minNum;
 	
 	private int index;
+	
+	private int dataRow;
+	
+	private String page;
 	
 	/**
 	 * 현재페이지
@@ -59,16 +64,35 @@ public class Paging {
 	public int getMinNum() {
 		return minNum;
 	}
-
+	
+	
 	
 	/**
 	 * @param dataRow 총 데이터리스트의 길이
 	 * @param page 현재페이지(1부터 시작)
 	 */
 	public Paging(int dataRow, String page) {
+		this(dataRow, page, 6);
+	}
 	
+	/**
+	 * @param dataRow 총 데이터리스트의 길이
+	 * @param page 현재페이지(1부터 시작)
+	 * @param boardRow 한 페이지에서 보여질 로우의 수
+	 */
+	public Paging(int dataRow, String page, int boardRow) {
+		this.dataRow=dataRow;
+		this.page=page;
+		this.boardRow=boardRow;
+		setParam();
+	}
+	
+	private void setParam(){
 		firstPageRow = 0;
-		lastPageRow = firstPageRow+BOARD_ROW-1;
+		lastPageRow = firstPageRow+boardRow-1;
+		if(lastPageRow>dataRow){
+			lastPageRow=dataRow;
+		}
 		//tab 값이 안넘어왔을경우 초기값
 		index = 1;
 		minNum = 1;
@@ -76,8 +100,8 @@ public class Paging {
 		//여기까지 페이지 첫 화면에서의 기본 숫자들 셋팅
 
 		//페이지넘버의 끝 번호
-		maxNum = dataRow/BOARD_ROW;
-		if(dataRow%BOARD_ROW > 0){
+		maxNum = dataRow/boardRow;
+		if(dataRow%boardRow > 0){
 			maxNum++;
 		}		
 		//tab 값이 넘어왔을경우 페이징처리
@@ -89,8 +113,8 @@ public class Paging {
 			}else if(index>maxNum){
 				index=maxNum;
 			}
-			firstPageRow = (index-1)*BOARD_ROW;
-			lastPageRow = firstPageRow+BOARD_ROW-1;
+			firstPageRow = (index-1)*boardRow;
+			lastPageRow = firstPageRow+boardRow-1;
 			index--;
 			minNum = (int)(index/SHOW_PAGE)*SHOW_PAGE+1;
 			index++;
@@ -108,6 +132,7 @@ public class Paging {
 			}
 		}
 	}
+	
 	@Override
 	public String toString() {
 		return "Paging ["
