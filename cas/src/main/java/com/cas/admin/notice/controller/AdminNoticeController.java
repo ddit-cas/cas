@@ -95,7 +95,8 @@ public class AdminNoticeController {
 		String url="admin/board/notice/noticeBoardAdmin";
 		String index=request.getParameter("search");
 		String key=request.getParameter("writeSearch");
-		List<ArticleVO> noticeList= noticeService.noticeSearch(index, key);
+		String boardCord = request.getParameter("boardCord");
+		List<ArticleVO> noticeList= noticeService.noticeSearch(boardCord,index, key);
 		
 		
 		System.out.println(noticeList.get(0).getContentWriter());
