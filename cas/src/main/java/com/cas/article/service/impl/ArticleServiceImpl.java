@@ -54,5 +54,12 @@ public class ArticleServiceImpl implements ArticleService{
 	public List<ArticleVO> selectTopUccList() {
 		return articleDao.selectTopUccList();
 	}
+	
+	@Override
+	public List<ArticleVO> selectFreeSearch(String boardCode,String index, String key) {
+	List<ArticleVO> resultList;
+	resultList = articleDao.selectFreeSearch(boardCode, index, key);
+	return resultList;
+	}
 
 }

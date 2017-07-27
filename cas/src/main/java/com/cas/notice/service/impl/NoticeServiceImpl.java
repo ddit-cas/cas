@@ -46,9 +46,9 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public List<ArticleVO> noticeSearch(String index, String key) {
+	public List<ArticleVO> noticeSearch(String boardCode,String index, String key) {
 		List<ArticleVO> resultList;
-		resultList = noticeDao.noticeSearch(index, key);
+		resultList = noticeDao.noticeSearch(boardCode, index, key);
 		return resultList;
 	}
 
