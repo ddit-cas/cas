@@ -79,7 +79,7 @@
 							<div class="well well-sm">
 								<div class="row">
 									<div class="col-sm-6 col-md-4">
-										<img src="resources/images/seol.jpg" alt=""
+										<img src="${caserList[i].memFrofileimage }" alt=""
 											class="img-rounded img-responsive" />
 									</div>
 									<div class="col-sm-6 col-md-8">

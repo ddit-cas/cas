@@ -4,32 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>회원가입</title>
 <body>
-<script>
-//아이디 중복 확인
-$(function(){
-    $('#idCheck').click(function(){
-    	var idValue = $('#mem_id').val();
-    	$.ajax({
-    		url : '/cas/signup/idCheck.jsp',
-    		type : 'post',
-    		data : "id="+idValue,  // {"id:idValue"} 이래도 같음.
-    		success : function(res){
-    			var code = "";
-    			var attr = "";
-    			if(res.status == "OK"){
-    				code += res.id+"는 사용 가능합니다.";
-    				attr += "yes";
-    			}else{
-    				code += res.id+"는 사용 불가능합니다.";
-    				attr += "no";
-    			}
-    			$('.msgCheckId').html(code).attr("id",attr);
-    		},
-    		dataType : 'json' 
-    	});
-    });
-});    
-</script>
 <style>
 	.form-horizontal{
 		margin-top: 116px;
@@ -70,19 +44,7 @@ $(function(){
     margin: 7px 0px 12px;
 }
 </style>
-	<form class="form-horizontal" action="/cas/joinMember" method="post">
 	
-					
-<script>
-//우편번호 검색
-$(function(){
-	$('#zip-btn').on('click',function(){
-		var url = "/cas/signup/zipSearch.jsp";
-		window.open(url,"우편번호검색","width=500 height=400 top=300");		
-	});
-});
-</script>
-
 <style>
 	input[type="text"] {
 		color:black;
@@ -178,11 +140,12 @@ $(function(){
 						<div class="map"></div>
 				    </div>
 					
-					<p id="enter"></p>
 					
-					
+				<c:if test="${not empty caserList[0].teamName}">
+			
 				
 					
+					<p id="enter"></p>
 					<p id="enter"></p>
 					<p id="enter"></p>
 					<p id="enter"></p>
@@ -214,6 +177,7 @@ $(function(){
 
 					</div>
 				</c:forEach>
+				</c:if>
 				</div>
 				
 				
