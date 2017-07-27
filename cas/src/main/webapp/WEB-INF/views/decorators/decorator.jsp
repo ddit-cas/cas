@@ -362,24 +362,18 @@ h3 {
 			<div id="sidr" style="text-align: center;">
 				<!-- Your content -->
 				<div id="myInfoDiv">
-					<img src="${loginUser.memFrofileimage }" class="img-circle"
-						alt="Cinque Terre" style="width:65%; height:auto; margin-top: 15px;margin-bottom: 15px;"> 
+					<img src="${loginUser.memFrofileimage }" class="img-circle" alt="Cinque Terre" style="width:65%; height:140px; margin-top: 15px;margin-bottom: 15px; background: #222;"> 
 					<label class="myInfoLabel">${loginUser.memName}</label> 
 					<label class="myInfoLabel">${loginUser.memPoint} point</label>
 				</div>
-				<a href="/cas/member/updateMember" class="btn btn-sm animated-button thar-four">개인정보</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">내 영상</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">내 펀딩</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">내 투자</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
-					href="#" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
+				<a href="/cas/member/mypage" class="btn btn-sm animated-button thar-four">개인정보</a> <a
+					href="/cas/member/uccList" class="btn btn-sm animated-button thar-four">내 영상</a> <a
+					href="/cas/member/fundList" class="btn btn-sm animated-button thar-four">내 펀딩</a> <a
+					href="/cas/member/investmentList" class="btn btn-sm animated-button thar-four">내 투자</a> <a
+					href="/cas/member/cimList" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
+					href="/cas/member/point" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
+					href="/cas/member/qnaList" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
 					href="/cas/logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
-				<script>
-					function logout() {
-
-					}
-				</script>
 			</div>
 			<script type="text/javascript">
 				var statue = "login";
@@ -420,9 +414,9 @@ h3 {
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="/cas/noticeList">공지사항</a></li>
-							<li><a href="promotion">CAS란</a></li>
-							<li><a href="#">펀딩 성공 사례</a></li>
-							<li><a href="#">공연 행사 일정</a></li>
+							<li><a href="/cas/promotion">CAS란</a></li>
+							<li><a href="/cas/showSchedule">공연 행사 일정</a></li>
+
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -430,9 +424,9 @@ h3 {
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="fundList">진행중인 펀딩</a></li>
-							<li><a href="#">종료된 펀딩</a></li>
-							<li><a href="fundingExampleList">펀딩 성공 사례</a></li>
+							<li><a href="/cas/fundList">진행중인 펀딩</a></li>
+							<li><a href="/cas/endFundList">종료된 펀딩</a></li>
+							<li><a href="/cas/fundingExampleList">펀딩 성공 사례</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -440,7 +434,7 @@ h3 {
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="profileView">프로필뷰</a></li>
+							<li><a href="/cas/profileView">프로필뷰</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -450,7 +444,7 @@ h3 {
 						<ul class="dropdown-menu">
 							<li><a href="/cas/freeboardList">자유게시판</a></li>
 							<li><a href="/cas/promotionList">공연홍보 게시판</a></li>
-							<li><a href="/cas/member/uccForm">PR 영상</a></li>
+							<li><a href="/cas/uccList">PR 영상</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -459,7 +453,7 @@ h3 {
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="/cas/faqList">FAQ</a></li>
-							<li><a href="/cas/qnaMain">1:1 문의사항</a></li>
+							<li><a href="/cas/member/insertQnaForm">1:1 문의사항</a></li>
 						</ul>
 					</li>
 				</ul>

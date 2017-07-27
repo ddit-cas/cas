@@ -76,9 +76,9 @@ div.company-wrap {
 			<h2>cas-이야기</h2>
 			<div class="">
 				<ul>
-					<li class="active"><a href="noticeList">공지사항</a></li>
+					<li class="active"><a href="/cas/noticeList">공지사항</a></li>
 					<!--li><a href="people.php">PEOPLE</a></li-->
-					<li><a href="#">CAS란</a></li>
+					<li><a href="/cas/promotion">CAS란</a></li>
 					<li><a href="#">공연 행사 일정</a></li>
 				</ul>
 			</div>

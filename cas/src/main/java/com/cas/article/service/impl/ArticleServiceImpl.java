@@ -21,6 +21,13 @@ public class ArticleServiceImpl implements ArticleService{
 		resultList = articleDao.selectArticleList(boardCode);
 		return resultList;
 	}
+	
+	@Override
+	public List<ArticleVO> selectArticleList(String memId, String boardCode) {
+		List<ArticleVO> resultList = null;
+		resultList = articleDao.selectArticleList(memId, boardCode);
+		return resultList;
+	}
 
 	@Override
 	public ArticleVO selectArticle(String articleId,String boardCode) {
@@ -41,6 +48,18 @@ public class ArticleServiceImpl implements ArticleService{
 	@Override
 	public boolean insertArticle(ArticleVO article) {
 		return articleDao.insertArticle(article);
+	}
+
+	@Override
+	public List<ArticleVO> selectTopUccList() {
+		return articleDao.selectTopUccList();
+	}
+	
+	@Override
+	public List<ArticleVO> selectFreeSearch(String boardCode,String index, String key) {
+	List<ArticleVO> resultList;
+	resultList = articleDao.selectFreeSearch(boardCode, index, key);
+	return resultList;
 	}
 
 }

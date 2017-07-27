@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <body>
-	<style>
+<style>
 #body {
 	margin-top: 58px;
 }
@@ -944,6 +944,5 @@ img {
 	</script>
 </c:if>
 			</div>
-		</div>
 	</div>
 </body>

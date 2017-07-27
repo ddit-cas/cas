@@ -7,7 +7,7 @@
 		padding:0;
 		margin:15px 0.5%;
 		background: #eee;
-		width: 49%;
+		width: 98%;
 		float:left;
 		text-align: center;
 		border-radius:5px;
@@ -208,10 +208,8 @@
 	<hr style="border-top: 5px solid #969faa;">
 	
 	<div style="background-color: #999;border-radius:5px; height: 400px;">
-		<a href="#"><div class="selectViewDay"><span id="selectViewStatue">월간 </span>일정</div>
-		</a>
-		<a href="#"><div class="selectViewDay">년간 일정</div>
-		</a>
+		<div style="margin-right: 12px;"><div class="selectViewDay"><span id="selectViewStatue">월간 </span>일정</div>
+		</div>
 		<div id="showDayInfo">
 			<div class="showCalender" id="calenderDiv">
 				<button id="prev"> 이전달 </button>

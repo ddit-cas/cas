@@ -8,9 +8,15 @@ public interface ArticleDao {
 
 	/*자유게시판 글 목록을 가져오는 메서드*/
 	public List<ArticleVO> selectArticleList(String boardCode);
+
+	/*자유게시판 글 목록을 가져오는 메서드*/
+	public List<ArticleVO> selectArticleList(String memId, String boardCode);
 	
 	/*자유게시판 게시물 한개를 가져오는 메서드*/
 	public ArticleVO selectArticle(String articleId,String boardCode);
+	
+	/*자유게시판 검색하여 리스트 가져오는 메서드*/
+	public List<ArticleVO> selectFreeSearch(String boardCode, String index,String key);
 	
 	/*게시물을 등록하는 메서드*/
 	public boolean insertArticle(ArticleVO article);
@@ -20,4 +26,6 @@ public interface ArticleDao {
 	
 	/*게시물의 댓글들을 가져오는 메서드*/
 	public List<ArticleVO> selectArticleReplyList(String articleId);
+
+	public List<ArticleVO> selectTopUccList();
 }

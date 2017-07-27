@@ -13,7 +13,7 @@ public interface NoticeService {
 	public ArticleVO selectNotice(String articleId,String boardCode);
 	
 	/*공지사항 검색해서 리스트 가져오는 메서드*/
-	public List<ArticleVO> noticeSearch(String index,String key);
+	public List<ArticleVO> noticeSearch(String boardCode, String index,String key);
 	
 	/*공지사항을 등록하는 메셔드*/
 	public boolean insertNotice(ArticleVO article);

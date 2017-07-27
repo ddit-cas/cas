@@ -21,4 +21,7 @@ public interface FundService {
 	
 	/*펀드를 딜리트 하는 메서드*/
 	public void deleteFund(FundVO fund);
+
+	/*5위까지의 크라우드 펀드를 가져오는 메서드*/
+	public List<IngFundVO> selectTopFundList();
 }

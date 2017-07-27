@@ -29,8 +29,8 @@
 							CONTENT_REGIS_DATE, CONTENT_PARENTS_CONTENT, CONTENT_WRITER, 
 							CONTENT_IMPORTANCE, CONTENT_STATE, CONSERT_NUM,CONTENT_IMG, FUNDING_NUM) 
 			VALUES (CONTENT_SEQ.NEXTVAL,#boardCode#,#contentTitle#,#contentContent#
-			,SYSDATE,#contentParentsContent#,#contentWriter#,'n','y'
-			,#consertNum#,#contentImg#,FUNDING_SEQ.CURRVAL)																		
+			,SYSDATE,#contentParentsContent#,#contentWriter#,'N','Y'
+			,#consertNum#,#contentImg#,#fundingNum#)																		
 	</insert>
 
 	<select id="selectArticleList" resultMap="selectArticle" parameterClass="article">
@@ -38,13 +38,28 @@
 		* 
 		FROM ARTICLE WHERE 1=1
 		<isNotEmpty property="boardCode">
-			 and BOARD_CODE=#boardCode#
-			 order by content_regis_date DESC
+		 and BOARD_CODE=#boardCode#
+		 order by content_regis_date desc
 		</isNotEmpty>
 	</select>
 	
+	<select id="selectSearchFree" parameterClass = "map" resultMap="selectArticle">
+		select * from article where 1=1
+		and board_code like '%'||#boardCode#||'%'
+		<isEqual prepend="and" property="index" compareValue="free_title">
+			content_title like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="free_writer">
+			content_writer like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="free_date">
+			content_regis_date like '%'||#key#||'%'
+		</isEqual>
+		order by content_regis_date desc
+</select>
 	<select id="selectSearchNotice" parameterClass = "map" resultMap="selectArticle">
-		select * from article where BOARD_CODE = 'B001'
+		select * from article where 1=1
+		and board_code like '%'||#boardCode#||'%'
 		<isEqual prepend="and" property="index" compareValue="title">
 			content_title like '%'||#key#||'%'
 		</isEqual>
@@ -54,11 +69,20 @@
 		<isEqual prepend = "and" property="index" compareValue="date">
 			content_regis_date like '%'||#key#||'%'
 		</isEqual>
-		
-</select>
+		order by content_regis_date desc
+	</select>
 	
 	<select id="selectArticle" resultMap="selectArticle" parameterClass="article">
-		select * from article where board_code=#boardCode# and content_num=#contentNum#
+		select * from article 
+		where board_code=#boardCode# 
+		and content_num=#contentNum#
+	</select>
+	
+	<select id="selectMemberArticle" resultMap="selectArticle" parameterClass="article">
+		select * from article 
+		where board_code=#boardCode# 
+		and content_writer=#contentWriter#
+		order by content_regis_date desc
 	</select>
 
 	<select id="selectnotice" resultMap="selectArticle" parameterClass="article">
@@ -76,6 +100,7 @@
 		where content_num=#contentNum#
 	</update>
 	
+
 	<insert id="insertNotice" parameterClass="article">						
 		INSERT INTO content(CONTENT_NUM, BOARD_CODE,  CONTENT_TITLE, CONTENT_CONTENT,
 							CONTENT_REGIS_DATE, CONTENT_WRITER, CONTENT_IMPORTANCE, CONTENT_STATE) 
@@ -93,4 +118,8 @@
 		delete from article where content_num=#contentNum#
 	</delete>
 	
+
+	<insert id="contentLike">
+		insert into recom values()
+	</insert>
 </sqlMap>

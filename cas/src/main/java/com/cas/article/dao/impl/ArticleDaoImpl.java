@@ -1,7 +1,9 @@
 package com.cas.article.dao.impl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.cas.article.dao.ArticleDao;
 import com.cas.db.dto.ArticleVO;
@@ -28,13 +30,26 @@ public class ArticleDaoImpl implements ArticleDao{
 		
 		return resultList;
 	}
+	@Override
+	public List<ArticleVO> selectArticleList(String memId, String boardCode) {
+		List<ArticleVO> resultList = null;
+		ArticleVO article = new ArticleVO();
+		article.setBoardCode(boardCode);
+		article.setContentWriter(memId);
+		try {
+			resultList=sqlMapClient.queryForList("selectMemberArticle",article);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultList;
+	}
 
 	@Override
 	public ArticleVO selectArticle(String articleId,String boardCode) {
 		ArticleVO vo = new ArticleVO();
 		vo.setBoardCode(boardCode);
 		vo.setContentNum(articleId);
-		
 		ArticleVO result = null;
 		try {
 			result = (ArticleVO) sqlMapClient.queryForObject("selectArticle",vo);
@@ -76,6 +91,33 @@ public class ArticleDaoImpl implements ArticleDao{
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public List<ArticleVO> selectTopUccList() {
+		List<ArticleVO> topUccList = null;
+		try {
+			topUccList = sqlMapClient.queryForList("selectTopUccList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return topUccList;
+	}
+		
+	@Override
+	public List<ArticleVO> selectFreeSearch(String boardCode,String index, String key) {
+		List<ArticleVO> resultList=null;
+		Map<String,String> map=new HashMap<String,String>();
+		map.put("index", index);
+		map.put("key", key);
+		map.put("boardCode", boardCode);
+		try {
+			resultList = sqlMapClient.queryForList("selectSearchFree",map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+				
+		return resultList;
 	}
 
 }

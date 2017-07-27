@@ -17,9 +17,28 @@ import com.cas.article.service.ArticleService;
 import com.cas.carousel.service.CarouselService;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.CarouselVO;
+import com.cas.db.dto.IngFundVO;
+import com.cas.db.dto.PromotionListVO;
+import com.cas.db.dto.PromotionVO;
+import com.cas.fund.service.FundService;
+import com.cas.promotion.service.PromotionService;
 
 @Controller
 public class AdminCarouselController {
+
+	@Autowired
+	private CarouselService carouselService;
+	
+	public void setCarouselService(CarouselService carouselService) {
+		this.carouselService = carouselService;
+	}
+	
+	@Autowired
+	private PromotionService promotionService;
+
+	public void setPromotionService(PromotionService promotionService) {
+		this.promotionService = promotionService;
+	}
 
 	@Autowired
 	private ArticleService articleService;
@@ -27,12 +46,12 @@ public class AdminCarouselController {
 	public void setArticleService(ArticleService articleService) {
 		this.articleService = articleService;
 	}
-
-	@Autowired
-	private CarouselService carouselService;
 	
-	public void setCarouselService(CarouselService carouselService) {
-		this.carouselService = carouselService;
+	@Autowired
+	private FundService fundService;
+
+	public void setFundService(FundService fundService) {
+		this.fundService = fundService;
 	}
 
 	/*어드민에서 관리할 캐러셀 리스트를 보여줄 화면으로 가는 유알엘을 반환하는 메서드*/
@@ -59,8 +78,19 @@ public class AdminCarouselController {
 		}else{
 			model.addAttribute("carouselUrl","carouselInsert");
 		}
-		List<ArticleVO> articleList = articleService.selectArticleList(null);
-		model.addAttribute("articleList",articleList);
+		
+		/*공연홍보 리스트*/
+		List<PromotionListVO> promotionList = promotionService.selectPromotionList();
+		model.addAttribute("promotionList",promotionList);
+		
+		/*펀딩 리스트*/
+		List<IngFundVO> fundList = fundService.selectIngFundList();
+		model.addAttribute("fundList",fundList);
+		
+		/*고지사항 리스트*/
+		List<ArticleVO> noticeList = articleService.selectArticleList("B001");
+		model.addAttribute("noticeList",noticeList);
+		
 		return "admin/carousel/admin_carouselDetail";
 	}
 	

@@ -66,4 +66,15 @@ public class FundDaoImpl implements FundDao{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public List<IngFundVO> selectTopFundList() {
+		List<IngFundVO> topFundList = null;
+		try {
+			topFundList = sqlMapClient.queryForList("selectTopFundList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return topFundList;
+	}
 }

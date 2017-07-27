@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	@import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css";
 <body>
 	<style>
@@ -63,37 +64,47 @@ function goTo(number){
 							</tr>
 						</thead>
 						<tbody style="text-align: center; font-size: 15px;">
-						<c:forEach var="i" begin="0" end="10">
+						<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
 							<tr>
-								<td><a href="#">제목${i}</a></td>
-								<td><a href="#">작성자${i}</a></td>
-								<td>작성시간${i}</td>
+								<td>${articleList[i].contentTitle}</td>
+								<td>${articleList[i].contentWriter}</td>
+								<td>${articleList[i].contentRegisDate}</td>
 							</tr>
 						</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<nav aria-label="...">
-            	<ul class="pager" role="tablist">
-                    <li class="previous" onclick="goTo(1);"><a href="#"><span aria-hidden="true">←</span> Previous</a></li>
-                    <li class="active" id="first">
-                        <a aria-controls="tab1" data-toggle="tab" href="#tab1" role="tab">1</a>
-                    </li>
-                    <li>
-                        <a aria-controls="tab2" data-toggle="tab" href="#tab2" role="tab">2</a>
-                    </li>
-                    <li>
-                        <a aria-controls="tab3" data-toggle="tab" href="#tab3" role="tab">3</a>
-                    </li>
-                    <li>
-                        <a aria-controls="tab4" data-toggle="tab" href="#tab4" role="tab">4</a>
-                    </li>
-                    <li id="last">
-                        <a aria-controls="tab5" data-toggle="tab" href="#tab5" role="tab">5</a>
-                    </li>                    
-                    <li class="next" onclick="goTo(2);"><a href="#">Next <span aria-hidden="true">→</span></a></li>
-                </ul>
-            </nav>
+					<ul class="pager" role="tablist">
+						<li>
+							<a href="/cas/member/myContact?tab=${minNum-1}"><span aria-hidden="true">←</span>
+								이전
+							</a>
+						</li>
+						<c:forEach var="i" begin="${minNum}" end="${maxNum}">
+						<c:choose>
+						<c:when test="${index==i}">
+						<li>
+							<a style="background: #337ab7; color: #fff;" aria-controls="tab1" href="/cas/member/myContact?tab=${i}">
+								${i }
+							</a>
+						</li>
+						</c:when>
+						<c:otherwise>
+						<li>
+							<a aria-controls="tab1" href="/cas/member/myContact?tab=${i}">
+								${i }
+							</a>
+						</li>
+						</c:otherwise>
+						</c:choose>
+						</c:forEach>
+						<li>
+							<a href="/cas/member/myContact?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
+							</a>
+						</li>
+					</ul>
+	            </nav>
 			</div>
 		</div>
       </div>

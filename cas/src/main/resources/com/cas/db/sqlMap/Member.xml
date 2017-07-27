@@ -31,10 +31,6 @@
 		<result property="enabled" column="ENABLED" />                              
 		<result property="authority" column="AUTHORITY" />
 		<result property="classifyCode"  column="classify_Code" />
-		<result property="teamName"  column="team_Name" />
-		<result property="teamPosi"  column="team_Posi" />
-		<result property="teamInfo"  column="team_Info" />
-		
 	</resultMap>                                                                  
 	
 	<insert id="insertMember" parameterClass="member">
@@ -55,7 +51,18 @@
 
 	<update id="updateMember" parameterClass="member">
 		update member set
-
+		mem_Name=#memName#,
+		mem_Email=#memEmail#,
+		mem_Mailnumber=#memMailnumber#,
+		mem_Addr1=#memAddr1#, 
+		mem_Addr2=#memAddr2#,
+		mem_Nick=#memNick#,
+		mem_Frofileimage=#memFrofileimage#,
+		mem_Birthdate=#memBirthdate#,
+		mem_Hp=#memHp#,
+		mem_Career=#memCareer#,
+		mem_Active=#memActive#,
+		mem_Pwd=#memPwd#
 		where mem_id=#memId#
 	</update>
 
