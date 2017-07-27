@@ -1,7 +1,9 @@
 package com.cas.article.dao.impl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.cas.article.dao.ArticleDao;
 import com.cas.db.dto.ArticleVO;
@@ -100,6 +102,22 @@ public class ArticleDaoImpl implements ArticleDao{
 			e.printStackTrace();
 		}
 		return topUccList;
+	}
+		
+	@Override
+	public List<ArticleVO> selectFreeSearch(String index, String key) {
+		List<ArticleVO> resultList=null;
+		Map<String,String> map=new HashMap<String,String>();
+		map.put("index", index);
+		map.put("key", key);
+		
+		try {
+			resultList = sqlMapClient.queryForList("selectSearchFree",map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+				
+		return resultList;
 	}
 
 }
