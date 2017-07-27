@@ -231,7 +231,7 @@
 		<label style="float:left; margin-top:10px;">
 		<c:choose>
 		<c:when test="${topClickFundList[0].sex ne 'UNDEFINED'}">
-			${topClickFundList[0].age }대 ${topClickFundList[0].sex }성에게 인기있는 크라우드펀딩
+			${topClickFundList[0].age }대 ${topClickFundList[0].sex }성이 많이 찾은 크라우드펀딩
 		</c:when>
 		<c:otherwise>
 			크라우드펀딩
