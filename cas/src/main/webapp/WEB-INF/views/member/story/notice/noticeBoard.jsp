@@ -67,6 +67,7 @@ li a:hover {
 								<option name="date" value="date">작성일</option>
 							</select>
 							<div class="form-group">
+								<input type="hidden" name="boardCode" value="B001">
 								<input name="writeSearch" class="form-control" id="focusedInput" type="text"
 									placeholder="   검색    " style="margin: 0 auto 5px;"> 
 								<input type="button" id="search" class="form-control" onclick="search_go();" name="search" value="검색">
@@ -93,11 +94,11 @@ li a:hover {
 						</tr>
 					</thead>
 					<tbody style="text-align: center; font-size: 15px;">
-						<c:forEach var="content" items="${articleList}">
+						<c:forEach var="i" begin="${firstRow }" end="${lastRow }" >
 							<tr>
-								<td><a href="noticeDetail?contentNum=${content.contentNum}">${content.contentTitle}</a></td>
-								<td>${content.contentWriter}</td>
-								<td>${content.contentRegisDate}</td>
+								<td><a href="noticeDetail?contentNum=${noticeList[i].contentNum}">${noticeList[i].contentTitle}</a></td>
+								<td>${noticeList[i].contentWriter}</td>
+								<td>${noticeList[i].contentRegisDate}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -112,7 +113,7 @@ li a:hover {
 		<nav aria-label="...">
 			<ul class="pager" role="tablist">
 				<li class="previous">
-					<a href="/cas/noticeList?tab=${minNum-1}"><span aria-hidden="true">←</span>
+					<a href="/cas/noticeList?tab=${minNum-1}${searchUrl}"><span aria-hidden="true">←</span>
 						이전
 					</a>
 				</li>
@@ -120,14 +121,14 @@ li a:hover {
 				<c:choose>
 				<c:when test="${index==i}">
 				<li>
-					<a style="background: #aaa;" aria-controls="tab1" href="/cas/noticeList?tab=${i}">
+					<a style="background: #aaa;" aria-controls="tab1" href="/cas/noticeList?tab=${i}${searchUrl}">
 						${i }
 					</a>
 				</li>
 				</c:when>
 				<c:otherwise>
 				<li>
-					<a aria-controls="tab1" href="/cas/noticeList?tab=${i}">
+					<a aria-controls="tab1" href="/cas/noticeList?tab=${i}${searchUrl}">
 						${i }
 					</a>
 				</li>
@@ -135,7 +136,7 @@ li a:hover {
 				</c:choose>
 				</c:forEach>
 				<li class="next">
-					<a href="/cas/noticeList?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
+					<a href="/cas/noticeList?tab=${maxNum+1}${searchUrl}">다음<span aria-hidden="true">→</span>
 					</a>
 				</li>
 			</ul>

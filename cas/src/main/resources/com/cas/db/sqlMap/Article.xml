@@ -37,13 +37,28 @@
 		* 
 		FROM ARTICLE WHERE 1=1
 		<isNotEmpty property="boardCode">
-			 and BOARD_CODE=#boardCode#
-			 order by content_regis_date desc
+		 and BOARD_CODE=#boardCode#
+		 order by content_regis_date desc
 		</isNotEmpty>
 	</select>
 	
+	<select id="selectSearchFree" parameterClass = "map" resultMap="selectArticle">
+		select * from article where 1=1
+		and board_code like '%'||#boardCode#||'%'
+		<isEqual prepend="and" property="index" compareValue="free_title">
+			content_title like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="free_writer">
+			content_writer like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="free_date">
+			content_regis_date like '%'||#key#||'%'
+		</isEqual>
+		order by content_regis_date desc
+</select>
 	<select id="selectSearchNotice" parameterClass = "map" resultMap="selectArticle">
 		select * from article where 1=1
+		and board_code like '%'||#boardCode#||'%'
 		<isEqual prepend="and" property="index" compareValue="title">
 			content_title like '%'||#key#||'%'
 		</isEqual>
@@ -53,7 +68,7 @@
 		<isEqual prepend = "and" property="index" compareValue="date">
 			content_regis_date like '%'||#key#||'%'
 		</isEqual>
-		
+		order by content_regis_date desc
 	</select>
 	
 	<select id="selectArticle" resultMap="selectArticle" parameterClass="article">

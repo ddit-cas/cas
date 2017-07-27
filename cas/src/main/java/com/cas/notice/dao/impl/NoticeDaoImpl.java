@@ -28,8 +28,10 @@ public class NoticeDaoImpl implements NoticeDao{
 	@Override
 	public List<ArticleVO> selectNoticeList(String boardCode) {
 		List<ArticleVO> resultList = null;
+		ArticleVO notice = new ArticleVO();
+		notice.setBoardCode(boardCode);
 		try {
-			resultList = sqlMapClient.queryForList("B001");
+			resultList = sqlMapClient.queryForList("selectArticleList",notice);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -59,12 +61,12 @@ public class NoticeDaoImpl implements NoticeDao{
 	
 	
 	@Override
-	public List<ArticleVO> noticeSearch(String index, String key) {
+	public List<ArticleVO> noticeSearch(String boardCode, String index, String key) {
 		List<ArticleVO> resultList=null;
 		Map<String,String> map=new HashMap<String,String>();
 		map.put("index", index);
 		map.put("key", key);
-		
+		map.put("boardCode", boardCode);
 		try {
 			resultList = sqlMapClient.queryForList("selectSearchNotice",map);
 		} catch (SQLException e) {

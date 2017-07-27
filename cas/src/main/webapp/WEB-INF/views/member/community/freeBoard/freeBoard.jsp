@@ -57,15 +57,18 @@ li a:hover {
 								style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
 						</p>
 						<div class="searchgroup" style="float: left">
-							<select class="form-control">
-								<option value="title">제목</option>
-								<option value="writer" selected>작성자</option>
-								<option value="date">작성일</option>
+
+							<select class="form-control" name="search">
+								<option value="free_title">제목</option>
+								<option value="free_writer" selected>작성자</option>
+								<option value="free_date">작성일</option>
 							</select>
 							<div class="form-group">
-								<input class="form-control" id="focusedInput" type="text"
-									placeholder="   검색    " style="margin: 0 auto 5px;"> <input
-									type="button" id="search" class="form-control" value="검색">
+
+								<input class="form-control" name="writeSearch"
+									id="focusedInput" type="text" placeholder="   검색    "
+									style="margin: 0 auto 5px;"> 
+								<input type="submit" id="search" class="form-control" onclick="freeboardList" value="검색"> 
 								<input type="button" class="form-control" id="list" value="목록">
 							</div>
 						</div>
@@ -93,6 +96,7 @@ li a:hover {
 					</tbody>
 				</table>
 				
+
 			</div>
 			<!--//company-snb-->
 		</div>
@@ -104,7 +108,7 @@ li a:hover {
       <nav aria-label="...">
          <ul class="pager" role="tablist">
             <li class="previous">
-               <a href="/cas/freeboardList?tab=${minNum-1}"><span aria-hidden="true">←</span>
+               <a href="/cas/freeboardList?tab=${minNum-1}${searchUrl}"><span aria-hidden="true">←</span>
                   이전
                </a>
             </li>
@@ -112,14 +116,14 @@ li a:hover {
             <c:choose>
             <c:when test="${index==i}">
             <li>
-               <a style="background: #aaa;" aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
+               <a style="background: #aaa;" aria-controls="tab1" href="/cas/freeboardList?tab=${i}${searchUrl}">
                   ${i }
                </a>
             </li>
             </c:when>
             <c:otherwise>
             <li>
-               <a aria-controls="tab1" href="/cas/freeboardList?tab=${i}">
+               <a aria-controls="tab1" href="/cas/freeboardList?tab=${i}${searchUrl}">
                   ${i }
                </a>
             </li>
@@ -127,7 +131,7 @@ li a:hover {
             </c:choose>
             </c:forEach>
             <li class="next">
-               <a href="/cas/freeboardList?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
+               <a href="/cas/freeboardList?tab=${maxNum+1}${searchUrl}">다음<span aria-hidden="true">→</span>
                </a>
             </li>
          </ul>
