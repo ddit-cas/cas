@@ -7,6 +7,7 @@
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="article" type="com.cas.db.dto.ArticleVO"/>
+	
 	<resultMap class="com.cas.db.dto.ArticleVO" id="selectArticle">
 		<result property="contentTitle" column="content_title"/>
 		<result property="contentContent" column="content_content"/>
@@ -86,6 +87,7 @@
 
 	<select id="selectnotice" resultMap="selectArticle" parameterClass="article">
 		select * from content where board_code=#boardCode# and content_num=#contentNum#
+		
 	</select>
 	
 	<update id="updateArticle" parameterClass="article">
@@ -98,6 +100,25 @@
 		where content_num=#contentNum#
 	</update>
 	
+
+	<insert id="insertNotice" parameterClass="article">						
+		INSERT INTO content(CONTENT_NUM, BOARD_CODE,  CONTENT_TITLE, CONTENT_CONTENT,
+							CONTENT_REGIS_DATE, CONTENT_WRITER, CONTENT_IMPORTANCE, CONTENT_STATE) 
+			VALUES (CONTENT_SEQ.NEXTVAL,'B001',#contentTitle#,#contentContent#,SYSDATE,'admin','N','Y')																		
+	</insert>
+	
+	<update id="updateNotice" parameterClass="article">
+		update content set
+		content_content=#contentContent#,
+		content_title=#contentTitle#
+		where content_num=#contentNum#
+	</update>
+	
+	<delete id="deleteNotice" parameterClass="article">
+		delete from article where content_num=#contentNum#
+	</delete>
+	
+
 	<insert id="contentLike">
 		insert into recom values()
 	</insert>
