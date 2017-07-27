@@ -128,4 +128,11 @@ public class PromotionDaoImpl implements PromotionDao {
 		System.out.println(recomCount);
 		return recomCount;
 	}
+
+	@Override
+	public List<PromotionListVO> selectSearchList(String boardCode,
+			String index, String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

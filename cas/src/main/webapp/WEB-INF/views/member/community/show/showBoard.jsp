@@ -22,21 +22,24 @@
 	}
 
 </script>
-<div class="company-snb" style="float: left; margin-top: 100px;">
-	<h2>커뮤니티</h2>
-	<div class="">
-		<ul style="margin-right: 40px;">
-			<li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
-			<li><a href="/cas/promotionList">공연홍보</a></li>
-			<li><a href="/cas/uccList">PR영상</a></li>
-		</ul>
+
+<div class="company-wrap">
+		<div class="company-snb">
+		<h2>커뮤니티</h2>
+		<div class="">
+			<ul>
+				<li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
+				<li><a href="/cas/promotionList">공연홍보</a></li>
+				<li><a href="/cas/uccList">PR영상</a></li>
+			</ul>
+		</div>
 	</div>
-</div>
-<div id="body" style="float:right; width: 83%;">
-	<div style="width:100%;overflow: hidden; height: 100px;">
-		<img src="/cas/resources/images/free.png" style="width:100%;">
-	</div>
-	<h1 style="">공연홍보게시판</h1>
+	<div class="company-cont" style="height: auto;">
+	<h3 class="box">공연홍보게시판</h3>
+	<p>
+		<img src="/cas/resources/images/free.png" 
+			style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
+	</p>
 	<div>
 		<button style="float:right; margin-bottom: 5px;" onclick="insertShowPage_go()">공연등록</button>
 	</div>
@@ -63,25 +66,54 @@
 	  			</tr>
 	  		</c:when>
 	  		<c:otherwise>
-	  			<c:forEach var="promotion" items="${promotionList }">
+	  			<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
 					<tr>
-						<td><a href="promotionDetail?contentNum=${promotion.contentNum }">${promotion.contentTitle }</a></td>
-						<td>${promotion.genreName }</td>
-						<td>${promotion.startDate } ~ ${promotion.endDate }</td>
-						<td>${promotion.contentWriter }</td>
-						<td>${promotion.recomCount }</td>
+						<td><a href="promotionDetail?contentNum=${promotionList[i].contentNum }">${promotionList[i].contentTitle }</a></td>
+						<td>${promotionList[i].genreName }</td>
+						<td>${promotionList[i].startDate } ~ ${promotionList[i].endDate }</td>
+						<td>${promotionList[i].contentWriter }</td>
+						<td>${promotionList[i].recomCount }</td>
 					</tr>	  			
 	  			</c:forEach>
 	  		</c:otherwise>
 	  	</c:choose>
 	  </tbody>
 	</table>
-	<ul class="pager">
-		<li><a href="#">Previous</a></li>
-		<li id="pagerCount">
-		</li>
-		<li><a href="#">Next</a></li>
-	</ul>
+</div>
+<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+   <div class="row">
+      <nav aria-label="...">
+         <ul class="pager" role="tablist">
+            <li class="previous">
+               <a href="/cas/promotionList?tab=${minNum-1}${searchUrl}"><span aria-hidden="true">←</span>
+                  이전
+               </a>
+            </li>
+            <c:forEach var="i" begin="${minNum}" end="${maxNum}">
+            <c:choose>
+            <c:when test="${index==i}">
+            <li>
+               <a style="background: #aaa;" aria-controls="tab1" href="/cas/promotionList?tab=${i}${searchUrl}">
+                  ${i }
+               </a>
+            </li>
+            </c:when>
+            <c:otherwise>
+            <li>
+               <a aria-controls="tab1" href="/cas/promotionList?tab=${i}${searchUrl}">
+                  ${i }
+               </a>
+            </li>
+            </c:otherwise>
+            </c:choose>
+            </c:forEach>
+            <li class="next">
+               <a href="/cas/promotionList?tab=${maxNum+1}${searchUrl}">다음<span aria-hidden="true">→</span>
+               </a>
+            </li>
+         </ul>
+      </nav>
+   </div>
 </div>
 
 <script>
