@@ -8,6 +8,8 @@ public interface ArticleService {
 
 	/*자유게시판 글 목록을 가져오는 메서드*/
 	public List<ArticleVO> selectArticleList(String boardCode);
+	/*자유게시판 글 목록을 가져오는 메서드*/
+	public List<ArticleVO> selectArticleList(String memId, String boardCode);
 	
 	/*게시물을 등록하는 메서드*/
 	public boolean insertArticle(ArticleVO article);

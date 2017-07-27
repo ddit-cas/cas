@@ -2,6 +2,7 @@ package com.cas.fund.dao;
 
 import java.util.List;
 
+import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
 
@@ -14,7 +15,7 @@ public interface FundDao {
 	public IngFundVO selectIngFund(String contentNum);
 	
 	/*펀드를 인서트 하는 메서드*/
-	public boolean insertFund(FundVO fund);
+	public boolean insertFund(FundVO fund, ArticleVO article);
 	
 	/*펀드를 업데이트 하는 메서드*/
 	public void updateFund(FundVO fund);

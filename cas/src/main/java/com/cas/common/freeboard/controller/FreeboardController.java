@@ -34,7 +34,9 @@ public class FreeboardController {
 		//받은 데이터리스트의 데이터갯수
 		int dataRow = freeboardList.size();
 		
-		Paging paging = new Paging(dataRow, page);
+		Paging paging = new Paging(dataRow, page, 10);
+		
+		
 		System.out.println(paging.toString());
 		model.addAttribute("index", paging.getIndex());//현재페이지
 		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호

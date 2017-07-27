@@ -1,26 +1,51 @@
 package com.cas.member.mypage.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cas.article.service.ArticleService;
+import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.Paging;
+import com.cas.member.service.MemberService;
+
 @Controller
 public class MypageController {
 
+	@Autowired
+	private MemberService memService;
+	public void setMemService(MemberService memService) {
+		this.memService = memService;
+	}
+	
+	@Autowired
+	private ArticleService articleService;
+	public void setArticleService(ArticleService articleService) {
+		this.articleService = articleService;
+	}
+
 	/*마이페이지 화면으로 가게 하는 메서드*/
 	@RequestMapping("/member/mypage")
-	public String memberMypage(HttpSession session,Model model){
+	public String memberMypage(){
 		String url = "/member/myPage/myPageModify";
 		return url;
 	}
 	
 	/*내정보를 수정하는 메서드*/
 	@RequestMapping("/member/updateMember")
-	public String memberUpdate(HttpSession session,HttpServletRequest request){
-
+	public String memberUpdate(MemberVO member, HttpSession session,HttpServletRequest request){
+		
+		session.removeAttribute("loginUser");
+		session.setAttribute("loginUser", member);
+		memService.updateMember(member);
+		
 		String url = "/member/myPage/myPageModify";
 		return url;
 	}
@@ -28,8 +53,15 @@ public class MypageController {
 	/*회원 개인이 올린 유씨씨들만 볼수있게 하는 메서드*/
 	@RequestMapping("/member/uccList")
 	public String memberUccList(HttpSession session,Model model){
-		String url = "/member/myPage/myMovie";
-		return url;
+		
+		String memId = ((MemberVO)session.getAttribute("loginUser")).getMemId();
+		List<ArticleVO> resultList =  articleService.selectArticleList(memId, "B006");
+		
+		model.addAttribute("firstRow", 0);//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", resultList.size()-1);//한 페이지에서 마지막 게시글번호
+		model.addAttribute("myUccList", resultList);//데이터베이스에서 가져온 리스트를 보내준다
+		
+		return "/member/myPage/myMovie";
 	}
 	
 	/*회원 개인이 올린 유씨씨들만 볼수있게 하는 메서드*/
@@ -96,9 +128,28 @@ public class MypageController {
 	}
 	/*회원이 문의한 리스트로 볼수 있는 메소드*/
 	@RequestMapping("/member/myContact")
-	public String memberMycontact(HttpSession session,Model model){
-		String url = "/member/myPage/myContact";
-		return url;
+	public String memberMycontact(HttpSession session,Model model, HttpServletRequest request){
+		
+		String memId = ((MemberVO)session.getAttribute("loginUser")).getMemId();
+		
+		//자유게시판의 데이터를 전부 가져온다 (자유게시판의 board_code 는 B005) 
+		List<ArticleVO> freeboardList = articleService.selectArticleList(memId,"B004");
+		//현재페이지
+		String page = request.getParameter("tab");
+		//받은 데이터리스트의 데이터갯수
+		int dataRow = freeboardList.size();
+		
+		Paging paging = new Paging(dataRow, page);
+		
+		System.out.println(paging.toString());
+		model.addAttribute("index", paging.getIndex());//현재페이지
+		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
+		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
+		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
+		model.addAttribute("articleList", freeboardList);//데이터베이스에서 가져온 리스트를 보내준다
+		
+		return "/member/myPage/myContact";
 	}
 	
 	/*탈퇴하는 메서드*/

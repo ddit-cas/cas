@@ -66,9 +66,7 @@ public class MemberFundController {
 	/*양식에 맞게 입력한 펀딩을 인서트하는 메서드*/
 	@RequestMapping("/member/insertFund")
 	public String insertFund(HttpServletRequest request, FundVO fund, ArticleVO article){
-		fundService.insertFund(fund);
-		articleService.insertArticle(article);
-		
+		fundService.insertFund(fund, article);
 		return "member/main";
 	}
 

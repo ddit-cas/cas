@@ -58,12 +58,11 @@ $(document).ready(function() {
 				<h3>1:1문의</h3>
 				<hr>
 				<div class="row ">
-					<form id="contactForm" role="form" action="#a-contact"
-						method="post">
+					<form action="/cas/member/insertQna" id="contactForm" role="form" method="post">
 						<div class="form-group">
 							<label for="InputName">제목</label>
 							<div class="input-group">
-								<input type="text" class="form-control" name="InputName"
+								<input type="text" class="form-control" name="contentTitle"
 									id="InputName" placeholder="제목 입력하세요" required /> <span
 									class="input-group-addon"><i
 									class="glyphicon glyphicon-ok "></i></span>
@@ -73,8 +72,8 @@ $(document).ready(function() {
 						<div class="form-group">
 							<label for="InputName">작성자</label>
 							<div class="input-group">
-								<input type="text" class="form-control" name="InputName"
-									id="InputName" placeholder="작성자 입력하세요" required /> <span
+								<input type="text" class="form-control" name="contentWriter"
+									id="InputName"  value="${member.memId}" readonly="readonly"/> <span
 									class="input-group-addon"><i
 									class="glyphicon glyphicon-ok "></i></span>
 							</div>
@@ -83,7 +82,7 @@ $(document).ready(function() {
 						<div class="form-group">
 							<label for="InputMessage">문의 내용</label>
 							<div class="input-group">
-								<textarea name="InputMessage" id="InputMessage"
+								<textarea name="contentContent" id="InputMessage"
 									class="form-control" rows="5" placeholder="문의하고 싶은 말을 마음껏 쓰세요"
 									required></textarea>
 								<span class="input-group-addon"><i
