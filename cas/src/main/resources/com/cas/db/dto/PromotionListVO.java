@@ -8,7 +8,22 @@ public class PromotionListVO {
 	private String endDate;
 	private String contentWriter;
 	private String recomCount;
+	private String consertContent;
+	private String contentImg;
 	
+	
+	public String getContentImg() {
+		return contentImg;
+	}
+	public void setContentImg(String contentImg) {
+		this.contentImg = contentImg;
+	}
+	public String getConsertContent() {
+		return consertContent;
+	}
+	public void setConsertContent(String consertContent) {
+		this.consertContent = consertContent;
+	}
 	public String getContentNum() {
 		return contentNum;
 	}

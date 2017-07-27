@@ -315,7 +315,6 @@
 
 	var cnt = ${recomCount};
 	var isLike = ${isLike};
-	alert(isLike);
 	if (isLike == 1) {
 		chageListBtn();
 		$('span#zzim-cnt-on').text(cnt);
@@ -353,12 +352,11 @@
 		$('.zzim-after').toggleClass('hide');
 		$('.zzim-before').toggleClass('hide');
 	}
-</script>
-<script>
 	function go_link(){
-		alert('${promotionVO.consertTicket}')
 		window.open('${promotionVO.consertTicket}');
 	}
+</script>
+<script>
 	function deleteComment(id){
 		$.ajax({
 			url : "member/deleteCommnet",

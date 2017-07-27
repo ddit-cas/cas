@@ -8,6 +8,7 @@ import com.cas.db.dto.GenreVO;
 import com.cas.db.dto.LikeVO;
 import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
+import com.cas.db.dto.ScheduleVO;
 import com.cas.promotion.dao.PromotionDao;
 import com.cas.promotion.service.PromotionService;
 
@@ -46,5 +47,23 @@ public class PromotionServiceImpl implements PromotionService {
 	public int isLike(LikeVO like) {
 		int isLike=promotionDao.isLike(like);
 		return isLike;
+	}
+
+	@Override
+	public List<PromotionListVO> selectDayShow(ScheduleVO schedule) {
+		List<PromotionListVO> showList=promotionDao.selectDayShow(schedule);
+		return showList;
+	}
+
+	@Override
+	public List<PromotionListVO> selectMonthShow(ScheduleVO schedule) {
+		List<PromotionListVO> showList=promotionDao.selectMonthShow(schedule);
+		return showList;
+	}
+
+	@Override
+	public int selectRecomCount(String contentNum) {
+		int recomCount=promotionDao.selectRecomCount(contentNum);
+		return recomCount;
 	}
 }

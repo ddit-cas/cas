@@ -65,7 +65,7 @@
 	  		<c:otherwise>
 	  			<c:forEach var="promotion" items="${promotionList }">
 					<tr>
-						<td><a href="promotionDetail?contentNum=${promotion.contentNum }&recomCount=${promotion.recomCount}">${promotion.contentTitle }</a></td>
+						<td><a href="promotionDetail?contentNum=${promotion.contentNum }">${promotion.contentTitle }</a></td>
 						<td>${promotion.genreName }</td>
 						<td>${promotion.startDate } ~ ${promotion.endDate }</td>
 						<td>${promotion.contentWriter }</td>
