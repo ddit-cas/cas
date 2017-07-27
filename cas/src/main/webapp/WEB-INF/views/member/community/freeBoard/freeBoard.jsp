@@ -66,7 +66,7 @@ li a:hover {
 							<div class="form-group">
 								<input class="form-control" name="writerSearch"
 									id="focusedInput" type="text" placeholder="   검색    "
-									style="margin: 0 auto 5px;"> <input type="button"
+									style="margin: 0 auto 5px;"> <input type="submit"
 									id="search" class="form-control" value="검색"> <input
 									type="button" class="form-control" id="list" value="목록">
 							</div>
@@ -78,10 +78,6 @@ li a:hover {
 
 
 				<script>
-					function search_go() {
-						form.href = "/cas/freeboardList";
-						form.method = "get";
-					}
 				</script>
 						<!--//tab-intro-->
 						<table class="table table-hover"
@@ -98,8 +94,7 @@ li a:hover {
 							<tbody style="text-align: center; font-size: 15px;">
 								<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
 									<tr>
-										<td><a
-											href="freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
+										<td><a href="freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
 										<td>${articleList[i].contentWriter}</td>
 										<td>${articleList[i].contentRegisDate}</td>
 									</tr>
