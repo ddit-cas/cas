@@ -9,6 +9,7 @@ import com.cas.db.dto.GenreVO;
 import com.cas.db.dto.LikeVO;
 import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
+import com.cas.db.dto.ScheduleVO;
 import com.cas.promotion.dao.PromotionDao;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -91,5 +92,40 @@ public class PromotionDaoImpl implements PromotionDao {
 		}
 		
 		return isLike;
+	}
+
+	@Override
+	public List<PromotionListVO> selectDayShow(ScheduleVO schedule) {
+		List<PromotionListVO> showList=null;
+		
+		try {
+			showList=sqlMapClient.queryForList("selectDayShow",schedule);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return showList;
+	}
+
+	@Override
+	public List<PromotionListVO> selectMonthShow(ScheduleVO schedule) {
+		List<PromotionListVO> showList=null;
+		try {
+			showList=sqlMapClient.queryForList("selectMonthShow", schedule);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return showList;
+	}
+
+	@Override
+	public int selectRecomCount(String contentNum) {
+		int recomCount=0;
+		try {
+			recomCount=(Integer) sqlMapClient.queryForObject("selectRecomCount",contentNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(recomCount);
+		return recomCount;
 	}
 }

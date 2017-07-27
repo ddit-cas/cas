@@ -9,6 +9,7 @@
 	<typeAlias alias="consert" type="com.cas.db.dto.ConsertVO"/>
 	<typeAlias alias="promotion" type="com.cas.db.dto.PromotionVO"/>
 	<typeAlias alias="like" type="com.cas.db.dto.LikeVO"/>
+	<typeAlias alias="schedule" type="com.cas.db.dto.ScheduleVO"/>
 	<resultMap class="com.cas.db.dto.GenreVO" id="selectGenre">
 		<result property="genreCode" column="genre_code"/>
 		<result property="genreName" column="genre_name"/>
@@ -39,6 +40,8 @@
 		<result property="endDate" column="PERFOMANCE_END_DATE"/>
 		<result property="contentWriter" column="CONTENT_WRITER"/>
 		<result property="recomCount" column="RECOM_COUNT"/>
+		<result property="consertContent" column="CONSERT_CONTENT"/>
+		<result property="contentImg" column="CONTENT_IMG"/>
 	</resultMap>
 	
 	
@@ -71,6 +74,12 @@
 		and RECOM_MEM=#loginUser#
 	</select>
 	
+	<select id="selectRecomCount" resultClass="int" parameterClass="str">
+		select count(*)
+		from recom
+		where RECOM_CONTENT=#str#
+	</select>
+	
 	<select id="selectPromotionList" resultMap="promotionList">
 		select *
 		from promotionlist
@@ -79,5 +88,22 @@
 	<update id="contentOffState" parameterClass="str">
 		update content set content_state='N' where content_num=#str#
 	</update>
+	
+	<select id="selectDayShow" parameterClass="schedule" resultMap="promotionList">
+		select *                            
+		from promotionlist                                                  
+		where to_date(#selectDate#,'yyyy-mm-dd') >= perfomance_start_date   
+		and perfomance_end_date >= to_date(#selectDate#,'yyyy-mm-dd')       
+	</select>         
+	
+	                                                      
+	<select id="selectMonthShow" parameterClass="schedule" resultMap="promotionList">
+		select *                            
+		from promotionlist                                                  
+		where to_date(#startDate#,'yyyy-mm-dd') >= perfomance_start_date and perfomance_end_date>=to_date(#startDate#,'yyyy-mm-dd')
+		or perfomance_end_date >= to_date(#endDate#,'yyyy-mm-dd') and to_date(#endDate#,'yyyy-mm-dd') >= perfomance_start_date   
+		or perfomance_start_date >= to_date(#startDate#,'yyyy-mm-dd') and to_date(#endDate#,'yyyy-mm-dd') >= perfomance_end_date
+	</select>         
+	
 	
 </sqlMap>

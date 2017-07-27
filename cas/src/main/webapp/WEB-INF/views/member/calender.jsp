@@ -131,6 +131,30 @@
 		height: 690px;
 	}
 }
+
+.dayShowContent{
+	width:auto;
+	height: 135px; 
+	padding:12px 8px 8px 8px;
+	margin:0 4px 4px 4px;
+	background-color: #ffffff;
+}
+
+.showPerfomance{
+	width: 31.62526607%;
+	height: 403px;
+	background-color: #eaeff7;
+	float: left;
+	margin: 9px;
+}
+.famousShow{
+	width:auto;
+	height: 260px; 
+	padding:0;
+	margin:4px 4px 0 4px;
+	overflow:hidden;
+}
+
 </style>
 
 
@@ -174,7 +198,7 @@
 			$('.checkDay').removeClass('checkDay');
         	if(openShowInfoDay==(year+month+$(this).text())){
 	        	openShowInfoDay="";
-				$("#showInfo").slideToggle(300);					
+				$("#showInfo").slideToggle(300);	
         	}else{
 	        	openShowInfoDay=year+month+$(this).text();
 	        	$(this).addClass('checkDay');
@@ -184,26 +208,61 @@
 					}
 					return false;
 				});
+		        setDayShow();
+		        setImgMargin();
         	}
 	    });
 	})
+	
 	function setDayShow(){
 		$.ajax({
-			url:'findDayShow.jsp',
-        	type:'post',
-        	data:'day='+year+'.'+month+'.'+showInfoDay,
-        	success:function(res){
-				var code="";
-				$.each(res, function(i, value) {
-					code += '<div class="perfomance"></div>';
+			url : "findDayShow",
+			type : 'post',
+			data : 'selectDate='+year+'.'+month+'.'+$('.checkDay').text(),
+			success : function(res) {
+				var code="<hr>";
+				$(res).each(function(i,e){
+					code+='<div class="showPerfomance"><a href="#" onclick="go_detailPage('+e.contentNum+')"><div class="famousShow">';
+					code+='<img src="'+e.contentImg+'"style="width: 100%; height: auto;">';
+					code+='</div><div class="dayShowContent"><label class="fundTitle">';
+					code+=e.contentTitle+'</label> <br> <br><label class="fundHost">';
+					code+=e.contentWriter+'</label> <br> <label class="fundCategory">';
+					code+=e.genreName+'</label></div></a></div>';
 				})
-                $('#showInfo').html(code);
-             },
-             error:function(){
-            	 alert("실패");
-             },
-             dataType:'json'
+				if(code=="<hr>"){
+					code+="<h4 style='text-align:center;'>해당날 공연이 없습니다.</h4>"
+				}
+				$('#showInfo').html(code);
+			}
 		})
+	}
+	
+	function go_detailPage(contentNum){
+		location.href="promotionDetail?contentNum="+contentNum;
+	}
+	
+	function setImgMargin(){
+		var divs = document.querySelectorAll('.famousShow');
+		  for (var i = 0; i < divs.length; ++i) {
+		    var div = divs[i];
+		    var divAspect = div.offsetHeight / div.offsetWidth;
+		    div.style.overflow = 'hidden';
+		    
+		    var img = div.querySelector('img');
+		    var imgAspect = img.height / img.width;
+
+		    if (imgAspect <= divAspect) {
+		      // 이미지가 div보다 납작한 경우 세로를 div에 맞추고 가로는 잘라낸다
+		      var imgWidthActual = div.offsetHeight / imgAspect;
+		      var imgWidthToBe = div.offsetHeight / divAspect;
+		      var marginLeft = -Math.round((imgWidthActual - imgWidthToBe) / 2)
+		      img.style.cssText = 'width: auto; height: 100%; margin-left: '
+		                      + marginLeft + 'px;'
+		    } else {
+		      // 이미지가 div보다 길쭉한 경우 가로를 div에 맞추고 세로를 잘라낸다
+		      img.style.cssText = 'width: 100%; height: auto; margin-left: 0;';
+		    }
+		  }
 	}
 	
 	function changeMonth() {
@@ -315,22 +374,4 @@
 </div>
 
 <div class="col-xs-12  nonePadding" id="showInfo">
-	<div class="perfomance">
-		<a href="#">
-			<div class="famousFund">
-				<img src='<c:url value='resources/famous.jpg'/>'
-					style="width: 100%; height: auto;">
-			</div>
-			<div class="famousFundContent">
-				<label class="fundTitle">Docswave! 대담한 미래!</label> <br> <br>
-				<label class="fundHost">소프트웨어인라이프</label> <br> <label
-					class="fundCategory">문화</label>
-			</div>
-		</a>
-	</div>
-
-
-	<div class="perfomance">공연정보</div>
-	<div class="perfomance">공연정보</div>
-	<div class="perfomance">공연정보</div>
 </div>
