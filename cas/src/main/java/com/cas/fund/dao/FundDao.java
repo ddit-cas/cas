@@ -5,6 +5,7 @@ import java.util.List;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
+import com.cas.db.dto.MostViewFundVO;
 
 public interface FundDao {
 
@@ -25,4 +26,10 @@ public interface FundDao {
 
 	/*순위권 펀딩을 가져오는 메서드*/
 	public List<IngFundVO> selectTopFundList();
+
+	/*연령대 성별로 많이본 펀드리스트를 가져오는 메서드*/
+	public List<MostViewFundVO> selectTopClickFundList(String classify);
+
+	/*개수가 모자란 펀드리스트를 가져오는 메서드*/
+	public List<MostViewFundVO> selectShortFundList(int rownum);
 }

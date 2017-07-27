@@ -24,13 +24,13 @@ public class MemberDataController extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		
 		System.out.println(request.getRequestURI().toString().trim());
-		MemberVO member = (MemberVO) session.getAttribute("loginUser");
 		
-		if (containsUrl(request)&&member!=null) {
-			String contentNum = request.getParameter("articleId");
+		if (containsUrl(request)&&session.getAttribute("loginUser")!=null) {
+			MemberVO member = (MemberVO) session.getAttribute("loginUser");
+			String contentNum = request.getParameter("contentNum");
 			String classify = member.getClassifyCode(); 
 			System.out.println("게시글 넘버"+contentNum+"코드"+classify);
 			memberService.insertClickData(contentNum,classify);
@@ -42,7 +42,7 @@ public class MemberDataController extends HandlerInterceptorAdapter{
 	private boolean containsUrl(HttpServletRequest request) {
 		String uri = request.getRequestURI().toString().trim();
 		if(uri.contains("fundDetail")||uri.contains("promotionDetail")){
-			if(request.getParameter("articleId")!=null){
+			if(request.getParameter("contentNum")!=null){
 				return true;
 			}else{
 				return false;

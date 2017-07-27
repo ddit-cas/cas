@@ -25,7 +25,7 @@
 	</resultMap>
 	
 	<select id="ingFundList" resultMap="selectIngFund">
-		select * from ingfundview
+		select * from ingfundview order by content_Regis_Date desc
 	</select>
 	
 	<select id="ingFund" resultMap="selectIngFund" parameterClass="str">

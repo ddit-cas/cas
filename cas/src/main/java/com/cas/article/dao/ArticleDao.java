@@ -23,4 +23,7 @@ public interface ArticleDao {
 	
 	/*게시물의 댓글들을 가져오는 메서드*/
 	public List<ArticleVO> selectArticleReplyList(String articleId);
+
+	/*탑유씨시를 가져오는 메서드*/
+	public List<ArticleVO> selectTopUccList();
 }
