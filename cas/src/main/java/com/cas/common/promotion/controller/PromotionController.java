@@ -9,14 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cas.db.dto.CommentVO;
 import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
 import com.cas.db.dto.LikeVO;
-import com.cas.db.dto.ScheduleVO;
 import com.cas.member.comment.service.CommentService;
 import com.cas.promotion.service.PromotionService;
 
@@ -49,7 +47,6 @@ public class PromotionController {
 		return null;
 	}
 	
-	
 	@RequestMapping("/showSchedule")
 	public String showSchedule(Model model){
 		return "member/story/showSchedule/showSchedule";
@@ -73,27 +70,11 @@ public class PromotionController {
 		}else{
 			model.addAttribute("isLike",0);
 		}
-		
-		model.addAttribute("recomCount",promotionService.selectRecomCount(contentNum));
+		model.addAttribute("recomCount",request.getParameter("recomCount"));
 		model.addAttribute("promotionVO",promotionVO);
 		if(commentList.size()!=0){
 			model.addAttribute("commentList",commentList);
 		}
 		return "member/community/show/showDetail";
-	}
-	
-	@ResponseBody
-	@RequestMapping("findMonthShow")
-	public Object findMonthShow(Model model,ScheduleVO schedule){
-		List<PromotionListVO> showList=promotionService.selectMonthShow(schedule);
-		return showList;
-	}
-	
-	@ResponseBody
-	@RequestMapping("findDayShow")
-	public Object findDayShow(Model model,ScheduleVO schedule){
-		System.out.println("들어왔다"+schedule.getSelectDate());
-		List<PromotionListVO> showList=promotionService.selectDayShow(schedule);
-		return showList;
 	}
 }

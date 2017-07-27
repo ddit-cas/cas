@@ -68,8 +68,8 @@ li a:hover {
 							</select>
 							<div class="form-group">
 								<input name="writeSearch" class="form-control" id="focusedInput" type="text"
-									placeholder="   검색    "  style="margin: 0 auto 5px;"> 
-								<input type="submit" id="search" class="form-control" onclick="search_go();" name="search" value="검색">
+									placeholder="   검색    " style="margin: 0 auto 5px;"> 
+								<input type="button" id="search" class="form-control" onclick="search_go();" name="search" value="검색">
 								<input type="button" class="form-control" id="list" value="목록">
 							</div>
 						</div>

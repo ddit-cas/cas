@@ -104,6 +104,7 @@ function fundEntrollment_go(){
 								<h4>
 									<a href="#">${fund.contentTitle }</a>
 								</h4>
+								<p>${fund.contentContent }</p>
 								<a href="fundDetail?contentNum=${fund.contentNum }" class="more-btn">자세히보기</a>
 							</div>
 							<span class="blog-date">${fund.fundingEndDate }</span>

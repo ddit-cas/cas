@@ -15,9 +15,6 @@ public interface ArticleDao {
 	/*자유게시판 게시물 한개를 가져오는 메서드*/
 	public ArticleVO selectArticle(String articleId,String boardCode);
 	
-	/*자유게시판 검색하여 리스트 가져오는 메서드*/
-	public List<ArticleVO> selectFreeSearch(String index,String key);
-	
 	/*게시물을 등록하는 메서드*/
 	public boolean insertArticle(ArticleVO article);
 	
@@ -26,7 +23,4 @@ public interface ArticleDao {
 	
 	/*게시물의 댓글들을 가져오는 메서드*/
 	public List<ArticleVO> selectArticleReplyList(String articleId);
-
-	/*탑유씨시를 가져오는 메서드*/
-	public List<ArticleVO> selectTopUccList();
 }

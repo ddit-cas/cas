@@ -80,10 +80,10 @@ $(function(){
 				<div class="col-sm-5" style="float:right; margin-bottom:10px;">
 					<span class="col-sm-4">
 				    <select id="selectbasic" name="selectbasic" class="form-control">
-				      <option value="memId" selected>아이디</option>
-				      <option value="memName">이름</option>
-				      <option value="memNick">닉네임</option>
-				      <option value="memHp">연락처</option>
+				      <option value="1">아이디</option>
+				      <option value="2">이름</option>
+				      <option value="3" selected>닉네임</option>
+				      <option value="4">연락처</option>
 				    </select>
 			   		</span>
 				  <span class="input-group">
@@ -98,8 +98,6 @@ $(function(){
 			</div><!-- /.row -->
 			<div class="row">
 			    <table class="table table-hover">
-	      		  
-	      		  
 	      		  <thead>
 		        	<tr>
 			          	<th>#</th>
@@ -113,13 +111,11 @@ $(function(){
 						<th>목표금액(<i class="fa fa fa-krw"></i>)</th>
 		        	</tr>
 			      </thead>
-			      
 			      <tbody>
 			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
-<%-- 			        <c:forEach item="member" var="mem"> --%>
 			        <tr>
 			          <th scope="row">1</th>
-			          <td class="fundName">"${fund.name }"</td> <!-- 게시판 url 적용해야함. -->
+			          <td class="fundName"><a href="#">사랑을 나눠요.</a></td> <!-- 게시판 url 적용해야함. -->
 					  <td>pink212</td>
 					  <td>목대여신</td>
 					  <td>박미현</td>
@@ -128,7 +124,6 @@ $(function(){
 					  <td class="fundCurrentAmount">60000 </td>
 					  <td>150000</td>
 			        </tr>
-<%-- 			       </c:forEach>  --%>
 			        <tr>
 			          <th scope="row">2</th>
 			          <td class="fundName"><a href="#">열정의 불태우다.</a></td> <!-- 게시판 url 적용해야함. -->

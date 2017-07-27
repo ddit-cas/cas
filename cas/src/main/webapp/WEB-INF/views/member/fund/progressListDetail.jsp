@@ -369,7 +369,7 @@ function fundEntrollment_go(){
 							<div class="goal_progress">
 								<!-- 목표달성시 클래스 done 추가 -->
 								<div class="progress1">
-									<span class="progress1-bar" style="width: ${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)};">
+									<span class="progress1-bar" style="width: ${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%;">
 										<i class="ribbon-view"></i> <em class="progress-num left-tag">${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%</em>
 										<!-- 50% 이상일때 클래스 left-tag 추가 -->
 									</span>
@@ -413,13 +413,14 @@ function fundEntrollment_go(){
 								<span class="pull-left zzim-before">
 									<button type="button" class="btn-zzim" style="height: 60px;">
 										
-										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like.png"> </i><span id="zzim-cnt">${fund.likenum }</span>
+										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like.png"> </i><span id="zzim-cnt">83</span>
 									</button>
 								</span>
 							</div>
 																
 						</div>
 						<!--// [N] 프로젝트 정보  -->
+						
 						
 <script>
 
@@ -458,6 +459,11 @@ function fundEntrollment_go(){
 	})
 
 
+
+
+
+
+
 $('#testBtn').click(function(){
 	$('#reply_1').toggleClass("hide");
 });
@@ -483,13 +489,6 @@ $('#testBtn').click(function(){
 	
 	
 </script>
-<c:if test="${isLike==1 }">
-			<script>
-				$('.zzim-before').addClass('hide');
-				$('.zzim-after').removeClass('hide');
-				$('#zzim-cnt-on').text(cnt);
-			</script>
-			</c:if>		
 
 					<!-- S : 프로젝트 신고 팝업 -->
 

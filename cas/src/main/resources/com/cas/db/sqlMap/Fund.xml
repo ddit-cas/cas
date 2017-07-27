@@ -16,11 +16,9 @@
 		<result property="stateCode" column="state_code" />
 	</resultMap>
 	
-	<insert id="insertFund" parameterClass="fund">
+	<update id="insertFund" parameterClass="fund">
 		insert into CROWDFUNDING(funding_Num, funding_Target_Amount, funding_Present_Amount, funding_Start_Date, funding_End_Date, state_Code)
-					values(funding_seq.nextval, #fundingTargetAmount#, 0, #fundingStartDate#,#fundingEndDate#,'F003')
-	</insert>
-	<select id="selectFundSeqNum" resultClass="str">
-		select funding_seq.currval from dual	
-	</select>
+					values(FUNDING_SEQ.NEXTVAL, #fundingTargetAmount#, 0, #fundingStartDate#,#fundingEndDate#,'F003')
+	</update>
+	
 </sqlMap>

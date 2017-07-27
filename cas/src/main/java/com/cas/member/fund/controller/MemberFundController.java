@@ -1,8 +1,5 @@
 package com.cas.member.fund.controller;
 
-import java.io.File;
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.cas.article.service.ArticleService;
 import com.cas.article.service.impl.ArticleServiceImpl;
@@ -70,28 +65,11 @@ public class MemberFundController {
 	
 	/*양식에 맞게 입력한 펀딩을 인서트하는 메서드*/
 	@RequestMapping("/member/insertFund")
-	public String insertFund(@RequestParam("fundImage")MultipartFile multipartFile,HttpServletRequest request, FundVO fund, ArticleVO article){
-		String upload = request.getSession().getServletContext()
-				.getRealPath("upload/fund");
+	public String insertFund(HttpServletRequest request, FundVO fund, ArticleVO article){
+		fundService.insertFund(fund);
+		articleService.insertArticle(article);
 		
-		/*가입한 회원의 사진저장*/
-		if (!multipartFile.isEmpty()) {
-			File file = new File(upload, multipartFile.getOriginalFilename()
-					 + System.currentTimeMillis());
-
-			try {
-				multipartFile.transferTo(file);
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			String fundImage = request.getContextPath()+ "/upload/fund/" + file.getName();
-			article.setContentImg(fundImage);
-		}
-		fundService.insertFund(fund, article);
-		return "redirect:/fundList";
+		return "member/main";
 	}
 
 }
