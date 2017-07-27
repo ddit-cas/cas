@@ -50,4 +50,9 @@ public class ArticleServiceImpl implements ArticleService{
 		return articleDao.insertArticle(article);
 	}
 
+	@Override
+	public List<ArticleVO> selectTopUccList() {
+		return articleDao.selectTopUccList();
+	}
+
 }

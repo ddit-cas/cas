@@ -6,6 +6,7 @@ import java.util.List;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
+import com.cas.db.dto.MostViewFundVO;
 import com.cas.fund.dao.FundDao;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -82,5 +83,29 @@ public class FundDaoImpl implements FundDao{
 			e.printStackTrace();
 		}
 		return topFundList;
+	}
+
+	@Override
+	public List<MostViewFundVO> selectTopClickFundList(String classify) {
+		List<MostViewFundVO> topViewFundList = null;
+		try {
+			System.out.println(classify);
+			topViewFundList = sqlMapClient.queryForList("selectTopViewFundList",classify);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return topViewFundList;
+	}
+
+	@Override
+	public List<MostViewFundVO> selectShortFundList(int rownum) {
+		List<MostViewFundVO> shortFundList = null;
+		try {
+			shortFundList = sqlMapClient.queryForList("shortFundList",rownum);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return shortFundList;
 	}
 }

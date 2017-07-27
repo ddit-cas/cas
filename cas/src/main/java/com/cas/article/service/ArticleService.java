@@ -23,4 +23,6 @@ public interface ArticleService {
 	
 	/*게시물의 댓글들을 가져오는 메서드*/
 	public List<ArticleVO> selectArticleReplyList(String articleId);
+	
+	public List<ArticleVO> selectTopUccList();
 }
