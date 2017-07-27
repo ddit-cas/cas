@@ -309,9 +309,11 @@
 		</ul>
 	</div>
 </div>
+
+<c:choose>
+<c:when test="${not empty loginUser }">
 <script>
 // 하트표시바꾸기-------------------------------------------------------------
-
 
 	var cnt = ${recomCount};
 	var isLike = ${isLike};
@@ -354,6 +356,17 @@
 		$('.zzim-before').toggleClass('hide');
 	}
 </script>
+</c:when>
+<c:otherwise>
+	<script>
+	$('#like').click(function() {
+		location.href="/cas/member/freeboardForm";
+	})
+	</script>
+</c:otherwise>
+</c:choose>
+
+
 <script>
 	function go_link(){
 		alert('${promotionVO.consertTicket}')

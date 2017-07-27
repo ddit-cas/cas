@@ -420,10 +420,9 @@ function fundEntrollment_go(){
 																
 						</div>
 						<!--// [N] 프로젝트 정보  -->
-						
-						
+	<c:choose>
+	<c:when test="${not empty loginUser }">
 <script>
-
 // 하트표시바꾸기-------------------------------------------------------------
 
 	var cnt = $('span#zzim-cnt').text();
@@ -436,7 +435,7 @@ function fundEntrollment_go(){
 // 		$('.zzim-after').toggleClass('hide');
 // 		cnt--
 // 		$('span#zzim-cnt').text(cnt);
-		
+
 		var $param = $.param({contentNum:"${fund.contentNum}"});
 		if($('.zzim-before').hasClass('hide')){
 			$.post('/cas/member/unlikeContent', $param , 
@@ -457,13 +456,20 @@ function fundEntrollment_go(){
 			$('#zzim-cnt-on').text(cnt);
 		}
 	})
+</script>
+	</c:when>	
+	<c:otherwise>
+	<script>
+// 하트표시바꾸기-------------------------------------------------------------
 
+	$('.btn-zzim').click(function(){
+		location.href="/cas/member/freeboardForm";
+	})
+	</script>
+	</c:otherwise>				
+	</c:choose>
 
-
-
-
-
-
+<script>
 $('#testBtn').click(function(){
 	$('#reply_1').toggleClass("hide");
 });
