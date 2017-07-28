@@ -67,13 +67,13 @@
 	  		</c:when>
 	  		<c:otherwise>
 	  			<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
-					<tr>
-						<td><a href="promotionDetail?contentNum=${promotionList[i].contentNum }">${promotionList[i].contentTitle }</a></td>
-						<td>${promotionList[i].genreName }</td>
-						<td>${promotionList[i].startDate } ~ ${promotionList[i].endDate }</td>
-						<td>${promotionList[i].contentWriter }</td>
-						<td>${promotionList[i].recomCount }</td>
-					</tr>	  			
+						<tr  onclick="showDetail_go(${promotionList[i].contentNum });">
+							<td><a href=#>${promotionList[i].contentTitle }</a></td>
+							<td>${promotionList[i].genreName }</td>
+							<td>${promotionList[i].startDate } ~ ${promotionList[i].endDate }</td>
+							<td>${promotionList[i].contentWriter }</td>
+							<td>${promotionList[i].recomCount }</td>
+						</tr>	  			
 	  			</c:forEach>
 	  		</c:otherwise>
 	  	</c:choose>
@@ -119,5 +119,9 @@
 <script>
 function insertShowPage_go(){
 	document.location.href = "/cas/member/PromotionForm";
+}
+
+function showDetail_go(contentNum){
+	location.href="promotionDetail?contentNum="+contentNum;
 }
 </script>
