@@ -9,8 +9,6 @@
 <link
 	href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<style type="text/css">
-</style>
 <style>
 #body {
 	margin-top: 58px;
@@ -48,13 +46,12 @@
 		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
 	});
 </script>
-</head>
 <body>
 	<div id="body">
 		<div class="container">
 			<h2 style="margin: 5px 20px 15px auto;">진행 중</h2>
 			<div class="row-fluid">
-				<ul class="thumbnails list-unstyled">
+				<ul class="thumbnails list-unstyled" style="padding: 0 ">
 					<li class="col-md-4">
 						<div class="thumbnail" style="padding: 0">
 							<div style="padding: 4px; width: 100%;">

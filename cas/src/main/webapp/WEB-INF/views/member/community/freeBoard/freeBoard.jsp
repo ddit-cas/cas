@@ -42,7 +42,7 @@ li a:hover {
 			<ul>
 				<li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
 				<li><a href="/cas/promotionList">공연홍보</a></li>
-				<li><a href="/cas/uccList">PR영상</a></li>
+				<li><a href="/cas/uccList">CAS-UCC</a></li>
 			</ul>
 		</div>
 	</div>
@@ -67,10 +67,10 @@ li a:hover {
 									id="focusedInput" type="text" placeholder="   검색    "
 									style="margin: 0 auto 5px;"> 
 								<input type="submit" id="search" class="form-control" onclick="freeboardList" value="검색"> 
-								<input type="button" class="form-control" id="list" value="목록">
+<!-- 								<input type="button" class="form-control" id="list" value="목록"> -->
 							</div>
 						</div>
-						<a href="/cas/member/communify/freeBoard/freeboardForm"><input
+						<a href="/cas/member/freeboardForm"><input
 							type="button" class="form-control" id="insert" value="등록"></a>
 					</form>
 				</div>
@@ -103,8 +103,22 @@ li a:hover {
 						<tr>
 							<td colspan="5" style="text-align: center;">해당 내용이 없습니다.</td>
 						</tr>
+					</thead>
+					<tbody style="text-align: center; font-size: 15px;">
+					<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
+						<tr>
+							<td><a href="/cas/freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
+							<td>${articleList[i].contentWriter}</td>
+							<td>${articleList[i].contentRegisDate}</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+				
 					</c:otherwise>
 				</c:choose>
+							</tbody>
+						</table>
 					</tbody>
 				</table>
 			</div>
@@ -147,4 +161,3 @@ li a:hover {
          </ul>
       </nav>
    </div>
-</div>

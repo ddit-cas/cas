@@ -173,9 +173,9 @@
 	<!-- 간략인기순위 -->
 	<div class="col-md-4 popular">
 		<ul class="nav nav-tabs simpleFamous">
-			<li class="active"><a href="#home">펀딩</a></li>
-			<li><a href="#menu1">영상</a></li>
-			<li><a href="#menu2">Caser</a></li>
+			<li class="active"><a href="#home">인기펀딩</a></li>
+			<li><a href="#menu1">인기공연</a></li>
+			<li><a href="#menu2">인기영상</a></li>
 		</ul>
 		<div class="tab-content simpleFamous">
 			<div id="home" class="tab-pane fade in active"
