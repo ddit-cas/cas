@@ -24,14 +24,15 @@
 </script>
 
 <div class="company-wrap">
-		<div class="company-snb">
-		<h2>커뮤니티</h2>
-		<div class="">
-			<ul>
-				<li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
-				<li><a href="/cas/promotionList">공연홍보</a></li>
-				<li><a href="/cas/uccList">PR영상</a></li>
-			</ul>
+<div class="company-snb" style="float: left; margin-top: 100px;">
+	<h2>커뮤니티</h2>
+	<div class="">
+		<ul style="margin-right: 40px;">
+			<li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
+			<li><a href="/cas/promotionList">공연홍보</a></li>
+			<li><a href="/cas/uccList">CAS-UCC</a></li>
+		</ul>
+		</div>
 		</div>
 	</div>
 	<div class="company-cont" style="height: auto;">
