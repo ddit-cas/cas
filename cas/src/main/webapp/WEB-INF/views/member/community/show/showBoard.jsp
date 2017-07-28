@@ -110,10 +110,86 @@
 			</div>
 		</div>
 	</div>
+	<hr style="clear:both;">
+	<div></div>
+	<table class="table table-bordered">
+	  <thead>
+	    <tr>
+	      <th>제목</th>
+	      <th>장르</th>
+	      <th>기간</th>
+	      <th>작성자</th>
+	      <th>좋아요</th>
+	    </tr>
+	  </thead>
+	  <tbody id="showBoardTbody">
+	  	
+	  	<c:choose>
+	  		<c:when test="${empty promotionList}">
+	  			<tr>
+	  				<td colspan="5" style="text-align: center;">
+	  					등록된 공연이 없습니다.
+	  				</td>
+	  			</tr>
+	  		</c:when>
+	  		<c:otherwise>
+	  			<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
+						<tr  onclick="showDetail_go(${promotionList[i].contentNum });">
+							<td><a href=#>${promotionList[i].contentTitle }</a></td>
+							<td>${promotionList[i].genreName }</td>
+							<td>${promotionList[i].startDate } ~ ${promotionList[i].endDate }</td>
+							<td>${promotionList[i].contentWriter }</td>
+							<td>${promotionList[i].recomCount }</td>
+						</tr>	  			
+	  			</c:forEach>
+	  		</c:otherwise>
+	  	</c:choose>
+	  </tbody>
+	</table>
+</div>
+<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+   <div class="row">
+      <nav aria-label="...">
+         <ul class="pager" role="tablist">
+            <li class="previous">
+               <a href="/cas/promotionList?tab=${minNum-1}${searchUrl}"><span aria-hidden="true">←</span>
+                  이전
+               </a>
+            </li>
+            <c:forEach var="i" begin="${minNum}" end="${maxNum}">
+            <c:choose>
+            <c:when test="${index==i}">
+            <li>
+               <a style="background: #aaa;" aria-controls="tab1" href="/cas/promotionList?tab=${i}${searchUrl}">
+                  ${i }
+               </a>
+            </li>
+            </c:when>
+            <c:otherwise>
+            <li>
+               <a aria-controls="tab1" href="/cas/promotionList?tab=${i}${searchUrl}">
+                  ${i }
+               </a>
+            </li>
+            </c:otherwise>
+            </c:choose>
+            </c:forEach>
+            <li class="next">
+               <a href="/cas/promotionList?tab=${maxNum+1}${searchUrl}">다음<span aria-hidden="true">→</span>
+               </a>
+            </li>
+         </ul>
+      </nav>
+   </div>
 </div>
 
 <script>
-	function insertShowPage_go() {
-		document.location.href = "/cas/member/PromotionForm";
-	}
+
+function insertShowPage_go(){
+	document.location.href = "/cas/member/PromotionForm";
+}
+
+function showDetail_go(contentNum){
+	location.href="promotionDetail?contentNum="+contentNum;
+}
 </script>

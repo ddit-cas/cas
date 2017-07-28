@@ -334,9 +334,9 @@
 			data : "contentNum="+contentNum,
 			dataType : 'html',
 			success : function() {
-				chageListBtn();
 			}
 		})
+		chageListBtn();
 	})
 	$('#unlike').click(function() {
 		var contentNum=${promotionVO.contentNum};
@@ -346,9 +346,9 @@
 			data : "contentNum="+contentNum,
 			dataType : 'html',
 			success : function() {
-				chageListBtn();
 			}
 		})
+		chageListBtn();
 	})
 	function chageListBtn() {
 		$('.zzim-after').toggleClass('hide');
