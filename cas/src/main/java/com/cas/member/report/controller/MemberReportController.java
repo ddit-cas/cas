@@ -32,11 +32,11 @@ public class MemberReportController {
 	@RequestMapping("/member/report")
 	public String reportArticle(){
 		ReportVO report = new ReportVO();
-		report.setReportNum("1");
-		report.setContentNum("1");
-		report.setReportContent("핵노잼");
-		report.setReportMem("a001");
-		report.setReportNum("1");
+		report.setReportNum("reportNum");
+		report.setContentNum("contentNum");
+		report.setReportContent("reportContent");
+		report.setReportMem("reportMem");
+		report.setReportNum("ReportNum");
 		
 		int result = reportService.insertReport(report);
 		System.out.println("controller : "+result);
