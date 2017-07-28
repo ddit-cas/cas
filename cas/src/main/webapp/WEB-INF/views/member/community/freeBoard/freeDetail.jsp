@@ -60,7 +60,18 @@ div.company-wrap {
    overflow: hidden;
    /* min-height: 700px; */
 }
+
+
 </style>
+<script>
+
+function freeBoardDis(){
+	location.href="/cas/admin/freeboardUpdate?contentNum=${articleVO.contentNum}";
+	
+}
+
+
+</script>
 	<script type="text/javascript">
 		
 	</script>
@@ -113,6 +124,7 @@ div.company-wrap {
 								<div class="form-group" style="float: left;">
 									<button data-toggle="modal" data-target="#squarespaceModal"
 										class="btn btn-primary center-block">신고</button>
+									<button onclick="freeBoardDis();">삭제</button>
 								</div>
 							</div>
 						</div>
@@ -434,7 +446,7 @@ div.company-wrap {
 </script>
 	
 	<!-- 신고 modal폼 -->
-<form action="" method="post" name="singo">
+<form action="/cas/member/report" method="post" name="singo">
 	<div class="modal fade" id="squarespaceModal" tabindex="-1"
 		role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -468,21 +480,20 @@ div.company-wrap {
 								</label>
 							</div>
 							<div class="checkbox">
-								<label> <input type="checkbox" class="clear" name="chk" value="기타" onClick=""> 기타
+								<label> <input type="checkbox"  class="clear" name="chkbox" value="기타" onClick="checkDisable(this.form)"> 기타
 								</label>
 							</div>
 							</div>
-						<div class="form-group">
-							<label for="exampleInputtext">신고자</label> 
-							<input type="text" class="form-control" id="text" name="report_mem" value="${report.report_mem }">
-						</div>
+						
 						<div class="form-group">
 							<label for="exampleInputtext">신고 내용</label> 
-							<input type="text" class="form-control" id="content" name="report_content">
+							<input type="text" class="form-control" id="content" name="textbox" disabled>
 						</div>
 						</div>
 						<input type="hidden" name="report_date" value="${report.report_date}">
-						<input type="hidden" name="content_num" value="${session.loginUser.memId}">
+						<input type="hidden" name="contentWriter" value="${articleVO.contentWriter}">
+						<input type="hidden" name="contentNum" value="${articleVO.contentNum}">
+						<input type="hidden" name="boardCode" value="${articleVO.boardCode}">
 					
 				</div>
 <script>
@@ -498,6 +509,16 @@ function setCheckBoxAsRadio(targetObj, inObj){
  }
 }
 
+function checkDisable(frm)
+{
+    if( frm.chkbox.checked == true ){
+	   frm.textbox.disabled = false;
+	} else 
+	{
+	   frm.textbox.disabled = true;
+	}
+}
+
 </script>
 				<div class="modal-footer">
 					<div class="btn-group btn-group-justified" role="group"
@@ -507,9 +528,13 @@ function setCheckBoxAsRadio(targetObj, inObj){
 								data-dismiss="modal" role="button" id="close">닫기</button>
 						</div>
 						<div class="btn-group" role="group">
-							<button type="submit" id="test" class="btn btn-primary" data-action="submit" role="button">신고하기</button>
+							<button type="submit" id="test" class="btn btn-primary" role="button">신고하기</button>
 							
 <script>
+
+// 	function report_go(){
+// 		location.href="/cas/member/report";
+// 	}
 	$(function(){
 		$('#test').on('click',function(){
 			swal('신고완료','신고가 완료되었습니다.','success');
@@ -519,9 +544,13 @@ function setCheckBoxAsRadio(targetObj, inObj){
 		});
 		
 	});
+	
+	
 // 		$('#close').on('click',function(){
 // 			$('.clear').prop('checked',false);
 // 		});
+
+	
 </script>
 						</div>
 					</div>

@@ -122,4 +122,10 @@
 	<insert id="contentLike">
 		insert into recom values()
 	</insert>
+	
+	<update id="disAcitveArticle" parameterClass="article">
+		update content set
+		content_state='N'
+		where content_num=#contentNum#
+	</update>
 </sqlMap>

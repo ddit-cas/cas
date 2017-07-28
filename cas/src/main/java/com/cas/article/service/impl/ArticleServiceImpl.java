@@ -62,4 +62,10 @@ public class ArticleServiceImpl implements ArticleService{
 	return resultList;
 	}
 
+	@Override
+	public boolean disAcitve(ArticleVO article) {
+		
+		return articleDao.disAcitve(article);
+	}
+
 }
