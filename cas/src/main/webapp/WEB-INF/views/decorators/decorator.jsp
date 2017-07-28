@@ -444,7 +444,7 @@ h3 {
 						<ul class="dropdown-menu">
 							<li><a href="/cas/freeboardList">자유게시판</a></li>
 							<li><a href="/cas/promotionList">공연홍보 게시판</a></li>
-							<li><a href="/cas/uccList">PR 영상</a></li>
+							<li><a href="/cas/uccList">CAS-UCC</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -459,7 +459,7 @@ h3 {
 				</ul>
 				<c:if test="${not empty loginUser }">
 				<c:if test="${loginUser.rankCode=='R001' }">
-				<button onclick="goAdmin();">관리자 페이지로 이동</button>
+				<button class="btn" onclick="goAdmin();">관리자 페이지로 이동</button>
 				<script>
 					function goAdmin(){
 						location.href="/cas/admin/main";

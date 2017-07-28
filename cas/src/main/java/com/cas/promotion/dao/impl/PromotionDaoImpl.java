@@ -128,4 +128,16 @@ public class PromotionDaoImpl implements PromotionDao {
 		System.out.println(recomCount);
 		return recomCount;
 	}
+
+	@Override
+	public List<PromotionVO> selectTopPromotionList() {
+		List<PromotionVO> topPromotionList = null;
+		try {
+			topPromotionList = sqlMapClient.queryForList("topPromotionList");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return topPromotionList;
+	}
 }

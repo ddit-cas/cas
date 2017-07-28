@@ -66,4 +66,9 @@ public class PromotionServiceImpl implements PromotionService {
 		int recomCount=promotionDao.selectRecomCount(contentNum);
 		return recomCount;
 	}
+
+	@Override
+	public List<PromotionVO> selectTopPromotionList() {
+		return promotionDao.selectTopPromotionList();
+	}
 }
