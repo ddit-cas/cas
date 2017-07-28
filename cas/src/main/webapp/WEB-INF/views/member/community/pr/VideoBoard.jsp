@@ -93,11 +93,18 @@ li a:hover {
 		<h3 class="box">영상게시판</h3>
 		<div class="container">
 			<div class="row">
+			<div class="searchgroup" style="float: left">
+							<select class="form-control" name="search">
+								<option value="free_title">제목</option>
+								<option value="free_writer" selected>작성자</option>
+							</select>
+			</div>
 			<div class="selectcheck">
 					<div class="form-group">
-						<input class="form-control" id="focusedInput" type="text" placeholder="   검색    " style=" width:15%; float:left;"> 
-					<input type="button" style= "width:10%; float:left;" id="search" class="form-control" value="검색">
-						<input type="button" style= width:10%; class="form-control" id="list" value="목록">
+						<input class="form-control" id="focusedInput" type="text" placeholder="   검색    " style=" width:15%; float:left; margin:0 5px 0 5px;"> 
+						
+					<input type="button" style= "width:10%; float:left; margin:0 0 0 5px;" id="search" class="form-control" value="검색">
+						<input type="button" style= "width:10%;" class="form-control" id="list" value="목록">
 					</div>
 			</div>
 				<c:forEach var="i" begin="${firstRow}" end="${lastRow}">

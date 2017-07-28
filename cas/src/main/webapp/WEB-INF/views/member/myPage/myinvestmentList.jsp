@@ -74,6 +74,8 @@ table{
 	</script>
 	<div id="body">
 		<div class="container">
+		<div class="company-cont" style="height: auto; width: 960px;">
+			<h3 class="box" style="background-color:;">My투자</h3>
 			<h2>현재 투자 중 펀딩 리스트</h2>
 			<div class="row">
 				<table class="table table-hover table-responsive">
@@ -121,8 +123,7 @@ table{
 					</tbody>
 				</table>
 			</div>
-		</div>
-		<hr>
+			<hr>
 			<h2>투자한 펀딩 리스트</h2>
 			<div class="row">
 				<table class="table table-hover table-responsive">
@@ -159,13 +160,12 @@ table{
 					</tbody>
 				</table>
 			</div>
-			<hr>
 			<div style="float:right;"><h3>나의 이익: ￦ 300,000</h3></div>								
 		</div>
-			<div class="btn-ground" style="margin: auto; text-align:center;">
-			<a href="fundList"><input type="button"
-									class="btn btn-primary" value="나가기" /></a>
-			</div>
+		</div>
+		<div class="btn-ground" style="margin: auto; text-align:center;">
+			<a href="fundList"><input type="button" class="btn btn-primary" value="나가기" /></a>
+		</div>
 		<div id="delete" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">

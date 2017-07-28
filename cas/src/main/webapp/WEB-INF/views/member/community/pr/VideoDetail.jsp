@@ -78,7 +78,7 @@ div.company-wrap {
 		</div>
 		 </div>
          <div class="company-cont" style="width: 960px;">
-            <h3 class="box">자유게시판</h3>
+            <h3 class="box">UCC</h3>
             <div class="row">
                <div class="col-lg-12">
                   <div class="table-responsive">

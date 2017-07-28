@@ -71,7 +71,7 @@ $(function(){
 	<form class="form-horizontal" action="/cas/member/updateMember">
 	<fieldset class="signup_cas_fs">
 	<div class="company-cont" style="height: auto; width: 960px;">
-			<h3 class="box" style="background-color: #0B2161;">개인정보</h3>
+			<h3 class="box" style="background-color:;">개인정보</h3>
 		<div class="container">
 			<div class="essen">
 				<div class="imfom">
