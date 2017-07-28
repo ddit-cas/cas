@@ -56,9 +56,9 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 	
 	@Override
-	public List<ArticleVO> selectFreeSearch(String index, String key) {
+	public List<ArticleVO> selectFreeSearch(String boardCode,String index, String key) {
 	List<ArticleVO> resultList;
-	resultList = articleDao.selectFreeSearch(index, key);
+	resultList = articleDao.selectFreeSearch(boardCode, index, key);
 	return resultList;
 	}
 

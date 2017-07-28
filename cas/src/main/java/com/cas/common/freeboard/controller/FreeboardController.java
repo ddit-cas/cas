@@ -29,23 +29,29 @@ public class FreeboardController {
 	@RequestMapping("/freeboardList")
 	public String freeboardList(Model model, HttpServletRequest request){
 		
-		//자유게시판의 데이터를 전부 가져온다 (자유게시판의 board_code 는 B005) 
-		List<ArticleVO> freeboardList = articleService.selectArticleList("B005");
-		//현재페이지
+		List<ArticleVO> resultList;
+		resultList = articleService.selectArticleList("B005");
+		model.addAttribute("articleList",resultList);
+		String index=request.getParameter("search");
+		String key=request.getParameter("writeSearch");
+		String boardCode = "B005"; 
+		String searchUrl = "&boardCode="+boardCode;
+		if(index!=null){
+			resultList=articleService.selectFreeSearch(boardCode, index, key);
+			searchUrl += "&search="+index+"&writeSearch="+key;
+		}
+//		//현재페이지
 		String page = request.getParameter("tab");
-		//받은 데이터리스트의 데이터갯수
-		int dataRow = freeboardList.size();
-		
+//		//받은 데이터리스트의 데이터갯수
+		int dataRow = resultList.size();
 		Paging paging = new Paging(dataRow, page, 10);
-		
-		
-		System.out.println(paging.toString());
+		model.addAttribute("searchUrl", searchUrl);
 		model.addAttribute("index", paging.getIndex());//현재페이지
 		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
 		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
 		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
 		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
-		model.addAttribute("articleList", freeboardList);//데이터베이스에서 가져온 리스트를 보내준다
+		model.addAttribute("articleList", resultList);
 		return "member/community/freeBoard/freeBoard";
 	}
 	
@@ -53,23 +59,6 @@ public class FreeboardController {
 	@RequestMapping("/freeboardSearch")
 	public String freeboardSearch(HttpServletRequest request,Model model){
 		String url="/cas/freeboardList";
-		String index=request.getParameter("search");
-		String key=request.getParameter("writerSearch");
-		List<ArticleVO> freeList= articleService.selectFreeSearch(index, key);
-		
-//		System.out.println("검색조건 : "+key);
-//		//현재페이지
-		String page = request.getParameter("tab");
-//		//받은 데이터리스트의 데이터갯수
-		int dataRow = freeList.size();
-		Paging paging = new Paging(dataRow, page);
-		System.out.println(paging.toString());
-		model.addAttribute("index", paging.getIndex());//현재페이지
-		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
-		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
-		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
-		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
-		model.addAttribute("selectSearchFree", freeList);
 		return url;
 	}
 	

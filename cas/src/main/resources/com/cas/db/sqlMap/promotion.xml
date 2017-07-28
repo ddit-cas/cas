@@ -105,5 +105,4 @@
 		or perfomance_start_date >= to_date(#startDate#,'yyyy-mm-dd') and to_date(#endDate#,'yyyy-mm-dd') >= perfomance_end_date
 	</select>         
 	
-	
 </sqlMap>

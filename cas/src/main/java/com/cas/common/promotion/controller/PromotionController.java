@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.CommentVO;
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.Paging;
 import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
 import com.cas.db.dto.LikeVO;
@@ -37,9 +39,28 @@ public class PromotionController {
 	
 	/*공연홍보게시판 리스트로 가는 메서드*/
 	@RequestMapping("/promotionList")
-	public String promotionList(Model model){
+	public String promotionList(Model model, HttpServletRequest request){
+		
+
 		List<PromotionListVO> promotionList=promotionService.selectPromotionList();
+		String boardCode = "B005"; 
+		String searchUrl = "&boardCode="+boardCode;
+//		//현재페이지
+		String page = request.getParameter("tab");
+		if(request.getParameter("tab")==null){
+			page = "1";
+		}
+//		//받은 데이터리스트의 데이터갯수
+		int dataRow = promotionList.size();
+		Paging paging = new Paging(dataRow, page);
+		model.addAttribute("searchUrl", searchUrl);
+		model.addAttribute("index", paging.getIndex());//현재페이지
+		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
+		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
+		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
 		model.addAttribute("promotionList", promotionList);
+		
 		return "member/community/show/showBoard";
 	}
 	

@@ -105,12 +105,12 @@ public class ArticleDaoImpl implements ArticleDao{
 	}
 		
 	@Override
-	public List<ArticleVO> selectFreeSearch(String index, String key) {
+	public List<ArticleVO> selectFreeSearch(String boardCode,String index, String key) {
 		List<ArticleVO> resultList=null;
 		Map<String,String> map=new HashMap<String,String>();
 		map.put("index", index);
 		map.put("key", key);
-		
+		map.put("boardCode", boardCode);
 		try {
 			resultList = sqlMapClient.queryForList("selectSearchFree",map);
 		} catch (SQLException e) {

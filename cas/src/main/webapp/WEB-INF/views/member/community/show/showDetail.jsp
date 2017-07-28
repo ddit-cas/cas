@@ -309,9 +309,11 @@
 		</ul>
 	</div>
 </div>
+
+<c:choose>
+<c:when test="${not empty loginUser }">
 <script>
 // 하트표시바꾸기-------------------------------------------------------------
-
 
 	var cnt = ${recomCount};
 	var isLike = ${isLike};
@@ -356,6 +358,17 @@
 		window.open('${promotionVO.consertTicket}');
 	}
 </script>
+</c:when>
+<c:otherwise>
+	<script>
+	$('#like').click(function() {
+		location.href="/cas/member/freeboardForm";
+	})
+	</script>
+</c:otherwise>
+</c:choose>
+
+
 <script>
 	function deleteComment(id){
 		$.ajax({
