@@ -106,7 +106,7 @@
 	</select>   
 	
 	<select id="topPromotionList">
-		select * from 
+		select * from ORDERLIKEPROMOTION
 	</select>      
 	
 </sqlMap>
