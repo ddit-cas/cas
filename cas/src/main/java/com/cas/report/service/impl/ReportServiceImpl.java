@@ -35,7 +35,6 @@ public class ReportServiceImpl implements ReportService{
 	@Override
 	public int insertReport(ReportVO report) {
 		int result =reportDao.insertReport(report);
-		System.out.println(result);
 		return result;
 	}
 

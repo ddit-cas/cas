@@ -29,4 +29,6 @@ public interface ArticleDao {
 
 	/*탑유씨시를 가져오는 메서드*/
 	public List<ArticleVO> selectTopUccList();
+	
+	public boolean disAcitve(ArticleVO article);
 }
