@@ -186,27 +186,30 @@
 				<table class="table table-hover">
 					<tbody>
 					<c:forEach items="${topFundList}" var="fund" varStatus="status">
-						<tr class="topFundRow" imgUrl="${fund.contentImg }" contentNum="${fund.contentNum }">
+						<tr class="topFundRow" imgUrl="${fund.contentImg }" contentUrl="/cas/fundDetail?contentNum=${fund.contentNum }">
 							<td>${status.index+1 }</td>
 							<td>${fund.contentTitle }</td>
 						</tr>
 					</c:forEach>
 					</tbody>
 				</table>
-				<script>
-					$(".topFundRow").hover(function(){
-						$("#topFundImg").attr('src',$(this).attr("imgUrl"));
-					})
-					$(".topFundRow").click(function(){
-						location.href="/cas/fundDetail?contentNum="+$(this).attr("contentNum");
-					})
-				</script>
+			
 
 			</div>
 			<div id="menu1" class="tab-pane fade">
-				<h3>Menu 1</h3>
-				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-					laboris nisi ut aliquip ex ea commodo consequat.</p>
+				<img id="topFundImg" src="${topPromotionList[0].contentImg }"
+					style="wdith: 100%; height: 150px; margin-top: 10px; margin-bottom: 10px;">
+				<br>
+				<table class="table table-hover">
+					<tbody>
+					<c:forEach items="${topPromotionList}" var="promotion" varStatus="status">
+						<tr class="topFundRow" imgUrl="${promotion.contentImg }" contentUrl="/cas/promotionDetail?contentNum=${promotion.contentNum }">
+							<td>${status.index+1 }</td>
+							<td>${promotion.contentTitle }</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
 			</div>
 			<div id="menu2" class="tab-pane fade">
 				<h3>Menu 2</h3>
@@ -214,6 +217,14 @@
 					voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
 			</div>
 		</div>
+			<script>
+					$(".topFundRow").hover(function(){
+						$("#topFundImg").attr('src',$(this).attr("imgUrl"));
+					})
+					$(".topFundRow").click(function(){
+						location.href=$(this).attr("contentUrl");
+					})
+				</script>
 		<script>
 			$(document).ready(function() {
 				$(".nav-tabs a").click(function() {
