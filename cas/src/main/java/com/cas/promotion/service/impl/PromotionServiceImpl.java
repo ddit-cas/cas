@@ -74,4 +74,9 @@ public class PromotionServiceImpl implements PromotionService {
 		resultList = promotionDao.selectSearchList(boardCode, index, key);
 		return resultList;
 	}
+	
+	@Override
+	public List<PromotionVO> selectTopPromotionList() {
+		return promotionDao.selectTopPromotionList();
+	}
 }

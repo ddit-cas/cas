@@ -187,7 +187,7 @@
 				</a>
 			</div>
 			<section class="loginform cf">
-			<form id="loginForm" action="login" method="post">
+			<form id="loginForm" action="/cas/login" method="post">
 				<div>
 					<input type="text" name="memId" maxlength="12" placeholder="ID" required><br>
 					<input type="password" name="memPwd" maxlength="12" placeholder="PASSWORD" required><br>
@@ -195,11 +195,11 @@
 						<div class="eff-8"></div>
 						<a href="#" onclick="login(); return false;">로그인</a>
 					</div>
+					<input type="hidden" name="goMain" value="/main">
 				</div>
 			</form>
 			<script>
 				function login(){
-					alert("여기자체엔 들어옵니까 씨발fhrmdlsvha?");
 					$("#loginForm").submit();
 				}
 				var statue = "logout";

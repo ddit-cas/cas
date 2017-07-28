@@ -73,7 +73,7 @@ div.company-wrap {
 			<ul>
 				<li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
 				<li><a href="/cas/promotionList">공연홍보</a></li>
-				<li><a href="/cas/uccList">PR영상</a></li>
+				<li><a href="/cas/uccList">CAS-UCC</a></li>
 			</ul>
 		</div>
 		 </div>

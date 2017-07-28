@@ -35,7 +35,10 @@ public class LoginController {
 
 	/*로그인 양식 페이지로 가는 메서드*/
 	@RequestMapping("/loginForm")
-	public String loginMemberForm(){
+	public String loginMemberForm(HttpSession session){
+		if(session.getAttribute("loginUser")!=null){
+			return "redirect:/main";
+		}
 		return "member/login/login";
 	}
 	
@@ -55,6 +58,9 @@ public class LoginController {
 				System.out.println("비번체크성공하니?");
 				session.setAttribute("loginUser", memberService.selectMember(member.getMemId()));
 			}
+		}
+		if(request.getParameter("goMain")!=null){
+			url=request.getParameter("goMain");
 		}
 		return "redirect:"+url;
 	}
@@ -201,6 +207,6 @@ public class LoginController {
 		
 		memberService.insertTeamList(teamList);
 		
-		return url;
+		return "redirect:/loginForm";
 	}
 }
