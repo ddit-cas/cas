@@ -208,8 +208,12 @@
 					}
 					return false;
 				});
-		        setDayShow();
-		        setImgMargin();
+		        
+		        setTimeout(function(){
+		        	setDayShow();
+			        setImgMargin();
+		        	}, 300);
+		        
         	}
 	    });
 	})

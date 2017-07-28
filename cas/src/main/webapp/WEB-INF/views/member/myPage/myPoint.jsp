@@ -16,7 +16,7 @@ th {
 	<div id="body">
 		<div class="container">
 		<div class="company-cont" style="height: auto; width: 960px;">
-			<h3 class="box" style="background-color: #0B2161;">My Point</h3>
+			<h3 class="box" style="background-color: ;">My Point</h3>
 			<div class="row">
 				<br>
 				<div class="table-responsive" style="text-align: center;">
