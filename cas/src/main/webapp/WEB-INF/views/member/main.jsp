@@ -180,37 +180,27 @@
 		<div class="tab-content simpleFamous">
 			<div id="home" class="tab-pane fade in active"
 				style="text-align: center;">
-				<img src="/cas/resources/famous.jpg"
+				<img id="topFundImg" src="${topFundList[0].contentImg }"
 					style="wdith: 100%; height: 150px; margin-top: 10px; margin-bottom: 10px;">
 				<br>
 				<table class="table table-hover">
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>뮤지컬-캣츠</td>
+					<c:forEach items="${topFundList}" var="fund" varStatus="status">
+						<tr class="topFundRow" imgUrl="${fund.contentImg }" contentNum="${fund.contentNum }">
+							<td>${status.index+1 }</td>
+							<td>${fund.contentTitle }</td>
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>영화 판도라</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>영화 7호실</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>영화 노무현입니다</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>영화 나미야 잡화점의 기적</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
+				<script>
+					$(".topFundRow").hover(function(){
+						$("#topFundImg").attr('src',$(this).attr("imgUrl"));
+					})
+					$(".topFundRow").click(function(){
+						location.href="/cas/fundDetail?contentNum="+$(this).attr("contentNum");
+					})
+				</script>
 
 			</div>
 			<div id="menu1" class="tab-pane fade">
@@ -238,34 +228,40 @@
 	</div>
 
 	<div class="col-xs-12 nonePadding">
-		<label style="float:left; margin-top:10px;">크라우드펀딩</label><hr style="  border-top: 1px solid #f10505;">
+		<label style="float:left; margin-top:10px;">
+		<c:choose>
+		<c:when test="${topClickFundList[0].sex ne 'UNDEFINED'}">
+			${topClickFundList[0].age }대 ${topClickFundList[0].sex }성이 많이 찾은 크라우드펀딩
+		</c:when>
+		<c:otherwise>
+			크라우드펀딩
+		</c:otherwise>
+		</c:choose>
+		</label><hr style="  border-top: 1px solid #f10505;">
 <!-- 		펀딩 폼 -->
-		<a href="#">
+		<c:forEach items="${topClickFundList}" var="fund">
+		<a href="/cas/fundDetail?contentNum=${fund.contentNum }">
 			<div class="perfomance">
 				<div class="famousFund">
-					<img src='<c:url value='resources/famous.jpg'/>' style="width:100%;height: auto;">
+					<img src='${fund.contentImg }'/>' style="width:100%;height: auto;">
 				</div>
 				<div class="famousFundContent">
 					<div class="progress" style="margin-top:0; margin-bottom: 0;background: #b2ecff">
-						<div class="progress-bar" role="progressbar" aria-valuenow="10"
+						<div class="progress-bar" role="progressbar" aria-valuenow="${fund.fundingTargetAmount-fund.fundingPresentAmount }"
 							aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-							<span>130%</span>
+							<span>${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%</span>
 						</div>
 					</div>
-					<label style="float:right; font-size: 0.8em;"> 목표금액 : 1,000,000</label>
-					<label style="float:right; font-size: 0.8em;">달성금액 : 700,000 /</label><br>
-					<label class="fundTitle">Docswave! 대담한 미래!</label>
+					<label style="float:right; font-size: 0.8em;"> 목표금액 : ${fund.fundingTargetAmount }</label>
+					<label style="float:right; font-size: 0.8em;">달성금액 : ${fund.fundingPresentAmount } /</label><br>
+					<label class="fundTitle">${fund.contentTitle }</label>
 					<br><br>
-					<label class="fundHost">소프트웨어인라이프</label>
-					<br>
-					<label class="fundCategory">문화</label>
+					<label class="fundHost">${fund.memName }</label>
 				</div>
 			</div>
 		</a>
+		</c:forEach>
 <!-- 		펀딩 폼 끝 -->
-
-		<div class="perfomance"></div>
-		<div class="perfomance"></div>
 		
 	</div>
 	<div class="col-xs-12 nonePadding">

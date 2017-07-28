@@ -21,18 +21,19 @@
 		<result property="fundingEndDate" column="funding_End_Date" />
 		<result property="fundingStartDate" column="funding_Start_Date" />
 		<result property="dDay" column="d_day" />
+		<result property="likenum" column="likenum" />
 	</resultMap>
 	
 	<select id="ingFundList" resultMap="selectIngFund">
-		select * from ingfundview
+		select * from ingfundview order by content_Regis_Date desc
 	</select>
 	
 	<select id="ingFund" resultMap="selectIngFund" parameterClass="str">
 		select * from ingfundview where content_Num=#contentNum#
 	</select>
 	
-	<select id="selectTopFundList">
-		select * from ingfundview
+	<select id="selectTopFundList" resultMap="selectIngFund">
+		<![CDATA[select * from ingfundview where rownum<=5]]>
 	</select>
 
 </sqlMap>

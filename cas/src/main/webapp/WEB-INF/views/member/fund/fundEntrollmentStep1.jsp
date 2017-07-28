@@ -112,7 +112,7 @@ button, input[type='button'], input[type='submit'], input[type='reset'], input[t
 <div class="innerOFA">
 	<div class="appl_step1">
 	<!--//appl-tab-->
-	<form name="tx_editor_form" id="tx_editor_form" action="/cas/member/insertFund" method="post" accept-charset="utf-8">
+	<form name="tx_editor_form" encType=multipart/form-data id="tx_editor_form" action="/cas/member/insertFund" method="post" accept-charset="utf-8">
 	
 	        
 	<div class="appl_page">
@@ -249,7 +249,7 @@ $(function(){
 					      <span class="btn btn-default image-preview-input">
 	                        <i class="glyphicon glyphicon-folder-open"></i>
 	                        <span class="image-preview-input-title">업로드</span>
-	                        <input type="file" name="contentImg " accept="image/png, image/jpeg, image/gif"/>
+	                        <input type="file" name="fundImage"  accept="image/png, image/jpeg, image/gif"/>
 	                     </span>
 					    </span>
 					  </div>

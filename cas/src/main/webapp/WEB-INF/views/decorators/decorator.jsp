@@ -457,6 +457,16 @@ h3 {
 						</ul>
 					</li>
 				</ul>
+				<c:if test="${not empty loginUser }">
+				<c:if test="${loginUser.rankCode=='R001' }">
+				<button onclick="goAdmin();">관리자 페이지로 이동</button>
+				<script>
+					function goAdmin(){
+						location.href="/cas/admin/main";
+					}
+				</script>
+				</c:if>
+				</c:if>
 			</div>
 		</div>
 	</nav>

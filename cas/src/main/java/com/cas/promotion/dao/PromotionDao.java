@@ -14,6 +14,7 @@ public interface PromotionDao {
 	public List<GenreVO> selectGenreList();
 	public int insertPromotion(ArticleVO articleVO,ConsertVO consertVO);
 	public PromotionVO selectPromotionDetail(String contentNum);
+	public List<PromotionListVO> selectSearchList(String boardCode, String index,String key);
 	public List<PromotionListVO> selectPromotionList();
 	public int isLike(LikeVO like);
 	public List<PromotionListVO> selectDayShow(ScheduleVO schedule);

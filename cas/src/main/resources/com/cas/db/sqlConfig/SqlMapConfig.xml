@@ -23,5 +23,7 @@
 	<sqlMap resource="com/cas/db/sqlMap/Fund.xml" />
 	
 	<sqlMap resource="com/cas/db/sqlMap/Recom.xml" />
+	
+	<sqlMap resource="com/cas/db/sqlMap/TopViewFund.xml" />
 
 </sqlMapConfig>
