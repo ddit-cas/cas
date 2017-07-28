@@ -11,6 +11,7 @@ import com.cas.db.dto.PromotionVO;
 import com.cas.db.dto.ScheduleVO;
 
 public interface PromotionService {
+	public List<PromotionListVO> selectSearchList(String boardCode,String index, String key);
 	public List<GenreVO> selectGenreList();
 	public int insertPromotion(ArticleVO articleVO,ConsertVO consertVO);
 	public PromotionVO selectPromotionDetail(String contentNum);
