@@ -81,6 +81,7 @@ public class MainController {
 		
 		/*공연홍보 5순위까지 가져오기*/
 		List<PromotionVO> topPromotionList = promotionService.selectTopPromotionList();
+		model.addAttribute("topPromotionList",topPromotionList);
 		
 		List<MostViewFundVO> topClickFundList = null;
 		
