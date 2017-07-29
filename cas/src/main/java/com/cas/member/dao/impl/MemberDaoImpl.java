@@ -1,7 +1,9 @@
 package com.cas.member.dao.impl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,6 +23,12 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
+	public int selectMemberCount(){
+		int result = -1;
+		
+		return result;
+	}
+	@Override
 	public int insertMember(MemberVO member) {
 		int result = -1;
 		try {
@@ -33,7 +41,13 @@ public class MemberDaoImpl implements MemberDao {
 	
 	@Override
 	public List<MemberVO> memberList() {
-		return null;
+		List<MemberVO> resultList = null;
+		try {
+			resultList = sqlMapClient.queryForList("selectMemberList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultList;
 	}
 	
 	@Override
@@ -123,6 +137,20 @@ public class MemberDaoImpl implements MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<MemberVO> selectSeachMember(String index, String key) {
+		List<MemberVO> resultList = null;
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("index", index);
+		map.put("key", key);
+		try {
+			resultList = sqlMapClient.queryForList("selectSearchMemberAnalysis",map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultList;
 	}
 
 }

@@ -22,6 +22,7 @@
 		<result property="contentImg" column="content_img"/>
 		<result property="boardName" column="board_name"/>
 		<result property="fundingNum" column="funding_num"/>
+<!-- 		<result property="contentCount"/> -->
 	</resultMap>
 	
 	<insert id="insertArticle" parameterClass="article">						
@@ -118,14 +119,35 @@
 		delete from article where content_num=#contentNum#
 	</delete>
 	
-
-	<insert id="contentLike">
-		insert into recom values()
-	</insert>
-	
 	<update id="disAcitveArticle" parameterClass="article">
 		update content set
 		content_state='N'
 		where content_num=#contentNum#
 	</update>
+	<!-- 일별 등록한 펀딩 수 -->
+	<select id="dayEntrollmentFund" resultClass="article">
+		select TO_CHAR(content_regis_date,'yy-mm-dd') contentRegisDate
+        	 , count(content_num) contentCount
+		from CONTENT
+		where board_code = 'B009'
+		group by TO_CHAR(content_regis_date,'yy-mm-dd')
+	</select>
+	
+	<!-- 금월 등록한 펀딩 수 -->
+	<select id="monthEntrollmentFund" resultClass="int">
+		select count(content_num) from CONTENT
+		where board_code = 'B009' and to_char(content_regis_date, 'yyyymm') = TO_char(sysdate,'yyyymm')
+	</select>
+	
+	<!-- 전월 등록한 펀딩 수 -->
+	<select id="lastMonthEntrollmentFund" resultClass="int">
+		select count(content_num) from CONTENT
+		where board_code = 'B009' and to_char(content_regis_date, 'yyyymm') = TO_char(sysdate,'yyyymm')-1
+	</select>
+	
+	<!-- 금일 등록한 펀딩 수 -->
+	<select id="dateEntrollmentFund" resultClass="int">
+		select count(content_num) from CONTENT
+		where board_code = 'B009' and to_char(content_regis_date, 'yyyymmdd') = TO_char(sysdate,'yyyymmdd')
+	</select>
 </sqlMap>

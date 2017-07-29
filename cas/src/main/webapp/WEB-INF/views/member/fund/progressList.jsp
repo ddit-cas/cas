@@ -89,7 +89,7 @@ div.company-wrap {
 			</c:forEach>
 		</ul>
 	</div>
-</div>
+	</div>
 </div>
 </body>
 </html>
