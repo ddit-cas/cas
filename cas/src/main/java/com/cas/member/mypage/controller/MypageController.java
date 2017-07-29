@@ -107,12 +107,20 @@ public class MypageController {
 		String url = "/member/myPage/myPoint";
 		return url;
 	}
+	/*회원이 포인트 충전하는 폼으로 가는 메서드*/
+	@RequestMapping("/member/chargeForm")
+	public String memberChargeForm(HttpSession session,Model model){
+		String url = "/member/myPage/chargeForm";
+		return url;
+	}
+	
 	/*회원이 포인트 충전하는 메서드*/
 	@RequestMapping("/member/charge")
 	public String memberCharge(HttpSession session,Model model){
 		String url = "/member/myPage/charge";
 		return url;
 	}
+	
 	/*회원이 환전하는 메서드*/
 	@RequestMapping("/member/exchange")
 	public String memberExchange(HttpSession session,Model model){
