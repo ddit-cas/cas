@@ -2,47 +2,48 @@ package com.cas.db.dto;
 
 public class InvestmentVO {
 
-	private String undingNum;
-	private int nvesCount;
-	private int nvesAmount;
-	private String nvesDate;
-	private String nvesEnd_date;
-	private String nvesMem;
+	private String fundingNum;
+	private int invesCount;
+	private int invesAmount;
+	private String invesDate;
+	private String invesEndDate;
+	private String invesMem;
 	
-	public String getUndingNum() {
-		return undingNum;
+	public String getFundingNum() {
+		return fundingNum;
 	}
-	public void setUndingNum(String undingNum) {
-		this.undingNum = undingNum;
+	public void setFundingNum(String fundingNum) {
+		this.fundingNum = fundingNum;
 	}
-	public int getNvesCount() {
-		return nvesCount;
+	public int getInvesCount() {
+		return invesCount;
 	}
-	public void setNvesCount(int nvesCount) {
-		this.nvesCount = nvesCount;
+	public void setInvesCount(int invesCount) {
+		this.invesCount = invesCount;
 	}
-	public int getNvesAmount() {
-		return nvesAmount;
+	public int getInvesAmount() {
+		return invesAmount;
 	}
-	public void setNvesAmount(int nvesAmount) {
-		this.nvesAmount = nvesAmount;
+	public void setInvesAmount(int invesAmount) {
+		this.invesAmount = invesAmount;
 	}
-	public String getNvesDate() {
-		return nvesDate;
+	public String getInvesDate() {
+		return invesDate;
 	}
-	public void setNvesDate(String nvesDate) {
-		this.nvesDate = nvesDate;
+	public void setInvesDate(String invesDate) {
+		this.invesDate = invesDate;
 	}
-	public String getNvesEnd_date() {
-		return nvesEnd_date;
+	public String getInvesEndDate() {
+		return invesEndDate;
 	}
-	public void setNvesEnd_date(String nvesEnd_date) {
-		this.nvesEnd_date = nvesEnd_date;
+	public void setInvesEndDate(String invesEndDate) {
+		this.invesEndDate = invesEndDate;
 	}
-	public String getNvesMem() {
-		return nvesMem;
+	public String getInvesMem() {
+		return invesMem;
 	}
-	public void setNvesMem(String nvesMem) {
-		this.nvesMem = nvesMem;
+	public void setInvesMem(String invesMem) {
+		this.invesMem = invesMem;
 	}
+	
 }

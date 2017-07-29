@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <body>
 	<!-- glyphicon CDN -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,16 +23,34 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="id">아이디</label>
 				<div class="col-sm-6">
-				    <input type="text" class="form-control" id="mem_id" name="id" value="pink202" readonly>
+				    <input type="text" class="form-control" id="mem_id" name="id" value="${pointDetailMem.memId }" readonly>
 				</div>
-				
 			</div>
-			
+			<c:choose>
+			<c:when test="${empty pointDetailMem.memNick }">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="name">이름(닉네임)</label>
 				<div class="col-lg-6">
 				    <input type="text" class="form-control" id="name"
-						value="박미현(목대여신)" name="name" aria-label="name" readonly>
+						name="name" aria-label="name" value="${pointDetailMem.memName }" readonly>
+				</div>
+			</div>
+			</c:when>
+			<c:otherwise>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="name">이름(닉네임)</label>
+				<div class="col-lg-6">
+				    <input type="text" class="form-control" id="name"
+						name="name" aria-label="name" value="${pointDetailMem.memName }(${pointDetailMem.memNick })" readonly>
+				</div>
+			</div>
+			</c:otherwise>	
+			</c:choose>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="ph">이메일</label>
+				<div class="col-lg-6">
+				    <input type="text" class="form-control" id="ph"
+						name="Email" aria-label="ph" value="${pointDetailMem.memEmail }" readonly>
 				</div>
 			</div>
 			
@@ -39,7 +58,7 @@
 				<label class="control-label col-sm-2" for="ph">전화번호</label>
 				<div class="col-lg-6">
 				    <input type="text" class="form-control" id="ph"
-						value="010-4545-8989" name="ph" aria-label="ph" readonly>
+						name="ph" aria-label="ph" value="${pointDetailMem.memHp }" readonly>
 				</div>
 			</div>
 			
@@ -47,7 +66,7 @@
 				<label class="control-label col-sm-2" for="totalCharge">총 충전금액(<i class="fa fa fa-krw"></i>)</label>
 				<div class="col-sm-6">
 					<input type="text" class="form-control" id="totalCharge"
-						value="18000" name="totalCharge" readonly>
+						value="${chargingAmount }" name="totalCharge" readonly>
 				</div>
 			</div>
 			
@@ -55,7 +74,7 @@
 				<label class="control-label col-sm-2" for="totalRefund">총 환급금액(<i class="fa fa fa-krw"></i>)</label>
 				<div class="col-sm-6">
 					<input type="text" class="form-control" id="totalRefund"
-						value="12000" name="totalRefund" readonly>
+						value="${refundAmount }" name="totalRefund" readonly>
 				</div>
 			</div>
 			
@@ -63,7 +82,7 @@
 				<label class="control-label col-sm-2" for="remainPoint">잔여 구름(<i class="fa fa fa-jsfiddle"></i>)</label>
 				<div class="col-sm-6">
 					<input type="text" class="form-control" id="remainPoint"
-						value="60" name="remainPoint" readonly>
+						value="${pointDetailMem.memPoint }" name="remainPoint" readonly>
 				</div>
 			</div>
 		</div>
@@ -80,37 +99,68 @@
 			          	<th>#</th>
 						<th>펀드명</th>   
 						<th>구름사용액</th>   
-						<th>사용날짜</th>   
+						<th>투자일</th>   
 		        	</tr>
 			    </thead>
 			    <tbody>
 			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
+			        <c:choose>
+			    	<c:when test="${count > 0 }">
+			        <c:forEach var="i" begin="${firstRowPointHistory }" end="${lastRowPointHistory }" varStatus="status">
 			    	<tr>
-			          <th scope="row">1</th>
-					  <td>돈좀주세요</td>
-					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
+			          <th scope="row">${status.index+1 }</th>
+					  <td>${investment.fundTitle }</td>
+					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;${investment.investAmount }</td>
+					  <td>${investment.investDate }</td>
 			    	</tr>
+			    	</c:forEach>
+			    	</c:when>
+			    	<c:otherwise>
 			    	<tr>
-			          <th scope="row">2</th>
-					  <td>돈좀주세요</td>
-					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
-			   		</tr>
-			    	<tr>
-			          <th scope="row">3</th>
-					  <td>돈좀주세요</td>
-					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
-			    	</tr>
-			    	<tr>
-			          <th scope="row">4</th>
-					  <td>돈좀주세요</td>
-					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
-			    	</tr>
+						<td colspan="4" style="text-align:center;">
+							해당 내용이 없습니다.
+						</td>
+					</tr>
+			    	</c:otherwise>
+		    	</c:choose>
 			    </tbody>
 			</table>
+			<!-- 페이지수  -->
+			<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+				<div class="row">
+					<nav aria-label="...">
+						<ul class="pager" role="tablist">
+							<li class="previous">
+								<a name="tabPointHistory" href="/cas/admin/pointAnalysisDetail?${selector1 }=${minNumPointHistory-1}"><span aria-hidden="true">←</span>
+									이전
+								</a>
+							</li>
+							<c:forEach var="i" begin="${minNumPointHistory}" end="${maxNumPointHistory}">
+							<c:choose>
+							<c:when test="${indexPointHistory==i}">
+							<li>
+								<a style="background: #aaa;" aria-controls="tab1" href="/cas/admin/pointAnalysisDetail?${selector1 }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:when>
+							<c:otherwise>
+							<li>
+								<a aria-controls="tab1" href="/cas/admin/pointAnalysisDetail?${selector1 }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:otherwise>
+							</c:choose>
+							</c:forEach>
+							<li class="next">
+								<a href="/cas/admin/pointAnalysisDetail?${selector1 }=${maxNumPointHistory+1}">다음<span aria-hidden="true">→</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
 			</div>
 		</div>
 	</div>	
@@ -129,29 +179,62 @@
 		        	</tr>
 			    </thead>
 			    <tbody>
-			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
+		    	<c:choose>
+			    	<c:when test="${chargingList.size() > 0 }">
+			        <c:forEach var="i" begin="${firstRowCharging }" end="${lastRowCharging }" varStatus="status">
 			    	<tr>
-			          <th scope="row">1</th>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
+			          <th scope="row">${status.index+1 }</th>
+					  <td><i class="fa fa fa-krw"></i>&nbsp;${chargingList[i].chargingAmount }</td>
+					  <td>${chargingList[i].chargingDate }</td>
 			    	</tr>
+			    	</c:forEach>
+			    	</c:when>
+			    	<c:otherwise>
 			    	<tr>
-			          <th scope="row">2</th>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
-			   		</tr>
-			    	<tr>
-			          <th scope="row">3</th>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
-			    	</tr>
-			    	<tr>
-			          <th scope="row">4</th>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
-			    	</tr>
+						<td colspan="3" style="text-align:center;">
+							해당 내용이 없습니다.
+						</td>
+					</tr>
+			    	</c:otherwise>
+		    	</c:choose>
 			    </tbody>
 			</table>
+			 <!-- 페이지수  -->
+			<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+				<div class="row">
+					<nav aria-label="...">
+						<ul class="pager" role="tablist">
+							<li class="previous">
+								<a href="/cas/admin/pointAnalysisDetail?${selector2 }=${minNumCharging-1}"><span aria-hidden="true">←</span>
+									이전
+								</a>
+							</li>
+							<c:forEach var="i" begin="${minNumCharging}" end="${maxNumCharging}">
+							<c:choose>
+							<c:when test="${indexCharging==i}">
+							<li>
+								<a style="background: #aaa;" aria-controls="tab1" href="/cas/admin/pointAnalysisDetail?${selector2 }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:when>
+							<c:otherwise>
+							<li>
+								<a aria-controls="tab1" href="/cas/admin/pointAnalysisDetail?${selector2 }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:otherwise>
+							</c:choose>
+							</c:forEach>
+							<li class="next">
+								<a href="/cas/admin/pointAnalysisDetail?${selector2 }=${maxNumCharging+1}">다음<span aria-hidden="true">→</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -169,29 +252,62 @@
 		        	</tr>
 			    </thead>
 			    <tbody>
-			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
+			       <c:choose>
+			    	<c:when test="${refundList.size() > 0 }">
+			        <c:forEach var="i" begin="${firstRowRefund }" end="${lastRowRefund }" varStatus="status">
 			    	<tr>
-			          <th scope="row">1</th>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
+			          <th scope="row">${status.index+1 }</th>
+					  <td><i class="fa fa fa-krw"></i>&nbsp;${refundList[i].chargingAmount }</td>
+					  <td>${refundList[i].chargingDate }</td>
 			    	</tr>
+			    	</c:forEach>
+			    	</c:when>
+			    	<c:otherwise>
 			    	<tr>
-			          <th scope="row">2</th>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
-			   		</tr>
-			    	<tr>
-			          <th scope="row">3</th>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
-			    	</tr>
-			    	<tr>
-			          <th scope="row">4</th>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;20</td>
-					  <td>2017-07-14</td>
-			    	</tr>
+						<td colspan="3" style="text-align:center;">
+							해당 내용이 없습니다.
+						</td>
+					</tr>
+			    	</c:otherwise>
+		    	</c:choose>
 			    </tbody>
 			</table>
+			<!-- 페이지수  -->
+			<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+				<div class="row">
+					<nav aria-label="...">
+						<ul class="pager" role="tablist">
+							<li class="previous">
+								<a href="/cas/admin/pointAnalysisDetail?${selector3 }=${minNumRefund-1}"><span aria-hidden="true">←</span>
+									이전
+								</a>
+							</li>
+							<c:forEach var="i" begin="${minNumRefund}" end="${maxNumRefund}">
+							<c:choose>
+							<c:when test="${indexRefund==i}">
+							<li>
+								<a style="background: #aaa;" aria-controls="tab1" href="/cas/admin/pointAnalysisDetail?${selector3 }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:when>
+							<c:otherwise>
+							<li>
+								<a aria-controls="tab1" href="/cas/admin/pointAnalysisDetail?${selector3 }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:otherwise>
+							</c:choose>
+							</c:forEach>
+							<li class="next">
+								<a href="/cas/admin/pointAnalysisDetail?${selector3 }=${maxNumRefund+1}">다음<span aria-hidden="true">→</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
 			</div>
 		</div>
 	</div>

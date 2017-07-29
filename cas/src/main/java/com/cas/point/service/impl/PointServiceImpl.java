@@ -1,55 +1,31 @@
 package com.cas.point.service.impl;
 
+import java.util.List;
+
+import com.cas.db.dto.PointVO;
+import com.cas.point.dao.PointDao;
 import com.cas.point.service.PointService;
 
 public class PointServiceImpl implements PointService{
 
+	private PointDao pointDao;
+	public void setPointDao(PointDao pointDao){
+		this.pointDao = pointDao;
+	}
+	
 	@Override
-	public int selectTotalRechargePoint() {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<PointVO> selectTotalRechargePoint(String ChargingMem) {
+		return pointDao.selectTotalRechargePoint(ChargingMem);
 	}
 
 	@Override
-	public int selectLastMonthTotalRechargePoint() {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<PointVO> selectMonthlyTotalRechargePoint() {
+		return pointDao.selectMonthlyTotalRechargePoint();
 	}
 
 	@Override
-	public int selectThisMonthTotalRechargePoint() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int selectAvarageRechargePoint() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int selectTotalRechargeCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int selectLastMonthTotalRechargeCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int selectThisMonthTotalRechargeCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int selectAvarageRechargeCount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void insertPoint(String chargingMem) {
+		pointDao.insertPoint(chargingMem);
 	}
 
 }

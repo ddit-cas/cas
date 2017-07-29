@@ -26,14 +26,14 @@ $(function(){
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                       구름 관리
+                      	 구름 관리
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-area-chart"></i><a href="#">구름 차트</a>
+                            <i class="fa fa-area-chart"></i>구름 차트
                         </li>
                         <li class="active">
-                            <i class="fa fa-table"></i> <a href="#">구름 리스트</a>
+                            <i class="fa fa-table"></i>구름 리스트
                         </li>
                     </ol>
                 </div>
@@ -54,46 +54,56 @@ $(function(){
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> 구름 순익 그래프 </h3>
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> 월별 구름 순익 그래프 </h3>
                         </div>
                         <div class="panel-body">
-                            <div id="morris-area-chart"></div>
+                            <div id="morris-line-chart"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /.row -->
-            
+<script>
+	function seachPointAnaysis(){
+		document.searchPointAnalysis.action="/cas/admin/pointAnalysis";
+		document.searchPointAnalysis.method="get";
+		document.searchPointAnalysis.submit();
+	}
+</script>            
             <!-- 리스트 테이블 들어갈 자리. : 아이디(회원명),닉네임, 전화번호, 충전금액, 환급금액, 잔여 포인트 -->
 			<div class="row">
 			<div class="form-group" style="clear:both;">
 			<label style="display:block; float:left;">회원별 구름 현황</label>
+				<form name="searchPointAnalysis">
 				<div class="col-sm-5" style="float:right; margin-bottom:10px;">
 					<span class="col-sm-4">
-				    <select id="selectbasic" name="selectbasic" class="form-control">
-				      <option value="1">아이디</option>
-				      <option value="2">이름</option>
-				      <option value="3">닉네임</option>
-				      <option value="4">연락처</option>
+				    <select id="selectbasic" name="index" class="form-control">
+				      <option value="memId">아이디</option>
+				      <option value="memName">이름</option>
+				      <option value="memNick">닉네임</option>
+				      <option value="memEmail">이메일</option>
+				      <option value="memHp">연락처</option>
 				    </select>
 			   		</span>
 				  <span class="input-group">
-				    <input type="text" class="form-control" id="pointSearch" name="pointSearch" placeholder="검색할 값을 입력하세요.">
+				    <input type="text" class="form-control" id="pointSearch" name="key" placeholder="검색할 값을 입력하세요.">
+			    	<input type="hidden" name="tab" value="1">
 				    <span class="input-group-btn">
-				      <button class="btn btn-default" id="pointSearchBtn" type="button">검색</button>
-					    <span class="msgCheckId"></span>
+				      <button class="btn btn-default" id="pointSearchBtn" onclick="seachPointAnaysis()" type="button">검색</button>
 					</span>    
 				  </span>
 				</div>
+				</form>
 			</div>
 			</div><!-- /.row -->
 <script>
 	$(function(){
-		$('tr').on('click',function(){
-			location.href="pointAnalysisDetail";
+		$('.rowNum').on('click',function(){
+			var memId = $(this).attr('memId');
+			location.href="/cas/admin/pointAnalysisDetail?memId="+memId;
 		});
 	});
-</script>			
+</script>
 			<div class="row">
 			    <table class="table table-hover">
 	      		  <thead>
@@ -101,144 +111,174 @@ $(function(){
 			          	<th>#</th>
 						<th>아이디</th>   
 						<th>회원명(닉네임)</th>   
+						<th>이메일</th>
 						<th>전화번호</th>
-						<th>충전금액</th>
-						<th>환급금액</th>
 						<th>잔여 구름</th>
 		        	</tr>
 			      </thead>
 			      <tbody>
-			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
-			        <tr>
-			          <th scope="row">1</th>
-			          <td>pink212</td>
-					  <td>박미현(목대여신)</td>
-					  <td>010-4545-8989</td>
-					  <td><i class="fa fa fa-krw"></i><span class="counter">&nbsp;58,000</span></td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
-					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;150,000</td>
+			      <c:choose>
+			      	<c:when test="${pointList.size() > 0 }">  
+			        <c:forEach var="i" varStatus="status" begin="${firstRow}" end="${lastRow}">
+			        <tr class='rowNum' name="memId" memId="${pointList[i].memId }">
+			          <th scope="row">${status.index+1 }</th>
+			          <td>${pointList[i].memId }</td>
+			          <c:choose>
+			          <c:when test="${empty pointList[i].memNick}">
+					  	<td>${pointList[i].memName }</td>
+					  </c:when>
+					  <c:otherwise>
+					  	<td>${pointList[i].memName }(${pointList[i].memNick })</td>
+					  </c:otherwise>
+					  </c:choose>
+					  <td>${pointList[i].memEmail }</td>
+					  <td>${pointList[i].memHp }</td>
+					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;${pointList[i].memPoint }</td>
 			        </tr>
+			        </c:forEach>
+			        </c:when>
+			        <c:otherwise>
 			        <tr>
-			          <th scope="row">2</th>
-			          <td>bbind</td>
-					  <td>박성빈(대한민국3대빈)</td>
-					  <td>010-4545-8989</td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;<span class="counter">58,000</span></td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
-					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;150,000</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">3</th>
-			          <td>seol</td>
-					  <td>설승민(야잘알)</td>
-					  <td>010-4545-8989</td>
-					  <td><i class="fa fa fa-krw"></i><span class="counter">&nbsp;58,000</span></td>
-					  <td><i class="fa fa fa-krw"></i>&nbsp;150,000</td>
-					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;150,000</td>
-			        </tr>
+						<td colspan="6" style="text-align:center;">
+							해당 내용이 없습니다.
+						</td>
+					</tr>
+			        </c:otherwise>
+			      </c:choose>
 			      </tbody>
 			    </table>
 			    <!-- 데이터 집어넣을 곳 -->
 			    <table class="hide">
 			    	<tr>
-						<td class="pData">2017-07-01.</td>    	
-						<td class="pRefund">0.</td>    	
-						<td class="pCharge">3000000.</td>    	
+						<td class="pDate">2017-01.</td>    	
+						<td class="pRefund">${monthlyRefund.refundJanAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingJanAmount }.</td>    	
 			    	</tr>
 			    	<tr>
-						<td class="pData">2017-07-01.</td>    	
-						<td class="pRefund">0.</td>    	
-						<td class="pCharge">3000000.</td>    	
+						<td class="pDate">2017-02.</td>    	
+						<td class="pRefund">${monthlyRefund.refundFebAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingFebAmount }.</td>    	
 			    	</tr>
 			    	<tr>
-						<td class="pData">2017-07-01.</td>    	
-						<td class="pRefund">0.</td>    	
-						<td class="pCharge">3000000.</td>    	
+						<td class="pDate">2017-03.</td>    	
+						<td class="pRefund">${monthlyRefund.refundMarAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingMarAmount }.</td>    	
 			    	</tr>
 			    	<tr>
-						<td class="pData">2017-07-01.</td>    	
-						<td class="pRefund">0.</td>    	
-						<td class="pCharge">3000000.</td>    	
+						<td class="pDate">2017-04.</td>    	
+						<td class="pRefund">${monthlyRefund.refundAprAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingAprAmount }.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pDate">2017-05.</td>    	
+						<td class="pRefund">${monthlyRefund.refundMayAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingMayAmount }.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pDate">2017-06.</td>    	
+						<td class="pRefund">${monthlyRefund.refundJunAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingJunAmount }.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pDate">2017-07.</td>    	
+						<td class="pRefund">${monthlyRefund.refundJulAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingJulAmount }.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pDate">2017-08.</td>    	
+						<td class="pRefund">${monthlyRefund.refundAugAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingAugAmount }.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pDate">2017-09.</td>    	
+						<td class="pRefund">${monthlyRefund.refundSepAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingSepAmount }.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pDate">2017-10.</td>    	
+						<td class="pRefund">${monthlyRefund.refundOctAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingOctAmount }.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pDate">2017-11.</td>    	
+						<td class="pRefund">${monthlyRefund.refundNovAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingNovAmount }.</td>    	
+			    	</tr>
+			    	<tr>
+						<td class="pDate">2017-12.</td>    	
+						<td class="pRefund">${monthlyRefund.refundDesAmount }.</td>    	
+						<td class="pCharge">${monthlyCharging.chargingDesAmount }.</td>    	
 			    	</tr>
 			    </table>
 			    
 			 </div><!-- /.row -->
+			 
+			 <!-- 페이지수  -->
+			<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+				<div class="row">
+					<nav aria-label="...">
+						<ul class="pager" role="tablist">
+							<li class="previous">
+								<a href="/cas/admin/pointAnalysis?${selector }=${minNum-1}"><span aria-hidden="true">←</span>
+									이전
+								</a>
+							</li>
+							<c:forEach var="i" begin="${minNum}" end="${maxNum}">
+							<c:choose>
+							<c:when test="${index==i}">
+							<li>
+								<a style="background: #aaa;" aria-controls="tab1" href="/cas/admin/pointAnalysis?${selector }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:when>
+							<c:otherwise>
+							<li>
+								<a aria-controls="tab1" href="/cas/admin/pointAnalysis?${selector }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:otherwise>
+							</c:choose>
+							</c:forEach>
+							<li class="next">
+								<a href="/cas/admin/pointAnalysis?${selector }=${maxNum+1}">다음<span aria-hidden="true">→</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			 
         </div><!-- /.container-fluid -->
     </div><!-- /#page-wrapper -->
 
 <script>
 $(function() {
-	var pntData = $('.pData').text().split('.');
+	var pntDate = $('.pDate').text().split('.');
 	var pntRef = $('.pRefund').text().split('.');
 	var pntCha = $('.pCharge').text().split('.');
-    /*
+    
     var pntArray = new Array();
-	for(var i=0;i<memDate.length-1;i++){
+	for(var i=0;i<pntDate.length-1;i++){
 		var pntData = new Object();
-		pntData.period = pntData[i];
+		pntData.period = pntDate[i];
 		pntData.refund = pntRef[i];
 		pntData.charge = pntCha[i];
 		pntArray.push(pntData)
 	}
-	*/
-    // Area Chart
-    Morris.Area({
-        element: 'morris-area-chart',
-        data:/* pntArray, */ 
-        	[{
-            period: '2014-01-01',
-            refund: null,
-            charge: 2666
-        }, {
-            period: '2014 Q2',
-            refund: 2294,
-            charge: 2778
-        }, {
-            period: '2014 Q3',
-            refund: 1969,
-            charge: 4912
-        }, {
-            period: '2014 Q4',
-            refund: 3597,
-            charge: 3767
-        }, {
-            period: '2015-01-01',
-            refund: 1914,
-            charge: 6810,
-        }, {
-            period: '2015 Q2',
-            charge: 5670,
-            refund: 4293,
-        }, {
-            period: '2015 Q3',
-            charge: 4820,
-            refund: 3795,
-        }, {
-            period: '2015 Q4',
-            charge: 15073,
-            refund: 5967,
-        }, {
-            period: '2016 Q1',
-            charge: 10687,
-            refund: 4460,
-        }, {
-            period: '2016 Q2',
-            charge: 6432,
-            refund: 5713,
-        }, {
-            period: '2016 Q3',
-            charge: 5432,
-            refund: 5713,
-        }, {
-            period: '2016 Q4',
-            charge: 4432,
-            refund: 7713,
-        }],
+	
+    // Line Chart
+    Morris.Line({
+        element: 'morris-line-chart',
+        data: pntArray,
         xkey: 'period',
         ykeys: ['refund','charge'],
         labels: ['환급금액','충전금액'],
+        color :['red','blue'],
         pointSize: 2,
         hideHover: 'auto',
+        smooth : true,
         resize: true
     });
 

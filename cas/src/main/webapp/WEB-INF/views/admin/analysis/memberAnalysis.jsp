@@ -115,40 +115,30 @@ $(function(){
 					  <td>2017-07-14</td>
 					  <td>0</td>
 			        </tr>
-			        <tr>
-			          <th scope="row">2</th>
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td>1</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">3</th>
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td>2</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">4</th>
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td>정지계정</td>
-			        </tr>
 			      </tbody>
 			    </table>
 			    
 			    <!-- 데이터 넣을 곳 -->
 			    <table class="hide">
+			    
 			    	<tr>
-			    		<td class="mDate">2017-07-01.</td>
+			    		<td class="mDate">2017-07.</td>
+			    		<td class="mRegister">780.</td>
+			    	</tr>
+			    	<tr>
+			    		<td class="mDate">2017-08.</td>
+			    		<td class="mRegister">780.</td>
+			    	</tr>
+			    	<tr>
+			    		<td class="mDate">2017-09.</td>
+			    		<td class="mRegister">780.</td>
+			    	</tr>
+			    	<tr>
+			    		<td class="mDate">2017-10.</td>
+			    		<td class="mRegister">780.</td>
+			    	</tr>
+			    	<tr>
+			    		<td class="mDate">2017-11.</td>
 			    		<td class="mRegister">780.</td>
 			    	</tr>
 			    </table>
@@ -181,101 +171,7 @@ $(function() {
         element: 'morris-line-chart',
         // Chart data records -- each entry in this array corresponds to a point on
         // the chart.
-        data: /* memArray, */
-        	[{
-            d: '2012-10-01',
-            register: 802
-        }, {
-            d: '2012-10-02',
-            register: 783
-        }, {
-            d: '2012-10-03',
-            register: 820
-        }, {
-            d: '2012-10-04',
-            register: 839
-        }, {
-            d: '2012-10-05',
-            register: 792
-        }, {
-            d: '2012-10-06',
-            register: 859
-        }, {
-            d: '2012-10-07',
-            register: 790
-        }, {
-            d: '2012-10-08',
-            register: 1680
-        }, {
-            d: '2012-10-09',
-            register: 1592
-        }, {
-            d: '2012-10-10',
-            register: 1420
-        }, {
-            d: '2012-10-11',
-            register: 882
-        }, {
-            d: '2012-10-12',
-            register: 889
-        }, {
-            d: '2012-10-13',
-            register: 819
-        }, {
-            d: '2012-10-14',
-            register: 849
-        }, {
-            d: '2012-10-15',
-            register: 870
-        }, {
-            d: '2012-10-16',
-            register: 1063
-        }, {
-            d: '2012-10-17',
-            register: 1192
-        }, {
-            d: '2012-10-18',
-            register: 1224
-        }, {
-            d: '2012-10-19',
-            register: 1329
-        }, {
-            d: '2012-10-20',
-            register: 1329
-        }, {
-            d: '2012-10-21',
-            register: 1239
-        }, {
-            d: '2012-10-22',
-            register: 1190
-        }, {
-            d: '2012-10-23',
-            register: 1312
-        }, {
-            d: '2012-10-24',
-            register: 1293
-        }, {
-            d: '2012-10-25',
-            register: 1283
-        }, {
-            d: '2012-10-26',
-            register: 1248
-        }, {
-            d: '2012-10-27',
-            register: 1323
-        }, {
-            d: '2012-10-28',
-            register: 1390
-        }, {
-            d: '2012-10-29',
-            register: 1420
-        }, {
-            d: '2012-10-30',
-            register: 1529
-        }, {
-            d: '2012-10-31',
-            register: 1892
-        }, ],
+        data: memArray,
         // The name of the data record attribute that contains x-visitss.
         xkey: 'd',
         // A list of names of data record attributes that contain y-visitss.
