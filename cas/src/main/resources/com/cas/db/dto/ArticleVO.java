@@ -15,6 +15,15 @@ public class ArticleVO {
 	private String contentImg;				//이미지 등록
 	private String boardName;				//게시판 종류(자유게시판, 공연홍보, 펀딩)
 	private String fundingNum;				//펀딩과 연결
+	private String contentCount;			//관리자 펀딩에서 사용중 
+	
+	
+	public String getContentCount() {
+		return contentCount;
+	}
+	public void setContentCount(String contentCount) {
+		this.contentCount = contentCount;
+	}
 	public String getFundingNum() {
 		return fundingNum;
 	}
