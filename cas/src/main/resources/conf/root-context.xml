@@ -143,4 +143,44 @@
 		class="com.cas.notice.service.impl.NoticeServiceImpl"
 		p:noticeDao-ref="noticeDao"
 	></bean>
+	
+	<!-- AdminFundAnalysisDao 등록 -->
+	<bean
+		name="adminFundAnalysisDao"
+		class="com.cas.fund.dao.impl.AdminFundAnalysisDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	/>
+	<!-- AdminFundAnalysisService 등록 -->
+	<bean
+		name="adminFundAnalysisService"
+		class="com.cas.fund.service.impl.AdminFundAnalysisServiceImpl"
+		p:adminFundAnalysisDao-ref="adminFundAnalysisDao"
+	/>
+
+	<!-- pointDao 등록 -->
+	<bean
+		name="pointDao"
+		class="com.cas.point.dao.impl.PointDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	/>
+	<!-- pointService 등록 -->
+	<bean
+		name="pointService"
+		class="com.cas.point.service.impl.PointServiceImpl"
+		p:pointDao-ref="pointDao"
+	/>
+
+	<!-- investDao 등록 -->
+	<bean
+		name="investmentDao"
+		class="com.cas.member.investment.dao.impl.InvestmentDaoImpl"
+		p:sqlMapClient-ref="sqlMapClient"
+	/>
+	<!-- investService 등록 -->
+	<bean
+		name="investmentService"
+		class="com.cas.member.investment.service.impl.InvestmentServiceImpl"
+		p:investmentDao-ref="investmentDao"
+	/>
+	
 </beans>

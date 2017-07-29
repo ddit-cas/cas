@@ -48,7 +48,6 @@ public class FundDaoImpl implements FundDao{
 			int answer = sqlMapClient.update("insertFund",fund);
 			String fundSeq = (String)sqlMapClient.queryForObject("selectFundSeqNum");
 			article.setFundingNum(fundSeq);
-			System.out.println(fundSeq);
 			sqlMapClient.insert("insertArticle",article);
 			
 			if(answer > 0){

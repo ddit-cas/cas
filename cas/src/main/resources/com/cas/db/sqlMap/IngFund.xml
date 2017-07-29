@@ -34,5 +34,18 @@
 	<select id="selectTopFundList">
 		select * from ingfundview
 	</select>
+	
+	<select id="selectSearchFundAnalysis" parameterClass="map" resultMap="selectIngFund">
+		select * from ingfundview where 1=1 
+		<isEqual prepend="and" property="index" compareValue="contentTitle">
+			content_Title like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="contentWriter">
+			content_Writer like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="contentRegisDate">
+			content_Regis_Date like '%'||#key#||'%'
+		</isEqual>
+	</select>
 
 </sqlMap>

@@ -24,8 +24,7 @@ public class ArticleServiceImpl implements ArticleService{
 	
 	@Override
 	public List<ArticleVO> selectArticleList(String memId, String boardCode) {
-		List<ArticleVO> resultList = null;
-		resultList = articleDao.selectArticleList(memId, boardCode);
+		List<ArticleVO> resultList = articleDao.selectArticleList(memId, boardCode);
 		return resultList;
 	}
 

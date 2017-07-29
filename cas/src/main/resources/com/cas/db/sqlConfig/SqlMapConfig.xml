@@ -24,4 +24,8 @@
 	
 	<sqlMap resource="com/cas/db/sqlMap/Recom.xml" />
 
+	<sqlMap resource="com/cas/db/sqlMap/Point.xml" />
+	
+	<sqlMap resource="com/cas/db/sqlMap/Invest.xml" />
+
 </sqlMapConfig>

@@ -111,7 +111,6 @@ function fundEntrollment_go(){
 						</div>
 					</div>
 				</c:forEach>
-
 			</div>
 			
 		</div>
