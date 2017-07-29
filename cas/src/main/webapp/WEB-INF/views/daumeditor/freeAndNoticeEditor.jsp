@@ -473,7 +473,7 @@
 
 		},
 		size: {
-			contentWidth: 726 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
+			contentWidth: 600 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
 		}
 	};
 
@@ -560,52 +560,5 @@
 	}
 </script>
 
-<!-- End: Saving Contents -->
 
-<!-- Sample: Loading Contents -->
-<textarea id="sample_contents_source" style="display:none;">
-	${articleVO.contentContent }
-</textarea>
-<script type="text/javascript">
-	function loadContent() {
-		var attachments = {};
-// 		attachments['image'] = [];
-// 		attachments['image'].push({
-// 			'attacher': 'image',
-// 			'data': {
-// 				'imageurl': 'http://cfile273.uf.daum.net/image/2064CD374EE1ACCB0F15C8',
-// 				'filename': 'github.gif',
-// 				'filesize': 59501,
-// 				'originalurl': 'http://cfile273.uf.daum.net/original/2064CD374EE1ACCB0F15C8',
-// 				'thumburl': 'http://cfile273.uf.daum.net/P150x100/2064CD374EE1ACCB0F15C8'
-// 			}
-// 		});
-// 		attachments['file'] = [];
-// 		attachments['file'].push({
-// 			'attacher': 'file',
-// 			'data': {
-// 				'attachurl': 'http://cfile297.uf.daum.net/attach/207C8C1B4AA4F5DC01A644',
-// 				'filemime': 'image/gif',
-// 				'filename': 'editor_bi.gif',
-// 				'filesize': 640
-// 			}
-// 		});
-		/* 저장된 컨텐츠를 불러오기 위한 함수 호출 */
-		Editor.modify({
-			"attachments": function () { /* 저장된 첨부가 있을 경우 배열로 넘김, 위의 부분을 수정하고 아래 부분은 수정없이 사용 */
-				var allattachments = [];
-				for (var i in attachments) {
-					allattachments = allattachments.concat(attachments[i]);
-				}
-				return allattachments;
-			}(),
-			"content": document.getElementById("sample_contents_source") /* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */
-		});
-	}
-</script>
-<c:if test='${not empty articleVO}'>
-	<script>
-		loadContent();
-	</script>
-</c:if>
 

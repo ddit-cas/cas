@@ -12,7 +12,7 @@
       type="text/css">
    <style>
 #body {
-   margin-top:
+	width: 726px;
 }
 
 .center {
@@ -41,7 +41,7 @@
 
 div.company-wrap {
    overflow: hidden;
-   width: 1000px;
+   width: 726px;
    margin: -57px 212px;
 }
 
@@ -61,6 +61,15 @@ div.company-wrap {
    overflow: hidden;
    /* min-height: 700px; */
 }
+
+#contentTable video{
+	max-width: 726px;
+}
+
+#contentTable img{
+	max-width: 726px;
+}
+
 </style>
    <script type="text/javascript">
       
@@ -82,8 +91,8 @@ div.company-wrap {
             <div class="row">
                <div class="col-lg-12">
                   <div class="table-responsive">
-                     <table class="table table-bordered"
-                        style="text-align: left; width: 925px;">
+                     <table class="table table-bordered" id="contentTable"
+                        style="text-align: left; width: 726px;">
                         <tbody>
                            <tr>
                               <th
@@ -110,12 +119,22 @@ div.company-wrap {
                         </tbody>
                      </table>
                      <div class="form-group">
-                        <a href="/cas/freeboardList"><input type="button" name="submit"
+                        <a href="/cas/uccList"><input type="button" name="submit"
                            id="submit" value="목록" class="btn btn-info pull-right" /></a>
                         <div class="form-group" style="float: left;">
                            <button data-toggle="modal" data-target="#squarespaceModal"
                               class="btn btn-primary center-block">신고</button>
+                              <c:if test="${not empty loginUser }">
+                              <c:if test="${loginUser.memId==articleVO.contentWriter }">
+                           <button onclick="updateGo();" class="btn btn-primary center-block">수정</button>
+                              </c:if>
+                              </c:if>
                         </div>
+                        <script>
+                        	function updateGo(){
+                        		location.href="/cas/member/uccForm?contentNum=${articleVO.contentNum}";
+                        	}
+                        </script>
                      </div>
                   </div>
                </div>
