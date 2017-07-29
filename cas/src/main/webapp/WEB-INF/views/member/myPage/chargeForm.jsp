@@ -4,6 +4,9 @@
 
 <div>
 	<form action="">
+		<input type="text" readonly="readonly" name="memName" value="${loginUser.memName }">
+		<input type="text" readonly="readonly" name="memEmail" value="${loginUser.memEmail }">
+		
 	</form>
 </div> 
 pg : 'inicis', // version 1.1.0부터 지원.                
