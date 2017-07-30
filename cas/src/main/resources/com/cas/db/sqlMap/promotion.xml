@@ -44,6 +44,12 @@
 		<result property="contentImg" column="CONTENT_IMG"/>
 	</resultMap>
 	
+	<resultMap class="com.cas.db.dto.PromotionListVO" id="topPromotion">
+		<result property="contentNum" column="CONTENT_NUM"/>
+		<result property="contentTitle" column="CONTENT_TITLE"/>
+		<result property="contentImg" column="CONTENT_IMG"/>
+		<result property="recomCount" column="LIKENUM"/>
+	</resultMap>
 	
 	<insert id="insertConsert" parameterClass="consert">
 		INSERT INTO	CONSERT VALUES(CONSERT_SEQ.NEXTVAL,#consertContent#,#consertPlace#
@@ -103,6 +109,10 @@
 		where to_date(#startDate#,'yyyy-mm-dd') >= perfomance_start_date and perfomance_end_date>=to_date(#startDate#,'yyyy-mm-dd')
 		or perfomance_end_date >= to_date(#endDate#,'yyyy-mm-dd') and to_date(#endDate#,'yyyy-mm-dd') >= perfomance_start_date   
 		or perfomance_start_date >= to_date(#startDate#,'yyyy-mm-dd') and to_date(#endDate#,'yyyy-mm-dd') >= perfomance_end_date
-	</select>         
+	</select>   
+	
+	<select id="topPromotionList" resultMap="topPromotion">
+		select * from ORDERLIKEPROMOTION
+	</select>      
 	
 </sqlMap>

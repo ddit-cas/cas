@@ -18,6 +18,7 @@ import com.cas.db.dto.CarouselVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.MostViewFundVO;
+import com.cas.db.dto.PromotionVO;
 import com.cas.fund.service.FundService;
 import com.cas.promotion.service.PromotionService;
 
@@ -77,6 +78,10 @@ public class MainController {
 		
 		/*유씨씨 5순위까지 가져오기*/
 //		List<ArticleVO> topUccList = articleService.selectTopUccList();
+		
+		/*공연홍보 5순위까지 가져오기*/
+		List<PromotionVO> topPromotionList = promotionService.selectTopPromotionList();
+		model.addAttribute("topPromotionList",topPromotionList);
 		
 		List<MostViewFundVO> topClickFundList = null;
 		

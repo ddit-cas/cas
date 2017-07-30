@@ -92,7 +92,7 @@
 			<ul>
 				<li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
 				<li><a href="/cas/promotionList">공연홍보</a></li>
-				<li><a href="/cas/uccList">PR영상</a></li>
+				<li><a href="/cas/uccList">CAS-UCC</a></li>
 			</ul>
 		</div>
    </div>
@@ -226,7 +226,8 @@
 										<input type="button" value="삭제" onclick="deleteComment('${comment.contentNum}')">
 									</c:if>
 									<c:if test="${not empty loginUser.memId}">
-										<input type="button" value="신고" onclick="reportComment('${comment.contentNum}')">
+										<button data-toggle="modal" data-target="#squarespaceModal"
+                              class="btn btn-primary center-block">신고</button>
 									</c:if>
 								</div>
 								
@@ -310,6 +311,122 @@
 	</div>
 </div>
 
+
+<!-- 신고 modal폼 -->
+   <form action="/cas/member/report" method="post" name="singo">
+	<div class="modal fade" id="squarespaceModal" tabindex="-1"
+		role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+					</button>
+					<h3 class="modal-title" id="lineModalLabel">신고하기</h3>
+				</div>
+				<div class="modal-body">
+						<div class="form-group">
+							<label for="exampleInputtext">신고분류</label>
+							<div class="checkbox" id="checks">
+								<label> <input type="checkbox" class="clear" name="chk" value="광고" onClick="setCheckBoxAsRadio(singo.chk, this);"> 광고(성인광고 포함)
+								</label>
+							<div class="checkbox">
+								<label> <input type="checkbox" class="clear" name="chk" value="음란물" onClick=""> 음란물
+								</label>
+							</div>
+							<div class="checkbox">
+								<label> <input type="checkbox" class="clear" name="chk" value="혐오" onClick=""> 혐오
+								</label>
+							</div>
+							<div class="checkbox">
+								<label> <input type="checkbox" class="clear" name="chk" value="심한욕설" onClick=""> 심한욕설
+								</label>
+							</div>
+							<div class="checkbox">
+								<label> <input type="checkbox" class="clear" name="chk" value="악플" onClick=""> 악플(공격적 발언, 비아냥)
+								</label>
+							</div>
+							<div class="checkbox">
+								<label> <input type="checkbox"  class="clear" name="chkbox" value="기타" onClick="checkDisable(this.form)"> 기타
+								</label>
+							</div>
+							</div>
+						
+						<div class="form-group">
+							<label for="exampleInputtext">신고 내용</label> 
+							<input type="text" class="form-control" id="content" name="textbox" disabled>
+						</div>
+						</div>
+						<input type="hidden" name="report_date" value="${report.report_date}">
+						<input type="hidden" name="contentWriter" value="${promotionVO.contentWriter}">
+						<input type="hidden" name="contentNum" value="${promotionVO.contentNum}">
+						<input type="hidden" name="boardCode" value="${promotionVO.boardCode}">
+					
+				</div>
+<script>
+// 체크박스 하나만 체크되도록.
+function setCheckBoxAsRadio(targetObj, inObj){
+ var len = targetObj.length;
+ 
+ if(len>1){ // 객체가 배열이라면. 배열이 아니면 그냥 체크박스로 작동
+  for(var i=0; i<len; i++){
+   if(targetObj[i] != inObj)
+    targetObj[i].checked = false;
+  }
+ }
+}
+
+function checkDisable(frm)
+{
+    if( frm.chkbox.checked == true ){
+	   frm.textbox.disabled = false;
+	} else 
+	{
+	   frm.textbox.disabled = true;
+	}
+}
+
+</script>
+				<div class="modal-footer">
+					<div class="btn-group btn-group-justified" role="group"
+						aria-label="group button">
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-danger"
+								data-dismiss="modal" role="button" id="close">닫기</button>
+						</div>
+						<div class="btn-group" role="group">
+							<button type="submit" id="test" class="btn btn-primary" role="button">신고하기</button>
+							
+<script>
+
+// 	function report_go(){
+// 		location.href="/cas/member/report";
+// 	}
+	$(function(){
+		$('#test').on('click',function(){
+			swal('신고완료','신고가 완료되었습니다.','success');
+			$('.confirm').bind('click',function(){
+				$('#squarespaceModal').modal('hide');
+			});
+		});
+		
+	});
+	
+	
+// 		$('#close').on('click',function(){
+// 			$('.clear').prop('checked',false);
+// 		});
+
+	
+</script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+
 <c:choose>
 <c:when test="${not empty loginUser }">
 <script>
@@ -334,9 +451,9 @@
 			data : "contentNum="+contentNum,
 			dataType : 'html',
 			success : function() {
-				chageListBtn();
 			}
 		})
+		chageListBtn();
 	})
 	$('#unlike').click(function() {
 		var contentNum=${promotionVO.contentNum};
@@ -346,9 +463,9 @@
 			data : "contentNum="+contentNum,
 			dataType : 'html',
 			success : function() {
-				chageListBtn();
 			}
 		})
+		chageListBtn();
 	})
 	function chageListBtn() {
 		$('.zzim-after').toggleClass('hide');

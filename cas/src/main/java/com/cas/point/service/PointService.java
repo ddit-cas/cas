@@ -1,28 +1,18 @@
 package com.cas.point.service;
 
+import java.util.List;
+
+import com.cas.db.dto.PointVO;
+
+
 public interface PointService {
 
-	/*총 충전금액*/
-	public int selectTotalRechargePoint();
+	/*개인별 충전금액*/
+	public List<PointVO> selectTotalRechargePoint(String chargingMem);
 	
-	/*지난달 총 충전금액*/
-	public int selectLastMonthTotalRechargePoint();
+	/*월별 충전& 환급 금액의 총합*/
+	public List<PointVO> selectMonthlyTotalRechargePoint();
 	
-	/*이번달 총 충전금액*/
-	public int selectThisMonthTotalRechargePoint();
-	
-	/*평균 충전금액*/
-	public int selectAvarageRechargePoint();
-	
-	/*총 충전횟수*/
-	public int selectTotalRechargeCount();
-	
-	/*지난달 총 충전횟수*/
-	public int selectLastMonthTotalRechargeCount();
-	
-	/*이번달 총 충전회숫*/
-	public int selectThisMonthTotalRechargeCount();
-	
-	/*평균 충전횟수*/
-	public int selectAvarageRechargeCount();
+	/*충전 및 환급 할 때 insert*/
+	public void insertPoint(String chargingMem);
 }

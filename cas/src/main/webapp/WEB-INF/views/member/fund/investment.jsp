@@ -1,3 +1,4 @@
+<%@page import="com.cas.db.dto.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
@@ -146,7 +147,7 @@ ol, ul {
 									<em class="np100"></em>
 								</dt>
 								<dd>
-									<p>설승민님의 투자 신청서 작성</p>
+									<p>${loginUser.memName }님의 투자 신청서 작성</p>
 									<p class="type">개인 일반 투자자</p>
 								</dd>
 
@@ -162,25 +163,23 @@ ol, ul {
 				<div class="wpayment-inputstock">
 					<div class="inner-wrap">
 						<h3>투자금 설정</h3>
+						<form action="/cas/member/insertInvestment" id="investmentForm">
 
 						<div class="inputstock-wrap">
 							<dl id="inputQtyArea" class="input-wrap error">
 								<dt style="font-size:12px; float:left;">신청 투자 금액</dt>
 								<dd>
 									<label class="input-stock"><input type="tel" id="qty"
-										class="input-text" placeholder="투자 금액 입력" maxlength="8"
-										tabindex="99"><em>원</em></label>
+										name="invesAmount" class="input-text" placeholder="투자 금액 입력" maxlength="8"
+										tabindex="99"><em>구름</em></label>
+								<input type="hidden" name="fundingNum" value="${fundingNum }">
 								</dd>
 							</dl>
 						</div>
-
-						<!-- 주식입고계좌설정 -->
-
+						</form>
 
 
 
-						<h3>상환 계좌</h3>
-						<p class="sub-text">원리금(또는 정산금)을 상환받을 계좌를 설정하세요.</p>
 <script>
  function showSettingAccountPop(){
 	 
@@ -198,20 +197,6 @@ function selectAccount(){
 
 </script>
 
-						<div class="setting-account">
-							<button type="button" id="settingAccountBtn"
-								onclick="showSettingAccountPop();" class="btn-basic"
-								style="background-size: 8px 14px; display: block; width: 100%; padding: 15px 20px; border: 1px solid #ddd; border-radius: 3px; text-align: left;">
-								<span id="account"><strong>계좌 설정하기</strong></span>
-							</button>
-						
-						</div>
-						<!-- //주식입고계좌설정 -->
-						<div class="event-banner"></div>
-					</div>
-				</div>
-				<!-- //투자금설정 -->
-				
 
 				
 				<!-- 약관동의 -->
@@ -236,155 +221,30 @@ function selectAccount(){
 
 			</div>
 
-
-
-			<div class="wpayment-email-confirm">
-				<form id="investInfoForm" name="investInfoForm"
-					novalidate="novalidate">
-					<input type="hidden" id="campaignId" name="campaignId" value="598">
-					<input type="hidden" id="userName" name="userName"
-						value="seolartn@gmail.com"> <input type="hidden"
-						id="nickName" name="nickName" value="설승민"> <input
-						type="hidden" id="securtId" name="securtId" value="710"> <input
-						type="hidden" id="securtAmount" value="100000"> <input
-						type="hidden" id="qty_real" name="qty" value=""> <input
-						type="hidden" id="investAmount" name="investAmount" value="">
-					<input type="hidden" id="accountType" name="accountType" value="">
-					<input type="hidden" id="scrtRegNo" name="scrtRegNo" value="0">
-					<input type="hidden" id="accountCode" name="accountCode" value="">
-					<input type="hidden" id="accountNo" name="accountNo" value="">
-					<input type="hidden" id="couponCode" name="couponCode" value="">
-
 					
 					
 					<div class="inner-btn-wrap" id="sendAuthEmailBtn">
 						<button type="button" class="btn-complete"
-							onclick="sendAuthEmail();" style="display: block; width: 100%; height: 52px; line-height: 52px; text-align: center;
+							onclick="investment();" style="display: block; width: 100%; height: 52px; line-height: 52px; text-align: center;
 							color: #fff; font-size: 17px; background: #26bbe2;">투자하기</button>
 					</div>
-
-					<div class="authnum-info" style="display: none;">
-						<dl class="input-box active">
-							<dt>
-								<input type="tel" id="authKey" name="authKey"
-									class="input-text numOnly" maxlength="6"
-									placeholder="인증번호 6자리 입력">
-							</dt>
-							<dd>
-								<button type="button" id="confirmAuthEmailBtn" class="btn-auth"
-									onclick="ajaxAuthEmailConfirm();">인증 확인</button>
-							</dd>
-						</dl>
-						<p id="authEmailErrorComment" class="error-comment"
-							style="display: none;"></p>
-						<div class="util-box">
-							<button type="button" class="btn-link"
-								onclick="retrySendAuthEmail();">인증번호 재발송</button>
-							<p class="time-info">
-								남은 시간 <em id="minTime">10</em>
-							</p>
-						</div>
 					</div>
-				</form>
-			</div>
+					
+					<script>
+						function investment(){
+							var memPoint = <%=((MemberVO)request.getSession().getAttribute("loginUser")).getMemPoint() %>
+							var qty= $("#qty").val();
+							alert(qty+memPoint);
+							if(qty*100>memPoint){
+								alert("포인트가 모자랍니다. 충전해주세요~");
+								return;
+							}else{
+								var form = $("#investmentForm");
+								form.submit();
+							}
+						}
+					</script>
 
-
-			<div class="btn-wrap">
-				<button id="registEquityBtn" class="btn-complete"
-					onclick="ajaxRegistEquity();" disabled="disabled"
-					style="display: none;">작성 완료</button>
-			</div>
-		</div>
-		
-	</div>
-
-
-<!-- 팝업 -->
-<div id="enquirypopup" class="modal fade in" role="dialog">
-		<div class="modal-dialog">
-			
-			<!-- Modal content-->
-			<div class="modal-content row" style="height:554px;">
-				<div class="modal-header custom-modal-header">
-					<button type="button" class="close" data-dismiss="modal">×</button>
-					<h4 class="modal-title">계좌 설정</h4>
-				</div>
-				<form>
-				<div class="pop-setting-account">
-					<div>
-		   				<ul class="radio-wrap">
-							<li><input type="radio" class="input-radio" id="bankAccount" name="account" value="bank" checked="checked"><label for="bankAccount">은행계좌</label></li>
-		   				</ul>
-		   				   				
-		   				<div id="accountTypeCon2" class="account-type input-wrap">
-		    				<dl>
-		    					<dt>은행</dt>
-		    					<dd style="margin-top: -34px;">
-		    						<select id="newDfBankCode" name="newDfBankCode" class="select-list"><option value="">은행 선택</option><option value="BANK000039">경남은행</option>
-										<option value="BANK000034">하나(구 외환)은행</option>
-										<option value="BANK000031">대구은행</option>
-										<option value="BANK000032">부산은행</option>
-										<option value="BANK000901">산업은행</option>
-										<option value="BANK000045">새마을금고</option>
-										<option value="BANK000007">수협중앙회</option>
-										<option value="BANK000088">신한은행</option>
-										<option value="BANK000048">신협중앙회</option>
-										<option value="BANK000020">우리은행</option>
-										<option value="BANK000071">우체국</option>
-										<option value="BANK000037">전북은행</option>
-										<option value="BANK000027">한국씨티은행</option>
-										<option value="BANK000011">NH농협은행</option>
-										<option value="BANK000004">KB국민은행</option>
-										<option value="BANK000002">KDB산업은행</option>
-										<option value="BANK000081">KEB 하나은행</option>
-										<option value="BANK000023">SC제일은행</option>
-										<option value="BANK000090">케이뱅크</option>
-									</select>
-		    					</dd>
-		    				</dl>
-		    				<dl>
-		    					<dt>계좌번호</dt>
-		    					<dd style="margin-top: -37px;"><input type="tel" id="newBankAccountNo" name="newBankAccountNo" class="input-text numOnly" maxlength="18" placeholder="'-' 제외한 계좌번호 입력"></dd>
-		    				</dl>
-		    				<dl>
-		    					<dt>예금주</dt>
-		    					<dd style="margin-top: -36px;">설승민</dd>
-		    				</dl>
-		   				</div>
-		   			</div>
-		   		</div>
-		   			<div class="wpayment-notice-comment">	
- 								<p><em>본 프로젝트는 투자금을 입고 받을 계좌를 등록하셔야 투자 신청이 가능합니다.</em></p>
-				   				<p>투자신청자 본인 명의의 계좌로만  입금이 가능합니다. 입금이 불가능한 계좌로 등록된 경우 배정에서 제외됩니다.<br>(비활성 상태 계좌 또는 CMA 계좌인 경우 금액 입고 불가)</p>
-				   				<p>프로젝트 마감 전까지 나의 펀딩 현황 페이지에서 계좌 정보 변경이 가능합니다.</p>
-		   			</div>
-	
-<!-- 계좌번호를 입력하고 다시 마우스 가져다대면 지워지는 메소드		   			 -->
-<script>
-$(function(){
-	$('input#newBankAccountNo').on('click',function(){
-		$('input#newBankAccountNo').val("");
-	});
-});
-
-
-</script>		   			
-				
-				<div class="pop-btn-wrap">
-	   				<div class="terms div2" style="text-align: center;">
- 						<button type="button" data-dismiss="modal" class="btn-cancel" onclick="closeSettingAccountPop();" style="height: 52px; margin-right: 6px;
-    						line-height: 52px; text-align: center;  width: 132px; color: #777; font-size: 17px; background: #fff; border: 1px solid #ddd; box-sizing: border-box;">취소</button>
-	   					<button type="button" id="selectAccountBtn" class="btn-complete" onclick="selectAccount();" style="rgb(255, 247, 247); background: #999; border: 1px solid #999; cursor: default;  width: 132px;
-    						height: 52px; color: white; padding-top: 5px;" >계좌 설정</button>
-	   				</div>
-	  			</div>
-			
-				</form>
-				
-			</div>
-			
-		</div>
-	</div>
 	
 <!----------------------------- 서비스 이용 약관 동의 ----------------------------------------------->
 <div id="servicePopup" class="modal fade in" role="dialog">

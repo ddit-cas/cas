@@ -120,4 +120,18 @@ public class ArticleDaoImpl implements ArticleDao{
 		return resultList;
 	}
 
+	@Override
+	public boolean disAcitve(ArticleVO article) {
+		boolean result = false;
+		try {
+			int res = sqlMapClient.update("disAcitveArticle",article);
+			if(res>0){
+				result=true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }
