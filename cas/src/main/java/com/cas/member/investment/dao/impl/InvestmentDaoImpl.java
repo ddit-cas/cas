@@ -1,6 +1,7 @@
 package com.cas.member.investment.dao.impl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.cas.db.dto.InvestmentVO;
@@ -14,10 +15,14 @@ public class InvestmentDaoImpl implements InvestmentDao {
 	}
 
 	@Override
-	public int insertInvestment(String memId) {
+	public int insertInvestment(InvestmentVO invest) {
 		int result = 0;
 		try {
-			result = sqlMapClient.update("insertInvest", memId);
+			result = sqlMapClient.update("insertInvest", invest);
+			HashMap<String, String> paramMap = new HashMap<String, String>();
+			paramMap.put("investPoint", invest.getInvesAmount()+"");
+			paramMap.put("contentNum", invest.getFundingNum());
+			sqlMapClient.update("updateFundingAmount",paramMap);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

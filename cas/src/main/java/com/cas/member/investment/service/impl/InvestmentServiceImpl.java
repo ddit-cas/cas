@@ -15,8 +15,8 @@ public class InvestmentServiceImpl implements InvestmentService {
 	}
 	
 	@Override
-	public int insertInvestment(String memId) {
-		return investmentDao.insertInvestment(memId);
+	public int insertInvestment(InvestmentVO invest) {
+		return investmentDao.insertInvestment(invest);
 	}
 
 	@Override

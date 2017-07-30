@@ -20,9 +20,8 @@
 	<select id="selectInvest" parameterClass="str" resultMap="selectInvest">
 		select * from inves where inves_mem = #invesMem#
 	</select>
-	<update id="insertInvest" parameterClass="str">
-		insert into inves(funding_num, inves_count, inves_amount, inves_date, inves_end_date, inves_mem)
-		values #fundingNum#, #invesCount#, #invesAmount#, SYSDATE, #invesEndDate#, #invesMem#
-		where inves_mem = #invesMem#
-	</update>
+	<insert id="insertInvest" parameterClass="invest">
+		insert into inves(funding_num, inves_amount, inves_date, inves_end_date, inves_mem)
+		values (#fundingNum#, #invesAmount#, SYSDATE, sysdate+1 , #invesMem#)
+	</insert>
 </sqlMap>		

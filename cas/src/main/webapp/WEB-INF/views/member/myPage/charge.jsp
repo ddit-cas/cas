@@ -17,13 +17,13 @@ IMP.request_pay({
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : '포인트 충전',
-    amount : 14000,
-    buyer_email : 'iamport@siot.do',
-    buyer_name : '구매자이름',
-    buyer_tel : '010-1234-5678',
-    buyer_addr : '서울특별시 강남구 삼성동',
-    buyer_postcode : '123-456',
-    m_redirect_url : '/cas/member/point'
+    amount : "${point.chargingAmount}",
+    buyer_email : '${loginUser.memEmail}',
+    buyer_name : '${loginUser.memName}',
+    buyer_tel : '${loginUser.memHp}',
+    buyer_addr : '${loginUser.memAddr1}'+'${loginUser.memAddr2}',
+    buyer_postcode : '${loginUser.memMailnumber}',
+    m_redirect_url : '/cas/member/insertPoint'
 }, function(rsp) {
     if ( rsp.success ) {
         var msg = '결제가 완료되었습니다.';

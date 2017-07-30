@@ -14,6 +14,7 @@ import com.cas.article.service.ArticleService;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.Paging;
+import com.cas.db.dto.PointVO;
 import com.cas.member.service.MemberService;
 
 @Controller
@@ -116,7 +117,16 @@ public class MypageController {
 	
 	/*회원이 포인트 충전하는 메서드*/
 	@RequestMapping("/member/charge")
-	public String memberCharge(HttpSession session,Model model){
+	public String memberCharge(HttpSession session,Model model,PointVO point){
+		model.addAttribute("point",point);
+		String url = "/member/myPage/charge";
+		return url;
+	}
+	
+	/*회원이 포인트 충전하는 메서드*/
+	@RequestMapping("/member/insertPoint")
+	public String memberInsertPoint(HttpSession session,Model model,PointVO point){
+		model.addAttribute("point",point);
 		String url = "/member/myPage/charge";
 		return url;
 	}

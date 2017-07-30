@@ -44,4 +44,11 @@
 	<select id="totalFundCount" resultClass="int">
 		select count(funding_num) from CROWDFUNDING
 	</select>
+	
+	<update id="updateFundingAmount">
+		update crowdfunding 
+		set
+		FUNDING_PRESENT_AMOUNT= funding_present_amount+(#investPoint# *100)
+		where funding_num=(select funding_num from content where content_num=#contentNum#)
+	</update>
 </sqlMap>

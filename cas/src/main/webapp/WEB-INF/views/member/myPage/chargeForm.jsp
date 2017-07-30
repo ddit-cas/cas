@@ -3,20 +3,15 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 <div>
-	<form action="">
+	<form action="/cas/member/charge">
 		<input type="text" readonly="readonly" name="memName" value="${loginUser.memName }">
 		<input type="text" readonly="readonly" name="memEmail" value="${loginUser.memEmail }">
-		
+		<input type="text" readonly="readonly" name="memHp" value="${loginUser.memHp }">
+		<input type="text" readonly="readonly" name="memMailnumber" value="${loginUser.memMailnumber }">
+		<input type="text" readonly="readonly" name="memAddr1" value="${loginUser.memAddr1 }">
+		<input type="text" readonly="readonly" name="memAddr2" value="${loginUser.memAddr2 }">
+		<input type="hidden" name="chargingMem" value="${loginUser.memId }">
+		<p>1구름 = 100원</p><input type="text" placeholder="충전할 금액을 입력해주세요." name="chargingAmount">원
+		<button type="submit" class="btn" >충전!</button>
 	</form>
 </div> 
-pg : 'inicis', // version 1.1.0부터 지원.                
- pay_method : 'card',                                 
- merchant_uid : 'merchant_' + new Date().getTime(),   
- name : '주문명:결제테스트',                                  
- amount : 14000,                                      
- buyer_email : 'iamport@siot.do',                     
- buyer_name : '구매자이름',                                
- buyer_tel : '010-1234-5678',                         
- buyer_addr : '서울특별시 강남구 삼성동',                        
- buyer_postcode : '123-456',                          
- m_redirect_url : '/cas/member/point'                 
