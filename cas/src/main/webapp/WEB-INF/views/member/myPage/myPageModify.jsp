@@ -474,7 +474,6 @@ $(function() {
 	});
 });	
 </script>	
-	
 			<div class="team-mem"></div>
 		</div>
 	</fieldset>
