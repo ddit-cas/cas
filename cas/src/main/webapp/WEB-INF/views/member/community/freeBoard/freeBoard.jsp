@@ -85,9 +85,9 @@ li a:hover {
 						<c:when test="${articleList.size() > 0 }">
 							<thead>
 								<tr>
-									<th style="width: 30%; text-align: center; font-size: 15px;">제목</th>
-									<th style="width: 8%; text-align: center; font-size: 15px;">작성자</th>
-									<th style="width: 15%; text-align: center; font-size: 15px;">작성일</th>
+									<th style="width: 25%; text-align: center; font-size: 15px;">제목</th>
+									<th style="width: 5%; text-align: center; font-size: 15px;">작성자</th>
+									<th style="width: 17%; text-align: center; font-size: 15px;">작성일</th>
 								</tr>
 							</thead>
 							<tbody style="text-align: center; font-size: 15px;">
