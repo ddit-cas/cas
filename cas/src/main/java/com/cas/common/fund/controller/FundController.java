@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.db.dto.LikeVO;
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.Paging;
 import com.cas.fund.service.FundService;
 import com.cas.promotion.service.PromotionService;
 
@@ -35,9 +37,22 @@ public class FundController {
 
 	/*현재 진행중인 크라우드 펀딩목록으로 가는 메서드*/
 	@RequestMapping("/fundList")
-	public String fundList(Model model){
+	public String fundList(Model model, HttpServletRequest request){
+
 		List<IngFundVO>fundList = fundService.selectIngFundList();
-		model.addAttribute("fundList",fundList);
+		model.addAttribute("articleList",fundList);
+//		//현재페이지
+		String page = request.getParameter("tab");
+//		//받은 데이터리스트의 데이터갯수
+		int dataRow = fundList.size();
+		Paging paging = new Paging(dataRow, page, 6);
+		model.addAttribute("index", paging.getIndex());//현재페이지
+		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
+		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
+		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
+		
+		model.addAttribute("fund",fundList);
 		String url = "member/fund/progressList";
 		return url;
 	}
