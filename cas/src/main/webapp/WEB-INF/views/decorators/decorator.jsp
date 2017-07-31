@@ -456,17 +456,20 @@ h3 {
 							<li><a href="/cas/member/insertQnaForm">1:1 문의사항</a></li>
 						</ul>
 					</li>
-				</ul>
+				
 				<c:if test="${not empty loginUser }">
-				<c:if test="${loginUser.rankCode=='R001' }">
-				<button class="btn" onclick="goAdmin();">관리자 페이지로 이동</button>
-				<script>
-					function goAdmin(){
-						location.href="/cas/admin/main";
-					}
-				</script>
+					<c:if test="${loginUser.rankCode=='R001' }">
+					<li class="dropdown">
+						<a style="cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown" onclick="goAdmin();">관리자 페이지로 이동</a>
+					</li>
+					<script>
+						function goAdmin(){
+							location.href="/cas/admin/main";
+						}
+					</script>
+					</c:if>
 				</c:if>
-				</c:if>
+				</ul>
 			</div>
 		</div>
 	</nav>

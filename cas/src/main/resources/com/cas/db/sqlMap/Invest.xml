@@ -10,7 +10,6 @@
 
 	<resultMap class="com.cas.db.dto.InvestmentVO" id="selectInvest">
 		<result property="fundingNum" column="funding_num"/>
-		<result property="invesCount" column="inves_count"/>
 		<result property="invesAmount" column="inves_amount"/>
 		<result property="invesDate" column="inves_date"/>
 		<result property="invesEndDate" column="inves_end_date"/>
@@ -21,8 +20,8 @@
 		select * from inves where inves_mem = #invesMem#
 	</select>
 	<update id="insertInvest" parameterClass="str">
-		insert into inves(funding_num, inves_count, inves_amount, inves_date, inves_end_date, inves_mem)
-		values #fundingNum#, #invesCount#, #invesAmount#, SYSDATE, #invesEndDate#, #invesMem#
+		insert into inves(funding_num, inves_amount, inves_date, inves_end_date, inves_mem)
+		values #fundingNum#, #invesAmount#, SYSDATE, #invesEndDate#, #invesMem#
 		where inves_mem = #invesMem#
 	</update>
 </sqlMap>		

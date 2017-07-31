@@ -42,6 +42,10 @@ public class AdminFundAnalysisController {
 	//페이징 처리	
 		//현재페이지
 		String page = request.getParameter("tab");
+		if(page == null){
+			page = "1";
+		}
+		System.out.println("페이지 : "+page);
 		//받은 데이터리스트의 데이터갯수
 		int dataRow = fundList.size();
 		
@@ -82,10 +86,6 @@ public class AdminFundAnalysisController {
 		model.addAttribute("lastMonthFundCount", lastMonthFundCount);
 		model.addAttribute("toDateFundCount", todateFundCount);
 		model.addAttribute("monthAvg", monthAvg);
-		
-		
-		
-		
 		
 		return url;
 	}

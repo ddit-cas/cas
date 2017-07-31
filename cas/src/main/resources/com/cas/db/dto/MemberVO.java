@@ -27,6 +27,21 @@ public class MemberVO {
 	private String teamName;
 	private String teamPosi;
 	private String teamInfo;
+	private String memCount;		//admin 회원 카운트 그래프에 사용
+	private String countMonthly;	//admin 회원 카운트 그래프에 사용
+	
+	public String getMemCount() {
+		return memCount;
+	}
+	public void setMemCount(String memCount) {
+		this.memCount = memCount;
+	}
+	public String getCountMonthly() {
+		return countMonthly;
+	}
+	public void setCountMonthly(String countMonthly) {
+		this.countMonthly = countMonthly;
+	}
 	public String getMemId() {
 		return memId;
 	}
