@@ -15,12 +15,40 @@
 		<result property="fundingStartDate" column="funding_Start_Date" />
 		<result property="stateCode" column="state_code" />
 	</resultMap>
-	
+	<!-- 펀딩 등록 -->
 	<insert id="insertFund" parameterClass="fund">
 		insert into CROWDFUNDING(funding_Num, funding_Target_Amount, funding_Present_Amount, funding_Start_Date, funding_End_Date, state_Code)
 					values(funding_seq.nextval, #fundingTargetAmount#, 0, #fundingStartDate#,#fundingEndDate#,'F003')
 	</insert>
+	<!-- 마지막 시퀀스 번호 가져오기 -->
 	<select id="selectFundSeqNum" resultClass="str">
 		select funding_seq.currval from dual	
 	</select>
+	
+	<!-- 성공한 펀딩 카운트 -->
+	<select id="fundSuccessCount" resultClass="int">
+		select count(funding_num) from CROWDFUNDING where state_code = 'F001'
+	</select>
+	
+	<!-- 실패한 펀딩 카운트 -->
+	<select id="fundFailedCount" resultClass="int">
+		select count(funding_num) from CROWDFUNDING where state_code = 'F002'
+	</select>
+	
+	<!-- 진행중 취소된 펀딩 카운트 -->
+	<select id="fundCancelCount" resultClass="int">
+		select count(funding_num) from CROWDFUNDING where state_code = 'F005'
+	</select>
+	
+	<!-- 전체 펀딩 수 -->
+	<select id="totalFundCount" resultClass="int">
+		select count(funding_num) from CROWDFUNDING
+	</select>
+	
+	<update id="updateFundingAmount">
+		update crowdfunding 
+		set
+		FUNDING_PRESENT_AMOUNT= funding_present_amount+(#investPoint# *100)
+		where funding_num=(select funding_num from content where content_num=#contentNum#)
+	</update>
 </sqlMap>

@@ -21,7 +21,7 @@ th {
 				<br>
 				<div class="table-responsive" style="text-align: center;">
 					<div id="btn" style="text-align: right;">
-						<a href="charge"><button type="button"
+						<a href="/cas/member/chargeForm"><button type="button"
 								class="charge btn btn-primary btn-sm">
 								<span>충전하기</span>
 							</button> </a> &nbsp;&nbsp; <a href="exchange"><button type="button"

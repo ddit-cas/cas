@@ -28,4 +28,6 @@ public interface ArticleService {
 	public List<ArticleVO> selectArticleReplyList(String articleId);
 	
 	public List<ArticleVO> selectTopUccList();
+	
+	public boolean disAcitve(ArticleVO article);
 }

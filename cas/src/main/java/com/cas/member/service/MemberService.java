@@ -38,4 +38,7 @@ public interface MemberService {
 
 	/*팀원들을 인서트하는 메서드*/
 	public void insertTeamList(List<TeamVO> teamList);
+	
+	/*회원 검색*/
+	public List<MemberVO> selectSeachMember(String index, String key);
 }

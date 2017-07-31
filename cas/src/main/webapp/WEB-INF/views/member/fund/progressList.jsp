@@ -89,7 +89,7 @@ div.company-wrap {
 			</c:forEach>
 		</ul>
 	</div>
-</div>
+	</div>
 </div>
 <!-- 페이지수  -->
 <div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">

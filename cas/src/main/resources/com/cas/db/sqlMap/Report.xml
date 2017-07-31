@@ -10,6 +10,6 @@
 
 	<update id="insertReport" parameterClass="report">
 		insert into report(REPORT_NUM,REPORT_CONTENT,REPORT_DATE,REPORT_MEM,CONTENT_NUM) 
-		values(#reportNum#,#reportContent#,SYSDATE,#reportMem#,#contentNum#)
+		values(REPORT_SEQ.NEXTVAL,#reportContent#,SYSDATE,#reportMem#,#contentNum#)
 	</update>
 </sqlMap>

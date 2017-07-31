@@ -1,39 +1,39 @@
 package com.cas.fund.service;
 
+import java.util.List;
+import java.util.Map;
+
+import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.IngFundVO;
+
 public interface AdminFundAnalysisService {
-	
-	/*지난달 펀딩에 투자된 총액을 가져옴*/
-	public int selectLastMonthAllFundMount();
-	
-	/*이번달 펀딩에 투자된 총액을 가져옴*/
-	public int selectThisMonthAllFundMount();
-	
-	/*오늘 펀딩에 투자된 총액을 가져옴*/
-	public int selectTodayMonthAllFundMount();
 	
 	/*모든 크라우드펀딩의 숫자를 가져옴*/
 	public int selectAllFundCount();
+
+	/*지난달 펀딩 등록수*/
+	public int selectLastMonthAllFundCount();
+	
+	/*이번달 펀딩 등록수*/
+	public int selectThisMonthAllFundCount();
+	
+	/*일별 펀딩 등록수*/
+	public List<ArticleVO> selectTodayAllFundCount();
+	
+	/*금일 등록 펀딩 등록수*/
+	public int selectTodayFundCount();
 	
 	/*목표 달성한 펀딩수*/
-	public int selectClearedFundCount();
+	public int selectSuccessFundCount();
 
 	/*목표 달성에 실패한 펀딩수*/
 	public int selectFailedFundCount();
 	
 	/*진행중인 펀딩수*/
-	public int selectIngFundCount();
+	public int selectCancelFundCount();
 	
-	/*지난달 목표 달성한 펀딩수*/
-	public int selectLastMonthClearedFundCount();
-	
-	/*지난달 목표 달성 실패한 펀딩수*/
-	public int selectLastMonthFailedFundCount();
-	
-	/*이번달 목표 달성한 펀딩수*/
-	public int selectThisMonthClearCount();
-	
-	/*이번달 목표 달성 실패한 펀딩수*/
-	public int selectThisMonthFailedFundCount();
+	/*크라우드 펀딩 검색*/
+	public List<IngFundVO> selectSearchFundList(String key, String index);
 	
 }
 

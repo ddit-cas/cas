@@ -57,13 +57,6 @@ public class FundController {
 		return url;
 	}
 	
-	/*현재 진행중인 크라우드 펀딩에서 투자하기 메서드*/
-	@RequestMapping("/fundInvest")
-	public String fundInvest(Model model){
-		String url = "member/fund/investment";
-		return url;
-	}
-	
 	/*종료된 크라우드펀딩목록으로 가는 메서드*/
 	@RequestMapping("/endFundList")
 	public String endFundList(Model model,HttpServletRequest request){

@@ -6,10 +6,12 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.junit.runner.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,8 +19,10 @@ import com.cas.article.service.ArticleService;
 import com.cas.article.service.impl.ArticleServiceImpl;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.FundVO;
+import com.cas.db.dto.InvestmentVO;
 import com.cas.db.dto.MemberVO;
 import com.cas.fund.service.FundService;
+import com.cas.member.investment.service.InvestmentService;
 import com.cas.member.service.MemberService;
 
 @Controller
@@ -45,6 +49,13 @@ public class MemberFundController {
 		this.articleService = articleService;
 	}
 	
+	@Autowired
+	private InvestmentService investmentService;
+	
+	public void setInvestmentService(InvestmentService investmentService) {
+		this.investmentService = investmentService;
+	}
+
 	/*펀딩을 등록하기 전 Intro 호출하는 메서드*/
 	@RequestMapping("/member/insertFundIntro")
 	public String insertFundIntro(){
@@ -94,4 +105,18 @@ public class MemberFundController {
 		return "redirect:/fundList";
 	}
 
+	/*현재 진행중인 크라우드 펀딩에서 투자하기 메서드*/
+	@RequestMapping(value="/member/investmentForm")
+	public String fundInvestForm(Model model,HttpServletRequest request){
+		model.addAttribute("fundingNum",request.getParameter("contentNum"));
+		String url = "member/fund/investment";
+		return url;
+	}
+	
+	@RequestMapping("/member/insertInvestment")
+	public String fundInvestment(HttpServletRequest request,HttpSession session,InvestmentVO invest){
+		invest.setInvesMem(((MemberVO)session.getAttribute("loginUser")).getMemId());
+		investmentService.insertInvestment(invest);
+		return "redirect:/fundDetail?contentNum="+invest.getFundingNum();
+	}
 }

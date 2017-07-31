@@ -104,9 +104,14 @@ li a:hover {
 						<input class="form-control" id="focusedInput" type="text" placeholder="   검색    " style=" width:15%; float:left; margin:0 5px 0 5px;"> 
 						
 					<input type="button" style= "width:10%; float:left; margin:0 0 0 5px;" id="search" class="form-control" value="검색">
-						<input type="button" style= "width:10%;" class="form-control" id="list" value="목록">
+						<input type="button" onclick="insertFormGo();" style= "width:10%;" class="form-control" id="list" value="등록">
 					</div>
 			</div>
+			<script>
+				function insertFormGo(){
+					location.href="/cas/member/uccForm";
+				}
+			</script>
 				<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
 				<div class="row">
 					<div class="col-xs-12 col-sm-3 col-md-3">
