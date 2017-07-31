@@ -84,4 +84,15 @@ public class PromotionServiceImpl implements PromotionService {
 	public List<PromotionVO> selectTopClickPromotionList() {
 		return promotionDao.selectTopClickPromotionList();
 	}
+
+
+	@Override
+	public List<PromotionListVO> searchtTitlePromotion(String title) {
+		return promotionDao.searchtTitlePromotion(title);
+	}
+
+	@Override
+	public List<PromotionListVO> searchWriterPromotion(String writer) {
+		return promotionDao.searchWriterPromotion(writer);
+	}
 }

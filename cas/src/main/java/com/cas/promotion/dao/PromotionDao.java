@@ -22,4 +22,6 @@ public interface PromotionDao {
 	public int selectRecomCount(String contentNum);
 	public List<PromotionVO> selectTopPromotionList();
 	public List<PromotionVO> selectTopClickPromotionList();
+	public List<PromotionListVO> searchWriterPromotion(String writer);
+	public List<PromotionListVO> searchtTitlePromotion(String title);
 }

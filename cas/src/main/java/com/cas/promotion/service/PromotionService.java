@@ -22,4 +22,6 @@ public interface PromotionService {
 	public int selectRecomCount(String contentNum);
 	public List<PromotionVO> selectTopPromotionList();
 	public List<PromotionVO> selectTopClickPromotionList();
+	public List<PromotionListVO> searchtTitlePromotion(String title);
+	public List<PromotionListVO> searchWriterPromotion(String writer);
 }

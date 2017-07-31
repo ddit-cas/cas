@@ -104,6 +104,18 @@
 		from promotionlist
 	</select>
 	
+	<select id="searchtTitlePromotion" resultMap="promotionList" parameterClass="str">
+		select *
+		from promotionlist
+		where content_title LIKE '%'||#str#||'%'
+	</select>
+	
+	<select id="searchtWriterPromotion" resultMap="promotionList" parameterClass="str">
+		select *
+		from promotionlist
+		where content_writer LIKE '%'||#str#||'%'
+	</select>
+	
 	<update id="contentOffState" parameterClass="str">
 		update content set content_state='N' where content_num=#str#
 	</update>
