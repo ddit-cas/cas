@@ -73,15 +73,11 @@ li a:hover {
 						<a href="/cas/member/freeboardForm"><input
 							type="button" class="form-control" id="insert" value="등록"></a>
 					</form>
-				</div>
-
-
-				<script>
-				</script>
+					</div>
 						<!--//tab-intro-->
-						<table class="table table-hover"
+					<table class="table table-hover"
 							style="width: 800px; height: auto; margin: 0 auto;">
-				<c:choose>
+						<c:choose>
 						<c:when test="${articleList.size() > 0 }">
 							<thead>
 								<tr>
@@ -98,29 +94,15 @@ li a:hover {
 										<td>${articleList[i].contentRegisDate}</td>
 									</tr>
 								</c:forEach>
+							</tbody>
 						</c:when>
 						<c:otherwise>
-						<tr>
-							<td colspan="5" style="text-align: center;">해당 내용이 없습니다.</td>
-						</tr>
-					</thead>
-					<tbody style="text-align: center; font-size: 15px;">
-					<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
-						<tr>
-							<td><a href="/cas/freeboardDetail?contentNum=${articleList[i].contentNum}">${articleList[i].contentTitle}</a></td>
-							<td>${articleList[i].contentWriter}</td>
-							<td>${articleList[i].contentRegisDate}</td>
-						</tr>
-					</c:forEach>
-					</tbody>
-				</table>
-				
-					</c:otherwise>
-				</c:choose>
-							</tbody>
-						</table>
-					</tbody>
-				</table>
+							<tr>
+								<td colspan="5" style="text-align: center;">해당 내용이 없습니다.</td>
+							</tr>
+						</c:otherwise>
+						</c:choose>
+					</table>
 			</div>
 			<!--//company-snb-->
 		</div>
@@ -161,3 +143,4 @@ li a:hover {
          </ul>
       </nav>
    </div>
+</div>
