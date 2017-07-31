@@ -158,4 +158,28 @@ public class PromotionDaoImpl implements PromotionDao {
 		}
 		return topClickPromotionList;
 	}
+
+	@Override
+	public List<PromotionListVO> searchWriterPromotion(String writer) {
+		List<PromotionListVO> promotionList=null;
+		System.out.println("작성자"+writer);
+		try {
+			promotionList=sqlMapClient.queryForList("searchtWriterPromotion",writer);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return promotionList;
+	}
+
+	@Override
+	public List<PromotionListVO> searchtTitlePromotion(String title) {
+		List<PromotionListVO> promotionList=null;
+		System.out.println("제목"+title);
+		try {
+			promotionList=sqlMapClient.queryForList("searchtTitlePromotion",title);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return promotionList;
+	}
 }
