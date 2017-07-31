@@ -67,8 +67,8 @@ div.company-wrap {
 						<div class="modal-footer" style="text-align: left">
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="60"
-									aria-valuemin="0" aria-valuemax="100" style="width: ${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%;">
-									<span class="sr-only">${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%</span>
+									aria-valuemin="0" aria-valuemax="100" style="width: ${fund[i].fundingPresentAmount/fund[i].fundingTargetAmount*100-(fund[i].fundingPresentAmount/(fund[i].fundingTargetAmount*100)%0.1)}%;">
+									<span class="sr-only">${fund[i].fundingPresentAmount/fund[i].fundingTargetAmount*100-(fund[i].fundingPresentAmount/(fund[i].fundingTargetAmount*100)%0.1)}%</span>
 								</div>
 							</div>
 							<div class="row">
