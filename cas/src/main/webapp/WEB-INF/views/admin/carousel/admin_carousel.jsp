@@ -43,6 +43,7 @@
 		margin-right:230px;
 	}
 
+
 </style>
 
 <body>
@@ -63,23 +64,23 @@
 
 <div class="container">
   <h2>캐러셀 관리</h2>
-<button type="button" onclick="carouselDetailGo();" id="btnAdd">추가</button>
+<button type="button" class="btn btn-default" onclick="carouselDetailGo();" id="btnAdd" style="float:right; margin: auto 30px;">추가</button>
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>캐러셀 대상</th>
-        <th>캐러셀 제목</th>
-        <th>캐러셀 이미지</th>
-        <th>상태</th>
+        <th style="text-align:center;">캐러셀 대상</th>
+        <th style="text-align:center;">캐러셀 제목</th>
+        <th style="text-align:center;">캐러셀 이미지</th>
+        <th style="text-align:center;">상태</th>
       </tr>
     </thead>
     <tbody>
     	<c:forEach items="${carouselList }" var="carousel" varStatus="index">
-    		<tr>
-				<td><a href="${carousel.contentUrl }">대상글</a></td>
-		        <td>${carousel.carouselTitle }</td>
-				<td><img src="${carousel.carouselImage }"></td>
-				<td><button class="btn" onclick="carouselDetailGo('${carousel.carouselNum }');">상세내용</button></td>
+    		<tr style="text-align:center;">
+				<td style="text-align:center; padding:30px;"><a href="${carousel.contentUrl }">대상글</a></td>
+		        <td style="text-align:center; padding:30px;">${carousel.carouselTitle }</td>
+				<td><img src="${carousel.carouselImage }" alt="carouselImg" width="150px;" height="100px;"></td>
+				<td style="text-align:center; padding:30px;"><button class="btn" onclick="carouselDetailGo('${carousel.carouselNum }');">상세내용</button></td>
 			</tr>
 		</c:forEach>
     </tbody>

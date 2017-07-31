@@ -37,12 +37,7 @@ li a:hover {
 </style>
 <body>
 <div>
-		<c:if test="${boardCode=='B005' }">
-		자유게시판
-		</c:if>
-		<c:if test="${boardCode=='B001' }">
-		 공지사항
-		</c:if>
+		
 	</div>
 <div class="company-wrap">
 	<div class="company-snb">
@@ -56,7 +51,17 @@ li a:hover {
 		</div>
 	</div>
 	<div class="company-cont" style="height: auto;">
-		<h3 class="box">자유게시판</h3>
+		<h3 class="box">
+		<c:if test="${boardCode=='B005' }">
+		자유게시판
+		</c:if>
+		<c:if test="${boardCode=='B001' }">
+		 공지사항
+		</c:if>
+		<c:if test="${boardCode=='B006' }">
+		 CAS-UCC
+		</c:if>
+		</h3>
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 				<div class="content col-md-6" style="font-size: 16px">
@@ -70,7 +75,7 @@ li a:hover {
 									<tr>
 										<th
 											style="width: 10%; text-align: center; background-color: #eeeeee">제목</th>
-										<td><input type="text" name="contentTitle" id="title" class="form-control"></td>
+										<td><input type="text" value="${articleVO.contentTitle }" name="contentTitle" id="title" class="form-control"></td>
 									</tr>
 									<tr>
 										<th style="text-align: center; background-color: #eeeeee">작성자</th>
@@ -80,10 +85,10 @@ li a:hover {
 								</tbody>
 							</table>
 						</div>
+								<input type="hidden" name="contentWriter"
+									value="${loginUser.memId }">
 						<div class="col-sm-5" style="width: 750px;" >
 							<c:if test="${not empty articleVO }">
-								<input type="hidden" name="contentWriter"
-									value="${articleVO.contentWriter }">
 								<input type="hidden" name="contentNum"
 									value="${articleVO.contentNum }">
 							</c:if>

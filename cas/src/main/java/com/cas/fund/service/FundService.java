@@ -2,6 +2,8 @@ package com.cas.fund.service;
 
 import java.util.List;
 
+import org.springframework.scheduling.annotation.Scheduled;
+
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
@@ -32,4 +34,6 @@ public interface FundService {
 
 	/*개수가 모자란 펀드를 가져오는 메서드*/
 	public List<MostViewFundVO> selectShortFundList(int rownum);
+	
+	public void updateEndFund();
 }

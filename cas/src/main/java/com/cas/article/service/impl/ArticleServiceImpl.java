@@ -24,8 +24,7 @@ public class ArticleServiceImpl implements ArticleService{
 	
 	@Override
 	public List<ArticleVO> selectArticleList(String memId, String boardCode) {
-		List<ArticleVO> resultList = null;
-		resultList = articleDao.selectArticleList(memId, boardCode);
+		List<ArticleVO> resultList = articleDao.selectArticleList(memId, boardCode);
 		return resultList;
 	}
 
@@ -66,6 +65,12 @@ public class ArticleServiceImpl implements ArticleService{
 	public boolean disAcitve(ArticleVO article) {
 		
 		return articleDao.disAcitve(article);
+	}
+
+	@Override
+	public String selectArticleLikenum(String contentNum) {
+		
+		return articleDao.selectArticleLikenum(contentNum);
 	}
 
 }

@@ -90,10 +90,10 @@ li a:hover {
 		</div>
 	</div>
 	<div class="company-cont" style="height: auto;">
-		<h3 class="box">영상게시판</h3>
+		<h3 class="box">CAS-UCC</h3>
 		<div class="container">
 			<div class="row">
-			<div class="searchgroup" style="float: left">
+			<div class="searchgroup" style="float: left; margin-left:225px;">
 							<select class="form-control" name="search">
 								<option value="free_title">제목</option>
 								<option value="free_writer" selected>작성자</option>
@@ -103,32 +103,36 @@ li a:hover {
 					<div class="form-group">
 						<input class="form-control" id="focusedInput" type="text" placeholder="   검색    " style=" width:15%; float:left; margin:0 5px 0 5px;"> 
 						
-					<input type="button" style= "width:10%; float:left; margin:0 0 0 5px;" id="search" class="form-control" value="검색">
-						<input type="button" style= "width:10%;" class="form-control" id="list" value="목록">
+					<input type="submit" style= "width:10%; float:left; margin-right:5px;" id="search" class="form-control" value="검색">
+						<input type="button" onclick="insertFormGo();" style= "width:10%; margin:0 0 0 5px;" class="form-control" id="list" value="등록">
 					</div>
 			</div>
-				<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
+			<script>
+				function insertFormGo(){
+					location.href="/cas/member/uccForm";
+				}
+			</script>
+			
 				<div class="row">
-					<div class="col-xs-12 col-sm-3 col-md-3">
-						<a href='<c:url value='/uccDetail?contentNum=${articleList[i].contentNum }' />'>
-						<img class="imgclass" alt="땡!!" style="width: 270px; height: 182px;" src='<c:url value='${articleList[i].contentImg }' />'>
-					</div>
-					<div class="col-xs-12 col-sm-9 col-md-9">
-						<div class="row-content">
-							<div class="list-group-item-heading">
-								<section>
-									<a href="${articleList[i].contentWriter }"><h3 class="glyphicon glyphicon-user">${articleList[i].contentWriter }</h3></a>
-									<br> <h3 class="glyphicon glyphicon-calendar">${articleList[i].contentRegisDate }</h3><br>
-				<h3>
-					<a href='<c:url value="/uccDetail?contentNum=${articleList[i].contentNum }" />'>${articleList[i].contentTitle}</a>
-				</h3>
-								</section>
-							</div>
-						</div>
-					</div>
-			</div>
-		<hr>
-		</c:forEach>
+					<table class="table table-hover" style="width: 800px; height: auto; margin: 0;">
+					    <thead>
+					      <tr>
+					        <th  style="width: 25%; text-align: center; font-size: 15px;">제목</th>
+					        <th  style="width: 5%; text-align: center; font-size: 15px;">작성자</th>
+					        <th  style="width: 17%; text-align: center; font-size: 15px;">작성일</th>
+					      </tr>
+					    </thead>
+				<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
+					    <tbody style="text-align: center; font-size: 15px;">
+					      <tr>
+					        <td><a href='<c:url value="/uccDetail?contentNum=${articleList[i].contentNum }" />'>${articleList[i].contentTitle}</a></td>
+					        <td><a href="${articleList[i].contentWriter }">${articleList[i].contentWriter }</a></td>
+					        <td>${articleList[i].contentRegisDate }</td>
+					      </tr>
+					    </tbody>
+				</c:forEach>
+					 </table>
+				</div>
 	</div>
 	</div>
 	</div>

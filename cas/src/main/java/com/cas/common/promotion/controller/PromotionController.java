@@ -40,11 +40,10 @@ public class PromotionController {
 	/*공연홍보게시판 리스트로 가는 메서드*/
 	@RequestMapping("/promotionList")
 	public String promotionList(Model model, HttpServletRequest request){
-		
-
 		List<PromotionListVO> promotionList=promotionService.selectPromotionList();
 		String boardCode = "B005"; 
 		String searchUrl = "&boardCode="+boardCode;
+		String pageUrl="/cas/promotionList?tab=";
 //		//현재페이지
 		String page = request.getParameter("tab");
 		if(request.getParameter("tab")==null){
@@ -60,14 +59,43 @@ public class PromotionController {
 		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
 		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
 		model.addAttribute("promotionList", promotionList);
-		
+		model.addAttribute("pageUrl", pageUrl);
 		return "member/community/show/showBoard";
 	}
 	
 	/*공연홍보게시물을 검색하는메서드*/
 	@RequestMapping("/promotionSearch")
-	public String promotionSearch(Model model){
-		return null;
+	public String promotionSearch(Model model,HttpServletRequest request){
+		List<PromotionListVO> promotionList=null;
+		String pageUrl="/cas/promotionSearch?";
+		if(request.getParameter("writer")!=null){
+			promotionList=promotionService.searchWriterPromotion((String)request.getParameter("writer"));
+			pageUrl+="writer="+request.getParameter("writer");
+		}else if(request.getParameter("title")!=null){
+			promotionList=promotionService.searchtTitlePromotion((String)request.getParameter("title"));
+			pageUrl+="title="+request.getParameter("title");
+		}
+		
+		String boardCode = "B005"; 
+		String searchUrl = "&boardCode="+boardCode;
+//		//현재페이지
+		String page = request.getParameter("tab");
+		if(request.getParameter("tab")==null){
+			page = "1";
+		}
+//		//받은 데이터리스트의 데이터갯수
+		int dataRow = promotionList.size();
+		pageUrl+="&tab=";
+		Paging paging = new Paging(dataRow, page);
+		model.addAttribute("searchUrl", searchUrl);
+		model.addAttribute("index", paging.getIndex());//현재페이지
+		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
+		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
+		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
+		model.addAttribute("promotionList", promotionList);
+		model.addAttribute("pageUrl", pageUrl);
+		return "member/community/show/showBoard";
 	}
 	
 	
@@ -113,7 +141,6 @@ public class PromotionController {
 	@ResponseBody
 	@RequestMapping("findDayShow")
 	public Object findDayShow(Model model,ScheduleVO schedule){
-		System.out.println("들어왔다"+schedule.getSelectDate());
 		List<PromotionListVO> showList=promotionService.selectDayShow(schedule);
 		return showList;
 	}

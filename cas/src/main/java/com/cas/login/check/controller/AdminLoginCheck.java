@@ -25,7 +25,9 @@ public class AdminLoginCheck extends HandlerInterceptorAdapter{
 				request.setCharacterEncoding("UTF-8");
 				response.setContentType("text/html; charset=UTF-8");
 
-	            out.println("<script>alert('접근권한이 없읍니다.'); location.href='/cas/main' </script>"); 
+	            out.println("<script>sweetAlert('접근 불가', '권한이 없습니다. 관리자로 로그인 하세요.', 'error');"
+	            		+ " $('.confirm').on('click',function(){"
+	            		+ "location.href='/cas/main'}) </script>"); 
 
 	            out.flush(); 
 				

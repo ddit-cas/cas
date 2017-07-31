@@ -46,7 +46,7 @@
 	</select>
 
 	<select id="selectMember" resultMap="selectMember" parameterClass="str">
-		select * from member where mem_id=#memId#
+		select * from member where mem_id=#memId# and enabled='1'
 	</select>
 
 	<update id="updateMember" parameterClass="member">
@@ -68,12 +68,14 @@
 
 	<select id="selectMemberId" parameterClass="str" resultClass="str">
 		select mem_id from
-		member where mem_id=#id#
+		member where mem_id=#id# 
+		and enabled='1'
 	</select>
 	
 	<select id="selectMemberPwd" parameterClass="str" resultClass="str">
 		select mem_pwd from
 		member where mem_id=#id#
+		 and enabled='1'
 	</select>
 	
 	<insert id="insertClickInfo" parameterClass="readinfo">
@@ -84,12 +86,42 @@
 	<select id="selectMemberNick" parameterClass="str" resultClass="str">
 		select mem_nick from member where mem_nick=#mem_nick#
 	</select>
-	
-	
 
 <!-- 	팀정보를 인서트하는 거 -->
 	<insert id="insertTeam" parameterClass="team">
 		insert into team (mem_id,team_num,team_name,team_posi,team_info)
 		values(#memId#,team_seq.nextval,#teamName#,#teamPosi#,#teamInfo#)
 	</insert>
+	<!-- admin 회원 검색 -->
+	<select id="selectSearchMemberAnalysis" parameterClass="map" resultMap="selectMember">
+		select * from member where 1=1 
+		<isEqual prepend="and" property="index" compareValue="memId">
+			MEM_ID like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="memName">
+			MEM_NAME like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="memNick">
+			MEM_NICK like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="memEmail">
+			MEM_EMAIL like '%'||#key#||'%'
+		</isEqual>
+		<isEqual prepend = "and" property="index" compareValue="memHp">
+			MEM_HP like '%'||#key#||'%'
+		</isEqual>
+	</select>
+	
+	<!-- 월별 회원 등록자 Count -->
+	<select id="selectMonthlySignupCount" resultClass="member">
+		select count(mem_Id) as memCount
+        	  ,to_char(mem_sginup_date, 'yyyy-mm') as countMonthly 
+		from member 
+		group by to_char(mem_sginup_date, 'yyyy-mm')
+	</select>
+	
+	<!-- 회원 삭제 및 탈퇴 -->
+	<update id="deleteMember">
+		UPDATE MEMBER SET ENABLED='0' WHERE MEM_ID=#memId#
+	</update>
 </sqlMap>

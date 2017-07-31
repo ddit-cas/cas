@@ -209,9 +209,8 @@
 								<label class="control-label col-xs-2" for="id">아이디</label>
 								<div class="col-xs-4">
 									<div class="input-group">
-										<input type="text" class="form-control" id="mem_id" name="id"
-											placeholder="아이디를 입력하세요."> <span
-											class="input-group-btn"> </span>
+										<input type="text" class="form-control" id="mem_id" name="id" placeholder="아이디를 입력하세요.">
+										 <span class="input-group-btn"> </span>
 									</div>
 								</div>
 							</div>

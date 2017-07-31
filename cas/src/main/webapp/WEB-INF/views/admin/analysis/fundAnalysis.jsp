@@ -28,16 +28,16 @@ $(function(){
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-bar-chart-o"></i><a href="#">금액 차트</a>
+                            <i class="fa fa-bar-chart-o"></i>금액 차트
                         </li>
                         <li class="active">
-                            <i class="fa fa-table"></i> <a href="#">금액 리스트</a>
+                            <i class="fa fa-table"></i>금액 리스트
                         </li>
                         <li class="active">
-                            <i class="fa fa-pie-chart"></i> <a href="#">카운트 차트</a>
+                            <i class="fa fa-pie-chart"></i>카운트 차트
                         </li>
                         <li class="active">
-                            <i class="fa fa-list-alt"></i> <a href="#">카운트 리스트</a>
+                            <i class="fa fa-list-alt"></i>카운트 리스트
                         </li>
                     </ol>
                 </div>
@@ -62,155 +62,137 @@ $(function(){
                         </div>
                         <div class="panel-body">
                             <div id="morris-bar-chart"></div>
-                            <div class="text-right">
-                                <a href="#">자세히 보기 <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /.row -->
             
-            <!-- 리스트 테이블 들어갈 자리. : 금일 펀딩금액, 금월 펀딩 누적액, 총 누적액 월별 펀딩액 평균 -->
-			
+<script>
+	function seachFundAnalysis(){
+			document.searchFundAnalysis.action="/cas/admin/fundAnalysis";
+			document.searchFundAnalysis.method="get";
+			document.searchFundAnalysis.submit();
+	}
+</script>			
             <div class="col-lg-12">
 			<div class="row">
 			<div class="form-group" style="clear:both;">
 			<label style="display:block; float:left; vertical-align:middle;">&nbsp;&nbsp;&nbsp;&nbsp;크라우드 펀딩 현황</label>
+				<form name="searchFundAnalysis">
 				<div class="col-sm-5" style="float:right; margin-bottom:10px;">
 					<span class="col-sm-4">
-				    <select id="selectbasic" name="selectbasic" class="form-control">
-				      <option value="memId" selected>아이디</option>
-				      <option value="memName">이름</option>
-				      <option value="memNick">닉네임</option>
-				      <option value="memHp">연락처</option>
+				    <select name="searchFundAnalysis1" class="form-control">
+				      <option value="contentTitle">펀딩명</option>
+				      <option value="contentWriter" selected>아이디</option>
+				      <option value="contentRegisDate">등록날짜</option>
 				    </select>
 			   		</span>
 				  <span class="input-group">
-				    <input type="text" class="form-control" id="pointSearch" name="pointSearch" placeholder="검색할 값을 입력하세요.">
+				    <input type="text" class="form-control" name="searchFundAnalysis2" placeholder="검색할 값을 입력하세요.">
 				    <span class="input-group-btn">
-				      <button class="btn btn-default" id="pointSearchBtn" type="button">검색</button>
-					    <span class="msgCheckId"></span>
+				      <button class="btn btn-default" id="fundSearchBtn" type="button" onclick="seachFundAnalysis()">검색</button>
 					</span>    
 				  </span>
 				</div>
+				</form>
 			</div>
 			</div><!-- /.row -->
+			
 			<div class="row">
 			    <table class="table table-hover">
-	      		  
-	      		  
 	      		  <thead>
 		        	<tr>
 			          	<th>#</th>
 				        <th>펀딩명</th>   
 						<th>아이디</th>   
-						<th>닉네임</th>   
-						<th>회원명</th>   
-						<th>전화번호</th>
 						<th>등록날짜</th>
 						<th>모집금액(<i class="fa fa fa-krw"></i>)</th>
 						<th>목표금액(<i class="fa fa fa-krw"></i>)</th>
 		        	</tr>
 			      </thead>
-			      
+<script>
+$(function(){
+	$('.fundRow').on('click',function(){
+		var contentNum = $(this).attr('contentNum');
+		alert(contentNum);
+		location.href="/cas/fundDetail?contentNum="+contentNum;
+	});
+});	
+</script>
+<style>
+	tr.fundRow {
+		cursor: pointer;
+	}
+</style>			      
 			      <tbody>
-			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
-<%-- 			        <c:forEach item="member" var="mem"> --%>
-			        <tr>
-			          <th scope="row">1</th>
-			          <td class="fundName">"${fund.name }"</td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td class="fundCurrentAmount">60000 </td>
-					  <td>150000</td>
+			      <c:choose>
+					<c:when test="${fundList.size() > 0 }">				
+			        <c:forEach var="i" varStatus="status" begin="${firstRow}" end="${lastRow}">
+			        <tr class="fundRow" contentNum="${fundList[i].contentNum }">
+			          <th scope="row">${status.index+1 }</th>
+			          <td class="fundName">${fundList[i].contentTitle }.</td> <!-- 게시판 url 적용해야함. -->
+					  <td>${fundList[i].contentWriter }</td>
+					  <td>${fundList[i].contentRegisDate }</td>
+					  <td class="fundCurrentAmount">${fundList[i].fundingPresentAmount } </td>
+					  <td>${fundList[i].fundingTargetAmount }</td>
+					  <td class="hide">${fundList[i].contentNum }</td>
 			        </tr>
-<%-- 			       </c:forEach>  --%>
-			        <tr>
-			          <th scope="row">2</th>
-			          <td class="fundName"><a href="#">열정의 불태우다.</a></td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td class="fundCurrentAmount">5800 </td>
-					  <td>150000</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">3</th>
-			          <td class="fundName"><a href="#">청년 창업 도와주세요.</a></td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td class="fundCurrentAmount">40000 </td>
-					  <td>150,000</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">4</th>
-			          <td class="fundName"><a href="#">도망가야지.</a></td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td class="fundCurrentAmount">27000 </td>
-					  <td>150,000</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">5</th>
-			          <td class="fundName"><a href="#">외로워요.</a></td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td class="fundCurrentAmount">30000 </td>
-					  <td>150,000</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">6</th>
-			          <td class="fundName"><a href="#">나무를심자.</a></td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td class="fundCurrentAmount">150000 </td>
-					  <td>150,000</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">7</th>
-			          <td class="fundName"><a href="#">지구사랑.</a></td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td class="fundCurrentAmount">20000 </td>
-					  <td>150,000</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">8</th>
-			          <td class="fundName"><a href="#">양호짱.</a></td> <!-- 게시판 url 적용해야함. -->
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td class="fundCurrentAmount">15000 </td>
-					  <td>150,000</td>
-			        </tr>
+			       </c:forEach>
+			       </c:when>
+			       <c:otherwise>
+					<tr>
+						<td colspan="6" style="text-align:center;">
+							해당 내용이 없습니다.
+						</td>
+					</tr>
+			       </c:otherwise>
+			      </c:choose>
 			      </tbody>
 			    </table>
 			 </div>
 			 </div> 
-
+			<!-- 페이지수  -->
+			<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+				<div class="row">
+					<nav aria-label="...">
+						<ul class="pager" role="tablist">
+							<li class="previous">
+								<a href="/cas/admin/fundAnalysis?${selector }=${minNum-1}"><span aria-hidden="true">←</span>
+									이전
+								</a>
+							</li>
+							<c:forEach var="i" begin="${minNum}" end="${maxNum}">
+							<c:choose>
+							<c:when test="${index==i}">
+							<li>
+								<a style="background: #aaa;" aria-controls="tab1" href="/cas/admin/fundAnalysis?${selector }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:when>
+							<c:otherwise>
+							<li>
+								<a aria-controls="tab1" href="/cas/admin/fundAnalysis?${selector }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:otherwise>
+							</c:choose>
+							</c:forEach>
+							<li class="next">
+								<a href="/cas/admin/fundAnalysis?${selector }=${maxNum+1}">다음<span aria-hidden="true">→</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+<style>
+	.center {
+		text-align: center;
+	}
+</style>			
 			<div class="row">
             	
                 <div class="col-lg-12">
@@ -227,26 +209,19 @@ $(function(){
                         </div>
                         <div class="panel-body">
                             <div id="morris-donut-chart" class="counter"></div>
-                            <div class="text-right">
-                                <a href="#">자세히 보기 <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> 지난 3년간 펀딩 등록수</h3>
+                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> 일별 펀딩 등록수</h3>
                         </div>
                         <div class="panel-body">
                             <div id="morris-line-chart"></div>
-                            <div class="text-right">
-                                <a href="#">자세히 보기 <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
-                
             </div>
             <div class="row">
                 <div class="col-lg-6">
@@ -254,7 +229,7 @@ $(function(){
 			    <table class="table table-condensed">
 					<thead>
 						<tr>
-							<th>총 펀딩</th>   
+							<th>종료된 총 펀딩</th>   
 							<th>목표 달성</th>
 							<th>달성 실패</th>
 							<th>펀딩 취소</th>
@@ -262,10 +237,10 @@ $(function(){
 					</thead>
 					<tbody>
 						<tr>
-							<td id="totalFund"></td> <!-- 게시판 url 적용해야함. -->
-							<td id="completeFund">1910000</td>
-							<td id="failFund">1001231</td>
-							<td id="cancelFund">801231</td>
+							<td id="totalFund" class="center"></td> <!-- 게시판 url 적용해야함. -->
+							<td id="completeFund" class="center">${fundCount.success }</td>
+							<td id="failFund" class="center">${fundCount.failed }</td>
+							<td id="cancelFund" class="center">${fundCount.cancel }</td>
 						</tr>
 					</tbody>
 				</table>		
@@ -284,45 +259,22 @@ $(function(){
 						</thead>
 						<tbody>
 							<tr>
-								<td>1800500</td> <!-- 게시판 url 적용해야함. -->
-								<td>600500</td>
-								<td>1200000</td>
-								<td>50</td>
-								<td>800000</td>
+								<td class="center">${allFundCount }</td> <!-- 게시판 url 적용해야함. -->
+								<td class="center">${lastMonthFundCount }</td>
+								<td class="center">${monthFundCount }</td>
+								<td class="center">${toDateFundCount }</td>
+								<td class="center">${monthAvg }</td>
 							</tr>
 						</tbody>
 					</table>
 					<!-- Line chart 데이터 등록 후 데이터 집어넣어야 함.  -->
 					<table class="hide">
+					<c:forEach items="${todayFundCount }" var="dayCount">	
 						<tr>
-							<td class="fundDate">2017-07-01.</td>
-							<td class="fundEntroll">807.</td>
+							<td class="fundDate">${dayCount.contentRegisDate }.</td>
+							<td class="fundEntroll">${dayCount.contentCount }.</td>
 						</tr>
-						<tr>
-							<td class="fundDate">2017-07-02.</td>
-							<td class="fundEntroll">607.</td>
-						</tr>
-						<tr>
-							<td class="fundDate">2017-07-03.</td>
-							<td class="fundEntroll">1107.</td>
-						</tr>
-						<tr>
-							<td class="fundDate">2017-07-04.</td>
-							<td class="fundEntroll">800.</td>
-						</tr>
-						<tr>
-							<td class="fundDate">2017-07-05.</td>
-							<td class="fundEntroll">500.</td>
-						</tr>
-						<tr>
-							<td class="fundDate">2017-07-06.</td>
-							<td class="fundEntroll">400.</td>
-						</tr>
-						<tr>
-							<td class="fundDate">2017-07-07.</td>
-							<td class="fundEntroll">2000.</td>
-						</tr>
-						
+					</c:forEach>
 					</table>		
                 </div>
                 
@@ -414,7 +366,7 @@ $(function() {
         
         xkey: 'name',
         ykeys: ['amount'],
-        labels: ['펀딩이름'],
+        labels: ['모금액(원)'],
         barRatio: 0.4,
         xLabelAngle: 35,
         hideHover: 'auto',

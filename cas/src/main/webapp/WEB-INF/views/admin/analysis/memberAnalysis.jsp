@@ -57,39 +57,47 @@ $(function(){
                         </div>
                         <div class="panel-body">
                             <div id="morris-line-chart"></div>
-                            <div class="text-right">
-                                <a href="#">자세히 보기 <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /.row -->
             
-            <!-- 리스트 테이블 들어갈 자리. : 금일 펀딩금액, 금월 펀딩 누적액, 총 누적액 월별 펀딩액 평균 -->
-			
+<script>
+	function memberSearch(){
+		document.searchMemberAnalysis.action="/cas/admin/memberAnalysis";
+		document.searchMemberAnalysis.method="get";
+		document.searchMemberAnalysis.submit();
+	}
+</script>            
+<style>
+	tr {
+		cursor: pointer;
+	}
+</style>			
 			<div class="row">
             <div class="col-lg-12">
 			<div class="row">
 			<div class="form-group" style="clear:both;">
 			<label style="display:block; float:left; vertical-align:middle;">&nbsp;&nbsp;&nbsp;&nbsp;회원 현황</label>
+			<form name="searchMemberAnalysis">	
 				<div class="col-sm-5" style="float:right; margin-bottom:10px;">
 					<span class="col-sm-4">
-				    <select id="selectbasic" name="selectbasic" class="form-control">
-				      <option value="1">아이디</option>
-				      <option value="2">이름</option>
-				      <option value="3" selected>닉네임</option>
-				      <option value="4">연락처</option>
+				    <select id="selectbasic" name="index" class="form-control">
+				      <option value="memId" selected>아이디</option>
+				      <option value="memName">이름</option>
+				      <option value="memNick">닉네임</option>
+				      <option value="memHp">연락처</option>
 				    </select>
 			   		</span>
 				  <span class="input-group">
-				    <input type="text" class="form-control" id="pointSearch" name="pointSearch" placeholder="검색할 값을 입력하세요.">
+				    <input type="text" class="form-control" name="key" placeholder="검색할 값을 입력하세요.">
 				    <span class="input-group-btn">
-				      <button class="btn btn-default" id="pointSearchBtn" type="button">검색</button>
-					    <span class="msgCheckId"></span>
+				      <button class="btn btn-default" onclick="memberSearch();" type="button">검색</button>
 					</span>    
 				  </span>
 				</div>
+			</form>	
 			</div>
 			</div><!-- /.row -->
 			    <table class="table table-hover">
@@ -101,60 +109,90 @@ $(function(){
 						<th>회원명</th>   
 						<th>전화번호</th>
 						<th>등록날짜</th>
-						<th>경고횟수</th>
 		        	</tr>
 			      </thead>
 			      <tbody>
-			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
-			        <tr>
-			          <th scope="row">1</th>
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td>0</td>
+<script>
+	$(function(){
+		$('.rowNum').on('click',function(){
+			var memId = $(this).attr('memId');
+			location.href="/cas/admin/memberDetail?searchRow="+memId;
+		});
+	});
+</script>			      
+		        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
+		         <c:choose>
+					<c:when test="${memList.size() > 0 }">				
+			        <c:forEach var="i" varStatus="status" begin="${firstRow}" end="${lastRow}">
+			        <tr class="rowNum" memId="${memList[i].memId }">
+			          <th scope="row">${status.index+1 }</th>
+					  <td>${memList[i].memId }</td>
+					  <td>${memList[i].memNick }</td>
+					  <td>${memList[i].memName }</td>
+					  <td>${memList[i].memHp }</td>
+					  <td>${memList[i].memSginup_date }</td>
 			        </tr>
-			        <tr>
-			          <th scope="row">2</th>
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td>1</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">3</th>
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td>2</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">4</th>
-					  <td>pink212</td>
-					  <td>목대여신</td>
-					  <td>박미현</td>
-					  <td>010-4545-8989</td>
-					  <td>2017-07-14</td>
-					  <td>정지계정</td>
-			        </tr>
+			        </c:forEach>
+			       </c:when>
+			       <c:otherwise>
+					<tr>
+						<td colspan="6" style="text-align:center;">
+							해당 내용이 없습니다.
+						</td>
+					</tr>
+			       </c:otherwise>
+			      </c:choose>
 			      </tbody>
 			    </table>
 			    
 			    <!-- 데이터 넣을 곳 -->
 			    <table class="hide">
+			    <c:forEach items="${memCount }" var="memCount">
 			    	<tr>
-			    		<td class="mDate">2017-07-01.</td>
-			    		<td class="mRegister">780.</td>
+			    		<td class="mDate">${memCount.countMonthly }.</td>
+			    		<td class="mRegister">${memCount.memCount }.</td>
 			    	</tr>
+			    </c:forEach>	
 			    </table>
 			 </div>
 			 </div> 
             <!-- /.row -->
+            <!-- 페이지수  -->
+			<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+				<div class="row">
+					<nav aria-label="...">
+						<ul class="pager" role="tablist">
+							<li class="previous">
+								<a href="/cas/admin/memberAnalysis?${selector }=${minNum-1}"><span aria-hidden="true">←</span>
+									이전
+								</a>
+							</li>
+							<c:forEach var="i" begin="${minNum}" end="${maxNum}">
+							<c:choose>
+							<c:when test="${index==i}">
+							<li>
+								<a style="background: #aaa;" aria-controls="tab1" href="/cas/admin/memberAnalysis?${selector }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:when>
+							<c:otherwise>
+							<li>
+								<a aria-controls="tab1" href="/cas/admin/memberAnalysis?${selector }=${i}">
+									${i }
+								</a>
+							</li>
+							</c:otherwise>
+							</c:choose>
+							</c:forEach>
+							<li class="next">
+								<a href="/cas/admin/memberAnalysis?${selector }=${maxNum+1}">다음<span aria-hidden="true">→</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
         </div>
         <!-- /.container-fluid -->
 
@@ -181,101 +219,7 @@ $(function() {
         element: 'morris-line-chart',
         // Chart data records -- each entry in this array corresponds to a point on
         // the chart.
-        data: /* memArray, */
-        	[{
-            d: '2012-10-01',
-            register: 802
-        }, {
-            d: '2012-10-02',
-            register: 783
-        }, {
-            d: '2012-10-03',
-            register: 820
-        }, {
-            d: '2012-10-04',
-            register: 839
-        }, {
-            d: '2012-10-05',
-            register: 792
-        }, {
-            d: '2012-10-06',
-            register: 859
-        }, {
-            d: '2012-10-07',
-            register: 790
-        }, {
-            d: '2012-10-08',
-            register: 1680
-        }, {
-            d: '2012-10-09',
-            register: 1592
-        }, {
-            d: '2012-10-10',
-            register: 1420
-        }, {
-            d: '2012-10-11',
-            register: 882
-        }, {
-            d: '2012-10-12',
-            register: 889
-        }, {
-            d: '2012-10-13',
-            register: 819
-        }, {
-            d: '2012-10-14',
-            register: 849
-        }, {
-            d: '2012-10-15',
-            register: 870
-        }, {
-            d: '2012-10-16',
-            register: 1063
-        }, {
-            d: '2012-10-17',
-            register: 1192
-        }, {
-            d: '2012-10-18',
-            register: 1224
-        }, {
-            d: '2012-10-19',
-            register: 1329
-        }, {
-            d: '2012-10-20',
-            register: 1329
-        }, {
-            d: '2012-10-21',
-            register: 1239
-        }, {
-            d: '2012-10-22',
-            register: 1190
-        }, {
-            d: '2012-10-23',
-            register: 1312
-        }, {
-            d: '2012-10-24',
-            register: 1293
-        }, {
-            d: '2012-10-25',
-            register: 1283
-        }, {
-            d: '2012-10-26',
-            register: 1248
-        }, {
-            d: '2012-10-27',
-            register: 1323
-        }, {
-            d: '2012-10-28',
-            register: 1390
-        }, {
-            d: '2012-10-29',
-            register: 1420
-        }, {
-            d: '2012-10-30',
-            register: 1529
-        }, {
-            d: '2012-10-31',
-            register: 1892
-        }, ],
+        data: memArray,
         // The name of the data record attribute that contains x-visitss.
         xkey: 'd',
         // A list of names of data record attributes that contain y-visitss.

@@ -16,7 +16,14 @@ public class IngFundVO {
 	private String fundingStartDate;
 	private String dDay;
 	private String likenum;
+	private String investNum;
 	
+	public String getInvestNum() {
+		return investNum;
+	}
+	public void setInvestNum(String investNum) {
+		this.investNum = investNum;
+	}
 	public String getLikenum() {
 		return likenum;
 	}

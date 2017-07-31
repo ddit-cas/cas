@@ -32,4 +32,7 @@ public interface FundDao {
 
 	/*개수가 모자란 펀드리스트를 가져오는 메서드*/
 	public List<MostViewFundVO> selectShortFundList(int rownum);
+
+	/*날짜가종료된 펀딩들을 엔드로 만드는 메서드*/
+	public void updateEndFund();
 }

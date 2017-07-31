@@ -26,7 +26,6 @@ public class FundDaoImpl implements FundDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(ingFundList.get(0).getContentNum());
 		return ingFundList;
 	}
 
@@ -49,7 +48,6 @@ public class FundDaoImpl implements FundDao{
 			int answer = sqlMapClient.update("insertFund",fund);
 			String fundSeq = (String)sqlMapClient.queryForObject("selectFundSeqNum");
 			article.setFundingNum(fundSeq);
-			System.out.println(fundSeq);
 			sqlMapClient.insert("insertArticle",article);
 			
 			if(answer > 0){
@@ -103,9 +101,19 @@ public class FundDaoImpl implements FundDao{
 		try {
 			shortFundList = sqlMapClient.queryForList("shortFundList",rownum);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return shortFundList;
+	}
+
+	@Override
+	public void updateEndFund() {
+		try {
+			System.out.println(":여긴옵니까?");
+			System.out.println("성공"+sqlMapClient.update("endCompleteFund"));
+			System.out.println("실패"+sqlMapClient.update("endFailedFund"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

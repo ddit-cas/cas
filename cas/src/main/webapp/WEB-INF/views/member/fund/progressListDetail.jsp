@@ -368,16 +368,12 @@ function fundEntrollment_go(){
 									원
 								</p>
 								<h2>
-									
 									<strong>${fund.fundingPresentAmount }</strong> 원 모집완료<br>
-									
-			                      	
-									
 								</h2>
 							</div>
 							
 							<div class="sect">
-								<strong>85</strong> 명의 투자자
+								<strong>${fund.investNum }</strong> 명의 투자자
 							</div>
 							<div class="sect">
 							<strong>${fund.dDay }</strong> 일 남음
@@ -387,7 +383,7 @@ function fundEntrollment_go(){
 							<div class="btn-equity-state pb25 clearfix">
 			
 								<span class="pull-left">
-									<button type="button" id="investBtn2" class="btn-block bg_primary btn-xl" style="color: #fff; width: 211px; margin-right: 10px; height: 58px; border: 1px solid #cbcbcb;" onclick="investProc('592');">투자하기</button>
+									<button type="button" id="investBtn2" class="btn-block bg_primary btn-xl" style="color: #fff; width: 211px; margin-right: 10px; height: 58px; border: 1px solid #cbcbcb;" onclick="investFund();">투자하기</button>
 								</span>
 								<span class="pull-left zzim-after hide">
 									<button type="button" class="btn-zzim on" style="height: 60px;">
@@ -401,7 +397,12 @@ function fundEntrollment_go(){
 									</button>
 								</span>
 							</div>
-																
+									
+			<script>
+				function investFund(){
+					location.href="/cas/member/investmentForm?contentNum=${fund.contentNum}";
+				}
+			</script>							
 						</div>
 						<!--// [N] 프로젝트 정보  -->
 	<c:choose>

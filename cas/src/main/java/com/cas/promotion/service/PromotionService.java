@@ -21,4 +21,7 @@ public interface PromotionService {
 	public List<PromotionListVO> selectMonthShow(ScheduleVO schedule);
 	public int selectRecomCount(String contentNum);
 	public List<PromotionVO> selectTopPromotionList();
+	public List<PromotionListVO> selectTopClickPromotionList(String classifyCode);
+	public List<PromotionListVO> searchtTitlePromotion(String title);
+	public List<PromotionListVO> searchWriterPromotion(String writer);
 }

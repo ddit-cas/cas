@@ -192,7 +192,7 @@
 					</div>	
 				</div>
 				<div id="btnses">
-					<input type="button" class="btn btn-primary" value="탈퇴" />
+					<input type="submit" class="btn btn-primary" value="탈퇴" />
 					<input type="reset" class="btn btn-danger" value="취소" />
 				</div> 
 			</form>
