@@ -10,8 +10,21 @@ public class PromotionListVO {
 	private String recomCount;
 	private String consertContent;
 	private String contentImg;
+	private String sex;
+	private String age;
 	
-	
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
+	}
 	public String getContentImg() {
 		return contentImg;
 	}

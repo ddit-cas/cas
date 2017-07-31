@@ -19,6 +19,7 @@ import com.cas.db.dto.CarouselVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.MostViewFundVO;
+import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
 import com.cas.fund.service.FundService;
 import com.cas.promotion.service.PromotionService;
@@ -86,14 +87,14 @@ public class MainController {
 		model.addAttribute("topPromotionList",topPromotionList);
 		
 		List<MostViewFundVO> topClickFundList = null;
-		List<PromotionVO> topClickPromotionList = null;
+		List<PromotionListVO> topClickPromotionList = null;
 		if (session.getAttribute("loginUser")!=null) {
 			MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 			/*펀딩 연령별로 많이 본 거 가져오기*/
 			topClickFundList = fundService.selectTopClickFundList(loginUser.getClassifyCode());
 			
 			/*공연홍보 연령별로 많이 본거 가져오기*/
-			topClickPromotionList = promotionService.selectTopClickPromotionList();
+			topClickPromotionList = promotionService.selectTopClickPromotionList(loginUser.getClassifyCode());
 		}
 		if (topClickFundList==null) {
 			topClickFundList = new ArrayList<MostViewFundVO>();
@@ -104,7 +105,21 @@ public class MainController {
 				topClickFundList.add(list.get(i));
 			}
 		}
+		if(topClickPromotionList==null){
+			topClickPromotionList = new ArrayList<PromotionListVO>();
+		}
+		
+		if (topClickPromotionList.size()<3) {
+			List<PromotionListVO> list = promotionService.selectPromotionList();
+			int i=0;
+			while(topClickPromotionList.size()<3){
+				topClickPromotionList.add(list.get(i));
+				i++;
+			}
+		}
+		
 		model.addAttribute("topClickFundList",topClickFundList);
+		model.addAttribute("topClickPromotionList",topClickPromotionList);
 		
 		return "member/main";
 	}

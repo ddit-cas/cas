@@ -41,7 +41,10 @@
 	overflow: hidden;
 }
 #showDetailContent img {
-	width: 100%;
+	max-width: 100%;
+}
+#showDetailContent video {
+	max-width: 100%;
 }
 #commentDiv {
 	border: 3px solid #ddd;

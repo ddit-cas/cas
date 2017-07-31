@@ -213,7 +213,7 @@
 				<table class="table table-hover">
 					<tbody>
 					<c:forEach items="${topUccList}" var="ucc" varStatus="status">
-						<tr class="topFundRow" imgUrl="${ucc.contentImg }" contentUrl="/cas/uccDetail?contentNum=${ucc.contentNum }">
+						<tr class="topFundRow" contentUrl="/cas/uccDetail?contentNum=${ucc.contentNum }">
 							<td>${status.index+1 }</td>
 							<td>${ucc.contentTitle }</td>
 						</tr>
@@ -270,9 +270,9 @@
 					</div>
 					<label style="float:right; font-size: 0.8em;"> 목표금액 : ${fund.fundingTargetAmount }</label>
 					<label style="float:right; font-size: 0.8em;">달성금액 : ${fund.fundingPresentAmount } /</label><br>
-					<label class="fundTitle">${fund.contentTitle }</label>
+					<label class="fundTitle">제목 : ${fund.contentTitle }</label>
 					<br><br>
-					<label class="fundHost">${fund.memName }</label>
+					<label class="fundHost">기획 : ${fund.memName }</label>
 				</div>
 			</div>
 		</a>
@@ -281,10 +281,36 @@
 		
 	</div>
 	<div class="col-xs-12 nonePadding">
-		<label style="float:left; margin-top:10px;">영상</label><hr style="  border-top: 1px solid #f10505;">
-		<div class="perfomance"></div>
-		<div class="perfomance"></div>
-		<div class="perfomance"></div>
+		<label style="float:left; margin-top:10px;">
+		<c:choose>
+		<c:when test="${not empty loginUser}">
+			${topClickPromotionList[0].age }대 ${topClickPromotionList[0].sex }성이 많이 찾은 공연홍보
+		</c:when>
+		<c:otherwise>
+			공연홍보
+		</c:otherwise>
+		</c:choose>
+		</label><hr style="  border-top: 1px solid #f10505;">
+<!-- 		펀딩 폼 -->
+		<c:forEach items="${topClickPromotionList}" var="fund">
+		<a href="/cas/promotionDetail?contentNum=${fund.contentNum }">
+			<div class="perfomance">
+				<div class="famousFund">
+					<img src='${fund.contentImg }'/>' style="width:100%;height: auto;">
+				</div>
+				<div class="famousFundContent">
+					<label class="fundTitle">제목 : ${fund.contentTitle }</label>
+					<br>
+					<label class="fundHost">작성자 : ${fund.contentWriter }</label>
+					<br>
+					<label>장르 : ${fund.genreName }</label><br>
+					<label>기간 : ${fund.startDate }~${fund.endDate }</label>
+					<h5>-간략한 내용-</h5>
+					<label>${fund.consertContent }</label>
+				</div>
+			</div>
+		</a>
+		</c:forEach>
 	</div>
 	<div class="col-xs-12 nonePadding"></div>
 	<div class="col-xs-12 nonePadding"></div>

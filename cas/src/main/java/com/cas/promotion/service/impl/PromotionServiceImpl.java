@@ -81,7 +81,7 @@ public class PromotionServiceImpl implements PromotionService {
 	}
 
 	@Override
-	public List<PromotionVO> selectTopClickPromotionList() {
-		return promotionDao.selectTopClickPromotionList();
+	public List<PromotionListVO> selectTopClickPromotionList(String classifyCode) {
+		return promotionDao.selectTopClickPromotionList(classifyCode);
 	}
 }
