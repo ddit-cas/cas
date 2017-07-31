@@ -97,7 +97,7 @@ public class ArticleDaoImpl implements ArticleDao{
 	public List<ArticleVO> selectTopUccList() {
 		List<ArticleVO> topUccList = null;
 		try {
-			topUccList = sqlMapClient.queryForList("selectTopUccList");
+			topUccList = sqlMapClient.queryForList("orderLikeUcc");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -132,6 +132,17 @@ public class ArticleDaoImpl implements ArticleDao{
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public String selectArticleLikenum(String contentNum) {
+		String likeNum = null;
+		try {
+			likeNum = (String) sqlMapClient.queryForObject("articleLikenum",contentNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return likeNum;
 	}
 
 }

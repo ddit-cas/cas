@@ -1,6 +1,6 @@
 package com.cas.db.dto;
 
-public class IngFundVO {
+public class EndFundVO {
 
 	private String contentNum;
 	private String boardCode;

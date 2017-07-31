@@ -384,16 +384,12 @@ function fundEntrollment_go(){
 									원
 								</p>
 								<h2>
-									
 									<strong>${fund.fundingPresentAmount }</strong> 원 모집완료<br>
-									
-			                      	
-									
 								</h2>
 							</div>
 							
 							<div class="sect">
-								<strong>85</strong> 명의 투자자
+								<strong>${fund.investNum }</strong> 명의 투자자
 							</div>
 							<div class="sect">
 							<strong>${fund.dDay }</strong> 일 남음

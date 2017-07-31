@@ -67,4 +67,10 @@ public class ArticleServiceImpl implements ArticleService{
 		return articleDao.disAcitve(article);
 	}
 
+	@Override
+	public String selectArticleLikenum(String contentNum) {
+		
+		return articleDao.selectArticleLikenum(contentNum);
+	}
+
 }

@@ -126,8 +126,9 @@ public class MypageController {
 	/*회원이 포인트 충전하는 메서드*/
 	@RequestMapping("/member/insertPoint")
 	public String memberInsertPoint(HttpSession session,Model model,PointVO point){
-		model.addAttribute("point",point);
-		String url = "/member/myPage/charge";
+		System.out.println(point.getChargingAmount());
+		System.out.println("충전할 사람"+point.getChargingMem());
+		String url = "/member/myPage/myPoint";
 		return url;
 	}
 	

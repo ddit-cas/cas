@@ -25,6 +25,18 @@
 <!-- 		<result property="contentCount"/> -->
 	</resultMap>
 	
+	<resultMap class="com.cas.db.dto.ArticleVO" id="orderLikeUcc">
+		<result property="contentNum" column="content_num"/>
+		<result property="contentTitle" column="content_title"/>
+		<result property="contentRegisDate" column="content_regis_date"/>
+		<result property="contentWriter" column="content_writer"/>
+		<result property="contentImg" column="content_img"/>
+	</resultMap>
+	
+	<select id="orderLikeUcc" resultMap="orderLikeUcc">
+		select * from orderLikeUcc order by likenum desc
+	</select>
+	
 	<insert id="insertArticle" parameterClass="article">						
 		INSERT INTO CONTENT(CONTENT_NUM, BOARD_CODE,  CONTENT_TITLE, CONTENT_CONTENT,
 							CONTENT_REGIS_DATE, CONTENT_PARENTS_CONTENT, CONTENT_WRITER, 
@@ -57,7 +69,7 @@
 			content_regis_date like '%'||#key#||'%'
 		</isEqual>
 		order by content_regis_date desc
-</select>
+	</select>
 	<select id="selectSearchNotice" parameterClass = "map" resultMap="selectArticle">
 		select * from article where 1=1
 		and board_code like '%'||#boardCode#||'%'
@@ -149,5 +161,9 @@
 	<select id="dateEntrollmentFund" resultClass="int">
 		select count(content_num) from CONTENT
 		where board_code = 'B009' and to_char(content_regis_date, 'yyyymmdd') = TO_char(sysdate,'yyyymmdd')
+	</select>
+	
+	<select id="articleLikenum" parameterClass="str" resultClass="str">
+		select count(*) from recom where recom_content=#contentNum#
 	</select>
 </sqlMap>

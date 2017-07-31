@@ -30,4 +30,6 @@ public interface ArticleService {
 	public List<ArticleVO> selectTopUccList();
 	
 	public boolean disAcitve(ArticleVO article);
+	
+	public String selectArticleLikenum(String contentNum);
 }

@@ -22,6 +22,7 @@
 		<result property="fundingStartDate" column="funding_Start_Date" />
 		<result property="dDay" column="d_day" />
 		<result property="likenum" column="likenum" />
+		<result property="investNum" column="INVEST_NUM" />
 	</resultMap>
 	
 	<select id="ingFundList" resultMap="selectIngFund">

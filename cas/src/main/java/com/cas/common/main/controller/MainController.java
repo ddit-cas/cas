@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cas.article.service.ArticleService;
 import com.cas.carousel.service.CarouselService;
 import com.cas.caser.service.CaserService;
+import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.CarouselVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.db.dto.MemberVO;
@@ -77,18 +78,22 @@ public class MainController {
 		model.addAttribute("topFundList",topFundList);
 		
 		/*유씨씨 5순위까지 가져오기*/
-//		List<ArticleVO> topUccList = articleService.selectTopUccList();
+		List<ArticleVO> topUccList = articleService.selectTopUccList();
+		model.addAttribute("topUccList",topUccList);
 		
 		/*공연홍보 5순위까지 가져오기*/
 		List<PromotionVO> topPromotionList = promotionService.selectTopPromotionList();
 		model.addAttribute("topPromotionList",topPromotionList);
 		
 		List<MostViewFundVO> topClickFundList = null;
-		
+		List<PromotionVO> topClickPromotionList = null;
 		if (session.getAttribute("loginUser")!=null) {
 			MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 			/*펀딩 연령별로 많이 본 거 가져오기*/
 			topClickFundList = fundService.selectTopClickFundList(loginUser.getClassifyCode());
+			
+			/*공연홍보 연령별로 많이 본거 가져오기*/
+			topClickPromotionList = promotionService.selectTopClickPromotionList();
 		}
 		if (topClickFundList==null) {
 			topClickFundList = new ArrayList<MostViewFundVO>();

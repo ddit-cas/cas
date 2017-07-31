@@ -79,4 +79,9 @@ public class PromotionServiceImpl implements PromotionService {
 	public List<PromotionVO> selectTopPromotionList() {
 		return promotionDao.selectTopPromotionList();
 	}
+
+	@Override
+	public List<PromotionVO> selectTopClickPromotionList() {
+		return promotionDao.selectTopClickPromotionList();
+	}
 }

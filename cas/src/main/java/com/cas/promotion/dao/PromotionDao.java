@@ -21,4 +21,5 @@ public interface PromotionDao {
 	public List<PromotionListVO> selectMonthShow(ScheduleVO schedule);
 	public int selectRecomCount(String contentNum);
 	public List<PromotionVO> selectTopPromotionList();
+	public List<PromotionVO> selectTopClickPromotionList();
 }
