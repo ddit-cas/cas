@@ -55,7 +55,7 @@ public class MemberFreeboardController {
 //		System.out.println(request.getParameter("content"));
 		articleService.insertArticle(articleVO);
 		
-		return "/member/community/insertArticleComplete";
+		return "redirect:/freeboardList";
 	}
 	
 	/*글 수정양식을 다 입력한후 수정을 눌렀을떄 오는 메서드*/

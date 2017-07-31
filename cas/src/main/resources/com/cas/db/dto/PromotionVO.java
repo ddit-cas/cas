@@ -15,7 +15,14 @@ public class PromotionVO {
 	private String consertTicket;
 	private String consertGenre;
 	private String consertGeograp;
+	private String boardCode;
 	
+	public String getBoardCode() {
+		return boardCode;
+	}
+	public void setBoardCode(String boardCode) {
+		this.boardCode = boardCode;
+	}
 	public String getContentNum() {
 		return contentNum;
 	}

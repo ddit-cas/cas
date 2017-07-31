@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Point">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="Point" type="com.cas.db.dto.PointVO" />                         
+
+	<resultMap class="com.cas.db.dto.PointVO" id="selectPoint">
+		<result property="chargingNum" column="charging_num"/>
+		<result property="chargingAmount" column="charging_amount"/>
+		<result property="chargingDate" column="charging_date"/>
+		<result property="chargingMem" column="charging_mem"/>
+	</resultMap>
+	
+	<select id="selectPoint" parameterClass="str" resultMap="selectPoint">
+		select * from charging where charging_mem = #chargingMem#
+	</select>
+	
+	<select id="selectChargeTotalPoint" parameterClass="str" resultMap="selectPoint">
+		select charging_num, charging_amount, charging_date, charging_mem from charging
+		order by charging_date
+	</select>
+	
+	<update id="insertPoint" parameterClass="str">
+		insert into charging(charging_num, charging_amount, charging_date, charging_mem)
+		values(charging_seq.nextval, #chargingAmount#, sysdate, #chargingMem#)
+		where charging_mem = #chargingMem#
+	</update>                       
+</sqlMap>

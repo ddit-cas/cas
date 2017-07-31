@@ -2,12 +2,23 @@ package com.cas.member.ucc.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cas.article.service.ArticleService;
+import com.cas.db.dto.ArticleVO;
+
 @Controller
 public class MemberUccController {
+
+	@Autowired
+	private ArticleService articleService;
+	
+	public void setArticleService(ArticleService articleService) {
+		this.articleService = articleService;
+	}
 
 	/*
 	 * 유씻씨영상을 입력하거나 수정하는 양식으로 이동하는 메서드
@@ -17,19 +28,28 @@ public class MemberUccController {
 	@RequestMapping("/member/uccForm")
 	public String uccForm(HttpServletRequest request,Model model){
 		model.addAttribute("boardCode","B006");
-		return "/daumeditor/article";
+		String contentNum = request.getParameter("contentNum");
+		if (contentNum!=null) {
+			model.addAttribute("articleVO",articleService.selectArticle(contentNum, "B006"));
+			model.addAttribute("resultUrl","updateUcc");
+		}else{
+			model.addAttribute("resultUrl","insertUcc");
+		}
+		return "/member/community/freeBoard/freeboardForm";
 	}
 	
 	/*유씨씨영상 입력양식을 다 입력후 등록을 누르면 인서트 해주는 메서드*/
 	@RequestMapping("/member/insertUcc")
-	public String insertFreeboard(HttpServletRequest request){
-		return "/daumeditor/article";
+	public String insertFreeboard(ArticleVO articleVO,HttpServletRequest request){
+		articleService.insertArticle(articleVO);
+		return "redirect:/uccList";
 	}
 	
 	/*글 수정양식을 다 입력한후 수정을 눌렀을떄 오는 메서드*/
 	@RequestMapping("/member/updateUcc")
-	public String updateFreeboard(HttpServletRequest request){
-		return null;
+	public String updateFreeboard(ArticleVO articleVO,HttpServletRequest request){
+		articleService.updateFreeboard(articleVO);
+		return "redirect:/uccList";
 	}
 	
 	/*회원 본인이 글 삭제를 눌렀을시 오는 메서드*/
