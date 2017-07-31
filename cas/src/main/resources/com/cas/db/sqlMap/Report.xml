@@ -7,9 +7,47 @@
 <typeAlias alias="str" type="java.lang.String"/>
 <typeAlias alias="int" type="java.lang.Integer"/>
 <typeAlias alias="report" type="com.cas.db.dto.ReportVO"/>
+<typeAlias alias="contentReport" type="com.cas.db.dto.ContentReportVO"/>
+
+	<resultMap class="com.cas.db.dto.ReportVO" id="selectReport">
+		<result property="reportNum" column="report_num"/>
+		<result property="reportContent" column="report_content"/>
+		<result property="reportDate" column="report_date"/>
+		<result property="reportMem" column="report_mem"/>
+		<result property="contentNum" column="content_num"/>
+	</resultMap>
+	
+	<resultMap class="com.cas.db.dto.ContentReportVO" id="selectDetail2">
+		<result property="contentNum" column="content_num"/>
+		<result property="reportContent" column="report_content"/>
+		<result property="contentContent" column="content_content"/>
+		<result property="contentWriter" column="content_writer"/>
+	</resultMap>
+	
+	
 
 	<update id="insertReport" parameterClass="report">
 		insert into report(REPORT_NUM,REPORT_CONTENT,REPORT_DATE,REPORT_MEM,CONTENT_NUM) 
 		values(REPORT_SEQ.NEXTVAL,#reportContent#,SYSDATE,#reportMem#,#contentNum#)
 	</update>
+	
+	<select id="selectReport" resultMap="selectReport">
+		select * from report 	
+	</select>
+	
+	
+	<select id="selectDetail2" parameterClass="str" resultMap="selectDetail2">
+		select r.CONTENT_NUM, r.report_content, c.CONTENT_CONTENT, c.CONTENT_WRITER 
+		from report r, content c 
+		where c.CONTENT_NUM=#contentNum# and r.content_num=#contentNum#
+	</select>
+	
+	<update id="deleteReport" parameterClass="str">
+		update content set content_state = 'N' where CONTENT_NUM=#contentNum#
+	</update>
+	
+	<delete id="realDelete" parameterClass="str">
+		delete from report where CONTENT_NUM=#contentNum#
+	</delete>
+	
 </sqlMap>

@@ -10,14 +10,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cas.db.dto.CommentVO;
+import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.db.dto.LikeVO;
 import com.cas.db.dto.MemberVO;
 import com.cas.fund.service.FundService;
+import com.cas.member.comment.service.CommentService;
 import com.cas.promotion.service.PromotionService;
 
 @Controller
 public class FundController {
+	@Autowired
+	private CommentService commentService;
+	
+	public void setCommentService(CommentService commentService) {
+		this.commentService = commentService;
+	}
 
 	@Autowired
 	private FundService fundService;
@@ -59,9 +68,16 @@ public class FundController {
 	/*크라우드펀딩 상세 내용으로 가는 메서드*/
 	@RequestMapping("/fundDetail")
 	public String fundDetail(Model model,HttpServletRequest request,HttpSession session){
-		model.addAttribute("fund",fundService.selectIngFund(request.getParameter("contentNum")));
+		IngFundVO fund=fundService.selectIngFund(request.getParameter("contentNum"));
+		fund.setContentNum(request.getParameter("contentNum"));
+		model.addAttribute("fund",fund);
+		System.out.println();
 		LikeVO like = new LikeVO();
 		like.setContentNum(request.getParameter("contentNum"));
+		List<CommentVO> commentList=commentService.selectComment(request.getParameter("contentNum"));
+      	if(commentList.size()!=0){
+  			model.addAttribute("commentList",commentList);
+      	}
 		if(session.getAttribute("loginUser")!=null){
 			like.setLoginUser(((MemberVO)session.getAttribute("loginUser")).getMemId());
 			model.addAttribute("isLike",promotionService.isLike(like));

@@ -3,6 +3,7 @@ package com.cas.report.dao.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.cas.db.dto.ContentReportVO;
 import com.cas.db.dto.ReportVO;
 import com.cas.report.dao.ReportDao;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -17,20 +18,36 @@ public class ReportDaoImpl implements ReportDao{
 
 	@Override
 	public List<ReportVO> selectReportList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<ReportVO> resultList = null;
+		try {
+			resultList = sqlMapClient.queryForList("selectReport");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultList;
 	}
 
 	@Override
-	public void deleteArticle() {
-		// TODO Auto-generated method stub
+	public void deleteArticle(String contentNum) {
+		try {
+			sqlMapClient.update("deleteReport",contentNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
-	public ReportVO selectReport(String reportId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ContentReportVO> selectReport(String contentNum) {
+		List<ContentReportVO> result = null;
+		System.out.println("DAO param-"+contentNum);
+		try {
+			result =  sqlMapClient.queryForList("selectDetail2",contentNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -42,6 +59,16 @@ public class ReportDaoImpl implements ReportDao{
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public void realDeleteReport(String contentNum) {
+		try {
+			sqlMapClient.delete("realDelete",contentNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
