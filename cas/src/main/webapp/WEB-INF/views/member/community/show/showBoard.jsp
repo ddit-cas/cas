@@ -42,7 +42,13 @@
 			style="width: 800px; height: 190px; background-size: cover; margin: 0 0 10px 0;">
 	</p>
 	<div>
-		<button style="float:right; margin-bottom: 5px;" onclick="insertShowPage_go()">공연등록</button>
+		<button style="float:right; margin-bottom: 5px; background-color: #fff;" onclick="insertShowPage_go()">공연등록</button>
+		<button style="float:right; margin-bottom: 5px; margin-right: 12px; background-color: #fff;" onclick="">검색</button>
+		<input type="text" style="float:right; margin-bottom: 5px;">
+		<select style="float:right;height: 26px;">
+			<option>제목</option>
+			<option>작성자</option>
+		</select>
 	</div>
 	<hr style="clear:both;">
 	<div></div>
