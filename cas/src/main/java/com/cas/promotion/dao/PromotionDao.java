@@ -21,7 +21,7 @@ public interface PromotionDao {
 	public List<PromotionListVO> selectMonthShow(ScheduleVO schedule);
 	public int selectRecomCount(String contentNum);
 	public List<PromotionVO> selectTopPromotionList();
-	public List<PromotionVO> selectTopClickPromotionList();
+	public List<PromotionListVO> selectTopClickPromotionList(String classifyCode);
 	public List<PromotionListVO> searchWriterPromotion(String writer);
 	public List<PromotionListVO> searchtTitlePromotion(String title);
 	public List<PromotionListVO> selectMyPromotionList(String memId);

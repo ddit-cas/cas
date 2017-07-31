@@ -51,7 +51,7 @@
 		<result property="recomCount" column="LIKENUM"/>
 	</resultMap>
 	
-	<resultMap class="com.cas.db.dto.PromotionListVO" id="topViewUccList">
+	<resultMap class="com.cas.db.dto.PromotionListVO" id="topViewPromotionList">
 		<result property="contentNum" column="CONTENT_NUM"/>
 		<result property="contentTitle" column="CONTENT_TITLE"/>
 		<result property="genreName" column="GENRE_NAME"/>
@@ -61,6 +61,8 @@
 		<result property="recomCount" column="VIEWNUM"/>
 		<result property="consertContent" column="CONSERT_CONTENT"/>
 		<result property="contentImg" column="CONTENT_IMG"/>
+		<result property="sex" column="sex"/>
+		<result property="age" column="age"/>
 	</resultMap>
 	
 	<select id="topClickPromotionList" resultMap="topViewPromotionList" parameterClass="str">

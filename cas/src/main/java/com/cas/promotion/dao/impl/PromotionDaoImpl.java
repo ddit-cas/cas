@@ -149,10 +149,10 @@ public class PromotionDaoImpl implements PromotionDao {
 	}
 
 	@Override
-	public List<PromotionVO> selectTopClickPromotionList() {
-		List<PromotionVO> topClickPromotionList = null;
+	public List<PromotionListVO> selectTopClickPromotionList(String classifyCode) {
+		List<PromotionListVO> topClickPromotionList = null;
 		try {
-			topClickPromotionList = sqlMapClient.queryForList("topClickPromotionList");
+			topClickPromotionList = sqlMapClient.queryForList("topClickPromotionList",classifyCode);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
