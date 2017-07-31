@@ -3,7 +3,6 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 
-<body>
 
 <style>
 .wd-icon-content {
@@ -51,7 +50,7 @@ function fundEntrollment_go(){
 	location.href="/cas/member/insertFundIntro";
 }
 </script>
-
+<div id="body">
 	<div class="company-wrap">
 
 		<div class="company-snb">
@@ -60,7 +59,6 @@ function fundEntrollment_go(){
 				<ul>
 					<li class="active"><a href="/cas/fundList">진행중인 펀딩</a></li>
 					<li><a href="/cas/endFundList">종료된 펀딩</a></li>
-					<li><a href="/cas/fundingExampleList">성공한 펀딩 </a></li>
 					<li>
 						<span class="btn">
 							<button class="btn btn-primary" onclick='fundEntrollment_go();' style = "background-color:#26bbe2;">펀딩 등록하기</button>
@@ -71,6 +69,7 @@ function fundEntrollment_go(){
 		</div>
 
 		<div class="contents" style="margin-top: 5px; width: 1213px; margin-left: 213px;">
+		<h3 class="box">종료된 크라우드 펀딩</h3>
 			<div class="container2">
 				<div class="row">
 					<div class="col-md-4">
@@ -157,6 +156,4 @@ function fundEntrollment_go(){
 			
 		</div>
 	</div>
-
-</body>
-</html>
+	</div>

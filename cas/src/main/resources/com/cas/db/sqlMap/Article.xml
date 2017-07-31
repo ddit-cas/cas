@@ -57,7 +57,7 @@
 			content_regis_date like '%'||#key#||'%'
 		</isEqual>
 		order by content_regis_date desc
-</select>
+	</select>
 	<select id="selectSearchNotice" parameterClass = "map" resultMap="selectArticle">
 		select * from article where 1=1
 		and board_code like '%'||#boardCode#||'%'
@@ -149,5 +149,9 @@
 	<select id="dateEntrollmentFund" resultClass="int">
 		select count(content_num) from CONTENT
 		where board_code = 'B009' and to_char(content_regis_date, 'yyyymmdd') = TO_char(sysdate,'yyyymmdd')
+	</select>
+	
+	<select id="articleLikenum" parameterClass="str" resultClass="str">
+		select count(*) from recom where recom_content=#contentNum#
 	</select>
 </sqlMap>

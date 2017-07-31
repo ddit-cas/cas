@@ -109,7 +109,19 @@ div.company-wrap {
                            </tr>
                            <tr>
                               <td colspan="3" style="background-color: #eeeeee;text-align:center;">
-                              <label for="InputMessage">내용</label></td>
+                              <label for="InputMessage">내용</label>
+                              <span class="pull-left zzim-after hide">
+									<button type="button" class="btn-zzim on" style="height: 40px;">
+										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like_on.png"></i> <span id="zzim-cnt-on"></span>
+									</button>
+								</span> 
+								<span class="pull-left zzim-before">
+									<button type="button" class="btn-zzim" style="height: 40px;">
+										
+										<i class="ico-star"><img  class="zzimImg" src="resources/images/icon_like.png"> </i><span id="zzim-cnt">${articleVO.likenum }</span>
+									</button>
+								</span>
+                              </td>
                            </tr>
                            <tr>
                               <td colspan="5">
@@ -142,6 +154,55 @@ div.company-wrap {
          </div>
       </div>
    </div>
+   
+   <c:choose>
+	<c:when test="${not empty loginUser }">
+<script>
+// 하트표시바꾸기-------------------------------------------------------------
+
+	var cnt = $('span#zzim-cnt').text();
+	$('.btn-zzim').click(function(){
+
+		var $param = $.param({contentNum:"${articleVO.contentNum}"});
+		if($('.zzim-before').hasClass('hide')){
+			$.post('/cas/member/unlikeContent', $param , 
+					function(res){
+			})
+			cnt--;
+			$('.zzim-before').removeClass('hide');
+			$('.zzim-after').addClass('hide');
+			$('#zzim-cnt').text(cnt);
+		}else{
+			//url, data , success function     
+			$.post('/cas/member/likeContent', $param , 
+					function(res){  
+			})
+			cnt++;
+			$('.zzim-before').addClass('hide');
+			$('.zzim-after').removeClass('hide');
+			$('#zzim-cnt-on').text(cnt);
+		}
+	})
+</script>
+<c:if test="${isLike==1 }">
+			<script>
+				$('.zzim-before').addClass('hide');
+				$('.zzim-after').removeClass('hide');
+				$('#zzim-cnt-on').text(cnt);
+			</script>
+	</c:if>	
+	</c:when>	
+	<c:otherwise>
+	<script>
+// 하트표시바꾸기-------------------------------------------------------------
+
+	$('.btn-zzim').click(function(){
+		location.href="/cas/member/freeboardForm";
+	})
+	</script>
+	</c:otherwise>				
+	</c:choose>
+   
 
    <!-- 신고 modal폼 -->
    <form action="/cas/member/report" method="post" name="singo">

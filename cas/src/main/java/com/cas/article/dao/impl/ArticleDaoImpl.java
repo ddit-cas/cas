@@ -134,4 +134,15 @@ public class ArticleDaoImpl implements ArticleDao{
 		return result;
 	}
 
+	@Override
+	public String selectArticleLikenum(String contentNum) {
+		String likeNum = null;
+		try {
+			likeNum = (String) sqlMapClient.queryForObject("articleLikenum",contentNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return likeNum;
+	}
+
 }

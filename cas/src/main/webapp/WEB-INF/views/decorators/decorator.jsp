@@ -386,7 +386,7 @@ h3 {
 				side : "right",
 				statue : statue,
 				pushBody : false,
-				remember : false
+				remember : true
 			});
 		});
 	</script>
@@ -426,7 +426,6 @@ h3 {
 						<ul class="dropdown-menu">
 							<li><a href="/cas/fundList">진행중인 펀딩</a></li>
 							<li><a href="/cas/endFundList">종료된 펀딩</a></li>
-							<li><a href="/cas/fundingExampleList">펀딩 성공 사례</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">

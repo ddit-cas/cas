@@ -3,6 +3,7 @@ package com.cas.common.ucc.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cas.article.service.ArticleService;
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.LikeVO;
+import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.Paging;
+import com.cas.promotion.service.PromotionService;
 
 @Controller
 public class UccController {
@@ -20,6 +24,13 @@ public class UccController {
 	private ArticleService articleService;
 	public void setArticleService(ArticleService articleService) {
 		this.articleService = articleService;
+	}
+	
+	@Autowired
+	private PromotionService promotionService;
+
+	public void setPromotionService(PromotionService promotionService) {
+		this.promotionService = promotionService;
 	}
 
 	/*유씨씨영상 리스트를 보여주는 메서드*/
@@ -53,8 +64,16 @@ public class UccController {
 	
 	/*유씨씨 영상의 상세내용을 보는 메서드*/
 	@RequestMapping("/uccDetail")
-	public String uccDetail(HttpServletRequest request,Model model){
+	public String uccDetail(HttpServletRequest request,Model model,HttpSession session){
 		ArticleVO articleVO = articleService.selectArticle(request.getParameter("contentNum"), "B006");
+		articleVO.setLikenum(articleService.selectArticleLikenum(request.getParameter("contentNum")));
+		System.out.println("좋아요!"+articleVO.getLikenum());
+		if(session.getAttribute("loginUser")!=null){
+			LikeVO like = new LikeVO();
+			like.setContentNum(request.getParameter("contentNum"));
+			like.setLoginUser(((MemberVO)session.getAttribute("loginUser")).getMemId());
+			model.addAttribute("isLike",promotionService.isLike(like));
+		}
 		model.addAttribute("articleVO",articleVO);
 		return "member/community/pr/VideoDetail";
 	}

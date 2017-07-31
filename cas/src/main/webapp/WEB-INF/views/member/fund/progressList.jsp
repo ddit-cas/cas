@@ -37,7 +37,6 @@ div.company-wrap {
 				<ul>
 					<li class="active"><a href="/cas/fundList">진행중인 펀딩</a></li>
 					<li><a href="/cas/endFundList">종료된 펀딩</a></li>
-					<li><a href="/cas/fundingExampleList">성공한 펀딩 </a></li>
 					<li><span class="btn">
 							<button class="btn btn-primary" onclick='fundEntrollment_go();'
 								style="background-color: #26bbe2;">펀딩 등록하기</button>
@@ -48,7 +47,7 @@ div.company-wrap {
 	</div>
 	<div class="contents" style="margin-top: 5px; width: 960px; margin-left: 213px;">
 		<div class="company-cont" style=" width: 960px;">
-		<h3 class="box">클라우드 펀딩</h3>
+		<h3 class="box">크라우드 펀딩</h3>
 		<div class="row-fluid">
 		<ul class="thumbnails list-unstyled">
 			<c:forEach items="${fundList}" var="fund">
@@ -68,7 +67,7 @@ div.company-wrap {
 						<div class="modal-footer" style="text-align: left">
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="60"
-									aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+									aria-valuemin="0" aria-valuemax="100" style="width: ${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%;">
 									<span class="sr-only">${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%</span>
 								</div>
 							</div>
