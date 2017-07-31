@@ -121,7 +121,8 @@ public class AdminMainController {
 		model.addAttribute("proMaxNum", proPaging.getMaxNum());//최대 페이징넘버
 
 	//ucc게시판
-		List<ArticleVO> uccList = articleService.selectArticleList("B006");
+		List<ArticleVO> uccList = articleService.selectTopUccList();
+		
 		model.addAttribute("uccList",uccList);	
 		model.addAttribute("uccSelector", "&uccTab");
 		//페이징 처리	

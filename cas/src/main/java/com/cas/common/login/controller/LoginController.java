@@ -2,6 +2,7 @@ package com.cas.common.login.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
@@ -9,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,17 +50,16 @@ public class LoginController {
 		String uri = request.getHeader("referer");
 		System.out.println("요청페이지"+uri);
 		String url = "member/goMain";
+		
 		if(uri!=null){
 			url = uri.substring(20);
 			System.out.println("주소가 뭔가요?"+url);
 		}
 		if(memberService.checkId(member.getMemId())){
-			System.out.println("아이디 체크는 성공하니?");
 			if(memberService.checkPwd(member.getMemId(),member.getMemPwd())){
-				System.out.println("비번체크성공하니?");
-				session.setAttribute("loginUser", memberService.selectMember(member.getMemId()));
+					session.setAttribute("loginUser", memberService.selectMember(member.getMemId()));
 			}
-		}
+		}	
 		if(request.getParameter("goMain")!=null){
 			url=request.getParameter("goMain");
 		}

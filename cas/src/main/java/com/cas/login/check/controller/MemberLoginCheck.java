@@ -17,7 +17,6 @@ public class MemberLoginCheck extends HandlerInterceptorAdapter{
 		@Override
 		public boolean preHandle(HttpServletRequest request,
 				HttpServletResponse response, Object handler) throws Exception {
-			System.out.println("여기왜안오니?");
 			if (null==request.getSession().getAttribute("loginUser")) {
 				PrintWriter out = response.getWriter();
 
