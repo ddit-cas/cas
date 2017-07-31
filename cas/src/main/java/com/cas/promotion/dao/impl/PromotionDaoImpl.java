@@ -147,4 +147,15 @@ public class PromotionDaoImpl implements PromotionDao {
 		}
 		return topPromotionList;
 	}
+
+	@Override
+	public List<PromotionVO> selectTopClickPromotionList() {
+		List<PromotionVO> topClickPromotionList = null;
+		try {
+			topClickPromotionList = sqlMapClient.queryForList("topClickPromotionList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return topClickPromotionList;
+	}
 }

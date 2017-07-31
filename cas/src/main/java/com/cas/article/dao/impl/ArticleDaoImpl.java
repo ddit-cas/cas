@@ -97,7 +97,7 @@ public class ArticleDaoImpl implements ArticleDao{
 	public List<ArticleVO> selectTopUccList() {
 		List<ArticleVO> topUccList = null;
 		try {
-			topUccList = sqlMapClient.queryForList("selectTopUccList");
+			topUccList = sqlMapClient.queryForList("orderLikeUcc");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -193,8 +193,6 @@
 					</c:forEach>
 					</tbody>
 				</table>
-			
-
 			</div>
 			<div id="menu1" class="tab-pane fade">
 				<img id="topFundImg" src="${topPromotionList[0].contentImg }"
@@ -212,9 +210,16 @@
 				</table>
 			</div>
 			<div id="menu2" class="tab-pane fade">
-				<h3>Menu 2</h3>
-				<p>Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+				<table class="table table-hover">
+					<tbody>
+					<c:forEach items="${topUccList}" var="ucc" varStatus="status">
+						<tr class="topFundRow" imgUrl="${ucc.contentImg }" contentUrl="/cas/uccDetail?contentNum=${ucc.contentNum }">
+							<td>${status.index+1 }</td>
+							<td>${ucc.contentTitle }</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 			<script>

@@ -193,17 +193,14 @@ public class LoginController {
 		
 		int nowYear = today.getYear()+1900;
 		String memAge = (((nowYear-Integer.parseInt(member.getMemBirthdate().substring(0,4)))/10)*10)+"";
+		if(memAge=="0"){
+			memAge="10";
+		}
 		member.setMemAge(memAge);
 		
 		int result=-1;
 		result = memberService.insertMember(member);
 		System.out.println(result);
-		String url = "";
-		if(result<0){
-			url="member/signUp/failSignUp";
-		}else{
-			url="member/signUp/successSignUp";
-		}
 		
 		memberService.insertTeamList(teamList);
 		

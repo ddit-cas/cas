@@ -25,6 +25,18 @@
 <!-- 		<result property="contentCount"/> -->
 	</resultMap>
 	
+	<resultMap class="com.cas.db.dto.ArticleVO" id="orderLikeUcc">
+		<result property="contentNum" column="content_num"/>
+		<result property="contentTitle" column="content_title"/>
+		<result property="contentRegisDate" column="content_regis_date"/>
+		<result property="contentWriter" column="content_writer"/>
+		<result property="contentImg" column="content_img"/>
+	</resultMap>
+	
+	<select id="orderLikeUcc" resultMap="orderLikeUcc">
+		select * from orderLikeUcc order by likenum desc
+	</select>
+	
 	<insert id="insertArticle" parameterClass="article">						
 		INSERT INTO CONTENT(CONTENT_NUM, BOARD_CODE,  CONTENT_TITLE, CONTENT_CONTENT,
 							CONTENT_REGIS_DATE, CONTENT_PARENTS_CONTENT, CONTENT_WRITER, 

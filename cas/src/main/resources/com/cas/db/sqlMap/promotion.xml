@@ -51,6 +51,19 @@
 		<result property="recomCount" column="LIKENUM"/>
 	</resultMap>
 	
+	<resultMap class="com.cas.db.dto.PromotionListVO" id="topViewUccList">
+		<result property="contentNum" column="CONTENT_NUM"/>
+		<result property="contentTitle" column="CONTENT_TITLE"/>
+		<result property="genreName" column="GENRE_NAME"/>
+		<result property="startDate" column="PERFOMANCE_START_DATE"/>
+		<result property="endDate" column="PERFOMANCE_END_DATE"/>
+		<result property="contentWriter" column="CONTENT_WRITER"/>
+		<result property="recomCount" column="VIEWNUM"/>
+		<result property="consertContent" column="CONSERT_CONTENT"/>
+		<result property="contentImg" column="CONTENT_IMG"/>
+	</resultMap>
+	
+	
 	<insert id="insertConsert" parameterClass="consert">
 		INSERT INTO	CONSERT VALUES(CONSERT_SEQ.NEXTVAL,#consertContent#,#consertPlace#
 			,TO_DATE(#startDate#,'yyyy-mm-dd'),TO_DATE(#endDate#,'yyyy-mm-dd'),60,#consertTicket#,#consertGenre#,#consertGeograp#)
