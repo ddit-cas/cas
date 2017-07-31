@@ -77,4 +77,6 @@ public class FundController {
 		String url = "member/fund/progressListDetail";
 		return url;
 	}
+	
+	
 }

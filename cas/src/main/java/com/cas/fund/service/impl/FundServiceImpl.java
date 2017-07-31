@@ -2,6 +2,8 @@ package com.cas.fund.service.impl;
 
 import java.util.List;
 
+import org.springframework.scheduling.annotation.Scheduled;
+
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
@@ -16,7 +18,14 @@ public class FundServiceImpl implements FundService{
 	public void setFundDao(FundDao fundDao) {
 		this.fundDao = fundDao;
 	}
-
+	
+	@Override
+	@Scheduled(cron="0 0 0 * * *")
+	public void updateEndFund(){
+		fundDao.updateEndFund();
+		System.out.println("스케쥴 잘되나요?");
+	}
+	
 	@Override
 	public List<IngFundVO> selectIngFundList() {
 		return fundDao.selectIngFundList();

@@ -116,12 +116,6 @@ th {
 					</table>
 				</div>
 
-				<div id="btn" style="text-align: center;">
-					<a href="#"><button type="button"
-							class="out btn btn-primary btn-sm">
-							<span>나가기</span>
-						</button> </a>
-				</div>
 			</div>
 		</div>
 	</div>

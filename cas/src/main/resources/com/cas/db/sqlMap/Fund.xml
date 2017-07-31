@@ -51,4 +51,24 @@
 		FUNDING_PRESENT_AMOUNT= funding_present_amount+(#investPoint# *100)
 		where funding_num=(select funding_num from content where content_num=#contentNum#)
 	</update>
+	
+	<update id="endCompleteFund">
+		<![CDATA[
+		update crowdfunding
+		set
+		state_code='F001'
+		where  funding_present_amount>=funding_target_amount
+		and (to_char(sysdate,'yyyymmdd')-to_char(funding_end_date,'yyyymmdd'))>0
+		]]>
+	</update>
+	
+	<update id="endFailedFund">
+		<![CDATA[
+		update crowdfunding
+		set
+		state_code='F002'
+		where  funding_present_amount<funding_target_amount
+		and (to_char(sysdate,'yyyymmdd')-to_char(funding_end_date,'yyyymmdd'))>0
+		]]>
+	</update>
 </sqlMap>
