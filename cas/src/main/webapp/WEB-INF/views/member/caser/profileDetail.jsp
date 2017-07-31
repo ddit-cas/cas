@@ -43,6 +43,10 @@
 	p {
     margin: 7px 0px 12px;
 }
+
+#body{
+	margin-top:58px;
+}
 </style>
 	
 <style>
@@ -92,41 +96,49 @@
 	}
 </style>
 
-
-
-	<!-- 선택사항 -->
-	
+	<div id="body">
+	<div class="company-wrap">
+		<div class="company-snb">
+			<h2>Caser</h2>
+			<div class="">
+				<ul>
+					<li><a href="profileView">프로필 뷰</a></li>
+				</ul>
+			</div>
+		</div>
 	<fieldset class="signup_cas_fs">
-		<legend id="choice" class="signup_cas_ld">프로필 뷰 상세</legend>
+	<div class="company-cont" style="height: auto;">
+		<h3 class="box">프로필 뷰 </h3>
+	
+<!-- 		<legend id="choice" class="signup_cas_ld">프로필 뷰 상세</legend> -->
 		<div class="contSelect">
 			<div class="box-body">
 				<div class="col-sm-3">
-					<div class="filess" style="width:290px; height:400px;">
+					<div class="filess">
+					<p id="enter"></p>
 						<img alt="User Pic" src="${caserList[0].memFrofileimage }"
-							id="profile-image" class="img-circle img-responsive">
+							id="profile-image" class="img-circle img-responsive" style="width:290px; height:200px;">
 						<input id="profile-image-input"  accept="image/png, image/jpeg, image/gif" name="memFrofileimage" class="hidden" type="file">
 					</div>
 				</div>
 				 
 				<div class="form-group">
-					
-					 
 					<p id="enter"></p>
 					
-					<label class="control-label col-sm-1" for="memNick">닉네임</label>
+					<label class="control-label col-sm-2" for="memNick">닉네임</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					   <p>${caserList[0].memNick }</p> 
-					    
+					   <label>${caserList[0].memNick }</label> 
 					  </div>
 					</div>
+				</div>
 					
 					<p id="enter"></p>
 					
-					<label class="control-label col-sm-1" for="memCertif">경력</label>
+					<label class="control-label col-sm-2" for="memCertif">경력</label>
 					<div class="col-sm-4">
 					  <div class="input-group">
-					  	<p>${caserList[0].memCareer }</p>
+					  	<label>${caserList[0].memCareer }</label>
 					  </div>
 					</div>
 					
@@ -134,16 +146,14 @@
 					<div id="add-textField"></div>
 							
 					
-					<label class="control-label col-sm-1" for="memActive">활동지역</label>		
+					<label class="control-label col-sm-2" for="memActive">활동지역</label>		
 					<div class="col-sm-4">
-						<p>${caserList[0].memActive }</p>
+						<label>${caserList[0].memActive }</label>
 						<div class="map"></div>
 				    </div>
 					
 					
 				<c:if test="${not empty caserList[0].teamName}">
-			
-				
 					
 					<p id="enter"></p>
 					<p id="enter"></p>
@@ -155,17 +165,13 @@
 					<div class='box-body crew'>
 						<div class='col-sm-2'>
 							<div class='files-crw'>
-								<img alt='User Pic'
-									src='${caser.teamInfo }'
-									id='profile-image1' class='img-circle img-responsive'>
+								<img alt='User Pic' src='${caser.teamInfo }' id='profile-image1' class='img-circle img-responsive'>
 							</div>
 						</div>
-						<p id='enter' />
 						<label class='control-label col-sm-1' for='crw-name' style="margin: 55px 0px;">이름</label>
 						
 							<p> ${caser.teamName } </p>
 					
-						<p id='enter' />
 						<label class='control-label col-sm-1' for='crw-role' style="margin: 0px -81px;">역할</label>
 						<div id='btns'>
 							
@@ -173,21 +179,20 @@
 								
 							
 						</div>
-						<p id='enter' />
 
 					</div>
 				</c:forEach>
 				</c:if>
 				</div>
-				
-				
+			</div>
+			</div>	
 <!-------------------------------낯선낯선 여자에!--------------------------------------------------- -->
-			<div class="container">
+			
 		
 	<style>
-#body {
+/* #body {
 	margin-top: 58px;
-}
+} */
 
 body {
 	font-family: proxima-nova, helvetica, arial, sans-serif;
@@ -341,106 +346,51 @@ body {
         .pre-cost{text-decoration: line-through; color: #a5a5a5;}
         .space-ten{padding: 10px 0;}
 </style>
-	<div id="body">
 		<div class="container">
 			<h2>MyUCC</h2>
-			<div class="row">
+			<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
+<!-- 		************************************************************************* -->
+			<div class="table">
 				<div class="col-md-4">
 					<div class="thumbnail">
-						<img src="/cas/resources/images/psy.jpg" alt="싸이" style="width: 100%" data-toggle="modal" data-target="#product_view">
-							<div class="blog-bar color-pink"></div>
-							<div class="blog-post-text" data-toggle="modal" data-target="#product_view">
-								<div>춤영상</div>
-								<div class="blog-description pink-text">2017-07-14</div>
-							</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-					 <img src="/cas/resources/images/psy.jpg" data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
-							<div class="blog-bar color-blue"></div>
-						<div class="blog-post-text">
-							<div data-toggle="modal" data-target="#product_view">
-								<div>노래노래래랠</div>
-								<div class="blog-description blue-text">2017-07-14</div>
-							</div>
+					<div class="row">
+						<img src="${myUccList[i].contentImg }" style="width: 100%;" data-toggle="modal" data-target="#product_view${i }">
+						<div class="blog-bar color-pink"></div>
+						<div class="blog-post-text" data-toggle="modal" data-target="#product_view${i }">
+							<label>${myUccList[i].contentTitle}</label>
+							<div class="blog-description pink-text">${myUccList[i].contentRegisDate}</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-					 <img src="/cas/resources/images/psy.jpg" data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
-							<div class="blog-bar color-purple"></div>
-						<div class="blog-post-text">
-							<div data-toggle="modal" data-target="#product_view">
-								<div>싱얼</div>
-								<div class="blog-description purple-text">2017-07-13</div>
-							</div>
+			</div>
+			</div>
+			
+<!-- 		클릭시 모달	 -->
+			<div class="modal fade product_view" id="product_view${i }">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="modal-title">${myUccList[i].contentTitle}</h3>
+							<h3 class="modal-title">${myUccList[i].contentWriter}</h3>
 						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-					 <img src="/cas/resources/images/psy.jpg" data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
-							<div class="blog-bar color-blue"></div>
-						<div class="blog-post-text">
-							<div data-toggle="modal" data-target="#product_view">
-								<div>노래</div>
-								<div class="blog-description blue-text">2017-07-13</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-					 <img src="/cas/resources/images/psy.jpg" data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
-							<div class="blog-bar color-purple"></div>
-						<div class="blog-post-text">
-							<div data-toggle="modal" data-target="#product_view">
-								<div>싱얼~~~</div>
-								<div class="blog-description purple-text">2017-07-12</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="thumbnail">
-					 <img src="/cas/resources/images/psy.jpg" data-toggle="modal" data-target="#product_view" alt="Nature" style="width: 100%">
-							<div class="blog-bar color-purple"></div>
-						<div class="blog-post-text">
-							<div data-toggle="modal" data-target="#product_view">
-								<div>싱얼싱얼</div>
-								<div class="blog-description purple-text">2017-07-11</div>
+						<div class="modal-body">
+							<div class="row">
+								<div id="prmovie" class="video" style="text-align: center;">
+									${myUccList[i].contentContent}
+									<div class="btn-ground" style="margin: auto;">
+										<a href="/cas/member/updateUcc">
+										<input type="submit" class="btn btn-primary" value="수정" /></a> 
+										<a href="/cas/member/deleteUcc">
+										<input type="submit" class="btn btn-danger" value="삭제" /></a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		
-		
-		<div class="modal fade product_view" id="product_view" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <a href="https://www.youtube.com/embed/OwJPPaEyqhI?rel=0&amp;showinfo=0" target="_blank" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-                <h3 class="modal-title">New Face-psy(moive)</h3>
-                <h3 class="modal-title">싸이</h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div id="prmovie" class="video">
-        <iframe id="frame1" class="embed-responsive-item" style="width:500px; height:400px; margin:0 125px auto;" src="https://www.youtube.com/embed/OwJPPaEyqhI?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe></div>
-                    <div class="col-md-6 product_content" style="margin:0 125px auto;">
-						<h3 class="modal-title">내용</h3>
-                        <textarea rows="5" cols="65">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</textarea>
-                        <div class="btn-ground" style="margin:auto;">
-				<a href="myMoviceDetail.jsp"><input type="submit" class="btn btn-primary" value="수정"></a>
-				<input type="reset" class="btn btn-primary" value="취소">
-				<input type="submit" class="btn btn-danger" value="삭제">
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- 			******************************************************************************** -->
+		</c:forEach>
 </div>
 	<!-- 푸터 시작 -->
 	<div class="clear"></div>
@@ -450,10 +400,7 @@ body {
 	</div>
 
 
-</div></div></div></div></div>
-
-				
-		 </div>
+</div></div>
 
 <script>
 $(function() {

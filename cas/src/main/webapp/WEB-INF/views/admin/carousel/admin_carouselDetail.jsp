@@ -3,8 +3,18 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="modalLayer">
 
+<style>
+	.form-group{
+		float:left;
+		margin:0 10px 0 150px;
+		margin-left:400px;
+	}
+	.btn{
+	}
+</style>
+
+<div id="modalLayer">
   <div class="modalContent"> 
   	<div class="bs-example" data-example-id="condensed-table">
   		<table class="table table-hover">
@@ -74,35 +84,55 @@
 	})
 </script>  	
   	<form id="subject" action="/cas/admin/${carouselUrl }" method="post" enctype="multipart/form-data">
-  	<input type="hidden" value="${carousel.contentUrl }" id="contentUrl" name="contentUrl">
-			        <div>
-			        	<p>대상 글 </p>
-			        	<p id="target"></p>
-			        </div>
-  	캐러셀 제목 등록  <br>
-  		<input type="text" value="${carousel.carouselTitle }" name="carouselTitle" width="150"><br>
-  	캐러셀 내용 등록 	
-  		<textarea name="carouselContent" rows="10" cols="60">${carousel.carouselContent}</textarea>
-  		
-	  	<div id="image_preview">
-		        <img class="img" id="image" src="${carousel.carouselImage }" width="450" height="300"/>
-		        <input type="hidden" name="carouselImage" value="${carousel.carouselImage }">
-		        <br />
-			        <label for="image">Image:</label>
-			        <br />
-			        <input type="file" name="image" id="imageFile" value="${carousel.carouselImage }" />
-    	</div>
+  		<h2>케러셀 관리</h2>
+  		<br>
+  	<div class="table-responsive">
+		<table class="table table-bordered"
+			style="text-align: left; width: 895px;">
+			<tbody>
+				<tr>
+					<input type="hidden" value="${carousel.contentUrl }" id="contentUrl" name="contentUrl"/>
+					<th style="width: 20%; text-align: center; background-color: #eeeeee">대상 글</th>
+					<td><label id="target"></label></td>
+				</tr>
+				<tr>
+					<th style="width: 20%; text-align: center; background-color: #eeeeee">캐러셀 제목 등록 </th>
+					<td><input type="text" class="form-control" value="${carousel.carouselTitle }" name="carouselTitle" width="150"></td>
+				</tr>
+				<tr>
+					<th style="text-align: center; background-color: #eeeeee">캐러셀 내용 등록 </th>
+					<td><textarea name="carouselContent" class="form-control" rows="10" cols="100">${carousel.carouselContent}</textarea></td>
+				</tr>
+				<tr>
+				  	<th style="width: 20%; text-align: center; background-color: #eeeeee">Image</th>
+				  	<td>
+					        <img class="img" id="image" src="${carousel.carouselImage }"  style="float:center;" width="450" height="300"/>
+					        <input type="hidden" name="carouselImage" value="${carousel.carouselImage }" width="450" height="300" >
+						
+					</td>	
+				</tr>
+					<tr>
+						<th style="width: 20%; text-align: center; background-color: #eeeeee">첨부파일
+						<td><input type="file" name="image" id="imageFile" value="${carousel.carouselImage }" width="450" height="300"/></td>
+		    		</tr>
+			</tbody>
+			</table>
+	</div>
     	<c:choose>
     	<c:when test="${not empty carousel }">
-    		<input type="hidden" name="carouselNum" value="${carousel.carouselNum }">
-  			<button>수정</button>
+    		<input type="hidden"  name="carouselNum" value="${carousel.carouselNum }">
+  			<button type="submit" class="btn btn-primary">수정</button>
     	</c:when>
     	<c:otherwise>
-  			<button>등록</button>
+    	<div class="form-group">
+  			<button type="submit" class="btn btn-primary">등록</button>
+  		</div>
     	</c:otherwise>
     	</c:choose>
+  	<div class="form-group">
+  			<button type="button" style="float:center;" class="btn btn-danger" onclick="deleteCarousel(${carousel.carouselNum});">삭제</button>
+  	</div>
   	</form>
-  			<button type="button" onclick="deleteCarousel(${carousel.carouselNum});">삭제</button>
   </div>
   <script>
   	function deleteCarousel(carouselNum){

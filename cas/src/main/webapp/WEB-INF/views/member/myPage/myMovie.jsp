@@ -176,7 +176,7 @@ body {
 <!-- 		************************************************************************* -->
 			<div class="table">
 				<div class="col-md-4">
-					<div class="thumbnail">
+					<div class="thumbnail" style="width: 260px; height: 350px;">
 					<div class="row">
 						<img src="${myUccList[i].contentImg }"
 							style="width: 100%;" data-toggle="modal"

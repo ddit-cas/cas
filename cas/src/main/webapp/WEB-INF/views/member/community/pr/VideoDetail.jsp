@@ -87,12 +87,12 @@ div.company-wrap {
 		</div>
 		 </div>
          <div class="company-cont" style="width: 960px;">
-            <h3 class="box">UCC</h3>
+            <h3 class="box">CAS-UCC</h3>
             <div class="row">
                <div class="col-lg-12">
                   <div class="table-responsive">
                      <table class="table table-bordered" id="contentTable"
-                        style="text-align: left; width: 726px;">
+                        style="text-align: left; width: 910px;">
                         <tbody>
                            <tr>
                               <th
@@ -130,6 +130,7 @@ div.company-wrap {
                            </tr>
                         </tbody>
                      </table>
+                     
                      <div class="form-group">
                         <a href="/cas/uccList"><input type="button" name="submit"
                            id="submit" value="목록" class="btn btn-info pull-right" /></a>
