@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <title>펀딩등록 초기페이지</title>
 <body>
-
+	<!-- sweetalert하기 위한 링크 -->
+	<link rel="stylesheet" href="/cas/resources/css/sweetalert.css">
+	<script src="/cas/resources/js/sweetalert/sweetalert.min.js"></script>
 	<!-- glyphicon CDN -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -171,9 +173,6 @@ var TxtType = function(el, toRotate, period) {
 						우선, 크라우드펀딩 프로젝트 개설하기 전 진행자를 위한 가이드를 꼭 읽어주세요.<br>
 						크라우드펀딩 진행방식, 프로젝트 스토리 구성, 리워드 설정 등 성공적인 프로젝트 개설을 위한 안내서가 준비되어 있습니다.
 					</dd>
-					<dd class="bottom">
-						<input class="btn btn-primary" style="margin-top:30px;"type="button" id="guideBtn" value="펀딩 진행자 가이드 보기">
-					</dd>
 			</dl>
  
 <style>
@@ -277,14 +276,11 @@ var TxtType = function(el, toRotate, period) {
 							<div class="funkyradio">
 								<div class="funkyradio-info">
 									<input type="checkbox" id="checkbox3" name="agree3" value="Y">
-									<label for="checkbox3">진행방식은 투자형과 후원형 중 어느 것으로 할래?</label>
+									<label for="checkbox3">끝까지 포기하지 않을 용기 준비 됐지?</label>
 								</div>
 							</div>
 							</li>
 						</ul>
-					</dd>
-					<dd class="bottom">
-						<input class="btn btn-primary" type="button" id="guideDownBtn" value="펀딩 업로드 안내서 다운로드">
 					</dd>
 			</dl>
 			<dl class="foot">
@@ -296,10 +292,19 @@ var TxtType = function(el, toRotate, period) {
 		
 		<script>
 			function enrollmentFund_go(){
-				location.href="insertFundForm";
+				var check1 = $('#checkbox1').prop('checked');
+				var check2 = $('#checkbox2').prop('checked');
+				var check3 = $('#checkbox3').prop('checked');
+				if(check1==false){
+					sweetAlert("체크확인", "첫번째 문항 체크해주세요.", "error");
+				}else if(check2==false){
+					sweetAlert("체크확인", "두번째 문항 체크해주세요.", "error");
+				}else if(check3==false){
+					sweetAlert("체크확인", "세번째 문항 체크해주세요.", "error");
+				}else{
+					location.href="insertFundForm";
+				}
 			}
-		
-		
 		</script>
 		</div>
 	</div>

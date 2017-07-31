@@ -46,7 +46,7 @@
 	</select>
 
 	<select id="selectMember" resultMap="selectMember" parameterClass="str">
-		select * from member where mem_id=#memId# and enabled='1'
+		select * from member where mem_id=#memId#
 	</select>
 
 	<update id="updateMember" parameterClass="member">
