@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.ReadInfoVO;
 import com.cas.db.dto.TeamVO;
@@ -23,11 +20,16 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public int selectMemberCount(){
-		int result = -1;
-		
-		return result;
+	public List<MemberVO> selectMemberCount(){
+		List<MemberVO> resultList = null;
+		try {
+			resultList = (List<MemberVO>) sqlMapClient.queryForList("selectMonthlySignupCount");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultList;
 	}
+	
 	@Override
 	public int insertMember(MemberVO member) {
 		int result = -1;
@@ -64,16 +66,20 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public boolean updateMember(MemberVO member) {
+		boolean result = false;
+		int confirm =-1;
 		try {
-			int result=sqlMapClient.update("updateMember",member);
-			System.out.println(result);
-			System.out.println(member.getMemName());
-			System.out.println(member.getMemId());
-			System.out.println("여기다오임플인데안오나요?");
+			confirm=sqlMapClient.update("updateMember",member);
+			
+			if(confirm<0){
+				result=false;
+			}else{
+				result=true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return true;
+		return result;
 	}
 
 	@Override
@@ -81,7 +87,6 @@ public class MemberDaoImpl implements MemberDao {
 		String memId = null;
 		try {
 			memId = (String) sqlMapClient.queryForObject("selectMemberId",id);
-			System.out.println("다으옴플에서 아이디 뭐라 뜨냐?"+memId);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -151,6 +156,23 @@ public class MemberDaoImpl implements MemberDao {
 			e.printStackTrace();
 		}
 		return resultList;
+	}
+
+	@Override
+	public int deleteMember(String memId) {
+		int result = -1;
+		try {
+			result = sqlMapClient.update("deleteMember", memId);
+			if(result<0){
+				System.out.println("회원삭제 실패");
+			}else{
+				System.out.println("회원삭제 성공");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }

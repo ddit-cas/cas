@@ -24,7 +24,9 @@ public class MemberLoginCheck extends HandlerInterceptorAdapter{
 				request.setCharacterEncoding("UTF-8");
 				response.setContentType("text/html; charset=UTF-8");
 
-	            out.println("<script>alert('로그인을 하셔야 합니다~.'); location.href='/cas/loginForm' </script>"); 
+	            out.println("<script>sweetAlert('로그인 필수!', '로그인 후에 이용하실 수 있습니다.', 'error');"
+	            		+ " $('.confirm').on('click',function(){"
+	            		+ "location.href='/cas/loginForm'}) </script>"); 
 
 	            out.flush(); 
 				

@@ -68,7 +68,6 @@ $(function(){
             </div>
             <!-- /.row -->
             
-            <!-- 리스트 테이블 들어갈 자리. : 금일 펀딩금액, 금월 펀딩 누적액, 총 누적액 월별 펀딩액 평균 -->
 <script>
 	function seachFundAnalysis(){
 			document.searchFundAnalysis.action="/cas/admin/fundAnalysis";
@@ -120,7 +119,12 @@ $(function(){
 		location.href="/cas/fundDetail?contentNum="+contentNum;
 	});
 });	
-</script>			      
+</script>
+<style>
+	tr.fundRow {
+		cursor: pointer;
+	}
+</style>			      
 			      <tbody>
 			      <c:choose>
 					<c:when test="${fundList.size() > 0 }">				

@@ -9,6 +9,9 @@ import com.cas.db.dto.TeamVO;
 
 public interface MemberService {
 	
+	/*월별 회원수 정보를 가져오는 메서드*/
+	public List<MemberVO> selectMemberCount();
+	
 	/*회원 가입 정보를 DB에 삽입하는 메서드*/
 	public int insertMember(MemberVO member);
 	
@@ -41,4 +44,7 @@ public interface MemberService {
 	
 	/*회원 검색*/
 	public List<MemberVO> selectSeachMember(String index, String key);
+	
+	/*회원 삭제 및 탈퇴*/
+	public int deleteMember(String memId);
 }
