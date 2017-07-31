@@ -95,4 +95,14 @@ public class PromotionServiceImpl implements PromotionService {
 	public List<PromotionListVO> searchWriterPromotion(String writer) {
 		return promotionDao.searchWriterPromotion(writer);
 	}
+
+	@Override
+	public List<PromotionListVO> selectMyPromotionList(String memId) {
+		return promotionDao.selectMyPromotionList(memId);
+	}
+
+	@Override
+	public List<PromotionListVO> searchtTitleMyPromotion(PromotionVO promotionVO) {
+		return promotionDao.searchtTitleMyPromotion(promotionVO);
+	}
 }

@@ -63,6 +63,10 @@
 		<result property="contentImg" column="CONTENT_IMG"/>
 	</resultMap>
 	
+	<select id="topClickPromotionList" resultMap="topViewPromotionList" parameterClass="str">
+      <![CDATA[select * FROM TOPVIEWPROMOTION where rownum<=3 and classify=#classifyCode# ORDER BY VIEWNUM]]>
+   </select>
+   
 	
 	<insert id="insertConsert" parameterClass="consert">
 		INSERT INTO	CONSERT VALUES(CONSERT_SEQ.NEXTVAL,#consertContent#,#consertPlace#
@@ -102,6 +106,13 @@
 	<select id="selectPromotionList" resultMap="promotionList">
 		select *
 		from promotionlist
+	</select>
+	
+	<select id="selectMyPromotionList" resultMap="promotionList" parameterClass="promotion">
+		select *
+		from promotionlist
+		where content_writer=#contentWriter#
+		and content_title=#contentTitle#
 	</select>
 	
 	<select id="searchtTitlePromotion" resultMap="promotionList" parameterClass="str">

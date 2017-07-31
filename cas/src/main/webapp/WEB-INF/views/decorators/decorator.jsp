@@ -370,6 +370,7 @@ h3 {
 					href="/cas/member/uccList" class="btn btn-sm animated-button thar-four">내 영상</a> <a
 					href="/cas/member/fundList" class="btn btn-sm animated-button thar-four">내 펀딩</a> <a
 					href="/cas/member/investmentList" class="btn btn-sm animated-button thar-four">내 투자</a> <a
+					href="/cas/member/myPromotionList" class="btn btn-sm animated-button thar-four">내 공연</a> <a
 					href="/cas/member/cimList" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
 					href="/cas/member/point" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
 					href="/cas/member/qnaList" class="btn btn-sm animated-button thar-four">1:1문의</a> <a

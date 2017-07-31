@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.ConsertVO;
 import com.cas.db.dto.GenreVO;
+import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.Paging;
+import com.cas.db.dto.PromotionListVO;
+import com.cas.db.dto.PromotionVO;
 import com.cas.promotion.service.PromotionService;
+import com.ibatis.sqlmap.client.SqlMapClient;
 
 @Controller
 public class MemberPromotionController {
@@ -71,6 +77,39 @@ public class MemberPromotionController {
 		int result=promotionService.insertPromotion(articleVO, consertVO);
 		System.out.println(result);
 		return "redirect:/uccList";
+	}
+	
+	@RequestMapping("/member/myPromotionList")
+	public String myPromotionList(HttpSession session,HttpServletRequest request, Model model){
+		MemberVO loginUser=(MemberVO)session.getAttribute("loginUser");
+		
+		List<PromotionListVO> promotionList=promotionService.selectMyPromotionList(loginUser.getMemId());
+		PromotionVO promotionVO=new PromotionVO();
+		promotionVO.setContentTitle((String)request.getParameter("title"));
+		promotionVO.setContentWriter(loginUser.getMemId());
+		String pageUrl="/cas/promotionSearch?title="+request.getParameter("title");
+		promotionList=promotionService.searchtTitleMyPromotion(promotionVO);
+		
+		String boardCode = "B005"; 
+		String searchUrl = "&boardCode="+boardCode;
+//		//현재페이지
+		String page = request.getParameter("tab");
+		if(request.getParameter("tab")==null){
+			page = "1";
+		}
+//		//받은 데이터리스트의 데이터갯수
+		int dataRow = promotionList.size();
+		pageUrl+="&tab=";
+		Paging paging = new Paging(dataRow, page);
+		model.addAttribute("searchUrl", searchUrl);
+		model.addAttribute("index", paging.getIndex());//현재페이지
+		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
+		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
+		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
+		model.addAttribute("promotionList", promotionList);
+		model.addAttribute("pageUrl", pageUrl);
+		return "member/myPage/myPromotionList";
 	}
 	
 	/*글 수정양식을 다 입력한후 수정을 눌렀을떄 오는 메서드*/

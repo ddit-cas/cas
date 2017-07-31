@@ -24,4 +24,6 @@ public interface PromotionDao {
 	public List<PromotionVO> selectTopClickPromotionList();
 	public List<PromotionListVO> searchWriterPromotion(String writer);
 	public List<PromotionListVO> searchtTitlePromotion(String title);
+	public List<PromotionListVO> selectMyPromotionList(String memId);
+	public List<PromotionListVO> searchtTitleMyPromotion(PromotionVO promotionVO);
 }

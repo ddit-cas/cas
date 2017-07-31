@@ -174,9 +174,30 @@ public class PromotionDaoImpl implements PromotionDao {
 	@Override
 	public List<PromotionListVO> searchtTitlePromotion(String title) {
 		List<PromotionListVO> promotionList=null;
-		System.out.println("제목"+title);
 		try {
 			promotionList=sqlMapClient.queryForList("searchtTitlePromotion",title);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return promotionList;
+	}
+
+	@Override
+	public List<PromotionListVO> selectMyPromotionList(String memId) {
+		List<PromotionListVO> promotionList=null;
+		try {
+			promotionList=sqlMapClient.queryForList("selectMyPromotionList",memId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return promotionList;
+	}
+
+	@Override
+	public List<PromotionListVO> searchtTitleMyPromotion(PromotionVO promotionVO) {
+		List<PromotionListVO> promotionList=null;
+		try {
+			promotionList=sqlMapClient.queryForList("searchtTitleMyPromotion",promotionVO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
