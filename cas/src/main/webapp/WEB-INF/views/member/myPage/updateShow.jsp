@@ -31,9 +31,10 @@
 	<div style="background-color: #26bbe2;height: 70px;padding: 16px 24px;margin: 10px 0;">
  		<label style="color:#ffffff; font-size:24px;"><strong>공연등록</strong></label>
  	</div>
-	<form name="tx_editor_form" style="width: 100%;height: auto;" id="tx_editor_form" action="/cas/member/insertPromotion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+	<form name="tx_editor_form" style="width: 100%;height: auto;" id="tx_editor_form" action="/cas/member/updatePromotion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 		<input type="hidden" name="contentWriter" value="${loginUser.memId }">
-		<input type="hidden" name="consertGeograp" >
+		<input type="hidden" name="contentNum" value="${promotionVO.contentNum }">
+		<input type="hidden" name="consertGeograp" value="${promotionVO.consertGeograp}" >
 		
 		<div style="float:left; width: 40%;">
 			<label>포스터</label>(그림을 클릭하여 업로드해주세요.)
@@ -115,9 +116,16 @@
 	</form>
 </div>
 
+<script>
+	loadContent();
+</script>
+
+
 
 <!-- Sample: Saving Contents -->
 <script type="text/javascript">
+
+
 	function insertCancel(){
 		window.location.href = "/cas/member/myPromotionList";
 	}
@@ -297,7 +305,6 @@ $(document).ready(function(){
     var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
     infowindow = new daum.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
 	
-	alert("("+geograp[0]+", "+geograp[1]+")");
     marker.setPosition(new daum.maps.LatLng(geograp[0],geograp[1]));
     marker.setMap(map);
     

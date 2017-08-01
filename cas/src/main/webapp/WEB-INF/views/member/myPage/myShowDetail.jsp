@@ -152,7 +152,7 @@
 <script>
 
 	function updatePromotion(){
-		location.href="/cas/member/updatePromotion?contentNum="+${promotionVO.contentNum};
+		location.href="/cas/member/updatePromotion_go?contentNum="+${promotionVO.contentNum};
 	}
 	
 	function deletePromotion(){

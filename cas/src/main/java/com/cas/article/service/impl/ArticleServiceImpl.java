@@ -6,6 +6,7 @@ import com.cas.article.dao.ArticleDao;
 import com.cas.article.dao.impl.ArticleDaoImpl;
 import com.cas.article.service.ArticleService;
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.ConsertVO;
 
 public class ArticleServiceImpl implements ArticleService{
 
@@ -40,8 +41,8 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 
 	@Override
-	public boolean updateFreeboard(ArticleVO article) {
-		return articleDao.updateFreeboard(article);
+	public void updateFreeboard(ArticleVO article,ConsertVO consert) {
+		articleDao.updateFreeboard(article,consert);
 	}
 
 	@Override
@@ -76,6 +77,11 @@ public class ArticleServiceImpl implements ArticleService{
 	@Override
 	public void deleteContent(String contentNum) {
 		articleDao.deleteContent(contentNum);
+	}
+
+	@Override
+	public void updateFreeboard(ArticleVO articleVO) {
+		articleDao.updateFreeboard(articleVO);
 	}
 
 }
