@@ -544,6 +544,7 @@ $('#testBtn').click(function(){
             <input type="hidden" name="contentWriter" value="${loginUser.memId }">
             <input type="hidden" name="contentTitle" value="${fund.contentTitle}">
             <input type="hidden" name="contentParentsContent" value="${fund.contentNum}">
+            <input type="hidden" name="contentImg" value="${loginUser.memFrofileimage}">
          </c:if>
          <input type="text" class="commentTextStyle commentText" id="contentContent" name="contentContent"> 
          <input type="button" class="commentWrite" onclick="comment('.commentForm')" value="댓글달기">
@@ -571,7 +572,7 @@ $('#testBtn').click(function(){
                <c:when test="${comment.contentParentsContent eq fund.contentNum }">
                   <li style="margin-bottom:20px;">
                      <div id="profileImg">
-                        <img src="/cas/resources/jim.png" style="width: 60px;height: 60px;"> 
+                        <img src="${comment.contentImg }" style="width: 60px;height: 60px;"> 
                      </div>
                      <div style="width: 100%">
                         <a href="#"><strong>${comment.contentWriter }</strong></a> <label>${comment.contentRegisDate }</label><br>
@@ -684,6 +685,7 @@ $('#testBtn').click(function(){
                                  <input type="hidden" name="contentWriter" value="${loginUser.memId }">
                                  <input type="hidden" name="contentTitle" value="${fund.contentTitle}">
                                  <input type="hidden" name="contentParentsContent" value="${comment.contentNum}">
+                                 <input type="hidden" name="contentImg" value="${loginUser.memFrofileimage}">
                               </c:if>
                               <input type="text" class="recommentTextStyle commentText" name="contentContent"> 
                               <input type="button" class=" commentWrite" onclick="comment('.commentForm${comment.contentNum }')" value="댓글달기">
@@ -696,7 +698,7 @@ $('#testBtn').click(function(){
             <!--                   댓글을 넣는 Div -->
                      <div style="margin-bottom:10px ">
                         <div style="width: 9%; float: left; text-align: center;">
-                           <img src="/cas/resources/jim.png" style="width: 40px; height: 40px;">
+                           <img src="${comment.contentImg }" style="width: 40px; height: 40px;">
                         </div>
                         <div style="width: 100%">
                            <a href="#"><strong>${comment.contentWriter}</strong></a> <label>${comment.contentRegisDate }</label><br>
@@ -803,6 +805,7 @@ $('#testBtn').click(function(){
                               <form class="commentForm${comment.contentNum }">
                                  <c:if test="${not empty loginUser.memId}">      
                                     <input type="hidden" name="contentWriter" value="${loginUser.memId }">
+                                    <input type="hidden" name="contentImg" value="${loginUser.memFrofileimage}">
                                     <input type="hidden" name="contentTitle" value="${fund.contentTitle}">
                                     <input type="hidden" name="contentParentsContent" value="${comment.contentParentsContent}">
                                  </c:if>
