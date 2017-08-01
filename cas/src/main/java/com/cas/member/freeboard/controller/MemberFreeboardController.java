@@ -68,6 +68,9 @@ public class MemberFreeboardController {
 	/*회원 본인이 글 삭제를 눌렀을시 오는 메서드*/
 	@RequestMapping("/member/deleteFreeboard")
 	public String deleteFreeboard(HttpServletRequest request){
+		ArticleVO article = new ArticleVO();
+		article.setConsertNum(request.getParameter("contentNum"));
+		articleService.disAcitve(article);
 		return null;
 	}
 }

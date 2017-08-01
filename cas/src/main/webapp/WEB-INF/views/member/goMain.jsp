@@ -1,3 +1,3 @@
 <script>
-	location.href="main";
+	location.href="/cas/main";
 </script>
