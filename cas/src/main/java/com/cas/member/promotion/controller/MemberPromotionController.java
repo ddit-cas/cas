@@ -70,7 +70,7 @@ public class MemberPromotionController {
 		consertVO.setConsertPlace(detailAddress+"("+address+")");
 		int result=promotionService.insertPromotion(articleVO, consertVO);
 		System.out.println(result);
-		return "redirect:/uccList";
+		return "redirect:/promotionList";
 	}
 	
 	/*글 수정양식을 다 입력한후 수정을 눌렀을떄 오는 메서드*/

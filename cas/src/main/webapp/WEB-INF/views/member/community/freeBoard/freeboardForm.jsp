@@ -303,6 +303,7 @@ li a:hover {
 				<c:when test='${not empty articleVO}'>
 					<div>
 						<button onclick='saveContent()' class="btn btn-primary">수정</button>
+						<button onclick='deleteContent()' class="btn btn-primary">삭제</button>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -312,6 +313,11 @@ li a:hover {
 				</c:otherwise>
 			</c:choose>
 			</div>
+			<script>
+				function deleteContent(){
+					location.href = "/cas/member/deleteFreeboard?contentNum=${articleVO.contentNum}";
+				}
+			</script>
 </body>
 
 
