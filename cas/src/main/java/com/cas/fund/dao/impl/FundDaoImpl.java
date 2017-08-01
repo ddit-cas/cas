@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.ContentFundVO;
 import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.db.dto.MostViewFundVO;
@@ -115,5 +116,16 @@ public class FundDaoImpl implements FundDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<ContentFundVO> selectEndFund(String fundingNum) {
+		List<ContentFundVO> resultList = null;
+		try {
+			resultList = sqlMapClient.queryForList("endFundList",fundingNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultList;
 	}
 }

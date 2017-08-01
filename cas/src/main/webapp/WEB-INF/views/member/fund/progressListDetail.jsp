@@ -535,7 +535,6 @@ $('#testBtn').click(function(){
 		
 </div>
 
-
 									<!-- detail css -->
 									<!--    댓글부분 -->
    <div id="commentDiv" style="width: 86%; margin-left: 213px; clear: both;">

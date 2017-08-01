@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cas.article.service.ArticleService;
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.CommentVO;
 import com.cas.db.dto.Paging;
+import com.cas.member.comment.service.CommentService;
 import com.cas.notice.service.NoticeService;
 
 @Controller
@@ -22,6 +24,13 @@ public class NoticeController {
 
 	public void setArticleService(ArticleService articleService) {
 		this.articleService = articleService;
+	}
+	
+	@Autowired
+	private CommentService commentService;
+	
+	public void setCommentService(CommentService commentService) {
+		this.commentService = commentService;
 	}
 	
 	@Autowired
@@ -71,6 +80,12 @@ public class NoticeController {
 	/*공지사항 세부내용을 보는 메서드*/
 	@RequestMapping("/noticeDetail")
 	public String noticeDetail(HttpServletRequest request,Model model){
+		String contentNum = request.getParameter("contentNum");
+		System.out.println(contentNum);
+		List<CommentVO> commentList=commentService.selectComment(contentNum);
+	      if(commentList.size()!=0){
+	         model.addAttribute("commentList",commentList);
+	      }
 		ArticleVO articleVO = articleService.selectArticle(request.getParameter("contentNum"), "B001");
 		model.addAttribute("articleVO",articleVO);
 		return "/member/story/notice/noticeDetail";
