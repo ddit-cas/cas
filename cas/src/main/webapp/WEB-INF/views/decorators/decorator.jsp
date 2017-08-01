@@ -387,7 +387,7 @@ h3 {
 				side : "right",
 				statue : statue,
 				pushBody : false,
-				remember : true
+				remember : false
 			});
 		});
 	</script>
