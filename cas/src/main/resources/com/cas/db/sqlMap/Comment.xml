@@ -15,11 +15,12 @@
 		<result property="contentParentsContent" column="content_parents_content"/>
 		<result property="contentWriter" column="content_writer"/>
 		<result property="contentCount" column="comment_count"/>
+		<result property="contentImg" column="content_img"/>
 	</resultMap>
 	
 	<insert id="insertComment" parameterClass="comment">
 		insert into Content values(CONTENT_SEQ.NEXTVAL,'B008',#contentTitle#,#contentContent#,SYSDATE
-			,#contentParentsContent#,#contentWriter#,'n','y',null,null,null)
+			,#contentParentsContent#,#contentWriter#,'n','y',null,#contentImg#,null)
 	</insert>
 	
 	<select id="selectCommentList" resultMap="selectComment" parameterClass="str">
@@ -29,6 +30,7 @@
 		       A.content_content,
 		       A.content_parents_content,
 		       A.content_writer,
+		       A.content_img,
 		       (select count(B.content_parents_content)
 		        from content B
 		        where A.content_num=B.content_parents_content

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cas.article.service.ArticleService;
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.InvestmentVO;
 import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.Paging;
 import com.cas.db.dto.PointVO;
@@ -106,6 +107,17 @@ public class MypageController {
 	@RequestMapping("/member/point")
 	public String memberPoint(HttpSession session,Model model){
 		String url = "/member/myPage/myPoint";
+		
+		String memId = ((MemberVO)session.getAttribute("loginUser")).getMemId();
+		
+		/*충전내역 리스트 가져오기*/
+		List<PointVO> chargeList = memService.selectChargeList(memId);
+		model.addAttribute("chargeList",chargeList);
+		
+		/*투자내역 리스트 가져오기*/
+		List<InvestmentVO> investList = memService.selectInvestMentList(memId);
+		model.addAttribute("investList",investList);
+		
 		return url;
 	}
 	/*회원이 포인트 충전하는 폼으로 가는 메서드*/
@@ -126,10 +138,13 @@ public class MypageController {
 	/*회원이 포인트 충전하는 메서드*/
 	@RequestMapping("/member/insertPoint")
 	public String memberInsertPoint(HttpSession session,Model model,PointVO point){
-		System.out.println(point.getChargingAmount());
-		System.out.println("충전할 사람"+point.getChargingMem());
-		String url = "/member/myPage/myPoint";
-		return url;
+		point.setChargingMem(((MemberVO)session.getAttribute("loginUser")).getMemId());
+		memService.insertChargePoint(point);
+		MemberVO member = (MemberVO) session.getAttribute("loginUser");
+		member.setMemPoint((Integer.parseInt(member.getMemPoint())+point.getChargingAmount())+"");
+		session.removeAttribute("loginUser");
+		session.setAttribute("loginUser", member);
+		return "redirect:/member/point";
 	}
 	
 	/*회원이 환전하는 메서드*/
@@ -145,6 +160,7 @@ public class MypageController {
 		String url = "/member/myPage/myCim";
 		return url;
 	}
+	
 	/*회원이 문의한 리스트로 볼수 있는 메소드*/
 	@RequestMapping("/member/myContact")
 	public String memberMycontact(HttpSession session,Model model, HttpServletRequest request){

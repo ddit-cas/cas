@@ -65,23 +65,23 @@
 <script>
 	$(function(){
 		$('.member').on('click',function(){
-			var memId = $('.member').attr('memId');
+			var memId = $(this).attr('memId');
 			location.href = '/cas/admin/memberDetail?searchRow='+memId;
 		});
 		$('.fund').on('click',function(){
-			var fundContentNum = $('.fund').attr('fundContentNum');
+			var fundContentNum = $(this).attr('fundContentNum');
 			location.href = "/cas/fundDetail?contentNum="+fundContentNum;
 		});
 		$('.free').on('click',function(){
-			var freeContentNum = $('.free').attr('freeContentNum');
+			var freeContentNum = $(this).attr('freeContentNum');
 			location.href = "/cas/freeboardDetail?contentNum="+freeContentNum;
 		});
 		$('.pro').on('click',function(){
-			var proContentNum = $('.pro').attr('proContentNum');
+			var proContentNum = $(this).attr('proContentNum');
 			location.href = "/cas/promotionDetail?contentNum="+proContentNum;
 		});
 		$('.ucc').on('click',function(){
-			var uccContentNum = $('.ucc').attr('uccContentNum');
+			var uccContentNum = $(this).attr('uccContentNum');
 			location.href = "/cas/uccDetail?contentNum="+uccContentNum;
 		});
 	});
@@ -197,7 +197,6 @@
 					<td>${fundList[i].fundingPresentAmount }</td>
 					<td>${fundList[i].fundingTargetAmount }</td>
 					<td>${fundList[i].contentRegisDate }</td>
-					<td class="hide">${fundList[i].contentNum }</td>
 				</tr>
 				</c:forEach>
 				</c:when>
@@ -268,24 +267,23 @@
 				</thead>
 				<tbody>
 				<c:choose>
-				<c:when test="${freeList.size()>0 }">
-				<c:forEach var="i" begin="${freeFirstRow }" end="${freeLastRow }" varStatus="status">
-				<tr class="free" freeContentNum="${freeList[i].contentNum }">
-					<th scope="row">${status.index+1 }</th>
-					<td>${freeList[i].contentTitle }</td>
-					<td>${freeList[i].contentWriter }</td>
-					<td>${freeList[i].contentRegisDate }</td>
-					<td class="hide">${freeList[i].contentNum }</td>
-				</tr>
-				</c:forEach>
-				</c:when>
-				<c:otherwise>
+					<c:when test="${freeList.size()>0 }">
+					<c:forEach var="i" begin="${freeFirstRow }" end="${freeLastRow }" varStatus="status">
+					<tr class="free" freeContentNum="${freeList[i].contentNum }">
+						<th scope="row">${status.index+1 }</th>
+						<td>${freeList[i].contentTitle }</td>
+						<td>${freeList[i].contentWriter }</td>
+						<td>${freeList[i].contentRegisDate }</td>
+					</tr>
+					</c:forEach>
+					</c:when>
+					<c:otherwise>
 					<tr>
 						<td colspan="4" style="text-align:center;">
 							해당 내용이 없습니다.
 						</td>
 					</tr>
-				</c:otherwise>	
+					</c:otherwise>	
 				</c:choose>
 				</tbody>
 			</table>
@@ -301,7 +299,7 @@
 							</li>
 							<c:forEach var="i" begin="${freeMinNum}" end="${freeMaxNum}">
 							<c:choose>
-							<c:when test="${freeIndex==i}">
+							<c:when test="${index==i}">
 							<li>
 								<a style="background: #aaa;" aria-controls="tab1" href="/cas/admin/main?${freeSelector }=${i}">
 									${i }
@@ -353,7 +351,6 @@
 						<td>${proList[i].contentTitle }</td>
 						<td>${proList[i].contentWriter }</td>
 						<td>${proList[i].contentRegisDate }</td>
-						<td class="hide">${proList[i].contentNum }</td>
 					</tr>
 					</c:forEach>
 					</c:when>
@@ -432,7 +429,6 @@
 						<td>${uccList[i].contentTitle }</td>
 						<td>${uccList[i].contentWriter }</td>
 						<td>${uccList[i].contentRegisDate }</td>
-						<td class="hide">${uccList[i].contentNum }</td>
 					</tr>
 					</c:forEach>
 					</c:when>

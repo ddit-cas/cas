@@ -105,4 +105,5 @@ public class PromotionServiceImpl implements PromotionService {
 	public List<PromotionListVO> searchTitleMyPromotion(PromotionVO promotionVO) {
 		return promotionDao.searchTitleMyPromotion(promotionVO);
 	}
+
 }

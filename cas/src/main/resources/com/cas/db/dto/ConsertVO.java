@@ -1,6 +1,7 @@
 package com.cas.db.dto;
 
 public class ConsertVO {
+	private String consertNum;
 	private String consertContent;
 	private String consertPlace;
 	private String startDate;
@@ -9,6 +10,12 @@ public class ConsertVO {
 	private String consertTicket;
 	private String consertGenre;
 	private String consertGeograp;
+	public String getConsertNum() {
+		return consertNum;
+	}
+	public void setConsertNum(String consertNum) {
+		this.consertNum = consertNum;
+	}
 	public String getConsertContent() {
 		return consertContent;
 	}

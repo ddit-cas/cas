@@ -249,7 +249,6 @@ $(function() {
 	        }        
 	       reader.readAsDataURL(file);
 	    });
-		alert(count);
 	});
 	
 	// 업로드 버튼으로 그림피일 업로드 후 미리보기

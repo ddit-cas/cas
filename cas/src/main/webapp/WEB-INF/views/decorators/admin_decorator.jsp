@@ -72,9 +72,12 @@
 							<li><a href="#">클라우드 펀딩</a></li>
 						</ul>
 					</li>
-					<li><a href="memberAnalysis">회원관리</a>
-					</li>
+					<li><a href="memberAnalysis">회원관리</a></li>
+					<li><a href="/cas/main">고객 페이지</a></li>
 				</ul>
+				<span style="margin-top:8px; margin-left:345px;" class="btn btn-danger">
+					<a style="color:white" href="/cas/logout">로그아웃</a>
+				</span>
 			</div>
 		</div>
 	</nav>

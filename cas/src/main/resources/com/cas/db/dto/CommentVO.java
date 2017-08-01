@@ -8,8 +8,14 @@ public class CommentVO {
 	private String contentParentsContent;
 	private String contentWriter;
 	private String contentCount;
+	private String contentImg;
 	
-	
+	public String getContentImg() {
+		return contentImg;
+	}
+	public void setContentImg(String contentImg) {
+		this.contentImg = contentImg;
+	}
 	public String getContentCount() {
 		return contentCount;
 	}

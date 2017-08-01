@@ -9,7 +9,7 @@
 <script>
 	swal("회원 가입 성공!", "CAS 회원이 되신 걸 축하합니다!", "success");
 	$('.confirm').on('click',function(){
-		location.href="/cas/loginForm";
-	});
+		location.href="/cas/joinMemberSuccess";
+	}); 
 </script>
 </body>

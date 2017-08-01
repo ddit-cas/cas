@@ -22,29 +22,17 @@
    }
 
 </script>
-
-<div class="company-wrap">
-   <div class="company-snb">
-      <h2>커뮤니티</h2>
-      <div class="">
-         <ul>
-            <li class="active"><a href="/cas/freeboardList">자유게시판</a></li>
-            <li><a href="/cas/promotionList">공연홍보</a></li>
-            <li><a href="/cas/uccList">CAS-UCC</a></li>
-         </ul>
-      </div>
-   </div>
-
-   <div class="company-cont" style="height: auto;">
-      <h3 class="box">공연 홍보 게시판</h3>
-         <div class="container">
-            <div class="row">
+<div id="body">
+   <div class="company-cont" style="width:100%;">
+      <h3 class="box">내가 등록한 공연</h3>
+         <div class="container" style="width:100%;">
+            <div class="row" style="width:102.8%">
                <div class="form-group">
                <input type="text" style="height: 32px;" id="searchWord" placeholder="제목을 입력하세요.">
                <input type="button" style="width:8%; display:inline;" class="form-control" value="검색" onclick="searchPromotion()">
                <input type="submit" style="width:10%; display:inline;" class="form-control" onclick="insertShowPage_go()" value="공연등록">
                </div>
-               <table class="table table-hover" style="width:750px; height: auto; margin: 0;">
+               <table class="table table-hover" style="width:100%; height: auto; margin: 0;">
                   <thead>
                      <tr>
                         <th style="text-align: center; font-size: 15px;">제목</th>
@@ -107,7 +95,8 @@
             </nav>
          </div>
       </div>
-
+	</div>
+</div>
 <script>
 	function insertShowPage_go(){
 	   document.location.href = "/cas/member/PromotionForm";
@@ -118,9 +107,9 @@
 	}
 	function searchPromotion(){
 		if($('#searchWord').val()!=null){
-			location.href="promotionSearch?writer="+$('#searchWord').val();
+			location.href="myPromotionSearch?title="+$('#searchWord').val();
 		}else{
-			location.href="promotionList";
+			location.href="myPromotionList";
 		}
 	}
 </script>

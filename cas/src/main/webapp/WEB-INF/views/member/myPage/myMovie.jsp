@@ -171,7 +171,8 @@ body {
 		<div class="container">
 			<div class="company-cont" style="height: auto; width:960px;">
 			<h3 class="box">My UCC</h3>
-			
+			<c:choose>
+			<c:when test="${myUccList.size() > 0 }">
 			<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
 <!-- 		************************************************************************* -->
 			<div class="table">
@@ -217,6 +218,13 @@ body {
 			</div>
 <!-- 			******************************************************************************** -->
 		</c:forEach>
+		</c:when>
+		<c:otherwise>
+				<div>
+					<div class="col-md-4" style="text-align: center;">해당 내용이 없습니다.</div>
+				</div>
+		</c:otherwise>
+		</c:choose>
 		</div>
 		</div>
 	</div>

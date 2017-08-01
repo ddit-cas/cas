@@ -56,6 +56,9 @@ public class FundController {
 		model.addAttribute("articleList",fundList);
 //		//현재페이지
 		String page = request.getParameter("tab");
+		if(page==null){
+			page="1";
+		}
 //		//받은 데이터리스트의 데이터갯수
 		int dataRow = fundList.size();
 		Paging paging = new Paging(dataRow, page, 6);

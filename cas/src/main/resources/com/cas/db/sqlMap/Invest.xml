@@ -23,5 +23,16 @@
 		insert into inves(funding_num, inves_amount, inves_date, inves_end_date, inves_mem)
 		values (#fundingNum#, #invesAmount#, SYSDATE, sysdate+1 , #invesMem#)
 	</insert>
+	
+	<update id="updateMemberPointInvest" parameterClass="invest">
+		update member
+		set
+		mem_point = mem_point-#invesAmount#
+		where mem_id=#invesMem#
+	</update>
+	
+	<select id="selectMemberInvestmentList" resultMap="selectInvest" parameterClass="str">
+		select * FROM INVESTMENTLIST WHERE INVES_MEM=#memId#
+	</select>
 
 </sqlMap>		

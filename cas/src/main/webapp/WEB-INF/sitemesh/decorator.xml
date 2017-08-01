@@ -20,5 +20,6 @@
 		<pattern>/daumeditor/**</pattern>
 		<pattern>/upload/**</pattern>
 		<pattern>/checkId</pattern>
+		<pattern>/error/**</pattern>
 	</excludes>
 </decorators>

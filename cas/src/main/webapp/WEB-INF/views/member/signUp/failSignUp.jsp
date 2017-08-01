@@ -9,7 +9,7 @@
 <script>
 	sweetAlert("회원 가입 실패", "죄송합니다. 다시 가입해주세요.", "error");
 	$('.confirm').on('click',function(){
-		location.href="/cas/main";
+		location.href="/cas/joinMemberFail";
 	});
 </script>
 </body>
