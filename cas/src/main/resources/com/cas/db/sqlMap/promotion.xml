@@ -108,6 +108,7 @@
 	<select id="selectPromotionList" resultMap="promotionList">
 		select *
 		from promotionlist
+		order by content_regis_date desc
 	</select>
 	
 	<select id="selectMyPromotionList" resultMap="promotionList" parameterClass="str">
