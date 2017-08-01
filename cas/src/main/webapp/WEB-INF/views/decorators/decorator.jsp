@@ -6,6 +6,7 @@
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -364,7 +365,8 @@ h3 {
 				<div id="myInfoDiv">
 					<img src="${loginUser.memFrofileimage }" class="img-circle" alt="Cinque Terre" style="width:65%; height:140px; margin-top: 15px;margin-bottom: 15px; background: #222;"> 
 					<label class="myInfoLabel">${loginUser.memName}</label> 
-					<label class="myInfoLabel">${loginUser.memPoint} point</label>
+					<fmt:parseNumber integerOnly="true" var="point" value="${loginUser.memPoint/100 }"></fmt:parseNumber>
+					<label class="myInfoLabel">${point} 구름</label>
 				</div>
 				<a href="/cas/member/mypage" class="btn btn-sm animated-button thar-four">개인정보</a> <a
 					href="/cas/member/uccList" class="btn btn-sm animated-button thar-four">내 영상</a> <a

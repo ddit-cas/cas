@@ -2,7 +2,9 @@ package com.cas.member.service.impl;
 
 import java.util.List;
 
+import com.cas.db.dto.InvestmentVO;
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.PointVO;
 import com.cas.db.dto.TeamVO;
 import com.cas.member.dao.MemberDao;
 import com.cas.member.service.MemberService;
@@ -93,6 +95,21 @@ public class MemberServiceImpl implements MemberService{
 	public int deleteMember(String memId) {
 		int result = memberDao.deleteMember(memId);
 		return result;
+	}
+
+	@Override
+	public void insertChargePoint(PointVO point) {
+		memberDao.insertChargePoint(point);
+	}
+
+	@Override
+	public List<PointVO> selectChargeList(String memId) {
+		return memberDao.selectChargeList(memId);
+	}
+
+	@Override
+	public List<InvestmentVO> selectInvestMentList(String memId) {
+		return memberDao.selectInvestmentList(memId);
 	}
 
 }

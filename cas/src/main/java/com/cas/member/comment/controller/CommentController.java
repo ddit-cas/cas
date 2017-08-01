@@ -21,6 +21,7 @@ public class CommentController {
 	@ResponseBody
 	@RequestMapping("/member/insertCommnet")
 	public void insertComment(Model model,CommentVO commentVO){
+		System.out.println(commentVO.getContentImg());
 		commentService.insertComment(commentVO);
 	}
 	

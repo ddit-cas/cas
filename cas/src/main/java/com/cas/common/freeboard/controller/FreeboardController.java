@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cas.article.service.ArticleService;
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.CommentVO;
 import com.cas.db.dto.Paging;
 import com.cas.db.dto.ReportVO;
+import com.cas.member.comment.service.CommentService;
 
 @Controller
 public class FreeboardController {
@@ -23,6 +25,13 @@ public class FreeboardController {
 	
 	public void setArticleService(ArticleService articleService) {
 		this.articleService = articleService;
+	}
+	@Autowired
+	private CommentService commentService;
+	
+
+	public void setCommentService(CommentService commentService) {
+		this.commentService = commentService;
 	}
 
 	/*자유게시판 리스트를 보여주는 메서드*/
@@ -75,7 +84,12 @@ public class FreeboardController {
 	/*자유게시판 글 세부내용으로 가는 메서드*/
 	@RequestMapping("/freeboardDetail")
 	public String freeboardDetail(HttpServletRequest request,Model model){
-		ArticleVO articleVO = articleService.selectArticle(request.getParameter("contentNum"), "B005");
+		String contentNum=request.getParameter("contentNum");
+		ArticleVO articleVO = articleService.selectArticle(contentNum, "B005");
+		List<CommentVO> commentList=commentService.selectComment(contentNum);
+	      if(commentList.size()!=0){
+	         model.addAttribute("commentList",commentList);
+	      }
 		model.addAttribute("articleVO",articleVO);
 		return "member/community/freeBoard/freeDetail";
 	}
