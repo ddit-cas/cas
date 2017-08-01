@@ -3,6 +3,7 @@ package com.cas.article.service;
 import java.util.List;
 
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.ConsertVO;
 
 public interface ArticleService {
 
@@ -22,7 +23,8 @@ public interface ArticleService {
 	
 	/*자유게시글을 활성화 상태면 비활성화 시키고 비활성화 상태면 활성화 시켜주는 메서드
 	 * 혹은 글장석자가 수정할시 작동하는 메서드*/
-	public boolean updateFreeboard(ArticleVO article);
+	public void updateFreeboard(ArticleVO articleVO, ConsertVO consertVO);
+	public void updateFreeboard(ArticleVO articleVO);
 	
 	/*게시물의 댓글들을 가져오는 메서드*/
 	public List<ArticleVO> selectArticleReplyList(String articleId);

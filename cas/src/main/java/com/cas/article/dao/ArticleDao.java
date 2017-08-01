@@ -3,6 +3,7 @@ package com.cas.article.dao;
 import java.util.List;
 
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.ConsertVO;
 
 public interface ArticleDao {
 
@@ -35,4 +36,6 @@ public interface ArticleDao {
 	public String selectArticleLikenum(String contentNum);
 
 	public void deleteContent(String contentNum);
+
+	public void updateFreeboard(ArticleVO article, ConsertVO consert);
 }

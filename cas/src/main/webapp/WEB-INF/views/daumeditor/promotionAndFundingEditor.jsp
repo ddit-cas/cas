@@ -486,7 +486,7 @@
 
 <!-- Sample: Loading Contents -->	
 <textarea id="sample_contents_source" style="display:none;">
-	${promotion.contentContent}
+	${promotionVO.contentContent}
 </textarea>
 <script type="text/javascript">
 	loadContent();

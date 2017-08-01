@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.cas.article.dao.ArticleDao;
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.ConsertVO;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 public class ArticleDaoImpl implements ArticleDao{
@@ -152,6 +153,17 @@ public class ArticleDaoImpl implements ArticleDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void updateFreeboard(ArticleVO article, ConsertVO consert) {
+			try {
+				sqlMapClient.update("updateArticle",article);
+				consert.setConsertNum((String)sqlMapClient.queryForObject("selectConsertNum", article));
+				sqlMapClient.update("updateConsert",consert);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 	}
 
 }

@@ -226,8 +226,8 @@
 			success : function(res) {
 				var code="<hr>";
 				$(res).each(function(i,e){
-					code+='<div class="showPerfomance"><a href="#" onclick="go_detailPage('+e.contentNum+')"><div class="famousShow">';
-					code+='<img src="'+e.contentImg+'"style="width: 100%; height: auto;">';
+					code+='<div class="showPerfomance"><a href="#" onclick="go_detailPage('+e.contentNum+')"><div class="famousShow" style="text-align-center;">';
+					code+='<img src="'+e.contentImg+'"style="height: 100%; height: auto;">';
 					code+='</div><div class="dayShowContent"><label class="fundTitle">';
 					code+=e.contentTitle+'</label> <br> <br><label class="fundHost">';
 					code+=e.contentWriter+'</label> <br> <label class="fundCategory">';
