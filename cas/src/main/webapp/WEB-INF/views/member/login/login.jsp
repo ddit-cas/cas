@@ -195,7 +195,7 @@
 						<div class="eff-8"></div>
 						<a href="#" onclick="login(); return false;">로그인</a>
 					</div>
-					<input type="hidden" name="goMain" value="/cas/main">
+					<input type="hidden" name="goMain" value="main">
 				</div>
 			</form>
 			<script>
