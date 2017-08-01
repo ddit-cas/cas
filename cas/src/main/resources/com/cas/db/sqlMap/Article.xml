@@ -173,4 +173,8 @@
 	<select id="articleLikenum" parameterClass="str" resultClass="str">
 		select count(*) from recom where recom_content=#contentNum#
 	</select>
+	
+	<select id="selectConsertNum" parameterClass="article" resultClass="str">
+		select consert_num from content where content_num=#contentNum#
+	</select>
 </sqlMap>

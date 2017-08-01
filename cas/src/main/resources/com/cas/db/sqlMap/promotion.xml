@@ -72,7 +72,7 @@
 	
 	<insert id="insertConsert" parameterClass="consert">
 		INSERT INTO	CONSERT VALUES(CONSERT_SEQ.NEXTVAL,#consertContent#,#consertPlace#
-			,TO_DATE(#startDate#,'yyyy-mm-dd'),TO_DATE(#endDate#,'yyyy-mm-dd'),60,#consertTicket#,#consertGenre#,#consertGeograp#)
+			,TO_DATE(#startDate#,'yyyy-mm-dd'),TO_DATE(#endDate#,'yyyy-mm-dd'),#consertTime#,#consertTicket#,#consertGenre#,#consertGeograp#)
 	</insert>
 	
 	<select id="selectLastConsertNum" resultClass="str">
@@ -160,4 +160,16 @@
 		select * from ORDERLIKEPROMOTION
 	</select>      
 	
+	<update id="updateConsert" parameterClass="consert">
+		update consert set
+				consert_content=#consertContent#,
+				consert_place=#consertPlace#,
+				perfomance_start_date=TO_DATE(#startDate#,'yyyy-mm-dd'),
+				perfomance_end_date=TO_DATE(#endDate#,'yyyy-mm-dd'),
+				consert_time=#consertTime#,
+				consert_ticket=#consertTicket#,
+				consert_genre=#consertGenre#,
+				consert_geograp=#consertGeograp#
+			 where consert_num=#consertNum#
+	</update>
 </sqlMap>
