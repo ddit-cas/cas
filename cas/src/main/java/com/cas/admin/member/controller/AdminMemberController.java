@@ -78,9 +78,15 @@ public class AdminMemberController {
 		memVO.setMemAge(age+"");
 		System.out.println("삭제여부 : "+memVO.getEnabled());
 		//성별
-		List<MostViewFundVO> confirmSex = fundService.selectTopClickFundList(classfyCode);
+		String gender = memVO.getClassifyCode().substring(3, 4);
+		String confirmSex = "";
+		if("m".equals(gender)){
+			confirmSex = "남";
+		}else{
+			confirmSex = "여";
+		}
 		model.addAttribute("memberDetail", memVO);
-		model.addAttribute("memberDetailSex", confirmSex.get(0).getSex());
+		model.addAttribute("memberDetailSex", confirmSex);
 		
 		return url;
 	}

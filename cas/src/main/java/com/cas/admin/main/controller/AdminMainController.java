@@ -40,6 +40,7 @@ public class AdminMainController {
 		String memKey = request.getParameter("memKey");
 		System.out.println("index : "+memIndex);
 		List<MemberVO> memList = memberService.selectSeachMember(memIndex, memKey); 
+		System.out.println("멤버리스트 사이즈 : "+memList.size());
 		model.addAttribute("memList", memList);
 		model.addAttribute("memSelector", "memIndex="+memIndex+"&memKey="+memKey+"&memTab");
 		//페이징 처리	
@@ -62,13 +63,14 @@ public class AdminMainController {
 		String fundIndex = request.getParameter("fundIndex");
 		String fundKey = request.getParameter("fundKey");
 		List<IngFundVO>fundList = adminFundAnalysisService.selectSearchFundList(fundKey, fundIndex);
+		System.out.println("fund리스트 사이즈 : "+fundList.size());
 		model.addAttribute("fundList",fundList);	
 		model.addAttribute("fundSelector", "fundIndex="+fundIndex+"&fundKey="+fundKey+"&fundTab");
 		//페이징 처리	
 		//현재페이지
 		String fundPage = request.getParameter("FundTab");
 		if(fundPage == null){
-			fundPage = "1";
+			fundPage = "0";
 		}
 		//받은 데이터리스트의 데이터갯수
 		int fundDataRow = fundList.size();
@@ -82,13 +84,14 @@ public class AdminMainController {
 		
 	//자유게시판
 		List<ArticleVO> freeList = articleService.selectArticleList("B005");
+		System.out.println("freeboard리스트 사이즈 : "+freeList.size());
 		model.addAttribute("freeList",freeList);	
 		model.addAttribute("freeSelector","freeTab");
 		//페이징 처리	
 		//현재페이지
 		String freePage = request.getParameter("freeTab");
 		if(freePage == null){
-			freePage = "1";
+			freePage = "0";
 		}
 		//받은 데이터리스트의 데이터갯수
 		int freeDataRow = freeList.size();
@@ -102,6 +105,7 @@ public class AdminMainController {
 		
 	//홍보게시판
 		List<ArticleVO> proList = articleService.selectArticleList("B007");
+		System.out.println("pro리스트 사이즈 : "+proList.size());
 		model.addAttribute("proList",proList);	
 		model.addAttribute("proSelector", "&proTab");
 		//페이징 처리	
@@ -122,7 +126,7 @@ public class AdminMainController {
 
 	//ucc게시판
 		List<ArticleVO> uccList = articleService.selectTopUccList();
-		
+		System.out.println("ucc리스트 사이즈 : "+uccList.size());
 		model.addAttribute("uccList",uccList);	
 		model.addAttribute("uccSelector", "&uccTab");
 		//페이징 처리	

@@ -163,6 +163,7 @@ public class MemberPromotionController {
 		String detailAddress=(String)request.getParameter("detailAddress");
 		consertVO.setConsertPlace(detailAddress+":"+address);
 		articleService.updateFreeboard(articleVO,consertVO);
+		System.out.println("왜페이지를 못찾지?");
 		return promotionDetail(session, request, model);
 	}
 	@RequestMapping("/member/updatePromotion_go")
