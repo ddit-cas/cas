@@ -66,7 +66,7 @@ div.company-wrap {
 <script>
 
 function freeBoardDis(){
-	location.href="/cas/admin/freeboardUpdate?contentNum=${articleVO.contentNum}";
+	location.href="/cas/member/freeboardForm?articleId=${articleVO.contentNum}";
 	
 }
 
@@ -123,8 +123,10 @@ function freeBoardDis(){
 									id="submit" value="목록" class="btn btn-info pull-right" /></a>
 								<div class="form-group" style="float: left;">
 									<button data-toggle="modal" data-target="#squarespaceModal"
-										class="btn btn-primary center-block">신고</button>
-									<button onclick="freeBoardDis();">삭제</button>
+										style="float:left;" class="btn btn-primary center-block">신고</button>
+										<c:if test="${loginUser.memId==articleVO.contentWriter }">
+									<button class="btn btn-primary center-block" onclick="freeBoardDis();">수정</button>
+										</c:if>
 								</div>
 							</div>
 						</div>

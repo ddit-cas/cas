@@ -85,7 +85,7 @@ public class MemberPromotionController {
 		consertVO.setConsertPlace(detailAddress+":"+address);
 		int result=promotionService.insertPromotion(articleVO, consertVO);
 		System.out.println(result);
-		return myPromotionList(session, request, model);
+		return "redirect:/promotionList";
 	}
 	
 	@RequestMapping("/member/myPromotionList")

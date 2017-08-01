@@ -112,9 +112,11 @@ public class MainController {
 		if (topClickPromotionList.size()<3) {
 			List<PromotionListVO> list = promotionService.selectPromotionList();
 			int i=0;
-			while(topClickPromotionList.size()<3){
-				topClickPromotionList.add(list.get(i));
-				i++;
+			if (list.size()!=0) {
+				while(topClickPromotionList.size()<3){
+					topClickPromotionList.add(list.get(i));
+					i++;
+				}
 			}
 		}
 		
