@@ -7,6 +7,8 @@
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="fund" type="com.cas.db.dto.FundVO"/>
+	<typeAlias alias="endFund" type="com.cas.db.dto.ContentFundVO"/>
+	
 	<resultMap class="com.cas.db.dto.FundVO" id="selectFund">
 		<result property="fundingNum" column="funding_Num" />
 		<result property="fundingTargetAmount" column="funding_Target_Amount" />
@@ -15,6 +17,16 @@
 		<result property="fundingStartDate" column="funding_Start_Date" />
 		<result property="stateCode" column="state_code" />
 	</resultMap>
+	
+	<resultMap class="com.cas.db.dto.ContentFundVO" id="endFundList">
+		<result property="fundingTargetAmount" column="funding_target_amount"/>
+		<result property="fundingPresentAmount" column="funding_present_amount"/>
+		<result property="fundingEndDate" column="funding_end_date"/>
+		<result property="contentImg" column="content_img"/>
+		<result property="contentTitle" column="content_title"/>
+		<result property="contentContent" column="content_content"/>
+	</resultMap>
+	
 	<!-- 펀딩 등록 -->
 	<insert id="insertFund" parameterClass="fund">
 		insert into CROWDFUNDING(funding_Num, funding_Target_Amount, funding_Present_Amount, funding_Start_Date, funding_End_Date, state_Code)
@@ -71,4 +83,13 @@
 		and (to_char(sysdate,'yyyymmdd')-to_char(funding_end_date,'yyyymmdd'))>0
 		]]>
 	</update>
+	
+	<select id="endFundList" resultMap = "endFundList">
+		select funding_target_amount,funding_present_amount,funding_end_date,
+		content_img,content_title,content_content
+		from crowdfunding cf , content c 
+		where to_date(sysdate,'yy/MM/dd')>to_date(cf.funding_end_date,'yy/MM/dd')	
+	</select>
+	
+	
 </sqlMap>

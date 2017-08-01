@@ -3,6 +3,7 @@ package com.cas.fund.dao;
 import java.util.List;
 
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.ContentFundVO;
 import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.db.dto.MostViewFundVO;
@@ -35,4 +36,6 @@ public interface FundDao {
 
 	/*날짜가종료된 펀딩들을 엔드로 만드는 메서드*/
 	public void updateEndFund();
+	
+	public List<ContentFundVO> selectEndFund(String fundingNum);
 }

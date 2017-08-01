@@ -194,14 +194,14 @@
 					</tbody>
 				</table>
 			</div>
-			<div id="menu1" class="tab-pane fade">
-				<img id="topFundImg" src="${topPromotionList[0].contentImg }"
+			<div id="menu1" class="tab-pane fade" style="text-align: center;">
+				<img id="topPromotionImg" src="${topPromotionList[0].contentImg }"
 					style="wdith: 100%; height: 150px; margin-top: 10px; margin-bottom: 10px;">
 				<br>
 				<table class="table table-hover">
 					<tbody>
 					<c:forEach items="${topPromotionList}" var="promotion" varStatus="status">
-						<tr class="topFundRow" imgUrl="${promotion.contentImg }" contentUrl="/cas/promotionDetail?contentNum=${promotion.contentNum }">
+						<tr class="topPromotionRow" imgUrl="${promotion.contentImg }" contentUrl="/cas/promotionDetail?contentNum=${promotion.contentNum }">
 							<td>${status.index+1 }</td>
 							<td>${promotion.contentTitle }</td>
 						</tr>
@@ -227,6 +227,12 @@
 						$("#topFundImg").attr('src',$(this).attr("imgUrl"));
 					})
 					$(".topFundRow").click(function(){
+						location.href=$(this).attr("contentUrl");
+					})
+					$(".topPromotionRow").hover(function(){
+						$("#topPromotionImg").attr('src',$(this).attr("imgUrl"));
+					})
+					$(".topPromotionRow").click(function(){
 						location.href=$(this).attr("contentUrl");
 					})
 				</script>
@@ -257,9 +263,9 @@
 <!-- 		펀딩 폼 -->
 		<c:forEach items="${topClickFundList}" var="fund">
 		<a href="/cas/fundDetail?contentNum=${fund.contentNum }">
-			<div class="perfomance">
+			<div class="perfomance" style="text-align: center;">
 				<div class="famousFund">
-					<img src='${fund.contentImg }'/>' style="width:100%;height: auto;">
+					<img src='${fund.contentImg }' style="height: 100%;">
 				</div>
 				<div class="famousFundContent">
 					<div class="progress" style="margin-top:0; margin-bottom: 0;background: #b2ecff">
@@ -295,8 +301,8 @@
 		<c:forEach items="${topClickPromotionList}" var="fund">
 		<a href="/cas/promotionDetail?contentNum=${fund.contentNum }">
 			<div class="perfomance">
-				<div class="famousFund">
-					<img src='${fund.contentImg }'/>' style="width:100%;height: auto;">
+				<div class="famousFund" style="text-align: center;">
+					<img src='${fund.contentImg }' style="height: 100%;"/>
 				</div>
 				<div class="famousFundContent">
 					<label class="fundTitle">제목 : ${fund.contentTitle }</label>
@@ -305,8 +311,6 @@
 					<br>
 					<label>장르 : ${fund.genreName }</label><br>
 					<label>기간 : ${fund.startDate }~${fund.endDate }</label>
-					<h5>-간략한 내용-</h5>
-					<label>${fund.consertContent }</label>
 				</div>
 			</div>
 		</a>

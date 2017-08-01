@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.cas.db.dto.InvestmentVO;
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.PointVO;
 import com.cas.db.dto.ReadInfoVO;
 import com.cas.db.dto.TeamVO;
 import com.cas.member.dao.MemberDao;
@@ -173,6 +175,38 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public void insertChargePoint(PointVO point) {
+		try {
+			sqlMapClient.update("insertPoint",point);
+			sqlMapClient.update("updateMemberPoint",point);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public List<PointVO> selectChargeList(String memId) {
+		List<PointVO> chargeList = null;
+		try {
+			chargeList = sqlMapClient.queryForList("selectChargeList",memId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return chargeList;
+	}
+
+	@Override
+	public List<InvestmentVO> selectInvestmentList(String memId) {
+		List<InvestmentVO> investmentList = null;
+		try {
+			investmentList = sqlMapClient.queryForList("selectMemberInvestmentList",memId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return investmentList;
 	}
 
 }

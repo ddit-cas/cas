@@ -71,23 +71,23 @@
 		</c:choose>			
 					<label class="control-label col-sm-2" for="memId">아이디</label>
 					<div class="col-sm-4">
-					    <input type="text" class="form-control" name="memId" value="${memberDetail.memId }" readonly>
+					    <input type="text" class="form-control" name="memId" value="${memberDetail.memId }" disabled>
 					</div>
 						
 					<p id="enter"></p>
 
 						<label class="control-label col-sm-2" for="memPwd">비밀번호</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" value="${memberDetail.memPwd }" readonly>
+							<input type="text" class="form-control" value="${memberDetail.memPwd }" disabled>
 						</div>
 					<p id="enter"></p>
 						<label class="control-label col-sm-2" for="memName">이름</label>
 						<div class="col-sm-2">
-						    <input type="text" class="form-control" value="${memberDetail.memName }" readonly>
+						    <input type="text" class="form-control" value="${memberDetail.memName }" disabled>
 						</div>
 						<label class="control-label col-sm-2" for="memAge" style="margin-left:-130px;">/ 나이</label>
 						<div class="col-sm-1" style="width:130px;">
-						    <input type="text" class="form-control" value="${memberDetail.memAge }" readonly>
+						    <input type="text" class="form-control" value="${memberDetail.memAge }" disabled>
 						</div>
 					<p id="enter"></p>
 <script>
@@ -102,59 +102,59 @@
 </script>					
 						<label class="control-label col-sm-2" for="memBirthdate">생년월일</label>
 						<div class="col-sm-2">
-							<input type="date" class="form-control memBirthdate" value="${memberDetail.memBirthdate }" readonly>
+							<input type="date" class="form-control memBirthdate" value="${memberDetail.memBirthdate }" disabled>
 						</div>
 						<div class="col-sm-3">
 						<label class="control-label col-sm-5" for="memSex" style="margin-left:-58px;" id="gender" gender="${memberDetailSex }">/ 성별</label>
 							<div data-toggle="buttons">
-								<label id="male" class="btn btn-default btn-circle btn-lg" style="background-image:url('/cas/resources/images/male.png'); background-position:center top;"><input type="radio" name="memSex" value="남" readonly></label>
-								<label id="female" class="btn btn-default btn-circle btn-lg" style="background-image:url('/cas/resources/images/female.png'); background-position:center top;"><input type="radio" name="memSex" value="여" readonly></label>
+								<input id="male" class="btn btn-default btn-circle btn-lg" style="background-image:url('/cas/resources/images/male.png'); background-position:center top;" disabled>
+								<input id="female" class="btn btn-default btn-circle btn-lg" style="background-image:url('/cas/resources/images/female.png'); background-position:center top;" disabled>
 							</div>
 						</div>
 					
 					<p id="enter"></p>
 						<label class="control-label col-sm-2" for="memHp">전화번호</label>
 						<div class="col-sm-4">
-						    <input type="tel" class="form-control" value="${memberDetail.memHp }" readonly>
+						    <input type="tel" class="form-control" value="${memberDetail.memHp }" disabled>
 						</div>
 					<p id="enter"></p>
 						<label class="control-label col-sm-2" for="memEmail">이메일</label>
 						<div class="col-sm-4">
-						    <input type="email" class="form-control" value="${memberDetail.memEmail }" readonly>
+						    <input type="email" class="form-control" value="${memberDetail.memEmail }" disabled>
 						</div>
 					</div>
 					</div>
 						<label class="control-label col-sm-1" for="memMailnumber">우편번호</label>
 						<div class="col-sm-2">
-						    <input type="text" class="form-control" value="${memberDetail.memMailnumber }" readonly>
+						    <input type="text" class="form-control" value="${memberDetail.memMailnumber }" disabled>
 						</div>
 						<label class="control-label col-sm-1" for="memAddr">주소</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" value="${memberDetail.memAddr1 } &nbsp; ${memberDetail.memAddr2 }" readonly>
+							<input type="text" class="form-control" value="${memberDetail.memAddr1 } &nbsp; ${memberDetail.memAddr2 }" disabled>
 						</div>
 					<p id="enter"></p>
 						<label class="control-label col-sm-1" for="memNick">닉네임</label>
 						<div class="col-sm-2">
-					 	   <input type="text" class="form-control" value="${memberDetail.memNick }" readonly>
+					 	   <input type="text" class="form-control" value="${memberDetail.memNick }" disabled>
 						</div>
 						
 						<label class="control-label col-sm-1" for="memCertif">경력</label>
 						<div class="col-sm-2">
-						    <input type="text" class="form-control" value="${memberDetail.memCareer }" readonly>
+						    <input type="text" class="form-control" value="${memberDetail.memCareer }" disabled>
 						</div>
 						
 						<label class="control-label col-sm-1" for="memActive">활동지역</label>		
 						<div class="col-sm-2">
-							<input type="text" class="form-control" value="${memberDetail.memActive }" readonly>
+							<input type="text" class="form-control" value="${memberDetail.memActive }" disabled>
 					    </div>
 					<p id="enter"></p>	
 						<label class="control-label col-sm-1" for="memActive">가입일</label>		
 						<div class="col-sm-3">
-							<input type="text" class="form-control" value="${memberDetail.memSginup_date }" readonly>
+							<input type="text" class="form-control" value="${memberDetail.memSginup_date }" disabled>
 					    </div>						
 						<label class="control-label col-sm-2" for="memActive">포인트&nbsp;(<i class="fa fa fa-jsfiddle">)</i></label>		
 						<div class="col-sm-3">
-							<input type="text" class="form-control" value="${memberDetail.memPoint }" readonly>
+							<input type="text" class="form-control" value="${memberDetail.memPoint }" disabled>
 					    </div>						
 				</div>
 		</fieldset>

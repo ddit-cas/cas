@@ -45,13 +45,24 @@ div.company-wrap {
 			</div>
 		</div>
 	</div>
+<style>
+	li.fundList {
+		height: 453px;
+		margin-top: 10px;
+	}
+	
+	div.caption {
+		height: 100px;
+	}
+</style>	
+	
 	<div class="contents" style="margin-top: 5px; width: 960px; margin-left: 213px;">
 		<div class="company-cont" style=" width: 960px;">
 		<h3 class="box">크라우드 펀딩</h3>
 		<div class="row-fluid">
 		<ul class="thumbnails list-unstyled">
 			<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
-				<li class="col-md-4">
+				<li class="col-md-4 fundList">
 					<div class="thumbnail" style="padding: 0">
 						<div style="padding: 4px; width: 100%;">
 							<a href="/cas/fundDetail?contentNum=${fund[i].contentNum }"><img
@@ -78,8 +89,8 @@ div.company-wrap {
 								<div class="col-md-4">
 									<b>진행중</b>
 								</div>
-								<div class="col-md-4" style="float: right;">
-									<b>${fund[i].fundingPresentAmount}원</b>
+								<div class="col-md-4" style="padding-left:0px;">
+									<b style="float:right;">${fund[i].fundingPresentAmount}원</b>
 								</div>
 							</div>
 						</div>

@@ -166,6 +166,7 @@
 				<input type="hidden" name="contentWriter" value="${loginUser.memId }">
 				<input type="hidden" name="contentTitle" value="${promotionVO.contentTitle}">
 				<input type="hidden" name="contentParentsContent" value="${promotionVO.contentNum}">
+				<input type="hidden" name="contentImg" value="${loginUser.memFrofileimage}">
 			</c:if>
 			<input type="text" class="commentTextStyle commentText" id="contentContent" name="contentContent"> 
 			<input type="button" class="commentWrite" onclick="comment('.commentForm')" value="댓글달기">
@@ -193,7 +194,7 @@
 					<c:when test="${comment.contentParentsContent eq promotionVO.contentNum }">
 						<li style="margin-bottom:20px;">
 							<div id="profileImg">
-								<img src="/cas/resources/jim.png" style="width: 60px;height: 60px;"> 
+								<img src="${comment.contentImg }" style="width: 60px;height: 60px;"> 
 							</div>
 							<div style="width: 100%">
 								<a href="#"><strong>${comment.contentWriter }</strong></a> <label>${comment.contentRegisDate }</label><br>
@@ -276,6 +277,7 @@
 																</div>
 																<input type="hidden" name="report_date" value="${report.report_date}">
 																<input type="hidden" name="contentWriter" value="${comment.contentWriter}">
+																<input type="hidden" name="contentImg" value="${loginUser.memFrofileimage}">
 																<input type="hidden" name="contentNum" value="${comment.contentNum}">
 																<input type="hidden" name="boardCode" value="B007">
 															
@@ -305,6 +307,7 @@
 										<c:if test="${not empty loginUser.memId}">
 											<input type="hidden" name="contentWriter" value="${loginUser.memId }">
 											<input type="hidden" name="contentTitle" value="${promotionVO.contentTitle}">
+											<input type="hidden" name="contentImg" value="${loginUser.memFrofileimage}">
 											<input type="hidden" name="contentParentsContent" value="${comment.contentNum}">
 										</c:if>
 										<input type="text" class="recommentTextStyle commentText" name="contentContent" style="margin-left:9%;"> 
@@ -318,7 +321,7 @@
 				<!-- 						댓글을 넣는 Div -->
 							<div style="margin-bottom:10px ">
 								<div style="width: 9%; float: left; text-align: center;">
-									<img src="/cas/resources/jim.png" style="width: 40px; height: 40px;">
+									<img src="${comment.contentImg }" style="width: 40px; height: 40px;">
 								</div>
 								<div style="width: 100%">
 									<a href="#"><strong>${comment.contentWriter}</strong></a> <label>${comment.contentRegisDate }</label><br>
@@ -427,6 +430,7 @@
 												<input type="hidden" name="contentWriter" value="${loginUser.memId }">
 												<input type="hidden" name="contentTitle" value="${promotionVO.contentTitle}">
 												<input type="hidden" name="contentParentsContent" value="${comment.contentParentsContent}">
+												<input type="hidden" name="contentImg" value="${loginUser.memFrofileimage}">
 											</c:if>
 											<input type="text" class="reRecommentTextStyle commentText" name="contentContent"> 
 											<input type="button" class="commentWrite" onclick="comment('.commentForm${comment.contentNum }')" value="댓글달기">

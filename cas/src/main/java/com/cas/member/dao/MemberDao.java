@@ -2,7 +2,9 @@ package com.cas.member.dao;
 
 import java.util.List;
 
+import com.cas.db.dto.InvestmentVO;
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.PointVO;
 import com.cas.db.dto.TeamVO;
 
 public interface MemberDao {
@@ -45,4 +47,12 @@ public interface MemberDao {
 
 	/*회원 삭제 및 탈퇴*/
 	public int deleteMember(String memId);
+
+	public void insertChargePoint(PointVO point);
+
+	/*충전내역 가져오기 메서드*/
+	public List<PointVO> selectChargeList(String memId);
+
+	/*투자내역 가져오기*/
+	public List<InvestmentVO> selectInvestmentList(String memId);
 }

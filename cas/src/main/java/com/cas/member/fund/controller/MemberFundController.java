@@ -115,8 +115,13 @@ public class MemberFundController {
 	
 	@RequestMapping("/member/insertInvestment")
 	public String fundInvestment(HttpServletRequest request,HttpSession session,InvestmentVO invest){
-		invest.setInvesMem(((MemberVO)session.getAttribute("loginUser")).getMemId());
+		MemberVO member = (MemberVO)session.getAttribute("loginUser");
+		invest.setInvesMem(member.getMemId());
+		invest.setInvesAmount(invest.getInvesAmount()*100);
 		investmentService.insertInvestment(invest);
+		member.setMemPoint((Integer.parseInt(member.getMemPoint())-invest.getInvesAmount())+"");
+		session.removeAttribute("loginUser");
+		session.setAttribute("loginUser", member);
 		return "redirect:/fundDetail?contentNum="+invest.getFundingNum();
 	}
 }

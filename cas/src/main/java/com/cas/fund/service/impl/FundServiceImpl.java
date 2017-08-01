@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.ContentFundVO;
 import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.db.dto.MostViewFundVO;
@@ -66,5 +67,12 @@ public class FundServiceImpl implements FundService{
 	@Override
 	public List<MostViewFundVO> selectShortFundList(int rownum) {
 		return fundDao.selectShortFundList(rownum);
+	}
+
+	@Override
+	public List<ContentFundVO> selectEndFund(String fundingNum) {
+		List<ContentFundVO> resultList = null;
+		resultList = fundDao.selectEndFund(fundingNum);
+		return resultList;
 	}
 }

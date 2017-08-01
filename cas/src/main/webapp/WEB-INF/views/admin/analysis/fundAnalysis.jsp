@@ -115,7 +115,6 @@ $(function(){
 $(function(){
 	$('.fundRow').on('click',function(){
 		var contentNum = $(this).attr('contentNum');
-		alert(contentNum);
 		location.href="/cas/fundDetail?contentNum="+contentNum;
 	});
 });	

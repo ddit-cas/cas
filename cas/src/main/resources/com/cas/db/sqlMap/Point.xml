@@ -15,6 +15,22 @@
 		<result property="chargingMem" column="charging_mem"/>
 	</resultMap>
 	
+	<insert id="insertPoint" parameterClass="Point">
+		insert into charging (CHARGING_NUM,CHARGING_AMOUNT,CHARGING_DATE,CHARGING_MEM)
+		values(CHARGING_SEQ.nextval,#chargingAmount#,sysdate,#chargingMem#)
+	</insert>
+	
+	<select id="selectChargeList" resultMap="selectPoint">
+		select * from charging where charging_mem=#memId# order by 3 desc
+	</select>
+	
+	<update id="updateMemberPoint" parameterClass="Point">
+		update member 
+		set
+		mem_point = mem_point+#chargingAmount#
+		where mem_id=#chargingMem#
+	</update>
+	
 	<select id="selectPoint" parameterClass="str" resultMap="selectPoint">
 		select * from charging where charging_mem = #chargingMem#
 	</select>
@@ -24,9 +40,4 @@
 		order by charging_date
 	</select>
 	
-	<update id="insertPoint" parameterClass="str">
-		insert into charging(charging_num, charging_amount, charging_date, charging_mem)
-		values(charging_seq.nextval, #chargingAmount#, sysdate, #chargingMem#)
-		where charging_mem = #chargingMem#
-	</update>                       
 </sqlMap>

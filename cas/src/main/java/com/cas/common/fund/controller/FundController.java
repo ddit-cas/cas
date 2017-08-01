@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
+
+
 import com.cas.db.dto.CommentVO;
+import com.cas.db.dto.ContentFundVO;
+import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.db.dto.LikeVO;
 import com.cas.db.dto.MemberVO;
@@ -52,6 +56,9 @@ public class FundController {
 		model.addAttribute("articleList",fundList);
 //		//현재페이지
 		String page = request.getParameter("tab");
+		if(page==null){
+			page="1";
+		}
 //		//받은 데이터리스트의 데이터갯수
 		int dataRow = fundList.size();
 		Paging paging = new Paging(dataRow, page, 6);
@@ -69,6 +76,11 @@ public class FundController {
 	/*종료된 크라우드펀딩목록으로 가는 메서드*/
 	@RequestMapping("/endFundList")
 	public String endFundList(Model model,HttpServletRequest request){
+		
+		String fundingNum = request.getParameter("fundingNum");
+		List<ContentFundVO> resultList = fundService.selectEndFund(fundingNum);
+		System.out.println("종료펀드 들어와라 제발 : " + resultList.get(0).getContentContent());
+		model.addAttribute("resultList",resultList);
 		String url = "member/fund/endFundList";
 		return url;
 	}

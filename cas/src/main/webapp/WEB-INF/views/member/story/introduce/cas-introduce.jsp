@@ -3,7 +3,9 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <body>
-	<style>
+
+<style>
+	
 #map {
 	width: 900px;
 	height: 300px;
@@ -85,16 +87,16 @@ div.company-cont3 h3.box3 {
 			<div class="company-cont">
 				<h3 class="box">VISION</h3>
 				<div class="imgDiv">
-					<img src="resources/KakaoTalk_20170730_154539579.jpg" alt="">
+					<img src="resources/story_top.jpg" alt="">
 				</div>
 			</div>
 			<!--//company-cont-->
 
 
-			<div class="company-cont2">
+			<div class="company-cont2" style="padding-left: 30px;">
 				<h3 class="box2">PARTNERSHIP</h3>
 				<div class="imgDiv">
-					<img src="resources/gg.jpg" alt="">
+					<img src="resources/story_content.jpg" alt="">
 				</div>
 			</div>
 			<!--//company-cont-->
@@ -120,7 +122,7 @@ div.company-cont3 h3.box3 {
 
 			<div class="company-wrap">
 
-				<div class="company-cont3">
+				<div class="company-cont3" style="padding-left: 30px;">
 					<h3 class="box3">CONTACT US</h3>
 					<div id="map"></div>
 

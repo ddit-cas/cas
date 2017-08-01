@@ -284,6 +284,37 @@ $(function(){
 		</table>
 	</div>
 <!------------------------  마지막 스텝부분 ---------------------------------------------------------------------->
+<script>
+	$(function(){
+		
+		var startDate = $('#startDate').val();
+		var endDate = $('#endDate').val();
+		
+		$('#startDate').change(function(){
+			startDate = $('#startDate').val();
+			$('#endDate').val(startDate);
+		});
+		
+		$('#endDate').change(function(){
+			startDate = $('#startDate').val();
+			endDate = $('#endDate').val();
+			//-을 구분자로 연,월,일로 잘라내어 배열로 반환
+			var startArray = startDate.split('-');
+			var endArray = endDate.split('-');   
+			
+			//배열에 담겨있는 연,월,일을 사용해서 Date 객체 생성
+			var start_date = new Date(startArray[0], startArray[1], startArray[2]);
+			var end_date = new Date(endArray[0], endArray[1], endArray[2]);
+			
+			//날짜를 숫자형태의 날짜 정보로 변환하여 비교한다.
+			if(start_date.getTime() > end_date.getTime()) {
+				alert("종료날짜보다 시작날짜가 작아야합니다.");
+				return false;
+			}
+		});
+	});
+</script>	
+	
 	<div class="appl_step1"  style="min-height: 0;">
 	<h2>크라우드 펀딩 상세 정보 입력</h2>	
 		<table class="tstep">
@@ -291,13 +322,14 @@ $(function(){
 			<tr class="nth8">
 				<th scope="row">펀딩시작일<span class="star">*</span></th>
 				<td>
-					<input type="date" style="width: 465px;" class="form-control"name="fundingStartDate" title="시작일" value=""placeholder="펀딩시작일 선택"> 
+					<input type="date" style="width: 465px;" class="form-control"name="fundingStartDate" id="startDate" title="시작일" value=""placeholder="펀딩시작일 선택">
+					<input type="hidden" id="today" value=""> 
 				</td>
 			</tr>
 			<tr  class="nth9">
 				<th scope="row">펀딩마감일<span class="star">*</span></th>
 				<td>
-					<input type="date" style="width: 465px;" class="form-control"name="fundingEndDate" title="종료일" value="" placeholder="펀딩마감일 선택">
+					<input type="date" style="width: 465px;" class="form-control"name="fundingEndDate" id="endDate" title="종료일" value="" placeholder="펀딩마감일 선택">
 				</td>
 			</tr>
 			<tr  class="nth10">

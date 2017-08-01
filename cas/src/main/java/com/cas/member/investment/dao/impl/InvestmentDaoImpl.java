@@ -23,6 +23,7 @@ public class InvestmentDaoImpl implements InvestmentDao {
 			paramMap.put("investPoint", invest.getInvesAmount()+"");
 			paramMap.put("contentNum", invest.getFundingNum());
 			sqlMapClient.update("updateFundingAmount",paramMap);
+			sqlMapClient.update("updateMemberPointInvest",invest);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -6,6 +6,7 @@
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -364,7 +365,8 @@ h3 {
 				<div id="myInfoDiv">
 					<img src="${loginUser.memFrofileimage }" class="img-circle" alt="Cinque Terre" style="width:65%; height:140px; margin-top: 15px;margin-bottom: 15px; background: #222;"> 
 					<label class="myInfoLabel">${loginUser.memName}</label> 
-					<label class="myInfoLabel">${loginUser.memPoint} point</label>
+					<fmt:parseNumber integerOnly="true" var="point" value="${loginUser.memPoint/100 }"></fmt:parseNumber>
+					<label class="myInfoLabel">${point} 구름</label>
 				</div>
 				<a href="/cas/member/mypage" class="btn btn-sm animated-button thar-four">개인정보</a> <a
 					href="/cas/member/uccList" class="btn btn-sm animated-button thar-four">내 영상</a> <a
@@ -372,7 +374,7 @@ h3 {
 					href="/cas/member/investmentList" class="btn btn-sm animated-button thar-four">내 투자</a> <a
 					href="/cas/member/myPromotionList" class="btn btn-sm animated-button thar-four">내 공연</a> <a
 					href="/cas/member/cimList" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
-					href="/cas/member/point" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
+					href="/cas/member/point" class="btn btn-sm animated-button thar-four">내 구름</a> <a
 					href="/cas/member/qnaList" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
 					href="/cas/logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
 			</div>
@@ -416,7 +418,6 @@ h3 {
 						<ul class="dropdown-menu">
 							<li><a href="/cas/noticeList">공지사항</a></li>
 							<li><a href="/cas/promotion">CAS란</a></li>
-							<li><a href="/cas/showSchedule">공연 행사 일정</a></li>
 
 						</ul>
 					</li>

@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <body>
 
 <link rel="stylesheet" href="/cas/resources/css/invest.css" type="text/css">
@@ -167,11 +168,22 @@ ol, ul {
 
 						<div class="inputstock-wrap">
 							<dl id="inputQtyArea" class="input-wrap error">
+								<dt style="font-size:12px; float:left;">보유 구름</dt>
+								<dd>
+								<fmt:parseNumber integerOnly="true" var="point" value="${loginUser.memPoint/100 }"></fmt:parseNumber>
+									<label class="input-stock"><input type="text" id="qty" readonly="readonly"
+										class="input-text"  maxlength="8" value="${point }"
+										tabindex="99"><em>구름</em></label>
+								</dd>
+							</dl>
+						</div>
+						<div class="inputstock-wrap">
+							<dl id="inputQtyArea" class="input-wrap error">
 								<dt style="font-size:12px; float:left;">신청 투자 금액</dt>
 								<dd>
-									<label class="input-stock"><input type="tel" id="qty"
+									<label class="input-stock"><input type="text" id="qty"
 										name="invesAmount" class="input-text" placeholder="투자 금액 입력" maxlength="8"
-										tabindex="99"><em>구름</em></label>
+										><em>구름</em></label>
 								<input type="hidden" name="fundingNum" value="${fundingNum }">
 								</dd>
 							</dl>
@@ -234,7 +246,6 @@ function selectAccount(){
 						function investment(){
 							var memPoint = <%=((MemberVO)request.getSession().getAttribute("loginUser")).getMemPoint() %>
 							var qty= $("#qty").val();
-							alert(qty+memPoint);
 							if(qty*100>memPoint){
 								alert("포인트가 모자랍니다. 충전해주세요~");
 								return;
