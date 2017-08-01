@@ -71,6 +71,7 @@ public class AdminMemberController {
 		String classfyCode = memVO.getClassifyCode();
 		//나이
 		String ageStr = memVO.getMemBirthdate().substring(0, 4);
+		System.out.println("태어난 해 : "+ageStr);
 		int tAge = Integer.parseInt(ageStr);
 		Date date = new Date();
 		int thisYear = 1900+Integer.parseInt(date.getYear()+"");
@@ -80,8 +81,11 @@ public class AdminMemberController {
 		//성별
 		List<MostViewFundVO> confirmSex = fundService.selectTopClickFundList(classfyCode);
 		model.addAttribute("memberDetail", memVO);
-		model.addAttribute("memberDetailSex", confirmSex.get(0).getSex());
-		
+		try{
+			model.addAttribute("memberDetailSex", confirmSex.get(0).getSex());
+		}catch(Exception e){
+			System.out.println("안돼~~~!");
+		}
 		return url;
 	}
 	

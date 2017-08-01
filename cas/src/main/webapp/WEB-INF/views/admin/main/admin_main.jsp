@@ -66,6 +66,7 @@
 	$(function(){
 		$('.member').on('click',function(){
 			var memId = $('.member').attr('memId');
+			alert(memId);
 			location.href = '/cas/admin/memberDetail?searchRow='+memId;
 		});
 		$('.fund').on('click',function(){
