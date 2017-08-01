@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cas.article.service.ArticleService;
 import com.cas.db.dto.ArticleVO;
+import com.cas.db.dto.CommentVO;
 import com.cas.db.dto.ConsertVO;
 import com.cas.db.dto.GenreVO;
+import com.cas.db.dto.LikeVO;
 import com.cas.db.dto.MemberVO;
 import com.cas.db.dto.Paging;
 import com.cas.db.dto.PromotionListVO;
@@ -33,6 +36,13 @@ public class MemberPromotionController {
 		this.promotionService = promotionService;
 	}
 
+	@Autowired
+	private ArticleService articleService;
+	
+	public void setArticleService(ArticleService articleService) {
+		this.articleService = articleService;
+	}
+
 	/*
 	 * 공연홍보를 입력하거나 수정하는 양식으로 이동하는 메서드
 	 * 만약 수정을눌렀을시 글 아이디를 받아서 수정화면을 보여주고
@@ -43,14 +53,13 @@ public class MemberPromotionController {
 		
 		List<GenreVO> genreList=promotionService.selectGenreList();
 		model.addAttribute("genreList", genreList);
-		System.out.println();
 		return "member/community/show/insertShow";
 	}
 	
 	/*공연 홍보 입력양식을 다 입력후 등록을 누르면 인서트 해주는 메서드*/
 	@RequestMapping("/member/insertPromotion")
 	public String insertFreeboard(@RequestParam("posterImage")MultipartFile multipartFile
-			,HttpServletRequest request,ConsertVO consertVO,ArticleVO articleVO){
+			,HttpSession session,HttpServletRequest request, Model model,ConsertVO consertVO,ArticleVO articleVO){
 		
 		String upload = request.getSession().getServletContext()
 				.getRealPath("upload/promotion");
@@ -73,22 +82,25 @@ public class MemberPromotionController {
 		articleVO.setBoardCode("B007");
 		String address=(String)request.getParameter("address");
 		String detailAddress=(String)request.getParameter("detailAddress");
-		consertVO.setConsertPlace(detailAddress+"("+address+")");
+		consertVO.setConsertPlace(detailAddress+":"+address);
 		int result=promotionService.insertPromotion(articleVO, consertVO);
 		System.out.println(result);
-		return "redirect:/uccList";
+		return myPromotionList(session, request, model);
 	}
 	
 	@RequestMapping("/member/myPromotionList")
 	public String myPromotionList(HttpSession session,HttpServletRequest request, Model model){
 		MemberVO loginUser=(MemberVO)session.getAttribute("loginUser");
-		
+		System.out.println(loginUser.getMemId());
 		List<PromotionListVO> promotionList=promotionService.selectMyPromotionList(loginUser.getMemId());
+		
+		
 		PromotionVO promotionVO=new PromotionVO();
 		promotionVO.setContentTitle((String)request.getParameter("title"));
 		promotionVO.setContentWriter(loginUser.getMemId());
 		String pageUrl="/cas/promotionSearch?title="+request.getParameter("title");
-		promotionList=promotionService.searchtTitleMyPromotion(promotionVO);
+		
+		
 		
 		String boardCode = "B005"; 
 		String searchUrl = "&boardCode="+boardCode;
@@ -112,15 +124,61 @@ public class MemberPromotionController {
 		return "member/myPage/myPromotionList";
 	}
 	
+	/*공연홍보 게시물 세부내용으로 가는 메서드*/
+	@RequestMapping("member/myPromotionDetail")
+	public String promotionDetail(HttpSession session,HttpServletRequest request,Model model){
+		String contentNum=(String)request.getParameter("contentNum");
+		PromotionVO promotionVO=promotionService.selectPromotionDetail(contentNum);
+		
+		
+		if(session.getAttribute("loginUser")!=null){
+			LikeVO like=new LikeVO();
+			like.setContentNum(contentNum);
+			like.setLoginUser(((MemberVO)session.getAttribute("loginUser")).getMemId());
+			
+			int isLike= promotionService.isLike(like);
+			model.addAttribute("isLike",isLike);
+		}else{
+			model.addAttribute("isLike",0);
+		}
+		promotionVO.setStartDate(promotionVO.getStartDate().substring(0, 10));
+		promotionVO.setEndDate(promotionVO.getEndDate().substring(0, 10));
+		
+		
+		String[] address=promotionVO.getConsertPlace().split(":");
+		
+		model.addAttribute("address",address[0]);
+		model.addAttribute("detailAddress",address[1]);
+		
+		
+		model.addAttribute("recomCount",promotionService.selectRecomCount(contentNum));
+		model.addAttribute("promotionVO",promotionVO);
+		return "member/myPage/myShowDetail";
+	}
+	
 	/*글 수정양식을 다 입력한후 수정을 눌렀을떄 오는 메서드*/
 	@RequestMapping("/member/updatePromotion")
-	public String updateFreeboard(HttpServletRequest request){
-		return null;
+	public String updateFreeboard(HttpSession session,HttpServletRequest request,Model model){
+		PromotionVO promotionVO = promotionService.selectPromotionDetail(request.getParameter("contentNum"));
+		List<GenreVO> genreList=promotionService.selectGenreList();
+		
+		String[] address=promotionVO.getConsertPlace().split(":");
+		
+		model.addAttribute("address",address[0]);
+		model.addAttribute("detailAddress",address[1]);
+		
+		promotionVO.setStartDate(promotionVO.getStartDate().substring(0, 10));
+		promotionVO.setEndDate(promotionVO.getEndDate().substring(0, 10));
+		model.addAttribute("genreList", genreList);
+		model.addAttribute("promotionVO",promotionVO);
+		return "member/myPage/updateShow";
 	}
 	
 	/*회원 본인이 글 삭제를 눌렀을시 오는 메서드*/
 	@RequestMapping("/member/deletePromotion")
-	public String deleteFreeboard(HttpServletRequest request){
-		return null;
+	public String deleteFreeboard(HttpSession session,HttpServletRequest request,Model model){
+		String contentNum=request.getParameter("contentNum");
+		articleService.deleteContent(contentNum);
+		return myPromotionList(session, request, model);
 	}
 }

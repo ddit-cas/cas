@@ -122,7 +122,8 @@ public class PromotionController {
 		}else{
 			model.addAttribute("isLike",0);
 		}
-		
+		promotionVO.setStartDate(promotionVO.getStartDate().substring(0, 10));
+		promotionVO.setEndDate(promotionVO.getEndDate().substring(0, 10));
 		model.addAttribute("recomCount",promotionService.selectRecomCount(contentNum));
 		model.addAttribute("promotionVO",promotionVO);
 		if(commentList.size()!=0){

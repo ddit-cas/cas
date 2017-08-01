@@ -145,4 +145,13 @@ public class ArticleDaoImpl implements ArticleDao{
 		return likeNum;
 	}
 
+	@Override
+	public void deleteContent(String contentNum) {
+		try {
+			sqlMapClient.update("deleteContent",contentNum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

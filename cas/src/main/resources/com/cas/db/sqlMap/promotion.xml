@@ -110,17 +110,23 @@
 		from promotionlist
 	</select>
 	
-	<select id="selectMyPromotionList" resultMap="promotionList" parameterClass="promotion">
+	<select id="selectMyPromotionList" resultMap="promotionList" parameterClass="str">
 		select *
 		from promotionlist
-		where content_writer=#contentWriter#
-		and content_title=#contentTitle#
+		where content_writer=#str#
 	</select>
 	
 	<select id="searchtTitlePromotion" resultMap="promotionList" parameterClass="str">
 		select *
 		from promotionlist
 		where content_title LIKE '%'||#str#||'%'
+	</select>
+	
+	<select id="searchTitleMyPromotion" resultMap="promotionList" parameterClass="promotion">
+		select *
+		from promotionlist
+		where content_title LIKE '%'||#contentTitle#||'%'
+		and content_writer = #contentWriter#
 	</select>
 	
 	<select id="searchtWriterPromotion" resultMap="promotionList" parameterClass="str">

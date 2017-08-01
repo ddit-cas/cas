@@ -114,7 +114,7 @@
 	}
 	
 	function showDetail_go(contentNum){
-	   location.href="promotionDetail?contentNum="+contentNum;
+	   location.href="/cas/member/myPromotionDetail?contentNum="+contentNum;
 	}
 	function searchPromotion(){
 		if($('#searchWord').val()!=null){

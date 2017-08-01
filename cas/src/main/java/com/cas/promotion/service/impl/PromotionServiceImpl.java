@@ -102,7 +102,7 @@ public class PromotionServiceImpl implements PromotionService {
 	}
 
 	@Override
-	public List<PromotionListVO> searchtTitleMyPromotion(PromotionVO promotionVO) {
-		return promotionDao.searchtTitleMyPromotion(promotionVO);
+	public List<PromotionListVO> searchTitleMyPromotion(PromotionVO promotionVO) {
+		return promotionDao.searchTitleMyPromotion(promotionVO);
 	}
 }

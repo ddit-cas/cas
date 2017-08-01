@@ -73,4 +73,9 @@ public class ArticleServiceImpl implements ArticleService{
 		return articleDao.selectArticleLikenum(contentNum);
 	}
 
+	@Override
+	public void deleteContent(String contentNum) {
+		articleDao.deleteContent(contentNum);
+	}
+
 }

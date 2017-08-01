@@ -33,4 +33,6 @@ public interface ArticleDao {
 	public boolean disAcitve(ArticleVO article);
 
 	public String selectArticleLikenum(String contentNum);
+
+	public void deleteContent(String contentNum);
 }

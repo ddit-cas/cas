@@ -136,6 +136,13 @@
 		content_state='N'
 		where content_num=#contentNum#
 	</update>
+	
+	<update id="deleteContent" parameterClass="str">
+		update content set
+		content_state='N'
+		where content_num=#str#
+	</update>
+	
 	<!-- 일별 등록한 펀딩 수 -->
 	<select id="dayEntrollmentFund" resultClass="article">
 		select TO_CHAR(content_regis_date,'yy-mm-dd') contentRegisDate

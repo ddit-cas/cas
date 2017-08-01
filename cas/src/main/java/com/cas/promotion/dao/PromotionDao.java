@@ -25,5 +25,5 @@ public interface PromotionDao {
 	public List<PromotionListVO> searchWriterPromotion(String writer);
 	public List<PromotionListVO> searchtTitlePromotion(String title);
 	public List<PromotionListVO> selectMyPromotionList(String memId);
-	public List<PromotionListVO> searchtTitleMyPromotion(PromotionVO promotionVO);
+	public List<PromotionListVO> searchTitleMyPromotion(PromotionVO promotionVO);
 }
