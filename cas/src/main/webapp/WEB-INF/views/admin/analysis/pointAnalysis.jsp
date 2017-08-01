@@ -69,7 +69,12 @@ $(function(){
 		document.searchPointAnalysis.method="get";
 		document.searchPointAnalysis.submit();
 	}
-</script>            
+</script>
+<style>
+	tr {
+		cursor: pointer;
+	}
+</style>            
             <!-- 리스트 테이블 들어갈 자리. : 아이디(회원명),닉네임, 전화번호, 충전금액, 환급금액, 잔여 포인트 -->
 			<div class="row">
 			<div class="form-group" style="clear:both;">

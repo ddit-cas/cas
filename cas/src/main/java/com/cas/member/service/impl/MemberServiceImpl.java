@@ -16,6 +16,12 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	public List<MemberVO> selectMemberCount(){
+		List<MemberVO> resultList = memberDao.selectMemberCount();
+		return resultList;
+	}
+	
+	@Override
 	public int insertMember(MemberVO member) {
 		int result = memberDao.insertMember(member);
 		return result;
@@ -81,6 +87,12 @@ public class MemberServiceImpl implements MemberService{
 	public List<MemberVO> selectSeachMember(String index, String key) {
 		List<MemberVO> resultList = memberDao.selectSeachMember(index, key);
 		return resultList;
+	}
+
+	@Override
+	public int deleteMember(String memId) {
+		int result = memberDao.deleteMember(memId);
+		return result;
 	}
 
 }

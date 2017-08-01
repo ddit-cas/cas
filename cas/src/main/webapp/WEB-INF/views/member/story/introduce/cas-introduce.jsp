@@ -85,7 +85,7 @@ div.company-cont3 h3.box3 {
 			<div class="company-cont">
 				<h3 class="box">VISION</h3>
 				<div class="imgDiv">
-					<img src="resources/intro-1.png" alt="">
+					<img src="resources/KakaoTalk_20170730_154539579.jpg" alt="">
 				</div>
 			</div>
 			<!--//company-cont-->
@@ -94,7 +94,7 @@ div.company-cont3 h3.box3 {
 			<div class="company-cont2">
 				<h3 class="box2">PARTNERSHIP</h3>
 				<div class="imgDiv">
-					<img src="resources/intro-3.png" alt="">
+					<img src="resources/gg.jpg" alt="">
 				</div>
 			</div>
 			<!--//company-cont-->

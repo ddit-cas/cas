@@ -3,7 +3,6 @@ package com.cas.db.dto;
 public class InvestmentVO {
 
 	private String fundingNum;
-	private int invesCount;
 	private int invesAmount;
 	private String invesDate;
 	private String invesEndDate;
@@ -14,12 +13,6 @@ public class InvestmentVO {
 	}
 	public void setFundingNum(String fundingNum) {
 		this.fundingNum = fundingNum;
-	}
-	public int getInvesCount() {
-		return invesCount;
-	}
-	public void setInvesCount(int invesCount) {
-		this.invesCount = invesCount;
 	}
 	public int getInvesAmount() {
 		return invesAmount;

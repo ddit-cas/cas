@@ -46,7 +46,7 @@
 	</select>
 
 	<select id="selectMember" resultMap="selectMember" parameterClass="str">
-		select * from member where mem_id=#memId# and enabled='1'
+		select * from member where mem_id=#memId#
 	</select>
 
 	<update id="updateMember" parameterClass="member">
@@ -112,4 +112,16 @@
 		</isEqual>
 	</select>
 	
+	<!-- 월별 회원 등록자 Count -->
+	<select id="selectMonthlySignupCount" resultClass="member">
+		select count(mem_Id) as memCount
+        	  ,to_char(mem_sginup_date, 'yyyy-mm') as countMonthly 
+		from member 
+		group by to_char(mem_sginup_date, 'yyyy-mm')
+	</select>
+	
+	<!-- 회원 삭제 및 탈퇴 -->
+	<update id="deleteMember">
+		UPDATE MEMBER SET ENABLED='0' WHERE MEM_ID=#memId#
+	</update>
 </sqlMap>
