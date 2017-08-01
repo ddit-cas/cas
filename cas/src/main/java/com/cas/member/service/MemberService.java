@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.cas.db.dto.InvestmentVO;
 import com.cas.db.dto.MemberVO;
+import com.cas.db.dto.PointVO;
 import com.cas.db.dto.TeamVO;
 
 public interface MemberService {
@@ -47,4 +49,13 @@ public interface MemberService {
 	
 	/*회원 삭제 및 탈퇴*/
 	public int deleteMember(String memId);
+
+	/*포인트 충전하는 메서드*/
+	public void insertChargePoint(PointVO point);
+
+	/*포인트 충전내역가져옥기*/
+	public List<PointVO> selectChargeList(String memId);
+
+	/*투자내역 가져오기*/
+	public List<InvestmentVO> selectInvestMentList(String memId);
 }

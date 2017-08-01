@@ -50,7 +50,7 @@ div.company-wrap {
 		<h3 class="box">크라우드 펀딩</h3>
 		<div class="row-fluid">
 		<ul class="thumbnails list-unstyled">
-			<c:forEach var="i" begin="${firstRow}" end="${lastRow}">
+			<c:forEach var="i" begin="${firstRow}" end="${lastRow-1}">
 				<li class="col-md-4">
 					<div class="thumbnail" style="padding: 0">
 						<div style="padding: 4px; width: 100%;">
