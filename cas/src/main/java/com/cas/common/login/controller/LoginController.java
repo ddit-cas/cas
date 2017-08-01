@@ -52,7 +52,7 @@ public class LoginController {
 		String url = "member/goMain";
 		
 		if(uri!=null){
-			url = uri.substring(20);
+			url = uri.substring(21);
 			System.out.println("주소가 뭔가요?"+url);
 		}
 		if(memberService.checkId(member.getMemId())){
@@ -198,13 +198,30 @@ public class LoginController {
 			memAge="10";
 		}
 		member.setMemAge(memAge);
-		
+		String url=null;
 		int result=-1;
 		result = memberService.insertMember(member);
-		System.out.println(result);
-		
+		System.out.println("회원가입여부 : "+result);
+		if(result<0){
+			url ="member/signUp/failSignUp";
+		}else{
+			url ="member/signUp/successSignUp";
+		}
 		memberService.insertTeamList(teamList);
 		
+		return url;
+	}
+	
+	/*회원가입 성공 후 로그인 창 가는 메서드*/
+	@RequestMapping("/joinMemberSuccess")
+	public String signupSuccess(){
 		return "redirect:/loginForm";
 	}
+
+	/*회원가입 실패 후 메인 창 가는 메서드*/
+	@RequestMapping("/joinMemberFail")
+	public String signupFail(){
+		return "redirect:/main";
+	}
+	
 }
