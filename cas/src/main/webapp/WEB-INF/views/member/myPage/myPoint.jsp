@@ -29,7 +29,7 @@ th {
 							</button> 
 							</a>
 					</div>
-					<h2>현재 포인트</h2>
+					<h2>현재 구름</h2>
 					<fmt:parseNumber integerOnly="true" var="point" value="${loginUser.memPoint/100 }"></fmt:parseNumber>
 					<p><input style="text-align: right;" type="text" readonly="readonly" value="${point }"> 구름</p>
 					<h2>충전 내역</h2>
@@ -52,7 +52,7 @@ th {
 						</tbody>
 					</table>
 					<br>
-					<h2>포인트 사용 내역</h2>
+					<h2>구름 사용 내역</h2>
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>

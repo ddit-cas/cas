@@ -374,7 +374,7 @@ h3 {
 					href="/cas/member/investmentList" class="btn btn-sm animated-button thar-four">내 투자</a> <a
 					href="/cas/member/myPromotionList" class="btn btn-sm animated-button thar-four">내 공연</a> <a
 					href="/cas/member/cimList" class="btn btn-sm animated-button thar-four">나의 CIM</a> <a
-					href="/cas/member/point" class="btn btn-sm animated-button thar-four">포인트관리</a> <a
+					href="/cas/member/point" class="btn btn-sm animated-button thar-four">내 구름</a> <a
 					href="/cas/member/qnaList" class="btn btn-sm animated-button thar-four">1:1문의</a> <a
 					href="/cas/logout" class="btn btn-sm animated-button thar-four">로그아웃</a>
 			</div>
@@ -418,7 +418,6 @@ h3 {
 						<ul class="dropdown-menu">
 							<li><a href="/cas/noticeList">공지사항</a></li>
 							<li><a href="/cas/promotion">CAS란</a></li>
-							<li><a href="/cas/showSchedule">공연 행사 일정</a></li>
 
 						</ul>
 					</li>
