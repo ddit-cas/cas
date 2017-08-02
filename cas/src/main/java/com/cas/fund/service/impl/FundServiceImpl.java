@@ -21,7 +21,7 @@ public class FundServiceImpl implements FundService{
 	}
 	
 	@Override
-	@Scheduled(cron="0 0 0 * * *")
+	@Scheduled(cron="0 * * * * *")
 	public void updateEndFund(){
 		fundDao.updateEndFund();
 		System.out.println("스케쥴 잘되나요?");

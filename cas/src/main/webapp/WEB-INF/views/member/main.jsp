@@ -113,6 +113,8 @@
 		width: 100%;
 	}
 }
+#persentSpan{
+}
 </style>
 <title>CAS</title>
 <div id="body">
@@ -133,7 +135,7 @@
 					<c:when test="${index.index==0 }">
 						<div class="item active carousel-image">
 						<a href="${carousel.contentUrl }">
-							<img src="${carousel.carouselImage }"/>">
+							<img src="${carousel.carouselImage }">
 							<div class="carousel-caption">
 						        <h2>${carousel.carouselTitle }</h2>
 						        <p>${carousel.carouselContent }</p>
@@ -144,7 +146,7 @@
 					<c:otherwise>
 						<div class="item carousel-image">
 						<a href="${carousel.contentUrl }">
-							<img src="${carousel.carouselImage }"/>">
+							<img src="${carousel.carouselImage }"/>
 							<div class="carousel-caption">
 						        <h2>${carousel.carouselTitle }</h2>
 						        <p>${carousel.carouselContent }</p>
@@ -270,8 +272,8 @@
 				<div class="famousFundContent">
 					<div class="progress" style="margin-top:0; margin-bottom: 0;background: #b2ecff">
 						<div class="progress-bar" role="progressbar" aria-valuenow="${fund.fundingTargetAmount-fund.fundingPresentAmount }"
-							aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-							<span>${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%</span>
+							aria-valuemin="0" aria-valuemax="100" style="width: ${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%">
+							<label id="persentSpan">${fund.fundingPresentAmount/fund.fundingTargetAmount*100-(fund.fundingPresentAmount/(fund.fundingTargetAmount*100)%0.1)}%</label>
 						</div>
 					</div>
 					<label style="float:right; font-size: 0.8em;"> 목표금액 : ${fund.fundingTargetAmount }</label>

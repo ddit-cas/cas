@@ -89,7 +89,7 @@ public class AdminCarouselController {
 		for (int i = 0; i < promotionList.size(); i++) {
 			ArticleVO article = new ArticleVO();
 			article.setContentNum("/cas/noticeDetail?articleId="+promotionList.get(i).getContentNum());
-			article.setBoardName("공지사항");
+			article.setBoardName("공연홍보");
 			article.setContentTitle(promotionList.get(i).getContentTitle());
 			article.setContentWriter(promotionList.get(i).getContentWriter());
 			articleList.add(article);

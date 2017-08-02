@@ -113,11 +113,12 @@ public class MemberFundController {
 		return url;
 	}
 	
+	/*투자하는 메서드*/
 	@RequestMapping("/member/insertInvestment")
 	public String fundInvestment(HttpServletRequest request,HttpSession session,InvestmentVO invest){
 		MemberVO member = (MemberVO)session.getAttribute("loginUser");
 		invest.setInvesMem(member.getMemId());
-		invest.setInvesAmount(invest.getInvesAmount()*100);
+		invest.setInvesAmount(invest.getInvesAmount());
 		investmentService.insertInvestment(invest);
 		member.setMemPoint((Integer.parseInt(member.getMemPoint())-invest.getInvesAmount())+"");
 		session.removeAttribute("loginUser");

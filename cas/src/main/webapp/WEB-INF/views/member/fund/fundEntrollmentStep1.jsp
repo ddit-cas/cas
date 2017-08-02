@@ -322,7 +322,7 @@ $(function(){
 			<tr class="nth8">
 				<th scope="row">펀딩시작일<span class="star">*</span></th>
 				<td>
-					<input type="date" style="width: 465px;" class="form-control"name="fundingStartDate" id="startDate" title="시작일" value=""placeholder="펀딩시작일 선택">
+					<input type="date" style="width: 465px;" class="form-control"name="fundingStartDate" id="startDate" min="2017-08-02" title="시작일" value=""placeholder="펀딩시작일 선택">
 					<input type="hidden" id="today" value=""> 
 				</td>
 			</tr>

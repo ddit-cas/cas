@@ -13,7 +13,15 @@
 	.btn{
 	}
 </style>
-
+<script>
+	$(function(){
+		$('.articleRow').on('click',function(){
+			var contentUrl=$(this).attr('contentUrl');
+			$("#contentUrl").val(contentUrl);
+			$("#target").html($(this).attr('target'));
+		});
+	});
+</script>
 <div id="modalLayer">
   <div class="modalContent"> 
   	<div class="bs-example" data-example-id="condensed-table">
@@ -30,7 +38,7 @@
         	 <c:choose>
 				<c:when test="${articleList.size() > 0 }">
         		<c:forEach var="i" varStatus="status" begin="${firstRow}" end="${lastRow}">
-			        <tr class="articleRow" target="${article.contentTitle }" contentUrl="/cas/promotionDetail?contentNum=${article.contentNum }">
+			        <tr class="articleRow" target="${articleList[i].contentTitle }" contentUrl="/cas/promotionDetail?contentNum=${articleList[i].contentNum }">
 			          <td>${status.index+1 }</td>
 			          <td>${articleList[i].boardName }</td>
 			          <td>${articleList[i].contentTitle }</td>
@@ -86,12 +94,6 @@
 		</div>
 	</div>
 <script>
-	$('tr.articleRow').on('click',function(){
-		var contentUrl=$(this).attr('contentUrl');
-		$("#contentUrl").val(contentUrl);
-		$("#target").html($(this).attr('target'));
-	});
-	
 	$(function(){
 		$("#imageFile").change(function (){
 // 	        var inputObj = $("#image");   

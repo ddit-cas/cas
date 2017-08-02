@@ -10,13 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-
-
-
 import com.cas.db.dto.CommentVO;
 import com.cas.db.dto.ContentFundVO;
-import com.cas.db.dto.FundVO;
 import com.cas.db.dto.IngFundVO;
 import com.cas.db.dto.LikeVO;
 import com.cas.db.dto.MemberVO;
@@ -78,7 +73,6 @@ public class FundController {
 	public String endFundList(Model model,HttpServletRequest request){
 		
 		List<ContentFundVO> resultList = fundService.selectEndFund();
-		System.out.println("종료펀드 들어와라 제발 : " + resultList.get(0).getContentContent());
 		model.addAttribute("resultList",resultList);
 		String url = "member/fund/endFundList";
 		return url;

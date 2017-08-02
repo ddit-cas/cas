@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <body>
 
@@ -77,14 +78,15 @@ div.company-wrap {
 						</a>
 						<div class="modal-footer" style="text-align: left">
 							<div class="progress">
+							<fmt:parseNumber integerOnly="true" var="percent" value="${fund[i].fundingPresentAmount/fund[i].fundingTargetAmount*100-(fund[i].fundingPresentAmount/(fund[i].fundingTargetAmount*100)%0.1)}"></fmt:parseNumber>
 								<div class="progress-bar" role="progressbar" aria-valuenow="60"
-									aria-valuemin="0" aria-valuemax="100" style="width: ${fund[i].fundingPresentAmount/fund[i].fundingTargetAmount*100-(fund[i].fundingPresentAmount/(fund[i].fundingTargetAmount*100)%0.1)}%;">
-									<span class="sr-only">${fund[i].fundingPresentAmount/fund[i].fundingTargetAmount*100-(fund[i].fundingPresentAmount/(fund[i].fundingTargetAmount*100)%0.1)}%</span>
+									aria-valuemin="0" aria-valuemax="100" style="width: ${percent}%;">
+									<span class="sr-only">${percent}%</span>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-4">
-									<b>${fund[i].fundingPresentAmount/fund[i].fundingTargetAmount*100-(fund[i].fundingPresentAmount/(fund[i].fundingTargetAmount*100)%0.1)}%</b>
+									<b>${percent}%</b>
 								</div>
 								<div class="col-md-4">
 									<b>진행중</b>

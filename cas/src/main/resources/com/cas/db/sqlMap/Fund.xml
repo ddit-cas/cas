@@ -21,11 +21,11 @@
 	<resultMap class="com.cas.db.dto.ContentFundVO" id="endFundList">
 		<result property="fundingTargetAmount" column="funding_target_amount"/>
 		<result property="fundingPresentAmount" column="funding_present_amount"/>
-		<result property="fundingEndDate" column="funding_end_date"/>
 		<result property="contentImg" column="content_img"/>
 		<result property="contentTitle" column="content_title"/>
-		<result property="contentContent" column="content_content"/>
-<!-- 		<result property="fundState" column="fund_state"/> -->
+		<result property="state" column="state"/>
+		<result property="memName" column="mem_name"/>
+		<result property="contentNum" column="content_num"/>
 	</resultMap>
 	
 	<!-- 펀딩 등록 -->
@@ -71,7 +71,7 @@
 		set
 		state_code='F001'
 		where  funding_present_amount>=funding_target_amount
-		and (to_char(sysdate,'yyyymmdd')-to_char(funding_end_date,'yyyymmdd'))>0
+		and (to_char(sysdate,'yyyymmdd')-to_char(funding_end_date,'yyyymmdd'))>=0
 		]]>
 	</update>
 	
@@ -81,16 +81,24 @@
 		set
 		state_code='F002'
 		where  funding_present_amount<funding_target_amount
-		and (to_char(sysdate,'yyyymmdd')-to_char(funding_end_date,'yyyymmdd'))>0
+		and (to_char(sysdate,'yyyymmdd')-to_char(funding_end_date,'yyyymmdd'))>=0
 		]]>
 	</update>
 	
 	<select id="endFundList" resultMap = "endFundList">
-		select funding_target_amount,funding_present_amount,funding_end_date,
-		content_img,content_title,content_content
-		from crowdfunding cf , content c 
-		where to_date(sysdate,'yy/MM/dd')>to_date(cf.funding_end_date,'yy/MM/dd')	
+		select * from endFundList
 	</select>
+	
+	<update id="updateContentFundState">
+		<![CDATA[
+		update content c
+		set
+		c.content_state='N'
+		where  c.funding_num like (select f.funding_num from crowdfunding f where 
+		(to_char(sysdate,'yyyymmdd')-to_char(f.funding_end_date,'yyyymmdd'))>=0
+    	and c.funding_num=f.funding_num)
+		]]>
+	</update>
 	
 	
 </sqlMap>

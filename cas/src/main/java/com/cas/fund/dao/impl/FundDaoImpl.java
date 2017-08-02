@@ -35,6 +35,7 @@ public class FundDaoImpl implements FundDao{
 		IngFundVO ingFund = null;
 		try {
 			ingFund=(IngFundVO) sqlMapClient.queryForObject("ingFund",contentNum);
+			System.out.println("현재모집금액"+ingFund.getFundingPresentAmount());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -113,6 +114,7 @@ public class FundDaoImpl implements FundDao{
 			System.out.println(":여긴옵니까?");
 			System.out.println("성공"+sqlMapClient.update("endCompleteFund"));
 			System.out.println("실패"+sqlMapClient.update("endFailedFund"));
+			sqlMapClient.update("updateContentFundState");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
