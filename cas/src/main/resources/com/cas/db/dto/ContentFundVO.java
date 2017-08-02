@@ -8,8 +8,15 @@ public class ContentFundVO {
 	private String fundingEndDate;
 	private String contentTitle;
 	private String contentContent;
+	private String fundState;
 	
 	
+	public String getFundState() {
+		return fundState;
+	}
+	public void setFundState(String fundState) {
+		this.fundState = fundState;
+	}
 	public String getContentImg() {
 		return contentImg;
 	}

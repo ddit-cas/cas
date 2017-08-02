@@ -25,6 +25,7 @@
 		<result property="contentImg" column="content_img"/>
 		<result property="contentTitle" column="content_title"/>
 		<result property="contentContent" column="content_content"/>
+<!-- 		<result property="fundState" column="fund_state"/> -->
 	</resultMap>
 	
 	<!-- 펀딩 등록 -->
