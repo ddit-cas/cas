@@ -26,23 +26,9 @@
 	        </tr>
          </thead>
         	<tbody>
-        		<c:forEach items="${noticeList }" var="article">
-			        <tr class="articleRow" target="${article.contentTitle }" contentUrl="/cas/noticeDetail?articleId=${article.contentNum }">
-			          <td>${article.boardName }</td>
-			          <td>${article.contentTitle }</td>
-			          <td>${article.contentWriter }</td>		          
-			        </tr>
-        		</c:forEach>
-        		<c:forEach items="${fundList }" var="article">
-			        <tr class="articleRow" target="${article.contentTitle }" contentUrl="/cas/fundDetail?contentNum=${article.contentNum }">
-			          <td>크라우드펀딩</td>
-			          <td>${article.contentTitle }</td>
-			          <td>${article.contentWriter }</td>		          
-			        </tr>
-        		</c:forEach>
-        		<c:forEach items="${promotionList }" var="article">
+        		<c:forEach items="${articleList }" var="article">
 			        <tr class="articleRow" target="${article.contentTitle }" contentUrl="/cas/promotionDetail?contentNum=${article.contentNum }">
-			          <td>공연홍보</td>
+			          <td>${article.boardName }</td>
 			          <td>${article.contentTitle }</td>
 			          <td>${article.contentWriter }</td>		          
 			        </tr>

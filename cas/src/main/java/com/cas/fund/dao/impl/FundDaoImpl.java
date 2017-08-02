@@ -119,10 +119,10 @@ public class FundDaoImpl implements FundDao{
 	}
 
 	@Override
-	public List<ContentFundVO> selectEndFund(String fundingNum) {
+	public List<ContentFundVO> selectEndFund() {
 		List<ContentFundVO> resultList = null;
 		try {
-			resultList = sqlMapClient.queryForList("endFundList",fundingNum);
+			resultList = sqlMapClient.queryForList("endFundList");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

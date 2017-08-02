@@ -77,8 +77,7 @@ public class FundController {
 	@RequestMapping("/endFundList")
 	public String endFundList(Model model,HttpServletRequest request){
 		
-		String fundingNum = request.getParameter("fundingNum");
-		List<ContentFundVO> resultList = fundService.selectEndFund(fundingNum);
+		List<ContentFundVO> resultList = fundService.selectEndFund();
 		System.out.println("종료펀드 들어와라 제발 : " + resultList.get(0).getContentContent());
 		model.addAttribute("resultList",resultList);
 		String url = "member/fund/endFundList";

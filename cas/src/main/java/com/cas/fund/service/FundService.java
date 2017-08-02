@@ -38,5 +38,5 @@ public interface FundService {
 	
 	public void updateEndFund();
 	
-	public List<ContentFundVO> selectEndFund(String fundingNum);
+	public List<ContentFundVO> selectEndFund();
 }

@@ -37,5 +37,5 @@ public interface FundDao {
 	/*날짜가종료된 펀딩들을 엔드로 만드는 메서드*/
 	public void updateEndFund();
 	
-	public List<ContentFundVO> selectEndFund(String fundingNum);
+	public List<ContentFundVO> selectEndFund();
 }

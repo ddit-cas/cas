@@ -70,9 +70,7 @@ public class FundServiceImpl implements FundService{
 	}
 
 	@Override
-	public List<ContentFundVO> selectEndFund(String fundingNum) {
-		List<ContentFundVO> resultList = null;
-		resultList = fundDao.selectEndFund(fundingNum);
-		return resultList;
+	public List<ContentFundVO> selectEndFund() {
+		return fundDao.selectEndFund();
 	}
 }

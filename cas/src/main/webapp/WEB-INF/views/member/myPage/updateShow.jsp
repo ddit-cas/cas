@@ -29,7 +29,7 @@
 </div>
 <div id="body" style="float:right; width: 80%">
 	<div style="background-color: #26bbe2;height: 70px;padding: 16px 24px;margin: 10px 0;">
- 		<label style="color:#ffffff; font-size:24px;"><strong>공연등록</strong></label>
+ 		<label style="color:#ffffff; font-size:24px;"><strong>공연수정</strong></label>
  	</div>
 	<form name="tx_editor_form" style="width: 100%;height: auto;" id="tx_editor_form" action="/cas/member/updatePromotion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 		<input type="hidden" name="contentWriter" value="${loginUser.memId }">
