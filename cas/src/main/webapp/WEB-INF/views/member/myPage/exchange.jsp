@@ -8,7 +8,9 @@
 <title>환전하기</title>
 </head>
 <body>
-	<style>
+<!-- glyphicon CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
 .text-danger strong {
 	color: #337ab7;
 }
@@ -145,284 +147,107 @@
 	<div id="body">
 		<div class="container">
 
-			<div
-				class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+			<div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
 				<div class="row">
 					<div>
 						<div class="c_header">
 							<h3>구름이 환전 신청</h3>
-							<p class="contxt">선물받은 구름이를 현금으로 환전해드리는 서비스입니다.</p>
+							<p class="contxt">구매한 구름이를 현금으로 환전해드리는 서비스입니다.</p>
 						</div>
 						<hr>
 
 						<!-- [D] input type="text"에 focus 되었을때 class에 on 추가 (ie6,ie7 대응) -->
 						<div class="section_delete">
 							<h3 class="h_dropout">구름이 환전 신청 전에 꼭 읽어 주세요!</h3>
-							<p class="dropout_dsc">▶ 선물받은 구름이가 100구름 이상일 때부터 현금환전이
-								가능합니다.(구름이 1구름=100원)</p>
-							<p class="dropout_dsc">▶ 구름이를 현금으로 환전 받으시면 환전액수에 관계없이 종합 소득세
-								신고의무가 발생합니다. (매년 5년)</p>
-							<p class="dropout_dsc">▶불법적인 방법으로 취득 혹은 취득하였다고 의심되는 경우 사전 안내
-								없이 구름이 환전 취소 및 회수될 수 있습니다.</p>
+							<p class="dropout_dsc">▶ 선물받은 구름이가 100구름 이상일 때부터 현금환전이 가능합니다.(구름이 1구름=100원)</p>
+							<p class="dropout_dsc">▶ 구름이를 현금으로 환전 받으시면 환전액수에 관계없이 종합 소득세 신고의무가 발생합니다. (매년 5년)</p>
+							<p class="dropout_dsc">▶불법적인 방법으로 취득 혹은 취득하였다고 의심되는 경우 사전 안내 없이 구름이 환전 취소 및 회수될 수 있습니다.</p>
 						</div>
 						<table class="table table-bordered">
 							<tr>
 								<td class="text-right" colspan='2'>
 									<p>
-										<strong>환전 가능한 구름이:</strong>
+										<strong>환전 가능한 구름이(<i class="fa fa-jsfiddle"></i>):</strong>
 									</p>
 									<p>
-										<strong> 누적 구름이 환전액:</strong>
+										<strong>구름이 환전액(<i class="fa fa-krw"></i>):</strong>
 									</p>
 									<p>
-										<strong> 환전 신청할 구름이:</strong>
+										<strong>차감되는 구름이(<i class="fa fa-jsfiddle"></i>):</strong>
 									</p>
 								</td>
 								<td class="text-center text-primary">
 									<p>
-										<strong><i class="fa fa-inr"></i> 324,000구름</strong>
+										<strong style="color:blue;">${refundAbledAmount }</strong>
 									</p>
 									<p>
-										<strong><i class="fa fa-inr"></i> 24,000구름</strong>
+										<strong style="color:red;" id="refundKrw">0</strong>
 									</p>
 									<p>
-										<strong><i class="fa fa-inr"></i>15000 구름</strong>
+										<strong style="color:red;" id="refundPoint">0</strong>
 									</p>
 								</td>
 							</tr>
 							</tbody>
 						</table>
 					</div>
-				</div>
-			</div>
-
-			<div
-				class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-				<div class="row">
-					<form class="form-horizontal" action="#">
+					<form class="form-horizontal" action="/cas/member/insertPoint" id="chargeForm">
 						<fieldset class="signup_cas_fs">
 							<h3>개인정보</h3>
 							<hr>
-							<label><input type="checkbox" name="terms">기존 정보
-								사용</label>
 							<div class="form-group">
-								<label class="control-label col-xs-2" for="id">아이디</label>
-								<div class="col-xs-4">
-									<div class="input-group">
-										<input type="text" class="form-control" id="mem_id" name="id" placeholder="아이디를 입력하세요.">
-										 <span class="input-group-btn"> </span>
-									</div>
+								<label class="control-label col-xs-2" for="name">이름</label>
+								<div class="col-sm-8">
+									<input type="text" readonly="readonly" class="form-control" id="mem_id" name="id" value="${loginUser.memName }" placeholder="아이디를 입력하세요.">
 								</div>
 							</div>
-							<label class="control-label col-xs-2" for="name">이름</label>
-							<div class="col-sm-4">
-								<div class="input-group">
-									<input type="text" class="form-control" id="name"
-										placeholder="이름을 입력하세요." name="name" aria-label="name">
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="tel">전화번호</label>
+								<div class="col-sm-8">
+									<input type="tel" readonly="readonly" value="${loginUser.memHp }" class="form-control" id="tel"
+											placeholder="전화번호를 입력하세요." name="tel">
 								</div>
 							</div>
-							<div>
-								<button class="btn btn-default" id="idCheck" type="button">이름변경</button>
-							</div>
-							<p></p>
-							<p></p>
-							<p></p>
-							<label class="control-label col-sm-2" for="tel">전화번호</label>
-							<div class="col-sm-6">
-								<div class="input-group">
-									<input type="tel" class="form-control" id="tel"
-										placeholder="전화번호를 입력하세요." name="tel">
-								</div>
-							</div>
-							<div class="form-group"></div>
 							<div class="form-group">
 								<label class="control-label col-sm-2" for="email">이메일</label>
-								<div class="col-sm-6">
-									<div class="input-group">
-										<input type="email" class="form-control" id="email"
-											placeholder="이메일을 입력하세요." name="email">
-									</div>
+								<div class="col-sm-8">
+										<input type="email" readonly="readonly" value="${loginUser.memEmail }" class="form-control" id="email"
+											 name="email">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-2" for="addr">주소</label>
-								<div class="col-sm-6">
-									<input type="text" class="form-control" id="add"
-										placeholder="주소 입력하세요" name="addr">
+								<div class="col-sm-8">
+									<input type="text" readonly="readonly" value="${loginUser.memAddr1 }" class="form-control">
+									<input type="text" readonly="readonly" value="${loginUser.memAddr2 }" class="form-control">
+									<input type="hidden"value="${loginUser.memAddr1 }${loginUser.memAddr2 }" class="form-control" id="add"
+										 name="addr">
 								</div>
 							</div>
 							<hr>
 							<h3>계좌정보</h3>
 							<hr>
-							<input type="button" class="btn btn-primary" value="최근 입금계좌"
-								style="float: right;" /> <br>
 							<br>
 							<div class="form-group">
-								<label class="control-label col-xs-2" for="id">은행</label>
-								<div class="col-sm-4">
-									<div class="input-group">
-										<input type="text" class="form-control" id="mem_id"
-											name="moneyname" placeholder="은행이름을 입력하세요">
-									</div>
+								<label class="control-label col-xs-2" for="id">환전액&nbsp;<i class="fa fa fa-krw"></i></label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="chargingAmount" placeholder="충전금액을 100원 단위로 입력해주세요.">
+									<input type="text" class="form-control" id="refundgAmount" name="chargingAmount">
 								</div>
 							</div>
-							<label class="control-label col-xs-2" for="id">예금주</label>
-							<div class="col-sm-4">
-								<div class="input-group">
-									<input type="text" class="form-control" id="mem_id"
-										name="amound" placeholder="예금주를 입력하세요">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-md-2" for="id">계좌번호</label>
-								<div class="col-sm-4">
-									<div class="input-group">
-										<input type="text" class="form-control" id="mem_id"
-											name="amound" placeholder="계좌번호를 입력하세요">
-									</div>
-								</div>
-							</div>
-							<p class="dropout_dsc" style="color: red;">▶개인명의의 계좌로만 환전이
-								가능합니다</p>
-							<p class="dropout_dsc" style="color: red;">▶가입자와 동일한 명의의 계좌가
-								아니거나,입력하신 계좌번호가 올바르지 않을 경우 환전이 불가하오니 정확히 입력해 주시기 바랍니다.</p>
-							<hr>
-
-							<script>
-								$(document)
-										.on(
-												'click',
-												'#close-preview',
-												function() {
-													$('.image-preview')
-															.popover('hide');
-													// Hover befor close the preview
-													$('.image-preview')
-															.hover(
-																	function() {
-																		$(
-																				'.image-preview')
-																				.popover(
-																						'show');
-																	},
-																	function() {
-																		$(
-																				'.image-preview')
-																				.popover(
-																						'hide');
-																	});
-												});
-
-								$(function() {
-									// Create the close button
-									var closebtn = $('<button/>', {
-										type : "button",
-										text : 'x',
-										id : 'close-preview',
-										style : 'font-size: initial;',
-									});
-									closebtn.attr("class", "close pull-right");
-									// Set the popover default content
-									$('.image-preview')
-											.popover(
-													{
-														trigger : 'manual',
-														html : true,
-														title : "<strong>사진</strong>"
-																+ $(closebtn)[0].outerHTML,
-														content : "There's no image",
-														placement : 'bottom'
-													});
-									// Clear event
-									$('.image-preview-clear')
-											.click(
-													function() {
-														$('.image-preview')
-																.attr(
-																		"data-content",
-																		"")
-																.popover('hide');
-														$(
-																'.image-preview-filename')
-																.val("");
-														$(
-																'.image-preview-clear')
-																.hide();
-														$(
-																'.image-preview-input input:file')
-																.val("");
-														$(
-																".image-preview-input-title")
-																.text("첨부파일");
-													});
-									// Create the preview image
-									$(".image-preview-input input:file")
-											.change(
-													function() {
-														var img = $('<img/>', {
-															id : 'dynamic',
-															width : 250,
-															height : 200
-														});
-														var file = this.files[0];
-														var reader = new FileReader();
-														// Set preview image into the popover data-content
-														reader.onload = function(
-																e) {
-															$(
-																	".image-preview-input-title")
-																	.text("바꾸기");
-															$(
-																	".image-preview-clear")
-																	.show();
-															$(
-																	".image-preview-filename")
-																	.val(
-																			file.name);
-															img
-																	.attr(
-																			'src',
-																			e.target.result);
-															$(".image-preview")
-																	.attr(
-																			"data-content",
-																			$(img)[0].outerHTML)
-																	.popover(
-																			"show");
-														}
-														reader
-																.readAsDataURL(file);
-													});
-								});
-							</script>
-							<h3>신분증 사본 첨부</h3>
-							<hr>
-							<div
-								class="col-sm-12 col-md-6 col-md-offset-3 col-md-8 col-sm-offset-2">
-								<!-- image-preview-filename input [CUT FROM HERE]-->
-								<div class="input-group image-preview">
-									<input type="text" class="form-control image-preview-filename"
-										placeholder="신분증 사본 첨부" disabled="disabled">
-									<!-- don't give a name === doesn't send on POST/GET -->
-									<span class="input-group-btn"> <!-- image-preview-clear button -->
-										<button type="button"
-											class="btn btn-default image-preview-clear"
-											style="display: none;">
-											<span class="glyphicon glyphicon-remove"></span>삭제
-										</button> <!-- image-preview-input -->
-										<div class="btn btn-default image-preview-input">
-											<span class="glyphicon glyphicon-folder-open"></span> <span
-												class="image-preview-input-title">첨부파일</span> <input
-												type="file" accept="image/png, image/jpeg, image/gif"
-												name="input-file-preview" />
-											<!-- rename it -->
-										</div>
-									</span>
-								</div>
-								<p class="dropout_dsc" style="color: red;">▶사진 확인이 가능한
-									파일(여권,학생증 등)을 첨부해 주시기 바랍니다.</p>
-								<!-- /input-group image-preview [TO HERE]-->
-							</div>
+<script>
+	$(function(){
+		$('#chargingAmount').on('change', function(){
+			var refund = $('#chargingAmount').val();
+			var refundM = refund*-1;
+			var refundPoint = refund/100;
+			$('#refundgAmount').val(refundM);
+			$('#refundPoint').text(refundPoint);
+			$('#refundKrw').text(refund);
+			
+		});
+	});
+</script>							
 						</fieldset>
 					</form>
 				</div>
@@ -430,14 +255,29 @@
 				<br>
 				<div class="row">
 					<div id="btnses">
-						<a href="exchange.jsp"></a><input type="button"
-							class="btn btn-primary" value="환전 신청하기" /> <a href="myPoint.jsp"></a><input
-							type="button" class="btn btn-primary" value="취소" />
+						<input type="button" onclick="chargePoint();" class="btn btn-primary" value="환전하기" />
+						 <a href="/cas/member/point"><input type="button" class="btn btn-primary" value="취소" /></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+<script>
+	$('#chargingAmount').change(function(){
+		var ca = $('#chargingAmount').val();
+		if(ca%100!=0){
+			sweetAlert("환전 실패", "100원 단위로 충전해주세요.", "error");
+			$('.confirm').on('click',function(){
+				$('#chargingAmount').val('');
+				$('#chargingAmount').focus();
+			});
+		}
+	});
+</script>
+<script>
+	function chargePoint(){
+		var chargeForm = $("#chargeForm");
+		chargeForm.submit();
+	}
+</script>
 </body>
-</html>

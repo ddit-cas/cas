@@ -326,25 +326,13 @@ public class AdminPointAnalysisController {
 		
 		//검색 결과
 		String chargingMem = request.getParameter("memId");
+		System.out.println(chargingMem);
 		MemberVO pointDetailMem = memberService.selectMember(chargingMem);
 		List<PointVO> pointDetailList = pointService.selectTotalRechargePoint(chargingMem);
-		Map<String, String> investment = new HashMap<String, String>();
 		//구름 사용 내역
-		int count = 0;
-		List<InvestmentVO> investmentList = investmentService.selectInvestmentList(chargingMem);
-		List<ArticleVO> usedPointList = articleService.selectArticleList(chargingMem, "B009");
-		for (int i = 0; i < investmentList.size(); i++) {
-			for (int j = 0; j < usedPointList.size(); j++) {
-				if(investmentList.get(i).getFundingNum().equals(usedPointList.get(j).getFundingNum())){
-					investment.put("fundTitle", usedPointList.get(j).getContentTitle());
-					investment.put("investAmount", investmentList.get(i).getInvesAmount()+"");
-					investment.put("investDate", investmentList.get(i).getInvesDate());
-					count++;
-				}
-			}
-		}
-		model.addAttribute("investment", investment);
-		model.addAttribute("count", count);
+		List<InvestmentVO> investmentList = memberService.selectInvestMentList(chargingMem);
+		System.out.println("펀딩명 : "+investmentList.get(0).getInvesEndDate());
+		model.addAttribute("investment", investmentList);
 		//구름 충전, 환급 내역
 		int chargingAmount = 0;
 		int refundAmount = 0;
@@ -386,7 +374,7 @@ public class AdminPointAnalysisController {
 		}
 		System.out.println("pagePointHistory페이지 : "+ pagePointHistory);
 		//받은 데이터리스트의 데이터갯수
-		int dataRowPointHistory = count;
+		int dataRowPointHistory = investmentList.size();
 		Paging pagingPoint = new Paging(dataRowPointHistory, pagePointHistory);
 		System.out.println(pagingPoint.toString());
 		model.addAttribute("indexPointHistory", pagingPoint.getIndex());//현재페이지

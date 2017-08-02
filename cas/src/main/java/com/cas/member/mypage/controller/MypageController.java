@@ -151,6 +151,15 @@ public class MypageController {
 	@RequestMapping("/member/exchange")
 	public String memberExchange(HttpSession session,Model model){
 		String url = "/member/myPage/exchange";
+		String memId = ((MemberVO)session.getAttribute("loginUser")).getMemId();
+		/*충전내역 리스트 가져오기*/
+		List<PointVO> chargeList = memService.selectChargeList(memId);
+		int refundAbledAmount = 0;
+		for (int i = 0; i < chargeList.size(); i++) {
+			refundAbledAmount += chargeList.get(i).getChargingAmount();
+		}
+		refundAbledAmount = refundAbledAmount/100;
+		model.addAttribute("refundAbledAmount",refundAbledAmount);
 		return url;
 	}
 	

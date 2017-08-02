@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <body>
 	<!-- glyphicon CDN -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -105,13 +106,14 @@
 			    <tbody>
 			        <!-- c태그 forEach 사용하여 테이블 로우 자동 생성 // 가능하면 페이징 처리도 해야 함.-->
 			        <c:choose>
-			    	<c:when test="${count > 0 }">
+			    	<c:when test="${investment.size() > 0 }">
 			        <c:forEach var="i" begin="${firstRowPointHistory }" end="${lastRowPointHistory }" varStatus="status">
 			    	<tr>
 			          <th scope="row">${status.index+1 }</th>
-					  <td>${investment.fundTitle }</td>
-					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;${investment.investAmount }</td>
-					  <td>${investment.investDate }</td>
+					  <td>${investment[i].invesEndDate }</td>
+					  <fmt:parseNumber integerOnly="true" var="point" value="${investment[i].invesAmount/100 }"></fmt:parseNumber>
+					  <td><i class="fa fa fa-jsfiddle"></i>&nbsp;${point }</td>
+					  <td>${investment[i].invesDate }</td>
 			    	</tr>
 			    	</c:forEach>
 			    	</c:when>

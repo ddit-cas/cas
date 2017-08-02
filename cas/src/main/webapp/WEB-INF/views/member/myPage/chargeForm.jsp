@@ -1,14 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>충전하기</title>
-</head>
 <body>
-	<style>
+<!-- glyphicon CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
 .text-danger strong {
 	color: #337ab7;
 }
@@ -154,15 +150,15 @@
 				<div class="row">
 					<div>
 						<div class="c_header">
-							<h3>구름이 충전 신청</h3>
-							<p class="contxt">구름이를 충전해드리는 서비스입니다.</p>
+							<h3>구름이(<i class="fa fa fa-jsfiddle"></i>) 충전 신청</h3>
+							<p class="contxt">구름이(<i class="fa fa fa-jsfiddle"></i>)를 충전해드리는 서비스입니다.</p>
 						</div>
 						<hr>
 
 						<!-- [D] input type="text"에 focus 되었을때 class에 on 추가 (ie6,ie7 대응) -->
 						<div class="section_delete">
-							<h3 class="h_dropout">구름이 충전 신청 전에 꼭 읽어 주세요!</h3>
-							<p class="dropout_dsc">▶ 100원 당 1구름이로 충전이 됩니다.</p>
+							<h3 class="h_dropout">구름이(<i class="fa fa fa-jsfiddle"></i>) 충전 신청 전에 꼭 읽어 주세요!</h3>
+							<p class="dropout_dsc">▶ 100원(<i class="fa fa fa-krw"></i>) 당 1구름(<i class="fa fa fa-jsfiddle"></i>)이로 충전이 됩니다.</p>
 						</div>
 					</div>
 				</div>
@@ -209,7 +205,7 @@
 							<hr>
 							<br>
 							<div class="form-group">
-								<label class="control-label col-xs-2" for="id">충전액</label>
+								<label class="control-label col-xs-2" for="id">충전액&nbsp;<i class="fa fa fa-krw"></i></label>
 								<div class="col-sm-8">
 									<input type="text" class="form-control" id="chargingAmount" name="chargingAmount" placeholder="충전금액을 100원 단위로 입력해주세요.">
 								</div>
@@ -229,6 +225,18 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		$('#chargingAmount').change(function(){
+			var ca = $('#chargingAmount').val();
+			if(ca%100!=0){
+				sweetAlert("충전 실패", "100원 단위로 충전해주세요.", "error");
+				$('.confirm').on('click',function(){
+					$('#chargingAmount').val('');
+					$('#chargingAmount').focus();
+				});
+			}
+		});
+	</script>
 	<script>
 		function chargePoint(){
 			var chargeForm = $("#chargeForm");
