@@ -19,6 +19,7 @@ import com.cas.carousel.service.CarouselService;
 import com.cas.db.dto.ArticleVO;
 import com.cas.db.dto.CarouselVO;
 import com.cas.db.dto.IngFundVO;
+import com.cas.db.dto.Paging;
 import com.cas.db.dto.PromotionListVO;
 import com.cas.db.dto.PromotionVO;
 import com.cas.fund.service.FundService;
@@ -116,6 +117,21 @@ public class AdminCarouselController {
 			articleList.add(article);
 		}
 		model.addAttribute("articleList",articleList);
+		//페이징 처리	
+		//현재페이지
+		String page = request.getParameter("tab");
+		if(page == null){
+			page = "1";
+		}
+		//받은 데이터리스트의 데이터갯수
+		int dataRow = articleList.size();
+		Paging paging = new Paging(dataRow, page);
+		System.out.println(paging.toString());
+		model.addAttribute("index", paging.getIndex());//현재페이지
+		model.addAttribute("firstRow", paging.getFirstPageRow());//한 페이지에서 첫 게시글번호
+		model.addAttribute("lastRow", paging.getLastPageRow());//한 페이지에서 마지막 게시글번호
+		model.addAttribute("minNum", paging.getMinNum());//최소 페이징넘버
+		model.addAttribute("maxNum", paging.getMaxNum());//최대 페이징넘버
 		
 		return "admin/carousel/admin_carouselDetail";
 	}

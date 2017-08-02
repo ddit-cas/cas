@@ -20,22 +20,71 @@
   		<table class="table table-hover">
   		 <thead>
 	  		 <tr>
+		  		 <th>#</th>
 		  		 <th>게시판</th>
 		         <th>글제목</th>
 		         <th>작성자</th>
 	        </tr>
          </thead>
         	<tbody>
-        		<c:forEach items="${articleList }" var="article">
+        	 <c:choose>
+				<c:when test="${articleList.size() > 0 }">
+        		<c:forEach var="i" varStatus="status" begin="${firstRow}" end="${lastRow}">
 			        <tr class="articleRow" target="${article.contentTitle }" contentUrl="/cas/promotionDetail?contentNum=${article.contentNum }">
-			          <td>${article.boardName }</td>
-			          <td>${article.contentTitle }</td>
-			          <td>${article.contentWriter }</td>		          
+			          <td>${status.index+1 }</td>
+			          <td>${articleList[i].boardName }</td>
+			          <td>${articleList[i].contentTitle }</td>
+			          <td>${articleList[i].contentWriter }</td>		          
 			        </tr>
         		</c:forEach>
+       		    </c:when>
+		         <c:otherwise>
+				  <tr>
+					<td colspan="4" style="text-align:center;">
+						해당 내용이 없습니다.
+					</td>
+				  </tr>
+		         </c:otherwise>
+		     </c:choose>
         	</tbody>
   		</table>
   	</div>
+  	<!-- 페이지수  -->
+	<div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+		<div class="row">
+			<nav aria-label="...">
+				<ul class="pager" role="tablist">
+					<li class="previous">
+						<a href="/cas/admin/carouselDetail?tab=${minNum-1}"><span aria-hidden="true">←</span>
+							이전
+						</a>
+					</li>
+					<c:forEach var="i" begin="${minNum}" end="${maxNum}">
+					<c:choose>
+					<c:when test="${index==i}">
+					<li>
+						<a style="background: #aaa;" aria-controls="tab1" href="/cas/admin/carouselDetail?tab=${i}">
+							${i }
+						</a>
+					</li>
+					</c:when>
+					<c:otherwise>
+					<li>
+						<a aria-controls="tab1" href="/cas/admin/carouselDetail?tab=${i}">
+							${i }
+						</a>
+					</li>
+					</c:otherwise>
+					</c:choose>
+					</c:forEach>
+					<li class="next">
+						<a href="/cas/admin/carouselDetail?tab=${maxNum+1}">다음<span aria-hidden="true">→</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
 <script>
 	$('tr.articleRow').on('click',function(){
 		var contentUrl=$(this).attr('contentUrl');
@@ -68,8 +117,10 @@
 	        }
 	    });
 	})
-</script>  	
-  	<form id="subject" action="/cas/admin/${carouselUrl }" method="post" enctype="multipart/form-data">
+</script>
+	<div class="row">
+    <div class="col-lg-12">  	
+  	<form style="margin-left: 110px" id="subject" action="/cas/admin/${carouselUrl }" method="post" enctype="multipart/form-data">
   		<h2>케러셀 관리</h2>
   		<br>
   	<div class="table-responsive">
@@ -104,21 +155,21 @@
 			</tbody>
 			</table>
 	</div>
+	<div class="form-group" style="margin-bottom: 50px;margin-left: 450px;">
     	<c:choose>
     	<c:when test="${not empty carousel }">
     		<input type="hidden"  name="carouselNum" value="${carousel.carouselNum }">
   			<button type="submit" class="btn btn-primary">수정</button>
     	</c:when>
     	<c:otherwise>
-    	<div class="form-group">
   			<button type="submit" class="btn btn-primary">등록</button>
-  		</div>
     	</c:otherwise>
     	</c:choose>
-  	<div class="form-group">
-  			<button type="button" style="float:center;" class="btn btn-danger" onclick="deleteCarousel(${carousel.carouselNum});">삭제</button>
+  			<button type="button" class="btn btn-danger" onclick="deleteCarousel(${carousel.carouselNum});">삭제</button>
   	</div>
   	</form>
+  	</div>
+  	</div>
   </div>
   <script>
   	function deleteCarousel(carouselNum){
