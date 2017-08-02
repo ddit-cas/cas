@@ -85,24 +85,7 @@
 													<i class="glyphicon glyphicon-gift"></i>&nbsp;${caserList[i].memBirthdate }
 												</p>
 												<!-- Split button -->
-												<div class="btn-group">
-													<button type="button" class="btn btn-primary">&nbsp;Social</button>
-													<button type="button"
-														class="btn btn-primary dropdown-toggle"
-														data-toggle="dropdown">
-														<span class="caret"></span><span class="sr-only">&nbsp;Social</span>
-													</button>
-													<ul class="dropdown-menu" role="menu">
-														<li style="width: 66px; float: left;"><a
-															href="javascript:toSNS('facebook','공유테스트중','https://youtu.be/nFaMnAq5bCo')"
-															title="페이스북으로 가져가기"><img
-																src="resources/images/facebook.jpg" style="width: 40px;"></a></li>
-														<li style="float: right;"><a
-															href="javascript:toSNS('twitter','테스트중입니다.','https://youtu.be/nFaMnAq5bCo')"
-															title="트위터로 가져가기"><img
-																src="resources/images/twitter.jpg" style="width: 40px;"></a></li>
-													</ul>
-												</div>
+												
 											</div>
 										</div>
 									</div>
@@ -148,30 +131,5 @@
 			</nav>
 		</div>
 	</div>
-	<script>
-		// send to SNS
-		function toSNS(sns, strTitle, strURL) {
-			var snsArray = new Array();
-			var strMsg = strTitle + " " + strURL;
-			var image = "이미지경로";
-
-			snsArray['twitter'] = "http://twitter.com/home?status="
-					+ encodeURIComponent(strTitle) + ' '
-					+ encodeURIComponent(strURL);
-			snsArray['facebook'] = "http://www.facebook.com/share.php?u="
-					+ encodeURIComponent(strURL);
-			window.open(snsArray[sns]);
-		}
-
-		function copy_clip(url) {
-			var IE = (document.all) ? true : false;
-			if (IE) {
-				window.clipboardData.setData("Text", url);
-				alert("이 글의 단축url이 클립보드에 복사되었습니다.");
-			} else {
-				temp = prompt("이 글의 단축url입니다. Ctrl+C를 눌러 클립보드로 복사하세요", url);
-			}
-		}
-	</script>
 </body>
 </html>

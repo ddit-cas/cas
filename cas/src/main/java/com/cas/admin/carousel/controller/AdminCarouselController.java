@@ -2,6 +2,7 @@ package com.cas.admin.carousel.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -79,17 +80,42 @@ public class AdminCarouselController {
 			model.addAttribute("carouselUrl","carouselInsert");
 		}
 		
+		/*캐러셀에 띄워줄 전체 글리스트*/
+		List<ArticleVO> articleList = new ArrayList<ArticleVO>();
+		
 		/*공연홍보 리스트*/
 		List<PromotionListVO> promotionList = promotionService.selectPromotionList();
-		model.addAttribute("promotionList",promotionList);
+		for (int i = 0; i < promotionList.size(); i++) {
+			ArticleVO article = new ArticleVO();
+			article.setContentNum("/cas/noticeDetail?articleId="+promotionList.get(i).getContentNum());
+			article.setBoardName("공지사항");
+			article.setContentTitle(promotionList.get(i).getContentTitle());
+			article.setContentWriter(promotionList.get(i).getContentWriter());
+			articleList.add(article);
+		}
 		
 		/*펀딩 리스트*/
 		List<IngFundVO> fundList = fundService.selectIngFundList();
-		model.addAttribute("fundList",fundList);
+		for (int i = 0; i < fundList.size(); i++) {
+			ArticleVO article = new ArticleVO();
+			article.setContentNum("/cas/fundDetail?contentNum="+fundList.get(i).getContentNum());
+			article.setBoardName("크라우드펀딩");
+			article.setContentTitle(fundList.get(i).getContentTitle());
+			article.setContentWriter(fundList.get(i).getContentWriter());
+			articleList.add(article);
+		}
 		
 		/*고지사항 리스트*/
 		List<ArticleVO> noticeList = articleService.selectArticleList("B001");
-		model.addAttribute("noticeList",noticeList);
+		for (int i = 0; i < noticeList.size(); i++) {
+			ArticleVO article = new ArticleVO();
+			article.setContentNum("/cas/noticeDetail?contentNum="+noticeList.get(i).getContentNum());
+			article.setBoardName("공지사항");
+			article.setContentTitle(noticeList.get(i).getContentTitle());
+			article.setContentWriter(noticeList.get(i).getContentWriter());
+			articleList.add(article);
+		}
+		model.addAttribute("articleList",articleList);
 		
 		return "admin/carousel/admin_carouselDetail";
 	}

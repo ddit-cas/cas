@@ -418,7 +418,7 @@ h3 {
 						<ul class="dropdown-menu">
 							<li><a href="/cas/noticeList">공지사항</a></li>
 							<li><a href="/cas/promotion">CAS란</a></li>
-
+							<li><a href="/cas/showSchedule">공연홍보일정</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
